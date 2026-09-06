@@ -9,7 +9,7 @@ public final class RuinedOutpostGame {
     public enum EventType {
         DASH, ATTACK, WATER_IMPACT, TIDE_IMPACT, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
         TRANSFORM, REVERT, GUARDIAN_AWAKENED, GUARDIAN_SLAM, VICTORY, ROOM_ENTERED, SPIT_SHOT, SPIT_IMPACT,
-        ABSORB_START, ABSORBED, HEALED
+        ABSORB_START, ABSORBED, HEALED, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER
     }
     public record Event(EventType type, double x, double y, boolean water) {
         public Event(EventType type,double x,double y) { this(type,x,y,false); }
@@ -42,6 +42,24 @@ public final class RuinedOutpostGame {
     }
     public static final double WISP_CONTACT_RADIUS = 58;
     public static final double TIDE_COOLDOWN = 4.5;
+    public static final double CRESCENT_COOLDOWN = 5, RIPOSTE_COOLDOWN = 6, RIPOSTE_DURATION = .3;
+    public static final double BLADE_SKILL_COST = 8, RIPOSTE_RANGE = 120;
+    /** A single non-piercing arc; collision and lifetime use the same native-size footprint. */
+    public static final class Crescent {
+        private double x,y,age;
+        private final double dx,dy;
+        private boolean alive=true;
+        private Crescent(double x,double y,int aimX,int aimY) {
+            this.x=x;this.y=y;double length=Math.hypot(aimX,aimY);dx=aimX/length;dy=aimY/length;
+        }
+        public double x(){return x;}
+        public double y(){return y;}
+        public double age(){return age;}
+        public double directionX(){return dx;}
+        public double directionY(){return dy;}
+        public double radius(){return 22;}
+        public double opacity(){return Math.min(1,Math.max(0,(.65-age)/.12));}
+    }
     public static final double BLADE_ATTACK_RANGE = 150;
     public static final double SCOUT_ICHOR = 10;
     private RuinedOutpostMap map;
@@ -55,6 +73,7 @@ public final class RuinedOutpostGame {
     private double absorptionTime, absorptionX, absorptionY, absorptionHealth, corpseStartX, corpseStartY;
     private final List<Event> events = new ArrayList<>();
     private final List<WaterProjectile> projectiles = new ArrayList<>();
+    private final List<Crescent> crescents = new ArrayList<>();
     private final List<EnemyProjectile> hostileProjectiles=new ArrayList<>();
     private final Set<Wisp> lungeHits = Collections.newSetFromMap(new IdentityHashMap<>());
     private final Set<Wisp> dashHits = Collections.newSetFromMap(new IdentityHashMap<>());
@@ -78,6 +97,7 @@ public final class RuinedOutpostGame {
     private double hitStop;
     private double passageCooldown;
     private double tideCooldown;
+    private double crescentCooldown,riposteCooldown,guardTime;
     private boolean waterCast, heavyCast;
 
     public RuinedOutpostGame() { resetDefaultState(); }
@@ -93,7 +113,7 @@ public final class RuinedOutpostGame {
     public void restart() {
         if (story.phase() == OutpostStory.Phase.DEAD && checkpoint == 7) {
             player = new Player(640,384);
-            tideCooldown=0;
+            tideCooldown=crescentCooldown=riposteCooldown=guardTime=0;
             story.resume();
             paused = false;
             enterRoom(7,-1);
@@ -104,7 +124,7 @@ public final class RuinedOutpostGame {
         java.util.Arrays.fill(visited,false);
         checkpoint = 0;
         tutorialTransformed = infirmaryUsed = bossDefeated = paused = false;
-        tideCooldown=0;
+        tideCooldown=crescentCooldown=riposteCooldown=guardTime=0;
         story = new OutpostStory();
         player = new Player(640,384);
         enterRoom(0,-1);
@@ -121,6 +141,7 @@ public final class RuinedOutpostGame {
         dashHits.clear();
         bossAdds.clear();
         projectiles.clear();
+        crescents.clear();guardTime=0;
         hostileProjectiles.clear();
         attackDelay = comboTime = hitStop = addTimer = 0;
         combo = 0;
@@ -181,12 +202,16 @@ public final class RuinedOutpostGame {
         }
     }
     private void tick(double seconds, int horizontal, int vertical) {
-        if (!player.alive()) { projectiles.clear(); hostileProjectiles.clear(); attackDelay=0; cancelAbsorption(); story.playerDied(); return; }
+        if (!player.alive()) { projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear(); attackDelay=0; cancelAbsorption(); story.playerDied(); return; }
         if (hitStop > 0) { hitStop=Math.max(0,hitStop-seconds); return; }
         passageCooldown=Math.max(0,passageCooldown-seconds);
         tideCooldown=Math.max(0,tideCooldown-seconds);
+        crescentCooldown=Math.max(0,crescentCooldown-seconds);
+        riposteCooldown=Math.max(0,riposteCooldown-seconds);
+        guardTime=Math.max(0,guardTime-seconds);
         boolean wasBlade=player.bladeForm(), wasDashing=player.dashing(), wasRecovering=player.recovering();
         player.move(horizontal,vertical,seconds,map);
+        if(!player.bladeForm())guardTime=0;
         if (wasBlade && !player.bladeForm()) emit(EventType.REVERT,player.x(),player.y());
         comboTime=Math.max(0,comboTime-seconds);
         if (attackDelay > 0) {
@@ -213,13 +238,14 @@ public final class RuinedOutpostGame {
             scouts.get(j).separateFrom(scouts.get(i),seconds,map);
         }
         updateWater(seconds);
+        updateCrescents(seconds);
         updateHostileProjectiles(seconds);
         if (wasDashing || player.dashing()) damageEnemiesFromDash();
         collectDrops(seconds);
         if(player.alive()&&!wasBlade&&!wasRecovering&&!player.bladeForm()&&!player.recovering())
             player.collectIchor(PASSIVE_ICHOR_PER_SECOND*seconds);
         updateAbsorption(seconds);
-        if (!player.alive()) { projectiles.clear(); hostileProjectiles.clear(); attackDelay=0; cancelAbsorption(); story.playerDied(); }
+        if (!player.alive()) { projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear(); attackDelay=0; cancelAbsorption(); story.playerDied(); }
         if (scouts.stream().noneMatch(Wisp::alive) && map.room()!=9) cleared[map.room()]=true;
         refreshPassages();
         if(player.alive()&&passageCooldown==0) {
@@ -258,6 +284,20 @@ public final class RuinedOutpostGame {
     }
     private void emit(EventType type,double x,double y) { events.add(new Event(type,x,y)); }
     private void hurtPlayer(int damage,double x,double y) {
+        if(damage>0&&guarding()&&!player.invulnerable()) {
+            guardTime=0;
+            emit(EventType.RIPOSTE_COUNTER,player.x(),player.y());
+            for(Wisp scout:scouts)if(scout.alive()&&near(scout.x(),scout.y(),RIPOSTE_RANGE)
+                    &&map.clearLine(player.x(),player.y(),scout.x(),scout.y())&&scout.hurt(3,true)) {
+                double dx=scout.x()-player.x(),dy=scout.y()-player.y(),length=Math.max(1,Math.hypot(dx,dy));
+                scout.push(dx/length*300,dy/length*300);afterScoutHit(scout);
+            }
+            if(map.room()==9&&!bossDefeated&&guardian.state()==Guardian.State.RECOVER
+                    &&near(guardian.x(),guardian.y(),RIPOSTE_RANGE)
+                    &&map.clearLine(player.x(),player.y(),guardian.x(),guardian.y())&&guardian.hurt(3))
+                afterGuardianHit(false);
+            return;
+        }
         boolean blade=player.bladeForm();
         if (player.hurt(damage)) {
             cancelAbsorption();
@@ -269,6 +309,7 @@ public final class RuinedOutpostGame {
     public boolean dash(int horizontal,int vertical) {
         if (blocked() || !player.dash(horizontal,vertical)) return false;
         cancelAbsorption();
+        guardTime=0;
         attackDelay=0;
         dashHits.clear();
         emit(EventType.DASH,player.x(),player.y());
@@ -285,7 +326,7 @@ public final class RuinedOutpostGame {
         }
     }
     public boolean attack(int facingX,int facingY) {
-        if (blocked() || (facingX==0&&facingY==0) || !player.startAttack()) return false;
+        if (blocked() || guarding() || (facingX==0&&facingY==0) || !player.startAttack()) return false;
         cancelAbsorption();
         combo=comboTime>0?(combo+1)%3:0;
         comboTime=0.9;
@@ -298,6 +339,23 @@ public final class RuinedOutpostGame {
         return true;
     }
     static double strikeWindup(int combo) { return combo==2?0.12:0.08; }
+    public boolean ichorCrescent(int facingX,int facingY) {
+        if(blocked()||guarding()||!player.bladeForm()||crescentCooldown>0
+                ||player.ichor()<=BLADE_SKILL_COST||(facingX==0&&facingY==0)||!player.startAttack())return false;
+        player.spendBladeIchor(BLADE_SKILL_COST);
+        cancelAbsorption();attackDelay=0;comboTime=0;
+        crescentCooldown=CRESCENT_COOLDOWN;
+        crescents.add(new Crescent(player.x(),player.y(),facingX,facingY));
+        emit(EventType.CRESCENT_CAST,player.x(),player.y());return true;
+    }
+    public boolean riposte() {
+        if(blocked()||!player.bladeForm()||riposteCooldown>0||player.ichor()<=BLADE_SKILL_COST
+                ||!player.startAttack())return false;
+        player.spendBladeIchor(BLADE_SKILL_COST);
+        cancelAbsorption();attackDelay=0;comboTime=0;
+        guardTime=RIPOSTE_DURATION;riposteCooldown=RIPOSTE_COOLDOWN;
+        emit(EventType.RIPOSTE_START,player.x(),player.y());return true;
+    }
     public boolean tideWave(int facingX,int facingY) {
         if(blocked()||player.bladeForm()||tideCooldown>0||(facingX==0&&facingY==0)
                 ||!player.startAttack()) return false;
@@ -364,6 +422,30 @@ public final class RuinedOutpostGame {
             }
         }
         projectiles.removeIf(wave->!wave.alive());
+    }
+    private void updateCrescents(double seconds) {
+        for(Crescent arc:crescents) {
+            int steps=Math.max(1,(int)Math.ceil(560*seconds/4));
+            for(int i=0;i<steps&&arc.alive;i++) {
+                double dt=seconds/steps;
+                arc.x+=arc.dx*560*dt;arc.y+=arc.dy*560*dt;arc.age+=dt;
+                if(arc.age>=.65) { arc.alive=false;break; }
+                if(map.waterBlocked(arc.x,arc.y+Player.COLLISION_Y_OFFSET,arc.radius()))arc.alive=false;
+                else if(map.room()==9&&guardian.alive()
+                        &&map.touchesGuardian(arc.x,arc.y+Player.COLLISION_Y_OFFSET,arc.radius())) {
+                    if(guardian.state()==Guardian.State.RECOVER&&guardian.hurt(3))afterGuardianHit(false);
+                    arc.alive=false;
+                } else for(Wisp scout:scouts)if(scout.alive()
+                        &&Math.hypot(scout.x()-arc.x,scout.y()-arc.y)<=Wisp.COLLISION_RADIUS+arc.radius()) {
+                    if(scout.hurt(3,true)) {
+                        scout.push(arc.dx*260,arc.dy*260);afterScoutHit(scout);
+                    }
+                    arc.alive=false;break;
+                }
+                if(!arc.alive)emit(EventType.CRESCENT_IMPACT,arc.x,arc.y);
+            }
+        }
+        crescents.removeIf(arc->!arc.alive);
     }
     private void afterScoutHit(Wisp scout) {
         afterScoutHit(scout,false);
@@ -532,6 +614,11 @@ public final class RuinedOutpostGame {
     public void pause() { if(!story.blocksGameplay()) paused=true; }
     public int combo() { return combo; }
     public double tideCooldown() { return tideCooldown; }
+    public double crescentCooldown() { return crescentCooldown; }
+    public double riposteCooldown() { return riposteCooldown; }
+    public boolean guarding() { return guardTime>0&&player.alive()&&player.bladeForm(); }
+    public double guardProgress() { return guarding()?1-guardTime/RIPOSTE_DURATION:0; }
+    public List<Crescent> crescents() { return Collections.unmodifiableList(crescents); }
     public double waterCharge() { return attackDelay>0&&waterCast ? 1-attackDelay/(heavyCast?0.18:0.08) : -1; }
     public List<WaterProjectile> projectiles() { return Collections.unmodifiableList(projectiles); }
     public List<EnemyProjectile> hostileProjectiles(){return Collections.unmodifiableList(hostileProjectiles);}
@@ -547,4 +634,6 @@ public final class RuinedOutpostGame {
     public List<Corpse> corpses() { return Collections.unmodifiableList(corpses); }
     public Corpse absorptionTarget() { return absorptionTarget; }
     public double absorptionProgress() { return Math.min(1,absorptionTime/ABSORB_DURATION); }
+    public double absorptionAnchorX() { return absorptionTarget==null?player.x():corpseStartX; }
+    public double absorptionAnchorY() { return absorptionTarget==null?player.y():corpseStartY; }
 }

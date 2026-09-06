@@ -129,6 +129,16 @@ public final class Player {
         return ichor;
     }
 
+    /** Skill costs shorten the same finite transformation reservoir, never a second mana pool. */
+    public boolean spendBladeIchor(double amount) {
+        if (!Double.isFinite(amount) || amount <= 0 || !alive() || !bladeForm() || ichor < amount)
+            return false;
+        ichor -= amount;
+        bladeTime = BLADE_DURATION * ichor / MAX_ICHOR;
+        if (bladeTime == 0) beginRecovery();
+        return true;
+    }
+
     public boolean dash(int horizontal, int vertical) {
         double length = Math.hypot(horizontal, vertical);
         if (length == 0 || dashCooldown > 0 || recovering() || !alive()) {

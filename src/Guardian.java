@@ -1,6 +1,6 @@
 public final class Guardian {
     public enum State { DORMANT, APPROACH, TELEGRAPH, SLAM, RECOVER, HURT, DEAD }
-    public enum Attack { TARGET, SWEEP, CHARGE, SHOCKWAVE }
+    public enum Attack { TARGET, SWEEP, CHARGE, SHOCKWAVE, FISSURE }
     public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*3, MAX_HEALTH=240, SLAM_DAMAGE=2;
     public static final int GROUND_Y_OFFSET=48, SPRITE_FOOT_ROW=56;
     public static final double SLAM_RADIUS=112, TELEGRAPH_DURATION=0.9, SLAM_DURATION=0.18;
@@ -9,6 +9,7 @@ public final class Guardian {
     private int health=MAX_HEALTH,impactNumber;
     private State state=State.DORMANT;
     private Attack attack=Attack.TARGET, previousAttack=Attack.TARGET;
+    private boolean fissureHorizontal;
 
     public Guardian(double x,double y) { this.x=x;this.y=y; }
     public void activate(double playerX,double playerY) {
@@ -39,7 +40,7 @@ public final class Guardian {
             case TELEGRAPH -> {
                 // Every target is committed for the entire visible tell. No late tracking.
                 stateTime+=dt;
-                if(stateTime+1e-8>=TELEGRAPH_DURATION) {
+                if(stateTime+1e-8>=telegraphDuration()) {
                     state=State.SLAM;stateTime=0;impactNumber++;
                 }
             }
@@ -57,7 +58,10 @@ public final class Guardian {
     }
     private void beginAttack(double px,double py) {
         double distance=Math.hypot(px-x,py-y);
-        if(previousAttack!=Attack.SHOCKWAVE&&impactNumber%3==2)attack=Attack.SHOCKWAVE;
+        if(enraged()&&impactNumber%4==3) {
+            attack=Attack.FISSURE;fissureHorizontal=!fissureHorizontal;
+        }
+        else if(previousAttack!=Attack.SHOCKWAVE&&impactNumber%3==2)attack=Attack.SHOCKWAVE;
         else if(distance>260&&previousAttack!=Attack.CHARGE)attack=Attack.CHARGE;
         else if(distance<190&&previousAttack!=Attack.SWEEP)attack=Attack.SWEEP;
         else attack=Attack.TARGET;
@@ -76,13 +80,24 @@ public final class Guardian {
     }
     public boolean hits(double px,double py) {
         if(state!=State.SLAM)return false;
+        if(attack==Attack.FISSURE) {
+            var lane=fissureBounds();
+            return Math.abs(px-lane.centerX())<=lane.width()/2
+                    &&Math.abs(py-lane.centerY())<=lane.height()/2;
+        }
         if(attack==Attack.CHARGE)return Math.hypot(px-x,py-y)<=92;
         double distance=Math.hypot(px-targetX,py-targetY);
         if(attack==Attack.SHOCKWAVE)return Math.abs(distance-waveRadius())<=28;
         return distance<=slamRadius();
     }
     public double waveRadius() {return 32+(slamRadius()-32)*Math.min(1,stateTime/activeDuration());}
-    public double activeDuration() {return attack==Attack.CHARGE?0.55:attack==Attack.SHOCKWAVE?0.75:SLAM_DURATION;}
+    public double activeDuration() {return attack==Attack.FISSURE?0.32:attack==Attack.CHARGE?0.55:attack==Attack.SHOCKWAVE?0.75:SLAM_DURATION;}
+    public double telegraphDuration() {return attack==Attack.FISSURE?1.1:TELEGRAPH_DURATION;}
+    /** The exact committed damage rectangle, also used to render its complete warning. */
+    public RuinedOutpostMap.Obstacle fissureBounds() {
+        if(attack!=Attack.FISSURE||(state!=State.TELEGRAPH&&state!=State.SLAM))return null;
+        return new RuinedOutpostMap.Obstacle(targetX,targetY,fissureHorizontal?1152:84,fissureHorizontal?84:1152);
+    }
     public boolean hitFrom(double ax,double ay,int fx,int fy,double range,int damage) {
         double length=Math.hypot(fx,fy);
         if(state==State.DORMANT||!alive()||damage<=0||range<=0||length==0)return false;
@@ -103,7 +118,7 @@ public final class Guardian {
     public int row(){return state==State.SLAM?1:state==State.RECOVER||state==State.HURT||state==State.DEAD?2:0;}
     public int frame(){
         double duration=switch(state) {
-            case TELEGRAPH -> TELEGRAPH_DURATION;
+            case TELEGRAPH -> telegraphDuration();
             case SLAM -> activeDuration();
             case RECOVER,HURT -> enraged()?1.25:RECOVER_DURATION;
             case DEAD -> DEATH_DURATION;

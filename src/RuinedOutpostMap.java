@@ -26,6 +26,27 @@ public final class RuinedOutpostMap {
     }
     public record Room(String name, int gridX, int gridY, int enemies, String lore) { }
     public record Door(int destination, double x, double y) { }
+    /** Rendered at 2x and depth sorted by ground anchor; only upright bases are solid. */
+    public enum Decoration {
+        CART("broken-cart",40,70), SHIELD_CACHE("shield-cache",32,54),
+        BRAZIER("brazier",32,56), RUBBLE("rubble",32,54);
+        final String file;
+        final int anchorX,anchorY;
+        Decoration(String file,int anchorX,int anchorY) {
+            this.file=file;this.anchorX=anchorX;this.anchorY=anchorY;
+        }
+        String path() {return "assets/props/outpost/"+file+".png";}
+    }
+    public record Dressing(double x,double y,Decoration decoration) {
+        /** World-pixel feet calibrated against the selected native cart/brazier images. */
+        public Obstacle obstacle() {
+            return switch(decoration) {
+                case CART -> new Obstacle(x+6,y-20,80,24);
+                case BRAZIER -> new Obstacle(x,y,48,16);
+                default -> null;
+            };
+        }
+    }
     public static final int TILE_SIZE = 64;
     public static final double GUARDIAN_COLLISION_Y_OFFSET = 32;
     public static final List<Room> ROOMS = List.of(
@@ -47,6 +68,8 @@ public final class RuinedOutpostMap {
     private final List<Obstacle> barriers = new ArrayList<>();
     private final List<Obstacle> banks = new ArrayList<>();
     private final List<Door> doors = new ArrayList<>();
+    private final List<Dressing> dressing = new ArrayList<>();
+    private final List<Obstacle> dressingObstacles = new ArrayList<>();
     private boolean gateOpen;
     private boolean guardianPresent;
     private double liveGuardianX,liveGuardianY;
@@ -90,6 +113,31 @@ public final class RuinedOutpostMap {
             case 11 -> { rubble(352,256,64,192); rubble(928,256,64,192); }
             default -> { }
         }
+        // These silhouettes fill the margins, never the spawn, main roads or door mouths.
+        switch(room) {
+            case 0 -> {dress(240,176,Decoration.RUBBLE);dress(1060,640,Decoration.CART);}
+            case 1 -> {dress(240,600,Decoration.SHIELD_CACHE);dress(1030,176,Decoration.RUBBLE);}
+            case 2 -> {dress(180,520,Decoration.CART);dress(1040,180,Decoration.SHIELD_CACHE);}
+            case 3 -> {dress(230,620,Decoration.SHIELD_CACHE);dress(1050,170,Decoration.BRAZIER);}
+            case 4 -> {dress(320,560,Decoration.BRAZIER);dress(990,220,Decoration.SHIELD_CACHE);}
+            case 5 -> {dress(240,600,Decoration.CART);dress(1020,180,Decoration.RUBBLE);}
+            case 6 -> {dress(200,570,Decoration.RUBBLE);dress(1040,190,Decoration.BRAZIER);}
+            case 7 -> {dress(330,560,Decoration.BRAZIER);dress(990,200,Decoration.SHIELD_CACHE);}
+            case 8 -> {dress(240,610,Decoration.SHIELD_CACHE);dress(1060,200,Decoration.CART);}
+            case 9 -> {
+                dress(250,220,Decoration.BRAZIER);dress(1060,220,Decoration.BRAZIER);
+                dress(350,600,Decoration.SHIELD_CACHE);dress(1030,610,Decoration.RUBBLE);
+            }
+            case 10 -> {dress(220,560,Decoration.CART);dress(1040,570,Decoration.SHIELD_CACHE);}
+            case 11 -> {dress(460,230,Decoration.RUBBLE);dress(820,230,Decoration.BRAZIER);}
+            default -> { }
+        }
+    }
+    private void dress(double x,double y,Decoration decoration) {
+        var item=new Dressing(authored(x),authored(y),decoration);
+        dressing.add(item);
+        var feet=item.obstacle();
+        if(feet!=null)dressingObstacles.add(feet);
     }
     private void rubble(double x, double y, double width, double height) {
         barriers.add(new Obstacle(authored(x),authored(y),width,height));
@@ -105,6 +153,7 @@ public final class RuinedOutpostMap {
     public int room() { return room; }
     public Room description() { return ROOMS.get(room); }
     public List<Door> doors() { return List.copyOf(doors); }
+    public List<Dressing> dressing() {return List.copyOf(dressing);}
     public int widthInTiles() { return 30; }
     public int heightInTiles() { return 18; }
     public int worldWidth() { return widthInTiles()*TILE_SIZE; }
@@ -148,6 +197,7 @@ public final class RuinedOutpostMap {
     public boolean waterBlocked(double x,double y,double radius) {
         if(x-radius<0 || y-radius<0 || x+radius>worldWidth() || y+radius>worldHeight()) return true;
         for (Obstacle obstacle : barriers) if (intersects(x,y,radius,obstacle)) return true;
+        for (Obstacle obstacle : dressingObstacles) if (intersects(x,y,radius,obstacle)) return true;
         for (Obstacle bank : banks) if (intersects(x,y,radius,bank)) return true;
         for (Door door : doors) if (!passageOpen(door) && intersects(x,y,radius,passageBarrier(door))) return true;
         if(room==9&&!gateOpen&&intersects(x,y,radius,new Obstacle(gateX(),gateY(),48,320))) return true;
@@ -158,6 +208,7 @@ public final class RuinedOutpostMap {
         for (int i=1; i<steps; i++) {
             double x=ax+(bx-ax)*i/steps, y=ay+(by-ay)*i/steps;
             for (Obstacle obstacle : barriers) if (intersects(x,y,1,obstacle)) return false;
+            for (Obstacle obstacle : dressingObstacles) if (intersects(x,y,1,obstacle)) return false;
         }
         return true;
     }

@@ -107,12 +107,22 @@ public final class ArenaTwistTest {
             assert map.dressing().size()>=2 : "authored dressing per room";
             for(var item:map.dressing()) {
                 kinds.add(item.decoration());
-                assert !map.waterBlocked(item.x(),item.y(),24) : "dressing stays on open ground";
+                boolean solid=item.decoration()==RuinedOutpostMap.Decoration.CART
+                        ||item.decoration()==RuinedOutpostMap.Decoration.BRAZIER;
+                double cx=item.x()+(item.decoration()==RuinedOutpostMap.Decoration.CART?6:0);
+                double cy=item.y()-(item.decoration()==RuinedOutpostMap.Decoration.CART?20:0);
+                if(solid) {
+                    assert map.isBlocked(cx,cy,1) : "upright dressing feet must block actors";
+                    assert map.waterBlocked(cx,cy,1) : "upright dressing feet must block projectiles";
+                    assert !map.clearLine(cx-100,cy,cx+100,cy) : "combat sight lines must respect solid feet";
+                    assert !map.clearWaterLine(cx-100,cy,cx+100,cy,4);
+                    assert !map.waterBlocked(cx,cy-40,1) : "upper sprite must not become a tall invisible wall";
+                } else assert !map.waterBlocked(item.x(),item.y(),24) : "flat wreckage stays walkable";
                 assert Math.hypot(item.x()-map.spawnX(),item.y()-map.spawnY())>180;
                 for(var door:map.doors())assert Math.hypot(item.x()-door.x(),item.y()-door.y())>180;
             }
         }
         assert kinds.size()==4;
-        assert new RuinedOutpostMap(9).barriers().isEmpty() : "arena remains open; dressing never becomes walls";
+        assert new RuinedOutpostMap(9).barriers().isEmpty() : "arena remains open; no new full-width walls";
     }
 }

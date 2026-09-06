@@ -5,6 +5,7 @@ public final class RainoraySkillsTest {
         costsAndStates();
         projectileCollision();
         riposteWindow();
+        realDamageGateways();
         System.out.println("RainoraySkillsTest passed");
     }
     private static RuinedOutpostGame game(RuinedOutpostMap map, double x, double y, Wisp... enemies) {
@@ -38,6 +39,11 @@ public final class RainoraySkillsTest {
         low.restart();assert low.crescentCooldown()==0&&low.riposteCooldown()==0;
         var dead=game(new RuinedOutpostMap(),300,300);blade(dead);dead.player().hurt(99);
         assert !dead.riposte()&&!dead.ichorCrescent(1,0);
+        var resource=new Player(300,300);
+        assert !resource.spendBladeIchor(8);resource.collectIchor(100);assert resource.transform();
+        for(double amount:new double[]{Double.NaN,Double.POSITIVE_INFINITY,0,-1,101})
+            assert !resource.spendBladeIchor(amount)&&resource.ichor()==100;
+        assert resource.spendBladeIchor(100)&&resource.ichor()==0&&resource.recovering();
     }
     private static void projectileCollision() {
         var enemy=new Wisp(430,300,430,430,20);
@@ -71,6 +77,8 @@ public final class RainoraySkillsTest {
         hit(expired,2,300,300);assert expired.player().healthValue()==3.5;
         var invalid=game(new RuinedOutpostMap(),300,300);blade(invalid);assert invalid.riposte();
         hit(invalid,0,300,300);assert invalid.guarding() : "non-damage cannot consume parry";
+        advance(invalid,.4);assert !invalid.guarding()&&!invalid.riposte();
+        advance(invalid,5.61);assert invalid.riposte() : "guard becomes reusable only after six seconds";
         var map=new RuinedOutpostMap(2);var wall=map.barriers().get(0);
         double y=wall.centerY()-24;
         var shielded=new Wisp(wall.centerX()+35,y,wall.centerX()+35,wall.centerX()+35,20);
@@ -80,6 +88,39 @@ public final class RainoraySkillsTest {
     private static void hit(RuinedOutpostGame game,int damage,double x,double y) throws Exception {
         var method=RuinedOutpostGame.class.getDeclaredMethod("hurtPlayer",int.class,double.class,double.class);
         method.setAccessible(true);method.invoke(game,damage,x,y);
+    }
+    @SuppressWarnings("unchecked")
+    private static void realDamageGateways() throws Exception {
+        var lunging=new Wisp(350,300,350,350,20);
+        var meleeGame=game(new RuinedOutpostMap(),300,300,lunging);blade(meleeGame);
+        for(int i=0;i<100&&!(lunging.state()==Wisp.State.TELEGRAPH&&lunging.stateSeconds()>.22);i++)
+            advance(meleeGame,.01);
+        assert lunging.state()==Wisp.State.TELEGRAPH;
+        assert meleeGame.riposte();advance(meleeGame,.25);
+        assert meleeGame.player().healthValue()==5&&lunging.health()==17&&!meleeGame.guarding()
+                : "real enemy lunge is negated and countered once";
+        var shotGame=game(new RuinedOutpostMap(),300,300);blade(shotGame);assert shotGame.riposte();
+        var shots=RuinedOutpostGame.class.getDeclaredField("hostileProjectiles");shots.setAccessible(true);
+        ((List<EnemyProjectile>)shots.get(shotGame)).add(new EnemyProjectile(345,300,-1,0));
+        advance(shotGame,.08);
+        assert shotGame.player().healthValue()==5&&!shotGame.guarding()&&shotGame.hostileProjectiles().isEmpty()
+                : "real hostile projectile must consume guard, stop and deal no damage";
+        var map=new RuinedOutpostMap(9);
+        var bossGame=game(map,map.spawnX(),map.spawnY());blade(bossGame);
+        bossGame.guardian().activate(bossGame.player().x(),bossGame.player().y());
+        advance(bossGame,.72);assert bossGame.riposte();advance(bossGame,.25);
+        assert bossGame.guardian().impactNumber()==1;
+        assert bossGame.player().healthValue()==5&&!bossGame.guarding()
+                : "real Guardian slam must pass through the same one-shot guard";
+        assert bossGame.drainEvents().stream().anyMatch(e->e.type()==RuinedOutpostGame.EventType.RIPOSTE_COUNTER);
+        var anchor=game(new RuinedOutpostMap(),300,300);
+        var enemy=new Wisp(365,300,365,365,1);enemy.hurt(1);
+        var defeated=RuinedOutpostGame.class.getDeclaredMethod("afterScoutHit",Wisp.class);
+        defeated.setAccessible(true);defeated.invoke(anchor,enemy);advance(anchor,.1);
+        assert anchor.interact();advance(anchor,.4);
+        assert anchor.absorptionAnchorX()==365&&anchor.absorptionAnchorY()==300;
+        assert anchor.player().x()==300&&anchor.player().y()==300;
+        assert anchor.absorptionTarget().x()<365 : "engulf anchor stays fixed while remains pull under body";
     }
     private static boolean close(double a,double b){return Math.abs(a-b)<1e-6;}
 }
