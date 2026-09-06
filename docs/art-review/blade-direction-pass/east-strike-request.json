@@ -1,0 +1,11 @@
+{
+  "init_image_path": "docs/art-review/blade-direction-pass/east-native-body.png",
+  "color_image_path": "docs/art-review/blade-direction-pass/east-native-body.png",
+  "init_image_strength": 220,
+  "width": 64,
+  "height": 80,
+  "direction": "east",
+  "view": "side",
+  "no_background": true,
+  "description": "This exact small navy-hooded masked knight facing right in a fully extended sword thrust pose. Keep the body, head, hood, mask, boots and leg positions exactly where they are in the reference, same size. Change only the forward arm: extend it horizontally to screen RIGHT at chest height, holding a straight narrow ivory steel sword pointed horizontally RIGHT. Sword parallel to ground, NOT upright. Tip stops before right canvas edge. One slim blade, one hand attached to hilt. Same gold trim, dark navy armor and ivory mask. Crisp native pixel art. Transparent padding stays transparent; no shadow, effect, glow or motion trail."
+}

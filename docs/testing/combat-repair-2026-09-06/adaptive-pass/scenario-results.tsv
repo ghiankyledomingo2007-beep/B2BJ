@@ -1,0 +1,11 @@
+scenario	observation
+boss-adaptive-ichor-0-hit-1	t=115.57; source=boss; bossAttack=TARGET; state=SLAM; phaseTime=0.00; player=(1088.8,228.5); boss=(1040.1,429.6); target=(1088.8,261.8); wave=32.0; dashing=false; recovering=true
+boss-adaptive-ichor-0	time=256.43 s; bossHP=0; damage=240; playerHP=3.00; hits=1 (boss=1); transformations=3; casts=541; max live adds=3; minimum add spacing=214.66 px; gateOpen=true
+boss-adaptive-ichor-70-hit-1	t=43.91; source=boss; bossAttack=TARGET; state=SLAM; phaseTime=0.00; player=(1191.6,817.6); boss=(1068.3,693.5); target=(1191.6,817.6); wave=32.0; dashing=false; recovering=true
+boss-adaptive-ichor-70-hit-2	t=144.32; source=boss; bossAttack=SHOCKWAVE; state=SLAM; phaseTime=0.10; player=(1312.7,510.3); boss=(1207.9,467.4); target=(1207.9,467.4); wave=86.4; dashing=false; recovering=true
+boss-adaptive-ichor-70-hit-3	t=145.44; source=add; bossAttack=SHOCKWAVE; state=RECOVER; phaseTime=0.42; player=(1312.7,510.3); boss=(1207.9,467.4); target=(1207.9,467.4); wave=260.5; dashing=false; recovering=true
+boss-adaptive-ichor-70	time=145.44 s; bossHP=82; damage=158; playerHP=0.00; hits=3 (boss=2); transformations=3; casts=316; max live adds=3; minimum add spacing=335.93 px; gateOpen=false
+boss-adaptive-ichor-100-hit-1	t=13.17; source=boss; bossAttack=TARGET; state=SLAM; phaseTime=0.00; player=(1029.0,700.9); boss=(1183.6,614.8); target=(1030.5,699.4); wave=32.0; dashing=false; recovering=true
+boss-adaptive-ichor-100-hit-2	t=71.30; source=boss; bossAttack=TARGET; state=SLAM; phaseTime=0.00; player=(1249.1,955.4); boss=(1181.8,795.0); target=(1249.1,955.4); wave=32.0; dashing=false; recovering=true
+boss-adaptive-ichor-100-hit-3	t=176.50; source=boss; bossAttack=SHOCKWAVE; state=SLAM; phaseTime=0.21; player=(1424.8,684.5); boss=(1252.9,660.2); target=(1252.9,660.2); wave=146.2; dashing=false; recovering=true
+boss-adaptive-ichor-100	time=176.50 s; bossHP=50; damage=190; playerHP=0.00; hits=3 (boss=3); transformations=4; casts=392; max live adds=3; minimum add spacing=77.06 px; gateOpen=false

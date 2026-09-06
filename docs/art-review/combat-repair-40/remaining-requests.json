@@ -1,0 +1,55 @@
+[
+  {
+    "name": "slime-cast-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/anchors/remnant-8-0.png",
+      "frame_count": 16,
+      "action": "Facing away, compress lower jelly then send a smooth ripple toward front crest, slight forward lean and settle to starting shape. Water casting, no arms or punches or hopping. Preserve aqua slime identity, gold star, pixel scale and transparency.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "remnant-attack-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/remnant-edit/frame-0.png",
+      "frame_count": 16,
+      "action": "Facing south, hostile gelatin compresses low to build tension, helmet leans forward, then springs into one short flattened sliding body tackle. One fast contact pose, drag and wobble through recovery, return to resting shape. Body motion only; no punch, no arms, no sword. In-place animation, world translation handled by game. Preserve exact helmet, muted purple jelly identity, cyan eyes, camera angle, sprite size and ground baseline. Transparent background, no scenery or extra limbs.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "remnant-attack-west",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/remnant-edit/frame-4.png",
+      "frame_count": 16,
+      "action": "Facing west, hostile gelatin compresses low to build tension, helmet leans forward, then springs into one short flattened sliding body tackle. One fast contact pose, drag and wobble through recovery, return to resting shape. Body motion only; no punch, no arms, no sword. In-place animation, world translation handled by game. Preserve exact helmet, muted purple jelly identity, cyan eyes, camera angle, sprite size and ground baseline. Transparent background, no scenery or extra limbs.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "remnant-attack-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/remnant-edit/frame-8.png",
+      "frame_count": 16,
+      "action": "Facing north, hostile gelatin compresses low to build tension, helmet leans forward, then springs into one short flattened sliding body tackle. One fast contact pose, drag and wobble through recovery, return to resting shape. Body motion only; no punch, no arms, no sword. In-place animation, world translation handled by game. Preserve exact helmet, muted purple jelly identity, cyan eyes, camera angle, sprite size and ground baseline. Transparent background, no scenery or extra limbs.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "warden-impact",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "Small broken ground impact effect, separated angular grey stone chips and sparse muted brown dust flecks radiating outward. Broad shallow horizontal ellipse viewed from above. Centre has transparent gaps, no solid disc or terrain tile. Crisp restrained 12-colour pixel art. No fire, glow, text, character or background. Entire effect fits central 44 by 28 pixels on transparent 64 by 64 canvas.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "view": "high top-down",
+      "outline": "selective outline",
+      "shading": "basic shading"
+    }
+  }
+]

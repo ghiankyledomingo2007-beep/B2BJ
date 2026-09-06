@@ -1,0 +1,7 @@
+{
+  "first_frame_path": "docs/art-review/blade-direction-pass/east-windup.png",
+  "last_frame_path": "docs/art-review/blade-direction-pass/east-recovery.png",
+  "frame_count": 8,
+  "no_background": true,
+  "action": "A short physical sword thrust to screen RIGHT, always EAST-facing side profile. Knight brings the sword horizontally to waist height, draws elbow back, extends the right arm forward in a straight stabbing motion, pauses at full extension, retracts to the ending pose. Sword is a slender straight rigid metal blade only 1-2 pixels wide, constant length, its handle connected to hand in EVERY frame. Body, hood and ivory mask remain fully visible and unchanged. Planted boots at the same positions, same body size, navy and gold palette. Small shoulder and elbow motion only. Clean transparent space all around weapon. No sword swing, arcs, streaks, motion smears, particles, trails, ghost weapons, big white shapes, spinning, walking, zoom or camera change. Draw the physical weapon and character only, no visual effects."
+}

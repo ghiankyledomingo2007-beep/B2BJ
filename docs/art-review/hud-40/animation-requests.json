@@ -1,0 +1,40 @@
+[
+  {
+    "name": "orb-pulse",
+    "args": {
+      "first_frame_url": "https://api.pixellab.ai/mcp/images/59898ce5-2930-4c1f-ad09-2f9c492c79b8/download?index=0",
+      "last_frame_url": "https://api.pixellab.ai/mcp/images/59898ce5-2930-4c1f-ad09-2f9c492c79b8/download?index=0",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Perfect seamless breathing loop. Round energy sphere stays centered, same size and silhouette. Golden plasma filaments swirl inside while luminous white core brightens and dims slowly. Two tiny sparks orbit the sphere. No movement across canvas, no droplet tail, no background."
+    }
+  },
+  {
+    "name": "orb-collect",
+    "args": {
+      "first_frame_url": "https://api.pixellab.ai/mcp/images/59898ce5-2930-4c1f-ad09-2f9c492c79b8/download?index=0",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Energy orb collapses into a brilliant white gold pinprick then unravels into a few tiny inward curving gold sparks and vanishes. One continuous absorption burst, not a loop, no second explosion. Stay centered, maintain transparent background."
+    }
+  },
+  {
+    "name": "remains-idle",
+    "args": {
+      "first_frame_url": "https://api.pixellab.ai/mcp/images/812e4135-c49d-493e-982d-cff9b83186dd/download?index=0",
+      "last_frame_url": "https://api.pixellab.ai/mcp/images/812e4135-c49d-493e-982d-cff9b83186dd/download?index=0",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "The collapsed broken helmet and low purple slime puddle remain completely still on ground. Only the tiny exposed gold essence slowly pulses once. Subtle calm seamless loop. No face, no reanimation, no standing up."
+    }
+  },
+  {
+    "name": "remains-consume",
+    "args": {
+      "first_frame_url": "https://api.pixellab.ai/mcp/images/812e4135-c49d-493e-982d-cff9b83186dd/download?index=0",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Defeated purple jelly monster remains dissolve and shrink into their central golden essence. Empty bronze helmet gently sinks into puddle, purple gel draws inward, golden core contracts to flecks and vanishes. Entire non-gory body eaten by magic, no resurrection or standing up, fixed ground contact. Single continuous dissolve."
+    }
+  }
+]

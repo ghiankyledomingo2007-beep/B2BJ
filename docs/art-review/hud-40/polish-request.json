@@ -1,0 +1,20 @@
+{
+  "name": "ui-unify",
+  "tool": "edit_image",
+  "cost": 20,
+  "args": {
+    "image_paths": [
+      "docs/art-review/hud-40/vitality/frame-0.png",
+      "docs/art-review/hud-40/blob/frame-0.png",
+      "docs/art-review/hud-40/blade/frame-0.png",
+      "docs/art-review/hud-40/slash/frame-0.png",
+      "docs/art-review/hud-40/wave/frame-0.png",
+      "docs/art-review/hud-40/dash/frame-0.png",
+      "docs/art-review/hud-40/consume/frame-0.png"
+    ],
+    "width": 32,
+    "height": 32,
+    "no_background": true,
+    "description": "Polish these seven existing game HUD icons into ONE consistent hand-crafted dark fantasy pixel-art family. Preserve each icon's identity, exact pose, occupied size, centered placement and transparency: heart, slime face, armored helmet, water crescent, tidal wave, fluid dash, absorption spiral. Use the SAME controlled cyan/teal/ivory palette and single dark navy contour on every icon, crisp grouped pixels, refined dimensional shading, no soft blur. Gold is permitted ONLY inside the absorption core and slime belly. Remove bronze shoulder armor from the helmet icon so it reads as a clear helmet portrait. Make the slime portrait match a living fluid cyan slime rather than a glass marble, keep its friendly face. No red, no backgrounds, no frames, no lettering, no added objects. Keep every silhouette distinct and readable at native32px."
+  }
+}

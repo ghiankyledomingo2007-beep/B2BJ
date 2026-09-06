@@ -1,0 +1,10 @@
+{
+  "name": "heal-rise",
+  "tool": "animate_image",
+  "args": {
+    "first_frame_url": "https://api.pixellab.ai/mcp/images/cef4335b-9763-4277-abfb-c1e6b4d92c29/download?index=0",
+    "frame_count": 8,
+    "no_background": true,
+    "action": "The separate little mint and ivory sparkles drift upward a few pixels, twinkle softly, then shrink and fade away one after another. Single brief recovery sparkle burst. Preserve large transparent gaps, no new rings or pools, no base, no continuous light beam. Keep sparse particles only."
+  }
+}

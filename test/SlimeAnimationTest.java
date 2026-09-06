@@ -4,6 +4,15 @@ public final class SlimeAnimationTest {
         mirrorsOnlyRightFacingSideFrames();
         keepsFacingDirectionWhileIdle();
         advancesAcrossAllFourFrames();
+        usesDirectionalDashRows();
+        playsDashSquashAndStretchCycle();
+        castingKeepsNaturalBody();
+        SlimeAnimation idle=new SlimeAnimation();
+        assert idle.idleFrame()==0;
+        idle.update(0,0,1.19);
+        assert idle.idleFrame()==7 : "reviewed idle must reach its eighth distinct pose";
+        idle.update(0,0,0.15);
+        assert idle.idleFrame()==0 : "reviewed idle must loop without a duplicate endpoint";
         System.out.println("SlimeAnimationTest passed");
     }
 
@@ -37,6 +46,8 @@ public final class SlimeAnimationTest {
         animation.update(0, 0, 0);
 
         assert animation.row() == 4 : "idle must keep last back-facing direction";
+        assert animation.facingHorizontal() == 0 : "idle must retain horizontal direction";
+        assert animation.facingVertical() == -1 : "idle must retain vertical direction";
     }
 
     private static void advancesAcrossAllFourFrames() {
@@ -47,5 +58,40 @@ public final class SlimeAnimationTest {
 
         animation.update(0, 1, 0.31);
         assert animation.frame() == 0 : "four-frame cycle must loop";
+    }
+
+    private static void usesDirectionalDashRows() {
+        SlimeAnimation animation = new SlimeAnimation();
+
+        animation.update(0, 1, true, 0);
+        assert animation.row() == 5 : "down dash must use front squash row";
+
+        animation.update(-1, 0, true, 0);
+        assert animation.row() == 10 : "side dash must use side stretch row";
+
+        animation.update(0, -1, true, 0);
+        assert animation.row() == 11 : "up dash must use back squash row";
+    }
+
+    private static void playsDashSquashAndStretchCycle() {
+        SlimeAnimation animation = new SlimeAnimation();
+
+        animation.update(1, 0, true, 0);
+        animation.update(1, 0, true, 0.12);
+
+        assert animation.frame() == 3 : "dash must reach recovery frame before movement ends";
+    }
+
+    private static void castingKeepsNaturalBody() {
+        SlimeAnimation animation=new SlimeAnimation();
+        animation.face(1,0); animation.attack();
+        animation.update(0,0,false,0.12);
+        assert animation.attacking() && animation.row()==3 : "cast uses side idle, never a stretched punch";
+        animation.update(0,0,false,0.24);
+        assert !animation.attacking();
+        animation.face(0,1); animation.attack();
+        assert animation.row()==0 : "front cast preserves normal silhouette";
+        animation.update(1,0,true,0.01);
+        assert !animation.attacking() : "dash cancels casting pose";
     }
 }

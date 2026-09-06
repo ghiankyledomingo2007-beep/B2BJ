@@ -1,0 +1,10 @@
+scenario	observation
+boss-adaptive-ichor-0-hit-1	t=216.86; source=boss; bossAttack=SHOCKWAVE; state=SLAM; phaseTime=0.10; player=(607.3,341.5); boss=(651.0,446.0); target=(651.0,446.0); wave=86.4; dashing=false; recovering=true
+boss-adaptive-ichor-0	time=229.65 s; bossHP=0; damage=240; playerHP=3.00; hits=1 (boss=1); transformations=4; casts=503; max live adds=3; minimum add spacing=254.72 px; gateOpen=true
+boss-adaptive-ichor-70-hit-1	t=83.55; source=boss; bossAttack=TARGET; state=SLAM; phaseTime=0.00; player=(1315.3,334.0); boss=(1155.8,405.0); target=(1315.3,334.0); wave=32.0; dashing=false; recovering=true
+boss-adaptive-ichor-70-hit-2	t=183.51; source=boss; bossAttack=SHOCKWAVE; state=SLAM; phaseTime=0.21; player=(1339.0,990.0); boss=(1266.0,836.1); target=(1266.0,836.1); wave=146.2; dashing=false; recovering=true
+boss-adaptive-ichor-70	time=205.51 s; bossHP=0; damage=240; playerHP=1.00; hits=2 (boss=2); transformations=4; casts=446; max live adds=3; minimum add spacing=39.91 px; gateOpen=true
+boss-adaptive-ichor-100-hit-1	t=13.17; source=boss; bossAttack=TARGET; state=SLAM; phaseTime=0.00; player=(1029.0,700.9); boss=(1183.6,614.8); target=(1030.5,699.4); wave=32.0; dashing=false; recovering=true
+boss-adaptive-ichor-100-hit-2	t=171.15; source=boss; bossAttack=SHOCKWAVE; state=SLAM; phaseTime=0.10; player=(1479.0,643.8); boss=(1373.8,600.5); target=(1373.8,600.5); wave=86.4; dashing=false; recovering=true
+boss-adaptive-ichor-100-hit-3	t=214.45; source=add; bossAttack=TARGET; state=RECOVER; phaseTime=0.93; player=(1295.0,720.1); boss=(1083.9,440.7); target=(1167.9,593.1); wave=112.0; dashing=false; recovering=true
+boss-adaptive-ichor-100	time=214.45 s; bossHP=43; damage=197; playerHP=0.00; hits=3 (boss=2); transformations=5; casts=478; max live adds=3; minimum add spacing=249.27 px; gateOpen=false

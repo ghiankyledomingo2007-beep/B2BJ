@@ -1,0 +1,132 @@
+[
+  {
+    "name": "guardian-walk",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/guardian-anchor.png",
+      "frame_count": 8,
+      "action": "Heavy deliberate marching in place toward camera. Alternating planted feet and subtle shoulder weight transfer, hands low. One complete seamless walk cycle, no jumping. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "guardian-charge",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/guardian-anchor.png",
+      "frame_count": 16,
+      "action": "Lean forward into a braced shoulder charge, quick two running steps in place, then heavy braking and return to ready stance. Strong anticipation and recovery, no somersault. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "guardian-slam",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/guardian-anchor.png",
+      "frame_count": 16,
+      "action": "Both heavy fists rise slowly overhead, torso compresses, then fists slam downward sharply together. Hold weight on impact before slowly pulling upright. Single ground pound with distinct windup impact recovery. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "guardian-sweep",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/guardian-anchor.png",
+      "frame_count": 16,
+      "action": "One heavy arm draws across chest then sweeps broadly sideways at waist height with torso twist, follow-through and recovery. Single sweeping attack. Feet planted, no full spin. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "guardian-shockwave",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/guardian-anchor.png",
+      "frame_count": 16,
+      "action": "Crouch and brace both fists near waist, pulse force down through planted feet and extend arms outward briefly, then sink into exhausted recovery. Small body motion, no visible magic effect. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "guardian-hurt",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/guardian-anchor.png",
+      "frame_count": 8,
+      "action": "Short heavy upper-body recoil from front impact, one shoulder knocked back, regain planted balance. Feet remain grounded. Single flinch then return. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "guardian-death",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/guardian-anchor.png",
+      "frame_count": 16,
+      "action": "Heavy armored creature collapses to knees then lowers torso and falls motionless into a compact broken heap. Weighty fall, no explosion, no standing back up. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "blade-side-cut",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/blade-direction-pass/east-native/frame-0.png",
+      "frame_count": 16,
+      "action": "Facing right, plant lead foot, wind sword slightly behind torso, deliver one broad horizontal sword cut with shoulder and hip rotation, recover to exact starting stance. Single attack, no spin. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "blade-side-thrust",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/blade-direction-pass/east-native/frame-0.png",
+      "frame_count": 16,
+      "action": "Facing right, draw sword close, step and extend blade in one clear straight thrust, retract and return to starting stance. Grounded fencing motion, no spin or somersault. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "blade-side-return",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/blade-direction-pass/east-native/frame-0.png",
+      "frame_count": 16,
+      "action": "Facing right, lift sword near left shoulder, deliver one descending diagonal cut across the body, follow through low then recover to ready. Single controlled sword attack. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "slime-cast-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/outpost-batch-27/blob-south-anchor.png",
+      "frame_count": 16,
+      "action": "A water creature casts by drawing its gelatin inward and lowering slightly, then sending one smooth body ripple forward from base to crest, releasing a tiny droplet and settling. No arm, fist, punch or weapon. Not a jump. Preserve cute face and star. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "slime-cast-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/anchors/remnant-7-0.png",
+      "frame_count": 16,
+      "action": "Facing right, gelatin compresses inward then one smooth wave travels through body toward face, the leading surface briefly curls outward and settles. Water-casting body ripple, no fist or punch or arm or weapon. Remain in place, no jumping. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "slime-cast-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/anchors/remnant-8-0.png",
+      "frame_count": 16,
+      "action": "Facing away, compress lower jelly then send a smooth ripple toward front crest, slight forward lean and settle to starting shape. Water-casting motion without arms, punching, sword or hopping. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.",
+      "no_background": true
+    }
+  }
+]

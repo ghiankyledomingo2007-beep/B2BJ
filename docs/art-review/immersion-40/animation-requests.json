@@ -1,0 +1,82 @@
+[
+  {
+    "name": "ichor-loop",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/ichor/frame-0.png",
+      "frame_count": 8,
+      "action": "Liquid-gold droplet gently bobs in place, its inner highlight slowly swirls and one small glint travels across the surface. Subtle seamless idle loop. Keep droplet small, centered and same size. No new objects, no coin, no background.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "slime-hurt-burst",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/slime-hurt/frame-0.png",
+      "frame_count": 16,
+      "action": "The teal liquid impact explodes briefly outward into separated droplets with one sharp white contact flash, then droplets arc downward under gravity, shrink and disappear completely. Single burst, not looping. Transparent empty ending. No ground or character. Never grow beyond canvas.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "blade-hit-burst",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/blade-sparks/frame-0.png",
+      "frame_count": 16,
+      "action": "Sharp metal strike sparks shoot outward at unequal speeds, curve downward under gravity, cool from ivory to amber, shrink and vanish completely. Single short impact burst. No loop, no explosion ball, no background. Keep generous transparent border.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "spit-orb-loop",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/spit-orb/frame-0.png",
+      "frame_count": 8,
+      "action": "Purple acid glob pulses softly and wobbles as tiny trailing droplets peel off to the left and dissolve. Projectile stays centered, points right, unchanged scale. Seamless loop, no movement across canvas, no background.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "spit-impact-burst",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/spit-impact/frame-0.png",
+      "frame_count": 16,
+      "action": "Violet splash breaks outward into separated droplets, droplets fall under gravity and shrink away until empty. One distinct liquid impact with fast burst and soft dissipation. No looping, no persistent puddle, no ground.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "ichor-absorb",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/ichor/frame-0.png",
+      "frame_count": 16,
+      "action": "The small gold droplet compresses inward, becomes four tiny bright golden flecks that spiral toward the center, then disappear into a small final glint. A single pickup absorption burst, no loop. No coin, no ring, no ground. Preserve small scale and transparent background.",
+      "no_background": true
+    }
+  },
+  {
+    "name": "stone-chips",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "Exactly FIVE separate small jagged gray and brown pebble fragments, scattered loosely across a transparent empty square. Each pebble only 3 to 6 pixels wide. Suspended midair with NO surface underneath. Separate floating chips for a game particle effect. NO disk, NO circle, NO crater, NO rock pile, NO base, NO ground, NO smoke. Five disconnected dark slate pixel fragments with tiny pale edges. Low-detail pixel art.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  }
+]

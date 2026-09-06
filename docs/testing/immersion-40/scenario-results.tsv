@@ -1,0 +1,28 @@
+scenario	observation
+fresh-route-basic-room-1	t=3.18; HP=5.00; hits=0; volleys=0; kills=0; Ichor=0.00
+fresh-route-basic-room-2	t=10.87; HP=5.00; hits=0; volleys=0; kills=2; Ichor=20.00
+fresh-route-basic-room-3	t=20.76; HP=5.00; hits=0; volleys=0; kills=5; Ichor=50.00
+fresh-route-basic-room-4	t=33.08; HP=5.00; hits=0; volleys=0; kills=10; Ichor=100.00
+fresh-route-basic-room-5	t=37.73; HP=5.00; hits=0; volleys=0; kills=10; Ichor=61.25
+fresh-route-basic-room-6	t=45.87; HP=4.25; hits=1; volleys=1; kills=13; Ichor=19.58
+fresh-route-basic-room-7	t=58.90; HP=5.00; hits=2; volleys=2; kills=17; Ichor=30.00
+fresh-route-basic-room-8	t=62.26; HP=5.00; hits=2; volleys=2; kills=17; Ichor=30.00
+fresh-route-basic-room-9	t=76.31; HP=4.00; hits=3; volleys=3; kills=21; Ichor=70.00
+fresh-route-basic	time=76.31; rooms=0,1,2,3,4,5,6,7,8,9; HP=4.00; hits=3; volleys=3; authored spitters encountered=3; casts=53; dashes=0; transformations=1; kills=21; reached boss=true; phase=GUARDIAN; position=(224.0,576.0); live enemies=0; normal tutorial grant/camp healing only; no teleports/forced kills/resources
+fresh-route-two-skills-reactive-dodge-room-1	t=3.18; HP=5.00; hits=0; volleys=0; kills=0; Ichor=0.00
+fresh-route-two-skills-reactive-dodge-room-2	t=11.04; HP=5.00; hits=0; volleys=0; kills=2; Ichor=20.00
+fresh-route-two-skills-reactive-dodge-room-3	t=20.56; HP=5.00; hits=0; volleys=0; kills=5; Ichor=50.00
+fresh-route-two-skills-reactive-dodge-room-4	t=32.77; HP=5.00; hits=0; volleys=0; kills=10; Ichor=100.00
+fresh-route-two-skills-reactive-dodge-room-5	t=37.42; HP=5.00; hits=0; volleys=0; kills=10; Ichor=61.25
+fresh-route-two-skills-reactive-dodge-room-6	t=46.09; HP=5.00; hits=0; volleys=1; kills=13; Ichor=19.75
+fresh-route-two-skills-reactive-dodge-room-7	t=59.79; HP=5.00; hits=0; volleys=2; kills=17; Ichor=30.00
+fresh-route-two-skills-reactive-dodge-room-8	t=63.15; HP=5.00; hits=0; volleys=2; kills=17; Ichor=30.00
+fresh-route-two-skills-reactive-dodge-room-9	t=75.46; HP=5.00; hits=0; volleys=3; kills=21; Ichor=70.00
+fresh-route-two-skills-reactive-dodge	time=75.46; rooms=0,1,2,3,4,5,6,7,8,9; HP=5.00; hits=0; volleys=3; authored spitters encountered=3; casts=52; dashes=7; transformations=1; kills=21; reached boss=true; phase=GUARDIAN; position=(224.0,576.0); live enemies=0; normal tutorial grant/camp healing only; no teleports/forced kills/resources
+isolated-spitter-stationary	time=11.18; HP=0.00; hits=5; first hit=1.62; volleys=5; minimum volley interval=2.39; dashes=0; max live projectiles=3; enemyHP=3; no player attacks/healing
+isolated-spitter-strafe	time=25.00; HP=5.00; hits=0; first hit=-1.00; volleys=11; minimum volley interval=2.34; dashes=0; max live projectiles=3; enemyHP=3; no player attacks/healing
+isolated-spitter-reactive-dash	time=25.00; HP=5.00; hits=0; first hit=-1.00; volleys=9; minimum volley interval=2.73; dashes=16; max live projectiles=3; enemyHP=3; no player attacks/healing
+cover-spitter	10 s cap; first release=1.69; volleys=4; blocked-LOS releases=0; projectile-radius-blocked releases=4; playerHP=5.00; enemy=(567.3,311.5); no player inputs
+magnet-locked-gate	2 s; player-drop initial distance=125; drop displacement=0.00; Ichor=0.00; drop amount=10.00; gate remains locked=true
+magnet-capacity-overflow	Ichor=100.00; remainder=5.00; pickup events=1
+magnet-blade-topup	1.2 s after normal transform; Ichor=95.00; drops=0; total pickup events=2; no resource loss from overflow and no per-tick event spam

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "absorb-flow",
+    "id": "9a8fb559-8093-471c-8248-2a6293378f06",
+    "frames": 17,
+    "cost": 1
+  },
+  {
+    "name": "heal-motes",
+    "id": "93b261bf-0694-435f-9b38-f7ccb5ca32e3",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "camp-marker",
+    "id": "c22a30f1-8e7d-42e1-9cba-33afda68dbd2",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "heal-marker",
+    "id": "d2697eb2-7c26-4753-9190-fe95d02f0d73",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "heal-sparkles",
+    "id": "cef4335b-9763-4277-abfb-c1e6b4d92c29",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "heal-rise",
+    "id": "179cc653-2263-4ef9-ab84-070176133874",
+    "frames": 9,
+    "cost": 1
+  }
+]

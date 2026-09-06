@@ -1,0 +1,35 @@
+[
+  {
+    "name": "stone-scatter",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/stone-chips/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "The five tiny separate stone chips kick outward briefly, tumble, fall down under gravity, then shrink and disappear into transparency. Single sparse debris burst. Never join together or form a surface. No ground, no crater, no circular shape, no shadow. Keep fragments tiny with empty background."
+    }
+  },
+  {
+    "name": "slime-hurt-shear",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/slime-hurt/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "A quick sideways shear of teal liquid toward the left, stretch into separated aqua droplets, droplets follow downward arcs, shrink and dissipate completely. Strong asymmetric diagonal hit with fast start, unlike a centered splash. Single impact, no loop, no character or scenery, maintain transparent border."
+    }
+  },
+  {
+    "name": "armor-deflect",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/blade-sparks/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "The bright contact spark deflects into a narrow fan of short amber metal shards shooting rightward, then fragments curve down, dim and disappear. Distinct asymmetrical armor glancing-hit burst, no repeating star pulsation. Single impact, empty transparent finish, no object or background."
+    }
+  }
+]

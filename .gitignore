@@ -1,6 +1,12 @@
 out/
+build/
+release/
 *.class
 .idea/
 .vscode/
 *.iml
 .DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*

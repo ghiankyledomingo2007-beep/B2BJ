@@ -1,0 +1,130 @@
+[
+  {
+    "name": "spitter-edit",
+    "id": "5bcf87b5-25b0-4782-8794-4dacc3c14e25",
+    "cost": 20,
+    "frames": 12
+  },
+  {
+    "name": "ichor",
+    "id": "b3a7773d-0bc6-4a82-b41f-22e8a0cc30ea",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "pickup",
+    "id": "bb5c1da4-8351-4704-8d3a-17e54a6387e8",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "slime-hurt",
+    "id": "30072141-5965-4e28-a321-d82e033136b5",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "blade-sparks",
+    "id": "aef6f2d4-3f4e-4673-abb4-a42fd78267a5",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "stone-impact",
+    "id": "b7f9fe57-a0a4-4a61-a40e-126cee4608b5",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "spit-orb",
+    "id": "a83c2259-cc77-4113-80e9-2f02d5c03857",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "spit-impact",
+    "id": "8c87c023-0d96-4302-954c-a4c2228450c8",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "ichor-loop",
+    "id": "6f7290bb-a1c5-4268-b2a2-092f970a2c6c",
+    "cost": 1,
+    "frames": 9
+  },
+  {
+    "name": "slime-hurt-burst",
+    "id": "b52f8818-ca7a-4500-b1d8-386f0e93673f",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "blade-hit-burst",
+    "id": "bd26413a-c63b-4fbf-8bf8-ff52fb5278de",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "spit-orb-loop",
+    "id": "25c48b70-cf61-4dc4-a88e-49462aee0bd7",
+    "cost": 1,
+    "frames": 9
+  },
+  {
+    "name": "spit-impact-burst",
+    "id": "18420e01-7e66-44d5-936e-3c788cf026bf",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "ichor-absorb",
+    "id": "ad29d1fc-6648-41dc-bef3-8c88d0029e8c",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "stone-chips",
+    "id": "80b544b7-0c03-4577-96a2-62c5b21855e4",
+    "cost": 1,
+    "frames": 1
+  }
+,
+  {
+    "name": "spitter-cast-south",
+    "id": "f24e5dfb-9f6a-4c85-afd5-2d7fce74a341",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "spitter-cast-west",
+    "id": "284a79d4-0554-466d-92b0-aec1f0425c9e",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "spitter-cast-north",
+    "id": "0bfde97f-3de4-46e2-9395-985eece5ec83",
+    "cost": 1,
+    "frames": 17
+  }
+,
+  {
+    "name": "stone-scatter",
+    "id": "5a53f023-547e-4372-9351-3ede2e34ae6e",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "slime-hurt-shear",
+    "id": "ca9208ec-a5a4-46f8-a8d8-ca23577eae67",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "armor-deflect",
+    "id": "798b517f-7184-40d7-94a8-a4b5a0be9e9b",
+    "cost": 1,
+    "frames": 17
+  }
+]

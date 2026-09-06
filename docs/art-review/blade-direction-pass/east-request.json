@@ -1,0 +1,7 @@
+{
+  "first_frame_path": "docs/art-review/blade-direction-pass/east-windup.png",
+  "last_frame_path": "docs/art-review/blade-direction-pass/east-recovery.png",
+  "frame_count": 8,
+  "no_background": true,
+  "action": "One crisp sword cut by this exact masked knight, always facing EAST (screen RIGHT) in side profile. Stationary attack: draw sword back briefly, swing the SAME sword quickly forward RIGHT through a wide diagonal cut, hold extended follow-through, then lower into the supplied recovery pose. Feet stay planted on the same ground baseline. No walking, spinning or turning toward camera. Preserve character size, ivory mask, navy hood and armor, gold trim, native pixel clusters and palette. Sword hilt stays attached to hand; one sword only. Keep sword tip inside the transparent 64x80 canvas with margin. Padding is weapon clearance: do not enlarge character. No zoom, ground shadow, text, particles, trails or magic arcs. Clearly distinct anticipation, strike and recovery silhouettes, not idle sway."
+}

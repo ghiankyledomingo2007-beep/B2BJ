@@ -1,0 +1,146 @@
+[
+  {
+    "name": "orb",
+    "args": {
+      "description": "One perfectly round floating Ichor energy orb, not a water drop, not a coin. Bright pearl-white core, molten gold plasma curls trapped inside a translucent amber sphere, two tiny orbiting gold motes and narrow radiant halo, rich high contrast crisp pixel clusters. Centered 22px body in 32px canvas. Dark fantasy game collectible. No pedestal, no text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "remains",
+    "args": {
+      "description": "A collapsed defeated violet jelly remnant on ground, low puddle silhouette, broken empty bronze helmet tipped sideways partly dissolved in purple gel, gold essence visible inside. Non-gory edible monster remains for a cyan slime hero. Top down three quarter, centered low 36px wide 20px tall body in 48px canvas. No living face, no scenery.",
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "absorb",
+    "args": {
+      "description": "Magical absorption VFX only, curling thin cyan slime tendrils wrapping a tiny gold energy core at ground center, small flecks spiralling inward. Hollow open center, no character, no background, no circle plate. Dark fantasy pixel sprite, white teal glints, controlled sparse particles, centered with empty margins.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "vitality",
+    "args": {
+      "description": "Single polished cyan jelly vitality gemstone icon shaped like a small heart, angular pixel facets, white upper left glint, teal dark lower bevel, thin midnight outline. 18px by 16px body centered. Fantasy HUD icon, no backing square, no text, no gold border.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "blob",
+    "args": {
+      "description": "Cyan slime face portrait medallion without border: tiny expressive droplet slime with two dark eyes, small gold core, bright teal cheeks. Matches friendly cyan slime player, crisp pixel art 24px body centered, no text, no scenery.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "blade",
+    "args": {
+      "description": "Teal armored knight closed helmet portrait icon with pale cyan glowing slit and antique bronze trim, severe angular pointed faceplate. Dark fantasy HUD current form emblem, 24px body centered, no backing, no text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "slash",
+    "args": {
+      "description": "One cyan curved water crescent slash spell icon, sharp flowing crescent with white leading edge and three teal wake droplets. Crescent is liquid not metal sword. Dark fantasy pixel HUD icon, 24px shape centered, no backing, no text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "wave",
+    "args": {
+      "description": "One cresting cyan tidal wave curling clockwise into a hollow spiral, white foamy leading crest, teal inner shadow. Dark fantasy pixel HUD spell icon, 24px shape centered, no backing, no text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "dash",
+    "args": {
+      "description": "A tiny cyan slime streak dashing right, fluid teardrop head and three sharp translucent teal speed trails to the left, white glint. Dark fantasy pixel HUD dodge icon, 24px shape centered, no backing, no text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "consume",
+    "args": {
+      "description": "Two cyan liquid tendrils cupping and absorbing a small gold energy orb, symmetrical U shape, bright white core. Dark fantasy pixel HUD absorb ability icon, clear 24px silhouette centered, no mouth or teeth, no backing, no text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "hud-frame",
+    "args": {
+      "description": "A wide horizontal dark fantasy HUD frame, thin worn antique bronze pixel border with chamfered angular corners, subtle teal jewel on far left, near-black navy flat empty interior for overlaying health and energy bars. Elegant restrained ruined military relic design, tiny corner engravings only, no text, no bars, no symbols in interior, no rivet clutter. Rectangular frame fills canvas with 2px transparent margin.",
+      "width": 160,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "skill-frame",
+    "args": {
+      "description": "One square dark fantasy ability slot frame, thin worn antique bronze beveled border with clipped corners, small corner notches, completely empty flat dark navy interior. Elegant restrained military relic, no icon, no text, no gems, no ornament in center. 36px square body centered.",
+      "width": 40,
+      "height": 40,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  }
+]

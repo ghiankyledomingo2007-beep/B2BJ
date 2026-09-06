@@ -1,0 +1,6 @@
+{
+  "width":48,"height":48,"no_background":true,
+  "color_image_path":"assets/effects/blob_hit.png",
+  "description":"A broad crescent-shaped wave of turquoise WATER travelling RIGHT, like a curved magical slash with a hollow left side. Swept tapered upper and lower tips, thick fluid middle, pale mint foamy leading rim, a few detached turquoise droplets behind it. One coherent curved water sheet, not a physical sword and not a solid disk. Top-down game spell sprite, sharp native pixels, transparent background, clear 4 pixel margin, same cyan slime palette. No hilt, character, face, ground, blue glow haze or text.",
+  "direction":"east","detail":"medium detail","shading":"basic shading"
+}

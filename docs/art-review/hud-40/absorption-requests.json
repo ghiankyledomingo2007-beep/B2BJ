@@ -1,0 +1,45 @@
+[
+  {
+    "name": "slime-absorb-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/slime-cast-south/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "The same slime remains rooted at its feet and facing the same direction, leans low and spreads two soft liquid lobes over the ground to engulf essence, inner gold core glows strongly, body compresses then gently swells as it swallows, and returns to identical resting pose. Natural non-humanoid feeding motion, no punching, no arms, no weapons, no spinning, no added props. Preserve the exact character identity, scale, outline and gold core. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slime-absorb-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/slime-cast-east/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "The same slime remains rooted at its feet and facing the same direction, leans low and spreads two soft liquid lobes over the ground to engulf essence, inner gold core glows strongly, body compresses then gently swells as it swallows, and returns to identical resting pose. Natural non-humanoid feeding motion, no punching, no arms, no weapons, no spinning, no added props. Preserve the exact character identity, scale, outline and gold core. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slime-absorb-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/combat-repair-40/slime-cast-north/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "The same slime remains rooted at its feet and facing the same direction, leans low and spreads two soft liquid lobes over the ground to engulf essence, inner gold core glows strongly, body compresses then gently swells as it swallows, and returns to identical resting pose. Natural non-humanoid feeding motion, no punching, no arms, no weapons, no spinning, no added props. Preserve the exact character identity, scale, outline and gold core. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "absorb-link",
+    "tool": "create_image_pixflux",
+    "args": {
+      "width": 64,
+      "height": 32,
+      "no_background": true,
+      "description": "Magic feeding tendril VFX only, two narrow sinuous cyan liquid streams curving horizontally from LEFT side toward RIGHT side, small bright golden sparks flowing along streams from right to left. Sparse transparent background, floating streams only, no puddle, no plate, no ground, no circle, no character. 54px long by 16px high shape centered. Crisp dark fantasy pixel art, teal cyan white gold palette.",
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  }
+]

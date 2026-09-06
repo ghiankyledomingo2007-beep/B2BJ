@@ -1,0 +1,48 @@
+[
+  {
+    "name": "absorb-flow",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_url": "https://api.pixellab.ai/mcp/images/51802503-ecbe-42b7-b8d1-9269436c902b/download?index=0",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Two thin cyan feeding tendrils undulate gently in place. Small golden energy motes flow from RIGHT to LEFT along the tendrils in a smooth repeating stream. Keep horizontal orientation, exact size and transparent gaps. No background, no new objects, no expanding beam."
+    }
+  },
+  {
+    "name": "heal-motes",
+    "tool": "create_image_pixflux",
+    "args": {
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "description": "Healing feedback particle sprite only. Six small bright mint cyan and ivory diamond sparkles rising around a hollow transparent center, three tiny gold motes mixed in, gracefully staggered heights. Sparse separated crisp pixels, each mote 2 to 5 pixels, concentrated within central 26 by 30 pixels. No heart object, no circle, no ring, no pedestal, no ground, no character, no icon frame. Dark fantasy pixel VFX.",
+      "outline": "lineless",
+      "shading": "basic shading"
+    }
+  },
+  {
+    "name": "camp-marker",
+    "tool": "create_image_pixflux",
+    "args": {
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "description": "Tiny readable top down fantasy map landmark icon: a folded tan canvas military tent and dark teal bedroll, warm bone-white highlight, small cyan lantern at tent entrance. 22px silhouette centered, muted antique gold and navy outlines. Rest camp marker, no fire, no scenery, no text, no circle frame.",
+      "outline": "single color outline",
+      "shading": "basic shading"
+    }
+  },
+  {
+    "name": "heal-marker",
+    "tool": "create_image_pixflux",
+    "args": {
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "description": "Tiny readable fantasy map landmark icon: a teal field medicine satchel with a clear ivory medical cross, dark navy outline, bronze clasp. 22px silhouette centered, muted dark fantasy palette. Healing station marker, no red, no scenery, no text, no circle frame.",
+      "outline": "single color outline",
+      "shading": "basic shading"
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "name": "heal-sparkles",
+  "tool": "create_image_pixflux",
+  "args": {
+    "width": 48,
+    "height": 48,
+    "no_background": true,
+    "description": "Seven separate tiny four-pointed mint green and ivory stars scattered in an irregular loose vertical cluster. Each star is only 3 to 5 pixels wide. A few solitary mint dots between them. Lots of completely empty transparent space between every star. Asymmetrical floating glitter, isolated pinpoints only. Flat 2D pixel symbols, no horizon, no floor, no water, no pool, no ring, no circle, no base, no beam, no connecting lines, no object.",
+    "outline": "lineless",
+    "shading": "flat shading",
+    "detail": "low detail"
+  }
+}

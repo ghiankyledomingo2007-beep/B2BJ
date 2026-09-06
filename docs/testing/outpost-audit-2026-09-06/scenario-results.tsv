@@ -1,0 +1,36 @@
+scenario	observation
+boss-motion-hp-240	60 s; travel=0.0 px; impacts=23; first 12=TTRTTRTTRTTR (T targeted/R radial)
+boss-motion-hp-60	60 s; travel=0.0 px; impacts=23; first 12=TTRTTRTTRTTR (T targeted/R radial)
+reversion-control	recovery=true; damage accepted=true; invulnerable after 1 s=false; dash still active=false; recovery travel=0.0
+reversion-during-dash	recovery=true; damage accepted=false; invulnerable after 1 s=true; dash still active=true; recovery travel=0.0
+slash-stationary-120	time=0.66 s; enemyHP=0; playerHP=4.00; casts=2; enemy lunges=1; player hits=1
+tide-stationary-120	time=0.35 s; enemyHP=0; playerHP=5.00; casts=1; enemy lunges=0; player hits=0
+slash-stationary-180	time=0.69 s; enemyHP=0; playerHP=5.00; casts=2; enemy lunges=1; player hits=0
+tide-stationary-180	time=0.45 s; enemyHP=0; playerHP=5.00; casts=1; enemy lunges=1; player hits=0
+slash-stationary-240	time=0.80 s; enemyHP=0; playerHP=5.00; casts=2; enemy lunges=1; player hits=0
+tide-stationary-240	time=0.52 s; enemyHP=0; playerHP=5.00; casts=1; enemy lunges=1; player hits=0
+slash-stationary-280	time=0.87 s; enemyHP=0; playerHP=5.00; casts=2; enemy lunges=1; player hits=0
+tide-stationary-280	time=0.56 s; enemyHP=0; playerHP=5.00; casts=1; enemy lunges=1; player hits=0
+slash-stationary-310	time=1.09 s; enemyHP=0; playerHP=5.00; casts=3; enemy lunges=0; player hits=0
+tide-stationary-310	time=0.88 s; enemyHP=0; playerHP=5.00; casts=1; enemy lunges=0; player hits=0
+slash-stationary-340	time=1.15 s; enemyHP=0; playerHP=5.00; casts=3; enemy lunges=0; player hits=0
+tide-stationary-340	time=10.01 s; enemyHP=2; playerHP=5.00; casts=3; enemy lunges=0; player hits=0
+slash-stationary-380	time=10.01 s; enemyHP=2; playerHP=5.00; casts=21; enemy lunges=0; player hits=0
+tide-stationary-380	time=10.01 s; enemyHP=2; playerHP=5.00; casts=3; enemy lunges=0; player hits=0
+enemy-obstacle-routing	30 s; repeated lunges=29; closest advance=31.8 px; final=(600.8,362.0); playerHP=5.0
+last-moment-lunge-retarget	player crosses behind in last 20 ms; enemy state=LUNGE; lunge displacement=-26.0 px (negative=180-degree retarget)
+full-meter-drop-bank	drops after kill=1; after walking over while full + 30 s=1; ichor=100.0
+full-meter-bank-consumption	after transform + 0.1 s: drops=0; ichor=99.250; blade seconds=11.910
+authored-enemy-spawn-safety	checked=21; initially embedded in solid collision=0
+fresh-tutorial-route-slash-only	time=38.89 s; playerHP=5.0; hits=0; kills=10; no teleport/dash/transform
+fresh-outpost-route-slash-only	time=81.54 s; rooms=0,1,2,3,4,5,6,7,8,9; playerHP=5.0; hits=0; casts=52; ichor=70.0; kills=21; reached boss=true; transformations=1; no teleport/dash/forced kills
+fresh-run-boss-continuation	time=53.12 s; bossHP=185; damage=55; playerHP=0.00; hits=5 (boss=0); transformations=0; casts=106; max live adds=3; minimum add spacing=0.30 px; gateOpen=false
+fresh-run-completion	total=134.66 s; phase=DEAD; playerHP=0.0; route transformations=1; boss transformations=0; no teleport/dash/heal/forced kills
+fresh-tutorial-route-two-skills	time=38.63 s; playerHP=5.0; hits=0; kills=10; no teleport/dash/transform
+fresh-outpost-route-two-skills	time=80.47 s; rooms=0,1,2,3,4,5,6,7,8,9; playerHP=5.0; hits=0; casts=51; ichor=70.0; kills=21; reached boss=true; transformations=1; no teleport/dash/forced kills
+boss-orbit-220-blob-attack	time=209.82 s; bossHP=0; damage=240; playerHP=2.00; hits=3 (boss=0); transformations=0; casts=417; max live adds=3; minimum add spacing=0.30 px; gateOpen=true
+boss-orbit-280-blob-attack	time=211.01 s; bossHP=0; damage=240; playerHP=1.00; hits=4 (boss=0); transformations=0; casts=420; max live adds=3; minimum add spacing=0.20 px; gateOpen=true
+boss-orbit-330-blob-attack	time=208.18 s; bossHP=0; damage=240; playerHP=1.00; hits=4 (boss=0); transformations=0; casts=414; max live adds=3; minimum add spacing=0.30 px; gateOpen=true
+boss-orbit-280-blade-attack	time=161.29 s; bossHP=0; damage=240; playerHP=4.00; hits=1 (boss=0); transformations=1; casts=328; max live adds=3; minimum add spacing=0.20 px; gateOpen=true
+boss-orbit-330-blob-no-attack	time=44.30 s; bossHP=240; damage=0; playerHP=0.00; hits=5 (boss=0); transformations=0; casts=0; max live adds=3; minimum add spacing=0.30 px; gateOpen=false
+headless-render-cost	240 warmed 1280x720 frames; p50=5.97 ms; p95=8.75 ms; p99=10.18 ms (not on-screen frame pacing)

@@ -1,0 +1,17 @@
+scenario	observation
+passive-empty-to-full	time=166.67 s; Ichor=100.000; HP=5.00; no attacks, pickups or other input
+passive-reversion	recovering at start=true; Ichor before=0.000; after 0.5 s=0.000
+pressure-no-consume	survived=6.43 s; HP=0.00; hits=3; normal kills=1; absorption starts=0; completions=0; first completion=-1.00; first hit=1.65; first interrupted channel=-1.00; volleys=3; starting 3 HP/0 Ichor fixture; actual water kill and E input; no movement/dodge/extra attacks after meal dies
+pressure-early-consume	survived=8.82 s; HP=0.00; hits=4; normal kills=1; absorption starts=1; completions=1; first completion=0.94; first hit=1.65; first interrupted channel=-1.00; volleys=4; starting 3 HP/0 Ichor fixture; actual water kill and E input; no movement/dodge/extra attacks after meal dies
+pressure-late-consume	survived=8.82 s; HP=0.00; hits=4; normal kills=1; absorption starts=2; completions=1; first completion=2.50; first hit=1.65; first interrupted channel=1.65; volleys=4; starting 3 HP/0 Ichor fixture; actual water kill and E input; no movement/dodge/extra attacks after meal dies
+boss-add-no-healing	health before=3.00; after=3.00; corpse healing=false; Ichor before=15.342; after=20.828; remaining corpses=0; boss-add membership is starting fixture, kill/absorption use gameplay input
+interrupt-move	started=true; progress before=0.375; target after=false; HP=3.00; corpses=1
+interrupt-dash	started=true; progress before=0.375; target after=false; HP=3.00; corpses=1
+interrupt-attack	started=true; progress before=0.375; target after=false; HP=3.00; corpses=1
+interrupt-tide	started=true; progress before=0.375; target after=false; HP=3.00; corpses=1
+interrupt-transform	started=true; progress before=0.375; target after=false; HP=3.00; corpses=1
+pause-channel	5 s pause; progress before=0.375; after=0.375; corpse age delta=0.000; Ichor delta=0.000
+resume-channel	remaining corpses=0; HP=3.50
+corpse-expiry	initial age=0.47; 20 s later count=0
+room-transition-cleanup	walked 4.76 s; room=1; old corpse age=5.23; remaining corpses=0; target active=false; normal movement, no relocation
+corpse-storage-cap	25 completed-kill callbacks fixture; retained corpses=16

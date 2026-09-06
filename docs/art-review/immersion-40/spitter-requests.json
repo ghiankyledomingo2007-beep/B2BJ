@@ -1,0 +1,35 @@
+[
+  {
+    "name": "spitter-cast-south",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/spitter-edit/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Keep facing south for the ENTIRE sequence. Keep feet planted at bottom pixel 47. The armored jelly body inflates slowly in anticipation, bronze nozzle tilts slightly, one short compressed SPIT recoil, then deflates and returns to ready. One clear ranged cast with anticipation, release and recovery. Do not turn around, do not jump or lunge, no emitted projectile, no new arms, no scenery. Preserve bronze barrel helmet, plum jelly base, palette and original native pixel scale."
+    }
+  },
+  {
+    "name": "spitter-cast-west",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/spitter-edit/frame-4.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Keep facing west for the ENTIRE sequence. Keep feet planted at bottom pixel 47. The armored jelly body inflates slowly in anticipation, bronze nozzle tilts slightly, one short compressed SPIT recoil, then deflates and returns to ready. One clear ranged cast with anticipation, release and recovery. Do not turn around, do not jump or lunge, no emitted projectile, no new arms, no scenery. Preserve bronze barrel helmet, plum jelly base, palette and original native pixel scale."
+    }
+  },
+  {
+    "name": "spitter-cast-north",
+    "tool": "animate_image",
+    "cost": 1,
+    "args": {
+      "first_frame_path": "docs/art-review/immersion-40/spitter-edit/frame-10.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Keep facing north for the ENTIRE sequence. Back view only, rear bronze helmet with NO face, NO eye slit and NO nozzle visible. First settle the body down onto baseline bottom pixel 47, then keep that baseline. The armored jelly body inflates slowly in anticipation, bronze nozzle tilts slightly, one short compressed SPIT recoil, then deflates and returns to ready. One clear ranged cast with anticipation, release and recovery. Do not turn around, do not jump or lunge, no emitted projectile, no new arms, no scenery. Preserve bronze barrel helmet, plum jelly base, palette and original native pixel scale."
+    }
+  }
+]

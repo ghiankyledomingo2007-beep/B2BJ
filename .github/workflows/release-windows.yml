@@ -1,0 +1,57 @@
+name: Release Windows Installer
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Compile and test
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force build/classes, build/tests | Out-Null
+          javac --release 17 -Xlint:all -d build/classes src/*.java
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          javac --release 17 -Xlint:all -cp build/classes -d build/tests test/*.java
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          New-Item -ItemType Directory -Force build/classes/assets | Out-Null
+          foreach ($assetDir in @('characters', 'tilesets', 'ui', 'effects')) {
+            Copy-Item -Recurse "assets/$assetDir" build/classes/assets
+          }
+          New-Item -ItemType Directory -Force build/classes/assets/props | Out-Null
+          Copy-Item -Recurse assets/props/outpost build/classes/assets/props/
+          foreach ($testFile in (Get-ChildItem test -Filter *Test.java | Sort-Object Name)) {
+            java -Djava.awt.headless=true -ea -cp "build/classes;build/tests" $testFile.BaseName
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+
+      - name: Build installer
+        shell: pwsh
+        run: |
+          jar --create --file build/B2BJ.jar --main-class B2BJ -C build/classes .
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          New-Item -ItemType Directory -Force release | Out-Null
+          New-Item -ItemType Directory -Force build/package-input | Out-Null
+          Copy-Item build/B2BJ.jar build/package-input/B2BJ.jar
+          jpackage --type exe --name "Blob to Blade" --input build/package-input --main-jar B2BJ.jar --main-class B2BJ --dest release --vendor "Domynix" --win-menu --win-shortcut
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: gh release create "${{ github.ref_name }}" release/*.exe --title "Blob to Blade ${{ github.ref_name }}" --generate-notes

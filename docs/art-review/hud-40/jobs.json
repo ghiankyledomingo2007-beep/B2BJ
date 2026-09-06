@@ -1,0 +1,128 @@
+[
+  {
+    "name": "orb",
+    "id": "59898ce5-2930-4c1f-ad09-2f9c492c79b8",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "remains",
+    "id": "812e4135-c49d-493e-982d-cff9b83186dd",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "absorb",
+    "id": "9b2978af-ca6d-403a-979c-ba2e57e64721",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "vitality",
+    "id": "0a6ccc83-0aad-4c7e-ae08-7043d8f60087",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "blob",
+    "id": "ef0d56ab-eeb4-4f2b-8a65-fd959be85477",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "blade",
+    "id": "9491bf49-e9fc-417e-bd38-2af2d6e5aef1",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "slash",
+    "id": "090cb02c-6094-4774-9fd4-ddd56040b88b",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "wave",
+    "id": "d6f3d764-9741-4616-9a20-dafc0c51390f",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "dash",
+    "id": "a5afa48a-b1b9-49f0-af44-549a435ae894",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "consume",
+    "id": "8129923a-9527-4acd-b8bc-a592e97657cf",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "hud-frame",
+    "id": "601c2a16-66a4-4c0c-99c1-3d236aea7cb1",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "skill-frame",
+    "id": "7fbc3945-40a6-4e45-bb93-32f360b2dae5",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "orb-pulse",
+    "id": "6bd68d67-9708-4ca2-b81b-0300f213a2f7",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "orb-collect",
+    "id": "af1a6fc7-99b6-4991-a1dc-fc4f9ca1b562",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "remains-idle",
+    "id": "50c72ec9-777d-4007-a848-59db7fed2fa7",
+    "cost": 1,
+    "frames": 9
+  },
+  {
+    "name": "remains-consume",
+    "id": "81fcf5bd-459a-4ff7-a652-f9cd2b8f1e75",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "slime-absorb-south",
+    "id": "bcc9aff8-49e1-444a-9a82-c0ea6e51d7b0",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "slime-absorb-east",
+    "id": "655b509f-bed0-472c-9dfb-9e1867fd95c3",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "slime-absorb-north",
+    "id": "e46ec77b-7428-43cb-a8b9-63bb3cab4c16",
+    "cost": 1,
+    "frames": 17
+  },
+  {
+    "name": "absorb-link",
+    "id": "51802503-ecbe-42b7-b8d1-9269436c902b",
+    "cost": 1,
+    "frames": 1
+  },
+  {
+    "name": "ui-unify",
+    "id": "2469f3dc-a6b3-474f-90b1-47fd0b5a5b0c",
+    "cost": 20,
+    "frames": 7
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "name": "spitter-edit",
+    "tool": "edit_image",
+    "cost": 20,
+    "args": {
+      "image_paths": [
+        "docs/art-review/combat-repair-40/remnant-edit/frame-0.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-1.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-2.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-3.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-4.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-5.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-6.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-7.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-8.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-9.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-10.png",
+        "docs/art-review/combat-repair-40/remnant-edit/frame-9.png"
+      ],
+      "description": "Turn this ordinary helmeted purple remnant into a distinct ranged military SPITTER remnant. Keep each exact facing, pose, pixel scale and grounded silhouette in all frames. Replace navy crest helmet with battered warm bronze helmet shaped like a short barrel, a small round open nozzle-like mouth on the front visor, one narrow pale violet eye slit, and a squat two-lobed plum jelly base. No humanoid arms, no weapon, no star. North-facing frames show the rear of the bronze helmet and no eyes or mouth. West-facing frames keep the nozzle pointing left. Same dark outline and restrained flat pixel clusters, no glow haze or extra background. Do not rotate north views to show its face.",
+      "width": 48,
+      "height": 48,
+      "no_background": true
+    }
+  },
+  {
+    "name": "ichor",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "One small liquid-gold ichor droplet collectible, suspended rounded teardrop with a bright cream highlight and amber inner swirl. Actual droplet only about 12 by 18 pixels, centered in roomy transparent canvas. Not a coin, not a flask. Crisp clustered pixel art, dark ochre selective outline, 6-color gold palette, no glow haze, no ground, no lettering.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  },
+  {
+    "name": "pickup",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "A compact burst of six tiny liquid-gold motes swirling inward toward an empty transparent center. Warm amber and pale gold, sparse angular pixel sparkles. RPG ichor absorption effect, NOT a coin or object, no giant magic circle, no ground, no background. Readable crisp pixel clusters, 8 colors, transparent gaps.",
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  },
+  {
+    "name": "slime-hurt",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "A sharp small teal jelly splash impact, irregular asymmetric splash crown with separated cyan droplets breaking outward and a pale aqua white central flash. Only liquid particles, no slime character, no face, no star, no ground or shadow, no text. Crisp pixel-art combat hurt effect, black-free dark teal edges, 8 colors, transparent background, generous empty border.",
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  },
+  {
+    "name": "blade-sparks",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "An asymmetric compact metal hit spark burst, bright ivory contact point with gold and amber angular shards shooting outward in varied lengths. Sparse small metal fragments, no weapon, no character, no ground, no circular disc, no text. Crisp 1px clustered pixel art combat effect on transparent background, 8-color gold palette, generous border.",
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  },
+  {
+    "name": "stone-impact",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "A sparse low-top-down impact spray of individual small dark slate stone chips, pale dust wisps and a few warm amber sparks spreading outward around a transparent empty center. Ground-slam debris effect only, no ground tile, no solid disk, no crater object, no circular pedestal, no scenery. Distinct separate pixel clusters, low detail, large transparent gaps and generous border.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  },
+  {
+    "name": "spit-orb",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "A small hostile violet acid glob projectile with bright pale lavender core, dark purple outline and three tiny trailing violet droplets pointing left. Main glob about 12 pixels across centered. Travels toward the right. No character, no face, no weapon, no magic circle, no scenery. Crisp low-detail pixel art with 6 purple colors, transparent background, generous margins.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  },
+  {
+    "name": "spit-impact",
+    "tool": "create_image_pixflux",
+    "cost": 1,
+    "args": {
+      "description": "A compact violet liquid impact splash breaking into irregular pale lavender and purple droplets. Hostile ichor impact effect only, no monster, no green poison, no ground puddle disc, no text. Sparse clean clustered pixel art, 8 shades of purple and lavender, transparent gaps, generous empty canvas margin.",
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "basic shading",
+      "detail": "low detail"
+    }
+  }
+]

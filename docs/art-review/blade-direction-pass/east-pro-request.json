@@ -1,0 +1,15 @@
+{
+  "image_paths": [
+    "docs/art-review/blade-direction-pass/east-native/frame-1.png",
+    "docs/art-review/blade-direction-pass/east-native/frame-2.png",
+    "docs/art-review/blade-direction-pass/east-native/frame-3.png",
+    "docs/art-review/blade-direction-pass/east-native/frame-4.png",
+    "docs/art-review/blade-direction-pass/east-native/frame-5.png",
+    "docs/art-review/blade-direction-pass/east-native/frame-6.png",
+    "docs/art-review/blade-direction-pass/east-native/frame-7.png"
+  ],
+  "width": 64,
+  "height": 80,
+  "no_background": true,
+  "description": "These are consecutive EAST-facing sword attack poses. Correct ONLY the sword orientation and wrist in every frame. Replace each upright sword with ONE slender straight ivory steel sword pointing horizontally to screen RIGHT, parallel to the ground, hilt attached to the existing forward hand. Blade is 14 native pixels long and 1-2 pixels thick, gold hilt. Keep the forward hand's position and the varying arm extensions so the motion becomes a forward thrust and retraction. Remove the old vertical blade completely; no ghost sword. Everything else must stay exactly unchanged: knight size, head, mask, hood, torso, legs, boots, ground baseline, canvas position, navy/gold palette and crisp pixel style. Sword tip stays inside canvas, with transparent margin. No trails, smears, arcs, particles, ground shadow, text or extra objects. Do not redraw or resize the character."
+}

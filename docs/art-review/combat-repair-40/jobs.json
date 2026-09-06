@@ -1,0 +1,100 @@
+[
+  {
+    "name": "remnant-edit",
+    "id": "f532fbaa-c7db-4f9d-bb7a-e498c81a93be",
+    "cost": 20
+  },
+  {
+    "name": "guardian-walk",
+    "id": "b4551948-6780-4f59-89c1-5f6f56389867",
+    "receipt": "id: b4551948-6780-4f59-89c1-5f6f56389867\njob_id: b4551948-6780-4f59-89c1-5f6f56389867\naction: Heavy deliberate marching in place toward camera. Alternating planted feet and subtle shoulder weight transfer, hands low. One complete seamless walk cycle, no jumping. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 8\nsize: 64x64px\ntransparent: True\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"b4551948-6780-4f59-89c1-5f6f56389867\")",
+    "cost": 1
+  },
+  {
+    "name": "guardian-charge",
+    "id": "5de48427-5345-4464-886f-62dc3d87ae14",
+    "receipt": "id: 5de48427-5345-4464-886f-62dc3d87ae14\njob_id: 5de48427-5345-4464-886f-62dc3d87ae14\naction: Lean forward into a braced shoulder charge, quick two running steps in place, then heavy braking and return to ready stance. Strong anticipation and recovery, no somersault. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 16\nsize: 64x64px\ntransparent: True\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"5de48427-5345-4464-886f-62dc3d87ae14\")",
+    "cost": 1
+  },
+  {
+    "name": "guardian-slam",
+    "id": "402bf49a-c8ea-4ee8-bc0e-cc2973b4c333",
+    "receipt": "id: 402bf49a-c8ea-4ee8-bc0e-cc2973b4c333\njob_id: 402bf49a-c8ea-4ee8-bc0e-cc2973b4c333\naction: Both heavy fists rise slowly overhead, torso compresses, then fists slam downward sharply together. Hold weight on impact before slowly pulling upright. Single ground pound with distinct windup impact recovery. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 16\nsize: 64x64px\ntransparent: True\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"402bf49a-c8ea-4ee8-bc0e-cc2973b4c333\")",
+    "cost": 1
+  },
+  {
+    "name": "guardian-sweep",
+    "id": "2a22ad38-fe2d-4632-bccc-c5c2e3d12c95",
+    "receipt": "id: 2a22ad38-fe2d-4632-bccc-c5c2e3d12c95\njob_id: 2a22ad38-fe2d-4632-bccc-c5c2e3d12c95\naction: One heavy arm draws across chest then sweeps broadly sideways at waist height with torso twist, follow-through and recovery. Single sweeping attack. Feet planted, no full spin. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 16\nsize: 64x64px\ntransparent: True\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"2a22ad38-fe2d-4632-bccc-c5c2e3d12c95\")",
+    "cost": 1
+  },
+  {
+    "name": "guardian-shockwave",
+    "id": "dd5e21e4-6dc7-47b1-a2de-06de4368a9f4",
+    "receipt": "id: dd5e21e4-6dc7-47b1-a2de-06de4368a9f4\njob_id: dd5e21e4-6dc7-47b1-a2de-06de4368a9f4\naction: Crouch and brace both fists near waist, pulse force down through planted feet and extend arms outward briefly, then sink into exhausted recovery. Small body motion, no visible magic effect. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 16\nsize: 64x64px\ntransparent: True\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"dd5e21e4-6dc7-47b1-a2de-06de4368a9f4\")",
+    "cost": 1
+  },
+  {
+    "name": "guardian-hurt",
+    "id": "a659e4cf-a620-40da-ba43-d372c4407d23",
+    "receipt": "id: a659e4cf-a620-40da-ba43-d372c4407d23\njob_id: a659e4cf-a620-40da-ba43-d372c4407d23\naction: Short heavy upper-body recoil from front impact, one shoulder knocked back, regain planted balance. Feet remain grounded. Single flinch then return. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 8\nsize: 64x64px\ntransparent: True\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"a659e4cf-a620-40da-ba43-d372c4407d23\")",
+    "cost": 1
+  },
+  {
+    "name": "guardian-death",
+    "id": "d3ae521e-2b05-42b1-84f0-4b994b7772a6",
+    "receipt": "id: d3ae521e-2b05-42b1-84f0-4b994b7772a6\njob_id: d3ae521e-2b05-42b1-84f0-4b994b7772a6\naction: Heavy armored creature collapses to knees then lowers torso and falls motionless into a compact broken heap. Weighty fall, no explosion, no standing back up. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 16\nsize: 64x64px\ntransparent: True\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"d3ae521e-2b05-42b1-84f0-4b994b7772a6\")",
+    "cost": 1
+  },
+  {
+    "name": "blade-side-cut",
+    "id": "d3a32cd2-c965-4e81-815a-bfa9381aee7f",
+    "receipt": "id: d3a32cd2-c965-4e81-815a-bfa9381aee7f\njob_id: d3a32cd2-c965-4e81-815a-bfa9381aee7f\naction: Facing right, plant lead foot, wind sword slightly behind torso, deliver one broad horizontal sword cut with shoulder and hip rotation, recover to exact starting stance. Single attack, no spin. Keep same character identity, palette, facing, native pixel size, ground baseline and canvas centre. Transparent background. No scenery, no camera movement, no added glow or weapons.\nframes: 16\nsize: 64x80px\ntransparent: True\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"d3a32cd2-c965-4e81-815a-bfa9381aee7f\")",
+    "cost": 2
+  },
+  {
+    "name": "blade-side-thrust",
+    "id": "f04c7cb0-6721-4bcb-88d2-d94bd3ecb396",
+    "cost": 2
+  },
+  {
+    "name": "blade-side-return",
+    "id": "83a0c487-513d-4537-9c08-0bc686d92adb",
+    "cost": 2
+  },
+  {
+    "name": "slime-cast-south",
+    "id": "b0867003-fe00-4a87-9bd0-50b76ba13f35",
+    "cost": 1
+  },
+  {
+    "name": "slime-cast-east",
+    "id": "4f1122a9-8c5c-44d0-be4f-b5d97aacb817",
+    "cost": 1
+  },
+  {
+    "name": "slime-cast-north",
+    "id": "006c1260-5d36-4864-b7e6-d2545f39e7f0",
+    "cost": 1
+  },
+  {
+    "name": "remnant-attack-south",
+    "id": "1bf5066b-0b57-4eb2-a6e0-0c5f1f0f653c",
+    "cost": 1
+  },
+  {
+    "name": "remnant-attack-west",
+    "id": "b334ad4e-21e3-4174-b447-7fbbe18b076e",
+    "cost": 1
+  },
+  {
+    "name": "remnant-attack-north",
+    "id": "6bf6e731-fe95-409d-a9bb-848bbef7026d",
+    "cost": 1
+  },
+  {
+    "name": "warden-impact",
+    "id": "9510042b-e422-4c57-9d20-22b4b8a01422",
+    "cost": 1
+  }
+]

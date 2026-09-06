@@ -1,0 +1,6 @@
+{
+  "width":32,"height":32,"no_background":true,
+  "color_image_path":"assets/effects/blob_hit.png",
+  "description":"Single cyan water crescent projectile for a pixel action game. A curved razor-thin sheet of WATER shaped like a right parenthesis ), convex sharp edge facing RIGHT and hollow opening LEFT. Turquoise liquid body, pale mint foam on leading edge, two tiny droplets trailing left. Entire effect fits centrally with 3 pixel transparent margin. Crisp native pixel clusters, restrained shading. No physical sword, handle, weapon, character, circle, moon face, background or text.",
+  "direction":"east","detail":"medium detail","shading":"basic shading"
+}
