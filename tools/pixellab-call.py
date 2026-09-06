@@ -16,10 +16,11 @@ import urllib.request
 
 def main(name=None, args=None):
     name = name or sys.argv[1]
-    if name not in {"get_balance", "get_image", "list_jobs", "animate_image", "create_image_pixflux", "edit_image"}:
+    if name not in {"get_balance", "get_image", "list_jobs", "animate_image", "create_image_pixflux", "edit_image",
+                    "create_character", "animate_character", "get_character"}:
         raise ValueError("Tool not allowed")
     args = dict(args) if args is not None else (json.loads(Path(sys.argv[2]).read_text()) if len(sys.argv) > 2 else {})
-    for key in ("first_frame", "last_frame", "init_image", "color_image"):
+    for key in ("first_frame", "last_frame", "init_image", "color_image", "reference_image"):
         if key + "_path" in args:
             args[key + "_base64"] = base64.b64encode(Path(args.pop(key + "_path")).read_bytes()).decode()
     if "image_paths" in args:
@@ -65,6 +66,7 @@ def main(name=None, args=None):
     print(safe)
     if "error" in result or result.get("result", {}).get("isError"):
         raise SystemExit(1)
+    return json.loads(safe)
 
 
 if __name__ == "__main__":
