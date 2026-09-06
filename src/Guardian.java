@@ -1,6 +1,8 @@
 public final class Guardian {
     public enum State { DORMANT, APPROACH, TELEGRAPH, SLAM, RECOVER, HURT, DEAD }
     public enum Attack { TARGET, SWEEP, CHARGE, SHOCKWAVE, FISSURE }
+    /** Row order in warden_motion.png: eight native 64px frames per row. */
+    public enum Animation { IDLE, APPROACH, WINDUP, STRIKE, RECOVER, CHARGE, DEATH }
     public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*3, MAX_HEALTH=240, SLAM_DAMAGE=2;
     public static final int GROUND_Y_OFFSET=48, SPRITE_FOOT_ROW=56;
     public static final double SLAM_RADIUS=112, TELEGRAPH_DURATION=0.9, SLAM_DURATION=0.18;
@@ -10,6 +12,7 @@ public final class Guardian {
     private State state=State.DORMANT;
     private Attack attack=Attack.TARGET, previousAttack=Attack.TARGET;
     private boolean fissureHorizontal;
+    private double idleAnimationTime;
 
     public Guardian(double x,double y) { this.x=x;this.y=y; }
     public void activate(double playerX,double playerY) {
@@ -30,7 +33,7 @@ public final class Guardian {
     private void tick(double dt,double px,double py,RuinedOutpostMap map) {
         hurtFlash=Math.max(0,hurtFlash-dt);
         switch(state) {
-            case DORMANT -> { }
+            case DORMANT -> idleAnimationTime=(idleAnimationTime+dt)%(8.0/6);
             case APPROACH -> {
                 double dx=px-x,dy=py-y,length=Math.hypot(dx,dy);
                 if(length>175)move(dx/length*(enraged()?185:145)*dt,dy/length*(enraged()?185:145)*dt,map,px,py);
@@ -115,6 +118,28 @@ public final class Guardian {
     public double directionX(){return chargeX;}
     public double directionY(){return chargeY;}
     public double stateSeconds(){return stateTime;}
+    public Animation animation() {
+        return switch(state) {
+            case DORMANT -> Animation.IDLE;
+            case APPROACH -> Animation.APPROACH;
+            case TELEGRAPH -> Animation.WINDUP;
+            case SLAM -> attack==Attack.CHARGE?Animation.CHARGE:Animation.STRIKE;
+            case RECOVER,HURT -> Animation.RECOVER;
+            case DEAD -> Animation.DEATH;
+        };
+    }
+    public int animationFrame() {
+        if(state==State.DORMANT)return (int)(idleAnimationTime*6)%8;
+        if(state==State.APPROACH)return (int)(stateTime*8)%8;
+        double duration=switch(state) {
+            case TELEGRAPH -> telegraphDuration();
+            case SLAM -> activeDuration();
+            case RECOVER,HURT -> enraged()?1.25:RECOVER_DURATION;
+            case DEAD -> DEATH_DURATION;
+            default -> throw new IllegalStateException("Looping animation already handled");
+        };
+        return Math.min(7,(int)(stateTime*8/duration));
+    }
     public int row(){return state==State.SLAM?1:state==State.RECOVER||state==State.HURT||state==State.DEAD?2:0;}
     public int frame(){
         double duration=switch(state) {
