@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 
 public final class DepthRenderingTest {
     public static void main(String[] args) throws Exception {
-        bladeAttackPaddingKeepsExactDrawnBody();
+        bladeActionsShareNativeFootAnchor();
         waterBehindFenceIsOccluded();
         B2BJ panel=new B2BJ(false);
         panel.setSize(panel.getPreferredSize());
@@ -38,23 +38,27 @@ public final class DepthRenderingTest {
         assert frontBlade!=frontFence : "front Blade must occlude the fence";
         System.out.println("DepthRenderingTest passed");
     }
-    private static void bladeAttackPaddingKeepsExactDrawnBody() throws Exception {
+    private static void bladeActionsShareNativeFootAnchor() throws Exception {
         B2BJ panel=new B2BJ(false);
         panel.game().player().relocate(128,128);
         var field=B2BJ.class.getDeclaredField("bladeAnimation");field.setAccessible(true);
         BladeAnimation animation=(BladeAnimation)field.get(panel);
         var draw=B2BJ.class.getDeclaredMethod("drawBlade",Graphics2D.class,int.class,int.class);
         draw.setAccessible(true);
-        for(int[] facing:new int[][]{{0,1},{0,-1}}) {
-            animation.update(0,0,false,0.31);animation.face(facing[0],facing[1]);
-            var idle=new BufferedImage(256,256,BufferedImage.TYPE_INT_ARGB);
-            var attack=new BufferedImage(256,256,BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g=idle.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
-            animation.slash();
-            g=attack.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
-            assert java.util.Arrays.equals(idle.getRGB(0,0,256,256,null,0,256),
-                    attack.getRGB(0,0,256,256,null,0,256))
-                    : "reviewed front/back attack margin must not move or resize the drawn body";
+        for(int[] facing:new int[][]{{0,1},{1,0},{-1,0},{0,-1}})for(var action:BladeAnimation.Action.values()) {
+            animation.face(facing[0],facing[1]);animation.play(action,.3);
+            var actual=new BufferedImage(256,256,BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g=actual.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
+            var sheet=B2BJ.loadImage(animation.sheetPath());
+            assert sheet!=null : "reviewed Rainoray asset required: "+animation.sheetPath();
+            int row=animation.row();
+            var expected=new BufferedImage(256,256,BufferedImage.TYPE_INT_ARGB);
+            g=expected.createGraphics();
+            g.drawImage(sheet,animation.flipHorizontal()?208:48,32,animation.flipHorizontal()?48:208,192,
+                    0,row*80,80,row*80+80,null);g.dispose();
+            assert java.util.Arrays.equals(actual.getRGB(0,0,256,256,null,0,256),
+                    expected.getRGB(0,0,256,256,null,0,256))
+                    : "every action must share exact 2x pixels and foot row72";
         }
     }
     private static boolean isCyan(int pixel) {

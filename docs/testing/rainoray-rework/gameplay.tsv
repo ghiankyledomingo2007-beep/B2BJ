@@ -1,0 +1,7 @@
+policy	initial_ichor	outcome	seconds	player_hp	boss_hp	phase2_at	hits	reversion_hits	transforms	primary_casts	tides	crescents	guards	parries	fissure_impacts	longest_damage_gap	gate_open
+baseline	0	win	237.96	3.00	0	126.12	1	1	5	503	22	0	0	0	10	8.64	true
+baseline	70	death	177.61	0.00	53	96.23	3	2	4	374	17	0	0	0	7	10.40	false
+baseline	100	win	234.52	3.00	0	104.49	1	1	5	499	19	0	0	0	11	19.77	true
+skills	0	win	231.29	5.00	0	129.22	0	0	4	471	15	10	0	0	9	7.82	true
+skills	70	win	213.46	2.00	0	110.29	2	1	5	431	18	10	1	1	9	6.29	true
+skills	100	win	216.23	1.00	0	98.81	2	2	5	453	18	9	0	0	10	8.04	true

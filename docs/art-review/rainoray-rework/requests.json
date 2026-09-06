@@ -1,0 +1,158 @@
+[
+  {
+    "name": "ring",
+    "args": {
+      "description": "A single pixel art enemy danger targeting ring seen directly overhead. Exact circular perimeter centered at 64,64 with outer radius 62 pixels, ring width 3 pixels. Broken carved crimson rune stones along the circumference, bright coral inner edge and tiny amber notches. Fully transparent empty center and exterior, no solid disk, no perspective ellipse, no character, no shadows. Precision readable tactical RPG danger telegraph.",
+      "width": 128,
+      "height": 128,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "chevron",
+    "args": {
+      "description": "One sharply defined pixel art east pointing attack direction chevron, weathered crimson metal with ivory highlight and amber leading arrowhead. Centered, strong shape, no border box or shadow, no text. Tactical dark fantasy telegraph sprite.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "reticle",
+    "args": {
+      "description": "A precise small pixel art aim reticle made of four tiny teal corner brackets surrounding a hollow transparent central crosshair gap. White inner tips, dark navy one pixel outline, subtle bronze accents. No solid circle, no backing, no text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "crescent",
+    "args": {
+      "description": "One airborne curved crescent of gold Ichor energy, NOT a flying metal sword. Eastward facing sharp crescent cutting edge ivory white, amber liquid core and short trailing teal vapor on left. Hollow center, crisp pixel clusters, dynamic curved blade silhouette, no circle disk, no scenery or shadow. Centered with 6 pixel safe margin.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "guard",
+    "args": {
+      "description": "A magical protective parry veil only, no person. Two curved translucent cyan liquid arcs rise from lower corners toward a small ivory mask-shaped spark at top center. Gold fine highlights, sparse pixel motes, open transparent center large enough for a swordsman. Effect fits 68px tall and 60px wide. No solid bubble, no background or shadow.",
+      "width": 80,
+      "height": 80,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "counter",
+    "args": {
+      "description": "A sudden cross-shaped sword parry impact, golden four pointed star flash surrounded by sharp cyan water shards spraying diagonally, small ivory brilliant center. Pixel art combat effect with sparse strong readable clusters and transparent gaps, no smooth gradient, no background or character or floor.",
+      "width": 80,
+      "height": 80,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "fissure",
+    "args": {
+      "description": "Pixel art top-down glowing fissure ground warning tile, jagged narrow crimson crack vertically through center with scattered orange ember chips and dark broken stone edges. Mostly transparent, no square tile background, no symbol or circle. Crack spans top to bottom for repeatable lane segments, width 8 pixels.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "cart",
+    "args": {
+      "description": "One abandoned ruined outpost handcart, broken wood shaft, tilted wheel, ripped navy cloth and small bronze supplies in bed, moss at one wheel. Low top-down three quarter fantasy pixel art prop. Whole object centered 64px wide, feet row70. Clear readable silhouette, crisp pixel clusters, no scenery, no cast shadow, transparent background.",
+      "width": 80,
+      "height": 80,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "shield-cache",
+    "args": {
+      "description": "A small stack of battered round teal and bronze military shields beside a snapped spear and a tied navy supply bag, ruined outpost ground dressing. Low top-down three quarter pixel art. Whole object centered 48px wide and 34px tall near bottom, no living character, no scenery, no cast shadow.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "brazier",
+    "args": {
+      "description": "A squat antique bronze outpost brazier on three short legs, chipped stone rim and vivid gold-orange flames with a few teal magical flecks. Low top-down three quarter pixel art prop. Centered 40px wide 48px tall, feet row55, clear dark edge, no ground shadow, no scenery.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "rubble",
+    "args": {
+      "description": "Small uneven mound of shattered navy gray outpost stone blocks, broken carved keystone, moss tufts and bronze military emblem fragment. Low top-down three quarter pixel art ground dressing, centered low 50px wide 26px tall, empty transparent margin, no ground tile, no cast shadow.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "crescent-icon",
+    "args": {
+      "description": "Dark fantasy pixel art skill icon, sharp ivory and gold curved energy crescent with three teal sparks trailing behind. Centered24pixelbody, darknavyoutline, no background or text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "riposte-icon",
+    "args": {
+      "description": "Dark fantasy pixel art skill icon, ivory theatrical mask with black angled eyes and teal forehead mark behind two crossed golden sword parry sparks. Centered24pixelbody, navyoutline, no background or text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  }
+]

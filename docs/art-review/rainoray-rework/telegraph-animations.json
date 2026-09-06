@@ -1,0 +1,24 @@
+[
+  {
+    "name": "ring-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/ring-open/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/ring-open/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Loop this warning perimeter hoop in place. Thin red rim slowly pulses from deep crimson to coral. Tiny amber notches travel around CIRCUMFERENCE only. Keep exact fixed radius and center. The center and interior stay completely transparent EMPTY. No symbols or fills inside. No rotation, no perspective, no expanding or shrinking. Pixel art, no background."
+    }
+  },
+  {
+    "name": "chevron-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/chevron-east/right.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/chevron-east/right.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "This small RIGHT pointing danger arrow remains centered facing RIGHT in every frame. Amber tip brightens then dims, short red light pulses run forward along edges. Fixed shape and size, no spinning or translation. Crisp pixel art, transparent empty background, clean loop."
+    }
+  }
+]

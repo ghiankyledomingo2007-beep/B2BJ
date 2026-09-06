@@ -1,0 +1,106 @@
+[
+  {
+    "name": "human-slash-a-east-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "SIDE VIEW facing RIGHT in every frame. One quick sword cut. Frame1 neutral, frame2 sword raised BACK over left shoulder, frame3 strong anticipation, frame4 sword sweeps down and forward toward RIGHT enemy, frame5 low forward follow-through, frame6 retract, frame7 recover, frame8 original stance. Keep visible sword arc, planted feet, mask and outfit unchanged. No turning or casting. Crisp pixel art."
+    }
+  },
+  {
+    "name": "human-slash-b-south-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Front view, white mask faces camera. One forceful short sword thrust DOWN SCREEN toward viewer. Sword foreshortened during contact: pull hand back next to ribs, extend arm forward downscreen, blade tip directly below body, lunge leading foot downscreen, recoil then reset. No side turn, no casting, no sideways horizontal sword sweep. Preserve costume and mask. Crisp pixel art."
+    }
+  },
+  {
+    "name": "human-slash-b-north-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Strict REAR view throughout, back of hood always visible. One powerful sword thrust UP SCREEN away from camera. Draw elbow back, extend sword arm forward above right shoulder toward enemy at top of screen, torso leans and leading boot steps upscreen, blade visibly points upward, retract and recover original stance. No side turn, no seeing face or chest, no casting. Crisp pixel art."
+    }
+  },
+  {
+    "name": "engulf-west-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-1.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-1.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "A broad low wave of this cyan slime engulfs a corpse to LEFT (corpse not drawn). Whole body flattens, shoots bodily left into a wide64pixel puddle, then curls upward over the empty space at left like a breaking wave. Encloses it completely by closing into a large rounded mound, gold core flares inside, and shrinks back into original slime. Stays low, NO tall vertical neck, NO thin tendril or beam. Entire body changes silhouette, maximumwidth64 within80canvas. Keep color and pixelart, transparentbackground, exactlysameendingpose."
+    }
+  },
+  {
+    "name": "ring-runes",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "Hollow circular perimeter of EIGHT isolated carved crimson runes linked by a thin broken gold-red line. Perfect overhead magic danger warning ring, symmetrical circle112pixelsdiameter. Runes are small6pixel angular diamonds and chevrons positioned ONLY on circle boundary. Center is transparent EMPTY HOLE fromradius0to46. Outside transparent. No shield, no disc, no pentagram, no fill. Detailed dark fantasy pixel art, crisppixelclusters.",
+      "width": 128,
+      "height": 128,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed",
+      "text_guidance_scale": 10
+    }
+  },
+  {
+    "name": "chevron-rune",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "Large RIGHT pointing double-chevron arrowhead >> filling26pixels of32canvas. Carved crimson obsidian arrow with gold leading bevel and ivorybright tip at x29,y16, two wide diagonal red arms extending back to x4,y4 andx4,y28. Empty transparent gaps. Ornate dark fantasy tactical pixel art marker. Point RIGHT, no downward symbol. Transparentbackground.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "direction": "east",
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed",
+      "text_guidance_scale": 10
+    }
+  },
+  {
+    "name": "brazier-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/brazier/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/brazier/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Stationary bronze brazier on fixed legs. Animate ONLY gold-orange fire dancing and tiny teal ember motes, flames curl left thenright, bright core pulses. Metal bowl, rim and three feet never move or deform. Fixedcamera and64canvas, seamlessloop, nativepixelart andtransparency."
+    }
+  },
+  {
+    "name": "guard-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/guard/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Protective cyan parry arcs flare along LEFT andRIGHT outeredges of80canvas, gold flecks travel around perimeter. Center remains a huge transparent empty gap to see character. Centralstar collapses immediately to smallrimflecks. Defensive veil brieflybrightens thenbreaks into cyan droplets. No solidbubble, no centralemblem, no person. Crisp translucent pixelart, no background."
+    }
+  },
+  {
+    "name": "counter-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/counter/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "A sharp close sword parry spark. Small white-gold core bursts into short angular golden shards and cyan water fragments outward, thenrapidly fades. Keepcontactcenterfixed, no largepersistentstar afterframe3, finalframeonlyfewfinegoldmotes. Pixelartinstantimpact effect, transparent gaps, no background orcharacter."
+    }
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "name": "transform-in-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Slime becoming this masked human, facing south. Preserve fixed ground at row72. Gel first flattens then rises in liquid ribbons, legs grow out of cyan body, torso and navy cloak resolve, ivory mask solidifies last while sword forms along right arm. Controlled small gold Ichor sparks, clearly staged fluid morph with silhouette continuity, finish exactly as target. No camera movement or scenery."
+    }
+  },
+  {
+    "name": "transform-out-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Masked human dissolves back into the same cyan slime, facing south, groundfixedrow72. Knees soften, sword melts into gold droplets, cloak and body collapse into a rounded jelly pool, ivory mask dissolves into cyan motes, gold core settles inside reforming expressive slime. Smooth fluid whole body compression, final pose exactly target, no lingering humanoid face or clothes, no scene."
+    }
+  },
+  {
+    "name": "transform-in-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/east.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Slime becoming this masked human, facing east. Preserve fixed ground at row72. Gel first flattens then rises in liquid ribbons, legs grow out of cyan body, torso and navy cloak resolve, ivory mask solidifies last while sword forms along right arm. Controlled small gold Ichor sparks, clearly staged fluid morph with silhouette continuity, finish exactly as target. No camera movement or scenery."
+    }
+  },
+  {
+    "name": "transform-out-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/east.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Masked human dissolves back into the same cyan slime, facing east, groundfixedrow72. Knees soften, sword melts into gold droplets, cloak and body collapse into a rounded jelly pool, ivory mask dissolves into cyan motes, gold core settles inside reforming expressive slime. Smooth fluid whole body compression, final pose exactly target, no lingering humanoid face or clothes, no scene."
+    }
+  },
+  {
+    "name": "transform-in-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Slime becoming this masked human, facing north. Preserve fixed ground at row72. Gel first flattens then rises in liquid ribbons, legs grow out of cyan body, torso and navy cloak resolve, ivory mask solidifies last while sword forms along right arm. Controlled small gold Ichor sparks, clearly staged fluid morph with silhouette continuity, finish exactly as target. No camera movement or scenery."
+    }
+  },
+  {
+    "name": "transform-out-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Masked human dissolves back into the same cyan slime, facing north, groundfixedrow72. Knees soften, sword melts into gold droplets, cloak and body collapse into a rounded jelly pool, ivory mask dissolves into cyan motes, gold core settles inside reforming expressive slime. Smooth fluid whole body compression, final pose exactly target, no lingering humanoid face or clothes, no scene."
+    }
+  },
+  {
+    "name": "engulf-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Whole body devouring motion facing south. Slime squashes low in anticipation, throws its ENTIRE liquid body outward and downward like a wide cyan blanket, raises a thick rolling wave of jelly that completely covers a small invisible fallen body underneath, curls all edges inward to engulf, swells once with gold core shining, reforms original round slime. No humanoid hands, no tendril straw, no beam, no licking. Broad body splash reaches64pixelswideinside80canvas. Keep recognizable cyan palette and gold core, planted groundrow72, no background or separate corpse drawn. Return original pose."
+    }
+  },
+  {
+    "name": "engulf-west",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-1.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-1.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Whole body devouring motion facing west. Slime squashes low in anticipation, throws its ENTIRE liquid body outward and downward like a wide cyan blanket, raises a thick rolling wave of jelly that completely covers a small invisible fallen body underneath, curls all edges inward to engulf, swells once with gold core shining, reforms original round slime. No humanoid hands, no tendril straw, no beam, no licking. Broad body splash reaches64pixelswideinside80canvas. Keep recognizable cyan palette and gold core, planted groundrow72, no background or separate corpse drawn. Return original pose."
+    }
+  },
+  {
+    "name": "engulf-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Whole body devouring motion facing north. Slime squashes low in anticipation, throws its ENTIRE liquid body outward and downward like a wide cyan blanket, raises a thick rolling wave of jelly that completely covers a small invisible fallen body underneath, curls all edges inward to engulf, swells once with gold core shining, reforms original round slime. No humanoid hands, no tendril straw, no beam, no licking. Broad body splash reaches64pixelswideinside80canvas. Keep recognizable cyan palette and gold core, planted groundrow72, no background or separate corpse drawn. Return original pose."
+    }
+  }
+]

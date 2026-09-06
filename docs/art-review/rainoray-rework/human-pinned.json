@@ -1,0 +1,156 @@
+[
+  {
+    "name": "human-slash-b-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "action": "Facing north throughout. Second sword combo: coil torso with sword to opposite hip, decisive horizontal backhand sweep across front, finish in low guard. Clear whole body hip and shoulder turn, grounded foot pivot, stay centered, no magic effect or extra weapon. Preserve crisp native pixel clusters and transparency. STRICT REAR VIEW THROUGHOUT, camera sees BACK OF HOOD AND CLOAK in EVERY frame. Character looks away from viewer for entire animation. Never expose face, chest or front of mask. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png"
+    }
+  },
+  {
+    "name": "human-slash-c-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "action": "Facing south throughout. Third sword combo finisher: raise sword high with both hands, small forward weight shift then powerful overhead cleaving strike, lower stance at contact, return ready. No translation out of canvas, no turning away from facing, no glow obscuring pose. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png"
+    }
+  },
+  {
+    "name": "human-slash-c-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "action": "Facing east throughout. Third sword combo finisher: raise sword high with both hands, small forward weight shift then powerful overhead cleaving strike, lower stance at contact, return ready. No translation out of canvas, no turning away from facing, no glow obscuring pose. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png"
+    }
+  },
+  {
+    "name": "human-slash-c-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "action": "Facing north throughout. Third sword combo finisher: raise sword high with both hands, small forward weight shift then powerful overhead cleaving strike, lower stance at contact, return ready. No translation out of canvas, no turning away from facing, no glow obscuring pose. Preserve crisp native pixel clusters and transparency. STRICT REAR VIEW THROUGHOUT, camera sees BACK OF HOOD AND CLOAK in EVERY frame. Character looks away from viewer for entire animation. Never expose face, chest or front of mask. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png"
+    }
+  },
+  {
+    "name": "human-cast-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "action": "Facing south throughout. Ichor Crescent cast: pull sword close to chest, gold light briefly gathers at hilt, swing one crisp outward releasing cut, cloak reacts then settle ready. Only sparse gold glints, no projectile or extra weapon inside canvas, remain centered and grounded. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png"
+    }
+  },
+  {
+    "name": "human-cast-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "action": "Facing east throughout. Ichor Crescent cast: pull sword close to chest, gold light briefly gathers at hilt, swing one crisp outward releasing cut, cloak reacts then settle ready. Only sparse gold glints, no projectile or extra weapon inside canvas, remain centered and grounded. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png"
+    }
+  },
+  {
+    "name": "human-cast-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "action": "Facing north throughout. Ichor Crescent cast: pull sword close to chest, gold light briefly gathers at hilt, swing one crisp outward releasing cut, cloak reacts then settle ready. Only sparse gold glints, no projectile or extra weapon inside canvas, remain centered and grounded. Preserve crisp native pixel clusters and transparency. STRICT REAR VIEW THROUGHOUT, camera sees BACK OF HOOD AND CLOAK in EVERY frame. Character looks away from viewer for entire animation. Never expose face, chest or front of mask. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png"
+    }
+  },
+  {
+    "name": "human-guard-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "action": "Facing south throughout. Riposte parry stance: raise sword diagonally across chest, brace knees and free palm, absorb a small invisible strike with short recoil, controlled sharp forward counter then lower guard. No shield, no extra swords, keep feet in place and mask unchanged. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png"
+    }
+  },
+  {
+    "name": "human-guard-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "action": "Facing east throughout. Riposte parry stance: raise sword diagonally across chest, brace knees and free palm, absorb a small invisible strike with short recoil, controlled sharp forward counter then lower guard. No shield, no extra swords, keep feet in place and mask unchanged. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png"
+    }
+  },
+  {
+    "name": "human-guard-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "action": "Facing north throughout. Riposte parry stance: raise sword diagonally across chest, brace knees and free palm, absorb a small invisible strike with short recoil, controlled sharp forward counter then lower guard. No shield, no extra swords, keep feet in place and mask unchanged. Preserve crisp native pixel clusters and transparency. STRICT REAR VIEW THROUGHOUT, camera sees BACK OF HOOD AND CLOAK in EVERY frame. Character looks away from viewer for entire animation. Never expose face, chest or front of mask. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png"
+    }
+  },
+  {
+    "name": "human-hurt-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "action": "Facing south throughout. Short believable hurt flinch: shoulder recoils, knees compress, free arm guards chest, regain footing and recover same facing. Feet anchored, no falling over, no spins or mask changes, keep sword securely held. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png"
+    }
+  },
+  {
+    "name": "human-hurt-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "action": "Facing east throughout. Short believable hurt flinch: shoulder recoils, knees compress, free arm guards chest, regain footing and recover same facing. Feet anchored, no falling over, no spins or mask changes, keep sword securely held. Preserve crisp native pixel clusters and transparency. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png"
+    }
+  },
+  {
+    "name": "human-hurt-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "action": "Facing north throughout. Short believable hurt flinch: shoulder recoils, knees compress, free arm guards chest, regain footing and recover same facing. Feet anchored, no falling over, no spins or mask changes, keep sword securely held. Preserve crisp native pixel clusters and transparency. STRICT REAR VIEW THROUGHOUT, camera sees BACK OF HOOD AND CLOAK in EVERY frame. Character looks away from viewer for entire animation. Never expose face, chest or front of mask. Return exactly to first stance to close the action cleanly.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png"
+    }
+  },
+  {
+    "name": "human-run-north-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "action": "STRICT REAR VIEW walking/running AWAY from viewer IN PLACE. Eight poses alternating left/right planted boot, cloak lightly bounces behind him. Back of navy hood and broad teal cape visible in EVERY frame. Never show any face, chest or mask. Sword stays on right side pointed diagonally away. No turns, no rotating, no horizontal travel. Same body size and pixel style; return to exact original rear view.",
+      "frame_count": 8,
+      "no_background": true,
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png"
+    }
+  }
+]

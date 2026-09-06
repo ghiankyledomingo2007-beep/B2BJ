@@ -1,18 +1,25 @@
 public final class TransformationAnimation {
-    public static final int CELL_SIZE = 48;
+    public static final int CELL_SIZE = 80;
     public static final int RENDER_SIZE = CELL_SIZE * 2;
-    public static final int ROW = 3;
+    public static final int ROW = 0;
     public static final double DURATION = 0.64;
 
-    private static final int FRAMES = 8;
+    private static final int FRAMES = 16;
 
     private boolean active;
     private double time;
+    private boolean reverting;
 
     public void start() {
+        start(false);
+    }
+    public void start(boolean reverse) {
         active = true;
+        reverting = reverse;
         time = 0;
     }
+    public boolean reverting() { return reverting; }
+    public void cancel() { active=false; }
 
     public void update(double seconds) {
         if (!active) {

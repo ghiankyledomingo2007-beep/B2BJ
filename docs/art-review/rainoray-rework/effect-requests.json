@@ -1,0 +1,140 @@
+[
+  {
+    "name": "ring-open",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "A THIN OUTLINE ONLY ring. Empty circular hoop made from red warning runes, seen perfectly overhead. 116 pixels outer diameter centered on 128 canvas. Only 3 pixel thick perimeter. Entire inside is completely EMPTY TRANSPARENT like a hole. No disc, no shield, no center emblem, no interior paint. Simple crisp pixel art. Transparent background.",
+      "width": 128,
+      "height": 128,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "flat shading",
+      "detail": "low detail",
+      "text_guidance_scale": 10
+    }
+  },
+  {
+    "name": "chevron-east",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "A single RIGHT POINTING arrowhead > symbol. Tip at right edge x27,y16. Two diagonal crimson pixel strokes meet at right tip. Ivory inner highlights, amber accent. Centered 24pixel wide. Crisp pixel art UI danger direction. Transparent empty background. No wings, no emblem, no downward arrow, no border.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "direction": "east",
+      "outline": "selective outline",
+      "shading": "flat shading",
+      "detail": "low detail",
+      "text_guidance_scale": 10
+    }
+  },
+  {
+    "name": "riposte-icon",
+    "args": {
+      "description": "Dark fantasy pixel art skill icon, ivory theatrical mask with black angled eyes and teal forehead mark behind two crossed golden sword parry sparks. Centered24pixelbody, navyoutline, no background or text.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    },
+    "tool": "create_image_pixflux"
+  },
+  {
+    "name": "portrait-mask",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "Pixel art HUD portrait, head and shoulders of Rainoray a navy hooded swordsman. Entire face covered by narrow IVORY MASK with BLACK angular eye slits, single small TEAL inverted triangle forehead crest, subtle asymmetric thin teal cheek mark. No visible mouth, no hair. Teal cloak collar, tiny gold clasp. Strong readable head silhouette. Dark navy one pixel edge. Transparent empty background, no frame, no text.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "detailed shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "crescent-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/crescent/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Looping airborne crescent of golden liquid energy traveling RIGHT while remaining centered in canvas. Convex cutting edge faces right throughout. Gold and ivory edge shimmers, tiny teal vapor breaks off LEFT trailing side. Never turns into sword, never spins. Crisp pixel clusters, transparent hollow center, no background."
+    }
+  },
+  {
+    "name": "guard-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/guard/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Brief magical parry veil pulse. Cyan arcs gather around empty transparent center, peak bright white-gold at frame3, shatter into short cyan droplets, disappear. No person or solid bubble. Keep full effect inside80canvas, pixel art."
+    }
+  },
+  {
+    "name": "counter-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/counter/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Parry impact burst. Gold and cyan shards expand rapidly from bright ivory contact star then fragment into small fading pixel sparks. Frame1 small anticipation flash, frame3 brightest widest impact, finalframe sparse fading motes. No camera motion, character or background."
+    }
+  },
+  {
+    "name": "fissure-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/fissure/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Vertical ground fissure crack. First4 frames gently pulse red thin crack warning, last4 frames flare orange hot sharp stone shards then embers. Keep narrow vertical orientation top-to-bottom, transparent sides, fixed32canvas. No circle, no solid tile. Readable crisp pixel art."
+    }
+  },
+  {
+    "name": "reticle-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/reticle/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Tiny targeting reticle stays centered and fixed size, four teal bracket tips softly brighten sequentially clockwise. Hollow transparent center remains completely empty. Subtle pixel glints at tips only. No rotation, no background or growing circle."
+    }
+  },
+  {
+    "name": "transform-out-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Masked human dissolves back into the same cyan slime, facing south, groundfixedrow72. Knees soften, sword melts into gold droplets, cloak and body collapse into a rounded jelly pool, ivory mask dissolves into cyan motes, gold core settles inside reforming expressive slime. Smooth fluid whole body compression, final pose exactly target, no lingering humanoid face or clothes, no scene."
+    }
+  },
+  {
+    "name": "transform-out-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-1.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/east.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Masked human dissolves back into the same cyan slime, facing east, groundfixedrow72. Knees soften, sword melts into gold droplets, cloak and body collapse into a rounded jelly pool, ivory mask dissolves into cyan motes, gold core settles inside reforming expressive slime. Smooth fluid whole body compression, final pose exactly target, no lingering humanoid face or clothes, no scene."
+    }
+  },
+  {
+    "name": "transform-out-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Masked human dissolves back into the same cyan slime, facing north, groundfixedrow72. Knees soften, sword melts into gold droplets, cloak and body collapse into a rounded jelly pool, ivory mask dissolves into cyan motes, gold core settles inside reforming expressive slime. Smooth fluid whole body compression, final pose exactly target, no lingering humanoid face or clothes, no scene."
+    }
+  }
+]

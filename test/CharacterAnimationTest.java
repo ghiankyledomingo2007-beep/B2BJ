@@ -27,18 +27,18 @@ public final class CharacterAnimationTest {
         assert !animation.flipHorizontal() : "right-facing source must stay unmirrored for east movement";
         animation.slash();
         assert !animation.flipHorizontal() : "east slash must keep its source orientation";
-        assert animation.padding()==0 : "unreplaced side attack retains its legacy grid";
-        assert animation.sheetPath().endsWith("blade_slash.png");
+        assert animation.padding()==0 : "all actions share one padded canvas";
+        assert animation.sheetPath().endsWith("rainoray_slash.png");
         animation.face(-1,0);
         assert animation.flipHorizontal() : "west slash must mirror its source orientation";
         animation.update(0,0,false,0.21);
-        assert animation.frame()==2 : "legacy side attack must stay within its three-cell grid";
+        assert animation.frame()==5 : "side attacks now use eight authored poses";
         animation.update(0,0,false,0.10);
 
         animation.update(0, -1, true, 0);
         assert animation.action() == BladeAnimation.Action.DASH;
         assert animation.row() == 2 : "up movement must use Blade back row";
-        assert animation.sheetPath().endsWith("blade_dash.png");
+        assert animation.sheetPath().endsWith("rainoray_dash.png");
         animation.update(1,0,true,0);
         assert !animation.flipHorizontal() : "east dash must keep its source orientation";
         animation.update(-1,0,true,0);
@@ -52,16 +52,16 @@ public final class CharacterAnimationTest {
         animation.update(0, 0, false, 0.21);
         assert animation.action() == BladeAnimation.Action.SLASH;
         assert animation.frame() == 5 : "eight-pose attack must progress through recovery";
-        assert animation.padding() == 8 : "attack margin is transparent weapon clearance, not body scaling";
-        assert animation.sheetPath().endsWith("blade_cut.png");
+        assert animation.padding() == 0 : "native action canvas already includes weapon clearance";
+        assert animation.sheetPath().endsWith("rainoray_slash.png");
 
         animation.update(0, 0, false, 0.08);
         assert animation.frame() == 7 : "attack must reach its final recovery pose";
         animation.update(0, 0, false, 0.02);
         assert animation.action() == BladeAnimation.Action.IDLE
                 : "completed slash must return to idle";
-        assert animation.frame() == 0 : "idle Blade must use planted run frame";
-        assert animation.padding() == 0 : "run and idle retain their existing native cells";
+        assert animation.frame() == 0 : "idle breathing cycle starts at its planted pose";
+        assert animation.padding() == 0 : "run and idle share the action canvas";
     }
 
     private static void wispUsesEveryDirectionalRow() {
@@ -90,8 +90,8 @@ public final class CharacterAnimationTest {
     private static void characterRenderSizesUseOneSharedPixelScale() {
         assert SlimeAnimation.RENDER_SIZE == 96 : "Slime must render at 2x its 48px cell";
         assert WispAnimation.RENDER_SIZE == 96 : "Wisp must render at 2x its 48px cell";
-        assert BladeAnimation.RENDER_WIDTH == 96 : "Blade width must use the same 2x scale";
-        assert BladeAnimation.RENDER_HEIGHT == 128 : "Blade keeps its taller 48x64 frame";
+        assert BladeAnimation.RENDER_WIDTH == 160 : "Blade canvas must use the same 2x scale";
+        assert BladeAnimation.RENDER_HEIGHT == 160 : "all human actions share an 80px canvas";
     }
 
     private static void transformationEffectPlaysOnce() {
@@ -101,7 +101,7 @@ public final class CharacterAnimationTest {
         animation.start();
         animation.update(TransformationAnimation.DURATION / 2);
         assert animation.active();
-        assert animation.frame() == 4 : "transformation must reach its middle burst";
+        assert animation.frame() == 8 : "transformation must reach its middle morph pose";
 
         animation.update(TransformationAnimation.DURATION / 2);
         assert !animation.active() : "transformation effect must end after one cycle";

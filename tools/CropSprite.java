@@ -16,6 +16,12 @@ public final class CropSprite {
                     java.awt.image.BufferedImage.TYPE_INT_ARGB);
             var g=padded.createGraphics();g.drawImage(frame,padding,padding,null);g.dispose();frame=padded;
         }
+        if(Boolean.getBoolean("b2bj.flip")) {
+            var flipped=new java.awt.image.BufferedImage(frame.getWidth(),frame.getHeight(),java.awt.image.BufferedImage.TYPE_INT_ARGB);
+            for(int y=0;y<frame.getHeight();y++)for(int x=0;x<frame.getWidth();x++)
+                flipped.setRGB(frame.getWidth()-1-x,y,frame.getRGB(x,y));
+            frame=flipped;
+        }
         if(args.length>5)ImageIO.write(frame,"png",Path.of(args[5]).toFile());
         var bytes=new ByteArrayOutputStream();ImageIO.write(frame,"png",bytes);
         System.out.print(Base64.getEncoder().encodeToString(bytes.toByteArray()));

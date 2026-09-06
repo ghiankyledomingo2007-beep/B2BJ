@@ -1,0 +1,101 @@
+[
+  {
+    "name": "human-idle-north-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT REAR VIEW entire sequence. See back of hood and back of cloak in EVERY frame. Never show face or chest, never turn sideways. Quiet idle breathing. Feet never move. Cloak hem softly lifts and settles. No sparks or particles. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-run-south-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT FRONT VIEW entire sequence. Full white mask faces camera every frame. Never turn sideways. Run IN PLACE toward camera. Feet alternate left and right contact with opposite knee lifted; compact arm pumping, sword held steadily pointing down. One complete running stride. No sword attack. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-dash-south-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT FRONT VIEW entire sequence. Full white mask faces camera every frame. Never turn sideways. Brief low forward dodge. Crouch in anticipation, lean torso forward, push off with rear boot, stretch leading leg forward, both boots land, return upright. In-place body action without screen translation. Sword stays pointed down. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-dash-north-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT REAR VIEW entire sequence. See back of hood and back of cloak in EVERY frame. Never show face or chest, never turn sideways. Brief low forward dodge. Crouch in anticipation, lean torso forward, push off with rear boot, stretch leading leg forward, both boots land, return upright. In-place body action without screen translation. Sword stays pointed down. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-slash-a-south-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT FRONT VIEW entire sequence. Full white mask faces camera every frame. Never turn sideways. Sword cut toward target directly below screen. Raise sword over shoulder, cut diagonally forward in one continuous arc, lower sword through follow-through, recover. Visible windup, contact, recovery. Feet stay on ground. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-slash-a-north-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT REAR VIEW entire sequence. See back of hood and back of cloak in EVERY frame. Never show face or chest, never turn sideways. Sword cut toward target directly above screen. Raise sword over shoulder, cut diagonally forward in one continuous arc, lower sword through follow-through, recover. Visible windup, contact, recovery. Feet stay on ground. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-slash-b-south-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT FRONT VIEW entire sequence. Full white mask faces camera every frame. Never turn sideways. Sword thrust forward: draw sword hand back at hip, take short planted lunge and extend arm with sword point directly toward opponent, retract blade smoothly and recover. No sweep or spinning. Clear anticipation then extension then recovery. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-slash-b-north-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-2.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT REAR VIEW entire sequence. See back of hood and back of cloak in EVERY frame. Never show face or chest, never turn sideways. Sword thrust forward: draw sword hand back at hip, take short planted lunge and extend arm with sword point directly toward opponent, retract blade smoothly and recover. No sweep or spinning. Clear anticipation then extension then recovery. Locked camera, fixed character scale, native crisp pixels. Preserve mask, hood and costume. End exactly at supplied last pose."
+    }
+  },
+  {
+    "name": "human-guard-south-retry",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/mask-polish/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "STRICT FRONT VIEW: white mask looks directly at camera every frame. Defensive guard: knees bend, sword comes up DIAGONALLY ACROSS CHEST, left hand braces right wrist, firm brief parry posture, recover to idle. Boots stay planted and body stays facing camera. No turns, no sidesteps, no sparks. Preserve mask and costume, fixed camera and size, crisp pixel art."
+    }
+  }
+]

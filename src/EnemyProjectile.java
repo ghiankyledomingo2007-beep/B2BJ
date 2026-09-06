@@ -1,6 +1,7 @@
 /** A committed, non-homing hostile glob. Game simulation resolves swept collisions. */
 public final class EnemyProjectile {
     public static final double SPEED=250, RADIUS=10, LIFETIME=1.6;
+    public static final double MAX_TRAVEL=SPEED*LIFETIME;
     private final double dx,dy;
     private double x,y,age;
     private boolean alive=true;

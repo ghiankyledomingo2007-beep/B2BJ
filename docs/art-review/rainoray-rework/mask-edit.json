@@ -1,0 +1,11 @@
+{
+  "image_paths": [
+    "docs/art-review/rainoray-rework/rotations/frame-0.png",
+    "docs/art-review/rainoray-rework/rotations/frame-1.png",
+    "docs/art-review/rainoray-rework/rotations/frame-2.png"
+  ],
+  "width": 80,
+  "height": 80,
+  "no_background": true,
+  "description": "Polish this SAME human character consistently across the three directional sprites, preserving exact pose, pixel size, silhouette, sword placement and floor. The front face MUST be a clearly intentional ivory white full face MASK, not pale skin: two sharp black slanted eye slits, turquoise inverted triangle crest centered above eyebrows, tiny black mouth notch, one short gold diagonal cheek mark. Inspired by Shizu's anti-magic mask in That Time I Got Reincarnated as a Slime with this turquoise crest variation. Increase mask readability by a pixel if needed. Side view shows only mask profile, back view ONLY navy hood and teal cloak, never a face. Clean coherent pixel clusters and strong dark navy outline. Keep short teal cloak, navy clothes, brown boots, limited gold trims; no new armor spikes or beard. No shadow and no background."
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "ring-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/ring-open/frame-0.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/ring-open/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Keep this exact thin HOLLOW warning ring, EMPTY transparent interior. Tiny angular red and amber runic diamonds appear and pulse ONLY along circumference in eight evenly spaced positions. Fine crimson rim breathes between dark red and coral. NEVER draw lines across center, no pentagram or spokes, no solid disc. Fixedcenter andradius, eightframepixelartloop, transparentbackground."
+    }
+  },
+  {
+    "name": "chevron-polish",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/chevron-east/right.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/chevron-east/right.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Keep RIGHT pointing crimson arrow, ivorygoldtip. Add a short secondary red chevron immediately behind it atLEFT. Both arrows pulse sequentially towardRIGHT in a strongdangerwave. Stay fixedorientation, centeredwithin32canvas. Crispgoldleadingedge, darknavyoutline, emptytransparentbackground, seamlessloop."
+    }
+  }
+]

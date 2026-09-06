@@ -20,24 +20,31 @@ java -jar build/B2BJ.jar
 Or run `./run-game.sh` to verify, build, and launch.
 Rebuilding does not update an already running game window.
 
+The [Rainoray / Ruined Outpost pass](docs/testing/rainoray-rework/README.md)
+documents the masked human, new skills, whole-body feeding, arena fissures,
+pixel-art warnings, credit ledger and verification limits.
+
 ## Controls
 
 - Enter / click: begin.
 - WASD / arrows: move. Mouse: aim. Hold left click: Water Slash (Blob) / cuts (Blade).
-- Right click: Tide Wave (Blob only), a wider water projectile with a 4.5-second cooldown.
+- Right click: Tide Wave (Blob, 4.5-second cooldown) / Ichor Crescent (Blade, 5 seconds).
+- F: Riposte (Blade), a 0.3-second one-hit parry with a 6-second cooldown.
 - Space: dash, with brief invulnerability. Blob dash damages enemies.
 - Q: transform at 100 Ichor.
 - Walk through cleared breaches; E also works near a passage.
 - E: absorb nearby remains in Blob form, rest, use field dressing, or leave.
 - Esc: pause. Focus loss pauses and releases held input.
 - Hold Tab: explored-area map; stays live during play or remains paused from pause.
-- M: sound toggle. F: reduced screen effects.
+- M: sound toggle. V: reduced screen effects.
 - R: restart after death/completion. After reaching Captain Camp, death reforms there.
 
 Health pips and segmented gold Ichor are top-left; Blade timer top-centre; form
 top-right; local terrain minimap bottom-right. Blade lasts 12 seconds before
 pickups, deals 4× Blob damage, moves at 80% speed and takes 75% incoming damage.
 Blade hits also cost 5 Ichor; reversion has 1.5 seconds of vulnerable recovery.
+Crescent and Riposte each spend 8 Ichor from the remaining Blade timer; they require
+more than 8 remaining so the ability has time to exist before reversion.
 
 Blob passively regenerates 0.6 Ichor/sec. Absorption takes 0.8 seconds standing
 still and grants 5 Ichor plus half a health pip; boss summons cannot heal you.
@@ -89,4 +96,5 @@ art, music and longer live playtesting remain. Later biomes are not implemented.
 Progress currently survives deaths within the running session, not application restarts.
 
 Windows release workflow is configured but has not been run in this pass.
-No tags, pushes, releases, or third-party publishing were performed.
+Checkpoint `446420e` was pushed to the owner's personal GitHub on 2026-09-07;
+its verification workflow passed. No release tag or installer publication was made.

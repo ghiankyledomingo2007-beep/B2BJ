@@ -1,0 +1,576 @@
+[
+  {
+    "name": "hero",
+    "id": "83799d9b-6faf-4d4b-af78-08138f5420cb",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "ring",
+    "id": "6b0150ca-089c-4b91-bb53-bb2872b5a42a",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "chevron",
+    "id": "70f480cf-e0f9-4b7e-b64a-f667e2ce5367",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "reticle",
+    "id": "3091c3bd-f197-410f-ab29-d63ecf3af371",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "crescent",
+    "id": "672b7a61-0dd4-4f10-87fa-e675cb4d6b5a",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "guard",
+    "id": "0f8dd4ab-63c0-4f1c-904e-1d59df741d26",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "counter",
+    "id": "1b2cf087-1dc8-4e02-a50d-1e68cb1fb2d2",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "fissure",
+    "id": "f64f0054-4cc0-4542-97ce-3a1da03e7350",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "cart",
+    "id": "c1541a16-9770-49c4-bbf4-2c1e54c1e78d",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "shield-cache",
+    "id": "5a365360-519e-49d4-a493-12c1fbcf4573",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "brazier",
+    "id": "4ad97589-8109-4708-a306-3b09cd9cb6b8",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "rubble",
+    "id": "51981566-9dbf-4f57-bad6-cdc63bd05289",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "crescent-icon",
+    "id": "9943b2f1-4c1e-4c72-8959-b519a7289174",
+    "frames": 1,
+    "cost": 1,
+    "batch": 1
+  },
+  {
+    "name": "mask-polish",
+    "id": "80a8c94e-aeb3-4328-98b9-1b8ebe81f525",
+    "frames": 3,
+    "cost": 20,
+    "batch": 1
+  },
+  {
+    "name": "human-idle-south",
+    "id": "36085cf1-9488-4b75-8c6d-3e05be1a0cc9",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-idle-east",
+    "id": "5a760eaf-24a6-4a13-a2ec-e0b04dd4f850",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-idle-north",
+    "id": "fc97deef-3319-4870-900d-eb7af706801f",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-run-south",
+    "id": "0724eaff-0cec-4431-82a0-714a578914ce",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-run-east",
+    "id": "d042b9d7-a611-4a85-abbf-8177d33fa99d",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-run-north",
+    "id": "3de0c68b-b350-4410-b90a-dae7e0fc0fe1",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-dash-south",
+    "id": "0b253cc7-117c-4823-87c0-af1f88d35c65",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-dash-east",
+    "id": "0e135997-6507-4d48-a8e2-88dc1f55bc05",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-dash-north",
+    "id": "bd705101-706a-4004-996c-f325bd4f0b5b",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-a-south",
+    "id": "d33bc0b4-2f17-49d3-9660-c2f5c4c40130",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-a-east",
+    "id": "e7f3393e-b3ee-4e3c-b13e-35b665232e98",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-a-north",
+    "id": "d5e73ddb-7702-4312-8e02-06410a5ba259",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-b-south",
+    "id": "77f3cfde-baad-4ab1-ad1e-9bec4641a9f9",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-b-east",
+    "id": "1f57177f-c71c-4d5f-a569-dc3fe5acbcf4",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-b-north",
+    "id": "69570f98-a875-4a15-a7bb-66ed4ff5b904",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-c-south",
+    "id": "42f209de-df64-4c5f-9571-960d0610a29c",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-c-east",
+    "id": "d0754738-6200-4a7c-abc5-d251cb961589",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-run-north-retry",
+    "id": "14e477ee-9210-451b-9ce0-6636b268fad3",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-slash-c-north",
+    "id": "bae084ce-86a7-41c8-bde2-b34cb3715115",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-cast-south",
+    "id": "32b80c60-f1ff-46b2-91b2-911ffb4e11f0",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-cast-east",
+    "id": "0232e3f9-4212-478d-ad39-47bd554f775f",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-cast-north",
+    "id": "7d0ab15c-b373-408a-a6b7-1efe0ece5ef4",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-guard-south",
+    "id": "e80a0a6d-891b-4113-bb85-e774e27fbd19",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-guard-east",
+    "id": "280eda44-3a86-48de-9739-31483c063d15",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-guard-north",
+    "id": "ce9088fb-651a-4bcf-ba53-d043ad1ac5d2",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-hurt-south",
+    "id": "a7614409-c2e5-4766-b2fc-e97ef867fce6",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-hurt-east",
+    "id": "3cb0ddfd-030b-49e9-b64c-a53e58ab7f76",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "human-hurt-north",
+    "id": "b362f50c-a2ed-4dee-9b74-0e4da19eff10",
+    "frames": 9,
+    "cost": 1,
+    "batch": 2
+  },
+  {
+    "name": "engulf-south",
+    "id": "1551bc55-fb67-4e5a-bc1e-e4012e4bd87e",
+    "frames": 17,
+    "cost": 2,
+    "batch": 2
+  },
+  {
+    "name": "engulf-west",
+    "id": "12e7a8be-b5e2-4d5e-a9a1-3bb45dc9b1d1",
+    "frames": 17,
+    "cost": 2,
+    "batch": 2
+  },
+  {
+    "name": "engulf-north",
+    "id": "6781dfff-8c67-4339-975b-081ebea133b4",
+    "frames": 17,
+    "cost": 2,
+    "batch": 2
+  },
+  {
+    "name": "transform-in-south",
+    "id": "fe95b7dd-ca74-40f3-89de-c0f90f30ab7f",
+    "frames": 17,
+    "cost": 2,
+    "batch": 2
+  },
+  {
+    "name": "transform-in-east",
+    "id": "9a052b5f-a983-454c-b222-8ae50a745012",
+    "frames": 17,
+    "cost": 2,
+    "batch": 2
+  },
+  {
+    "name": "transform-in-north",
+    "id": "e18e364b-4a14-4328-b1be-a2075b09e798",
+    "frames": 17,
+    "cost": 2,
+    "batch": 2
+  },
+  {
+    "name": "ring-open",
+    "id": "fc3fdecd-0dea-4bee-8333-ea435c2cec93",
+    "frames": 1,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "chevron-east",
+    "id": "820555ad-8d2d-47c5-a36f-77e9a2911001",
+    "frames": 1,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-idle-north-retry",
+    "id": "3ab2eb88-a5ea-4597-80d1-dcb96ebba4d9",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-run-south-retry",
+    "id": "4ebb396b-e278-4ff5-8d34-0da43b09d475",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-dash-south-retry",
+    "id": "8ef785b0-8a2e-40df-9ec1-fc99a5566f88",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-dash-north-retry",
+    "id": "643ce37e-86a3-4a99-9cbf-2640daf3fe0e",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-slash-a-south-retry",
+    "id": "eda631c0-00ee-4e5e-948f-c23f0ff8f18f",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-slash-a-north-retry",
+    "id": "948e2f9f-3048-48c1-bda1-40365026a562",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "transform-out-south",
+    "id": "43f4e86e-7a8e-44d4-af17-d35f88d0a5f6",
+    "frames": 17,
+    "cost": 2,
+    "batch": 3
+  },
+  {
+    "name": "transform-out-east",
+    "id": "2649f8b7-abe3-4779-b30e-8dd932b243f9",
+    "frames": 17,
+    "cost": 2,
+    "batch": 3
+  },
+  {
+    "name": "transform-out-north",
+    "id": "b2ce7a87-496d-431d-a5d1-2f5c565b1235",
+    "frames": 17,
+    "cost": 2,
+    "batch": 3
+  },
+  {
+    "name": "human-guard-south-retry",
+    "id": "0d9b89da-f9b0-43e2-a882-beb60328de0f",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-slash-b-south-retry",
+    "id": "928a89ed-2935-49d2-b3b4-69ee991559af",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-slash-b-north-retry",
+    "id": "a5d2179e-c67c-458c-998a-3f99db75a49f",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "ring-animated",
+    "id": "361b2c09-e5a4-44e4-86a7-313da16d2960",
+    "frames": 9,
+    "cost": 2,
+    "batch": 3
+  },
+  {
+    "name": "portrait-mask",
+    "id": "77ac8c15-87e1-4057-b901-7a0ada4c1766",
+    "frames": 1,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "crescent-animated",
+    "id": "01589e95-986a-418e-b949-a0a94a988c25",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "guard-animated",
+    "id": "db86048d-5122-4f4a-af54-acc5a7cf9bc6",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "counter-animated",
+    "id": "f95f613c-2e6c-41b8-8966-fd72284125d5",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "fissure-animated",
+    "id": "2b6f698c-ce50-4659-8cf9-f3d8dbd57afa",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "riposte-icon",
+    "id": "82725192-0417-4d15-b62e-838746ab0b6b",
+    "frames": 1,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "reticle-animated",
+    "id": "6e972456-ecb8-4c16-a27b-96726638ac57",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "chevron-animated",
+    "id": "8a3784d1-9a9e-4627-9264-03dcfd347ff7",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "ring-runes",
+    "id": "67d85430-7aa4-47d3-8952-5f88d26e3dd8",
+    "frames": 1,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "chevron-rune",
+    "id": "b9cd5c74-fb58-470a-8f96-4d84ee600f5d",
+    "frames": 1,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-slash-a-east-polish",
+    "id": "5673654e-d5a7-4f00-984c-bfa2c0f6c125",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-slash-b-south-polish",
+    "id": "ae8e5327-b62e-4906-978d-866db0863ccc",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "human-slash-b-north-polish",
+    "id": "cdd4d6c1-bb8c-49b2-9306-667430c2a37f",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "engulf-west-polish",
+    "id": "aae99b92-6fd7-402a-ad18-e90f05a063d5",
+    "frames": 17,
+    "cost": 2,
+    "batch": 3
+  },
+  {
+    "name": "brazier-animated",
+    "id": "e9122732-c675-4052-ae50-3cd02352889b",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "guard-polish",
+    "id": "6e29e79c-45fc-40d2-9677-e279ba86ecf1",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "counter-polish",
+    "id": "2fa1978e-f99b-4853-8a4b-8ee2437cc809",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  },
+  {
+    "name": "ring-polish",
+    "id": "155e456d-d8c7-49cc-a8e1-01f99e19af7e",
+    "frames": 9,
+    "cost": 2,
+    "batch": 3
+  },
+  {
+    "name": "chevron-polish",
+    "id": "d7085f9a-8fbb-4f6f-bdf3-4b540ecd7c9b",
+    "frames": 9,
+    "cost": 1,
+    "batch": 3
+  }
+]
