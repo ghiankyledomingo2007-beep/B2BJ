@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 public final class PackagedAssetLoadingTest {
     public static void main(String[] args) {
         loadsRuntimeAssetFromClasspath();
+        RainorayArtTest.main(new String[0]);
         System.out.println("PackagedAssetLoadingTest passed");
     }
 
