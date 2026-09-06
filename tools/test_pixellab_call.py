@@ -14,6 +14,19 @@ spec.loader.exec_module(client)
 
 
 class PixelLabCallTest(unittest.TestCase):
+    def test_character_tools_are_scoped_and_return_redacted_results(self):
+        for name in ("create_character", "animate_character", "get_character"):
+            replies = [b'{"result":{"protocolVersion":"2025-03-26"}}', b'',
+                       b'{"result":{"content":[{"type":"text","text":"fake-override"}]}}']
+            def respond(request, timeout):
+                response = io.BytesIO(replies.pop(0)); response.headers = {}; return response
+            with patch.dict(os.environ, {"PIXELLAB_AUTH_HEADER": "Bearer fake-override"}), \
+                 patch.object(client.urllib.request, "urlopen", side_effect=respond), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                result = client.main(name, {})
+            self.assertNotIn("fake-override", json.dumps(result))
+            self.assertIn("result", result)
+
     def test_temporary_auth_does_not_read_or_replace_private_config(self):
         replies = [b'{"result":{"protocolVersion":"2025-03-26"}}', b'',
                    b'{"result":{"content":[{"type":"text","text":"fake-override"}]}}']
