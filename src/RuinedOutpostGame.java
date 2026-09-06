@@ -7,7 +7,7 @@ import java.util.Set;
 
 public final class RuinedOutpostGame {
     public enum EventType {
-        DASH, ATTACK, WATER_IMPACT, TIDE_IMPACT, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
+        DASH, ATTACK, WATER_IMPACT, TIDE_IMPACT, TIDE_RELEASE, TIDE_DISSIPATE, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
         TRANSFORM, REVERT, GUARDIAN_AWAKENED, GUARDIAN_SLAM, VICTORY, ROOM_ENTERED, SPIT_SHOT, SPIT_IMPACT,
         ABSORB_START, ABSORBED, HEALED, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER
     }
@@ -367,7 +367,10 @@ public final class RuinedOutpostGame {
     }
     private void resolveStrike() {
         if(waterCast) {
-            if(!player.bladeForm()) projectiles.add(new WaterProjectile(player.x(),player.y(),aimX,aimY,heavyCast));
+            if(!player.bladeForm()) {
+                projectiles.add(new WaterProjectile(player.x(),player.y(),aimX,aimY,heavyCast));
+                if(heavyCast)events.add(new Event(EventType.TIDE_RELEASE,player.x(),player.y(),true));
+            }
             return;
         }
         if(!player.bladeForm()) return;
@@ -401,7 +404,10 @@ public final class RuinedOutpostGame {
             int steps=Math.max(1,(int)Math.ceil(wave.speed()*seconds/4));
             for(int i=0;i<steps&&wave.alive();i++) {
                 wave.advance(seconds/steps);
-                if(!wave.alive()) break;
+                if(!wave.alive()) {
+                    if(wave.heavy())events.add(new Event(EventType.TIDE_DISSIPATE,wave.x(),wave.y(),true));
+                    break;
+                }
                 if(map.waterBlocked(wave.x(),wave.y()+Player.COLLISION_Y_OFFSET,wave.radius())) {
                     wave.stop();
                 } else if(map.room()==9&&guardian.alive()
