@@ -1,0 +1,9 @@
+{
+ "description": "A fallen wooden signal mast lying on the ground with a snapped crossbar and a torn faded navy pennant, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+ "width": 96,
+ "height": 64,
+ "view": "high top-down",
+ "no_background": true,
+ "detail": "low detail",
+ "outline": "selective outline"
+}

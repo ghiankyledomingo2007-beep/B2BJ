@@ -1,0 +1,234 @@
+[
+ {
+  "name": "gate-pier",
+  "tool": "create_image_pixflux",
+  "id": "6d1e6cc0-1517-4e16-9a03-a3a6b7a15098",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 6d1e6cc0-1517-4e16-9a03-a3a6b7a15098\njob_id: 6d1e6cc0-1517-4e16-9a03-a3a6b7a15098\ndescription: A ruined stone gate pier: one tall square masonry column of dark slate blocks, top broken off and crumbling, one rusted iron hinge bracket on its side, seen from a high top-down three-quarter camera. T"
+ },
+ {
+  "name": "watch-platform",
+  "tool": "create_image_pixflux",
+  "id": "ea30ccf2-763e-4abd-b137-70a0b8a7fae8",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: ea30ccf2-763e-4abd-b137-70a0b8a7fae8\njob_id: ea30ccf2-763e-4abd-b137-70a0b8a7fae8\ndescription: A collapsed timber watch platform: a low raised plank deck on four wooden posts, one side fallen and sagging to the ground, a broken ladder leaning against it, seen from a high top-down three-quarter c"
+ },
+ {
+  "name": "tower-footing",
+  "tool": "create_image_pixflux",
+  "id": "8bfb5d9c-5896-48d4-8a34-e7cead288b07",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 8bfb5d9c-5896-48d4-8a34-e7cead288b07\njob_id: 8bfb5d9c-5896-48d4-8a34-e7cead288b07\ndescription: A collapsed round stone signal tower footing: a ring of dark slate masonry two courses high, broken open on the south side, loose rubble inside the ring, seen from a high top-down three-quarter camera."
+ },
+ {
+  "name": "wall-end",
+  "tool": "create_image_pixflux",
+  "id": "731c4c0f-848d-486b-afc5-dd913bdbff6b",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 731c4c0f-848d-486b-afc5-dd913bdbff6b\njob_id: 731c4c0f-848d-486b-afc5-dd913bdbff6b\ndescription: The broken end fragment of a low dark slate stone wall, crumbling stepped blocks tapering down to loose rubble, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandon"
+ },
+ {
+  "name": "lean-to",
+  "tool": "create_image_pixflux",
+  "id": "5d514a63-03e8-4942-b7c9-a50171453f8f",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 5d514a63-03e8-4942-b7c9-a50171453f8f\njob_id: 5d514a63-03e8-4942-b7c9-a50171453f8f\ndescription: A small ruined lean-to shelter: two upright weathered timber posts holding one sagging torn brown canvas roof that slopes down to the back, open front, seen from a high top-down three-quarter camera. T"
+ },
+ {
+  "name": "weapon-rack",
+  "tool": "create_image_pixflux",
+  "id": "52f93874-12c2-4625-8731-e93e2ce52560",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 52f93874-12c2-4625-8731-e93e2ce52560\njob_id: 52f93874-12c2-4625-8731-e93e2ce52560\ndescription: A damaged wooden spear rack: two upright posts and a crossbar holding three dull iron-tipped spears, one post cracked and leaning, seen from a high top-down three-quarter camera. Not isometric. Top-dow"
+ },
+ {
+  "name": "bedroll",
+  "tool": "create_image_pixflux",
+  "id": "500a0efc-542e-43f0-ab5d-55869943f9c1",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 500a0efc-542e-43f0-ab5d-55869943f9c1\njob_id: 500a0efc-542e-43f0-ab5d-55869943f9c1\ndescription: A single worn dark blue soldier's bedroll unrolled flat on the ground with a folded grey wool blanket on top, seen from directly above, one single object. Top-down video game sprite, rainy abandoned me"
+ },
+ {
+  "name": "stretcher",
+  "tool": "create_image_pixflux",
+  "id": "c29fd48e-feb2-455a-824e-1bbf82a1f895",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: c29fd48e-feb2-455a-824e-1bbf82a1f895\njob_id: c29fd48e-feb2-455a-824e-1bbf82a1f895\ndescription: One empty canvas field stretcher lying flat on mud: two long wooden carrying poles with torn grey-brown canvas stretched between them, seen from directly above, one single object. Top-down video game s"
+ },
+ {
+  "name": "medical-chest",
+  "tool": "create_image_pixflux",
+  "id": "77c0cf06-3cb6-4fae-8209-2c0f16aa05c8",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 77c0cf06-3cb6-4fae-8209-2c0f16aa05c8\njob_id: 77c0cf06-3cb6-4fae-8209-2c0f16aa05c8\ndescription: A small battered closed wooden field medical chest with dull iron corner straps and a dull iron clasp, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandoned mediev"
+ },
+ {
+  "name": "bandage",
+  "tool": "create_image_pixflux",
+  "id": "496353c5-55ee-475f-9b05-a7c36f54ebf9",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 496353c5-55ee-475f-9b05-a7c36f54ebf9\njob_id: 496353c5-55ee-475f-9b05-a7c36f54ebf9\ndescription: A small bundle of rolled off-white linen bandages tied with a cord, lying on the ground, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpo"
+ },
+ {
+  "name": "signal-mast",
+  "tool": "create_image_pixflux",
+  "id": "b24fb40b-36dc-4c34-b49e-dad8ff5a1a84",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: b24fb40b-36dc-4c34-b49e-dad8ff5a1a84\njob_id: b24fb40b-36dc-4c34-b49e-dad8ff5a1a84\ndescription: A fallen wooden signal mast lying on the ground with a snapped crossbar and a torn faded navy pennant, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval "
+ },
+ {
+  "name": "reeds",
+  "tool": "create_image_pixflux",
+  "id": "7aaf9eee-da32-4f13-81bc-68a36ac7c86d",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 7aaf9eee-da32-4f13-81bc-68a36ac7c86d\njob_id: 7aaf9eee-da32-4f13-81bc-68a36ac7c86d\ndescription: A low clump of wet dark grey-green reeds and sedge growing from mud, dull muted colours, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpo"
+ },
+ {
+  "name": "sack",
+  "tool": "create_image_pixflux",
+  "id": "8404715d-9794-4252-82eb-bfab08d03380",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 8404715d-9794-4252-82eb-bfab08d03380\njob_id: 8404715d-9794-4252-82eb-bfab08d03380\ndescription: One torn grey burlap grain sack lying on the ground, split open with dull grain spilling out, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military "
+ },
+ {
+  "name": "wheel",
+  "tool": "create_image_pixflux",
+  "id": "520065e6-04ba-4c1e-8d46-2ab1c7505f3c",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 520065e6-04ba-4c1e-8d46-2ab1c7505f3c\njob_id: 520065e6-04ba-4c1e-8d46-2ab1c7505f3c\ndescription: A broken wooden cart wheel lying flat on the ground, missing spokes, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palet"
+ },
+ {
+  "name": "canvas-debris",
+  "tool": "create_image_pixflux",
+  "id": "8025f059-374c-41ae-9ecf-3b63ab37e4af",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 8025f059-374c-41ae-9ecf-3b63ab37e4af\njob_id: 8025f059-374c-41ae-9ecf-3b63ab37e4af\ndescription: Torn brown canvas tangled with two broken roof timbers lying flat on the ground, one loose pile, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval milita"
+ },
+ {
+  "name": "gate-pier-r1",
+  "tool": "create_image_pixflux",
+  "id": "d90807d3-3f94-4cb3-93c7-a7bdf39aba90",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: d90807d3-3f94-4cb3-93c7-a7bdf39aba90\njob_id: d90807d3-3f94-4cb3-93c7-a7bdf39aba90\ndescription: A ruined stone gate pier: one tall square column of dark slate masonry blocks, top broken off and crumbling, one rusted iron hinge bracket on the front. Front face square to the camera, seen from the f"
+ },
+ {
+  "name": "wall-end-r1",
+  "tool": "create_image_pixflux",
+  "id": "678a79b3-e18f-452b-b787-0bfe452a7af2",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 678a79b3-e18f-452b-b787-0bfe452a7af2\njob_id: 678a79b3-e18f-452b-b787-0bfe452a7af2\ndescription: A short broken stub of a low stone wall: three courses of dark slate blocks whose right end has crumbled into a rough taper of loose fallen blocks. Front face square to the camera, seen from the front "
+ },
+ {
+  "name": "watch-platform-r1",
+  "tool": "create_image_pixflux",
+  "id": "37e41415-89cd-41e5-9868-f6285d17952f",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 37e41415-89cd-41e5-9868-f6285d17952f\njob_id: 37e41415-89cd-41e5-9868-f6285d17952f\ndescription: A collapsed timber watch platform: a low rectangular plank deck on wooden posts, front edge straight across, the right half fallen and broken down to the ground, a broken ladder against the front. Fron"
+ },
+ {
+  "name": "lean-to-r1",
+  "tool": "create_image_pixflux",
+  "id": "eaa86336-9473-48ea-8be8-4651cefbd879",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: eaa86336-9473-48ea-8be8-4651cefbd879\njob_id: eaa86336-9473-48ea-8be8-4651cefbd879\ndescription: A small ruined lean-to: only two upright weathered timber posts holding one sagging torn brown canvas roof that slopes down to the back, open front, no plank walls, no floor. Front face square to the c"
+ },
+ {
+  "name": "weapon-rack-r1",
+  "tool": "create_image_pixflux",
+  "id": "b79aaa6c-7f54-496c-834e-d702e43cc6b2",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: b79aaa6c-7f54-496c-834e-d702e43cc6b2\njob_id: b79aaa6c-7f54-496c-834e-d702e43cc6b2\ndescription: A damaged wooden spear rack: two upright posts joined by one crossbar, three dull iron-tipped spears leaning upright in it, one post cracked. Front face square to the camera, seen from the front and sl"
+ },
+ {
+  "name": "medical-chest-r1",
+  "tool": "create_image_pixflux",
+  "id": "d95026fb-c196-4ca2-8672-b285d55f5d70",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: d95026fb-c196-4ca2-8672-b285d55f5d70\njob_id: d95026fb-c196-4ca2-8672-b285d55f5d70\ndescription: A small battered closed wooden field medical chest with dull iron corner straps and a dull iron clasp on the front. Front face square to the camera, seen from the front and slightly above, straight-on,"
+ },
+ {
+  "name": "reeds-r1",
+  "tool": "create_image_pixflux",
+  "id": "8ac03a1b-02bb-4673-a639-255b298de3aa",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 8ac03a1b-02bb-4673-a639-255b298de3aa\njob_id: 8ac03a1b-02bb-4673-a639-255b298de3aa\ndescription: A low clump of wet dark grey-green reeds and sedge growing from dark mud, dull muted colours, no bright green. Lying flat on the ground, seen from directly above, one single isolated object. Top-down v"
+ },
+ {
+  "name": "bedroll-r1",
+  "tool": "create_image_pixen",
+  "id": "118006b1-347c-4a52-adc9-555b8a3d799b",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 118006b1-347c-4a52-adc9-555b8a3d799b\njob_id: 118006b1-347c-4a52-adc9-555b8a3d799b\nmodel: pixen\ndescription: A single worn dark blue soldier's bedroll unrolled flat with a folded grey wool blanket on top. Lying flat on the ground, seen from directly above, one single isolated object. Top-down vid"
+ },
+ {
+  "name": "stretcher-r1",
+  "tool": "create_image_pixen",
+  "id": "a3d2eb30-d906-44e3-b336-5e5490ce91fc",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: a3d2eb30-d906-44e3-b336-5e5490ce91fc\njob_id: a3d2eb30-d906-44e3-b336-5e5490ce91fc\nmodel: pixen\ndescription: One empty canvas field stretcher: two long wooden carrying poles with torn grey-brown canvas stretched between them. Lying flat on the ground, seen from directly above, one single isolated"
+ },
+ {
+  "name": "bandage-r1",
+  "tool": "create_image_pixen",
+  "id": "b8b8bf3e-3451-4253-92bc-d5328da3603e",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: b8b8bf3e-3451-4253-92bc-d5328da3603e\njob_id: b8b8bf3e-3451-4253-92bc-d5328da3603e\nmodel: pixen\ndescription: A bundle of three rolled off-white linen bandage rolls tied together with a cord, filling the frame. Lying flat on the ground, seen from directly above, one single isolated object. Top-dow"
+ },
+ {
+  "name": "signal-mast-r1",
+  "tool": "create_image_pixen",
+  "id": "bac9b388-45b1-4238-a723-3bd3d70073b0",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: bac9b388-45b1-4238-a723-3bd3d70073b0\njob_id: bac9b388-45b1-4238-a723-3bd3d70073b0\nmodel: pixen\ndescription: A fallen wooden signal mast with a snapped crossbar and a torn faded navy pennant still tied to it. Lying flat on the ground, seen from directly above, one single isolated object. Top-down"
+ },
+ {
+  "name": "sack-r1",
+  "tool": "create_image_pixen",
+  "id": "bf1ba5ef-727f-40f9-99e0-e25af511df95",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: bf1ba5ef-727f-40f9-99e0-e25af511df95\njob_id: bf1ba5ef-727f-40f9-99e0-e25af511df95\nmodel: pixen\ndescription: One torn grey burlap grain sack split open with dull grey-brown grain spilling out. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game spri"
+ },
+ {
+  "name": "wheel-r1",
+  "tool": "create_image_pixen",
+  "id": "9b163419-989b-47ca-a15d-fd7a26b1bb49",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 9b163419-989b-47ca-a15d-fd7a26b1bb49\njob_id: 9b163419-989b-47ca-a15d-fd7a26b1bb49\nmodel: pixen\ndescription: A broken wooden cart wheel with missing spokes, only the wheel. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rainy abandoned "
+ },
+ {
+  "name": "canvas-debris-r1",
+  "tool": "create_image_pixen",
+  "id": "10c12386-4c42-489f-82ab-be86df423df8",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 10c12386-4c42-489f-82ab-be86df423df8\njob_id: 10c12386-4c42-489f-82ab-be86df423df8\nmodel: pixen\ndescription: Torn brown canvas tangled with two broken roof timbers, one loose flat pile. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rai"
+ }
+]

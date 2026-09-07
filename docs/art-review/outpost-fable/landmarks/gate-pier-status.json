@@ -1,0 +1,1 @@
+{"jsonrpc": "2.0", "id": 2, "result": {"content": [{"type": "text", "text": "status: completed\nid: 6d1e6cc0-1517-4e16-9a03-a3a6b7a15098\njob_id: 6d1e6cc0-1517-4e16-9a03-a3a6b7a15098\nframes: 1\ndownload: https://api.pixellab.ai/mcp/images/6d1e6cc0-1517-4e16-9a03-a3a6b7a15098/download"}], "isError": false}}

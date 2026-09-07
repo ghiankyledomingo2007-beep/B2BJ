@@ -1,0 +1,9 @@
+{
+ "description": "A single worn dark blue soldier's bedroll unrolled flat on the ground with a folded grey wool blanket on top, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+ "width": 64,
+ "height": 48,
+ "view": "high top-down",
+ "no_background": true,
+ "detail": "low detail",
+ "outline": "selective outline"
+}
