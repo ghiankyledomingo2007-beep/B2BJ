@@ -1,0 +1,15 @@
+[
+  {"name":"terrain","id":"4f5153b2-1e64-44e9-a522-d4f70ffb2f11","kind":"tileset","decision":"rejected: brick-like ground"},
+  {"name":"rubble","id":"fa5fe1fd-06fb-4743-af82-64e4e96ef949","kind":"image","decision":"rejected: tall rock tower"},
+  {"name":"remains","id":"2319eee0-3341-438b-ab6f-293a2fd6f8c0","kind":"image","decision":"selected: fallen-arms.png"},
+  {"name":"stakes","id":"c5418e7f-2f53-4c65-8fb0-9981881e1ae7","kind":"image","decision":"rejected: intact fence"},
+  {"name":"rubble-flat","id":"be0acc4e-af1f-4268-a6cb-38b98ecb0629","kind":"image","decision":"rejected: tilesheet-like layout"},
+  {"name":"stakes-flat","id":"43952548-abc6-48df-b3de-0b3b5130011b","kind":"image","decision":"rejected: icons and greenery"},
+  {"name":"terrain-simple","id":"d98811ab-5717-468e-8e73-1a4e6baf2d9d","kind":"tileset","decision":"rejected after preview: patterned panels"},
+  {"name":"banks","id":"5504fa07-e4c7-44fb-a875-f1f35c0697cf","kind":"tileset","decision":"rejected after preview: bright repeated rim"},
+  {"name":"debris-simple","id":"d141855e-a37b-4c38-a7ac-80e3478b3ea0","kind":"image","decision":"usable candidate; not integrated"},
+  {"name":"logs-simple","id":"db3115b9-6cca-46e4-9c5c-3d67a68e7f1d","kind":"image","decision":"selected: splinters.png"},
+  {"name":"terrain-pro","id":"6999e95e-6f0d-4230-8fd6-0ec52eff97f4","kind":"tileset","decision":"failed: Tier 1 is required; backup balance remained 40"},
+  {"name":"cobble","id":"c324ff4d-25e6-4387-ae79-83dc2e45adb8","kind":"tileset","decision":"rejected: repetitive brick border"},
+  {"name":"banks-grey","id":"5aa9658d-2cd3-46e9-b0a7-57016da154e6","kind":"tileset","decision":"rejected: orange rim and grid surface"}
+]

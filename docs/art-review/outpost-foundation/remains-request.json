@@ -1,0 +1,5 @@
+{
+  "description": "Game ground prop sprite, abandoned fallen common soldier equipment in rain-soaked ruined military outpost: one dented dull iron round shield lying flat diagonally over two short snapped grey brown spear shafts, empty and noninteractive, no body. Low top surfaces seen from top-down three-quarter camera. Charcoal navy shadows, desaturated iron grey, weathered brown timber, faded navy cloth scrap. Crisp medium sized pixel clusters, muted dark values. Transparent background with tiny dark contact shadow only. NO gold ornament, NO coins, NO jewels, NO upright display, NO grass base, NO sand patch, NO glow, no gore, no words.",
+  "width": 64, "height": 48, "view": "high top-down", "no_background": true,
+  "detail": "low detail", "outline": "selective outline"
+}

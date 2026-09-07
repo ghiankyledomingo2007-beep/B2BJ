@@ -1,0 +1,5 @@
+{
+  "description": "Game sprite for rain-soaked ruined military outpost, small LOW scattered collapsed slate wall stones, irregular broken dull grey blue masonry blocks lying mostly flat, understated charcoal contact shadow, same material as old outpost stone walls. Compact asymmetrical pile only 24 pixels tall centered low in canvas. Top-down three-quarter view, crisp restrained pixel clusters. Transparent background. NO gold, NO gems, NO ore, NO grass, NO sand pedestal, NO green island, NO flame, no glow, no tall boulder tower.",
+  "width": 64, "height": 48, "view": "high top-down", "no_background": true,
+  "detail": "low detail", "outline": "selective outline"
+}

@@ -1,0 +1,7 @@
+{
+  "lower_description": "dark wet dirt", "lower_base_tile_id": "1e326a27-ceaa-4bd2-aa78-3ffb7279f287",
+  "upper_description": "dark grey jagged rocks",
+  "transition_description": "rough rocky earthen slope",
+  "tile_size": {"width":32,"height":32}, "transition_size":0.25,
+  "view":"high top-down", "outline":"lineless", "shading":"basic shading", "detail":"medium detail", "mode":"standard"
+}

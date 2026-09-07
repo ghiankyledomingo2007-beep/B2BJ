@@ -124,8 +124,8 @@ public final class RuinedOutpostMap {
         // These silhouettes fill the margins, never the spawn, main roads or door mouths.
         switch(room) {
             case 0 -> {dress(240,176,Decoration.RUBBLE);dress(1060,640,Decoration.CART);}
-            case 1 -> {dress(525,390,Decoration.SPLINTERS);dress(755,405,Decoration.SPLINTERS);
-                dress(565,445,Decoration.FALLEN_ARMS);}
+            case 1 -> {dress(515,390,Decoration.SPLINTERS);dress(765,405,Decoration.SPLINTERS);
+                dress(535,455,Decoration.FALLEN_ARMS);}
             case 2 -> {dress(180,520,Decoration.CART);dress(1040,180,Decoration.SHIELD_CACHE);}
             case 3 -> {dress(230,620,Decoration.SHIELD_CACHE);dress(1050,170,Decoration.BRAZIER);}
             case 4 -> {dress(320,560,Decoration.BRAZIER);dress(990,220,Decoration.SHIELD_CACHE);}

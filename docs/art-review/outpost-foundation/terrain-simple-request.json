@@ -1,0 +1,12 @@
+{
+  "lower_description": "dark wet dirt",
+  "upper_description": "worn grey flagstone ground",
+  "transition_description": "mud between broken stone slabs",
+  "tile_size": {"width": 32, "height": 32},
+  "transition_size": 0,
+  "view": "high top-down",
+  "outline": "lineless",
+  "shading": "medium shading",
+  "detail": "medium detail",
+  "mode": "standard"
+}

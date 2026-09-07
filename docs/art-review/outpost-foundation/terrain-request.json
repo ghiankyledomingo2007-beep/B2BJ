@@ -1,0 +1,12 @@
+{
+  "lower_description": "rain-soaked dark grey brown earth, compact military road mud, subtle sparse pebble clusters, desaturated slate grey and charcoal olive, calm dark readable walking surface, seamless flat ground, no grass no brick walls no objects",
+  "upper_description": "flat horizontal worn irregular grey slate flagstone pavement seen from above, large chipped stone slabs sunk flush into dark mud, abandoned military outpost, restrained desaturated grey blue and charcoal, broad calm surfaces, no vertical brickwork no glowing stones no walls",
+  "transition_description": "broken irregular paving edges sinking into damp dark earth, small cracks filled with mud, flush level ground, subtle ragged outline",
+  "tile_size": {"width": 32, "height": 32},
+  "transition_size": 0.25,
+  "view": "high top-down",
+  "outline": "lineless",
+  "shading": "basic shading",
+  "detail": "low detail",
+  "mode": "standard"
+}

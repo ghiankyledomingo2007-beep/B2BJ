@@ -122,7 +122,7 @@ public final class ArenaTwistTest {
                 for(var door:map.doors())assert Math.hypot(item.x()-door.x(),item.y()-door.y())>180;
             }
         }
-        assert kinds.size()==4;
+        assert kinds.size()==RuinedOutpostMap.Decoration.values().length : "every authored dressing kind must be exercised";
         assert new RuinedOutpostMap(9).barriers().isEmpty() : "arena remains open; no new full-width walls";
     }
 }

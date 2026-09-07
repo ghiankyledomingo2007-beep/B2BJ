@@ -43,8 +43,7 @@ public final class B2BJ extends JPanel {
     private static final Font SMALL_FONT = new Font(Font.MONOSPACED, Font.BOLD, 14);
 
     private final RuinedOutpostGame game = new RuinedOutpostGame();
-    private final BufferedImage[] terrainTiles = outdoorTiles(renderTiles(
-            loadImage("assets/tilesets/ruined_outpost/ruined_outpost_wang.png")));
+    private final BufferedImage[] terrainTiles = loadEnvironmentTiles();
     private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/ruined_outpost/earth_banks.png"));
     private final BufferedImage slimeSheet = loadSlimeSheet();
     private final BufferedImage slimeIdleSheet = loadImage("assets/characters/slime/slime_idle.png");
@@ -1527,6 +1526,29 @@ public final class B2BJ extends JPanel {
     static BufferedImage[] outdoorTiles(BufferedImage[] source) {
         // Native Wang transitions already contain the reviewed earth and paving edges.
         return source;
+    }
+
+    private static BufferedImage[] loadEnvironmentTiles() {
+        var approved=loadImage("assets/tilesets/ruined_outpost/outpost_ground_reviewed.png");
+        if(approved!=null)return outdoorTiles(renderTiles(approved));
+        // ponytail: retain the stable blockout until a replacement passes in-scene art review.
+        var source=renderTiles(loadImage("assets/tilesets/ruined_outpost/ruined_outpost_wang.png"));
+        if(source==null)return null;
+        var tiles=new BufferedImage[16];
+        for(int mask=0;mask<16;mask++) {
+            var tile=new BufferedImage(64,64,BufferedImage.TYPE_INT_ARGB);
+            for(int y=0;y<32;y++)for(int x=0;x<32;x++) {
+                double u=x/31.0,v=y/31.0;
+                double blend=((mask&1)!=0?(1-u)*(1-v):0)+((mask&2)!=0?u*(1-v):0)
+                        +((mask&4)!=0?(1-u)*v:0)+((mask&8)!=0?u*v:0);
+                int hash=(x/3*31+y/2*17)%29;
+                int earth=hash<2?0xff4a4b3e:hash<6?0xff373d35:0xff303630;
+                int pixel=blend>=.5?source[15].getRGB(x*2,y*2):earth;
+                for(int dy=0;dy<2;dy++)for(int dx=0;dx<2;dx++)tile.setRGB(x*2+dx,y*2+dy,pixel);
+            }
+            tiles[mask]=tile;
+        }
+        return tiles;
     }
 
     private void bindKeys() {

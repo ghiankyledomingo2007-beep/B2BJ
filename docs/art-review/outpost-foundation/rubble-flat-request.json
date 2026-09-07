@@ -1,0 +1,5 @@
+{
+  "description": "Top down game ground decoration: five small flat broken paving slabs scattered widely across the ground, all lying down with space between the pieces. Dull dark grey slate with muted navy shadows. Short low horizontal arrangement, simple chunky pixels, soft overcast light. Transparent background, isolated loose stone fragments only.",
+  "width": 64, "height": 32, "view": "high top-down", "no_background": true,
+  "detail": "low detail", "outline": "selective outline", "shading": "basic shading"
+}

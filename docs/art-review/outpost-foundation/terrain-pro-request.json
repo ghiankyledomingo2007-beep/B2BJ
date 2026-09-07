@@ -1,0 +1,8 @@
+{
+  "lower_description": "Rain-soaked compacted charcoal brown mud. Flat dark ground, restrained sparse pebbles, low contrast irregular pixel clusters. No green grass, no purple tint, no pattern grid.",
+  "upper_description": "Old military road of irregular broken grey slate flagstones, broad plain chipped stone faces, random masonry sizes, dirt packed into narrow dark cracks. Flat paving viewed from overhead, desaturated charcoal slate, restrained highlights. No engraved panels, no decorative symbols, no metal grates, no vertical brick wall, no bevelled border.",
+  "transition_description": "Irregular worn stone fragments merge flush into the same dark mud, naturally ragged low-contrast broken edges, no raised rim.",
+  "tile_size": {"width": 32, "height": 32}, "transition_size": 0,
+  "view": "high top-down", "outline": "lineless", "shading": "basic shading",
+  "detail": "medium detail", "mode": "pro", "spread_x": 0.25, "slope_size": 0, "raggedness": 0.65
+}

@@ -1,0 +1,12 @@
+{
+  "lower_description": "dark wet dirt",
+  "upper_description": "raised rough dark earth embankment with exposed stones and roots",
+  "transition_description": "eroded steep muddy slope",
+  "tile_size": {"width": 32, "height": 32},
+  "transition_size": 0.25,
+  "view": "high top-down",
+  "outline": "lineless",
+  "shading": "medium shading",
+  "detail": "medium detail",
+  "mode": "standard"
+}

@@ -13,10 +13,11 @@ public final class PlayerMovementTest {
         map=new RuinedOutpostMap(1);
         var fence=map.barriers().get(0);
         double contactX=fence.centerX()-fence.width()/2-Player.COLLISION_RADIUS;
-        p=new Player(490,360);
+        double approachY=fence.centerY()-Player.COLLISION_Y_OFFSET;
+        p=new Player(contactX-82,approachY);
         p.move(1,0,1,map);
         assert p.x()<=contactX && p.x()>contactX-8 : "feet should meet barricade without a large gap";
-        p=new Player(460,360);
+        p=new Player(contactX-112,approachY);
         assert p.dash(1,0);
         assert p.invulnerable() && !p.hurt(1) : "dash must evade damage";
         p.move(0,0,Player.DASH_DURATION,map);
