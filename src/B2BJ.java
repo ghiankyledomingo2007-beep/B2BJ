@@ -45,6 +45,7 @@ public final class B2BJ extends JPanel {
     private final RuinedOutpostGame game = new RuinedOutpostGame();
     private final BufferedImage[] terrainTiles = outdoorTiles(renderTiles(
             loadImage("assets/tilesets/ruined_outpost/ruined_outpost_wang.png")));
+    private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/ruined_outpost/earth_banks.png"));
     private final BufferedImage slimeSheet = loadSlimeSheet();
     private final BufferedImage slimeIdleSheet = loadImage("assets/characters/slime/slime_idle.png");
     private final BufferedImage slimeCastSheet=loadImage("assets/characters/slime/slime_cast.png");
@@ -409,7 +410,8 @@ public final class B2BJ extends JPanel {
         for(var barrier:game.map().barriers())
             draws.add(new DepthDraw(barrier.centerY()+barrier.height()/2,
                     ()->drawBarrier(canvas,barrier,cameraX,cameraY)));
-        for(var dressing:game.map().dressing())draws.add(new DepthDraw(dressing.y(),()->{
+        for(var dressing:game.map().dressing()) {
+            Runnable paint=()->{
             var decoration=dressing.decoration();var sprite=dressingSprites.get(decoration);
             if(sprite!=null) {
                 int left=(int)Math.round(dressing.x())-cameraX-decoration.anchorX*2;
@@ -419,7 +421,9 @@ public final class B2BJ extends JPanel {
                     canvas.drawImage(sprite,left,top,left+128,top+128,frame*64,0,frame*64+64,64,null);
                 } else canvas.drawImage(sprite,left,top,sprite.getWidth()*2,sprite.getHeight()*2,null);
             }
-        }));
+            };
+            if(dressing.decoration().ground())paint.run();else draws.add(new DepthDraw(dressing.y(),paint));
+        }
         queueDoors(draws,canvas,cameraX,cameraY);
         Player player=game.player();
         for(Wisp scout:game.scouts()) if(scout.alive())
@@ -932,6 +936,14 @@ public final class B2BJ extends JPanel {
     }
 
     private void drawBanks(Graphics2D canvas,int cameraX,int cameraY) {
+        if(bankTiles!=null) {
+            var map=game.map();var ink=(Graphics2D)canvas.create();
+            ink.translate(-cameraX,-cameraY);ink.clip(map.bankShape());
+            for(int y=Math.max(0,cameraY/64);y<Math.min(map.heightInTiles(),(cameraY+HEIGHT)/64+1);y++)
+                for(int x=Math.max(0,cameraX/64);x<Math.min(map.widthInTiles(),(cameraX+WIDTH)/64+1);x++)
+                    ink.drawImage(bankTiles[map.bankMask(x,y)],x*64,y*64,null);
+            ink.dispose();return;
+        }
         for(var bank:game.map().banks()) {
             int x=(int)(bank.centerX()-bank.width()/2)-cameraX;
             int y=(int)(bank.centerY()-bank.height()/2)-cameraY;
@@ -947,6 +959,7 @@ public final class B2BJ extends JPanel {
     private void drawFieldRemains(Graphics2D canvas,int cameraX,int cameraY) {
         // Fallen equipment is ground dressing; standing objects use the map's collision rectangles.
         int room=game.map().room();
+        if(room==1)return; // The reference breach uses authored fallen equipment instead of repeated stamps.
         int[][] spots={{480,600},{1020,210},{360,400}};
         for(int i=0;i<spots.length;i++) {
             int x=(int)game.map().authored(spots[i][0])-cameraX;

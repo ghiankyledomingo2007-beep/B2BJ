@@ -29,13 +29,15 @@ public final class RuinedOutpostMap {
     /** Rendered at 2x and depth sorted by ground anchor; only upright bases are solid. */
     public enum Decoration {
         CART("broken-cart",40,70), SHIELD_CACHE("shield-cache",32,54),
-        BRAZIER("brazier",32,56), RUBBLE("rubble",32,54);
+        BRAZIER("brazier",32,56), RUBBLE("rubble",32,54),
+        FALLEN_ARMS("fallen-arms",32,44), SPLINTERS("splinters",32,54);
         final String file;
         final int anchorX,anchorY;
         Decoration(String file,int anchorX,int anchorY) {
             this.file=file;this.anchorX=anchorX;this.anchorY=anchorY;
         }
         String path() {return "assets/props/outpost/"+file+".png";}
+        boolean ground() { return this==FALLEN_ARMS||this==SPLINTERS; }
     }
     public record Dressing(double x,double y,Decoration decoration) {
         /** World-pixel feet calibrated against the selected native cart/brazier images. */
@@ -70,6 +72,8 @@ public final class RuinedOutpostMap {
     private final List<Door> doors = new ArrayList<>();
     private final List<Dressing> dressing = new ArrayList<>();
     private final List<Obstacle> dressingObstacles = new ArrayList<>();
+    private final int[][] bankMasks=new int[18][30];
+    private final java.awt.geom.Area bankShape=new java.awt.geom.Area();
     private boolean gateOpen;
     private boolean guardianPresent;
     private double liveGuardianX,liveGuardianY;
@@ -98,9 +102,13 @@ public final class RuinedOutpostMap {
             if(!breachAt(64,y)) banks.add(new Obstacle(48,y,96+(y/64%4)*16,64));
             if(!breachAt(worldWidth()-64,y)) banks.add(new Obstacle(worldWidth()-48,y,96+(y/64%3)*16,64));
         }
+        for(var bank:banks)bankShape.add(new java.awt.geom.Area(new java.awt.geom.Rectangle2D.Double(
+                bank.centerX()-bank.width()/2,bank.centerY()-bank.height()/2,bank.width(),bank.height())));
+        for(int y=0;y<heightInTiles();y++)for(int x=0;x<widthInTiles();x++)
+            bankMasks[y][x]=(bankAt(x,y)?1:0)|(bankAt(x+1,y)?2:0)|(bankAt(x,y+1)?4:0)|(bankAt(x+1,y+1)?8:0);
         switch (room) {
             case 0 -> { prop(280,240,Prop.TREE); prop(920,480,Prop.TREE); }
-            case 1 -> { prop(448,256,Prop.PALISADE); prop(832,512,Prop.PALISADE); }
+            case 1 -> { prop(448,352,Prop.PALISADE); prop(832,352,Prop.PALISADE); }
             case 2 -> { rubble(352,256,96,48); rubble(928,512,96,48); }
             case 3 -> { prop(320,240,Prop.COT); prop(960,528,Prop.COT); }
             case 4 -> prop(640,208,Prop.STANDARD);
@@ -116,7 +124,8 @@ public final class RuinedOutpostMap {
         // These silhouettes fill the margins, never the spawn, main roads or door mouths.
         switch(room) {
             case 0 -> {dress(240,176,Decoration.RUBBLE);dress(1060,640,Decoration.CART);}
-            case 1 -> {dress(240,600,Decoration.SHIELD_CACHE);dress(1030,176,Decoration.RUBBLE);}
+            case 1 -> {dress(525,390,Decoration.SPLINTERS);dress(755,405,Decoration.SPLINTERS);
+                dress(565,445,Decoration.FALLEN_ARMS);}
             case 2 -> {dress(180,520,Decoration.CART);dress(1040,180,Decoration.SHIELD_CACHE);}
             case 3 -> {dress(230,620,Decoration.SHIELD_CACHE);dress(1050,170,Decoration.BRAZIER);}
             case 4 -> {dress(320,560,Decoration.BRAZIER);dress(990,220,Decoration.SHIELD_CACHE);}
@@ -168,6 +177,12 @@ public final class RuinedOutpostMap {
     public double gateY() { return spawnY(); }
     public List<Obstacle> barriers() { return List.copyOf(barriers); }
     public List<Obstacle> banks() { return List.copyOf(banks); }
+    int bankMask(int x,int y) { return bankMasks[y][x]; }
+    java.awt.Shape bankShape() { return new java.awt.geom.Area(bankShape); }
+    private boolean bankAt(int x,int y) {
+        for(var bank:banks)if(intersects(x*TILE_SIZE,y*TILE_SIZE,1,bank))return true;
+        return false;
+    }
     public void setPassagesLocked(boolean locked) { passagesLocked=locked; }
     public void setTutorialLocked(boolean locked) { tutorialLocked=locked; }
     public boolean passageOpen(Door door) {
@@ -229,6 +244,11 @@ public final class RuinedOutpostMap {
     }
     private boolean stone(int x, int y) {
         double wx=x*TILE_SIZE,wy=y*TILE_SIZE;
+        if(room==1) {
+            // One broad approach bends through the broken defence, not a round arena stamp.
+            double centre=spawnY()+Math.sin(wx/worldWidth()*Math.PI*2)*80;
+            return Math.abs(wy-centre)<112;
+        }
         double dx=(wx-spawnX())/380,dy=(wy-spawnY())/260;
         boolean paving=room!=0 && dx*dx+dy*dy<1;
         for(Door door:doors) {
