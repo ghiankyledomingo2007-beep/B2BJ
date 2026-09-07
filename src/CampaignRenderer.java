@@ -69,6 +69,15 @@ public final class CampaignRenderer {
             int y = (int) (obstacle.centerY() - obstacle.height() / 2) - cy;
             int w = (int) obstacle.width(), h = (int) obstacle.height();
             if (x > width + 80 || y > height + 80 || x + w < -80 || y + h < -80) continue;
+            if (game.biome() == 2 && w >= 260) {
+                // Adjacent collision spans form one stone mass, without artificial floor-sized seams.
+                canvas.setColor(colors[2]);
+                canvas.fillRect(x, y, w, h);
+                canvas.setColor(new Color(50, 46, 64));
+                for (int mark = 24; mark < w; mark += 64)
+                    canvas.fillRect(x + mark, y + h / 2, 12, 2);
+                continue;
+            }
             canvas.setColor(new Color(5, 10, 16, 110));
             canvas.fillRect(x + 10, y + 12, w + 8, h + 12);
             canvas.setColor(colors[2]);
@@ -114,9 +123,9 @@ public final class CampaignRenderer {
         canvas.fillOval(hx - 54, hy + 2, 108, 32);
         canvas.setColor(GOLD);
         canvas.drawOval(hx - 42, hy - 2, 84, 28);
-        drawNpc(canvas, hx, hy, game.biome());
-        centered(canvas, CampaignStory.npcName(game.biome()), hx, hy - 76, 14, GOLD);
-        centered(canvas, "CAMP", hx, hy + 50, 12, MUTED);
+        drawNpc(canvas, hx + 86, hy - 18, game.biome());
+        centered(canvas, CampaignStory.npcName(game.biome()), hx + 86, hy - 94, 14, GOLD);
+        centered(canvas, "CAMP", hx, hy + 72, 12, MUTED);
         portal(canvas, area.exit(), cx, cy, game.biome() == 3 ? "THE RIFT" : "NEXT REGION",
                 !game.guardian().alive() ? GOLD : MUTED);
         if (game.biome() > 0) portal(canvas, area.returnPortal(), cx, cy, "RETURN", CYAN);
@@ -301,10 +310,6 @@ public final class CampaignRenderer {
         g.fillRect(-16, -112, 10, 6);
         g.fillRect(6, -112, 10, 6);
         g.dispose();
-        if (boss.state() != Guardian.State.DORMANT && boss.alive()) {
-            centered(canvas, boss.bossName(), x, y - 164, 13, GOLD);
-            bar(canvas, x - 72, y - 154, 144, 6, boss.health() / (double) boss.maxHealth(), DANGER);
-        }
     }
 
     public static void drawHud(Graphics2D g, RuinedOutpostGame game, int width, int height) {
@@ -332,6 +337,12 @@ public final class CampaignRenderer {
         wrapped(g, game.campaignStory().objective(game.biome(), !game.guardian().alive()),
                 right + 14, 85, 306, 13, 19, 3, TEXT);
         text(g, "SHARDS " + game.shards(), right + 14, 141, 12, GOLD);
+        if (game.bossActive() && game.guardian().alive()) {
+            panel(g, width / 2 - 250, 90, 500, 57);
+            centered(g, game.guardian().bossName(), width / 2, 113, 16, GOLD);
+            bar(g, width / 2 - 232, 127, 464, 8,
+                    game.guardian().health() / (double) game.guardian().maxHealth(), DANGER);
+        }
 
         miniMap(g, game, width - 254, height - 196, 236, 170, false);
         String prompt = game.interactionPrompt();
@@ -341,8 +352,11 @@ public final class CampaignRenderer {
         }
         text(g, "WASD MOVE   LMB ATTACK   RMB SKILL   SPACE DASH   Q TRANSFORM   TAB MAP   ESC PAUSE",
                 22, height - 16, 11, MUTED);
-        if (!game.campaignNotice().isEmpty()) {
-            panel(g, 308, 94, Math.max(250, width - 682), 104);
+        boolean danger = game.bossActive() || game.scouts().stream().anyMatch(enemy -> enemy.alive() && enemy.aggro()
+                && Math.hypot(enemy.x() - p.x(), enemy.y() - p.y()) < 700);
+        if (!game.campaignNotice().isEmpty() && !danger) {
+            int noticeHeight = 20 + Math.min(4, 1 + game.campaignNotice().length() / 70) * 19;
+            panel(g, 308, 94, Math.max(250, width - 682), noticeHeight);
             wrapped(g, game.campaignNotice(), 322, 117, Math.max(222, width - 710), 13, 19, 4, TEXT);
         }
         if (game.nearCampaignHub() && !game.campaignStory().dialogueOpen()) {
@@ -401,10 +415,13 @@ public final class CampaignRenderer {
             }
         }
         g.setColor(PALETTES[game.biome()][3]);
-        for (var obstacle : area.obstacles())
-            g.fillRect(ox + (int) ((obstacle.centerX() - obstacle.width() / 2) * sx),
-                    oy + (int) ((obstacle.centerY() - obstacle.height() / 2) * sy),
-                    Math.max(1, (int) (obstacle.width() * sx)), Math.max(1, (int) (obstacle.height() * sy)));
+        for (var obstacle : area.obstacles()) {
+            int left = (int) Math.floor((obstacle.centerX() - obstacle.width() / 2) * sx);
+            int top = (int) Math.floor((obstacle.centerY() - obstacle.height() / 2) * sy);
+            int right = (int) Math.ceil((obstacle.centerX() + obstacle.width() / 2) * sx);
+            int bottom = (int) Math.ceil((obstacle.centerY() + obstacle.height() / 2) * sy);
+            g.fillRect(ox + left, oy + top, Math.max(1, right - left), Math.max(1, bottom - top));
+        }
         boolean firstOptional = true;
         for (var landmark : area.landmarks()) {
             int lx = ox + (int) (landmark.x() * sx), ly = oy + (int) (landmark.y() * sy);
@@ -497,7 +514,7 @@ public final class CampaignRenderer {
                     "M / V           SOUND / REDUCED EFFECTS"};
             for (int i = 0; i < controls.length; i++)
                 text(g, controls[i], width / 2 - 258, 230 + i * 34, 16, TEXT);
-            centered(g, "ESC  RESUME    O  OPTIONS", width / 2, height - 134, 18, CYAN);
+            centered(g, "ESC RESUME  /  O OPTIONS  /  T TITLE", width / 2, height - 134, 16, CYAN);
         }
     }
 

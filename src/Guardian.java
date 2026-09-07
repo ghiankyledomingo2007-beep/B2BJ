@@ -70,7 +70,7 @@ public final class Guardian {
             }
             case RECOVER,HURT -> {
                 stateTime+=dt;
-                if(stateTime+1e-8>=(enraged()?1.25:RECOVER_DURATION)) {state=State.APPROACH;stateTime=0;}
+                if(stateTime+1e-8>=recoverDuration()) {state=State.APPROACH;stateTime=0;}
             }
             case DEAD -> stateTime+=dt;
         }
@@ -126,6 +126,9 @@ public final class Guardian {
         if(attack==Attack.FISSURE)return 1.1;
         return profile==Profile.BRIARHEART?1.05:profile==Profile.OATHKEEPER?.8:TELEGRAPH_DURATION;
     }
+    public double recoverDuration() {
+        return profile==Profile.ICHOR_GOLEM?(enraged()?1.8:2.1):enraged()?1.25:RECOVER_DURATION;
+    }
     /** The exact committed damage rectangle, also used to render its complete warning. */
     public RuinedOutpostMap.Obstacle fissureBounds() {
         if(attack!=Attack.FISSURE||(state!=State.TELEGRAPH&&state!=State.SLAM))return null;
@@ -169,7 +172,7 @@ public final class Guardian {
         double duration=switch(state) {
             case TELEGRAPH -> telegraphDuration();
             case SLAM -> activeDuration();
-            case RECOVER,HURT -> enraged()?1.25:RECOVER_DURATION;
+            case RECOVER,HURT -> recoverDuration();
             case DEAD -> DEATH_DURATION;
             default -> throw new IllegalStateException("Looping animation already handled");
         };
@@ -180,7 +183,7 @@ public final class Guardian {
         double duration=switch(state) {
             case TELEGRAPH -> telegraphDuration();
             case SLAM -> activeDuration();
-            case RECOVER,HURT -> enraged()?1.25:RECOVER_DURATION;
+            case RECOVER,HURT -> recoverDuration();
             case DEAD -> DEATH_DURATION;
             default -> 1;
         };

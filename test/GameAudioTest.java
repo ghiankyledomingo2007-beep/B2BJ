@@ -8,6 +8,7 @@ public final class GameAudioTest {
         muteStateCanBeControlled();
         sessionVolumesScalePlaybackWithoutChangingLegacySynthesis();
         ambientThemesAreDistinctAndVolumeAware();
+        frameStateUpdatesNeverStartAudioWorkers();
         System.out.println("GameAudioTest passed");
     }
 
@@ -81,6 +82,11 @@ public final class GameAudioTest {
             byte[] quiet = (byte[]) invoke("renderMusicChunk", signature, biome, false, 0L, 4096, .25);
             byte[] blade = (byte[]) invoke("renderMusicChunk", signature, biome, true, 0L, 4096, 1.0);
             assert full.length == 8192 && Arrays.equals(full, repeat) : "music must synthesize deterministically";
+            byte[] first = (byte[]) invoke("renderMusicChunk", signature, biome, false, 0L, 1024, 1.0);
+            byte[] next = (byte[]) invoke("renderMusicChunk", signature, biome, false, 1024L, 3072, 1.0);
+            assert Arrays.equals(first, Arrays.copyOfRange(full, 0, first.length));
+            assert Arrays.equals(next, Arrays.copyOfRange(full, first.length, full.length))
+                    : "music sample timeline must remain continuous between chunks";
             assert !Arrays.equals(full, blade) : "blade form should change music texture";
             assert !silent(full) : "each biome needs audible ambient music";
             for (int index = 0; index < full.length; index += 2)
@@ -89,6 +95,15 @@ public final class GameAudioTest {
             themes.add(Arrays.hashCode(full));
         }
         assert themes.size() == 4 : "all four biome themes must differ";
+    }
+
+    private static void frameStateUpdatesNeverStartAudioWorkers() {
+        long before = Thread.getAllStackTraces().keySet().stream().filter(thread -> thread.getName().equals("b2bj-music")).count();
+        for (int frame = 0; frame < 100; frame++)
+            invoke("setMusicState", new Class<?>[] {int.class, boolean.class, boolean.class}, frame % 4, frame % 2 == 0, true);
+        invoke("setMusicState", new Class<?>[] {int.class, boolean.class, boolean.class}, 0, false, false);
+        long after = Thread.getAllStackTraces().keySet().stream().filter(thread -> thread.getName().equals("b2bj-music")).count();
+        assert after == before : "frame state updates must never create audio threads";
     }
 
     private static boolean silent(byte[] samples) {

@@ -38,15 +38,28 @@ public final class GameAudio {
     private static final AudioFormat FORMAT = new AudioFormat(
             SAMPLE_RATE, 16, 1, true, false);
     private static volatile boolean muted;
+    private static volatile double masterVolume = 1, sfxVolume = 1, musicVolume = .25;
+    private static volatile int musicBiome;
+    private static volatile boolean musicBlade, musicActive;
+    private static volatile long musicRevision;
+    private static final Object MUSIC_LOCK = new Object();
+    private static Thread musicWorker;
+    private static final double[][] MUSIC_NOTES = {
+            {146.832, 220, 174.614, 196, 146.832, 174.614, 130.813, 164.814},
+            {164.814, 246.942, 195.998, 293.665, 220, 195.998, 246.942, 164.814},
+            {130.813, 155.563, 116.541, 195.998, 130.813, 174.614, 155.563, 116.541},
+            {174.614, 246.942, 207.652, 349.228, 220, 293.665, 246.942, 195.998}
+    };
     private static final java.util.concurrent.Semaphore VOICES = new java.util.concurrent.Semaphore(6);
 
     private GameAudio() { }
 
     public static void play(Cue cue) {
-        if (muted || !VOICES.tryAcquire()) {
+        java.util.Objects.requireNonNull(cue, "cue");
+        if (muted || masterVolume == 0 || sfxVolume == 0 || !VOICES.tryAcquire()) {
             return;
         }
-        byte[] samples = synthesize(cue);
+        byte[] samples = playbackSamples(cue);
         Thread sound = new Thread(() -> {
             try { if (!muted) play(samples); }
             finally { VOICES.release(); }
@@ -56,6 +69,14 @@ public final class GameAudio {
     }
 
     static byte[] synthesize(Cue cue) {
+        return synthesize(cue, 1);
+    }
+
+    static byte[] playbackSamples(Cue cue) {
+        return synthesize(cue, muted ? 0 : masterVolume * sfxVolume);
+    }
+
+    private static byte[] synthesize(Cue cue, double volume) {
         int sampleCount = Math.max(2, (int) (cue.duration * SAMPLE_RATE));
         byte[] output = new byte[sampleCount * 2];
         double phase = 0;
@@ -73,7 +94,7 @@ public final class GameAudio {
             }
             double envelope = Math.sin(Math.PI * progress);
             double mixed = Math.max(-1, Math.min(1,
-                    wave * envelope * cue.volume));
+                    wave * envelope * cue.volume * volume));
             short sample = (short) Math.round(mixed * Short.MAX_VALUE);
             output[index * 2] = (byte) sample;
             output[index * 2 + 1] = (byte) (sample >>> 8);
@@ -113,10 +134,128 @@ public final class GameAudio {
     }
 
     public static void setMuted(boolean value) {
+        if (muted == value) return;
         muted = value;
+        wakeMusic();
     }
 
     public static boolean muted() {
         return muted;
+    }
+
+    public static double masterVolume() { return masterVolume; }
+    public static double sfxVolume() { return sfxVolume; }
+    public static double musicVolume() { return musicVolume; }
+
+    public static void setMasterVolume(double value) {
+        validateVolume(value);
+        if (masterVolume == value) return;
+        masterVolume = value;
+        wakeMusic();
+    }
+
+    public static void setSfxVolume(double value) {
+        validateVolume(value);
+        sfxVolume = value;
+    }
+
+    public static void setMusicVolume(double value) {
+        validateVolume(value);
+        if (musicVolume == value) return;
+        musicVolume = value;
+        wakeMusic();
+    }
+
+    private static void validateVolume(double value) {
+        if (!Double.isFinite(value) || value < 0 || value > 1)
+            throw new IllegalArgumentException("Volume must be between 0 and 1");
+    }
+
+    /** Called once by the desktop launcher. Unit tests never open an audio device. */
+    public static void startMusic() {
+        synchronized (MUSIC_LOCK) {
+            if (musicWorker != null) return;
+            musicWorker = new Thread(GameAudio::musicLoop, "b2bj-music");
+            musicWorker.setDaemon(true);
+            musicWorker.start();
+        }
+    }
+
+    /** Frame updates only change flags; one existing worker handles all music playback. */
+    public static void setMusicState(int biome, boolean blade, boolean active) {
+        if (biome < 0 || biome > 3) throw new IllegalArgumentException("Invalid music biome");
+        if (musicBiome == biome && musicBlade == blade && musicActive == active) return;
+        musicBiome = biome;
+        musicBlade = blade;
+        musicActive = active;
+        wakeMusic();
+    }
+
+    private static void wakeMusic() {
+        synchronized (MUSIC_LOCK) {
+            musicRevision++;
+            MUSIC_LOCK.notifyAll();
+        }
+    }
+
+    private static boolean musicAudible() {
+        return musicActive && !muted && masterVolume > 0 && musicVolume > 0;
+    }
+
+    private static void musicLoop() {
+        SourceDataLine line = null;
+        long firstSample = 0, failedRevision = -1;
+        try {
+            while (!Thread.currentThread().isInterrupted()) {
+                if (!musicAudible() || failedRevision == musicRevision) {
+                    if (line != null) { line.close(); line = null; }
+                    synchronized (MUSIC_LOCK) {
+                        while (!musicAudible() || failedRevision == musicRevision) MUSIC_LOCK.wait();
+                    }
+                }
+                long revision = musicRevision;
+                try {
+                    if (line == null) {
+                        line = AudioSystem.getSourceDataLine(FORMAT);
+                        line.open(FORMAT, 8192);
+                        line.start();
+                    }
+                    byte[] samples = renderMusicChunk(musicBiome, musicBlade, firstSample, 2048,
+                            masterVolume * musicVolume);
+                    line.write(samples, 0, samples.length);
+                    firstSample += samples.length / 2;
+                } catch (LineUnavailableException | IllegalArgumentException | SecurityException unavailable) {
+                    failedRevision = revision;
+                    if (line != null) { line.close(); line = null; }
+                }
+            }
+        } catch (InterruptedException stopped) {
+            Thread.currentThread().interrupt();
+        } finally {
+            if (line != null) line.close();
+        }
+    }
+
+    /** Original quiet pad and eight-note motif; absolute sample time keeps chunks continuous. */
+    static byte[] renderMusicChunk(int biome, boolean blade, long firstSample, int sampleCount, double volume) {
+        validateVolume(volume);
+        if (biome < 0 || biome > 3 || firstSample < 0 || sampleCount < 0 || sampleCount > SAMPLE_RATE)
+            throw new IllegalArgumentException("Invalid music chunk");
+        byte[] output = new byte[sampleCount * 2];
+        double root = MUSIC_NOTES[biome][0];
+        for (int index = 0; index < sampleCount; index++) {
+            double time = (firstSample + index) / (double) SAMPLE_RATE;
+            double beat = time / (blade ? 1.0 : 2.0);
+            int note = (int) (beat % 8);
+            double envelope = Math.pow(Math.sin(Math.PI * (beat % 1)), 2);
+            double phase = Math.PI * 2 * time;
+            double pad = Math.sin(phase * root / 2) * .035 + Math.sin(phase * root * 1.5) * .018;
+            double motif = Math.sin(phase * MUSIC_NOTES[biome][note]) * envelope * (blade ? .05 : .03);
+            double texture = blade ? Math.sin(phase * root * 2) * envelope * .012 : 0;
+            short sample = (short) Math.round((pad + motif + texture) * volume * Short.MAX_VALUE);
+            output[index * 2] = (byte) sample;
+            output[index * 2 + 1] = (byte) (sample >>> 8);
+        }
+        return output;
     }
 }

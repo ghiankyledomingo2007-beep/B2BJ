@@ -108,6 +108,8 @@ public final class RuinedOutpostGame {
     private java.nio.file.Path savePath;
     private CampaignSave.Progress savedProgress;
     private String campaignNotice="";
+    private double noticeTime;
+    private void notice(String text) { campaignNotice=text;noticeTime=8; }
     private final Set<Integer> clearedBosses=new java.util.HashSet<>();
     private final Set<String> campaignUnlocks=new java.util.HashSet<>(), endings=new java.util.HashSet<>();
     private final java.util.Map<String,Integer> upgrades=new java.util.HashMap<>();
@@ -172,7 +174,7 @@ public final class RuinedOutpostGame {
         player=new Player(640,384);applyUpgrades();player.heal();
         story.resume();campaignEnding=null;choosingEnding=paused=false;
         enterBiome(progress.biome(),progress.checkpoint());
-        campaignNotice="CAMPAIGN RESTORED";return true;
+        notice("CAMPAIGN RESTORED");return true;
     }
 
     private void saveProgress() {
@@ -188,9 +190,9 @@ public final class RuinedOutpostGame {
         if(!campaignMode||blocked()||!nearCampaignHub())return false;
         if(scouts.stream().anyMatch(w->w.alive()&&near(w.x(),w.y(),400))
                 ||(bossActive()&&near(guardian.x(),guardian.y(),600))) {
-            campaignNotice="CAMP IS NOT SAFE YET";return false;
+            notice("CAMP IS NOT SAFE YET");return false;
         }
-        campaignCheckpoint=1;player.heal();campaignNotice="RESTED AT CAMP / CHECKPOINT SAVED";saveProgress();return true;
+        campaignCheckpoint=1;player.heal();notice("RESTED AT CAMP / CHECKPOINT SAVED");saveProgress();return true;
     }
 
     public boolean nearCampaignHub() {
@@ -200,12 +202,12 @@ public final class RuinedOutpostGame {
         return "edge".equals(name)?4:2*(upgradeLevel(name)+1);
     }
     public boolean buyUpgrade(String name) {
-        if(!campaignMode||blocked()||!nearCampaignHub()||!Set.of("vitality","capacity","efficiency","edge").contains(name))return false;
+        if(!campaignMode||blocked()||!nearCampaignHub()||name==null||!Set.of("vitality","capacity","efficiency","edge").contains(name))return false;
         int level=upgradeLevel(name),cost=upgradeCost(name);
-        if(level>=(name.equals("edge")?1:3)||shards<cost) {campaignNotice="NOT ENOUGH SHARDS OR TRACK COMPLETE";return false;}
+        if(level>=(name.equals("edge")?1:3)||shards<cost) {notice("NOT ENOUGH SHARDS OR TRACK COMPLETE");return false;}
         shards-=cost;upgrades.put(name,level+1);applyUpgrades();
         if(name.equals("vitality"))player.heal(1);
-        campaignNotice=name.toUpperCase(java.util.Locale.ROOT)+" UPGRADED";saveProgress();return true;
+        notice(name.toUpperCase(java.util.Locale.ROOT)+" UPGRADED");saveProgress();return true;
     }
 
     public boolean chooseEnding(CampaignStory.Ending ending) {
@@ -214,6 +216,12 @@ public final class RuinedOutpostGame {
         story.resume();story.enterGatehouse();story.guardianDefeated();story.escaped();
         cancelAbsorption();projectiles.clear();crescents.clear();hostileProjectiles.clear();
         emit(EventType.VICTORY,player.x(),player.y());saveProgress();return true;
+    }
+
+    public boolean returnToTitle() {
+        if(!campaignMode||!paused||!player.alive()||story.blocksGameplay())return false;
+        saveProgress();cancelAbsorption();story=new OutpostStory();paused=false;
+        choosingEnding=false;campaignEnding=null;return true;
     }
 
     private boolean campaignInteract() {
@@ -230,15 +238,15 @@ public final class RuinedOutpostGame {
             if(campaignUnlocks.add(key))shards++;
             if(landmark==campaignArea().landmarks().stream().filter(CampaignWorld.Landmark::optional).findFirst().orElse(null))
                 campaignStory.discover(biome);
-            campaignNotice=landmark.name()+" / "+landmark.lore();saveProgress();return true;
+            notice(landmark.name()+" / "+landmark.lore());saveProgress();return true;
         }
         if(near(campaignArea().exit().x(),campaignArea().exit().y(),140)) {
-            if(!bossDefeated) {campaignNotice="DEFEAT "+guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" TO OPEN THIS ROUTE";return false;}
+            if(!bossDefeated) {notice("DEFEAT "+guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" TO OPEN THIS ROUTE");return false;}
             if(biome==3) {choosingEnding=true;return true;}
-            story.resume();enterBiome(biome+1,0);campaignNotice=String.join(" ",CampaignStory.transitionLines(biome));saveProgress();return true;
+            story.resume();enterBiome(biome+1,0);notice(String.join(" ",CampaignStory.transitionLines(biome)));saveProgress();return true;
         }
         if(biome>0&&near(campaignArea().returnPortal().x(),campaignArea().returnPortal().y(),120)) {
-            story.resume();enterBiome(biome-1,2);campaignNotice="RETURNED TO "+campaignArea().name();saveProgress();return true;
+            story.resume();enterBiome(biome-1,2);notice("RETURNED TO "+campaignArea().name());saveProgress();return true;
         }
         return false;
     }
@@ -273,20 +281,20 @@ public final class RuinedOutpostGame {
             if(story.phase()!=OutpostStory.Phase.PROLOGUE)return;
             // Existing saves are not replaced by a casual title-screen click.
             if(savedProgress!=null||saveBlocked) {
-                campaignNotice="C CONTINUE / N CONFIRM NEW GAME (REPLACES SAVE)";return;
+                notice("C CONTINUE / N CONFIRM NEW GAME (REPLACES SAVE)");return;
             }
         }
         story.begin();if(campaignMode)saveProgress();
     }
     public void newCampaign() {
         if(!campaignMode||story.phase()!=OutpostStory.Phase.PROLOGUE)return;
-        resetCampaign();saveBlocked=false;story.begin();campaignNotice="FIND MARA AT THE FIELD CAMP";saveProgress();
+        resetCampaign();saveBlocked=false;story.begin();notice("FIND MARA AT THE FIELD CAMP");saveProgress();
     }
     public void restart() {
         if(campaignMode) {
             if(story.phase()==OutpostStory.Phase.DEAD) {
                 player=new Player(640,384);applyUpgrades();player.heal();story.resume();paused=false;
-                enterBiome(biome,campaignCheckpoint);campaignNotice="REFORMED AT YOUR CHECKPOINT";
+                enterBiome(biome,campaignCheckpoint);notice("REFORMED AT YOUR CHECKPOINT");
             } else if(story.phase()==OutpostStory.Phase.COMPLETE) {
                 story=new OutpostStory();campaignEnding=null;choosingEnding=paused=false;
             }
@@ -383,6 +391,10 @@ public final class RuinedOutpostGame {
         }
     }
     private void tick(double seconds, int horizontal, int vertical) {
+        if(campaignMode&&noticeTime>0&&!campaignNotice.startsWith("SAVE FAILED")) {
+            noticeTime=Math.max(0,noticeTime-seconds);
+            if(noticeTime==0)campaignNotice="";
+        }
         if (!player.alive()) { projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear(); attackDelay=0; cancelAbsorption(); story.playerDied(); return; }
         if (hitStop > 0) { hitStop=Math.max(0,hitStop-seconds); return; }
         passageCooldown=Math.max(0,passageCooldown-seconds);
@@ -622,7 +634,7 @@ public final class RuinedOutpostGame {
                 bossDefeated=true;
                 if(campaignMode) {
                     if(clearedBosses.add(biome))shards+=4+biome*2;
-                    campaignNotice=guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" DEFEATED / ROUTE OPEN";
+                    notice(guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" DEFEATED / ROUTE OPEN");
                     saveProgress();
                 } else {cleared[9]=true;story.guardianDefeated();}
                 map.clearGuardian();

@@ -81,6 +81,16 @@ public final class CampaignRenderingTest {
             if (args.length > 0) javax.imageio.ImageIO.write(frame, "png",
                     java.nio.file.Path.of(args[0], "ending-" + result + ".png").toFile());
         }
+        var notice = RuinedOutpostGame.class.getDeclaredField("campaignNotice");
+        notice.setAccessible(true);
+        notice.set(game, "CAMPAIGN RESTORED");
+        game.guardian().activate(game.player().x(), game.player().y());
+        var combatHud = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_ARGB);
+        var hudGraphics = combatHud.createGraphics();
+        CampaignRenderer.drawHud(hudGraphics, game, 1280, 720);
+        hudGraphics.dispose();
+        assert (combatHud.getRGB(320, 110) >>> 24) == 0 : "status notices must not cover active combat";
+        assert (combatHud.getRGB(640, 130) >>> 24) != 0 : "boss health belongs in the stable HUD";
         System.out.println("CampaignRenderingTest passed");
     }
 

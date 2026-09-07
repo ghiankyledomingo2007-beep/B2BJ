@@ -204,6 +204,7 @@ public final class B2BJ extends JPanel {
             window.pack();
             window.setLocationRelativeTo(null);
             window.setVisible(true);
+            GameAudio.startMusic();
             panel.requestFocusInWindow();
         });
     }
@@ -217,6 +218,7 @@ public final class B2BJ extends JPanel {
         double seconds = Math.min((now - previousFrame) / 1_000_000_000.0, 0.05);
         previousFrame = now;
 
+        if(game.campaignMode())GameAudio.setMusicState(game.biome(),game.player().bladeForm(),!game.blocked());
         if (game.paused()) { repaint(); return; }
         step(seconds);
     }
@@ -1625,6 +1627,13 @@ public final class B2BJ extends JPanel {
         bind(KeyEvent.VK_C,"continue",value->{if(value){clearInput();game.continueCampaign();}});
         bind(KeyEvent.VK_N,"newCampaign",value->{if(value){clearInput();game.newCampaign();}});
         bind(KeyEvent.VK_H,"saveCamp",value->{if(value)game.saveCheckpoint();});
+        bind(KeyEvent.VK_T,"title",value->{if(value&&game.returnToTitle())clearInput();});
+        bind(KeyEvent.VK_O,"options",value->{
+            if(value)CampaignOptions.show(this,()->{
+                clearInput();game.pause();
+                GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
+            },enabled->reducedEffects=enabled,reducedEffects);
+        });
         String[] tracks={"vitality","capacity","efficiency","edge"};
         for(int i=0;i<tracks.length;i++) {
             int choice=i;String track=tracks[i];
