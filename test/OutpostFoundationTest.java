@@ -29,6 +29,20 @@ public final class OutpostFoundationTest {
         draw.invoke(panel,g,0,0);g.dispose();
         assert image.getRGB(32,32)==Color.MAGENTA.getRGB() : "boundary must consume authored bank art";
         assert image.getRGB(640,500)==0 : "boundary art must not cover the open floor";
+        var union=new java.awt.geom.Area(panel.game().map().bankShape());
+        var halo=new java.awt.geom.Area(new BasicStroke(16).createStrokedShape(union));halo.subtract(union);
+        int shadowed=0;
+        for(int y=4;y<720;y+=8)for(int x=4;x<1280;x+=8) {
+            int alpha=image.getRGB(x,y)>>>24;
+            if(union.contains(x,y))assert alpha==255 : "earth shape must be solid inside the collider union at "+x+","+y;
+            else if(halo.contains(x,y)) {
+                assert alpha>0&&alpha<255 : "floor shadow expected just outside the bank edge at "+x+","+y;shadowed++;
+            } else assert alpha==0 : "bank art must not leak past the collider union at "+x+","+y;
+        }
+        assert shadowed>50 : "floor shadow band missing";
+        // Column 3 of the top bank ends at y=96; four pixels inside that edge is slope, not raw texture.
+        assert union.contains(200,92)&&!union.contains(200,100);
+        assert image.getRGB(200,92)!=Color.MAGENTA.getRGB() : "slope band inside the edge must be shaded, not raw texture";
         field.set(panel,null);g=image.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
         var bank=B2BJ.loadImage("assets/tilesets/ruined_outpost/earth_banks.png");
         // Candidate art failed visual review; missing art intentionally keeps the stable fallback.
@@ -41,6 +55,23 @@ public final class OutpostFoundationTest {
             for(int y=0;y<sprite.getHeight();y++)for(int x=0;x<sprite.getWidth();x++)if((sprite.getRGB(x,y)>>>24)>0)filled++;
             assert filled>20&&filled<sprite.getWidth()*sprite.getHeight()*.85 : "debris must have real transparent background";
         }
+        // Rest marker follows availability: room 10's marker disappears once the field dressing is used.
+        var enter=RuinedOutpostGame.class.getDeclaredMethod("enterRoom",int.class,int.class);enter.setAccessible(true);
+        var world=B2BJ.class.getDeclaredMethod("drawWorld",Graphics2D.class,int.class,int.class);world.setAccessible(true);
+        panel=new B2BJ(false);panel.game().begin();enter.invoke(panel.game(),10,-1);
+        var infirmary=panel.game().map();
+        // In reach of the dressing but standing clear of the marker itself.
+        panel.game().player().relocate(infirmary.restX(),infirmary.restY()+100);
+        assert markerVisible(panel,world,infirmary) : "available dressing shows its ground marker";
+        assert panel.game().interact()&&panel.game().infirmaryUsed();
+        assert !markerVisible(panel,world,infirmary) : "consumed dressing must not look available";
         System.out.println("OutpostFoundationTest passed");
+    }
+    private static boolean markerVisible(B2BJ panel,java.lang.reflect.Method world,RuinedOutpostMap map) throws Exception {
+        var image=new BufferedImage(1280,720,BufferedImage.TYPE_INT_ARGB);var g=image.createGraphics();
+        world.invoke(panel,g,(int)map.restX()-640,(int)map.restY()-360);g.dispose();
+        int marker=new Color(104,146,144).getRGB();
+        for(int y=300;y<350;y++)for(int x=620;x<660;x++)if(image.getRGB(x,y)==marker)return true;
+        return false;
     }
 }

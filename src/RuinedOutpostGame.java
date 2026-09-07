@@ -547,6 +547,7 @@ public final class RuinedOutpostGame {
         }
         return "";
     }
+    public boolean infirmaryUsed() { return infirmaryUsed; }
     public boolean interact() {
         if (blocked()) return false;
         if (map.room()==10&&!infirmaryUsed&&near(map.restX(),map.restY(),120)) {

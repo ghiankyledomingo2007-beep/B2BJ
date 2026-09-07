@@ -134,7 +134,7 @@ public class ComposeGround {
         return image;
     }
     static BufferedImage proceduralBank() {
-        int[] tones={0xff4a4638,0xff524d3d,0xff433f33,0xff3a372d};
+        int[] tones={0xff433f35,0xff4a453b,0xff3d3a31,0xff35332c};
         BufferedImage image=new BufferedImage(CELL,CELL,BufferedImage.TYPE_INT_ARGB);
         for(int y=0;y<CELL;y++)for(int x=0;x<CELL;x++) {
             int h=hash(x/2,y/2,61)%100;

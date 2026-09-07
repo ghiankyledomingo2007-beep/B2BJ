@@ -1,0 +1,10 @@
+{
+ "description": "A small ruined lean-to shelter: two upright weathered timber posts holding one sagging torn brown canvas roof that slopes down to the back, open front, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+ "width": 96,
+ "height": 80,
+ "view": "high top-down",
+ "no_background": true,
+ "detail": "medium detail",
+ "outline": "selective outline",
+ "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-timber.png"
+}

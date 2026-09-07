@@ -1,0 +1,80 @@
+[
+ {
+  "name": "stretcher-r1",
+  "tool": "create_image_pixen",
+  "args": {
+   "description": "One empty canvas field stretcher: two long wooden carrying poles with torn grey-brown canvas stretched between them. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, nothing else in the image, no ground patch, no grass, no plants, no glow, no gold, no bright colours.",
+   "width": 96,
+   "height": 48,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline"
+  }
+ },
+ {
+  "name": "bandage-r1",
+  "tool": "create_image_pixen",
+  "args": {
+   "description": "A bundle of three rolled off-white linen bandage rolls tied together with a cord, filling the frame. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, nothing else in the image, no ground patch, no grass, no plants, no glow, no gold, no bright colours.",
+   "width": 32,
+   "height": 32,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline"
+  }
+ },
+ {
+  "name": "signal-mast-r1",
+  "tool": "create_image_pixen",
+  "args": {
+   "description": "A fallen wooden signal mast with a snapped crossbar and a torn faded navy pennant still tied to it. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, nothing else in the image, no ground patch, no grass, no plants, no glow, no gold, no bright colours.",
+   "width": 96,
+   "height": 64,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline"
+  }
+ },
+ {
+  "name": "sack-r1",
+  "tool": "create_image_pixen",
+  "args": {
+   "description": "One torn grey burlap grain sack split open with dull grey-brown grain spilling out. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, nothing else in the image, no ground patch, no grass, no plants, no glow, no gold, no bright colours.",
+   "width": 48,
+   "height": 32,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline"
+  }
+ },
+ {
+  "name": "wheel-r1",
+  "tool": "create_image_pixen",
+  "args": {
+   "description": "A broken wooden cart wheel with missing spokes, only the wheel. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, nothing else in the image, no ground patch, no grass, no plants, no glow, no gold, no bright colours.",
+   "width": 32,
+   "height": 32,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline"
+  }
+ },
+ {
+  "name": "canvas-debris-r1",
+  "tool": "create_image_pixen",
+  "args": {
+   "description": "Torn brown canvas tangled with two broken roof timbers, one loose flat pile. Lying flat on the ground, seen from directly above, one single isolated object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, nothing else in the image, no ground patch, no grass, no plants, no glow, no gold, no bright colours.",
+   "width": 64,
+   "height": 48,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline"
+  }
+ }
+]

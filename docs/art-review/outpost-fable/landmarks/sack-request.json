@@ -1,0 +1,9 @@
+{
+ "description": "One torn grey burlap grain sack lying on the ground, split open with dull grain spilling out, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+ "width": 48,
+ "height": 32,
+ "view": "high top-down",
+ "no_background": true,
+ "detail": "low detail",
+ "outline": "selective outline"
+}

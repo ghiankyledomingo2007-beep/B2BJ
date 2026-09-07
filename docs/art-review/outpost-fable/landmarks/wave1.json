@@ -1,0 +1,113 @@
+[
+ {
+  "name": "gate-pier",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "A ruined stone gate pier: one tall square masonry column of dark slate blocks, top broken off and crumbling, one rusted iron hinge bracket on its side, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 64,
+   "height": 112,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "medium detail",
+   "outline": "selective outline",
+   "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-stone.png"
+  }
+ },
+ {
+  "name": "watch-platform",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "A collapsed timber watch platform: a low raised plank deck on four wooden posts, one side fallen and sagging to the ground, a broken ladder leaning against it, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 128,
+   "height": 96,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "medium detail",
+   "outline": "selective outline",
+   "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-timber.png"
+  }
+ },
+ {
+  "name": "tower-footing",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "A collapsed round stone signal tower footing: a ring of dark slate masonry two courses high, broken open on the south side, loose rubble inside the ring, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 128,
+   "height": 128,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "medium detail",
+   "outline": "selective outline",
+   "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-stone.png"
+  }
+ },
+ {
+  "name": "wall-end",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "The broken end fragment of a low dark slate stone wall, crumbling stepped blocks tapering down to loose rubble, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 48,
+   "height": 64,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline",
+   "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-stone.png"
+  }
+ },
+ {
+  "name": "lean-to",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "A small ruined lean-to shelter: two upright weathered timber posts holding one sagging torn brown canvas roof that slopes down to the back, open front, seen from a high top-down three-quarter camera. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 96,
+   "height": 80,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "medium detail",
+   "outline": "selective outline",
+   "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-timber.png"
+  }
+ },
+ {
+  "name": "weapon-rack",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "A damaged wooden spear rack: two upright posts and a crossbar holding three dull iron-tipped spears, one post cracked and leaning, seen from a high top-down three-quarter camera. Not isometric. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 64,
+   "height": 64,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline",
+   "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-timber.png"
+  }
+ },
+ {
+  "name": "bedroll",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "A single worn dark blue soldier's bedroll unrolled flat on the ground with a folded grey wool blanket on top, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 64,
+   "height": 48,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline"
+  }
+ },
+ {
+  "name": "stretcher",
+  "tool": "create_image_pixflux",
+  "args": {
+   "description": "One empty canvas field stretcher lying flat on mud: two long wooden carrying poles with torn grey-brown canvas stretched between them, seen from directly above, one single object. Top-down video game sprite, rainy abandoned medieval military outpost, muted dark palette: dark navy slate, grey-green mud, weathered brown timber, tarnished iron. Subtle dark contact shadow only, transparent background, no grass, no glow, no gold, no bright colours.",
+   "width": 96,
+   "height": 48,
+   "view": "high top-down",
+   "no_background": true,
+   "detail": "low detail",
+   "outline": "selective outline",
+   "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-aa1db068cc1983d0f/docs/art-review/outpost-fable/landmarks/palette-timber.png"
+  }
+ }
+]
