@@ -1,0 +1,82 @@
+[
+ {
+  "name": "bedroll",
+  "tool": "edit_image_pixen",
+  "id": "be571cce-0d12-4e73-b7d1-3314e79f0fe3",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: be571cce-0d12-4e73-b7d1-3314e79f0fe3\njob_id: be571cce-0d12-4e73-b7d1-3314e79f0fe3\nmodel: pixen\nedit: Unroll the bedroll so it lies flat on the ground as a worn dark-blue soldier's bedroll with a folded grey blanket on top. Remove the brown mud patch under it; replace with a thin dark wet-mud con"
+ },
+ {
+  "name": "stretcher",
+  "tool": "edit_image_pixen",
+  "id": "2bf008c7-f014-4e22-bba9-cc853dd78d75",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 2bf008c7-f014-4e22-bba9-cc853dd78d75\njob_id: 2bf008c7-f014-4e22-bba9-cc853dd78d75\nmodel: pixen\nedit: Remove the green moss tufts between and around the poles; replace with a thin dark wet-mud contact shadow only. Keep the two wooden poles and the canvas wraps identical. Transparent background, m"
+ },
+ {
+  "name": "watch-platform",
+  "tool": "edit_image_pixen",
+  "id": "8bafd06e-6046-4a4b-adc7-4da45f1772dd",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 8bafd06e-6046-4a4b-adc7-4da45f1772dd\njob_id: 8bafd06e-6046-4a4b-adc7-4da45f1772dd\nmodel: pixen\nedit: Remove the brown mud island and grass under the platform; replace with a thin dark wet-mud contact shadow only under the posts and ladder. Keep the wooden platform, posts and ladder identical. Tr"
+ },
+ {
+  "name": "weapon-rack",
+  "tool": "edit_image_pixen",
+  "id": "c6f20b1c-00ab-4c53-bb05-0c0d1eb252dc",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: c6f20b1c-00ab-4c53-bb05-0c0d1eb252dc\njob_id: c6f20b1c-00ab-4c53-bb05-0c0d1eb252dc\nmodel: pixen\nedit: Remove the grass and dirt pedestal under the rack; replace with a thin dark wet-mud contact shadow only. Keep the wooden rack and the spears identical. Transparent background, muted dark colors, "
+ },
+ {
+  "name": "gate-pier-mud",
+  "tool": "edit_image_pixen",
+  "id": "9a000d9a-4b01-4cd1-9993-0990beff0e29",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 9a000d9a-4b01-4cd1-9993-0990beff0e29\njob_id: 9a000d9a-4b01-4cd1-9993-0990beff0e29\nmodel: pixen\nedit: Remove the small grass tufts at the base of the stone column; replace with a thin dark wet-mud contact shadow only. Keep the slate masonry column identical. Transparent background, muted dark col"
+ },
+ {
+  "name": "wall-end-mud",
+  "tool": "edit_image_pixen",
+  "id": "f17d0acb-9754-4178-92fe-124acde85cc0",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: f17d0acb-9754-4178-92fe-124acde85cc0\njob_id: f17d0acb-9754-4178-92fe-124acde85cc0\nmodel: pixen\nedit: Remove the small grass tufts at the base of the stone wall stub; replace with a thin dark wet-mud contact shadow only. Keep the slate masonry identical. Transparent background, muted dark colors,"
+ },
+ {
+  "name": "lean-to",
+  "tool": "create_image_pixflux",
+  "id": "3d05bc99-2b07-4384-92c6-8c5cd91a5698",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 3d05bc99-2b07-4384-92c6-8c5cd91a5698\njob_id: 3d05bc99-2b07-4384-92c6-8c5cd91a5698\ndescription: front view of a small ruined open-front lean-to shelter: two upright timber posts at the front, a sagging torn brown canvas roof sloping back, dark shadowed interior, seen from a high top-down three-qu"
+ },
+ {
+  "name": "watch-platform-r2",
+  "tool": "edit_image_pixen",
+  "id": "d55087f9-8f91-4eb1-a51e-8c85ac4a2d2e",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: d55087f9-8f91-4eb1-a51e-8c85ac4a2d2e\njob_id: d55087f9-8f91-4eb1-a51e-8c85ac4a2d2e\nmodel: pixen\nedit: Remove the brown mud island and grass under the platform completely. Add only a very small, very dark, near-black wet-mud contact shadow directly under the four post feet and the ladder feet. No "
+ },
+ {
+  "name": "lean-to-fix",
+  "tool": "edit_image_pixen",
+  "id": "1f76c6ea-9e98-45a2-80be-4864a2ce85ec",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 1f76c6ea-9e98-45a2-80be-4864a2ce85ec\njob_id: 1f76c6ea-9e98-45a2-80be-4864a2ce85ec\nmodel: pixen\nedit: Remove the grass tufts and the brown dirt patch under the shelter completely; replace with a thin dark wet-mud contact shadow only under the two front posts. Keep the timber posts, the sagging ca"
+ },
+ {
+  "name": "lean-to-r2",
+  "tool": "create_image_pixflux",
+  "id": "fb602805-ced1-4383-b861-ba807296404b",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: fb602805-ced1-4383-b861-ba807296404b\njob_id: fb602805-ced1-4383-b861-ba807296404b\ndescription: front view of a small ruined open-front lean-to shelter: two upright timber posts at the front, a sagging torn brown canvas roof sloping back, dark shadowed interior, seen from a high top-down three-qu"
+ }
+]

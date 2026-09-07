@@ -1,0 +1,11 @@
+{
+ "description": "front view of a small ruined open-front lean-to shelter: two upright timber posts at the front, a sagging torn brown canvas roof sloping back, dark shadowed interior, seen from a high top-down three-quarter camera facing straight on, no side walls, no grass, no ground patch, subtle dark contact shadow, transparent background",
+ "width": 96,
+ "height": 80,
+ "direction": "south",
+ "view": "high top-down",
+ "no_background": true,
+ "outline": "selective outline",
+ "detail": "medium detail",
+ "color_image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a5e1019b49145f622/assets/props/outpost/barricade.png"
+}
