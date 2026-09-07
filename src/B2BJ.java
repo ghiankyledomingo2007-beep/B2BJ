@@ -1512,22 +1512,8 @@ public final class B2BJ extends JPanel {
     }
 
     static BufferedImage[] outdoorTiles(BufferedImage[] source) {
-        if(source==null) return null;
-        BufferedImage[] tiles=new BufferedImage[16];
-        for(int mask=0;mask<16;mask++) {
-            BufferedImage tile=new BufferedImage(64,64,BufferedImage.TYPE_INT_ARGB);
-            for(int y=0;y<32;y++)for(int x=0;x<32;x++) {
-                double u=x/31.0,v=y/31.0;
-                double blend=((mask&1)!=0?(1-u)*(1-v):0)+((mask&2)!=0?u*(1-v):0)
-                        +((mask&4)!=0?(1-u)*v:0)+((mask&8)!=0?u*v:0);
-                int hash=(x/3*31+y/2*17)%29;
-                int earth=hash<2?0xff4a4b3e:hash<6?0xff373d35:0xff303630;
-                int pixel=blend>=0.5?source[15].getRGB(x*2,y*2):earth;
-                for(int dy=0;dy<2;dy++)for(int dx=0;dx<2;dx++)tile.setRGB(x*2+dx,y*2+dy,pixel);
-            }
-            tiles[mask]=tile;
-        }
-        return tiles;
+        // Native Wang transitions already contain the reviewed earth and paving edges.
+        return source;
     }
 
     private void bindKeys() {
