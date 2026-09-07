@@ -89,6 +89,8 @@ public final class CampaignStoryTest {
             assert !story.objective(biome, true).contains("TALK")
                     : "side quests must not gate a cleared biome";
             story.talk(biome);
+            assert story.questObjective(biome).contains(CampaignStory.memoryName(biome))
+                    : "quest and map must use the same clue name";
             String[] lines = story.dialogueLines();
             lines[0] = "MUTATED";
             assert !story.dialogueLines()[0].equals("MUTATED");

@@ -1,7 +1,7 @@
 import java.util.List;
 
 public final class Wisp {
-    public enum Role { SCOUT, GUARD, SPITTER }
+    public enum Role { SCOUT, GUARD, SPITTER, KNIGHT }
     public enum State {
         PATROL,
         PURSUE,
@@ -163,7 +163,7 @@ public final class Wisp {
             face(targetX, targetY, seconds);
             return;
         }
-        double attackRange = role==Role.SPITTER?300:role==Role.GUARD?220:ATTACK_RANGE;
+        double attackRange = role==Role.SPITTER?300:role==Role.GUARD?220:role==Role.KNIGHT?135:ATTACK_RANGE;
         if (distance <= attackRange && lineClear(targetX, targetY, map)) {
             setIntent(dx, dy);
             enter(State.TELEGRAPH);
@@ -176,7 +176,7 @@ public final class Wisp {
         }
         double[] direction = steer(dx / distance, dy / distance, seconds, map);
         setIntent(direction[0], direction[1]);
-        double speed=role==Role.GUARD?165:PURSUE_SPEED;
+        double speed=role==Role.GUARD?165:role==Role.KNIGHT?110:PURSUE_SPEED;
         move(direction[0] * speed * seconds,
                 direction[1] * speed * seconds, map);
         animation.update((int) Math.signum(direction[0]),
@@ -286,8 +286,8 @@ public final class Wisp {
     }
 
     private void updateLunge(double seconds, RuinedOutpostMap map) {
-        if (role == Role.SPITTER) {
-            // Reuse attack frames/state, but a ranged release has no melee propulsion.
+        if (role == Role.SPITTER || role == Role.KNIGHT) {
+            // Ranged releases and a knight's overhead use attack frames without rush propulsion.
             animation.update(0, 0, seconds);
             stateTime += seconds;
             if (stateTime >= lungeDuration()) enter(State.RECOVER);
@@ -473,9 +473,9 @@ public final class Wisp {
     /** Monotonic release counter; callers consume changes immediately after update, not during hurt/death. */
     public int shotNumber(){return shotNumber;}
     private double lockWindow(){return role==Role.SPITTER?0.25:LUNGE_LOCK_WINDOW;}
-    public double telegraphDuration(){return role==Role.SPITTER?0.75:role==Role.GUARD?0.6:TELEGRAPH_DURATION;}
-    public double lungeDuration(){return role==Role.GUARD?0.35:LUNGE_DURATION;}
-    public double recoverDuration(){return role==Role.SPITTER?1.4:role==Role.GUARD?0.85:RECOVER_DURATION;}
+    public double telegraphDuration(){return role==Role.SPITTER?0.75:role==Role.GUARD?0.6:role==Role.KNIGHT?.85:TELEGRAPH_DURATION;}
+    public double lungeDuration(){return role==Role.GUARD?0.35:role==Role.KNIGHT?.22:LUNGE_DURATION;}
+    public double recoverDuration(){return role==Role.SPITTER?1.4:role==Role.GUARD?0.85:role==Role.KNIGHT?1.1:RECOVER_DURATION;}
     public double stateSeconds(){return stateTime;}
 
     public boolean usesAttackAnimation() {

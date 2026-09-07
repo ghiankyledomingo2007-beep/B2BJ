@@ -42,7 +42,7 @@ public final class B2BJ extends JPanel {
     private static final Color GOLD = new Color(230, 188, 92);
     private static final Font SMALL_FONT = new Font(Font.MONOSPACED, Font.BOLD, 14);
 
-    private final RuinedOutpostGame game = new RuinedOutpostGame();
+    private final RuinedOutpostGame game;
     private final BufferedImage[] terrainTiles = loadEnvironmentTiles();
     private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/ruined_outpost/earth_banks.png"));
     private final BufferedImage slimeSheet = loadSlimeSheet();
@@ -144,6 +144,11 @@ public final class B2BJ extends JPanel {
     private long previousFrame = System.nanoTime();
 
     B2BJ(boolean startTimer) {
+        this(startTimer,new RuinedOutpostGame());
+    }
+
+    B2BJ(boolean startTimer,RuinedOutpostGame game) {
+        this.game=java.util.Objects.requireNonNull(game);
         for(var action:BladeAnimation.Action.values())rainoraySheets.put(action,loadImage(
                 "assets/characters/blade/rainoray_"+action.name().toLowerCase(java.util.Locale.ROOT)+".png"));
         for(var prop:RuinedOutpostMap.Prop.values())propSprites.put(prop,loadImage(prop.path()));
@@ -191,8 +196,8 @@ public final class B2BJ extends JPanel {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            B2BJ panel = new B2BJ(true);
-            JFrame window = new JFrame("B2BJ — Ruined Outpost");
+            B2BJ panel = new B2BJ(true,RuinedOutpostGame.campaign(CampaignSave.defaultPath()));
+            JFrame window = new JFrame("B2BJ — Blob to Blade");
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.setResizable(false);
             window.add(panel);
@@ -224,8 +229,8 @@ public final class B2BJ extends JPanel {
         if (attackHeld) attack();
         game.update(seconds, horizontal, vertical);
 
-        int animationX = game.story().blocksGameplay() ? 0 : horizontal;
-        int animationY = game.story().blocksGameplay() ? 0 : vertical;
+        int animationX = game.blocked() ? 0 : horizontal;
+        int animationY = game.blocked() ? 0 : vertical;
         Player player = game.player();
         if (player.recovering()) { animationX=0; animationY=0; }
         if (player.dashing()) trails.add(new double[]{player.x(),player.y(),0});
@@ -383,22 +388,30 @@ public final class B2BJ extends JPanel {
         drawWorld(canvas, cameraX, cameraY);
         canvas.translate(-shakeX, -shakeY);
         drawScreenEffects(canvas);
-        drawHud(canvas);
-        drawBanner(canvas);
-        drawStoryOverlay(canvas);
-        if (game.paused()) drawPause(canvas);
-        if (mapShown&&!game.story().blocksGameplay()) drawMap(canvas, true);
+        if(game.campaignMode()) {
+            CampaignRenderer.drawHud(canvas,game,WIDTH,HEIGHT);
+            if(mapShown&&!game.story().blocksGameplay())CampaignRenderer.drawMap(canvas,game,WIDTH,HEIGHT);
+            CampaignRenderer.drawOverlay(canvas,game,WIDTH,HEIGHT);
+        } else {
+            drawHud(canvas);drawBanner(canvas);drawStoryOverlay(canvas);
+            if(game.paused())drawPause(canvas);
+            if(mapShown&&!game.story().blocksGameplay())drawMap(canvas,true);
+        }
         canvas.dispose();
     }
 
     private record DepthDraw(double groundY, Runnable paint) { }
 
     private void drawWorld(Graphics2D canvas, int cameraX, int cameraY) {
-        drawTerrain(canvas, cameraX, cameraY);
-        canvas.setColor(new Color(10,16,27,105)); canvas.fillRect(0,0,WIDTH,HEIGHT);
-        drawBanks(canvas, cameraX, cameraY);
-        drawWeather(canvas,cameraX,cameraY,true);
-        drawFieldRemains(canvas,cameraX,cameraY);
+        if(game.campaignMode()) {
+            CampaignRenderer.drawGround(canvas,game,cameraX,cameraY,WIDTH,HEIGHT);
+            CampaignRenderer.drawScenery(canvas,game,cameraX,cameraY,WIDTH,HEIGHT);
+        } else {
+            drawTerrain(canvas, cameraX, cameraY);
+            canvas.setColor(new Color(10,16,27,105)); canvas.fillRect(0,0,WIDTH,HEIGHT);
+            drawBanks(canvas, cameraX, cameraY);drawFieldRemains(canvas,cameraX,cameraY);
+        }
+        if(!game.campaignMode()||game.biome()==0)drawWeather(canvas,cameraX,cameraY,true);
         drawCorpses(canvas,cameraX,cameraY);
         drawIchor(canvas, cameraX, cameraY);
         drawGuardianTelegraph(canvas, cameraX, cameraY);
@@ -406,7 +419,7 @@ public final class B2BJ extends JPanel {
 
         // Painter's order uses ground contact, never sprite centre or asset loading order.
         List<DepthDraw> draws=new ArrayList<>();
-        for(var barrier:game.map().barriers())
+        if(!game.campaignMode())for(var barrier:game.map().barriers())
             draws.add(new DepthDraw(barrier.centerY()+barrier.height()/2,
                     ()->drawBarrier(canvas,barrier,cameraX,cameraY)));
         for(var dressing:game.map().dressing()) {
@@ -423,14 +436,20 @@ public final class B2BJ extends JPanel {
             };
             if(dressing.decoration().ground())paint.run();else draws.add(new DepthDraw(dressing.y(),paint));
         }
-        queueDoors(draws,canvas,cameraX,cameraY);
+        if(!game.campaignMode())queueDoors(draws,canvas,cameraX,cameraY);
         Player player=game.player();
         for(Wisp scout:game.scouts()) if(scout.alive())
             draws.add(new DepthDraw(scout.y()+WispAnimation.RENDER_SIZE/2,
-                    ()->drawWisp(canvas,scout,cameraX,cameraY)));
-        if(game.map().room()==9&&game.guardian().visible())
+                    ()->{
+                        if(game.campaignEnemy(scout)!=null)CampaignRenderer.drawEnemy(canvas,game.campaignEnemy(scout),cameraX,cameraY);
+                        else drawWisp(canvas,scout,cameraX,cameraY);
+                    }));
+        if((game.campaignMode()||game.map().room()==9)&&game.guardian().visible())
             draws.add(new DepthDraw(game.guardian().y()+Guardian.GROUND_Y_OFFSET,
-                    ()->drawGuardian(canvas,cameraX,cameraY)));
+                    ()->{
+                        if(game.campaignMode())CampaignRenderer.drawBoss(canvas,game.guardian(),game.biome(),cameraX,cameraY);
+                        else drawGuardian(canvas,cameraX,cameraY);
+                    }));
         for(double[] trail:trails) {
             draws.add(new DepthDraw(trail[1]+SlimeAnimation.RENDER_SIZE/2,()->{
                 Graphics2D ghost=(Graphics2D)canvas.create();
@@ -456,8 +475,8 @@ public final class B2BJ extends JPanel {
         for(DepthDraw draw:draws)draw.paint().run();
 
         drawImpacts(canvas,cameraX,cameraY,false);
-        drawWeather(canvas,cameraX,cameraY,false);
-        if(mouseAimed&&!game.story().blocksGameplay()&&aimReticle!=null) {
+        if(!game.campaignMode()||game.biome()==0)drawWeather(canvas,cameraX,cameraY,false);
+        if(mouseAimed&&!game.blocked()&&aimReticle!=null) {
             int frame=(int)(frameCounter/6)%(aimReticle.getWidth()/32);
             int x=Math.round(mouseX/2f)*2,y=Math.round(mouseY/2f)*2;
             canvas.drawImage(aimReticle,x-32,y-32,x+32,y+32,frame*32,0,frame*32+32,32,null);
@@ -546,8 +565,8 @@ public final class B2BJ extends JPanel {
         int y = floorY-BladeAnimation.FOOT_ROW*2;
         BufferedImage sheet=rainoraySheets.get(bladeAnimation.action());
         int frame=bladeAnimation.action()==BladeAnimation.Action.SLASH
-                ?sideAttackFrame(bladeAnimation.elapsed(),game.combo()):bladeAnimation.frame();
-        int sourceRow=bladeAnimation.row()+(bladeAnimation.action()==BladeAnimation.Action.SLASH?game.combo()*3:0);
+                ?sideAttackFrame(bladeAnimation.elapsed(),Math.min(2,game.combo())):bladeAnimation.frame();
+        int sourceRow=bladeAnimation.row()+(bladeAnimation.action()==BladeAnimation.Action.SLASH?Math.min(2,game.combo())*3:0);
         if(sheet==null) {
             sheet=rainoraySheets.get(BladeAnimation.Action.IDLE);frame=0;sourceRow=bladeAnimation.row();
             if(sheet==null) {
@@ -729,18 +748,36 @@ public final class B2BJ extends JPanel {
             double angle=Math.atan2(scout.intentY(),scout.intentX());
             if(scout.role()==Wisp.Role.SPITTER) {
                 double reach=EnemyProjectile.MAX_TRAVEL/2;
-                for(int side=-1;side<=1;side++) {
-                    double direction=angle+side*.20;
-                    drawTellLane(pixels,x,y,direction,reach,side==0?16:12);
+                var profile=game.campaignEnemy(scout);
+                boolean radial=profile!=null&&profile.kind()==CampaignEnemy.Kind.CINDER_HEXER;
+                for(int side=0;side<(radial?8:3);side++) {
+                    double direction=angle+(radial?side*Math.PI/4:(side-1)*.20);
+                    drawTellLane(pixels,x,y,direction,reach,side==1?16:12);
                     drawTellRing(pixels,x+Math.cos(direction)*reach,y+Math.sin(direction)*reach,
                             (Player.COLLISION_RADIUS+EnemyProjectile.RADIUS)/2);
                 }
+            } else if(scout.role()==Wisp.Role.KNIGHT) {
+                java.awt.Polygon lane=new java.awt.Polygon();
+                for(int corner=0;corner<4;corner++) {
+                    double forward=corner==1||corner==2?135.0/2:0;
+                    double side=corner<2?-25:25;
+                    lane.addPoint((int)Math.round(x+Math.cos(angle)*forward-Math.sin(angle)*side),
+                            (int)Math.round(y+Math.sin(angle)*forward+Math.cos(angle)*side));
+                }
+                pixels.setColor(new Color(230,91,73,65));pixels.fillPolygon(lane);
+                pixels.setColor(RED);pixels.drawPolygon(lane);
             } else drawTellLane(pixels,x,y,angle,520*scout.lungeDuration()/2,16);
         }
         pixels.setComposite(java.awt.AlphaComposite.SrcOver);
         Guardian guardian=game.guardian();
+        if(game.campaignMode()&&guardian.auraRadius()>0) {
+            int radius=(int)guardian.auraRadius()/2;
+            int left=(int)(guardian.x()-cameraX)/2-radius,top=(int)(guardian.y()-cameraY)/2-radius;
+            pixels.setColor(new Color(210,77,87,20));pixels.fillOval(left,top,radius*2,radius*2);
+            pixels.setColor(new Color(228,100,100,125));pixels.drawOval(left,top,radius*2,radius*2);
+        }
         boolean warning=guardian.state()==Guardian.State.TELEGRAPH;
-        if(game.map().room()==9&&(warning||guardian.state()==Guardian.State.SLAM)) {
+        if(game.bossActive()&&(warning||guardian.state()==Guardian.State.SLAM)) {
             double x=(guardian.targetX()-cameraX)/2,y=(guardian.targetY()-cameraY)/2;
             double radius=guardian.slamRadius()/2;
             if(guardian.attack()==Guardian.Attack.FISSURE) {
@@ -1585,6 +1622,19 @@ public final class B2BJ extends JPanel {
         bind(KeyEvent.VK_M,"mute",value->{if(value) GameAudio.setMuted(!GameAudio.muted());});
         bind(KeyEvent.VK_V,"effects",value->{if(value) reducedEffects=!reducedEffects;});
         bind(KeyEvent.VK_F,"riposte",value->{if(value)game.riposte();});
+        bind(KeyEvent.VK_C,"continue",value->{if(value){clearInput();game.continueCampaign();}});
+        bind(KeyEvent.VK_N,"newCampaign",value->{if(value){clearInput();game.newCampaign();}});
+        bind(KeyEvent.VK_H,"saveCamp",value->{if(value)game.saveCheckpoint();});
+        String[] tracks={"vitality","capacity","efficiency","edge"};
+        for(int i=0;i<tracks.length;i++) {
+            int choice=i;String track=tracks[i];
+            bind(KeyEvent.VK_1+i,"upgrade"+i,value->{
+                if(!value)return;
+                if(game.choosingEnding()) {
+                    if(choice<2)game.chooseEnding(CampaignStory.Ending.values()[choice]);
+                } else game.buyUpgrade(track);
+            });
+        }
         bind(KeyEvent.VK_R,"restart",value->{
             if(value&&(game.story().phase()==OutpostStory.Phase.DEAD
                     ||game.story().phase()==OutpostStory.Phase.COMPLETE)) restartGame();

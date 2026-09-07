@@ -37,6 +37,7 @@ public final class RuinedOutpostMapTest {
             assertDoorsReachable(map);
         }
         RuinedOutpostMap boss=new RuinedOutpostMap(9);
+        assert !boss.clearLine(1800,576,1900,576) : "melee sight must not cross the closed gate";
         assert !boss.exitReached(boss.gateX(),boss.gateY());
         assert boss.isBlocked(boss.guardianX(),boss.guardianY()+32,24);
         boss.clearGuardian(); boss.openGate();

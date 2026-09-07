@@ -67,12 +67,13 @@ public final class RuinedOutpostMap {
     private static final int[][] LINKS = {{0,1},{1,2},{2,3},{3,4},{4,5},{5,6},
             {6,7},{7,8},{8,9},{2,10},{9,11}};
     private final int room;
+    private final CampaignWorld.Area campaignArea;
     private final List<Obstacle> barriers = new ArrayList<>();
     private final List<Obstacle> banks = new ArrayList<>();
     private final List<Door> doors = new ArrayList<>();
     private final List<Dressing> dressing = new ArrayList<>();
     private final List<Obstacle> dressingObstacles = new ArrayList<>();
-    private final int[][] bankMasks=new int[18][30];
+    private final int[][] bankMasks;
     private final java.awt.geom.Area bankShape=new java.awt.geom.Area();
     private boolean gateOpen;
     private boolean guardianPresent;
@@ -84,6 +85,8 @@ public final class RuinedOutpostMap {
     public RuinedOutpostMap(int room) {
         if (room < 0 || room >= ROOMS.size()) throw new IllegalArgumentException("room");
         this.room = room;
+        campaignArea=null;
+        bankMasks=new int[heightInTiles()][widthInTiles()];
         guardianPresent = room == 9;
         liveGuardianX=guardianX();liveGuardianY=guardianY();
         for (int[] link : LINKS) {
@@ -93,19 +96,7 @@ public final class RuinedOutpostMap {
             doors.add(new Door(other, b.gridX() > a.gridX() ? worldWidth()-64 : b.gridX() < a.gridX() ? 64 : spawnX(),
                     b.gridY() > a.gridY() ? worldHeight()-64 : b.gridY() < a.gridY() ? 64 : spawnY()));
         }
-        // Uneven earth banks border the compound; roads cut broad, physical breaches.
-        for(int x=32;x<worldWidth();x+=64) {
-            if(!breachAt(x,64)) banks.add(new Obstacle(x,48,64,96+(x/64%3)*16));
-            if(!breachAt(x,worldHeight()-64)) banks.add(new Obstacle(x,worldHeight()-48,64,96+(x/64%4)*16));
-        }
-        for(int y=32;y<worldHeight();y+=64) {
-            if(!breachAt(64,y)) banks.add(new Obstacle(48,y,96+(y/64%4)*16,64));
-            if(!breachAt(worldWidth()-64,y)) banks.add(new Obstacle(worldWidth()-48,y,96+(y/64%3)*16,64));
-        }
-        for(var bank:banks)bankShape.add(new java.awt.geom.Area(new java.awt.geom.Rectangle2D.Double(
-                bank.centerX()-bank.width()/2,bank.centerY()-bank.height()/2,bank.width(),bank.height())));
-        for(int y=0;y<heightInTiles();y++)for(int x=0;x<widthInTiles();x++)
-            bankMasks[y][x]=(bankAt(x,y)?1:0)|(bankAt(x+1,y)?2:0)|(bankAt(x,y+1)?4:0)|(bankAt(x+1,y+1)?8:0);
+        buildBanks();
         switch (room) {
             case 0 -> { prop(280,240,Prop.TREE); prop(920,480,Prop.TREE); }
             case 1 -> { prop(448,352,Prop.PALISADE); prop(832,352,Prop.PALISADE); }
@@ -142,6 +133,32 @@ public final class RuinedOutpostMap {
             default -> { }
         }
     }
+    private RuinedOutpostMap(CampaignWorld.Area area) {
+        campaignArea=area;
+        room=area.id();
+        bankMasks=new int[heightInTiles()][widthInTiles()];
+        liveGuardianX=guardianX();liveGuardianY=guardianY();
+        barriers.addAll(area.obstacles());
+        buildBanks();
+    }
+    public static RuinedOutpostMap campaign(int biome) { return new RuinedOutpostMap(CampaignWorld.area(biome)); }
+    public boolean campaign() { return campaignArea!=null; }
+    public int biome() { return campaign()?campaignArea.id():0; }
+    private void buildBanks() {
+        // Uneven earth banks border the compound; roads cut broad, physical breaches.
+        for(int x=32;x<worldWidth();x+=64) {
+            if(!breachAt(x,64)) banks.add(new Obstacle(x,48,64,96+(x/64%3)*16));
+            if(!breachAt(x,worldHeight()-64)) banks.add(new Obstacle(x,worldHeight()-48,64,96+(x/64%4)*16));
+        }
+        for(int y=32;y<worldHeight();y+=64) {
+            if(!breachAt(64,y)) banks.add(new Obstacle(48,y,96+(y/64%4)*16,64));
+            if(!breachAt(worldWidth()-64,y)) banks.add(new Obstacle(worldWidth()-48,y,96+(y/64%3)*16,64));
+        }
+        for(var bank:banks)bankShape.add(new java.awt.geom.Area(new java.awt.geom.Rectangle2D.Double(
+                bank.centerX()-bank.width()/2,bank.centerY()-bank.height()/2,bank.width(),bank.height())));
+        for(int y=0;y<heightInTiles();y++)for(int x=0;x<widthInTiles();x++)
+            bankMasks[y][x]=(bankAt(x,y)?1:0)|(bankAt(x+1,y)?2:0)|(bankAt(x,y+1)?4:0)|(bankAt(x+1,y+1)?8:0);
+    }
     private void dress(double x,double y,Decoration decoration) {
         var item=new Dressing(authored(x),authored(y),decoration);
         dressing.add(item);
@@ -154,27 +171,29 @@ public final class RuinedOutpostMap {
     private void prop(double x,double y,Prop prop) {
         barriers.add(new Obstacle(authored(x),authored(y),prop.footprintWidth*2,prop.footprintDepth*2,prop));
     }
-    public double authored(double coordinate) { return coordinate*1.5; }
+    public double authored(double coordinate) { return campaign()?coordinate:coordinate*1.5; }
     private boolean breachAt(double x,double y) {
+        if(campaign())return false;
         for(Door door:doors) if(Math.hypot(x-door.x(),y-door.y())<160) return true;
         return room==9 && Math.hypot(x-gateX(),y-gateY())<160;
     }
     public int room() { return room; }
-    public Room description() { return ROOMS.get(room); }
+    public Room description() { return campaign()?new Room(campaignArea.name(),room,0,
+            campaignArea.enemies().size(),campaignArea.landmarks().get(0).lore()):ROOMS.get(room); }
     public List<Door> doors() { return List.copyOf(doors); }
     public List<Dressing> dressing() {return List.copyOf(dressing);}
-    public int widthInTiles() { return 30; }
-    public int heightInTiles() { return 18; }
+    public int widthInTiles() { return campaign()?campaignArea.width()/TILE_SIZE:30; }
+    public int heightInTiles() { return campaign()?campaignArea.height()/TILE_SIZE:18; }
     public int worldWidth() { return widthInTiles()*TILE_SIZE; }
     public int worldHeight() { return heightInTiles()*TILE_SIZE; }
-    public double spawnX() { return worldWidth()/2.0; }
-    public double spawnY() { return worldHeight()/2.0; }
-    public double guardianX() { return authored(860); }
-    public double guardianY() { return authored(352); }
-    public double restX() { return spawnX(); }
-    public double restY() { return authored(320); }
-    public double gateX() { return worldWidth()-64; }
-    public double gateY() { return spawnY(); }
+    public double spawnX() { return campaign()?campaignArea.spawn().x():worldWidth()/2.0; }
+    public double spawnY() { return campaign()?campaignArea.spawn().y():worldHeight()/2.0; }
+    public double guardianX() { return campaign()?campaignArea.boss().x():authored(860); }
+    public double guardianY() { return campaign()?campaignArea.boss().y():authored(352); }
+    public double restX() { return campaign()?campaignArea.hub().x():spawnX(); }
+    public double restY() { return campaign()?campaignArea.hub().y():authored(320); }
+    public double gateX() { return campaign()?campaignArea.exit().x():worldWidth()-64; }
+    public double gateY() { return campaign()?campaignArea.exit().y():spawnY(); }
     public List<Obstacle> barriers() { return List.copyOf(barriers); }
     public List<Obstacle> banks() { return List.copyOf(banks); }
     int bankMask(int x,int y) { return bankMasks[y][x]; }
@@ -186,6 +205,7 @@ public final class RuinedOutpostMap {
     public void setPassagesLocked(boolean locked) { passagesLocked=locked; }
     public void setTutorialLocked(boolean locked) { tutorialLocked=locked; }
     public boolean passageOpen(Door door) {
+        if(campaign())return true;
         return !passagesLocked && !(tutorialLocked && door.destination()==5);
     }
     public Obstacle passageBarrier(Door door) {
@@ -195,12 +215,13 @@ public final class RuinedOutpostMap {
     public void openGate() { gateOpen = true; }
     public boolean gateOpen() { return gateOpen; }
     public void clearGuardian() { guardianPresent = false; }
+    public void setGuardianPresent(boolean present) { guardianPresent=present; }
     public void setGuardianPosition(double x,double y) {
         if(!Double.isFinite(x)||!Double.isFinite(y))throw new IllegalArgumentException("guardian position");
         liveGuardianX=x;liveGuardianY=y;
     }
     public boolean exitReached(double x, double y) {
-        return room == 9 && gateOpen && Math.hypot(x-gateX(), y-gateY()) < 100;
+        return (campaign()||room == 9) && gateOpen && Math.hypot(x-gateX(), y-gateY()) < 100;
     }
     public boolean isBlocked(double x, double y, double radius) {
         return touchesGuardian(x,y,radius) || waterBlocked(x,y,radius);
@@ -215,17 +236,11 @@ public final class RuinedOutpostMap {
         for (Obstacle obstacle : dressingObstacles) if (intersects(x,y,radius,obstacle)) return true;
         for (Obstacle bank : banks) if (intersects(x,y,radius,bank)) return true;
         for (Door door : doors) if (!passageOpen(door) && intersects(x,y,radius,passageBarrier(door))) return true;
-        if(room==9&&!gateOpen&&intersects(x,y,radius,new Obstacle(gateX(),gateY(),48,320))) return true;
+        if((campaign()||room==9)&&!gateOpen&&intersects(x,y,radius,new Obstacle(gateX(),gateY(),48,320))) return true;
         return false;
     }
     public boolean clearLine(double ax, double ay, double bx, double by) {
-        int steps = Math.max(1, (int)Math.ceil(Math.hypot(bx-ax,by-ay)/8));
-        for (int i=1; i<steps; i++) {
-            double x=ax+(bx-ax)*i/steps, y=ay+(by-ay)*i/steps;
-            for (Obstacle obstacle : barriers) if (intersects(x,y,1,obstacle)) return false;
-            for (Obstacle obstacle : dressingObstacles) if (intersects(x,y,1,obstacle)) return false;
-        }
-        return true;
+        return clearWaterLine(ax,ay,bx,by,1);
     }
     public boolean clearWaterLine(double ax,double ay,double bx,double by,double radius) {
         if(!Double.isFinite(ax)||!Double.isFinite(ay)||!Double.isFinite(bx)||!Double.isFinite(by)
@@ -244,6 +259,7 @@ public final class RuinedOutpostMap {
     }
     private boolean stone(int x, int y) {
         double wx=x*TILE_SIZE,wy=y*TILE_SIZE;
+        if(campaign())return CampaignWorld.paved(campaignArea,wx,wy);
         if(room==1) {
             // One broad approach bends through the broken defence, not a round arena stamp.
             double centre=spawnY()+Math.sin(wx/worldWidth()*Math.PI*2)*80;

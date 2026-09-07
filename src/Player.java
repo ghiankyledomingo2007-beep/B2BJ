@@ -28,6 +28,7 @@ public final class Player {
     private double hurtInvulnerability;
     private double health = MAX_HEALTH;
     private double recoveryTime;
+    private int vitality, capacity, efficiency, edge;
 
     public Player(double x, double y) {
         this.x = x;
@@ -42,7 +43,7 @@ public final class Player {
         hurtInvulnerability = Math.max(0, hurtInvulnerability - seconds);
         if (bladeTime > 0) {
             bladeTime = Math.max(0, bladeTime - seconds);
-            ichor = MAX_ICHOR * bladeTime / BLADE_DURATION;
+            ichor = MAX_ICHOR * bladeTime / bladeDuration();
             if (bladeTime == 0) beginRecovery();
         }
         if (recovering() || !alive()) return;
@@ -82,7 +83,7 @@ public final class Player {
         health = Math.max(0, health - damage * (bladeForm() ? 0.75 : 1));
         if (bladeForm()) {
             ichor = Math.max(0, ichor - 5);
-            bladeTime = BLADE_DURATION * ichor / MAX_ICHOR;
+            bladeTime = bladeDuration() * ichor / MAX_ICHOR;
             if (bladeTime == 0) beginRecovery();
         }
         hurtInvulnerability = HURT_INVULNERABILITY;
@@ -110,14 +111,14 @@ public final class Player {
         if (!Double.isFinite(amount) || amount <= 0 || !alive()) return;
         boolean blade = bladeForm();
         ichor = Math.min(MAX_ICHOR, ichor + amount);
-        if (blade) bladeTime = BLADE_DURATION * ichor / MAX_ICHOR;
+        if (blade) bladeTime = bladeDuration() * ichor / MAX_ICHOR;
     }
 
     public boolean transform() {
         if (bladeForm() || recovering() || !alive() || ichor < MAX_ICHOR) {
             return false;
         }
-        bladeTime = BLADE_DURATION;
+        bladeTime = bladeDuration();
         return true;
     }
 
@@ -134,7 +135,7 @@ public final class Player {
         if (!Double.isFinite(amount) || amount <= 0 || !alive() || !bladeForm() || ichor < amount)
             return false;
         ichor -= amount;
-        bladeTime = BLADE_DURATION * ichor / MAX_ICHOR;
+        bladeTime = bladeDuration() * ichor / MAX_ICHOR;
         if (bladeTime == 0) beginRecovery();
         return true;
     }
@@ -160,9 +161,20 @@ public final class Player {
     public double dashCooldown() { return dashCooldown; }
     public double healthValue() { return health; }
     public double bladeSeconds() { return bladeTime; }
-    public void heal() { health = MAX_HEALTH; }
+    public int maxHealth() { return MAX_HEALTH+vitality; }
+    public double dropMultiplier() { return 1+capacity*.1; }
+    public double bladeDuration() { return MAX_ICHOR/(MAX_ICHOR/BLADE_DURATION-efficiency*.5); }
+    public int bladeComboLength() { return edge>0?4:3; }
+    public void configureUpgrades(int vitality,int capacity,int efficiency,int edge) {
+        if(vitality<0||vitality>3||capacity<0||capacity>3||efficiency<0||efficiency>3||edge<0||edge>1)
+            throw new IllegalArgumentException("Invalid upgrade levels");
+        this.vitality=vitality;this.capacity=capacity;this.efficiency=efficiency;this.edge=edge;
+        health=Math.min(health,maxHealth());
+        if(bladeForm())bladeTime=bladeDuration()*ichor/MAX_ICHOR;
+    }
+    public void heal() { health = maxHealth(); }
     public void heal(double amount) {
-        if (Double.isFinite(amount) && amount > 0 && alive()) health = Math.min(MAX_HEALTH, health + amount);
+        if (Double.isFinite(amount) && amount > 0 && alive()) health = Math.min(maxHealth(), health + amount);
     }
     public void relocate(double newX, double newY) {
         x = newX;

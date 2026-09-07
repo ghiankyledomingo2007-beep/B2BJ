@@ -1,12 +1,19 @@
 # B2BJ — Blob to Blade
 
-Java 17 pixel-action prototype for the **Ruined Outpost**, the first biome.
+Java 17 action adventure with a complete **placeholder campaign** across four regions.
 Rainoray wakes as a cyan slime among fallen knights; their Ichor grants a temporary Blade form.
 
-The outpost uses twelve connected sections (ten main, two optional), not twelve indoor boxes.
-Each section is a scrolling 1920×1152 outdoor playfield. Paving, earth banks, broken
-palisades, barracks and open road breaches define the compound. Cleared passages
-can be crossed on foot. Room names and exact layout are implementation proposals.
+Ruined Outpost, Corrupted Forest, Demon Catacombs and Rift Citadel are each a
+continuous 6144×4096 exploration map with twelve named landmarks, alternate paths,
+three optional discoveries, a safe NPC camp and a boss. Normal encounters do not
+lock travel. Boss victories permanently open the next region; return portals allow
+backtracking. The last boss opens both GCD endings.
+
+Existing player/effect art is reused. New world scenery, enemies, bosses and UI
+are deliberate code-drawn placeholders; this is not a final-art or fully tuned release.
+No PixelLab calls, generated assets or paid services were used for this campaign build.
+See [campaign build plan](docs/campaign-build-plan.md), [story](docs/campaign-story.md)
+and [quality report](docs/testing/campaign-quality.md).
 
 ## Build and run
 
@@ -26,18 +33,20 @@ pixel-art warnings, credit ledger and verification limits.
 
 ## Controls
 
-- Enter / click: begin.
+- Enter: new journey. C: continue from saved checkpoint. N explicitly confirms replacing an existing save.
 - WASD / arrows: move. Mouse: aim. Hold left click: Water Slash (Blob) / cuts (Blade).
 - Right click: Tide Wave (Blob, 4.5-second cooldown) / Ichor Crescent (Blade, 5 seconds).
 - F: Riposte (Blade), a 0.3-second one-hit parry with a 6-second cooldown.
 - Space: dash, with brief invulnerability. Blob dash damages enemies.
 - Q: transform at 100 Ichor.
-- Walk through cleared breaches; E also works near a passage.
-- E: absorb nearby remains in Blob form, rest, use field dressing, or leave.
+- E: talk, read discoveries, absorb nearby remains in Blob form, or use region portals.
+- H at a safe camp: heal, set checkpoint and save. Dialogue: E / Enter to continue.
+- 1–4 at camp: buy Vitality, Capacity, Efficiency or Edge with Ichor Shards.
 - Esc: pause. Focus loss pauses and releases held input.
-- Hold Tab: explored-area map; stays live during play or remains paused from pause.
+- Hold Tab: region/kingdom map; stays live during play or remains paused from pause.
 - M: sound toggle. V: reduced screen effects.
-- R: restart after death/completion. After reaching Captain Camp, death reforms there.
+- R: reform at current region checkpoint after death; return to title after an ending.
+- 1 / 2 at the final rift: choose the ending, only after all four bosses are defeated.
 
 Health pips and segmented gold Ichor are top-left; Blade timer top-centre; form
 top-right; local terrain minimap bottom-right. Blade lasts 12 seconds before
@@ -82,7 +91,11 @@ See [water pass](docs/art-review/water-slash/README.md) for art and balance chec
 The route test positions actors deliberately and uses an end-of-boss fixture;
 it is not evidence of a complete unassisted playthrough.
 
-See [GCD audit](docs/gcd-alignment-audit.md) for remaining work.
+The art reports below describe historical outpost-only passes and their then-current test/credit counts.
+The legacy twelve-section outpost constructors remain available to regression tests;
+the desktop launcher now starts the larger campaign instead.
+
+See [GCD audit](docs/gcd-alignment-audit.md) for historical findings.
 See the [combat repair report](docs/testing/combat-repair-2026-09-06/README.md) for
 26 regression programs, fresh-route observations and adaptive boss scenarios.
 The [official PixelLab guide snapshot](docs/reference/pixellab-mcp-guide.md) was
@@ -91,9 +104,13 @@ The subsequent [immersion pass](docs/testing/immersion-40/README.md) adds magnet
 animated Ichor, distinct sprite-based hurt/pickup effects, a ranged Spitter and
 the owner's requested larger3× Warden. All34 Java checks pass; this new key's
 40-generation allowance is fully consumed. See its [art review](docs/art-review/immersion-40/README.md).
-This is **not a finished biome or a bug-free release**: boss pacing, final animation
-art, music and longer live playtesting remain. Later biomes are not implemented.
-Progress currently survives deaths within the running session, not application restarts.
+The campaign saves checkpoints, permanent boss victories, shards, upgrades and quests
+to `~/.b2bj/campaign.properties` using atomic replacement. Invalid saves are preserved
+and reported; N is an explicit new-game overwrite. Enemies respawn after reloading or
+death, but permanent progression stays. Both endings are tested with actual combat
+damage; automated fixtures refill health/Ichor, so this does not establish unassisted
+difficulty, 4–6 hours of content, or release-quality balance. Final animation/art,
+controller support, remappable bindings and longer human playtesting remain.
 
 Windows release workflow is configured but has not been run in this pass.
 Checkpoint `446420e` was pushed to the owner's personal GitHub on 2026-09-07;

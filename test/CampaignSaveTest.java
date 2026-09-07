@@ -14,6 +14,7 @@ public final class CampaignSaveTest {
             progressSurvivesRestartAndReplacement(directory);
             corruptSavesRemainUntouched(directory);
             progressRejectsInvalidValuesAndCopiesCollections();
+            campaignPrerequisitesAndBacktracking(directory);
             failedReplacementPreservesDestination(directory);
             System.out.println("CampaignSaveTest passed");
         } finally {
@@ -26,8 +27,8 @@ public final class CampaignSaveTest {
 
     private static CampaignSave.Progress progress() {
         return new CampaignSave.Progress(2, 1, Set.of(0, 1), Set.of("blade", "crescent"),
-                Map.of("vitality", 2, "power", 1),
-                Set.of("talked_0", "memory_0", "quest_0"), Set.of("CLOSE_RIFT"));
+                Map.of("vitality", 2, "edge", 1),
+                Set.of("talked_0", "memory_0", "quest_0"), Set.of(), 543);
     }
 
     private static void missingSaveDoesNotCreateFiles(Path directory) throws IOException {
@@ -43,7 +44,8 @@ public final class CampaignSaveTest {
                 : "all campaign progress must survive disk roundtrip";
         var finished = new CampaignSave.Progress(3, 1, Set.of(0, 1, 2, 3),
                 Set.of("blade", "crescent", "riposte"), Map.of("vitality", 3),
-                Set.of("quest_0", "quest_1", "quest_2", "quest_3"), Set.of("HUMAN_FORM"));
+                Set.of("quest_0", "quest_1", "quest_2", "quest_3"),
+                Set.of("CLOSE_RIFT", "HUMAN_FORM"), 100_000);
         CampaignSave.save(save, finished);
         assert CampaignSave.load(save).orElseThrow().equals(finished)
                 : "replacement must persist latest campaign";
@@ -63,6 +65,13 @@ public final class CampaignSaveTest {
                 "not a campaign save", "", "version=999\n", "version=1\nbiome=2\n",
                 valid.replace("biome=2", "biome=-1"),
                 valid.replace("checkpoint=1", "checkpoint=bad"),
+                valid.replace("shards=543", "shards=-1"),
+                valid + "\nclearedBosses=0,4\n", valid + "\nclearedBosses=0,01,1\n",
+                valid + "\nupgrades=vitality\n", valid + "\nupgrades=vitality:1,vitality:2\n",
+                valid + "\nunlocks=blade,,crescent\n", valid + "\nendings=NONE\n",
+                valid + "\nquestFlags=unknown_0\n",
+                valid + "\nclearedBosses=0\n", valid + "\nclearedBosses=0,2\n",
+                valid + "\nendings=CLOSE_RIFT\n",
                 "version=1\n#" + "x".repeat(65_536), "version=1\nbiome=\\uNOPE"
         };
         for (String data : malformed) {
@@ -73,6 +82,21 @@ public final class CampaignSaveTest {
             assert rejected : "malformed save must report IOException";
             assert Files.readString(save).equals(data) : "loading corrupt save must preserve original bytes";
         }
+    }
+
+    private static void campaignPrerequisitesAndBacktracking(Path directory) throws IOException {
+        rejects(() -> new CampaignSave.Progress(3, 0, Set.of(), Set.of(), Map.of(), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(2, 0, Set.of(0), Set.of(), Map.of(), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(0, 2), Set.of(), Map.of(), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of(), Set.of(), Set.of("CLOSE_RIFT")));
+        var backtracked = new CampaignSave.Progress(0, 1, Set.of(0, 1, 2), Set.of("landmark_0_2"),
+                Map.of(), Set.of("quest_0"), Set.of(), 40);
+        assert backtracked.questFlags().equals(Set.of("talked_0", "memory_0", "quest_0"))
+                : "completed quest prerequisites must normalize exactly as story restore";
+        Path save = directory.resolve("backtracked.properties");
+        CampaignSave.save(save, backtracked);
+        assert CampaignSave.load(save).orElseThrow().equals(backtracked)
+                : "backtracking to a previous biome must remain loadable";
     }
 
     private static void progressRejectsInvalidValuesAndCopiesCollections() {
@@ -92,10 +116,18 @@ public final class CampaignSaveTest {
         assert immutable : "save snapshot collections must be immutable";
 
         rejects(() -> new CampaignSave.Progress(-1, 0, Set.of(), Set.of(), Map.of(), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(4, 0, Set.of(), Set.of(), Map.of(), Set.of(), Set.of()));
         rejects(() -> new CampaignSave.Progress(0, -1, Set.of(), Set.of(), Map.of(), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(0, 2, Set.of(), Set.of(), Map.of(), Set.of(), Set.of()));
         rejects(() -> new CampaignSave.Progress(0, 0, Set.of(-1), Set.of(), Map.of(), Set.of(), Set.of()));
         rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of("bad,token"), Map.of(), Set.of(), Set.of()));
         rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of("vitality", -1), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of(), Set.of(), Set.of("NONE")));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of(), Set.of(), Set.of(), -1));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of(), Set.of(), Set.of(), 100_001));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of("vitality", 4), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of("edge", 2), Set.of(), Set.of()));
+        rejects(() -> new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of(), Set.of("landmark_0"), Set.of()));
     }
 
     private static void failedReplacementPreservesDestination(Path directory) throws IOException {

@@ -101,6 +101,162 @@ public final class RuinedOutpostGame {
     private double crescentCooldown,riposteCooldown,guardTime;
     private boolean waterCast, heavyCast;
     private WaterProjectile.Kind waterKind=WaterProjectile.Kind.CUT;
+    private boolean campaignMode, choosingEnding, saveBlocked;
+    private int biome, shards, campaignCheckpoint;
+    private CampaignStory campaignStory;
+    private CampaignStory.Ending campaignEnding;
+    private java.nio.file.Path savePath;
+    private CampaignSave.Progress savedProgress;
+    private String campaignNotice="";
+    private final Set<Integer> clearedBosses=new java.util.HashSet<>();
+    private final Set<String> campaignUnlocks=new java.util.HashSet<>(), endings=new java.util.HashSet<>();
+    private final java.util.Map<String,Integer> upgrades=new java.util.HashMap<>();
+    private final java.util.Map<Wisp,CampaignEnemy> campaignEnemies=new IdentityHashMap<>();
+
+    public static RuinedOutpostGame campaign() { return campaign(null); }
+    public static RuinedOutpostGame campaign(java.nio.file.Path path) {
+        RuinedOutpostGame game=new RuinedOutpostGame();
+        game.campaignMode=true;game.savePath=path;game.resetCampaign();
+        if(path!=null)try { game.savedProgress=CampaignSave.load(path).orElse(null); }
+        catch(java.io.IOException failure) {
+            game.saveBlocked=true;
+            game.campaignNotice="SAVE COULD NOT BE READ. ORIGINAL PRESERVED. NEW GAME REQUIRES CONFIRMATION.";
+        }
+        return game;
+    }
+
+    private void resetCampaign() {
+        clearedBosses.clear();campaignUnlocks.clear();endings.clear();upgrades.clear();
+        shards=campaignCheckpoint=0;campaignEnding=null;choosingEnding=paused=false;
+        campaignStory=new CampaignStory();story=new OutpostStory();player=new Player(640,384);
+        enterBiome(0,0);events.clear();
+    }
+
+    private void enterBiome(int destination,int arrival) {
+        biome=destination;map=RuinedOutpostMap.campaign(biome);
+        campaignCheckpoint=arrival==1?1:0;
+        scouts=new ArrayList<>();campaignEnemies.clear();
+        drops.clear();corpses.clear();cancelAbsorption();events.clear();
+        lungeHits.clear();dashHits.clear();bossAdds.clear();projectiles.clear();crescents.clear();hostileProjectiles.clear();
+        tideCooldown=crescentCooldown=riposteCooldown=guardTime=attackDelay=comboTime=hitStop=addTimer=counterWindow=0;
+        combo=addSpawnIndex=0;guardianHitImpact=-1;passageCooldown=.35;
+        for(var spawn:campaignArea().enemies()) {
+            CampaignEnemy enemy=new CampaignEnemy(spawn.kind(),spawn.x(),spawn.y());
+            scouts.add(enemy.body());campaignEnemies.put(enemy.body(),enemy);
+        }
+        guardian=new Guardian(map.guardianX(),map.guardianY(),Guardian.Profile.values()[biome]);
+        bossDefeated=clearedBosses.contains(biome);
+        if(bossDefeated) {
+            guardian.activate(map.spawnX(),map.spawnY());guardian.hurt(guardian.maxHealth());
+            map.clearGuardian();map.openGate();
+        }
+        var point=arrival==1?campaignArea().hub():arrival==2?campaignArea().exit():campaignArea().spawn();
+        player.relocate(point.x(),point.y());
+        if(arrival==2)player.relocate(point.x()-160,point.y());
+        emit(EventType.ROOM_ENTERED,player.x(),player.y());
+    }
+
+    private void applyUpgrades() {
+        player.configureUpgrades(upgradeLevel("vitality"),upgradeLevel("capacity"),
+                upgradeLevel("efficiency"),upgradeLevel("edge"));
+    }
+
+    public boolean continueCampaign() {
+        if(!campaignMode||savedProgress==null||story.phase()!=OutpostStory.Phase.PROLOGUE)return false;
+        var progress=savedProgress;
+        CampaignStory restoredStory=new CampaignStory();restoredStory.restoreQuestFlags(progress.questFlags());
+        clearedBosses.clear();clearedBosses.addAll(progress.clearedBosses());
+        campaignUnlocks.clear();campaignUnlocks.addAll(progress.unlocks());
+        upgrades.clear();upgrades.putAll(progress.upgrades());endings.clear();endings.addAll(progress.endings());
+        shards=progress.shards();campaignStory=restoredStory;
+        player=new Player(640,384);applyUpgrades();player.heal();
+        story.resume();campaignEnding=null;choosingEnding=paused=false;
+        enterBiome(progress.biome(),progress.checkpoint());
+        campaignNotice="CAMPAIGN RESTORED";return true;
+    }
+
+    private void saveProgress() {
+        if(saveBlocked)return;
+        var progress=new CampaignSave.Progress(biome,campaignCheckpoint,clearedBosses,campaignUnlocks,
+                upgrades,campaignStory.questFlags(),endings,shards);
+        savedProgress=progress;
+        if(savePath!=null)try { CampaignSave.save(savePath,progress); }
+        catch(java.io.IOException failure) { campaignNotice="SAVE FAILED. PROGRESS STILL IN MEMORY.";return; }
+    }
+
+    public boolean saveCheckpoint() {
+        if(!campaignMode||blocked()||!nearCampaignHub())return false;
+        if(scouts.stream().anyMatch(w->w.alive()&&near(w.x(),w.y(),400))
+                ||(bossActive()&&near(guardian.x(),guardian.y(),600))) {
+            campaignNotice="CAMP IS NOT SAFE YET";return false;
+        }
+        campaignCheckpoint=1;player.heal();campaignNotice="RESTED AT CAMP / CHECKPOINT SAVED";saveProgress();return true;
+    }
+
+    public boolean nearCampaignHub() {
+        return campaignMode&&near(campaignArea().hub().x(),campaignArea().hub().y(),160);
+    }
+    public int upgradeCost(String name) {
+        return "edge".equals(name)?4:2*(upgradeLevel(name)+1);
+    }
+    public boolean buyUpgrade(String name) {
+        if(!campaignMode||blocked()||!nearCampaignHub()||!Set.of("vitality","capacity","efficiency","edge").contains(name))return false;
+        int level=upgradeLevel(name),cost=upgradeCost(name);
+        if(level>=(name.equals("edge")?1:3)||shards<cost) {campaignNotice="NOT ENOUGH SHARDS OR TRACK COMPLETE";return false;}
+        shards-=cost;upgrades.put(name,level+1);applyUpgrades();
+        if(name.equals("vitality"))player.heal(1);
+        campaignNotice=name.toUpperCase(java.util.Locale.ROOT)+" UPGRADED";saveProgress();return true;
+    }
+
+    public boolean chooseEnding(CampaignStory.Ending ending) {
+        if(!campaignMode||!choosingEnding||ending==null||clearedBosses.size()!=4)return false;
+        campaignEnding=ending;choosingEnding=false;endings.add(ending.name());
+        story.resume();story.enterGatehouse();story.guardianDefeated();story.escaped();
+        cancelAbsorption();projectiles.clear();crescents.clear();hostileProjectiles.clear();
+        emit(EventType.VICTORY,player.x(),player.y());saveProgress();return true;
+    }
+
+    private boolean campaignInteract() {
+        if(campaignStory.dialogueOpen()) {campaignStory.advanceDialogue();return true;}
+        if(blocked())return false;
+        if(nearCampaignHub()) {
+            boolean first=!campaignStory.questFlags().contains("talked_"+biome);
+            if(campaignStory.talk(biome))shards+=2;
+            if(first&&biome==0)player.collectIchor(100);
+            saveProgress();return true;
+        }
+        for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120)) {
+            String key="landmark_"+biome+"_"+campaignArea().landmarks().indexOf(landmark);
+            if(campaignUnlocks.add(key))shards++;
+            if(landmark==campaignArea().landmarks().stream().filter(CampaignWorld.Landmark::optional).findFirst().orElse(null))
+                campaignStory.discover(biome);
+            campaignNotice=landmark.name()+" / "+landmark.lore();saveProgress();return true;
+        }
+        if(near(campaignArea().exit().x(),campaignArea().exit().y(),140)) {
+            if(!bossDefeated) {campaignNotice="DEFEAT "+guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" TO OPEN THIS ROUTE";return false;}
+            if(biome==3) {choosingEnding=true;return true;}
+            story.resume();enterBiome(biome+1,0);campaignNotice=String.join(" ",CampaignStory.transitionLines(biome));saveProgress();return true;
+        }
+        if(biome>0&&near(campaignArea().returnPortal().x(),campaignArea().returnPortal().y(),120)) {
+            story.resume();enterBiome(biome-1,2);campaignNotice="RETURNED TO "+campaignArea().name();saveProgress();return true;
+        }
+        return false;
+    }
+
+    public boolean campaignMode() { return campaignMode; }
+    public int biome() { return biome; }
+    public CampaignWorld.Area campaignArea() { return CampaignWorld.area(biome); }
+    public CampaignStory campaignStory() { return campaignStory; }
+    public CampaignEnemy campaignEnemy(Wisp body) { return campaignEnemies.get(body); }
+    public boolean bossActive() { return campaignMode?!bossDefeated&&guardian.state()!=Guardian.State.DORMANT:map.room()==9; }
+    public int shards() { return shards; }
+    public int upgradeLevel(String key) { return upgrades.getOrDefault(key,0); }
+    public String campaignNotice() { return campaignNotice; }
+    public CampaignStory.Ending campaignEnding() { return campaignEnding; }
+    public boolean choosingEnding() { return choosingEnding; }
+    public boolean saveAvailable() { return savedProgress!=null; }
+    public int campaignCheckpoint() { return campaignCheckpoint; }
+    public boolean biomeUnlocked(int id) { return id>=0&&id<4&&(id==0||clearedBosses.contains(id-1)); }
 
     public RuinedOutpostGame() { resetDefaultState(); }
     RuinedOutpostGame(RuinedOutpostMap map, Player player, List<Wisp> scouts, Guardian guardian) {
@@ -111,8 +267,31 @@ public final class RuinedOutpostGame {
         story = new OutpostStory();
         visited[map.room()] = true;
     }
-    public void begin() { story.begin(); }
+    public void begin() {
+        if(campaignMode) {
+            if(campaignStory.dialogueOpen()) {campaignStory.advanceDialogue();return;}
+            if(story.phase()!=OutpostStory.Phase.PROLOGUE)return;
+            // Existing saves are not replaced by a casual title-screen click.
+            if(savedProgress!=null||saveBlocked) {
+                campaignNotice="C CONTINUE / N CONFIRM NEW GAME (REPLACES SAVE)";return;
+            }
+        }
+        story.begin();if(campaignMode)saveProgress();
+    }
+    public void newCampaign() {
+        if(!campaignMode||story.phase()!=OutpostStory.Phase.PROLOGUE)return;
+        resetCampaign();saveBlocked=false;story.begin();campaignNotice="FIND MARA AT THE FIELD CAMP";saveProgress();
+    }
     public void restart() {
+        if(campaignMode) {
+            if(story.phase()==OutpostStory.Phase.DEAD) {
+                player=new Player(640,384);applyUpgrades();player.heal();story.resume();paused=false;
+                enterBiome(biome,campaignCheckpoint);campaignNotice="REFORMED AT YOUR CHECKPOINT";
+            } else if(story.phase()==OutpostStory.Phase.COMPLETE) {
+                story=new OutpostStory();campaignEnding=null;choosingEnding=paused=false;
+            }
+            return;
+        }
         if (story.phase() == OutpostStory.Phase.DEAD && checkpoint == 7) {
             player = new Player(640,384);
             tideCooldown=crescentCooldown=riposteCooldown=guardTime=0;
@@ -221,9 +400,18 @@ public final class RuinedOutpostGame {
             attackDelay=Math.max(0,attackDelay-seconds);
             if (attackDelay == 0) resolveStrike();
         }
-        for (Wisp scout : scouts) scout.update(seconds,player.x(),player.y(),map);
-        if (map.room()==9) updateGuardian(seconds);
-        // ponytail: pairwise spacing is enough for these authored rooms (at most five enemies).
+        if(campaignMode&&!bossDefeated&&guardian.state()==Guardian.State.DORMANT
+                &&near(guardian.x(),guardian.y(),600)) {
+            map.setGuardianPresent(true);guardian.activate(player.x(),player.y());
+            emit(EventType.GUARDIAN_AWAKENED,guardian.x(),guardian.y());
+        }
+        for (Wisp scout : scouts) {
+            CampaignEnemy enemy=campaignEnemies.get(scout);
+            if(enemy==null)scout.update(seconds,player.x(),player.y(),map);
+            else enemy.update(seconds,player.x(),player.y(),map);
+        }
+        if (bossActive()||(campaignMode&&guardian.state()==Guardian.State.DEAD)) updateGuardian(seconds);
+        // ponytail: authored populations stay below 48; spatial bins only if profiling needs them.
         for(int i=0;i<scouts.size();i++)for(int j=i+1;j<scouts.size();j++) {
             scouts.get(i).separateFrom(scouts.get(j),seconds,map);
             scouts.get(j).separateFrom(scouts.get(i),seconds,map);
@@ -236,25 +424,37 @@ public final class RuinedOutpostGame {
         for(Wisp scout:scouts) {
             if(scout.state()!=Wisp.State.LUNGE) lungeHits.remove(scout);
             else if(!lungeHits.contains(scout)) {
-                if(scout.role()==Wisp.Role.SPITTER) { lungeHits.add(scout);emitSpit(scout); }
-                else if(near(scout.x(),scout.y(),WISP_CONTACT_RADIUS)) {
+                if(scout.role()==Wisp.Role.SPITTER) {
                     lungeHits.add(scout);
-                    if(!dashProtected)hurtPlayer(1,scout.x(),scout.y());
+                    if(!campaignMode)emitSpit(scout);
+                }
+                else if(campaignEnemies.containsKey(scout)?campaignEnemies.get(scout).hits(player.x(),player.y()):near(scout.x(),scout.y(),WISP_CONTACT_RADIUS)) {
+                    lungeHits.add(scout);
+                    if(!dashProtected)hurtPlayer(campaignEnemies.containsKey(scout)?campaignEnemies.get(scout).damage():1,scout.x(),scout.y());
                 }
             }
         }
-        if(map.room()==9&&guardian.alive()&&guardianHitImpact!=guardian.impactNumber()
+        if(campaignMode)for(CampaignEnemy enemy:campaignEnemies.values()) {
+            var shots=enemy.releaseShots();
+            if(hostileProjectiles.size()+shots.size()<=48)hostileProjectiles.addAll(shots);
+            if(!shots.isEmpty())emit(EventType.SPIT_SHOT,enemy.body().x(),enemy.body().y());
+        }
+        if(bossActive()&&guardian.alive()&&guardianHitImpact!=guardian.impactNumber()
                 &&guardian.hits(player.x(),player.y())) {
             guardianHitImpact=guardian.impactNumber();
             if(!dashProtected)hurtPlayer(Guardian.SLAM_DAMAGE,guardian.targetX(),guardian.targetY());
         }
         updateHostileProjectiles(seconds,dashProtected);
+        if(campaignMode&&bossActive()&&player.bladeForm()&&near(guardian.x(),guardian.y(),guardian.auraRadius())) {
+            player.spendBladeIchor(Math.min(player.ichor(),guardian.drainPerSecond()*seconds));
+            if(!player.bladeForm())emit(EventType.REVERT,player.x(),player.y());
+        }
         collectDrops(seconds);
         if(player.alive()&&!wasBlade&&!wasRecovering&&!player.bladeForm()&&!player.recovering())
             player.collectIchor(PASSIVE_ICHOR_PER_SECOND*seconds);
         updateAbsorption(seconds);
         if (!player.alive()) { projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear(); attackDelay=0; cancelAbsorption(); story.playerDied(); }
-        if (scouts.stream().noneMatch(Wisp::alive) && map.room()!=9) cleared[map.room()]=true;
+        if (!campaignMode&&scouts.stream().noneMatch(Wisp::alive) && map.room()!=9) cleared[map.room()]=true;
         refreshPassages();
         if(player.alive()&&passageCooldown==0) {
             for(var door:map.doors()) if(map.passageOpen(door)&&near(door.x(),door.y(),70)) {
@@ -271,15 +471,22 @@ public final class RuinedOutpostGame {
             emit(EventType.GUARDIAN_SLAM,guardian.targetX(),guardian.targetY());
         }
         addTimer+=seconds;
-        if (addTimer>=(guardian.enraged()?5:6) && scouts.stream().filter(Wisp::alive).count()<(guardian.enraged()?3:2)) {
+        long nearbyAdds=campaignMode?bossAdds.stream().filter(Wisp::alive).count():scouts.stream().filter(Wisp::alive).count();
+        if (addTimer>=(guardian.enraged()?5:6) && nearbyAdds<(guardian.enraged()?3:2)) {
             int[][] slots={{400,544},{920,544},{400,240},{920,240},{640,544},{640,240}};
             for(int attempt=0;attempt<slots.length;attempt++) {
                 int[] slot=slots[addSpawnIndex++%slots.length];
-                double x=map.authored(slot[0]),y=map.authored(slot[1]);
+                double angle=(addSpawnIndex%6)*Math.PI/3;
+                double x=campaignMode?guardian.x()+Math.cos(angle)*320:map.authored(slot[0]);
+                double y=campaignMode?guardian.y()+Math.sin(angle)*320:map.authored(slot[1]);
                 if(near(x,y,200)||map.isBlocked(x,y+Wisp.COLLISION_Y_OFFSET,Wisp.COLLISION_RADIUS)
                         ||Math.hypot(x-guardian.x(),y-guardian.y())<160
                         ||scouts.stream().anyMatch(w->w.alive()&&Math.hypot(x-w.x(),y-w.y())<90))continue;
-                Wisp add=new Wisp(x,y,x-60,x+60,2);
+                Wisp add;
+                if(campaignMode) {
+                    var enemy=new CampaignEnemy(biome==0?CampaignEnemy.Kind.OUTPOST_SCOUT:CampaignEnemy.Kind.RIFT_IMP,x,y);
+                    add=enemy.body();campaignEnemies.put(add,enemy);
+                } else add=new Wisp(x,y,x-60,x+60,2);
                 scouts.add(add);bossAdds.add(add);addTimer=0;break;
             }
         }
@@ -293,11 +500,11 @@ public final class RuinedOutpostGame {
             guardTime=0;
             emit(EventType.RIPOSTE_COUNTER,player.x(),player.y());
             for(Wisp scout:scouts)if(scout.alive()&&near(scout.x(),scout.y(),RIPOSTE_RANGE)
-                    &&map.clearLine(player.x(),player.y(),scout.x(),scout.y())&&scout.hurt(3,true)) {
+                    &&map.clearLine(player.x(),player.y(),scout.x(),scout.y())&&hurtScout(scout,3,false,true)) {
                 double dx=scout.x()-player.x(),dy=scout.y()-player.y(),length=Math.max(1,Math.hypot(dx,dy));
                 scout.push(dx/length*300,dy/length*300);afterScoutHit(scout);
             }
-            if(map.room()==9&&!bossDefeated&&guardian.state()==Guardian.State.RECOVER
+            if(bossActive()&&!bossDefeated&&guardian.state()==Guardian.State.RECOVER
                     &&near(guardian.x(),guardian.y(),RIPOSTE_RANGE)
                     &&map.clearLine(player.x(),player.y(),guardian.x(),guardian.y())&&guardian.hurt(3))
                 afterGuardianHit(false);
@@ -330,7 +537,7 @@ public final class RuinedOutpostGame {
             if (scout.alive()&&!dashHits.contains(scout)&&near(scout.x(),scout.y(),WISP_CONTACT_RADIUS)
                     &&map.clearLine(player.x(),player.y(),scout.x(),scout.y())) {
                 dashHits.add(scout);
-                if (scout.hurt(Player.SLIME_DAMAGE)) {
+                if (hurtScout(scout,Player.SLIME_DAMAGE,true,true)) {
                     scout.push(dashX*300,dashY*300);
                     afterScoutHit(scout);
                 }
@@ -340,10 +547,11 @@ public final class RuinedOutpostGame {
     public boolean attack(int facingX,int facingY) {
         if (blocked() || guarding() || (facingX==0&&facingY==0) || !player.startAttack()) return false;
         cancelAbsorption();
-        combo=comboTime>0?(combo+1)%3:0;
+        combo=comboTime>0?(combo+1)%(player.bladeForm()?player.bladeComboLength():3):0;
         comboTime=0.9;
         aimX=facingX; aimY=facingY;
         strikeDamage=player.attackDamage();
+        if(player.bladeForm()&&combo==3)strikeDamage+=2;
         strikeRange=BLADE_ATTACK_RANGE;
         waterCast=!player.bladeForm(); heavyCast=false;
         if(waterCast) {
@@ -401,7 +609,7 @@ public final class RuinedOutpostGame {
                     &&scout.hitFrom(player.x(),player.y(),aimX,aimY,strikeRange,strikeDamage))
                 afterScoutHit(scout);
         }
-        if (map.room()==9&&!bossDefeated&&guardian.state()==Guardian.State.RECOVER
+        if (bossActive()&&!bossDefeated&&guardian.state()==Guardian.State.RECOVER
                 &&map.clearLine(player.x(),player.y(),guardian.x(),guardian.y())
                 &&guardian.hitFrom(player.x(),player.y(),aimX,aimY,strikeRange,strikeDamage)) {
             afterGuardianHit(false);
@@ -412,11 +620,14 @@ public final class RuinedOutpostGame {
         hitStop=0.04;
         if (!guardian.alive()) {
                 bossDefeated=true;
-                cleared[9]=true;
-                story.guardianDefeated();
+                if(campaignMode) {
+                    if(clearedBosses.add(biome))shards+=4+biome*2;
+                    campaignNotice=guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" DEFEATED / ROUTE OPEN";
+                    saveProgress();
+                } else {cleared[9]=true;story.guardianDefeated();}
                 map.clearGuardian();
                 map.openGate();
-                for (Wisp add:scouts) if(add.alive()) add.hurt(add.health());
+                for (Wisp add:scouts) if(add.alive()&&(!campaignMode||bossAdds.contains(add))) add.hurt(add.health());
                 events.add(new Event(EventType.ENEMY_DEFEATED,guardian.x(),guardian.y(),water));
         }
     }
@@ -432,14 +643,14 @@ public final class RuinedOutpostGame {
                 }
                 if(map.waterBlocked(wave.x(),wave.y()+Player.COLLISION_Y_OFFSET,wave.radius())) {
                     wave.stop();
-                } else if(map.room()==9&&guardian.alive()
+                } else if(bossActive()&&guardian.alive()
                         &&map.touchesGuardian(wave.x(),wave.y()+Player.COLLISION_Y_OFFSET,wave.radius())) {
                     if(guardian.state()==Guardian.State.RECOVER&&guardian.hurt(wave.damage())) afterGuardianHit(true);
                     wave.stop();
                 } else {
                     for(Wisp scout:scouts) if(scout.alive()
                             &&Math.hypot(scout.x()-wave.x(),scout.y()-wave.y())<=Wisp.COLLISION_RADIUS+wave.radius()) {
-                        if(scout.hurt(wave.damage(),wave.staggers())) {
+                        if(hurtScout(scout,wave.damage(),true,wave.staggers())) {
                             scout.push(wave.directionX()*wave.impulse(),wave.directionY()*wave.impulse());
                             afterScoutHit(scout,true);
                         }
@@ -459,13 +670,13 @@ public final class RuinedOutpostGame {
                 arc.x+=arc.dx*560*dt;arc.y+=arc.dy*560*dt;arc.age+=dt;
                 if(arc.age>=.65) { arc.alive=false;break; }
                 if(map.waterBlocked(arc.x,arc.y+Player.COLLISION_Y_OFFSET,arc.radius()))arc.alive=false;
-                else if(map.room()==9&&guardian.alive()
+                else if(bossActive()&&guardian.alive()
                         &&map.touchesGuardian(arc.x,arc.y+Player.COLLISION_Y_OFFSET,arc.radius())) {
                     if(guardian.state()==Guardian.State.RECOVER&&guardian.hurt(3))afterGuardianHit(false);
                     arc.alive=false;
                 } else for(Wisp scout:scouts)if(scout.alive()
                         &&Math.hypot(scout.x()-arc.x,scout.y()-arc.y)<=Wisp.COLLISION_RADIUS+arc.radius()) {
-                    if(scout.hurt(3,true)) {
+                    if(hurtScout(scout,3,false,true)) {
                         scout.push(arc.dx*260,arc.dy*260);afterScoutHit(scout);
                     }
                     arc.alive=false;break;
@@ -477,6 +688,10 @@ public final class RuinedOutpostGame {
     }
     private void afterScoutHit(Wisp scout) {
         afterScoutHit(scout,false);
+    }
+    private boolean hurtScout(Wisp scout,int damage,boolean slime,boolean stagger) {
+        var enemy=campaignEnemies.get(scout);
+        return enemy==null?scout.hurt(damage,stagger):enemy.receiveDamage(damage,slime,stagger);
     }
     private void emitSpit(Wisp scout) {
         // ponytail: 24 active shots covers authored encounters; use pooling only if profiled necessary.
@@ -505,12 +720,19 @@ public final class RuinedOutpostGame {
         events.add(new Event(EventType.ENEMY_HIT,scout.x(),scout.y(),water));
         hitStop=0.025;
         if (scout.alive()) return;
-        drops.add(new IchorDrop(scout.x(),scout.y(),bossAdds.contains(scout)?15:SCOUT_ICHOR));
+        var enemy=campaignEnemies.get(scout);
+        double ichor=bossAdds.contains(scout)?15:enemy==null?SCOUT_ICHOR:enemy.ichor();
+        drops.add(new IchorDrop(scout.x(),scout.y(),ichor*player.dropMultiplier()));
+        if(campaignMode&&!bossAdds.contains(scout)&&enemy!=null&&enemy.kind()==CampaignEnemy.Kind.FALLEN_KNIGHT) {
+            // Each authored elite rewards once, including across checkpoint respawns.
+            int index=scouts.indexOf(scout);
+            if(campaignUnlocks.add("elite_"+biome+"_"+index))shards++;
+        }
         // ponytail: keep only 16 recent remains; pool only if authored encounters outgrow this cap.
         if(corpses.size()==16)corpses.remove(0);
         corpses.add(new Corpse(scout.x(),scout.y(),!bossAdds.contains(scout)));
         events.add(new Event(EventType.ENEMY_DEFEATED,scout.x(),scout.y(),water));
-        if (!bossAdds.contains(scout)) story.scoutDefeated();
+        if (!campaignMode&&!bossAdds.contains(scout)) story.scoutDefeated();
     }
     private void collectDrops(double seconds) {
         if(!player.alive())return;
@@ -542,21 +764,30 @@ public final class RuinedOutpostGame {
         cancelAbsorption();
         attackDelay=0;
         comboTime=counterWindow=0;
-        if(map.room()==4) tutorialTransformed=true;
+        if(!campaignMode&&map.room()==4) tutorialTransformed=true;
         refreshPassages();
         emit(EventType.TRANSFORM,player.x(),player.y());
         return true;
     }
     public boolean roomClear() {
+        if(campaignMode)return bossDefeated;
         return scouts.stream().noneMatch(Wisp::alive) && (map.room()!=9||bossDefeated);
     }
 
     private void refreshPassages() {
+        if(campaignMode)return;
         map.setPassagesLocked(!roomClear());
         map.setTutorialLocked(map.room()==4&&!tutorialTransformed);
     }
     public String interactionPrompt() {
         if (blocked()) return "";
+        if(campaignMode) {
+            if(nearCampaignHub())return "E TALK / H REST + SAVE / 1-4 UPGRADES";
+            for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120))return "E EXAMINE "+landmark.name();
+            if(near(campaignArea().exit().x(),campaignArea().exit().y(),140))return bossDefeated?(biome==3?"E APPROACH THE RIFT":"E ENTER NEXT REGION"):"DEFEAT "+guardian.bossName();
+            if(biome>0&&near(campaignArea().returnPortal().x(),campaignArea().returnPortal().y(),120))return "E RETURN TO PREVIOUS REGION";
+            return absorptionTarget!=null?"ABSORBING":nearbyCorpse()!=null?"E ABSORB":"";
+        }
         if (map.room()==10&&!infirmaryUsed&&near(map.restX(),map.restY(),120)) return "E  USE FIELD DRESSING";
         if (map.room()==7&&near(map.restX(),map.restY(),120)) return "E  REST AT CAMP";
         if (map.exitReached(player.x(),player.y())) return "E  ENTER FOREST BOUNDARY";
@@ -570,12 +801,13 @@ public final class RuinedOutpostGame {
         return "";
     }
     public boolean interact() {
+        if(campaignMode&&campaignInteract())return true;
         if (blocked()) return false;
-        if (map.room()==10&&!infirmaryUsed&&near(map.restX(),map.restY(),120)) {
+        if (!campaignMode&&map.room()==10&&!infirmaryUsed&&near(map.restX(),map.restY(),120)) {
             infirmaryUsed=true; player.heal(); return true;
         }
-        if (map.room()==7&&near(map.restX(),map.restY(),120)) { player.heal(); return true; }
-        if (map.exitReached(player.x(),player.y())) {
+        if (!campaignMode&&map.room()==7&&near(map.restX(),map.restY(),120)) { player.heal(); return true; }
+        if (!campaignMode&&map.exitReached(player.x(),player.y())) {
             cancelAbsorption();
             story.escaped(); emit(EventType.VICTORY,player.x(),player.y()); return true;
         }
@@ -611,7 +843,7 @@ public final class RuinedOutpostGame {
         for(Corpse corpse:corpses) {
             double candidate=Math.hypot(player.x()-corpse.x(),player.y()-corpse.y());
             if(candidate<distance&&corpseReachable(corpse)
-                    &&(player.ichor()<Player.MAX_ICHOR||(corpse.healing()&&player.healthValue()<Player.MAX_HEALTH))) {
+                    &&(player.ichor()<Player.MAX_ICHOR||(corpse.healing()&&player.healthValue()<player.maxHealth()))) {
                 nearest=corpse;distance=candidate;
             }
         }
@@ -637,7 +869,7 @@ public final class RuinedOutpostGame {
         corpses.remove(absorptionTarget);cancelAbsorption();
         emit(EventType.ABSORBED,player.x(),player.y());
     }
-    public boolean blocked() { return paused||story.blocksGameplay(); }
+    public boolean blocked() { return paused||story.blocksGameplay()||(campaignMode&&(choosingEnding||campaignStory.dialogueOpen())); }
     public boolean paused() { return paused; }
     public void togglePause() { if(!story.blocksGameplay()) paused=!paused; }
     public void pause() { if(!story.blocksGameplay()) paused=true; }

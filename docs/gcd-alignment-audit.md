@@ -1,5 +1,11 @@
 # Ruined Outpost — GCD alignment and remaining issues
 
+**Historical audit.** The September 8 placeholder campaign now implements all four
+regions, connected exploration, quests/upgrades, disk saves and both GCD endings.
+Current scope/evidence: [campaign plan](campaign-build-plan.md),
+[story](campaign-story.md), [quality report](testing/campaign-quality.md).
+The outpost-only status and generation counts below are retained as history.
+
 Updated: 2026-09-06.
 
 Later owner-approved changes and current verification are recorded in the
