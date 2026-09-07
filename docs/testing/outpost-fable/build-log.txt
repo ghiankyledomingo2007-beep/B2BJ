@@ -1,0 +1,124 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+AbsorptionTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+ArenaTwistTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+B2BJIntegrationTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+CharacterAnimationTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+CharacterAssetQualityTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+CombatArtTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+CombatFeedbackTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+CombatLoopTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+DepthRenderingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+EnemyProjectileTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GameAudioTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GuardianAnimationTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GuardianDeathLoopTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GuardianMobilityTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GuardianPresentationTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GuardianPressureTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GuardianScaleTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+GuardianTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+HudOverhaulTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+HurtFeedbackPositionTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+IchorMagnetTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+ImmersionRenderingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+Carry control sprint-cycle-south: lowered poses=0, accepted=true
+Carry control sprint-locked-east: lowered poses=0, accepted=true
+Carry control sprint-cycle-north: lowered poses=0, accepted=true
+Carry control sprint-north: lowered poses=5, accepted=false
+Carry control sprint-locked-north: lowered poses=3, accepted=false
+MotionPolishRenderingTest all passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+OutpostFoundationTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+OutpostLayoutTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+OutpostStoryTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+Engulf runtime16-pose check passed
+Crescent native-size check passed
+RainorayArtTest passed
+PackagedAssetLoadingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+PlayerMovementTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RainRenderingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RainSpriteTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+Engulf runtime16-pose check passed
+Crescent native-size check passed
+RainorayArtTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RainorayRenderingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RainoraySkillsTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RecoveryArtTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RemnantFacingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RemnantRolesTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+ReversionSafetyTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RuinedOutpostGameTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+RuinedOutpostMapTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+SlimeAnimationTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+SlimeAttackRenderingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+SpitterBehaviorTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+SpitterCombatTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+SummonSafetyTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+TelegraphGeometryTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+TerrainRenderingTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+TideFeedbackTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+TideLayerTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+WaterCombatTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+WispCombatTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+WispPursuitTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+WispTest passed
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+Picked up JAVA_TOOL_OPTIONS: -Xmx256m
+Engulf runtime16-pose check passed
+Crescent native-size check passed
+RainorayArtTest passed
+PackagedAssetLoadingTest passed
+Verified build: /home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/outpost-art-fable/build/B2BJ.jar
+exit=0

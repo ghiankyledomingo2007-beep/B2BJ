@@ -40,9 +40,10 @@ public final class OutpostFoundationTest {
             } else assert alpha==0 : "bank art must not leak past the collider union at "+x+","+y;
         }
         assert shadowed>50 : "floor shadow band missing";
-        // Column 3 of the top bank ends at y=96; four pixels inside that edge is slope, not raw texture.
-        assert union.contains(200,92)&&!union.contains(200,100);
-        assert image.getRGB(200,92)!=Color.MAGENTA.getRGB() : "slope band inside the edge must be shaded, not raw texture";
+        // Bank depths vary per segment; find the top bank's floor edge at x=200, then sample four pixels inside it.
+        int edge=0;while(edge<400&&union.contains(200,edge))edge++;
+        assert edge>=80&&edge<=144 : "top bank depth at x=200 must stay within the authored range, got "+edge;
+        assert image.getRGB(200,edge-4)!=Color.MAGENTA.getRGB() : "slope band inside the edge must be shaded, not raw texture";
         field.set(panel,null);g=image.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
         var bank=B2BJ.loadImage("assets/tilesets/ruined_outpost/earth_banks.png");
         // Candidate art failed visual review; missing art intentionally keeps the stable fallback.

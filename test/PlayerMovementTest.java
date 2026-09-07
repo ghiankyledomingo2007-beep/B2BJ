@@ -28,7 +28,9 @@ public final class PlayerMovementTest {
         double x=p.x();
         p.move(1,0,Double.NaN,map);
         assert p.x()==x;
-        for(int room:new int[]{0,1,3,4,5,6}) {
+        // One free-standing instance per prop kind: tree, palisade, cot (infirmary; barracks cots sit
+        // inside a foundation), standard, barrel, wall (the parapet's breach side).
+        for(int room:new int[]{0,1,10,4,5,6}) {
             map=new RuinedOutpostMap(room);
             for(int[] direction:new int[][]{{1,0},{-1,0},{0,1},{0,-1}}) {
                 // Approach the outside barrel of a cluster, not through its neighbour.

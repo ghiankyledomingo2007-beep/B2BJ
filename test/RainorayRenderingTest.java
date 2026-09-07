@@ -140,6 +140,10 @@ public final class RainorayRenderingTest {
     @SuppressWarnings("unchecked")
     private static void brazierAnimationKeepsItsFootprint() throws Exception {
         var panel=new B2BJ(false);var map=new RuinedOutpostMap(9);var player=new Player(900,550);
+        // The authored gatehouse no longer lights a brazier; inject one as a render fixture.
+        var placed=RuinedOutpostMap.class.getDeclaredField("dressing");placed.setAccessible(true);
+        ((java.util.List<RuinedOutpostMap.Dressing>)placed.get(map)).add(
+                new RuinedOutpostMap.Dressing(562,495,RuinedOutpostMap.Decoration.BRAZIER));
         var game=new RuinedOutpostGame(map,player,java.util.List.of(),new Guardian(1100,550));game.begin();
         var field=B2BJ.class.getDeclaredField("game");field.setAccessible(true);field.set(panel,game);
         field=B2BJ.class.getDeclaredField("dressingSprites");field.setAccessible(true);

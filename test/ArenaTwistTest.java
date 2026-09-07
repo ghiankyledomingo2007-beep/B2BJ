@@ -102,16 +102,20 @@ public final class ArenaTwistTest {
     }
     private static void verifyDressing() {
         java.util.Set<RuinedOutpostMap.Decoration> kinds=new java.util.HashSet<>();
+        // Bright treasure-like and lit-fire kinds stay packaged but the art audit retired them from placement.
+        var retired=java.util.EnumSet.of(RuinedOutpostMap.Decoration.CART,RuinedOutpostMap.Decoration.SHIELD_CACHE,
+                RuinedOutpostMap.Decoration.BRAZIER,RuinedOutpostMap.Decoration.RUBBLE);
         for(int room=0;room<RuinedOutpostMap.ROOMS.size();room++) {
             var map=new RuinedOutpostMap(room);
             assert map.dressing().size()>=2 : "authored dressing per room";
             for(var item:map.dressing()) {
                 kinds.add(item.decoration());
-                boolean solid=item.decoration()==RuinedOutpostMap.Decoration.CART
-                        ||item.decoration()==RuinedOutpostMap.Decoration.BRAZIER;
-                double cx=item.x()+(item.decoration()==RuinedOutpostMap.Decoration.CART?6:0);
-                double cy=item.y()-(item.decoration()==RuinedOutpostMap.Decoration.CART?20:0);
-                if(solid) {
+                assert !retired.contains(item.decoration()) : "retired dressing kind placed in room "+room;
+                var feet=item.obstacle();
+                assert (feet==null)==item.decoration().ground()||item.decoration()==RuinedOutpostMap.Decoration.LEAN_TO
+                        : "only ground kinds and the walk-under shelter are footless: "+item.decoration();
+                if(feet!=null) {
+                    double cx=feet.centerX(),cy=feet.centerY();
                     assert map.isBlocked(cx,cy,1) : "upright dressing feet must block actors";
                     assert map.waterBlocked(cx,cy,1) : "upright dressing feet must block projectiles";
                     assert !map.clearLine(cx-100,cy,cx+100,cy) : "combat sight lines must respect solid feet";
@@ -122,7 +126,8 @@ public final class ArenaTwistTest {
                 for(var door:map.doors())assert Math.hypot(item.x()-door.x(),item.y()-door.y())>180;
             }
         }
-        assert kinds.size()==RuinedOutpostMap.Decoration.values().length : "every authored dressing kind must be exercised";
+        var unplaced=java.util.EnumSet.complementOf(retired);unplaced.removeAll(kinds);
+        assert unplaced.isEmpty() : "every live dressing kind must be exercised; unplaced "+unplaced;
         assert new RuinedOutpostMap(9).barriers().isEmpty() : "arena remains open; no new full-width walls";
     }
 }

@@ -91,6 +91,15 @@ The subsequent [immersion pass](docs/testing/immersion-40/README.md) adds magnet
 animated Ichor, distinct sprite-based hurt/pickup effects, a ranged Spitter and
 the owner's requested larger3× Warden. All34 Java checks pass; this new key's
 40-generation allowance is fully consumed. See its [art review](docs/art-review/immersion-40/README.md).
+The [Ruined Outpost environment pass](docs/testing/outpost-fable-handoff.md) (2026-09-07)
+replaces the blue-brick blockout ground and panel banks with code-composed 32px Wang sheets
+(`tools/ComposeGround.java`: worn flagstone road, wet mud, raised earth banks drawn as one
+collider-exact shape with slope and shadow), re-authors all twelve layouts around one landmark
+each (barracks foundation, watch platform, captain's lean-to, gate piers, infirmary shelter,
+collapsed signal tower), retires lit braziers, gold caches, placards and the repeated remains
+stamp, and adds 26 reviewed PixelLab props with mud contact bases. `tools/PreviewReference.java`
+renders the reference scene, a scale sheet and viewport captures for review. Terrain and bank
+sheets are procedural, not generated art; see that report for balances, rejections and limits.
 This is **not a finished biome or a bug-free release**: boss pacing, final animation
 art, music and longer live playtesting remain. Later biomes are not implemented.
 Progress currently survives deaths within the running session, not application restarts.
