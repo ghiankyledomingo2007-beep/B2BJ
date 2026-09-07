@@ -34,7 +34,8 @@ public final class DepthRenderingTest {
         player.relocate(fence.centerX(),fence.centerY()+fence.height()/2);
         int frontBlade=render(panel).getRGB(640,350)&0xffffff;
         var prop=fence.prop();
-        int frontFence=B2BJ.loadImage(prop.path()).getRGB(prop.anchorX,prop.anchorY-5)&0xffffff;
+        // Scenery is value-shaded at load; compare against what the fence actually renders as.
+        int frontFence=B2BJ.environmentShade(B2BJ.loadImage(prop.path())).getRGB(prop.anchorX,prop.anchorY-5)&0xffffff;
         assert frontBlade!=frontFence : "front Blade must occlude the fence";
         System.out.println("DepthRenderingTest passed");
     }

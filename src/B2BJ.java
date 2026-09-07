@@ -43,8 +43,19 @@ public final class B2BJ extends JPanel {
     private static final Font SMALL_FONT = new Font(Font.MONOSPACED, Font.BOLD, 14);
 
     private final RuinedOutpostGame game = new RuinedOutpostGame();
-    private final BufferedImage[] terrainTiles = loadEnvironmentTiles();
+    private static final String REVIEWED_GROUND="assets/tilesets/ruined_outpost/outpost_ground_reviewed.png";
+    private final BufferedImage reviewedGroundSheet=loadImage(REVIEWED_GROUND);
+    /** The reviewed sheet is authored at final values; only the legacy blockout gets the darkening overlay. */
+    private final boolean reviewedGround=reviewedGroundSheet!=null;
+    private final BufferedImage[] terrainTiles = loadEnvironmentTiles(reviewedGroundSheet);
     private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/ruined_outpost/earth_banks.png"));
+    private BufferedImage bankPaletteSource;private Color bankEarth;
+    private RuinedOutpostMap bankShapeMap;private java.awt.geom.Area bankShapeCache;
+    private static final Color BANK_SHADOW=new Color(10,16,27,90);
+    private static final Color TIMBER=new Color(108,91,69);
+    private static final Color POST=new Color(54,47,43);
+    private static final Color LOCK_BAR=new Color(140,66,58);
+    private static final Color MARKER=new Color(104,146,144);
     private final BufferedImage slimeSheet = loadSlimeSheet();
     private final BufferedImage slimeIdleSheet = loadImage("assets/characters/slime/slime_idle.png");
     private final BufferedImage slimeCastSheet=loadImage("assets/characters/slime/slime_cast.png");
@@ -146,8 +157,8 @@ public final class B2BJ extends JPanel {
     B2BJ(boolean startTimer) {
         for(var action:BladeAnimation.Action.values())rainoraySheets.put(action,loadImage(
                 "assets/characters/blade/rainoray_"+action.name().toLowerCase(java.util.Locale.ROOT)+".png"));
-        for(var prop:RuinedOutpostMap.Prop.values())propSprites.put(prop,loadImage(prop.path()));
-        for(var decoration:RuinedOutpostMap.Decoration.values())dressingSprites.put(decoration,loadImage(decoration.path()));
+        for(var prop:RuinedOutpostMap.Prop.values())propSprites.put(prop,environmentShade(loadImage(prop.path())));
+        for(var decoration:RuinedOutpostMap.Decoration.values())dressingSprites.put(decoration,environmentShade(loadImage(decoration.path())));
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(BACKGROUND);
         setFocusable(true);
@@ -395,10 +406,9 @@ public final class B2BJ extends JPanel {
 
     private void drawWorld(Graphics2D canvas, int cameraX, int cameraY) {
         drawTerrain(canvas, cameraX, cameraY);
-        canvas.setColor(new Color(10,16,27,105)); canvas.fillRect(0,0,WIDTH,HEIGHT);
+        if(!reviewedGround) {canvas.setColor(new Color(10,16,27,105)); canvas.fillRect(0,0,WIDTH,HEIGHT);}
         drawBanks(canvas, cameraX, cameraY);
         drawWeather(canvas,cameraX,cameraY,true);
-        drawFieldRemains(canvas,cameraX,cameraY);
         drawCorpses(canvas,cameraX,cameraY);
         drawIchor(canvas, cameraX, cameraY);
         drawGuardianTelegraph(canvas, cameraX, cameraY);
@@ -410,6 +420,8 @@ public final class B2BJ extends JPanel {
             draws.add(new DepthDraw(barrier.centerY()+barrier.height()/2,
                     ()->drawBarrier(canvas,barrier,cameraX,cameraY)));
         for(var dressing:game.map().dressing()) {
+            // Consumed dressing must not look available.
+            if(game.map().room()==10&&game.infirmaryUsed()&&dressing.decoration().file.equals("bandage"))continue;
             Runnable paint=()->{
             var decoration=dressing.decoration();var sprite=dressingSprites.get(decoration);
             if(sprite!=null) {
@@ -881,30 +893,29 @@ public final class B2BJ extends JPanel {
     }
 
     private void queueDoors(List<DepthDraw> draws,Graphics2D canvas,int cameraX,int cameraY) {
-        for(var door:game.map().doors()) {
-            int x=(int)door.x()-cameraX,y=(int)door.y()-cameraY;
-            boolean open=game.map().passageOpen(door);
-            boolean vertical=door.x()!=game.map().spawnX();
-            if(!open)queueGate(draws,canvas,x,y,door.y(),vertical);
-            int signX=x+(vertical?0:112),signY=y+(vertical?112:0);
-            draws.add(new DepthDraw(signY+cameraY+24,()->{
-                canvas.setColor(new Color(98,87,69));canvas.fillRect(signX-4,signY-16,8,40);
-                canvas.setColor(new Color(43,46,49));canvas.fillRect(signX-40,signY-32,80,24);
-                pixelCentered(canvas,open?"PASS":"HOLD",signX,signY-26,2,
-                        open?new Color(162,183,179):RED);
+        var map=game.map();
+        for(var door:map.doors())
+            queuePassage(draws,canvas,(int)door.x()-cameraX,(int)door.y()-cameraY,door.y(),
+                    door.x()!=map.spawnX(),map.passageOpen(door));
+        if(map.room()==9) {
+            int x=(int)map.gateX()-cameraX,y=(int)map.gateY()-cameraY;
+            queuePassage(draws,canvas,x,y,map.gateY(),true,map.gateOpen());
+            if(map.gateOpen())pixelCentered(canvas,"E / FOREST",x-50,y-150,2,TEAL);
+        }
+        // The rest item itself is map dressing; the ground marker shows only while the interaction is available.
+        if(map.room()==7||(map.room()==10&&!game.infirmaryUsed()))
+            pixelCentered(canvas,"E",(int)map.restX()-cameraX,(int)map.restY()-cameraY-32,2,MARKER);
+    }
+
+    /** Locked: a stake fence with one dull crossbar. Open: a breach, only the two end posts remain. */
+    private void queuePassage(List<DepthDraw> draws,Graphics2D canvas,int x,int y,double worldY,boolean vertical,boolean open) {
+        if(!open) {queueGate(draws,canvas,x,y,worldY,vertical);return;}
+        for(int end:new int[]{-160,160}) {
+            int px=vertical?x:x+end,py=vertical?y+end:y;
+            draws.add(new DepthDraw(worldY+(vertical?end:0)+10,()->{
+                canvas.setColor(POST);canvas.fillRect(px-6,py-22,12,32);
+                canvas.setColor(TIMBER);canvas.fillRect(px-6,py-22,12,6);canvas.fillRect(px-4,py-14,2,18);
             }));
-        }
-        if(game.map().room()==9) {
-            int x=(int)game.map().gateX()-cameraX,y=(int)game.map().gateY()-cameraY;
-            if(!game.map().gateOpen())queueGate(draws,canvas,x,y,game.map().gateY(),true);
-            else pixelCentered(canvas,"E / FOREST",x-50,y-150,2,TEAL);
-        }
-        if(game.map().room()==7||game.map().room()==10) {
-            int x=(int)game.map().restX()-cameraX,y=(int)game.map().restY()-cameraY;
-            // Bedroll/dressing are ground items; they must stay below actors.
-            canvas.setColor(new Color(42,61,69));canvas.fillRect(x-26,y-10,52,32);
-            canvas.setColor(GOLD);canvas.fillRect(x-20,y-6,40,4);
-            pixelCentered(canvas,"E",x,y-32,2,GOLD);
         }
     }
 
@@ -917,9 +928,9 @@ public final class B2BJ extends JPanel {
         for(int offset=-160;offset<160;offset+=16) {
             int py=y+offset;
             draws.add(new DepthDraw(worldY+offset+10,()->{
-                canvas.setColor(new Color(54,47,43));canvas.fillRect(x-20,py,40,10);
-                canvas.setColor(new Color(108,91,69));canvas.fillRect(x-20,py,36,4);
-                canvas.setColor(new Color(171,77,70));canvas.fillRect(x-4,py,6,16);
+                canvas.setColor(POST);canvas.fillRect(x-20,py,40,10);
+                canvas.setColor(TIMBER);canvas.fillRect(x-20,py,36,4);
+                canvas.setColor(LOCK_BAR);canvas.fillRect(x-4,py,6,16);
             }));
         }
     }
@@ -927,20 +938,36 @@ public final class B2BJ extends JPanel {
     private void drawFieldGate(Graphics2D canvas,int x,int y,boolean vertical) {
         for(int offset=-160;offset<160;offset+=16) {
             int px=vertical?x-20:x+offset,py=vertical?y+offset:y-20;
-            canvas.setColor(new Color(54,47,43));canvas.fillRect(px,py,vertical?40:10,vertical?10:40);
-            canvas.setColor(new Color(108,91,69));canvas.fillRect(px,py,vertical?36:4,vertical?4:36);
+            canvas.setColor(POST);canvas.fillRect(px,py,vertical?40:10,vertical?10:40);
+            canvas.setColor(TIMBER);canvas.fillRect(px,py,vertical?36:4,vertical?4:36);
         }
-        canvas.setColor(new Color(171,77,70));
+        canvas.setColor(LOCK_BAR);
         if(vertical)canvas.fillRect(x-4,y-150,6,300);else canvas.fillRect(x-150,y-4,300,6);
     }
 
     private void drawBanks(Graphics2D canvas,int cameraX,int cameraY) {
         if(bankTiles!=null) {
-            var map=game.map();var ink=(Graphics2D)canvas.create();
-            ink.translate(-cameraX,-cameraY);ink.clip(map.bankShape());
-            for(int y=Math.max(0,cameraY/64);y<Math.min(map.heightInTiles(),(cameraY+HEIGHT)/64+1);y++)
-                for(int x=Math.max(0,cameraX/64);x<Math.min(map.widthInTiles(),(cameraX+WIDTH)/64+1);x++)
-                    ink.drawImage(bankTiles[map.bankMask(x,y)],x*64,y*64,null);
+            var map=game.map();
+            var shape=bankShape(map);
+            shape.transform(java.awt.geom.AffineTransform.getTranslateInstance(-cameraX,-cameraY));
+            var view=new java.awt.geom.Area(new java.awt.Rectangle(-cameraX,-cameraY,map.worldWidth(),map.worldHeight())
+                    .intersection(new java.awt.Rectangle(0,0,WIDTH,HEIGHT)));
+            var floor=new java.awt.geom.Area(view);floor.subtract(shape);
+            var ink=(Graphics2D)canvas.create();
+            ink.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,RenderingHints.VALUE_STROKE_PURE);
+            // Floor shadow: 8px outside the earth edge.
+            ink.clip(floor);ink.setColor(BANK_SHADOW);ink.setStroke(new BasicStroke(16));ink.draw(shape);
+            ink.dispose();
+            ink=(Graphics2D)canvas.create();
+            ink.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,RenderingHints.VALUE_STROKE_PURE);
+            view.intersect(shape);ink.clip(view);
+            // Texture anchored to world pixels so it never swims with the camera.
+            ink.setPaint(new java.awt.TexturePaint(bankTiles[15],new java.awt.Rectangle(-cameraX,-cameraY,64,64)));
+            ink.fillRect(0,0,WIDTH,HEIGHT);
+            if(bankPaletteSource!=bankTiles[15]) {bankPaletteSource=bankTiles[15];bankEarth=averageColour(bankPaletteSource);}
+            // Slope band 6px inside the edge, with a 2px lit lip behind it; both shaded from the texture itself.
+            ink.setColor(shade(bankEarth,1.15));ink.setStroke(new BasicStroke(16));ink.draw(shape);
+            ink.setColor(shade(bankEarth,.7));ink.setStroke(new BasicStroke(12));ink.draw(shape);
             ink.dispose();return;
         }
         for(var bank:game.map().banks()) {
@@ -955,22 +982,33 @@ public final class B2BJ extends JPanel {
         }
     }
 
-    private void drawFieldRemains(Graphics2D canvas,int cameraX,int cameraY) {
-        // Fallen equipment is ground dressing; standing objects use the map's collision rectangles.
-        int room=game.map().room();
-        if(room==1)return; // The reference breach uses authored fallen equipment instead of repeated stamps.
-        int[][] spots={{480,600},{1020,210},{360,400}};
-        for(int i=0;i<spots.length;i++) {
-            int x=(int)game.map().authored(spots[i][0])-cameraX;
-            int y=(int)game.map().authored(spots[i][1])-cameraY;
-            if(room==0&&i>0)continue;
-            canvas.setColor(new Color(39,44,45));canvas.fillRect(x-24,y-10,48,22);
-            canvas.setColor(new Color(93,95,86));canvas.fillRect(x-18,y-14,32,18);
-            canvas.setColor(new Color(53,67,78));canvas.fillRect(x-14,y-12,24,14);
-            canvas.setColor(new Color(105,104,87));canvas.fillRect(x-4,y-10,4,16);
-            canvas.setColor(new Color(73,65,54));canvas.fillRect(x+20,y-22,4,52);
-            canvas.setColor(new Color(105,112,112));canvas.fillRect(x+18,y-30,8,12);
+    /** Bank colliders merged into one earth shape, extended past the world border so only edges facing the floor read as edges. */
+    private java.awt.geom.Area bankShape(RuinedOutpostMap map) {
+        if(map!=bankShapeMap) {
+            var shape=new java.awt.geom.Area(map.bankShape());
+            var outside=new java.awt.geom.Area(new java.awt.Rectangle(-64,-64,map.worldWidth()+128,map.worldHeight()+128));
+            outside.subtract(new java.awt.geom.Area(new java.awt.Rectangle(0,0,map.worldWidth(),map.worldHeight())));
+            var beyond=new java.awt.geom.Area();
+            for(int[] step:new int[][]{{-64,0},{64,0},{0,-64},{0,64}}) {
+                var shifted=new java.awt.geom.Area(shape);
+                shifted.transform(java.awt.geom.AffineTransform.getTranslateInstance(step[0],step[1]));
+                beyond.add(shifted);
+            }
+            beyond.intersect(outside);shape.add(beyond);
+            bankShapeMap=map;bankShapeCache=shape;
         }
+        return new java.awt.geom.Area(bankShapeCache);
+    }
+    private static Color averageColour(BufferedImage image) {
+        long r=0,g=0,b=0;int count=image.getWidth()*image.getHeight();
+        for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++) {
+            int pixel=image.getRGB(x,y);r+=pixel>>16&255;g+=pixel>>8&255;b+=pixel&255;
+        }
+        return new Color((int)(r/count),(int)(g/count),(int)(b/count));
+    }
+    private static Color shade(Color colour,double factor) {
+        return new Color(Math.min(255,(int)(colour.getRed()*factor)),Math.min(255,(int)(colour.getGreen()*factor)),
+                Math.min(255,(int)(colour.getBlue()*factor)));
     }
 
     private void drawWeather(Graphics2D canvas,int cameraX,int cameraY,boolean ground) {
@@ -1503,6 +1541,18 @@ public final class B2BJ extends JPanel {
         return tiles;
     }
 
+    /** Scenery only: exact per-pixel shade, alpha untouched, no resampling. Never characters, effects, Ichor, UI or telegraphs. */
+    static BufferedImage environmentShade(BufferedImage source) {
+        if(source==null)return null;
+        var result=new BufferedImage(source.getWidth(),source.getHeight(),BufferedImage.TYPE_INT_ARGB);
+        for(int y=0;y<source.getHeight();y++)for(int x=0;x<source.getWidth();x++) {
+            int pixel=source.getRGB(x,y);
+            int r=(int)((pixel>>16&255)*.84),g=(int)((pixel>>8&255)*.86),b=(int)((pixel&255)*.92);
+            result.setRGB(x,y,pixel&0xff000000|r<<16|g<<8|b);
+        }
+        return result;
+    }
+
     private static BufferedImage tintRemnant(BufferedImage source) {
         if(source==null) return null;
         BufferedImage result=new BufferedImage(source.getWidth(),source.getHeight(),BufferedImage.TYPE_INT_ARGB);
@@ -1528,8 +1578,7 @@ public final class B2BJ extends JPanel {
         return source;
     }
 
-    private static BufferedImage[] loadEnvironmentTiles() {
-        var approved=loadImage("assets/tilesets/ruined_outpost/outpost_ground_reviewed.png");
+    private static BufferedImage[] loadEnvironmentTiles(BufferedImage approved) {
         if(approved!=null)return outdoorTiles(renderTiles(approved));
         // ponytail: retain the stable blockout until a replacement passes in-scene art review.
         var source=renderTiles(loadImage("assets/tilesets/ruined_outpost/ruined_outpost_wang.png"));
