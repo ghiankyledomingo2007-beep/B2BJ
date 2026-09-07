@@ -8,6 +8,7 @@ public final class RainRenderingTest {
     public static void main(String[] args) throws Exception {
         GameAudio.setMuted(true);
         var smooth=new B2BJ(false);var slow=new B2BJ(false);
+        smooth.game().begin();slow.game().begin();
         for(int i=0;i<60;i++)smooth.step(1.0/60);
         for(int i=0;i<30;i++)slow.step(1.0/30);
         var normal=draw(smooth,0,0,false);
@@ -31,6 +32,8 @@ public final class RainRenderingTest {
         var splashes=draw(smooth,0,0,true);
         assert count(splashes)>0 : "drops have brief ground contact";
         assert count(draw(slow,0,0,true))==0 : "reduced effects omits ground splashes";
+        smooth.game().togglePause();smooth.step(.05);
+        assert !Arrays.equals(pixels(normal),pixels(draw(smooth,0,0,false))) : "unpaused rain keeps falling";
         System.out.println("RainRenderingTest passed");
     }
     static BufferedImage draw(B2BJ panel,int cameraX,int cameraY,boolean ground) throws Exception {

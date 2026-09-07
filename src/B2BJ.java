@@ -137,6 +137,8 @@ public final class B2BJ extends JPanel {
     private String bannerText = "";
     private double bannerTime;
     private long frameCounter;
+    private double weatherTime;
+    private static final Color[] RAIN_INK={new Color(122,155,175,26),new Color(133,169,187,42),new Color(158,190,204,62)};
     private long previousFrame = System.nanoTime();
 
     B2BJ(boolean startTimer) {
@@ -214,6 +216,7 @@ public final class B2BJ extends JPanel {
 
     void step(double seconds) {
         if (game.paused()) return;
+        if(Double.isFinite(seconds)&&seconds>0)weatherTime+=seconds;
         int horizontal = horizontal();
         int vertical = vertical();
         if (attackHeld) attack();
@@ -392,6 +395,7 @@ public final class B2BJ extends JPanel {
         drawTerrain(canvas, cameraX, cameraY);
         canvas.setColor(new Color(10,16,27,105)); canvas.fillRect(0,0,WIDTH,HEIGHT);
         drawBanks(canvas, cameraX, cameraY);
+        drawWeather(canvas,cameraX,cameraY,true);
         drawFieldRemains(canvas,cameraX,cameraY);
         drawCorpses(canvas,cameraX,cameraY);
         drawIchor(canvas, cameraX, cameraY);
@@ -447,7 +451,7 @@ public final class B2BJ extends JPanel {
         for(DepthDraw draw:draws)draw.paint().run();
 
         drawImpacts(canvas,cameraX,cameraY,false);
-        drawWeather(canvas);
+        drawWeather(canvas,cameraX,cameraY,false);
         if(mouseAimed&&!game.story().blocksGameplay()&&aimReticle!=null) {
             int frame=(int)(frameCounter/6)%(aimReticle.getWidth()/32);
             int x=Math.round(mouseX/2f)*2,y=Math.round(mouseY/2f)*2;
@@ -955,13 +959,45 @@ public final class B2BJ extends JPanel {
         }
     }
 
-    private void drawWeather(Graphics2D canvas) {
-        canvas.setColor(new Color(125,158,177,45));
-        for(int i=0;i<35;i++) {
-            int x=(int)((i*173L+frameCounter*2)%WIDTH);
-            int y=(int)((i*97L+frameCounter*8)%HEIGHT);
-            canvas.fillRect(x,y,2,10);
+    private void drawWeather(Graphics2D canvas,int cameraX,int cameraY,boolean ground) {
+        if(ground&&reducedEffects)return;
+        var map=game.map();
+        double clock=Math.rint(weatherTime*1_000_000)/1_000_000;
+        // Fixed-size analytic particles: no per-frame particle allocations or growing queues.
+        for(int i=0;i<240;i+=reducedEffects?4:1) {
+            int layer=i%3;
+            double life=.72+Math.floorMod(rainHash(i),57)*.01;
+            double cycle=(clock+i*.173)/life;
+            int generation=(int)Math.floor(cycle);
+            double phase=cycle-generation;
+            if(ground!=(phase>=.84))continue;
+            int seed=rainHash(i*7919+generation*104729+map.room()*313);
+            int landingX=Math.floorMod(seed,map.worldWidth()/2)*2;
+            int landingY=Math.floorMod(rainHash(seed),map.worldHeight()/2)*2;
+            int x=(landingX-cameraX)/2*2,y=(landingY-cameraY)/2*2;
+            if(ground) {
+                if(x< -12||x>WIDTH+12||y< -8||y>HEIGHT+8||map.waterBlocked(landingX,landingY,2))continue;
+                int spread=1+(int)((phase-.84)/.16*3);
+                canvas.setColor(RAIN_INK[phase<.91?1:0]);
+                canvas.fillRect(x-spread*2,y,2,2);canvas.fillRect(x+spread*2,y,2,2);
+                if(spread<3){canvas.fillRect(x-2,y-2,4,2);canvas.fillRect(x,y+2,2,2);}
+            } else {
+                double height=(180+layer*65)*(1-phase/.84);
+                x=(int)Math.floor((landingX-height*.18-cameraX)/2)*2;
+                y=(int)Math.floor((landingY-height-cameraY)/2)*2;
+                if(x< -16||x>WIDTH+16||y< -16||y>HEIGHT+16)continue;
+                for(int tail=0;tail<3+layer*2;tail++) {
+                    canvas.setColor(RAIN_INK[tail<2?layer:0]);
+                    canvas.fillRect(x-(tail/3)*2,y-tail*2,2,2);
+                }
+            }
         }
+    }
+
+    private static int rainHash(int seed) {
+        seed=(seed^(seed>>>16))*0x45d9f3b;
+        seed=(seed^(seed>>>16))*0x45d9f3b;
+        return seed^(seed>>>16);
     }
 
     private void drawIchor(Graphics2D canvas, int cameraX, int cameraY) {
