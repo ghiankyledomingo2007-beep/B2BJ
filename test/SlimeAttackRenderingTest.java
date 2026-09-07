@@ -51,8 +51,27 @@ public final class SlimeAttackRenderingTest {
             assert panel.game().projectiles().stream().anyMatch(WaterProjectile::heavy);
             assert visiblePixels(render(panel,water))>80;
         }
+        comboFrames(water);
         GameAudio.setMuted(false);
         System.out.println("SlimeAttackRenderingTest passed");
+    }
+    private static void comboFrames(java.lang.reflect.Method draw) throws Exception {
+        B2BJ panel=new B2BJ(false);panel.game().begin();
+        panel.game().player().relocate(300,300);
+        int[] hashes=new int[3];
+        for(int cut=0;cut<3;cut++) {
+            assert panel.game().attack(1,0);
+            panel.game().update(.2,0,0);
+            var waves=panel.game().projectiles();
+            var wave=waves.get(waves.size()-1);
+            var frame=new BufferedImage(320,320,BufferedImage.TYPE_INT_ARGB);
+            var g=frame.createGraphics();
+            draw.invoke(panel,g,(int)wave.x()-160,(int)wave.y()-160,wave);g.dispose();
+            hashes[cut]=java.util.Arrays.hashCode(frame.getRGB(0,0,320,320,null,0,320));
+            panel.game().update(.3,0,0);
+        }
+        assert hashes[0]!=hashes[1] : "return cut needs a visibly different sprite pose";
+        assert hashes[1]!=hashes[2]&&hashes[0]!=hashes[2] : "finisher must read differently from basic cuts";
     }
     private static void mouse(B2BJ panel,int event,int button,int x,int y) {
         panel.dispatchEvent(new MouseEvent(panel,event,0,0,x,y,1,false,button));
