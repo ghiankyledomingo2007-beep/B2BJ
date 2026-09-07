@@ -53,6 +53,26 @@ Spawned five workers at the owner's request for speed: MAP (room layouts, irregu
 - `env JAVA_TOOL_OPTIONS=-Xmx256m bash build.sh` on the integrated tree: **all 52 test programs passed**, Java 17 `-Xlint:all` clean, JAR rebuilt, packaged loading verified from outside the project (`docs/testing/outpost-fable/build-log.txt`). One assertion written by the renderer worker hardcoded a bank edge at y=96 and broke once the map worker varied bank depths; it now derives the edge from the collider shape.
 - Evidence in `docs/testing/outpost-fable/`: twelve half-size overviews (`NN-*-overview.png`), the reference scene as Blob and Blade plus the Blade-behind-fence occlusion check, the gatehouse with the Warden active, the gatehouse clearance overlay (guardian start r260 and all six summon slots clear of solids), the native-2x `scale-sheet.png` of every prop and dressing kind beside both player forms, and three viewport captures (Camp, Infirmary, Signal Tower). Fixtures, not an unassisted playthrough.
 
+### 6. PixelLab spending summary (verified with `get_balance` at the end)
+
+| Allocation | start | end | spent this pass | on |
+| --- | --- | --- | --- | --- |
+| `PIXELLAB_AUTH_HEADER` | 40 | **11 remaining / 29 used** | 29 | 8 texture swatches (all rejected), 11 prop base cleanups, 10 landmark retry edits |
+| `B2BJ_PIXELLAB_BACKUP_AUTH` | 40 | **11 remaining / 29 used** | 29 | 15 landmark targets, first and second attempts |
+| `B2BJ_PIXELLAB_PREVIOUS_AUTH` | 3 | 3 remaining / 37 used | 0 | untouched |
+
+No allocation is exhausted; no purchase, subscription change, Pro tool or `edit_image` (20-40 cost) was used. The workspace `CLAUDE.md` now documents `~/.config/pixellab/swap <prefix>` for rotating the MCP key when an account reaches 0; it was not needed and not run. Every job id, prompt and decision is in the three ledgers under `docs/art-review/outpost-fable/`.
+
+### 7. Remaining limitations (honest)
+- **Ground and bank sheets are code-authored, not generated.** They pass the audit's material/palette intent in-scene, but the 16-cell Wang scheme repeats every 64 world px (the judge panel measured this); breaking it needs renderer support for alternate full-stone/mud cells. The stepped bank edge follows the collider rectangles in 8-px steps; it reads as cut earth, not a natural slope.
+- **Owner visual approval is still required** for the sheets and for every new prop; my review and the agents' reviews are not the owner's.
+- **Prop caveats:** `bedroll` is rolled, not unrolled; `reeds` are paler grey than the grey-green intended; `watch-platform` is an intact deck (the pale generated ground slab was removed by an alpha-only mask, no repaint); `canvas-debris` shows timber and slate rather than canvas; `weapon-rack` and `lean-to` keep a small dark mud patch; `wall-end-mud` came back slightly darker than `wall-mud`.
+- **Locked passages** are still the procedural stake fence (now timber-toned with one dull red-brown bar); no gate sprite was generated. Open passages show two posts. Room-name UI still exists; the "hide names and still read purpose" gate was not run with a player.
+- **No live playthrough, no frame-pacing measurement on the owner's laptop, no reduced-effects pass, no Warden fight with the new piers beyond the headless clearance overlay** (guardian start r260 and all six summon slots clear of solids). `PreviewReference` and `MapAudit` are staged fixtures.
+- **Weather shelter:** the lean-tos imply dry space but rain still falls through them (no occlusion mask).
+- **Test coverage:** 52 assertion programs pass; no coverage instrumentation exists, so no percentage is claimed.
+- The worktree branch is `outpost-art-fable` (from `main` 7d3d2bd); nothing was pushed or merged. The five agent worktrees under `.claude/worktrees/agent-*` hold the same commits and can be deleted after review.
+
 ### Room by room (what the captures show)
 | Room | Now |
 | --- | --- |
