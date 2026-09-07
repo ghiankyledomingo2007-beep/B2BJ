@@ -8,6 +8,7 @@ public final class SlimeComboTest {
         if (args.length == 0 || args[0].equals("priority")) impactBeforeRetaliation();
         if (args.length == 0 || args[0].equals("stagger")) staggerCannotBeRefreshedForever();
         if (args.length == 0 || args[0].equals("slam")) slamShovesOnce();
+        if (args.length == 0) { trajectoriesAreStable(); finalDashStepIsProtected(); }
         System.out.println("SlimeComboTest passed");
     }
 
@@ -118,6 +119,36 @@ public final class SlimeComboTest {
         assert enemy.health() == 19 : "one damage per enemy per body slam";
         assert enemy.x() > 380 : "body slam must visibly push the enemy out of the slime";
         assert game.player().health() == Player.MAX_HEALTH : "staggered target cannot trade through slam";
+    }
+
+    private static void trajectoriesAreStable() {
+        for(var kind:WaterProjectile.Kind.values())for(int[] direction:new int[][]{{1,0},{-1,0},{0,1},{0,-1},{1,1},{-1,-1}}) {
+            var one=new WaterProjectile(500,500,direction[0],direction[1],kind);
+            var split=new WaterProjectile(500,500,direction[0],direction[1],kind);
+            one.advance(.24);
+            for(int i=0;i<24;i++)split.advance(.01);
+            assert Math.hypot(one.x()-split.x(),one.y()-split.y())<1e-8
+                    : "water path must not depend on update chunking: "+kind;
+            assert one.damage()==(kind==WaterProjectile.Kind.FINISHER||kind==WaterProjectile.Kind.TIDE?2:1);
+            assert one.staggers()==(kind!=WaterProjectile.Kind.CUT&&kind!=WaterProjectile.Kind.RETURN_CUT);
+            one.advance(Double.NaN);one.advance(-1);
+            assert Double.isFinite(one.x());
+            one.advance(1);
+            assert !one.alive()&&one.opacity()==0 : "every variant expires";
+        }
+    }
+
+    private static void finalDashStepIsProtected() throws Exception {
+        var enemy=new Wisp(350,300,350,350,20);
+        var game=fixture(List.of(enemy));
+        enemy.hurt(1,true);enemy.update(.3); // Stagger-resistant enemy can still be mid-attack.
+        set(enemy,"state",Wisp.State.LUNGE);
+        assert game.dash(1,0);
+        var time=Player.class.getDeclaredField("dashTime");time.setAccessible(true);time.setDouble(game.player(),.005);
+        game.update(.01,0,0);
+        assert !game.player().dashing()&&game.player().health()==Player.MAX_HEALTH
+                : "last movement step of dash must keep its damage protection";
+        assert game.player().hurt(1) : "protection must not leak beyond that physics step";
     }
 
     private static void set(Wisp enemy, String name, Object value) throws Exception {
