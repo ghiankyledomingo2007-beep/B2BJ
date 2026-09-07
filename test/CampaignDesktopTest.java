@@ -19,6 +19,10 @@ public final class CampaignDesktopTest {
             panel.paint(canvas);
             assert game.blocked();
             game.interact();panel.paint(canvas);
+            assert game.saveCheckpoint();
+            assert !game.campaignNotice().isEmpty();
+            for(int i=0;i<20;i++)game.update(.5,0,0);
+            assert game.campaignNotice().isEmpty() : "routine notices must not permanently cover exploration";
             canvas.dispose();
         });
         System.out.println("Campaign desktop integration tests passed");
