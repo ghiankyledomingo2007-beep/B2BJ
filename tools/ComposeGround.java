@@ -96,40 +96,53 @@ public class ComposeGround {
         return image;
     }
     static BufferedImage proceduralSlab() {
-        // Three jittered grid lines per axis (periodic at 32) carve large irregular slabs.
-        int[] gx={0,11,21},gy={0,10,22};
-        int[][] jx=new int[4][4],jy=new int[4][4];
-        for(int i=0;i<4;i++)for(int j=0;j<4;j++) {jx[i][j]=hash(i%3,j%3,23)%5-2;jy[i][j]=hash(i%3,j%3,29)%5-2;}
-        int[] tones={0xff4a545c,0xff434d55,0xff3d4750,0xff505a62};
+        // Six seeds in a periodic 32px domain: irregular flagstones, not a brick grid.
+        int seeds=6;int[][] seed=new int[seeds][2];
+        for(int i=0;i<seeds;i++){seed[i][0]=hash(i,0,23)%CELL;seed[i][1]=hash(i,1,29)%CELL;}
+        int[][] owner=new int[CELL][CELL];
+        for(int y=0;y<CELL;y++)for(int x=0;x<CELL;x++) {
+            int best=-1;double bestDistance=Double.MAX_VALUE;
+            for(int i=0;i<seeds;i++)for(int dx=-CELL;dx<=CELL;dx+=CELL)for(int dy=-CELL;dy<=CELL;dy+=CELL) {
+                double ex=x-seed[i][0]-dx,ey=y-seed[i][1]-dy;
+                double distance=ex*ex+ey*ey*1.2+(hash(x,y,100+i)%5)*.9;
+                if(distance<bestDistance){bestDistance=distance;best=i;}
+            }
+            owner[y][x]=best;
+        }
+        int[] tones={0xff434c54,0xff3c454d,0xff363f47,0xff48515a,0xff40484f};
         BufferedImage image=new BufferedImage(CELL,CELL,BufferedImage.TYPE_INT_ARGB);
         for(int y=0;y<CELL;y++)for(int x=0;x<CELL;x++) {
-            int column=0,row=0;
-            for(int i=1;i<3;i++)if(x>=gx[i]+jx[i][(y*3/CELL)%3])column=i;
-            for(int j=1;j<3;j++)if(y>=gy[j]+jy[(x*3/CELL)%3][j])row=j;
-            boolean seamX=false,seamY=false;
-            for(int i=1;i<3;i++)seamX|=x==gx[i]+jx[i][(y*3/CELL)%3];
-            for(int j=1;j<3;j++)seamY|=y==gy[j]+jy[(x*3/CELL)%3][j];
-            boolean wrapSeam=x==0&&hash(y/6,0,31)%2==0||y==0&&hash(x/6,1,37)%2==0;
-            int slab=hash(column,row,41);
-            int pixel=tones[slab%4];
-            if(hash(x,y,43)%23==0)pixel=shade(pixel,.9);
-            if(hash(x,y,47)%41==0)pixel=0xff59636b;
-            boolean crack=slab%5==0&&Math.abs((x-gx[column])-(y-gy[row])*(slab%2==0?1:-1)-(slab%7-3))<=0&&hash(x,y,53)%3>0;
-            if(seamX||seamY||wrapSeam||crack)pixel=0xff262c31;
+            int slab=owner[y][x];
+            boolean seam=false,nearSeam=false;
+            for(int[] d:new int[][]{{1,0},{0,1}})seam|=owner[(y+d[1])%CELL][(x+d[0])%CELL]!=slab;
+            for(int[] d:new int[][]{{-1,0},{0,-1},{1,0},{0,1}})nearSeam|=owner[(y+d[1]+CELL)%CELL][(x+d[0]+CELL)%CELL]!=slab;
+            int pixel=tones[hash(slab,0,41)%5];
+            if(nearSeam&&hash(x,y,43)%4==0)pixel=shade(pixel,.86); // chipped edge
+            if(hash(x,y,47)%37==0)pixel=shade(pixel,1.08);
+            if(hash(x,y,49)%53==0)pixel=shade(pixel,.9);
+            // One crack per third slab: a short hash walk from the seed.
+            if(hash(slab,2,59)%3==0) {
+                int cx=seed[slab][0],cy=seed[slab][1];
+                for(int step=0;step<6;step++) {
+                    if(((cx%CELL)+CELL)%CELL==x&&((cy%CELL)+CELL)%CELL==y)pixel=0xff2a3036;
+                    cx+=hash(slab,step,61)%3-1;cy+=hash(slab,step,67)%2;
+                }
+            }
+            if(seam)pixel=0xff22282d;
             image.setRGB(x,y,pixel);
         }
         return image;
     }
     static BufferedImage proceduralBank() {
-        int[] tones={0xff3d3a31,0xff433f34,0xff36342c,0xff2f2d27};
+        int[] tones={0xff4a4638,0xff524d3d,0xff433f33,0xff3a372d};
         BufferedImage image=new BufferedImage(CELL,CELL,BufferedImage.TYPE_INT_ARGB);
         for(int y=0;y<CELL;y++)for(int x=0;x<CELL;x++) {
             int h=hash(x/2,y/2,61)%100;
             int pixel=tones[h<15?3:h<40?2:h<75?0:1];
             int stone=hash(x/3,y/3,67)%23;
-            if(stone==0&&hash(x,y,71)%2==0)pixel=0xff5a5f5f;
-            if(stone==1&&hash(x,y,73)%3==0)pixel=0xff4a4f4f;
-            if(hash(x/5,y,79)%31==0)pixel=0xff4b3f30; // thin root
+            if(stone==0&&hash(x,y,71)%2==0)pixel=0xff676c6a;
+            if(stone==1&&hash(x,y,73)%3==0)pixel=0xff585d5c;
+            if(hash(x/5,y,79)%31==0)pixel=0xff5a4a36; // thin root
             image.setRGB(x,y,pixel);
         }
         return image;

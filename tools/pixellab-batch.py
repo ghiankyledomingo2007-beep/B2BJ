@@ -1,13 +1,17 @@
 """Batch driver over pixellab-call.py: submit a request list, then poll and download results.
 
 Usage:
-  python3 tools/pixellab-batch.py submit <batch.json> <review-dir>
-  python3 tools/pixellab-batch.py poll <review-dir>
+  python3 tools/pixellab-batch.py [--auth-env NAME] submit <batch.json> <review-dir>
+  python3 tools/pixellab-batch.py [--auth-env NAME] poll <review-dir>
+
+--auth-env NAME copies the named environment variable into PIXELLAB_AUTH_HEADER for the helper
+subprocess only (selecting an owner-supplied allocation); the value is never printed.
 
 batch.json is a list of {"name", "tool", "args"}. Each request and raw reply are saved in the
 review directory next to a jobs.json ledger. Credentials stay inside the helper, which redacts them.
 """
 import json
+import os
 import re
 import subprocess
 import sys
@@ -18,10 +22,13 @@ HELPER = Path(__file__).with_name("pixellab-call.py")
 UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
 
+ENV = dict(os.environ)
+
+
 def call(tool, args, request_file):
     request_file.write_text(json.dumps(args, indent=1))
     reply = subprocess.run(["python3", str(HELPER), tool, str(request_file)],
-                           capture_output=True, text=True, timeout=120)
+                           capture_output=True, text=True, timeout=120, env=ENV)
     try:
         payload = json.loads(reply.stdout)
         text = " ".join(part.get("text", "") for part in payload.get("result", {}).get("content", []))
@@ -78,6 +85,10 @@ def poll(review):
 
 
 if __name__ == "__main__":
+    if "--auth-env" in sys.argv:
+        at = sys.argv.index("--auth-env")
+        ENV["PIXELLAB_AUTH_HEADER"] = os.environ[sys.argv[at + 1]]
+        del sys.argv[at:at + 2]
     mode = sys.argv[1]
     if mode == "submit":
         submit(sys.argv[2], Path(sys.argv[3]))
