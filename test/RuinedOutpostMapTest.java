@@ -23,6 +23,21 @@ public final class RuinedOutpostMapTest {
         assert supplies.size()==4 && supplies.stream().allMatch(o->o.prop()!=null)
                 : "supply lane needs individually grounded barrels, not long placeholder walls";
         assert new RuinedOutpostMap(0).barriers().size()==2 : "rain ditch should have two grounded bare trees";
+        // Absorption, Ichor, Spitter, Water and Wisp tests all read this cover; keep its 96x48 feet and clear surround.
+        var cover=new RuinedOutpostMap(2).barriers().get(0);
+        assert cover.prop()==RuinedOutpostMap.Prop.WEAPON_RACK && cover.width()==96 && cover.height()==48
+                : "muster ground keeps one 96x48 cover as its first barrier";
+        assert new RuinedOutpostMap(2).barriers().size()==1 : "muster ground has no other blockouts";
+        assert new RuinedOutpostMap(7).barriers().get(0).prop()==RuinedOutpostMap.Prop.TREE
+                : "camp cover is the tree the lean-to rests against, not a brick blockout";
+        for(int room:new int[]{7,10}) {
+            RuinedOutpostMap map=new RuinedOutpostMap(room);
+            assert !map.isBlocked(map.restX(),map.restY()+Player.COLLISION_Y_OFFSET,Player.COLLISION_RADIUS)
+                    : "rest point must stay standable in room "+room;
+            assert map.dressing().stream().anyMatch(d->d.x()==map.restX()&&d.y()==map.restY()
+                    &&d.decoration()==(room==7?RuinedOutpostMap.Decoration.BEDROLL:RuinedOutpostMap.Decoration.BANDAGE))
+                    : "rest interaction art must sit exactly on the rest point";
+        }
         for(int room=0;room<12;room++) {
             RuinedOutpostMap map=new RuinedOutpostMap(room);
             assert map.worldWidth()>1280&&map.worldHeight()>720 : "outdoor grounds must scroll";
