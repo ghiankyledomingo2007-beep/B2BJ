@@ -30,6 +30,16 @@ public final class OutpostFoundationTest {
         assert image.getRGB(32,32)==Color.MAGENTA.getRGB() : "boundary must consume authored bank art";
         assert image.getRGB(640,500)==0 : "boundary art must not cover the open floor";
         field.set(panel,null);g=image.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
+        var bank=B2BJ.loadImage("assets/tilesets/ruined_outpost/earth_banks.png");
+        assert bank!=null&&bank.getWidth()==128&&bank.getHeight()==128 : "reviewed native bank atlas required";
+        for(var item:map.dressing()) {
+            var sprite=B2BJ.loadImage(item.decoration().path());
+            assert sprite!=null : "reviewed breach debris required";
+            assert sprite.getWidth()==64&&(sprite.getHeight()==48||sprite.getHeight()==64);
+            int filled=0;
+            for(int y=0;y<sprite.getHeight();y++)for(int x=0;x<sprite.getWidth();x++)if((sprite.getRGB(x,y)>>>24)>0)filled++;
+            assert filled>20&&filled<sprite.getWidth()*sprite.getHeight()*.85 : "debris must have real transparent background";
+        }
         System.out.println("OutpostFoundationTest passed");
     }
 }
