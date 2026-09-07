@@ -1,0 +1,10 @@
+{
+ "description": "seamless tileable ground texture seen straight from above: rain-soaked packed dark mud of an abandoned military camp, muted grey-green brown earth, faint wet sheen, a few tiny dark pebbles, flat and calm, no objects, no grass, no walls, edges continue seamlessly",
+ "width": 32,
+ "height": 32,
+ "no_background": false,
+ "view": "high top-down",
+ "outline": "lineless",
+ "shading": "basic shading",
+ "detail": "low detail"
+}

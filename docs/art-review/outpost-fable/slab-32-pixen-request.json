@@ -1,0 +1,9 @@
+{
+ "description": "seamless tileable ground texture seen straight from above: flat worn slate flagstone paving of a ruined outpost road, large irregular chipped stone slabs lying flush in dark mud, thin dark mud seams between slabs, muted dark blue-grey and charcoal, matte, no bricks, no vertical wall, no objects, edges continue seamlessly",
+ "width": 32,
+ "height": 32,
+ "no_background": false,
+ "view": "high top-down",
+ "outline": "lineless",
+ "detail": "low detail"
+}

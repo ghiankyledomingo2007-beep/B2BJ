@@ -16,7 +16,7 @@ import urllib.request
 
 def main(name=None, args=None):
     name = name or sys.argv[1]
-    if name not in {"get_balance", "get_image", "list_jobs", "animate_image", "create_image_pixflux", "create_image_pixen", "edit_image",
+    if name not in {"get_balance", "get_image", "list_jobs", "animate_image", "create_image_pixflux", "create_image_pixen", "edit_image", "edit_image_pixen",
                     "create_character", "animate_character", "get_character", "create_topdown_tileset", "get_topdown_tileset"}:
         raise ValueError("Tool not allowed")
     args = dict(args) if args is not None else (json.loads(Path(sys.argv[2]).read_text()) if len(sys.argv) > 2 else {})

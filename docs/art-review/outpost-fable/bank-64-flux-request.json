@@ -1,0 +1,10 @@
+{
+ "description": "seamless tileable texture seen straight from above: top surface of a raised muddy earth embankment, packed dark wet soil with a few embedded dull grey stones and thin roots, muted dark brown grey, no grass, no objects, edges continue seamlessly",
+ "width": 64,
+ "height": 64,
+ "no_background": false,
+ "view": "high top-down",
+ "outline": "lineless",
+ "shading": "basic shading",
+ "detail": "low detail"
+}

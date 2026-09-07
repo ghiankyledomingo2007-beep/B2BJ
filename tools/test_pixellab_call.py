@@ -15,7 +15,7 @@ spec.loader.exec_module(client)
 
 class PixelLabCallTest(unittest.TestCase):
     def test_character_tools_are_scoped_and_return_redacted_results(self):
-        for name in ("create_character", "animate_character", "get_character", "create_image_pixen",
+        for name in ("create_character", "animate_character", "get_character", "create_image_pixen", "edit_image_pixen",
                      "create_topdown_tileset", "get_topdown_tileset"):
             replies = [b'{"result":{"protocolVersion":"2025-03-26"}}', b'',
                        b'{"result":{"content":[{"type":"text","text":"fake-override"}]}}']
@@ -64,7 +64,10 @@ class PixelLabCallTest(unittest.TestCase):
 
         config = '[mcp_servers.pixellab.env]\nAUTH_HEADER="Bearer fake-test-secret"'
         output = io.StringIO()
-        with patch.object(client.sys, "argv", ["pixellab-call.py", "animate_image", "args.json"]), \
+        # A live PIXELLAB_AUTH_HEADER in the runner's environment must never reach this test's assertions.
+        isolated = {key: value for key, value in os.environ.items() if key != "PIXELLAB_AUTH_HEADER"}
+        with patch.dict(os.environ, isolated, clear=True), \
+             patch.object(client.sys, "argv", ["pixellab-call.py", "animate_image", "args.json"]), \
              patch.object(client.Path, "read_text", side_effect=[json.dumps({"first_frame_path": "frame.png", "init_image_path": "frame.png", "color_image_path": "frame.png", "image_paths": ["frame.png"]}), config]), \
              patch.object(client.Path, "read_bytes", return_value=b"test-png"), \
              patch.object(client.urllib.request, "urlopen", side_effect=respond), \
