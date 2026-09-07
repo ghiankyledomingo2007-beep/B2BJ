@@ -1,0 +1,12 @@
+{
+  "description": "Same purple-black horned stone guardian DEAD and lying fully ON ITS SIDE horizontally on the ground. A low sideways pile of broken purple armor with gold spikes, head rotated ninety degrees resting at the right, one dislocated arm to the left. Cyan core dim and cracked. Fully visible corpse, low height about22pixels and width48pixels, transparent margin beneath and around body. Upper half of canvas empty. Pixel art, same armor and colors as reference.",
+  "init_image_path": "docs/art-review/motion-polish/warden-death/frame-0.png",
+  "init_image_strength": 50,
+  "width": 64,
+  "height": 64,
+  "no_background": true,
+  "view": "low top-down",
+  "outline": "selective outline",
+  "shading": "medium shading",
+  "detail": "medium detail"
+}

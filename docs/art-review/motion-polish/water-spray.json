@@ -1,0 +1,9 @@
+{
+  "description": "Isolated pixel art water SPRAY: six separate diagonal elongated turquoise droplets and tiny white flecks flying apart from a completely empty centre. Irregular scattered broken liquid fragments at different distances. Each droplet is individually detached on transparency. Asymmetric energetic hit particles, crisp cyan white darkteal palette, sparse sprite filling only middle 44x44 pixels of canvas. No object or background.",
+  "width": 64,
+  "height": 64,
+  "no_background": true,
+  "outline": "lineless",
+  "shading": "basic shading",
+  "detail": "low detail"
+}

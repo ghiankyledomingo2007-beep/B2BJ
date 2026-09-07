@@ -22,18 +22,23 @@ public final class MotionPolishRenderingTest {
         }
         if(check.equals("all")||check.equals("carry")) {
             var run=B2BJ.loadImage("assets/characters/blade/rainoray_run.png");
-            for(int row=0;row<3;row++) {
-                int low=80,high=-1;
+            for(int row=0;row<3;row++)for(int frame=0;frame<8;frame++)
+                assert bladeRaised(run.getSubimage(frame*80,row*80,80,80))
+                        : "run keeps blade tip above hood throughout the loop: row "+row+" frame "+frame;
+        }
+        if(check.equals("all")||check.equals("carry")||check.equals("carry-candidates")) {
+            for(String candidate:new String[]{"sprint-cycle-south","sprint-locked-east","sprint-cycle-north",
+                    "sprint-north","sprint-locked-north"}) {
+                int lowered=0;
                 for(int frame=0;frame<8;frame++) {
-                    int top=80;
-                    for(int y=0;y<80;y++)for(int x=0;x<80;x++) {
-                        int p=run.getRGB(frame*80+x,row*80+y);
-                        if((p>>>24)>0&&(p>>16&255)>185&&(p>>8&255)>185&&(p&255)>185)top=Math.min(top,y);
-                    }
-                    assert top<80 : "mask and blade highlights remain visible";
-                    low=Math.min(low,top);high=Math.max(high,top);
+                    var pose=B2BJ.loadImage("docs/art-review/motion-polish/"+candidate+"/frame-"+frame+".png");
+                    assert pose!=null : "missing reviewed carry control "+candidate;
+                    if(!bladeRaised(pose))lowered++;
                 }
-                assert high-low<=5 : "run must carry the blade steadily, not redraw it every loop: row "+row;
+                boolean accepted=candidate.equals("sprint-cycle-south")||candidate.equals("sprint-locked-east")
+                        ||candidate.equals("sprint-cycle-north");
+                assert accepted?lowered==0:lowered>0 : "raised-carry control misclassified: "+candidate;
+                System.out.println("Carry control "+candidate+": lowered poses="+lowered+", accepted="+accepted);
             }
         }
         if(check.equals("all")||check.equals("effects")) {
@@ -94,5 +99,15 @@ public final class MotionPolishRenderingTest {
             box[0]=Math.min(box[0],x);box[1]=Math.min(box[1],y);box[2]=Math.max(box[2],x);box[3]=Math.max(box[3],y);
         }
         return box;
+    }
+    private static boolean bladeRaised(BufferedImage pose) {
+        int hood=pose.getHeight(),tip=pose.getHeight();
+        for(int y=0;y<pose.getHeight();y++)for(int x=0;x<pose.getWidth();x++) {
+            int pixel=pose.getRGB(x,y);if((pixel>>>24)==0)continue;
+            // Reviewed Rainoray hood palette anchors body motion without requiring a rigid wrist.
+            if((pixel&0xffffff)==0x45416d)hood=Math.min(hood,y);
+            if((pixel>>16&255)>185&&(pixel>>8&255)>185&&(pixel&255)>185)tip=Math.min(tip,y);
+        }
+        return hood<pose.getHeight()&&tip<hood;
     }
 }

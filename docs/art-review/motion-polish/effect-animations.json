@@ -1,0 +1,52 @@
+[
+  {
+    "name": "tide-crest-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/tide-crest/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Rolling water breaker rushes RIGHT in place, right leading edge curls upward and forward then folds into churning white foam, two successive curling folds continually replenish. Keep original water turquoise and white, clear horizontal travel, no ring or sword. Center in canvas with a thin transparent border throughout, no cropping. Seamless energetic surf cycle."
+    }
+  },
+  {
+    "name": "tide-release-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/tide-release/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Water pressure erupts outward in a short low crown splash, white foam fans out and breaks into scattered cyan droplets then falls and vanishes. Empty centre stays clear, no character, no text or glyph. Strong first burst quickly decays into sparse foam; all spray contained with transparent margin."
+    }
+  },
+  {
+    "name": "tide-break-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/tide-break/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Large water crown collapses and bursts outward into choppy white foam with cyan droplets, then settles down into very low ripples which dissolve. No repeating explosion, one clean powerful splash followed by quiet dissipation, empty clear centre, no objects or creature. Stay within canvas transparent margins."
+    }
+  },
+  {
+    "name": "tide-foam-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/tide-foam/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Low little foam wavelets stream LEFT, split into white and turquoise flecks and dissolve into sparse small droplets. Continually replenishing gentle water trail loop, NOT explosion, no upward spray, all pixels within canvas with transparent border."
+    }
+  },
+  {
+    "name": "warden-impact-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/warden-impact/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Rock fragments and cyan shards burst outward from compact ground impact, arc down under gravity, fall and settle, glowing cyan energy rapidly dissipates. A single heavy low burst with rubble afterfall, not repeated explosions, no creature, no pillar of light. Keep spray contained inside canvas."
+    }
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "tide-projectile-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/tide-projectile/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Water droplet immediately stretches HORIZONTALLY into a compact magical water comet pointing RIGHT. Leading bulb on RIGHT, small curling foam tail trailing LEFT. Horizontal rightward flight in place, churning cyan liquid and white foam, energetic rippling silhouette. Keep centre fixed, small transparent margins all sides, isolated sprite. No ocean, no horizontal floor or baseline, no scenery. Maintain horizontal direction throughout generated frames, no spin."
+    }
+  },
+  {
+    "name": "tide-splash-animated",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/tide-splash/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Water splash bursts apart into separate jagged cyan droplets and white foam flecks, shooting outward then falling under gravity and dissolving completely. Central liquid immediately tears open and vanishes, no ring persists, no portal or magic circle. Single energetic impact with rapid asymmetric breakup and sparse droplet decay. All particles contained inside canvas, transparent background."
+    }
+  }
+]

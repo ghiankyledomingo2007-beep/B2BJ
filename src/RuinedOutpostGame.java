@@ -231,7 +231,7 @@ public final class RuinedOutpostGame {
                 hurtPlayer(1,scout.x(),scout.y());
             }
         }
-        if (map.room()==9 && !bossDefeated) updateGuardian(seconds);
+        if (map.room()==9) updateGuardian(seconds);
         // ponytail: pairwise spacing is enough for these authored rooms (at most five enemies).
         for(int i=0;i<scouts.size();i++)for(int j=i+1;j<scouts.size();j++) {
             scouts.get(i).separateFrom(scouts.get(j),seconds,map);
@@ -258,6 +258,7 @@ public final class RuinedOutpostGame {
     private void updateGuardian(double seconds) {
         int impactBefore=guardian.impactNumber();
         guardian.update(seconds,player.x(),player.y(),map);
+        if (!guardian.alive()) return;
         if (guardian.impactNumber()!=impactBefore) {
             emit(EventType.GUARDIAN_SLAM,guardian.targetX(),guardian.targetY());
         }

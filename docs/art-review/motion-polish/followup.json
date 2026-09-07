@@ -1,0 +1,46 @@
+[
+  {
+    "name": "engulf-spread",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/engulf-west/frame-0.png",
+      "last_frame_path": "docs/art-review/motion-polish/engulf-west/frame-12.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Facing LEFT, squash downward immediately and spread whole jelly body sideways over ground into the pinned WIDE FLAT puddle. NO jump, NO rising, NO tall head or neck. Body sinks progressively lower while spreading broad, face and gold core submerge inside jelly. Reach full broad low coverage by middle, settle at flat endpoint. Keep native canvas and ground."
+    }
+  },
+  {
+    "name": "engulf-reform",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/engulf-west/frame-12.png",
+      "last_frame_path": "docs/art-review/motion-polish/engulf-west/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Facing LEFT throughout, broad LOW slime puddle gently ripples while digesting swallowed energy, stays flat for first half, then contracts inward and rises only into the pinned small round slime shape. No jumping, no tall neck, no changing facing or camera; face and gold core reappear naturally as body reforms."
+    }
+  },
+  {
+    "name": "warden-strike",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/warden-windup/frame-8.png",
+      "last_frame_path": "docs/art-review/motion-polish/warden-recover/frame-4.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Immediately drive BOTH raised armored fists DOWN into ground with a powerful full-body slam. Heavy shoulders drop, torso folds forward, knees bend, fists strike at first third then body recoils and stays compressed. Same guardian facing camera and same size. No floating, no arm waving, no added objects; strong anticipation-to-impact change. End crouched exhausted as pinned."
+    }
+  },
+  {
+    "name": "warden-rise",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/warden-recover/frame-4.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "From this exhausted crouch with low fists, slowly push heavy armored torso upright into the pinned ready stance. Knees straighten, head rises, shoulders settle, fists open and rest. Continuous recovery in one direction, NEVER dip again, no leap, no scaling or camera change, feet planted."
+    }
+  }
+]

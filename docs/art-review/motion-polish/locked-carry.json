@@ -1,0 +1,24 @@
+[
+  {
+    "name": "sprint-locked-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/sprint-cycle-east/frame-0.png",
+      "last_frame_path": "docs/art-review/motion-polish/sprint-cycle-east/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "LOOP of running RIGHT with LOCKED UPPER BODY. Head, shoulders, arms, hands and upright sword remain FIXED in exact starting position, only 1 pixel vertical bob. Sword tip stays fixed at same height, NEVER tilts or lowers. Animate ONLY legs alternating vigorous sprint strides and cape flutter. Knees lift, heels kick back, clear airborne passing. Fixed face and camera, no turn, no sword swing, no arm movement, no change in weapon angle. End on identical pinned pose."
+    }
+  },
+  {
+    "name": "sprint-locked-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/sprint-cycle-north/frame-0.png",
+      "last_frame_path": "docs/art-review/motion-polish/sprint-cycle-north/frame-0.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "LOOP of running NORTH away from viewer with LOCKED UPPER BODY. Head, shoulders, arms, hands and upright sword remain FIXED in exact starting position, only 1 pixel vertical bob. Sword tip stays fixed at same height, NEVER tilts or lowers. Animate ONLY legs alternating vigorous sprint strides and cape flutter. Knees lift, heels kick back, clear airborne passing. Fixed face and camera, no turn, no sword swing, no arm movement, no change in weapon angle. End on identical pinned pose."
+    }
+  }
+]

@@ -70,6 +70,11 @@ public final class B2BJ extends JPanel {
     private final BufferedImage waterChargeSheet = loadImage("assets/effects/water_charge.png");
     private final BufferedImage waterWakeSheet = loadImage("assets/effects/water_wake.png");
     private final BufferedImage tideImpactSheet = loadImage("assets/effects/tide_impact.png");
+    private final BufferedImage tideCrestSheet=loadImage("assets/effects/tide_crest.png");
+    private final BufferedImage tideReleaseSheet=loadImage("assets/effects/tide_release.png");
+    private final BufferedImage tideBreakSheet=loadImage("assets/effects/tide_break.png");
+    private final BufferedImage tideFoamSheet=loadImage("assets/effects/tide_foam.png");
+    private final BufferedImage wardenImpactSheet=loadImage("assets/effects/warden_impact.png");
     private final BufferedImage remnantSheet = tintRemnant(slimeSheet);
     private final BufferedImage wispWalkSheet = loadImage(
             "assets/characters/wisp/wisp_walk.png");
@@ -79,6 +84,7 @@ public final class B2BJ extends JPanel {
             "assets/characters/wisp/wisp_attack.png");
     private final BufferedImage guardianSheet = loadImage(
             "assets/characters/guardian/guardian_actions.png");
+    private final BufferedImage wardenMotionSheet=loadImage("assets/characters/guardian/warden_motion.png");
     private final BufferedImage guardianWalkSheet=loadImage("assets/characters/guardian/guardian_walk.png");
     private final BufferedImage guardianDeathSheet=loadImage("assets/characters/guardian/guardian_death.png");
     private final BufferedImage guardianSweepSheet=loadImage("assets/characters/guardian/guardian_sweep.png");
@@ -244,10 +250,19 @@ public final class B2BJ extends JPanel {
                 case DASH -> GameAudio.play(GameAudio.Cue.DASH);
                 case ATTACK -> GameAudio.play(game.player().bladeForm()
                         ? GameAudio.Cue.ATTACK : GameAudio.Cue.BLOB_ATTACK);
-                case WATER_IMPACT, TIDE_IMPACT -> {
-                    addImpact(event.x(),event.y(),event.type()==RuinedOutpostGame.EventType.TIDE_IMPACT?Fx.TIDE:Fx.WATER);
+                case WATER_IMPACT -> {
+                    addImpact(event.x(),event.y(),Fx.WATER);
                     GameAudio.play(GameAudio.Cue.WATER_SPLASH);
                 }
+                case TIDE_RELEASE -> {
+                    addImpact(event.x(),event.y(),Fx.TIDE_RELEASE);
+                    GameAudio.play(GameAudio.Cue.TIDE_RELEASE);
+                }
+                case TIDE_IMPACT -> {
+                    addImpact(event.x(),event.y(),Fx.TIDE);
+                    GameAudio.play(GameAudio.Cue.TIDE_IMPACT);
+                }
+                case TIDE_DISSIPATE -> addImpact(event.x(),event.y(),Fx.TIDE_FOAM);
                 case ENEMY_HIT -> {
                     feedback.enemyHit(false);
                     if(!event.water()) {
@@ -311,7 +326,9 @@ public final class B2BJ extends JPanel {
                 }
                 case GUARDIAN_SLAM -> {
                     feedback.guardianSlam();
-                    addImpact(event.x(),event.y(),Fx.STONE);
+                    Guardian guardian=game.guardian();
+                    boolean charge=guardian.attack()==Guardian.Attack.CHARGE;
+                    addImpact(charge?guardian.x():event.x(),charge?guardian.y():event.y(),Fx.WARDEN);
                     GameAudio.play(GameAudio.Cue.GUARDIAN_SLAM);
                 }
                 case SPIT_SHOT -> GameAudio.play(GameAudio.Cue.BLOB_ATTACK);
@@ -379,6 +396,7 @@ public final class B2BJ extends JPanel {
         drawCorpses(canvas,cameraX,cameraY);
         drawIchor(canvas, cameraX, cameraY);
         drawGuardianTelegraph(canvas, cameraX, cameraY);
+        drawImpacts(canvas,cameraX,cameraY,true);
 
         // Painter's order uses ground contact, never sprite centre or asset loading order.
         List<DepthDraw> draws=new ArrayList<>();
@@ -428,7 +446,7 @@ public final class B2BJ extends JPanel {
         draws.sort(java.util.Comparator.comparingDouble(DepthDraw::groundY));
         for(DepthDraw draw:draws)draw.paint().run();
 
-        drawImpacts(canvas,cameraX,cameraY);
+        drawImpacts(canvas,cameraX,cameraY,false);
         drawWeather(canvas);
         if(mouseAimed&&!game.story().blocksGameplay()&&aimReticle!=null) {
             int frame=(int)(frameCounter/6)%(aimReticle.getWidth()/32);
@@ -637,10 +655,11 @@ public final class B2BJ extends JPanel {
 
     private void drawGuardian(Graphics2D canvas, int cameraX, int cameraY) {
         Guardian guardian = game.guardian();
-        if (!guardian.flashVisible()) {
+        if (!guardian.visible() || (guardian.alive() && !guardian.flashVisible())) {
             return;
         }
-        int size = guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null?Guardian.RENDER_SIZE
+        boolean motion=wardenMotionSheet!=null&&wardenMotionSheet.getWidth()>=512&&wardenMotionSheet.getHeight()>=448;
+        int size = motion||guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null?Guardian.RENDER_SIZE
                 :(int) Math.round(Guardian.RENDER_SIZE * guardian.renderScale());
         if (size <= 0) {
             return;
@@ -653,7 +672,12 @@ public final class B2BJ extends JPanel {
             case CHARGE -> guardianChargeSheet; case SWEEP -> guardianSweepSheet;
             case SHOCKWAVE -> guardianWaveSheet; default -> null;
         };
-        if(guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null) {
+        if(motion) {
+            int sourceX=guardian.animationFrame()*Guardian.CELL_SIZE;
+            int sourceY=guardian.animation().ordinal()*Guardian.CELL_SIZE;
+            canvas.drawImage(wardenMotionSheet,x,y,x+size,y+size,sourceX,sourceY,
+                    sourceX+Guardian.CELL_SIZE,sourceY+Guardian.CELL_SIZE,null);
+        } else if(guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null) {
             int frame=Math.min(11,(int)(guardian.stateSeconds()/Guardian.DEATH_DURATION*12));
             canvas.drawImage(guardianDeathSheet,x,y,x+size,y+size,frame*64,0,frame*64+64,64,null);
         } else if(guardian.state()==Guardian.State.APPROACH&&guardianWalkSheet!=null) {
@@ -985,7 +1009,8 @@ public final class B2BJ extends JPanel {
     }
 
     private void drawWater(Graphics2D canvas,int cameraX,int cameraY,WaterProjectile wave) {
-            BufferedImage sheet=wave.heavy()?tideWaveSheet:waterSlashSheet;
+            boolean crest=wave.heavy()&&tideCrestSheet!=null;
+            BufferedImage sheet=wave.heavy()?(crest?tideCrestSheet:tideWaveSheet):waterSlashSheet;
             if(sheet==null)return;
             int cell=wave.heavy()?48:32;
             int frame=(int)(wave.age()*18)%(sheet.getWidth()/cell);
@@ -996,14 +1021,16 @@ public final class B2BJ extends JPanel {
             nativePixels.translate(36,36);
             double angle=Math.atan2(wave.directionY(),wave.directionX());
             nativePixels.rotate(angle);
-            if(waterWakeSheet!=null) {
-                int wakeFrame=(int)(wave.age()*20)%(waterWakeSheet.getWidth()/32);
+            BufferedImage wake=wave.heavy()&&tideFoamSheet!=null?tideFoamSheet:waterWakeSheet;
+            if(wake!=null) {
+                int wakeFrame=(int)(wave.age()*20)%(wake.getWidth()/32);
+                int wakeLeft=wave.heavy()&&tideFoamSheet!=null?-32:-34;
                 nativePixels.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,0.45f));
-                nativePixels.drawImage(waterWakeSheet,-34,-16,-2,16,wakeFrame*32,0,wakeFrame*32+32,32,null);
+                nativePixels.drawImage(wake,wakeLeft,-16,wakeLeft+32,16,wakeFrame*32,0,wakeFrame*32+32,32,null);
                 nativePixels.setComposite(java.awt.AlphaComposite.SrcOver);
             }
-            // Reviewed crescents are diagonally authored; align their convex edge with travel.
-            nativePixels.rotate(wave.heavy()?0.6:-0.6);
+            // The new Tide crest faces right; only legacy diagonal art needs correction.
+            if(!crest)nativePixels.rotate(wave.heavy()?0.6:-0.6);
             nativePixels.drawImage(sheet,-cell/2,-cell/2,cell/2,cell/2,frame*cell,0,(frame+1)*cell,cell,null);
             nativePixels.dispose();
             int px=(int)Math.round((wave.x()-cameraX)/2)*2,py=(int)Math.round((wave.y()-cameraY)/2)*2;
@@ -1016,10 +1043,19 @@ public final class B2BJ extends JPanel {
     }
 
     private void drawImpacts(Graphics2D canvas, int cameraX, int cameraY) {
+        drawImpacts(canvas,cameraX,cameraY,null);
+    }
+
+    /** Null includes both layers for standalone previews; world painting separates the source burst. */
+    private void drawImpacts(Graphics2D canvas,int cameraX,int cameraY,Boolean groundLayer) {
         for (Impact impact : impacts) {
+            if(groundLayer!=null&&(impact.kind==Fx.TIDE_RELEASE)!=groundLayer)continue;
             BufferedImage sheet=switch(impact.kind) {
                 case WATER -> waterSplashSheet;
-                case TIDE -> tideImpactSheet;
+                case TIDE -> tideBreakSheet;
+                case TIDE_RELEASE -> tideReleaseSheet;
+                case TIDE_FOAM -> tideFoamSheet;
+                case WARDEN -> wardenImpactSheet;
                 case BLADE,BLADE_HURT -> armorSparksSheet;
                 case SLIME_HURT -> slimeHurtSheet;
                 case PICKUP -> ichorPickupSheet;
@@ -1028,13 +1064,24 @@ public final class B2BJ extends JPanel {
                 case HEAL -> healSheet;
                 case COUNTER -> counterSheet;
             };
-            if(sheet==null)continue;
-            int cell=impact.kind.cell,columns=sheet.getWidth()/cell;
+            int cell=impact.kind.cell;
+            if(sheet==null) {
+                switch(impact.kind) {
+                    case TIDE -> {sheet=tideImpactSheet;cell=48;}
+                    case TIDE_RELEASE -> {sheet=waterChargeSheet;cell=32;}
+                    case TIDE_FOAM -> {sheet=waterWakeSheet;cell=32;}
+                    case WARDEN -> {sheet=stoneChipsSheet;cell=32;}
+                    default -> { }
+                }
+            }
+            if(sheet==null||sheet.getWidth()<cell||sheet.getHeight()<cell)continue;
+            int columns=sheet.getWidth()/cell;
             int frame=Math.min(columns-1,(int)(impact.time/impact.kind.duration*columns));
             int row=Math.floorMod(impact.variant,sheet.getHeight()/cell);
             int x=(int)Math.round((impact.x-cameraX)/2)*2-cell,y=(int)Math.round((impact.y-cameraY)/2)*2-cell;
             var effect=(Graphics2D)canvas.create();
             float alpha=(float)Math.max(0,Math.min(1,(impact.kind.duration-impact.time)/.12));
+            if(impact.kind==Fx.TIDE_FOAM)alpha*=.55f;
             if(reducedEffects&&impact.kind!=Fx.SLIME_HURT&&impact.kind!=Fx.BLADE_HURT)alpha*=.65f;
             effect.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,alpha));
             boolean flip=(impact.variant&2)!=0;
@@ -1574,8 +1621,9 @@ public final class B2BJ extends JPanel {
     }
 
     private enum Fx {
-        WATER(32,.33),TIDE(48,.33),BLADE(48,.32),SLIME_HURT(48,.38),BLADE_HURT(48,.38),
-        PICKUP(32,.32),STONE(32,.45),SPIT(48,.3),HEAL(48,.65),COUNTER(80,.35);
+        WATER(32,.33),TIDE(64,.4),BLADE(48,.32),SLIME_HURT(48,.38),BLADE_HURT(48,.38),
+        PICKUP(32,.32),STONE(32,.45),SPIT(48,.3),HEAL(48,.65),COUNTER(80,.35),
+        TIDE_RELEASE(64,.46),TIDE_FOAM(32,.36),WARDEN(64,.5);
         final int cell;final double duration;
         Fx(int cell,double duration){this.cell=cell;this.duration=duration;}
     }

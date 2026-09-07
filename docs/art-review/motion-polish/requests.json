@@ -1,0 +1,180 @@
+[
+  {
+    "name": "sprint-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/run-south.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/run-south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Explosive fast athletic RUN cycle in place, facing south throughout, NOT walking. Lean chest forward, alternating high bent knees, long strong rear-leg push-off, two airborne passing poses, clear opposing arm pumps while retaining sword, cape streams backward and snaps on landings. Two complete alternating steps in eight poses. Character stays centered same scale and direction; no turning or camera movement. Return to reference pose to loop."
+    }
+  },
+  {
+    "name": "sprint-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/run-east.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/run-east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Explosive fast athletic RUN cycle in place, facing east throughout, NOT walking. Lean chest forward, alternating high bent knees, long strong rear-leg push-off, two airborne passing poses, clear opposing arm pumps while retaining sword, cape streams backward and snaps on landings. Two complete alternating steps in eight poses. Character stays centered same scale and direction; no turning or camera movement. Return to reference pose to loop."
+    }
+  },
+  {
+    "name": "sprint-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/run-north.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/run-north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Explosive fast athletic RUN cycle in place, facing north throughout, NOT walking. Lean chest forward, alternating high bent knees, long strong rear-leg push-off, two airborne passing poses, clear opposing arm pumps while retaining sword, cape streams backward and snaps on landings. Two complete alternating steps in eight poses. Character stays centered same scale and direction; no turning or camera movement. Return to reference pose to loop."
+    }
+  },
+  {
+    "name": "engulf-west",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/engulf-west.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/engulf-west.png",
+      "frame_count": 16,
+      "no_background": true,
+      "action": "Side view facing LEFT throughout. Whole slime body squashes LOW, leaps a tiny distance LEFT then splashes outward into a very WIDE LOW jelly blanket completely covering the ground beneath its body. Frames 5 through 11 are a broad FLAT puddle dome, no tall neck or raised head, all face submerged. Puddle ripples inward, contracts, then reforms the original round slime. Feet base near lower canvas throughout, no floating high, no camera change, no foreign objects, no corpse drawn; only whole liquid body squash, spread, engulf, reform. Return exactly to starting small round blob."
+    }
+  },
+  {
+    "name": "warden-idle",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Heavy armored guardian breathes in place, shoulders slowly rise and settle, fists flex, cyan chest core gently pulses. Always facing camera, feet planted, no attacks. Subtle coherent loop returns exactly to original pose."
+    }
+  },
+  {
+    "name": "warden-approach",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Heavy armored guardian marches forcefully TOWARD camera in place, alternating pronounced knee lifts and weighty heel strikes, opposite shoulders counter-rotate, massive fists swing, torso rocks with momentum. Eight unique forward locomotion poses. Never turn sideways, never moonwalk, centered constant size, loop."
+    }
+  },
+  {
+    "name": "warden-windup",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Slowly draw BOTH massive armored fists up above head preparing a crushing ground slam. Knees bend, shoulders lift, torso leans back with weight, arms open and end high overhead ready to strike. Keep camera-facing armor identity, planted feet constant scale. Finish in held overhead attack anticipation pose, DO NOT strike yet."
+    }
+  },
+  {
+    "name": "warden-recover",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Heavy armored guardian exhausted after a slam: sink onto one bent knee, fists touching ground, cyan chest glow dims, then slowly push armored body back upright to starting ready stance. Heavy recoil and weight, no turning, feet near same ground, no added objects."
+    }
+  },
+  {
+    "name": "warden-charge",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "last_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Armored guardian charges forward TOWARD camera in place in aggressive low crouch, head behind one shoulder, two alternating bounding steps, one fist forward like a battering ram and other behind. Weighty leg push-off and torso recoil, no spinning or side rotation, no weapon changes, constant scale."
+    }
+  },
+  {
+    "name": "warden-death",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/references/warden.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "Armored guardian collapses: knees buckle, heavy torso falls forward to ground, armor plates slump, cyan core extinguishes, becomes a low inert pile of its dark armor. No disappearing or shrinking, no skeleton, no explosion. Last pose stays collapsed on ground. Same front camera and size."
+    }
+  },
+  {
+    "name": "tide-crest",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "A compact rolling SURF BREAKER projectile viewed from above at low RPG angle, travelling RIGHT. Thick turquoise water mass with white foamy leading lip at right and two dark teal curling folds behind it. Rounded dense main water core diameter 28 pixels centered in 48x48 canvas, thin spray within 40px. Horizontal pointed rolling wave, NOT ring, NOT crescent sword, no character. Crisp single pixel clusters, aqua cyan teal white palette, transparent.",
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "medium shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "tide-release",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "Radial low water pressure burst around a clear EMPTY centre, foamy turquoise water jets ejecting OUTWARD close to ground, white scalloped foam and cyan droplets, no orb and no character. Centered 64x64 pixel art effect, 40px wide main footprint with sparse spray, low three-quarter RPG perspective, transparent.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "medium shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "tide-break",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "Water surf impact bursting into a broad LOW crown splash, thick turquoise rolls collapsing outward into white foam, cyan droplets arcing outward and downward, EMPTY open centre. Centered64x64 pixel art, aqua teal white palette. No creature, no ring glyph or magic text. Transparent background.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "medium shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "tide-foam",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "Low fading turquoise foam streaks trailing to LEFT behind a travelling wave, horizontally stretched small irregular white and teal ripples, 32x32 pixel art. Empty right half to leave room for wave, transparent, no solid crescent ring.",
+      "width": 32,
+      "height": 32,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "medium shading",
+      "detail": "highly detailed"
+    }
+  },
+  {
+    "name": "warden-impact",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "A low crown of jagged slate stone fragments and bright cyan energy erupting up from cracked ground, compact heavy ground slam impact, 64x64 crisp pixelart, muted grey-purple stone and electric cyan accents. Isolated low burst, transparent, no creature, no ground square.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "medium shading",
+      "detail": "highly detailed"
+    }
+  }
+]

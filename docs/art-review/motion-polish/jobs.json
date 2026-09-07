@@ -1,0 +1,236 @@
+[
+  {
+    "name": "sprint-south",
+    "id": "9070d9f7-f0a0-4b3b-b20f-6747ca3fbcf6",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "sprint-east",
+    "id": "c1a6d814-79a3-47d6-94a4-48fbbff334d0",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "sprint-north",
+    "id": "2ee1712c-5f4c-445d-a6ee-ccaadf27e3de",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "engulf-west",
+    "id": "ce9008cf-d2d4-42f1-a601-cfc9ff90c378",
+    "frames": 17,
+    "cost": 2
+  },
+  {
+    "name": "warden-idle",
+    "id": "d78bf3f0-7e93-4403-8422-71302b066f1d",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-approach",
+    "id": "b9a7c489-7563-4b59-9505-9d3750ff230b",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-windup",
+    "id": "b494152e-c7b3-4286-a078-9bc41f2290a4",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-recover",
+    "id": "be660295-ea7b-49ea-8b3d-26b9558fc0d4",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-charge",
+    "id": "cf452966-9caf-46ea-8fe0-e5cef4f1dad6",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-death",
+    "id": "a796f42a-b8fa-44bb-a9a8-22213ab157f1",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-crest",
+    "id": "7293d48a-20f2-4a4a-8e96-be62c18a36c1",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "tide-release",
+    "id": "180323a6-3c7c-4b1d-a07c-e6dbe0417445",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "tide-break",
+    "id": "32f43fcf-9329-43b0-8a95-974abc8438e7",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "tide-foam",
+    "id": "75bc3be3-732a-4716-9a33-1f3501f1d183",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "warden-impact",
+    "id": "90e791a5-87e4-4d20-87d9-8957dd447c9d",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "engulf-spread",
+    "id": "45a3846a-a7b1-46aa-9e97-3e2d27a46b91",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "engulf-reform",
+    "id": "99d60f9f-df01-45a2-8f11-7d19ece91f4c",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-strike",
+    "id": "aea92dd0-5be5-41b8-8d34-8ede55a568c4",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-rise",
+    "id": "91988e6a-aedd-44f7-8af0-13d15960dc4e",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-crest-animated",
+    "id": "7cd0d8de-789f-4463-8053-fea5cfedac93",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-release-animated",
+    "id": "c1d5c684-bf50-4c1b-8d1e-18a64bb5d8b7",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-break-animated",
+    "id": "48d8a029-959d-485d-98eb-5f45e034201b",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-foam-animated",
+    "id": "7ae49348-545c-452d-9def-9c0b397aebca",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-impact-animated",
+    "id": "18e3cbe3-d49d-476b-ae27-370a08c6e718",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "sprint-cycle-south",
+    "id": "8afc7ff4-db24-452f-8c8a-5deef8c19f08",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "sprint-cycle-east",
+    "id": "04221f35-d321-4a77-8f10-30db63d28420",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "sprint-cycle-north",
+    "id": "a661bba7-abe7-40b6-be03-d77c44b40ffe",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-projectile",
+    "id": "6a28858b-8fd6-4ae1-9322-7ad98f9589fc",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "tide-splash",
+    "id": "49c8c1c0-d27b-477c-a9be-ef9aa5f3a42c",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "tide-projectile-animated",
+    "id": "fbf13926-58e1-4701-b1fe-faa0d073a993",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-splash-animated",
+    "id": "e08a1e13-8d29-4867-9cd8-237c08629d36",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "sprint-locked-east",
+    "id": "cdd47e90-d92c-4805-85ba-588391e06d03",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "sprint-locked-north",
+    "id": "6fbf13fe-0e7f-42a6-bdcc-5c7d9ebe88c1",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-collapse",
+    "id": "534099ab-4611-4127-a7ad-388b8d174eee",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "tide-projectile-loop",
+    "id": "b8e54c37-e5d3-4fb3-9c90-2323c708aae8",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "water-spray",
+    "id": "a06373bb-14f8-430f-90ee-75e642cf0b9d",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "warden-fallen",
+    "id": "e2fa1ede-d972-4a01-b5a9-1512fb9b7574",
+    "frames": 1,
+    "cost": 1
+  },
+  {
+    "name": "tide-scatter",
+    "id": "0f05d5c2-d129-4492-93d1-a89bc572617c",
+    "frames": 9,
+    "cost": 1
+  },
+  {
+    "name": "warden-final-death",
+    "id": "68adc65c-4f2c-4493-8da6-275403206fd7",
+    "frames": 9,
+    "cost": 1
+  }
+]

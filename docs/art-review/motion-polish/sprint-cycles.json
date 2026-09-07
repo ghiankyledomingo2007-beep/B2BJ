@@ -1,0 +1,35 @@
+[
+  {
+    "name": "sprint-cycle-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/sprint-south/frame-3.png",
+      "last_frame_path": "docs/art-review/motion-polish/sprint-south/frame-3.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "CONTINUOUS fast running loop facing south from the first frame; already running, never stand or slow down. Keep sword in the SAME raised running-carry position throughout, no drawing, salute, flourish or attack. Alternate legs fully through two clear running steps: front knee lifts, rear heel kicks toward hip, wide push-off, airborne passing, opposite foot lands. Cape swings with stride. Consistent torso forward lean and head level, same face direction throughout, no turn, no camera movement. All eight poses are RUNNING, loop seamlessly to the pinned running pose."
+    }
+  },
+  {
+    "name": "sprint-cycle-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/sprint-east/frame-3.png",
+      "last_frame_path": "docs/art-review/motion-polish/sprint-east/frame-3.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "CONTINUOUS fast running loop facing east from the first frame; already running, never stand or slow down. Keep sword in the SAME raised running-carry position throughout, no drawing, salute, flourish or attack. Alternate legs fully through two clear running steps: front knee lifts, rear heel kicks toward hip, wide push-off, airborne passing, opposite foot lands. Cape swings with stride. Consistent torso forward lean and head level, same face direction throughout, no turn, no camera movement. All eight poses are RUNNING, loop seamlessly to the pinned running pose."
+    }
+  },
+  {
+    "name": "sprint-cycle-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/motion-polish/sprint-north/frame-3.png",
+      "last_frame_path": "docs/art-review/motion-polish/sprint-north/frame-3.png",
+      "frame_count": 8,
+      "no_background": true,
+      "action": "CONTINUOUS fast running loop facing north from the first frame; already running, never stand or slow down. Keep sword in the SAME raised running-carry position throughout, no drawing, salute, flourish or attack. Alternate legs fully through two clear running steps: front knee lifts, rear heel kicks toward hip, wide push-off, airborne passing, opposite foot lands. Cape swings with stride. Consistent torso forward lean and head level, same face direction throughout, no turn, no camera movement. All eight poses are RUNNING, loop seamlessly to the pinned running pose."
+    }
+  }
+]

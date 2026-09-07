@@ -1,0 +1,29 @@
+[
+  {
+    "name": "tide-projectile",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "ONE isolated magical water projectile icon, compact spiraling teardrop of thick turquoise liquid pointing RIGHT, white foamy curling tip and 3 small detached droplets trailing LEFT. Entire object small in CENTER with at least EIGHT EMPTY transparent pixels on ALL edges. Crisp 48x48 sprite for topdown action RPG. Main core only28x24 pixels. Aqua/cyan/white/darkteal. NOT ocean scene, no horizon, NO horizontal baseline, no water surface across bottom, NO background, no rectangle, no ring or portal, no sword.",
+      "width": 48,
+      "height": 48,
+      "no_background": true,
+      "view": "low top-down",
+      "outline": "selective outline",
+      "shading": "medium shading",
+      "detail": "medium detail"
+    }
+  },
+  {
+    "name": "tide-splash",
+    "tool": "create_image_pixflux",
+    "args": {
+      "description": "ONE isolated energetic impact SPLASH of turquoise WATER, radial scattering of separated sharp cyan droplets and white foam streaks blasting outward. Broken asymmetric spray, EMPTY transparent centre, no continuous circular outline, NO RING, no donut, no portal, no bowl or vortex. Thin water ribbons disperse across a centered 44x40pixel area within64x64canvas,10pixel transparent margins. Crisp pixelart game hit effect, same cyan as friendly slime, isolated no ground/no landscape.",
+      "width": 64,
+      "height": 64,
+      "no_background": true,
+      "outline": "selective outline",
+      "shading": "medium shading",
+      "detail": "medium detail"
+    }
+  }
+]

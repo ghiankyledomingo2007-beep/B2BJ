@@ -14,7 +14,9 @@ public final class GameAudio {
         PICKUP(0.22, 420, 980, 0.20, false),
         TRANSFORM(0.48, 180, 920, 0.22, false),
         GUARDIAN_SLAM(0.42, 92, 38, 0.32, true),
-        VICTORY(0.72, 330, 660, 0.22, false);
+        VICTORY(0.72, 330, 660, 0.22, false),
+        TIDE_RELEASE(0.30, 130, 380, 0.23, true),
+        TIDE_IMPACT(0.38, 220, 78, 0.24, true);
 
         private final double duration;
         private final double startFrequency;

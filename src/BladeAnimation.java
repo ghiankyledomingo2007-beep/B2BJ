@@ -12,7 +12,7 @@ public final class BladeAnimation {
     public static final int RENDER_WIDTH = CELL_WIDTH * 2;
     public static final int RENDER_HEIGHT = CELL_HEIGHT * 2;
 
-    private static final double RUN_FPS = 10.0;
+    private static final double RUN_FPS = 14.0;
     private static final double SLASH_DURATION = 0.3;
     private static final double SLASH_FPS = 8.0 / SLASH_DURATION;
 
