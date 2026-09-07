@@ -28,8 +28,18 @@ public final class TerrainRenderingTest {
 
     private static void outdoorTerrainKeepsIntegerPixels() {
         BufferedImage source=new BufferedImage(128,128,BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g=source.createGraphics();g.setColor(Color.MAGENTA);g.fillRect(0,0,128,128);g.dispose();
-        BufferedImage[] tiles=B2BJ.outdoorTiles(B2BJ.renderTiles(source));
+        Graphics2D g=source.createGraphics();
+        for(int mask=0;mask<16;mask++) {
+            g.setColor(new Color(20+mask*8,30+mask*5,40+mask*3));
+            g.fillRect(WangTileset.sourceX(mask),WangTileset.sourceY(mask),32,32);
+        }
+        g.dispose();
+        BufferedImage[] authored=B2BJ.renderTiles(source);
+        BufferedImage[] tiles=B2BJ.outdoorTiles(authored);
+        assert B2BJ.outdoorTiles(null)==null;
+        for(int mask=0;mask<16;mask++)assert java.util.Arrays.equals(
+                authored[mask].getRGB(0,0,64,64,null,0,64),tiles[mask].getRGB(0,0,64,64,null,0,64))
+                : "authored terrain transitions must not be replaced by procedural earth or the solid stone tile";
         assert tiles[0].getRGB(32,32)!=tiles[15].getRGB(32,32);
         for(BufferedImage tile:tiles)for(int y=0;y<64;y+=2)for(int x=0;x<64;x+=2) {
             int pixel=tile.getRGB(x,y);
