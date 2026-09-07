@@ -1,0 +1,38 @@
+[
+ {"name": "cart-mud", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/assets/props/outpost/broken-cart.png",
+  "description": "Remove the green grass and the pale sand patch under the cart. Replace them with only a thin dark wet-mud contact shadow directly beneath the wheels and body. Keep the cart, its cargo and its wheels exactly the same. Transparent background, muted dark colors, no green, no bright colors.",
+  "no_background": true}},
+ {"name": "tree-mud", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/assets/props/outpost/dead-tree.png",
+  "description": "Remove the green grass tuft and the grassy mound at the base of the tree. Show bare dark roots resting on dark wet mud with a small dark contact shadow. Keep the trunk and branches exactly the same. Transparent background, muted dark colors, no green.",
+  "no_background": true}},
+ {"name": "barrel-mud", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/assets/props/outpost/supply-barrel.png",
+  "description": "Remove the grass and moss around the base of the barrel. Replace it with a thin dark wet-mud contact shadow under the barrel. Keep the wooden barrel and its iron bands exactly the same. Transparent background, muted dark colors, no green.",
+  "no_background": true}},
+ {"name": "barricade-mud", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/assets/props/outpost/barricade.png",
+  "description": "Remove all grass and moss at the base of the wooden barricade. Replace it with a thin dark wet-mud contact shadow under the timber. Keep the logs and planks exactly the same. Transparent background, muted dark colors, no green.",
+  "no_background": true}},
+ {"name": "wall-mud", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/assets/props/outpost/wall.png",
+  "description": "Remove the green grass tufts at the base of the stone wall. Replace them with a thin dark wet-mud contact shadow under the wall. Keep the stone blocks exactly the same. Transparent background, muted dark colors, no green.",
+  "no_background": true}},
+ {"name": "brazier-unlit", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/docs/art-review/outpost-fable/props-cleanup/brazier-frame0.png",
+  "description": "Extinguish the fire completely: no flames, no embers, no glow, no orange or yellow anywhere. The bowl holds only cold grey ash and black charcoal. The brazier is dull tarnished dark iron. Keep the brazier shape and legs the same. Transparent background, muted cold colors.",
+  "no_background": true}},
+ {"name": "shield-dull", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/assets/props/outpost/shield-cache.png",
+  "description": "Change it into a plain battered dull dark iron round shield with dents and a plain wooden spear leaning together. Remove all gold trim, remove the sack and remove the grass. Muted dark grey and brown values only, no gold, no red, no bright colors. Thin dark mud contact shadow. Transparent background.",
+  "no_background": true}},
+ {"name": "waypost", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/docs/art-review/outpost-batch-27/waypost.png",
+  "description": "Remove the pale sand and pebble base under the signpost. Replace it with a thin dark wet-mud contact shadow. Keep the wooden post and its signboards exactly the same. Transparent background, muted dark colors.",
+  "no_background": true}},
+ {"name": "rubble-slate", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/docs/art-review/outpost-foundation/debris-simple.png",
+  "description": "Remove the stone masonry fragments in all four corners of the image so only the central loose pile of grey slate rubble remains, resting on a thin dark wet-mud contact shadow. Keep the central pile exactly the same. Transparent background, muted dark colors.",
+  "no_background": true}}
+]

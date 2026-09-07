@@ -83,52 +83,52 @@ public class ComposeGround {
         int[] tones={0xff353b33,0xff3b4239,0xff30362f,0xff2b312b};
         BufferedImage image=new BufferedImage(CELL,CELL,BufferedImage.TYPE_INT_ARGB);
         for(int y=0;y<CELL;y++)for(int x=0;x<CELL;x++) {
-            double low=.5+.5*Math.sin(2*Math.PI*x/CELL*1+.7)*Math.cos(2*Math.PI*y/CELL*1+2.2);
-            int h=hash(x/2,y/2,3)%100;
-            int tone=h<18?3:h<40?2:low>.55?1:0;
+            int blotch=hash(x/8,y/8,5)%100,grain=hash(x,y,3)%100;
+            int tone=grain<14?3:grain<34?2:blotch<45&&grain>72?1:0;
             int pixel=tones[tone];
             int pebble=hash(x,y,11)%97;
             if(pebble==0)pixel=0xff4d5149;
-            if(pebble==1&&x<CELL-1)pixel=0xff41483f;
-            if(hash(x/4,y/3,17)%29==0&&hash(x,y,19)%3==0)pixel=0xff3f4a52; // faint wet glint
+            if(pebble==1)pixel=0xff41483f;
+            if(hash(x,y,19)%131==0)pixel=0xff3c464d; // rare single wet glint, no fixed cluster
             image.setRGB(x,y,pixel);
         }
         return image;
     }
     static BufferedImage proceduralSlab() {
         // Six seeds in a periodic 32px domain: irregular flagstones, not a brick grid.
-        int seeds=6;int[][] seed=new int[seeds][2];
-        for(int i=0;i<seeds;i++){seed[i][0]=hash(i,0,23)%CELL;seed[i][1]=hash(i,1,29)%CELL;}
+        // Stratified seeds in a periodic 32px domain: large uneven flagstones, low-contrast seams.
+        int[][] seed={{6,7},{23,4},{27,19},{11,21},{2,29}};
+        double[] weight={1,1.1,.95,1.15,1.05};
+        int seeds=seed.length;
         int[][] owner=new int[CELL][CELL];
         for(int y=0;y<CELL;y++)for(int x=0;x<CELL;x++) {
             int best=-1;double bestDistance=Double.MAX_VALUE;
             for(int i=0;i<seeds;i++)for(int dx=-CELL;dx<=CELL;dx+=CELL)for(int dy=-CELL;dy<=CELL;dy+=CELL) {
-                double ex=x-seed[i][0]-dx,ey=y-seed[i][1]-dy;
-                double distance=ex*ex+ey*ey*1.2+(hash(x,y,100+i)%5)*.9;
+                double ex=Math.abs(x-seed[i][0]-dx),ey=Math.abs(y-seed[i][1]-dy);
+                // Squarish slabs with softened corners: mostly Chebyshev, a little Euclidean.
+                double distance=(Math.max(ex,ey*1.15)*.7+Math.sqrt(ex*ex+ey*ey)*.3)*weight[i]+(hash(x,y,100+i)%3)*.5;
                 if(distance<bestDistance){bestDistance=distance;best=i;}
             }
             owner[y][x]=best;
         }
-        int[] tones={0xff434c54,0xff3c454d,0xff363f47,0xff48515a,0xff40484f};
+        // Mostly the two darker slate tones; the two lighter ones only on two slabs.
+        int[] tones={0xff394249,0xff3b444b,0xff414a52,0xff384148,0xff434c54};
         BufferedImage image=new BufferedImage(CELL,CELL,BufferedImage.TYPE_INT_ARGB);
         for(int y=0;y<CELL;y++)for(int x=0;x<CELL;x++) {
             int slab=owner[y][x];
-            boolean seam=false,nearSeam=false;
+            boolean seam=false;
             for(int[] d:new int[][]{{1,0},{0,1}})seam|=owner[(y+d[1])%CELL][(x+d[0])%CELL]!=slab;
-            for(int[] d:new int[][]{{-1,0},{0,-1},{1,0},{0,1}})nearSeam|=owner[(y+d[1]+CELL)%CELL][(x+d[0]+CELL)%CELL]!=slab;
-            int pixel=tones[hash(slab,0,41)%5];
-            if(nearSeam&&hash(x,y,43)%4==0)pixel=shade(pixel,.86); // chipped edge
-            if(hash(x,y,47)%37==0)pixel=shade(pixel,1.08);
-            if(hash(x,y,49)%53==0)pixel=shade(pixel,.9);
-            // One crack per third slab: a short hash walk from the seed.
-            if(hash(slab,2,59)%3==0) {
-                int cx=seed[slab][0],cy=seed[slab][1];
-                for(int step=0;step<6;step++) {
-                    if(((cx%CELL)+CELL)%CELL==x&&((cy%CELL)+CELL)%CELL==y)pixel=0xff2a3036;
-                    cx+=hash(slab,step,61)%3-1;cy+=hash(slab,step,67)%2;
-                }
-            }
-            if(seam)pixel=0xff22282d;
+            int pixel=tones[slab%tones.length];
+            int sx=seed[slab][0],sy=seed[slab][1];
+            // One small highlight cluster on the upper-left rim of each larger slab.
+            int rx=((x-sx)%CELL+CELL)%CELL,ry=((y-sy)%CELL+CELL)%CELL;
+            if(slab%5==2&&rx>=CELL-4&&rx<=CELL-3&&ry==CELL-3)pixel=shade(pixel,1.07);
+            if(hash(x,y,47)%29==0)pixel=shade(pixel,.94);
+            // A wet puddle cluster in the low slab.
+            if(slab==3&&rx>=2&&rx<=4&&ry>=2&&ry<=3)pixel=0xff30373d;
+            boolean crack=slab==1&&(x-sx)==(y-sy)&&Math.abs(x-sx)<3;
+            // Seams are earth between sunk stones, not navy grout.
+            if(seam||crack)pixel=hash(x,y,53)%3==0?0xff2c322c:0xff303631;
             image.setRGB(x,y,pixel);
         }
         return image;

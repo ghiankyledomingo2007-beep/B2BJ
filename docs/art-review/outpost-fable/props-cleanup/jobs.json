@@ -1,0 +1,98 @@
+[
+ {
+  "name": "cart-mud",
+  "tool": "edit_image_pixen",
+  "id": "b9e78bb6-9864-40dd-b051-cb5c423345e7",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: b9e78bb6-9864-40dd-b051-cb5c423345e7\njob_id: b9e78bb6-9864-40dd-b051-cb5c423345e7\nmodel: pixen\nedit: Remove the green grass and the pale sand patch under the cart. Replace them with only a thin dark wet-mud contact shadow directly beneath the wheels and body. Keep the cart, its cargo and its whe"
+ },
+ {
+  "name": "tree-mud",
+  "tool": "edit_image_pixen",
+  "id": "f1a53d2d-6e42-49e6-8e3a-c0a23fcc7f7f",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: f1a53d2d-6e42-49e6-8e3a-c0a23fcc7f7f\njob_id: f1a53d2d-6e42-49e6-8e3a-c0a23fcc7f7f\nmodel: pixen\nedit: Remove the green grass tuft and the grassy mound at the base of the tree. Show bare dark roots resting on dark wet mud with a small dark contact shadow. Keep the trunk and branches exactly the sa"
+ },
+ {
+  "name": "barrel-mud",
+  "tool": "edit_image_pixen",
+  "id": "09a19aab-9428-4d24-9a06-43e29200f6df",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 09a19aab-9428-4d24-9a06-43e29200f6df\njob_id: 09a19aab-9428-4d24-9a06-43e29200f6df\nmodel: pixen\nedit: Remove the grass and moss around the base of the barrel. Replace it with a thin dark wet-mud contact shadow under the barrel. Keep the wooden barrel and its iron bands exactly the same. Transpare"
+ },
+ {
+  "name": "barricade-mud",
+  "tool": "edit_image_pixen",
+  "id": "6f1ffc9c-7647-4e9f-87ff-9733a958972c",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 6f1ffc9c-7647-4e9f-87ff-9733a958972c\njob_id: 6f1ffc9c-7647-4e9f-87ff-9733a958972c\nmodel: pixen\nedit: Remove all grass and moss at the base of the wooden barricade. Replace it with a thin dark wet-mud contact shadow under the timber. Keep the logs and planks exactly the same. Transparent backgrou"
+ },
+ {
+  "name": "wall-mud",
+  "tool": "edit_image_pixen",
+  "id": "df0cf82a-ef43-45f4-bf58-410d8814c5db",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: df0cf82a-ef43-45f4-bf58-410d8814c5db\njob_id: df0cf82a-ef43-45f4-bf58-410d8814c5db\nmodel: pixen\nedit: Remove the green grass tufts at the base of the stone wall. Replace them with a thin dark wet-mud contact shadow under the wall. Keep the stone blocks exactly the same. Transparent background, mu"
+ },
+ {
+  "name": "brazier-unlit",
+  "tool": "edit_image_pixen",
+  "id": "d8e64a5c-7b11-4a3c-b3da-166e8751e222",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: d8e64a5c-7b11-4a3c-b3da-166e8751e222\njob_id: d8e64a5c-7b11-4a3c-b3da-166e8751e222\nmodel: pixen\nedit: Extinguish the fire completely: no flames, no embers, no glow, no orange or yellow anywhere. The bowl holds only cold grey ash and black charcoal. The brazier is dull tarnished dark iron. Keep th"
+ },
+ {
+  "name": "shield-dull",
+  "tool": "edit_image_pixen",
+  "id": "d49d6ed3-194d-4064-a666-8d41d37af872",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: d49d6ed3-194d-4064-a666-8d41d37af872\njob_id: d49d6ed3-194d-4064-a666-8d41d37af872\nmodel: pixen\nedit: Change it into a plain battered dull dark iron round shield with dents and a plain wooden spear leaning together. Remove all gold trim, remove the sack and remove the grass. Muted dark grey and b"
+ },
+ {
+  "name": "waypost",
+  "tool": "edit_image_pixen",
+  "id": "b1eb043a-66b7-4a2d-a37f-1109641b7d88",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: b1eb043a-66b7-4a2d-a37f-1109641b7d88\njob_id: b1eb043a-66b7-4a2d-a37f-1109641b7d88\nmodel: pixen\nedit: Remove the pale sand and pebble base under the signpost. Replace it with a thin dark wet-mud contact shadow. Keep the wooden post and its signboards exactly the same. Transparent background, mute"
+ },
+ {
+  "name": "rubble-slate",
+  "tool": "edit_image_pixen",
+  "id": null,
+  "status": "failed",
+  "decision": "pending",
+  "reply": "error: rate limit exceeded (8/8 jobs)\n\nhint: wait for a job to finish, then retry"
+ },
+ {
+  "name": "rubble-slate",
+  "tool": "edit_image_pixen",
+  "id": "a5e207de-4d8d-47d2-88e7-41aea3d27101",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: a5e207de-4d8d-47d2-88e7-41aea3d27101\njob_id: a5e207de-4d8d-47d2-88e7-41aea3d27101\nmodel: pixen\nedit: Remove the stone masonry fragments in all four corners of the image so only the central loose pile of grey slate rubble remains, resting on a thin dark wet-mud contact shadow. Keep the central pi"
+ },
+ {
+  "name": "barrel-mud-r2",
+  "tool": "edit_image_pixen",
+  "id": "882177a3-175b-4f51-b654-487e701572bb",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: 882177a3-175b-4f51-b654-487e701572bb\njob_id: 882177a3-175b-4f51-b654-487e701572bb\nmodel: pixen\nedit: Remove the grass and moss around the base of the barrel. Replace it with a small tight dark wet-mud contact shadow that stays close under the barrel and does not reach the edges of the image. Kee"
+ },
+ {
+  "name": "waypost-r2",
+  "tool": "edit_image_pixen",
+  "id": "cd2c56ca-4a19-4590-a2da-8db07c0313c8",
+  "status": "downloaded",
+  "decision": "pending",
+  "reply": "id: cd2c56ca-4a19-4590-a2da-8db07c0313c8\njob_id: cd2c56ca-4a19-4590-a2da-8db07c0313c8\nmodel: pixen\nedit: Remove the sand and every pebble and stone at the base of the signpost, leaving no pale pixels on the ground. Replace the base with only a thin flat dark wet-mud contact shadow. Keep the wooden p"
+ }
+]
