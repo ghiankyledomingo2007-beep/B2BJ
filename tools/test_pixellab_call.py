@@ -15,7 +15,7 @@ spec.loader.exec_module(client)
 
 class PixelLabCallTest(unittest.TestCase):
     def test_character_tools_are_scoped_and_return_redacted_results(self):
-        for name in ("create_character", "animate_character", "get_character"):
+        for name in ("create_character", "animate_character", "get_character", "create_image_pixen"):
             replies = [b'{"result":{"protocolVersion":"2025-03-26"}}', b'',
                        b'{"result":{"content":[{"type":"text","text":"fake-override"}]}}']
             def respond(request, timeout):
