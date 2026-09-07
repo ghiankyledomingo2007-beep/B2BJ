@@ -1,8 +1,8 @@
 // Download only after get_image confirms completion; never submits generation jobs.
 import {readFile,writeFile,mkdir,stat} from 'node:fs/promises';
 const args=process.argv.slice(2);
-const batch=args[0]==='--motion'?'motion-polish':args[0]==='--rainoray'?'rainoray-rework':args[0]==='--hud-finish'?'hud-finish-40':args[0]==='--hud'?'hud-40':'immersion-40';
-if(['--hud','--hud-finish','--rainoray','--motion'].includes(args[0]))args.shift();
+const batch=args[0]==='--rain'?'rain-weather':args[0]==='--motion'?'motion-polish':args[0]==='--rainoray'?'rainoray-rework':args[0]==='--hud-finish'?'hud-finish-40':args[0]==='--hud'?'hud-40':'immersion-40';
+if(['--hud','--hud-finish','--rainoray','--motion','--rain'].includes(args[0]))args.shift();
 const root='docs/art-review/'+batch;
 const selected=new Set(args);
 if(!selected.size)throw Error('Specify completed job names from jobs.json');

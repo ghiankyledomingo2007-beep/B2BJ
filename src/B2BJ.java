@@ -138,6 +138,8 @@ public final class B2BJ extends JPanel {
     private double bannerTime;
     private long frameCounter;
     private double weatherTime;
+    private final BufferedImage rainStreakSheet=loadImage("assets/effects/rain_streaks.png");
+    private final BufferedImage rainSplashSheet=loadImage("assets/effects/rain_splashes.png");
     private static final Color[] RAIN_INK={new Color(122,155,175,26),new Color(133,169,187,42),new Color(158,190,204,62)};
     private long previousFrame = System.nanoTime();
 
@@ -977,6 +979,13 @@ public final class B2BJ extends JPanel {
             int x=(landingX-cameraX)/2*2,y=(landingY-cameraY)/2*2;
             if(ground) {
                 if(x< -12||x>WIDTH+12||y< -8||y>HEIGHT+8||map.waterBlocked(landingX,landingY,2))continue;
+                if(rainSplashSheet!=null&&rainSplashSheet.getWidth()>=96&&rainSplashSheet.getHeight()>=32) {
+                    int frame=Math.min(5,(int)((phase-.84)/.16*6)),row=i%2;
+                    var composite=canvas.getComposite();
+                    canvas.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,(float)(.36*(1-(phase-.84)/.16))));
+                    canvas.drawImage(rainSplashSheet,x-16,y-16,x+16,y+16,frame*16,row*16,frame*16+16,row*16+16,null);
+                    canvas.setComposite(composite);continue;
+                }
                 int spread=1+(int)((phase-.84)/.16*3);
                 canvas.setColor(RAIN_INK[phase<.91?1:0]);
                 canvas.fillRect(x-spread*2,y,2,2);canvas.fillRect(x+spread*2,y,2,2);
@@ -985,7 +994,14 @@ public final class B2BJ extends JPanel {
                 double height=(180+layer*65)*(1-phase/.84);
                 x=(int)Math.floor((landingX-height*.18-cameraX)/2)*2;
                 y=(int)Math.floor((landingY-height-cameraY)/2)*2;
-                if(x< -16||x>WIDTH+16||y< -16||y>HEIGHT+16)continue;
+                if(x< -64||x>WIDTH+64||y< -64||y>HEIGHT+64)continue;
+                if(rainStreakSheet!=null&&rainStreakSheet.getWidth()>=64&&rainStreakSheet.getHeight()>=32) {
+                    int column=layer==2?1:0;
+                    var composite=canvas.getComposite();
+                    canvas.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,.16f+layer*.08f));
+                    canvas.drawImage(rainStreakSheet,x-32,y-62,x+32,y+2,column*32,0,column*32+32,32,null);
+                    canvas.setComposite(composite);continue;
+                }
                 for(int tail=0;tail<3+layer*2;tail++) {
                     canvas.setColor(RAIN_INK[tail<2?layer:0]);
                     canvas.fillRect(x-(tail/3)*2,y-tail*2,2,2);

@@ -1,0 +1,15 @@
+[
+  {"name":"rain-fine","id":"925f476d-d4af-4440-86bc-21633eeb025f","frames":1,"cost":1},
+  {"name":"rain-near","id":"2d4751dc-5bde-4f47-8936-a17d45244d27","frames":1,"cost":1},
+  {"name":"rain-stone-splash","id":"e0e6658f-a23f-4bad-aeea-cf1bfca2aaa2","frames":1,"cost":1},
+  {"name":"rain-puddle-ripple","id":"5f4fc970-cc8a-4d8e-b99f-9370df20878e","frames":1,"cost":1},
+  {"name":"streak-thin","id":"f40959b5-e3d5-40f4-b8c3-436dceae098d","frames":1,"cost":1},
+  {"name":"streak-long","id":"f3364395-c582-4995-a8c9-9e6ee571f995","frames":1,"cost":1},
+  {"name":"splash-low","id":"412d78cd-ec3d-4e61-bf26-671dab4ba1be","frames":1,"cost":1},
+  {"name":"ripple-animated","id":"e990a74a-f63f-407a-bc0b-c4fe6915087f","frames":9,"cost":1},
+  {"name":"streak-vertical","id":"af10c2f1-64ee-4467-bde5-579708761a26","frames":1,"cost":1},
+  {"name":"streak-heavy","id":"43dd40fa-8fb1-47c1-b186-05392304cb1a","frames":1,"cost":1},
+  {"name":"splash-animated","id":"e5d258ee-23b5-44bb-a453-e530b8a59120","frames":9,"cost":1},
+  {"name":"streak-fine-native","id":"ef0c81c1-5a97-451b-a4b5-b6d69ac8d228","frames":1,"cost":1},
+  {"name":"streak-near-native","id":"4469df62-b7c0-48dc-bb9e-840e340e1a4c","frames":1,"cost":1}
+]
