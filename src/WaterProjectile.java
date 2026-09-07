@@ -1,33 +1,44 @@
 /** A finite packet of water momentum; simulation owns collisions, renderer owns art. */
 public final class WaterProjectile {
+    public enum Kind { CUT, RETURN_CUT, FINISHER, COUNTER, TIDE }
     private double x, y, speed, age, distance;
     private final double dx, dy;
-    private final boolean heavy;
+    private final Kind kind;
     private boolean alive = true;
 
     WaterProjectile(double x,double y,int aimX,int aimY,boolean heavy) {
+        this(x,y,aimX,aimY,heavy?Kind.TIDE:Kind.CUT);
+    }
+    WaterProjectile(double x,double y,int aimX,int aimY,Kind kind) {
         double length=Math.hypot(aimX,aimY);
         if(!Double.isFinite(x)||!Double.isFinite(y)||length==0) throw new IllegalArgumentException("Invalid water cast");
-        this.x=x; this.y=y; dx=aimX/length; dy=aimY/length; this.heavy=heavy;
-        speed=heavy?440:620;
+        this.x=x; this.y=y; dx=aimX/length; dy=aimY/length; this.kind=java.util.Objects.requireNonNull(kind);
+        speed=switch(kind) { case TIDE->440; case FINISHER->540; case COUNTER->780; default->620; };
     }
     void advance(double dt) {
+        if(!Double.isFinite(dt)||dt<=0||!alive)return;
         double travel=speed*(-Math.expm1(-0.5*dt))/0.5;
-        x+=dx*travel; y+=dy*travel; distance+=travel;
+        // Analytic side sweep stays frame-rate independent and returns to the aimed centre line.
+        double bend=(kind==Kind.CUT?6:kind==Kind.RETURN_CUT?-6:0)
+                *(Math.sin(Math.PI*(distance+travel)/range())-Math.sin(Math.PI*distance/range()));
+        x+=dx*travel-dy*bend; y+=dy*travel+dx*bend; distance+=travel;
         speed*=Math.exp(-0.5*dt); age+=dt;
-        if(distance>=(heavy?280:340)||age>=0.8) alive=false;
+        if(distance>=range()||age>=0.8) alive=false;
     }
     void stop() { alive=false; }
     public double x() { return x; }
     public double y() { return y; }
     public double speed() { return speed; }
     public double age() { return age; }
-    public double opacity() { return Math.max(0,Math.min(1,((heavy?280:340)-distance)/60)); }
+    public double opacity() { return Math.max(0,Math.min(1,(range()-distance)/60)); }
     public double directionX() { return dx; }
     public double directionY() { return dy; }
-    public double radius() { return heavy?28:16; }
-    public boolean heavy() { return heavy; }
+    public double radius() { return heavy()?28:kind==Kind.FINISHER?22:16; }
+    private double range() { return switch(kind) { case TIDE->280; case FINISHER->270; case COUNTER->300; default->340; }; }
+    public Kind kind() { return kind; }
+    public boolean heavy() { return kind==Kind.TIDE; }
+    public boolean staggers() { return heavy()||kind==Kind.FINISHER||kind==Kind.COUNTER; }
     public boolean alive() { return alive; }
-    public int damage() { return heavy?2:1; }
-    public double impulse() { return heavy?420:140; }
+    public int damage() { return heavy()||kind==Kind.FINISHER?2:1; }
+    public double impulse() { return switch(kind) { case TIDE->420; case FINISHER->300; case COUNTER->220; default->140; }; }
 }

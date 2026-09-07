@@ -30,7 +30,8 @@ public final class Wisp {
     public static final double AGGRO_DURATION = 6.0;
 
     private static final double RECOVER_DURATION = 0.45;
-    private static final double HURT_DURATION = 0.18;
+    private static final double HURT_DURATION = 0.28;
+    private static final double STAGGER_COOLDOWN = 1.2;
     private static final double LUNGE_SPEED = 520.0;
     private static final double PROBE_DISTANCE = 24.0;
     private static final double DETOUR_COMMIT = 0.35;
@@ -57,6 +58,7 @@ public final class Wisp {
     private int detourSign;
     private double detourTime, detourX, detourY;
     private int shotNumber;
+    private double staggerCooldown;
 
     public Wisp(double x, double y, double minimumX, double maximumX) {
         this(x, y, minimumX, maximumX, MAX_HEALTH);
@@ -94,6 +96,7 @@ public final class Wisp {
 
     private void update(double seconds, double targetX, double targetY,
             boolean canStartAttack, RuinedOutpostMap map) {
+        staggerCooldown=Math.max(0,staggerCooldown-seconds);
         if(alive()) {
             move(impulseX*seconds,impulseY*seconds,map);
             double drag=Math.exp(-10*seconds);
@@ -396,8 +399,10 @@ public final class Wisp {
         }
         health = Math.max(0, health - damage);
         aggroTime = AGGRO_DURATION;
-        if(health==0||stagger) {
-            enter(health == 0 ? State.DEAD : State.HURT);
+        if(health==0) enter(State.DEAD);
+        else if(stagger&&staggerCooldown==0) {
+            enter(State.HURT);
+            staggerCooldown=STAGGER_COOLDOWN;
         }
         return true;
     }

@@ -13,7 +13,8 @@ public final class WaterCombatTest {
         assert game.projectiles().get(0).x()==x;
         assert !game.tideWave(1,0);
         game.togglePause(); game.update(0.3,0,0);
-        assert enemy.health()==3 : "one projectile damages once";
+        assert enemy.health()==3 : "one projectile damages once; health="+enemy.health()
+                +", enemy="+enemy.x()+","+enemy.y()+", events="+game.drainEvents();
         assert enemy.state()!=Wisp.State.HURT : "basic water must not repeatedly stun-lock enemies";
         assert game.projectiles().isEmpty();
 

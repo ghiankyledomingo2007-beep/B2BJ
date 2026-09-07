@@ -1093,8 +1093,17 @@ public final class B2BJ extends JPanel {
                 nativePixels.drawImage(wake,wakeLeft,-16,wakeLeft+32,16,wakeFrame*32,0,wakeFrame*32+32,32,null);
                 nativePixels.setComposite(java.awt.AlphaComposite.SrcOver);
             }
+            if(wave.kind()==WaterProjectile.Kind.RETURN_CUT)nativePixels.scale(1,-1);
+            if(wave.kind()==WaterProjectile.Kind.COUNTER)nativePixels.rotate(-.35);
             // The new Tide crest faces right; only legacy diagonal art needs correction.
             if(!crest)nativePixels.rotate(wave.heavy()?0.6:-0.6);
+            if(wave.kind()==WaterProjectile.Kind.FINISHER) {
+                // Two opposed native-size cuts, not an enlarged basic projectile.
+                var crossing=(Graphics2D)nativePixels.create();
+                crossing.rotate(1.2);crossing.scale(1,-1);
+                crossing.drawImage(sheet,-cell/2,-cell/2,cell/2,cell/2,frame*cell,0,(frame+1)*cell,cell,null);
+                crossing.dispose();
+            }
             nativePixels.drawImage(sheet,-cell/2,-cell/2,cell/2,cell/2,frame*cell,0,(frame+1)*cell,cell,null);
             nativePixels.dispose();
             int px=(int)Math.round((wave.x()-cameraX)/2)*2,py=(int)Math.round((wave.y()-cameraY)/2)*2;
