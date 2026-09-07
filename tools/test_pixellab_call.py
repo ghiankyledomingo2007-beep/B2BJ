@@ -68,7 +68,7 @@ class PixelLabCallTest(unittest.TestCase):
         isolated = {key: value for key, value in os.environ.items() if key != "PIXELLAB_AUTH_HEADER"}
         with patch.dict(os.environ, isolated, clear=True), \
              patch.object(client.sys, "argv", ["pixellab-call.py", "animate_image", "args.json"]), \
-             patch.object(client.Path, "read_text", side_effect=[json.dumps({"first_frame_path": "frame.png", "init_image_path": "frame.png", "color_image_path": "frame.png", "image_paths": ["frame.png"]}), config]), \
+             patch.object(client.Path, "read_text", side_effect=[json.dumps({"first_frame_path": "frame.png", "init_image_path": "frame.png", "color_image_path": "frame.png", "image_path": "frame.png", "image_paths": ["frame.png"]}), config]), \
              patch.object(client.Path, "read_bytes", return_value=b"test-png"), \
              patch.object(client.urllib.request, "urlopen", side_effect=respond), \
              contextlib.redirect_stdout(output):
@@ -78,7 +78,7 @@ class PixelLabCallTest(unittest.TestCase):
         payload = json.loads(requests[2].data)
         self.assertEqual(payload["params"]["arguments"], {
             "first_frame_base64": "dGVzdC1wbmc=", "init_image_base64": "dGVzdC1wbmc=", "color_image_base64": "dGVzdC1wbmc=",
-            "images_base64": ["dGVzdC1wbmc="]})
+            "image_base64": "dGVzdC1wbmc=", "images_base64": ["dGVzdC1wbmc="]})
         self.assertNotIn("fake-test-secret", output.getvalue())
         self.assertNotIn("large-image-data", output.getvalue())
         with patch.object(client.sys, "argv", ["pixellab-call.py", "delete_image"]), \

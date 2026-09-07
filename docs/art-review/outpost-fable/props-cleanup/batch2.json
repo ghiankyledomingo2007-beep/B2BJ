@@ -1,0 +1,10 @@
+[
+ {"name": "barrel-mud-r2", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/assets/props/outpost/supply-barrel.png",
+  "description": "Remove the grass and moss around the base of the barrel. Replace it with a small tight dark wet-mud contact shadow that stays close under the barrel and does not reach the edges of the image. Keep the wooden barrel and its iron bands exactly the same. Transparent background, muted dark colors, no green.",
+  "no_background": true, "seed": 7}},
+ {"name": "waypost-r2", "tool": "edit_image_pixen", "args": {
+  "image_path": "/home/ghiankylledomingo/gamedev-vault/Projects/B2BJ/.claude/worktrees/agent-a4902224ecbcd34a9/docs/art-review/outpost-batch-27/waypost.png",
+  "description": "Remove the sand and every pebble and stone at the base of the signpost, leaving no pale pixels on the ground. Replace the base with only a thin flat dark wet-mud contact shadow. Keep the wooden post and its signboards exactly the same. Transparent background, muted dark colors.",
+  "no_background": true, "seed": 7}}
+]
