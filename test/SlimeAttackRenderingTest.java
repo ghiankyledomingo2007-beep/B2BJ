@@ -59,6 +59,8 @@ public final class SlimeAttackRenderingTest {
         B2BJ panel=new B2BJ(false);panel.game().begin();
         panel.game().player().relocate(300,300);
         int[] hashes=new int[3];
+        int[] visible=new int[3];
+        BufferedImage firstFrame=null;
         for(int cut=0;cut<3;cut++) {
             assert panel.game().attack(1,0);
             panel.game().update(.2,0,0);
@@ -68,10 +70,22 @@ public final class SlimeAttackRenderingTest {
             var g=frame.createGraphics();
             draw.invoke(panel,g,(int)wave.x()-160,(int)wave.y()-160,wave);g.dispose();
             hashes[cut]=java.util.Arrays.hashCode(frame.getRGB(0,0,320,320,null,0,320));
+            visible[cut]=visiblePixels(frame);
+            if(cut==0)firstFrame=frame;
+            if(cut==1) {
+                int changed=0,union=0;
+                for(int y=0;y<320;y++)for(int x=0;x<320;x++) {
+                    boolean a=(firstFrame.getRGB(x,y)>>>24)>0,b=(frame.getRGB(x,y)>>>24)>0;
+                    if(a||b)union++;
+                    if(a!=b)changed++;
+                }
+                assert changed>union*.25 : "return cut silhouette must change substantially, not just a few pixels";
+            }
             panel.game().update(.3,0,0);
         }
         assert hashes[0]!=hashes[1] : "return cut needs a visibly different sprite pose";
         assert hashes[1]!=hashes[2]&&hashes[0]!=hashes[2] : "finisher must read differently from basic cuts";
+        assert visible[2]>visible[0]*1.25 : "finisher's two cuts must not overlap into one basic slash";
     }
     private static void mouse(B2BJ panel,int event,int button,int x,int y) {
         panel.dispatchEvent(new MouseEvent(panel,event,0,0,x,y,1,false,button));
