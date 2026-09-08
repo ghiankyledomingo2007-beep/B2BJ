@@ -614,18 +614,21 @@ public final class B2BJ extends JPanel {
         boolean finisher=reviewedCast&&game.waterKind()==WaterProjectile.Kind.FINISHER&&slimeFinisherSheet!=null;
         BufferedImage sheet=reviewedCast?(finisher?slimeFinisherSheet:slimeCastSheet):reviewedIdle?slimeIdleSheet:slimeSheet;
         if (sheet != null) {
-            int sourceX = (reviewedCast?slimeAnimation.castFrame():reviewedIdle?slimeAnimation.idleFrame():slimeAnimation.frame()) * SlimeAnimation.CELL_SIZE;
+            int cell=finisher?64:SlimeAnimation.CELL_SIZE;
+            // Extra finisher canvas is transparent motion margin, never a larger character.
+            if(finisher) {x-=16;y-=16;}
+            int sourceX = (reviewedCast?slimeAnimation.castFrame():reviewedIdle?slimeAnimation.idleFrame():slimeAnimation.frame()) * cell;
             int castRow=slimeAnimation.row()==3?1:slimeAnimation.row()==4?2:0;
-            int sourceY = (reviewedCast?castRow:reviewedIdle?0:slimeAnimation.row()) * SlimeAnimation.CELL_SIZE;
+            int sourceY = (reviewedCast?castRow:reviewedIdle?0:slimeAnimation.row()) * cell;
             int imageLeft = slimeAnimation.flipHorizontal()
-                    ? x + SlimeAnimation.RENDER_SIZE : x;
+                    ? x + cell*2 : x;
             int imageRight = slimeAnimation.flipHorizontal()
-                    ? x : x + SlimeAnimation.RENDER_SIZE;
+                    ? x : x + cell*2;
             canvas.drawImage(sheet, imageLeft, y,
-                    imageRight, y + SlimeAnimation.RENDER_SIZE,
+                    imageRight, y + cell*2,
                     sourceX, sourceY,
-                    sourceX + SlimeAnimation.CELL_SIZE,
-                    sourceY + SlimeAnimation.CELL_SIZE, null);
+                    sourceX + cell,
+                    sourceY + cell, null);
         } else {
             canvas.setColor(TEAL);
             canvas.fillOval(x, y + 16, SlimeAnimation.RENDER_SIZE,
@@ -1373,7 +1376,7 @@ public final class B2BJ extends JPanel {
             uiPanel(canvas,478,538,332,54);
             icon(canvas,consumeIcon,486,545,32);
             pixelText(canvas,p.trait().label(),526,548,2,color);
-            pixelText(canvas,armor?"BLOCK 0.5 HP / ONE HIT":"WATER SHOT SPEED +30%",526,571,1,new Color(191,203,209));
+            pixelText(canvas,armor?"BLOCK 0.5 HP / ONE HIT":"SHOT SPEED 1.3X",526,571,1,new Color(191,203,209));
             pixelText(canvas,String.format(java.util.Locale.ROOT,"%.1f",p.traitSeconds()),774,571,1,color);
             canvas.setColor(new Color(39,48,57));canvas.fillRect(488,584,312,3);
             canvas.setColor(color);canvas.fillRect(488,584,(int)(312*p.traitSeconds()/Player.TRAIT_DURATION),3);
