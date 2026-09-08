@@ -1,4 +1,11 @@
 public final class Player {
+    public enum Trait {
+        NONE(""), MEMBRANE("IRON MEMBRANE"), JET("JET CURRENT");
+        private final String label;
+        Trait(String label) { this.label=label; }
+        public String label() { return label; }
+    }
+    public static final double TRAIT_DURATION = 10;
     public static final double SPEED = 260.0;
     public static final double RADIUS = 48.0;
     public static final double COLLISION_RADIUS = 24.0;
@@ -30,6 +37,8 @@ public final class Player {
     private double recoveryTime;
     private int vitality, capacity, efficiency, edge;
     private boolean godMode;
+    private Trait trait=Trait.NONE;
+    private double traitTime;
 
     public Player(double x, double y) {
         this.x = x;
@@ -42,6 +51,7 @@ public final class Player {
         dashCooldown = Math.max(0, dashCooldown - seconds);
         attackCooldown = Math.max(0, attackCooldown - seconds);
         hurtInvulnerability = Math.max(0, hurtInvulnerability - seconds);
+        traitTime = Math.max(0, traitTime - seconds);
         if (bladeTime > 0) {
             bladeTime = Math.max(0, bladeTime - seconds);
             ichor = MAX_ICHOR * bladeTime / bladeDuration();
@@ -81,7 +91,9 @@ public final class Player {
         if (damage <= 0 || !alive() || godMode || invulnerable()) {
             return false;
         }
-        health = Math.max(0, health - damage * (bladeForm() ? 0.75 : 1));
+        double protection=trait()==Trait.MEMBRANE?.5:0;
+        health = Math.max(0, health - damage * (bladeForm() ? 0.75 : 1) + protection);
+        if(protection>0||!alive())traitTime=0;
         if (bladeForm()) {
             ichor = Math.max(0, ichor - 5);
             bladeTime = bladeDuration() * ichor / MAX_ICHOR;
@@ -120,6 +132,7 @@ public final class Player {
             return false;
         }
         bladeTime = bladeDuration();
+        traitTime = 0;
         return true;
     }
 
@@ -129,6 +142,17 @@ public final class Player {
 
     public double ichor() {
         return ichor;
+    }
+
+    public Trait trait() { return traitTime>0?trait:Trait.NONE; }
+    public double traitSeconds() { return traitTime; }
+    public void gainTrait(Trait value) {
+        java.util.Objects.requireNonNull(value);
+        if(value==Trait.NONE||!alive()||bladeForm()||recovering())return;
+        trait=value;traitTime=TRAIT_DURATION;
+    }
+    public boolean benefitsFrom(Trait value) {
+        return value!=Trait.NONE&&(trait()!=value||traitTime<TRAIT_DURATION/2);
     }
 
     /** Skill costs shorten the same finite transformation reservoir, never a second mana pool. */

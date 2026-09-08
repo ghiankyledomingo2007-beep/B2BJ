@@ -29,7 +29,7 @@ public final class AbsorbedTraitTest {
     private static void channelAndReplacement() throws Exception {
         var game=fixture();game.player().collectIchor(100);
         corpse(game,CampaignEnemy.Kind.OUTPOST_GUARD,false);
-        assert game.prompt().contains("MEMBRANE") : "show the corpse reward before committing to eat";
+        assert game.interactionPrompt().contains("MEMBRANE") : "show the corpse reward before committing to eat";
         assert game.interact() : "useful new trait can be eaten at full health and Ichor";
         advance(game,.4);assert game.player().trait()==Player.Trait.NONE;
         game.pause();advance(game,2);assert game.player().trait()==Player.Trait.NONE;

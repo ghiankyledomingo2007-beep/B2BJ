@@ -4,6 +4,7 @@ public final class WaterProjectile {
     private double x, y, speed, age, distance;
     private final double dx, dy;
     private final Kind kind;
+    private final boolean jet;
     private final java.util.Set<Wisp> hitBodies = new java.util.HashSet<>();
     private boolean alive = true;
 
@@ -11,10 +12,14 @@ public final class WaterProjectile {
         this(x,y,aimX,aimY,heavy?Kind.TIDE:Kind.CUT);
     }
     WaterProjectile(double x,double y,int aimX,int aimY,Kind kind) {
+        this(x,y,aimX,aimY,kind,false);
+    }
+    WaterProjectile(double x,double y,int aimX,int aimY,Kind kind,boolean jet) {
         double length=Math.hypot(aimX,aimY);
         if(!Double.isFinite(x)||!Double.isFinite(y)||length==0) throw new IllegalArgumentException("Invalid water cast");
-        this.x=x; this.y=y; dx=aimX/length; dy=aimY/length; this.kind=java.util.Objects.requireNonNull(kind);
+        this.x=x; this.y=y; dx=aimX/length; dy=aimY/length; this.kind=java.util.Objects.requireNonNull(kind);this.jet=jet;
         speed=switch(kind) { case TIDE->440; case FINISHER->540; case COUNTER->780; default->620; };
+        if(jet)speed*=1.3;
     }
     void advance(double dt) {
         if(!Double.isFinite(dt)||dt<=0||!alive)return;
@@ -44,6 +49,7 @@ public final class WaterProjectile {
     boolean firstContact(Wisp target) { return hitBodies.add(target); }
     private double range() { return switch(kind) { case TIDE->280; case FINISHER->270; case COUNTER->300; default->340; }; }
     public Kind kind() { return kind; }
+    public boolean jet() { return jet; }
     public boolean heavy() { return kind==Kind.TIDE; }
     public boolean staggers() { return heavy()||kind==Kind.FINISHER||kind==Kind.COUNTER; }
     public boolean alive() { return alive; }

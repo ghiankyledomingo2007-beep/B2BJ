@@ -9,7 +9,7 @@ public final class RuinedOutpostGame {
     public enum EventType {
         DASH, ATTACK, WATER_IMPACT, TIDE_IMPACT, TIDE_RELEASE, TIDE_DISSIPATE, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
         TRANSFORM, REVERT, GUARDIAN_AWAKENED, GUARDIAN_SLAM, VICTORY, ROOM_ENTERED, SPIT_SHOT, SPIT_IMPACT,
-        ABSORB_START, ABSORBED, HEALED, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER
+        ABSORB_START, ABSORBED, HEALED, TRAIT_GAINED, MEMBRANE_BREAK, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER
     }
     public record Event(EventType type, double x, double y, boolean water) {
         public Event(EventType type,double x,double y) { this(type,x,y,false); }
@@ -45,6 +45,14 @@ public final class RuinedOutpostGame {
         public boolean healing(){return healing;}
         public CampaignEnemy.Kind kind(){return kind;}
         public int direction(){return direction;}
+        public Player.Trait trait() {
+            if(!healing||kind==null)return Player.Trait.NONE;
+            return switch(kind) {
+                case OUTPOST_GUARD,FALLEN_KNIGHT -> Player.Trait.MEMBRANE;
+                case OUTPOST_SPITTER,MIRE_SHAMAN,CINDER_HEXER -> Player.Trait.JET;
+                default -> Player.Trait.NONE;
+            };
+        }
     }
     public static final double WISP_CONTACT_RADIUS = 58;
     public static final double TIDE_COOLDOWN = 4.5;
@@ -602,7 +610,9 @@ public final class RuinedOutpostGame {
             return;
         }
         boolean blade=player.bladeForm();
+        boolean membrane=player.trait()==Player.Trait.MEMBRANE;
         if (player.hurt(damage)) {
+            if(membrane)emit(EventType.MEMBRANE_BREAK,player.x(),player.y());
             cancelAbsorption();
             emit(EventType.PLAYER_HIT,x,y);
             hitStop=0.045;
@@ -693,7 +703,7 @@ public final class RuinedOutpostGame {
     private void resolveStrike() {
         if(waterCast) {
             if(!player.bladeForm()) {
-                projectiles.add(new WaterProjectile(player.x(),player.y(),aimX,aimY,waterKind));
+                projectiles.add(new WaterProjectile(player.x(),player.y(),aimX,aimY,waterKind,player.trait()==Player.Trait.JET));
                 if(heavyCast)events.add(new Event(EventType.TIDE_RELEASE,player.x(),player.y(),true));
             }
             return;
@@ -891,13 +901,13 @@ public final class RuinedOutpostGame {
             for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120))return "E EXAMINE "+landmark.name();
             if(near(campaignArea().exit().x(),campaignArea().exit().y(),140))return bossDefeated?(biome==3?"E APPROACH THE RIFT":"E ENTER NEXT REGION"):"DEFEAT "+guardian.bossName();
             if(biome>0&&near(campaignArea().returnPortal().x(),campaignArea().returnPortal().y(),120))return "E RETURN TO PREVIOUS REGION";
-            return absorptionTarget!=null?"ABSORBING":nearbyCorpse()!=null?"E ABSORB":"";
+            return absorptionTarget!=null?"ABSORBING":absorbPrompt();
         }
         if (map.room()==10&&!infirmaryUsed&&near(map.restX(),map.restY(),120)) return "E  USE FIELD DRESSING";
         if (map.room()==7&&near(map.restX(),map.restY(),120)) return "E  REST AT CAMP";
         if (map.exitReached(player.x(),player.y())) return "E  ENTER FOREST BOUNDARY";
         if(absorptionTarget!=null)return "ABSORBING";
-        if(nearbyCorpse()!=null)return "E  ABSORB";
+        if(nearbyCorpse()!=null)return absorbPrompt();
         for (RuinedOutpostMap.Door door:map.doors()) if (near(door.x(),door.y(),120)) {
             if (!roomClear()) return "CLEAR THE ROOM TO UNLOCK";
             if (map.room()==4&&!tutorialTransformed&&door.destination()==5) return "Q  TRY THE BLADE IN SAFETY";
@@ -937,6 +947,10 @@ public final class RuinedOutpostGame {
     private boolean canAbsorb() {
         return player.alive()&&!player.bladeForm()&&!player.recovering()&&!player.dashing()&&attackDelay==0;
     }
+    private String absorbPrompt() {
+        Corpse corpse=nearbyCorpse();
+        return corpse==null?"":"E ABSORB"+(corpse.trait()==Player.Trait.NONE?"":" / "+corpse.trait().label());
+    }
     private boolean corpseReachable(Corpse corpse) {
         return near(corpse.x(),corpse.y(),ABSORB_RADIUS)
                 &&map.clearWaterLine(player.x(),player.y()+Player.COLLISION_Y_OFFSET,
@@ -948,7 +962,8 @@ public final class RuinedOutpostGame {
         for(Corpse corpse:corpses) {
             double candidate=Math.hypot(player.x()-corpse.x(),player.y()-corpse.y());
             if(candidate<distance&&corpseReachable(corpse)
-                    &&(player.ichor()<Player.MAX_ICHOR||(corpse.healing()&&player.healthValue()<player.maxHealth()))) {
+                    &&(player.ichor()<Player.MAX_ICHOR||(corpse.healing()&&player.healthValue()<player.maxHealth())
+                            ||player.benefitsFrom(corpse.trait()))) {
                 nearest=corpse;distance=candidate;
             }
         }
@@ -971,6 +986,10 @@ public final class RuinedOutpostGame {
         double beforeHealth=player.healthValue();
         if(absorptionTarget.healing())player.heal(.5);
         if(player.healthValue()>beforeHealth)emit(EventType.HEALED,player.x(),player.y());
+        if(absorptionTarget.trait()!=Player.Trait.NONE) {
+            player.gainTrait(absorptionTarget.trait());
+            emit(EventType.TRAIT_GAINED,player.x(),player.y());
+        }
         corpses.remove(absorptionTarget);cancelAbsorption();
         emit(EventType.ABSORBED,player.x(),player.y());
     }
