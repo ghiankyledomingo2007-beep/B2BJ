@@ -9,12 +9,34 @@ public final class SaveAuditTest {
         try {
             returningToTitleClosesNpcDialogue();
             cappedWalletCanReceiveLandmarkAndQuestRewards(directory);
+            cappedWalletDoesNotInterruptBossVictory(directory);
             System.out.println("SaveAuditTest passed");
         } finally {
             try (var files = Files.walk(directory)) {
                 for (Path path : files.sorted(java.util.Comparator.reverseOrder()).toList()) Files.delete(path);
             }
         }
+    }
+
+    private static void cappedWalletDoesNotInterruptBossVictory(Path directory) throws Exception {
+        Path save = directory.resolve("boss.properties");
+        CampaignSave.save(save, new CampaignSave.Progress(0, 0, Set.of(), Set.of(), Map.of(),
+                Set.of(), Set.of(), 100_000));
+        var game = RuinedOutpostGame.campaign(save);
+        assert game.continueCampaign();
+        var boss = game.guardian();
+        game.player().relocate(boss.x() - 110, boss.y());
+        boss.activate(game.player().x(), game.player().y());
+        assert boss.hurt(boss.maxHealth() - 1); // Final-strike fixture; controller must perform the actual kill.
+        boss.update(1.1, game.player().x(), game.player().y(), game.map());
+        assert boss.state() == Guardian.State.RECOVER;
+        game.player().collectIchor(100);
+        assert game.transform() && game.attack(1, 0);
+        game.update(.12, 0, 0);
+        assert !boss.alive() && game.biomeUnlocked(1) && game.map().gateOpen()
+                : "a full wallet must not interrupt boss victory or opening its route";
+        var progress = CampaignSave.load(save).orElseThrow();
+        assert progress.shards() == 100_000 && progress.clearedBosses().equals(Set.of(0));
     }
 
     private static void returningToTitleClosesNpcDialogue() {

@@ -18,6 +18,7 @@ public final class UiAuditTest {
                 check("new journey must discard prior transformation", UiAuditTest::newJourneyClearsVisualState, failures);
                 check("invalid frame duration must not corrupt rendering", UiAuditTest::invalidFrameDoesNotCorruptRendering, failures);
                 check("dying enemies must remain visible until fade completes", UiAuditTest::enemyDeathRemainsVisible, failures);
+                check("transformation must not resume an old facing", UiAuditTest::transformationUsesCurrentFacing, failures);
                 assert failures.isEmpty() : String.join("; ", failures);
             } finally {
                 GameAudio.setMuted(muted);
@@ -105,6 +106,36 @@ public final class UiAuditTest {
             graphics.dispose();
         }
         return image.getRGB(0, 0, 1280, 720, null, 0, 1280);
+    }
+
+    private static void transformationUsesCurrentFacing() {
+        B2BJ panel = startedPanel();
+        Player player = panel.game().player();
+        player.collectIchor(100);
+        press(panel, "transform");
+        for (int tick = 0; tick < 17; tick++) panel.step(.05);
+        player.spendBladeIchor(player.ichor() - .1);
+        MouseEvent click = new MouseEvent(panel, MouseEvent.MOUSE_PRESSED, 0, 0,
+                900, 360, 1, false, MouseEvent.BUTTON1);
+        for (var listener : panel.getMouseListeners()) listener.mousePressed(click);
+        MouseEvent release = new MouseEvent(panel, MouseEvent.MOUSE_RELEASED, 0, 0,
+                900, 360, 1, false, MouseEvent.BUTTON1);
+        for (var listener : panel.getMouseListeners()) listener.mouseReleased(release);
+        panel.step(.05);
+        assert !player.bladeForm() && player.recovering() : "slash must be interrupted by drain";
+        for (int tick = 0; tick < 32; tick++) panel.step(.05);
+        panel.getActionMap().get("leftPressed").actionPerformed(new ActionEvent(panel, 0, "left"));
+        panel.step(.05);
+        panel.getActionMap().get("leftReleased").actionPerformed(new ActionEvent(panel, 0, "left"));
+        player.collectIchor(100);
+        press(panel, "transform");
+        panel.step(.01);
+        assert player.bladeForm();
+        double before = player.x();
+        press(panel, "dash");
+        panel.step(.02);
+        assert player.x() < before
+                : "left-facing slime transformed then dashed right using a prior blade slash's facing";
     }
 
     private static B2BJ startedPanel() {

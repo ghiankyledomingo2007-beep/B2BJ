@@ -1,6 +1,9 @@
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractButton;
@@ -14,11 +17,13 @@ import javax.swing.SwingUtilities;
 
 public final class DebugPanelTest {
     public static void main(String[] args) throws Exception {
-        SwingUtilities.invokeAndWait(DebugPanelTest::controlsAffectOnlyAnExplicitTestSession);
+        Path output = args.length == 0 ? null : Path.of(args[0]);
+        if (output != null) Files.createDirectories(output);
+        SwingUtilities.invokeAndWait(() -> controlsAffectOnlyAnExplicitTestSession(output));
         System.out.println("DebugPanelTest passed");
     }
 
-    private static void controlsAffectOnlyAnExplicitTestSession() {
+    private static void controlsAffectOnlyAnExplicitTestSession(Path output) {
         var game = RuinedOutpostGame.campaign();
         var titlePanel = DebugPanel.panel(game);
         assert descendants(titlePanel).stream().filter(AbstractButton.class::isInstance)
@@ -66,6 +71,12 @@ public final class DebugPanelTest {
         Object binding = desktop.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
                 .get(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0, false));
         assert binding != null && desktop.getActionMap().get(binding) != null : "F1 must open testing controls";
+        if (output != null) {
+            capture(panel, output.resolve("testing-panel.png"));
+            capture(desktop, output.resolve("test-session-paused.png"));
+            game.togglePause();
+            capture(desktop, output.resolve("test-session-playing.png"));
+        }
     }
 
     private static AbstractButton button(Container parent, String name) {
@@ -80,5 +91,22 @@ public final class DebugPanelTest {
             if (child instanceof Container container) result.addAll(descendants(container));
         }
         return result;
+    }
+
+    private static void capture(JPanel panel, Path output) {
+        if (panel instanceof B2BJ) panel.setSize(1280, 720);
+        else panel.setSize(panel.getPreferredSize());
+        layout(panel);
+        var image = new BufferedImage(panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        var graphics = image.createGraphics();
+        panel.paint(graphics);
+        graphics.dispose();
+        try { javax.imageio.ImageIO.write(image, "png", output.toFile()); }
+        catch (java.io.IOException failure) { throw new java.io.UncheckedIOException(failure); }
+    }
+
+    private static void layout(Container parent) {
+        parent.doLayout();
+        for (Component child : parent.getComponents()) if (child instanceof Container container) layout(container);
     }
 }
