@@ -139,9 +139,12 @@ public final class DebugSafetyTest {
         game.player().collectIchor(100); assert game.transform();
         assert game.ichorCrescent(1, 0); game.update(.4, 0, 0);
         assert game.riposte(); assert game.dash(1, 0); game.pause();
+        int flyingCrescents = game.crescents().size();
+        assert flyingCrescents > 0;
         assert debug(game, "debugRefill");
         assert game.tideCooldown() == 0 && game.crescentCooldown() == 0 && game.riposteCooldown() == 0;
         assert game.player().dashCooldown() == 0 && !game.player().dashing() && !game.guarding();
+        assert game.crescents().size() == flyingCrescents : "refill must preserve already released projectiles";
         game.togglePause(); assert game.attack(1, 0) : "refill must clear player attack cooldown";
     }
 
@@ -189,7 +192,10 @@ public final class DebugSafetyTest {
     static void cachedContinueRemainsPristine() {
         var game = fresh(); relocate(game, game.campaignArea().hub()); assert game.saveCheckpoint();
         assert debug(game, "debugAddShards") && debug(game, "debugWarp", 2, false);
-        assert game.buyUpgrade("vitality"); game.saveCheckpoint(); game.pause();
+        assert game.buyUpgrade("vitality") && game.saveCheckpoint();
+        assert game.campaignNotice().contains("TEST SESSION NOT SAVED")
+                : "debug camp must describe save isolation truthfully";
+        game.pause();
         assert game.returnToTitle() && game.continueCampaign();
         assert game.biome() == 0 && game.shards() == 0 && game.upgradeLevel("vitality") == 0;
         assert game.campaignCheckpoint() == 1 && game.nearCampaignHub() && !game.biomeUnlocked(1);
