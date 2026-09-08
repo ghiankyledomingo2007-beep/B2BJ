@@ -7,6 +7,7 @@ public final class SaveAuditTest {
     public static void main(String[] args) throws Exception {
         Path directory = Files.createTempDirectory("b2bj-save-audit-");
         try {
+            returningToTitleClosesNpcDialogue();
             cappedWalletCanReceiveLandmarkAndQuestRewards(directory);
             System.out.println("SaveAuditTest passed");
         } finally {
@@ -14,6 +15,20 @@ public final class SaveAuditTest {
                 for (Path path : files.sorted(java.util.Comparator.reverseOrder()).toList()) Files.delete(path);
             }
         }
+    }
+
+    private static void returningToTitleClosesNpcDialogue() {
+        var game = RuinedOutpostGame.campaign();
+        game.begin();
+        var hub = game.campaignArea().hub();
+        game.player().relocate(hub.x(), hub.y());
+        assert game.interact() && game.campaignStory().dialogueOpen();
+        game.pause();
+        assert game.returnToTitle();
+        assert game.story().phase() == OutpostStory.Phase.PROLOGUE;
+        assert !game.campaignStory().dialogueOpen()
+                : "returning to title must close dialogue that would hide the title overlay";
+        assert game.continueCampaign() && !game.campaignStory().dialogueOpen();
     }
 
     private static void cappedWalletCanReceiveLandmarkAndQuestRewards(Path directory) throws Exception {
