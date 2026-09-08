@@ -488,13 +488,16 @@ public final class B2BJ extends JPanel {
         for(Wisp scout:game.scouts()) if(scout.visible())
             draws.add(new DepthDraw(scout.y()+WispAnimation.RENDER_SIZE/2,
                     ()->{
-                        if(game.campaignEnemy(scout)!=null)CampaignRenderer.drawEnemy(canvas,game.campaignEnemy(scout),cameraX,cameraY);
+                        var enemy=game.campaignEnemy(scout);
+                        if(enemy!=null && enemy.kind()!=CampaignEnemy.Kind.OUTPOST_SCOUT
+                                && enemy.kind()!=CampaignEnemy.Kind.OUTPOST_SPITTER)
+                            CampaignRenderer.drawEnemy(canvas,enemy,cameraX,cameraY);
                         else drawWisp(canvas,scout,cameraX,cameraY);
                     }));
         if((game.campaignMode()||game.map().room()==9)&&game.guardian().visible())
             draws.add(new DepthDraw(game.guardian().y()+Guardian.GROUND_Y_OFFSET,
                     ()->{
-                        if(game.campaignMode())CampaignRenderer.drawBoss(canvas,game.guardian(),game.biome(),cameraX,cameraY);
+                        if(game.campaignMode()&&game.biome()!=0)CampaignRenderer.drawBoss(canvas,game.guardian(),game.biome(),cameraX,cameraY);
                         else drawGuardian(canvas,cameraX,cameraY);
                     }));
         for(double[] trail:trails) {

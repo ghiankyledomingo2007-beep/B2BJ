@@ -15,7 +15,8 @@ public final class CampaignLegacyArtTest {
             var body=game.scouts().stream().filter(w->w.role()==role).findFirst().orElseThrow();
             game.player().relocate(body.x()-400,body.y()-200);
             assert count(world(panel,body.x(),body.y()),walk)>6500 : "campaign bypasses approved "+prefix+" walk art";
-            for(int i=0;i<1000&&body.state()!=Wisp.State.TELEGRAPH;i++)body.update(.01,body.x()+200,body.y());
+            double targetX=body.x()+200;
+            for(int i=0;i<1000&&body.state()!=Wisp.State.TELEGRAPH;i++)body.update(.01,targetX,body.y());
             assert body.state()==Wisp.State.TELEGRAPH;
             assert count(world(panel,body.x(),body.y()),attack)>6500 : "campaign bypasses approved "+prefix+" attack art";
         }
