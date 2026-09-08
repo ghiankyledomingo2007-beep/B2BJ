@@ -7,6 +7,7 @@ import java.util.List;
 public final class SlimeDepthRenderingTest {
     public static void main(String[] args) throws Exception {
         GameAudio.setMuted(true);
+        if(args.length>0&&args[0].equals("labels")) {readableTraits();System.out.println("Trait labels passed");return;}
         releaseFeedback();
         assetCoverage();
         directionalFinishers();
@@ -105,6 +106,13 @@ public final class SlimeDepthRenderingTest {
             var activeHud=draw(panel,"drawPlayerHud");int changed=0;
             for(int y=538;y<592;y++)for(int x=478;x<810;x++)if(hud.getRGB(x,y)!=activeHud.getRGB(x,y))changed++;
             assert changed>100 : "trait name and remaining time need a HUD slot";
+            if(trait==Player.Trait.JET) {
+                var expected=new BufferedImage(1280,720,BufferedImage.TYPE_INT_ARGB);var ink=expected.createGraphics();
+                var text=B2BJ.class.getDeclaredMethod("pixelText",Graphics2D.class,String.class,int.class,int.class,int.class,java.awt.Color.class);
+                text.setAccessible(true);text.invoke(panel,ink,"SHOT SPEED 1.3X",526,571,1,new java.awt.Color(191,203,209));ink.dispose();
+                for(int y=571;y<578;y++)for(int x=526;x<616;x++)if((expected.getRGB(x,y)>>>24)>0)
+                    assert activeHud.getRGB(x,y)==expected.getRGB(x,y) : "Jet description needs supported, unambiguous pixel-font glyphs";
+            }
             for(int y=16;y<144;y++)for(int x=16;x<336;x++)assert activeHud.getRGB(x,y)==hud.getRGB(x,y)
                     : "trait UI must preserve health/Ichor";
         }
