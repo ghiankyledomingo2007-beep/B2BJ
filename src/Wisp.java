@@ -488,13 +488,19 @@ public final class Wisp {
     }
 
     public int attackFrame() {
+        return attackFrame(3, 3, 2);
+    }
+
+    public int attackFrame(int tell, int strike, int settle) {
         return switch (state) {
-            case TELEGRAPH -> timedFrame(0, 3, telegraphDuration());
-            case LUNGE -> timedFrame(3, 3, lungeDuration());
-            case RECOVER -> timedFrame(6, 2, recoverDuration());
+            case TELEGRAPH -> timedFrame(0, tell, telegraphDuration());
+            case LUNGE -> timedFrame(tell, strike, lungeDuration());
+            case RECOVER -> timedFrame(tell + strike, settle, recoverDuration());
             default -> 0;
         };
     }
+
+    public int hurtFrame(int count) { return timedFrame(0, count, HURT_DURATION); }
 
     private int timedFrame(int first, int count, double duration) {
         return first + Math.min(count - 1, (int) (stateTime / duration * count));

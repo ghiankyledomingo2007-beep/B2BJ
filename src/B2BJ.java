@@ -1123,12 +1123,8 @@ public final class B2BJ extends JPanel {
     }
 
     private void drawCorpses(Graphics2D canvas,int cameraX,int cameraY) {
-        if(corpseIdleSheet==null)return;
         for(var corpse:game.corpses()) {
             boolean consuming=corpse==game.absorptionTarget();
-            BufferedImage sheet=consuming&&corpseConsumeSheet!=null?corpseConsumeSheet:corpseIdleSheet;
-            int columns=sheet.getWidth()/48;
-            int frame=consuming?Math.min(columns-1,(int)(game.absorptionProgress()*columns)):(int)(corpse.age()*6)%columns;
             double bodyX=corpse.x(),bodyY=corpse.y();
             int x=(int)Math.round(bodyX/2)*2-cameraX,y=(int)Math.round(bodyY/2)*2-cameraY+20;
             var remains=(Graphics2D)canvas.create();
@@ -1136,7 +1132,15 @@ public final class B2BJ extends JPanel {
             // The landing splash encloses the remains; they stay inside while the body reforms.
             if(consuming)alpha*=(float)Math.max(0,Math.min(1,(.5-game.absorptionProgress())/.15));
             remains.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,Math.max(0,alpha)));
-            remains.drawImage(sheet,x-48,y-48,x+48,y+48,frame*48,0,frame*48+48,48,null);remains.dispose();
+            if(!CampaignRenderer.drawCorpse(remains,corpse,x,y+2)) {
+                BufferedImage sheet=consuming&&corpseConsumeSheet!=null?corpseConsumeSheet:corpseIdleSheet;
+                if(sheet!=null) {
+                    int columns=sheet.getWidth()/48;
+                    int frame=consuming?Math.min(columns-1,(int)(game.absorptionProgress()*columns)):(int)(corpse.age()*6)%columns;
+                    remains.drawImage(sheet,x-48,y-48,x+48,y+48,frame*48,0,frame*48+48,48,null);
+                }
+            }
+            remains.dispose();
         }
     }
 

@@ -33,12 +33,18 @@ public final class RuinedOutpostGame {
     public static final class Corpse {
         private double x,y;
         private final boolean healing;
+        private final CampaignEnemy.Kind kind;
+        private final int direction;
         private double age;
-        private Corpse(double x,double y,boolean healing) { this.x=x;this.y=y;this.healing=healing; }
+        private Corpse(double x,double y,boolean healing,CampaignEnemy.Kind kind,int direction) {
+            this.x=x;this.y=y;this.healing=healing;this.kind=kind;this.direction=direction;
+        }
         public double x(){return x;}
         public double y(){return y;}
         public double age(){return age;}
         public boolean healing(){return healing;}
+        public CampaignEnemy.Kind kind(){return kind;}
+        public int direction(){return direction;}
     }
     public static final double WISP_CONTACT_RADIUS = 58;
     public static final double TIDE_COOLDOWN = 4.5;
@@ -822,7 +828,8 @@ public final class RuinedOutpostGame {
         }
         // ponytail: keep only 16 recent remains; pool only if authored encounters outgrow this cap.
         if(corpses.size()==16)corpses.remove(0);
-        corpses.add(new Corpse(scout.x(),scout.y(),!bossAdds.contains(scout)));
+        corpses.add(new Corpse(scout.x(),scout.y(),!bossAdds.contains(scout),
+                enemy==null?null:enemy.kind(),scout.animation().row()));
         events.add(new Event(EventType.ENEMY_DEFEATED,scout.x(),scout.y(),water));
         if (!campaignMode&&!bossAdds.contains(scout)) story.scoutDefeated();
     }
