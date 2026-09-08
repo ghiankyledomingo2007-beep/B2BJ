@@ -1,0 +1,173 @@
+{
+  "character": {
+    "id": "c812f94a-5210-4309-8aed-488660a091c3",
+    "name": "Idle",
+    "prompt": "Fallen knight elite RPG enemy, heavy broad plate armor in muted slate blue steel with silver edge highlights and deep navy outline, closed angular helmet with narrow pale amber eye slit, short ragged burgundy cape, large chipped kite shield in left hand, heavy broad straight sword in right hand pointing down. Ancient exhausted sentinel, not heroic shiny armor. Thick readable limbs, grounded heavy boots. Crisp medium-detail 16 bit pixel clusters, flat restrained palette, no gradients, no effects, no background. Low top-down three-quarter view, full body, feet near bottom center, readable silhouette about 48px tall on 64px canvas.",
+    "size": {
+      "width": 64,
+      "height": 64
+    },
+    "directions": 8,
+    "view": "low top-down"
+  },
+  "spritesheet": {
+    "path": "B2BJ_Fallen_Knight-Idle.png",
+    "cell_size": {
+      "width": 92,
+      "height": 92
+    },
+    "sheet_size": {
+      "width": 1472,
+      "height": 1564
+    },
+    "columns": 16,
+    "pivot": "cell-center",
+    "rows": [
+      {
+        "row": 0,
+        "type": "rotations",
+        "frame_count": 8,
+        "directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ]
+      },
+      {
+        "row": 1,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-march",
+        "animation_group_id": "037385e6-9e0f-4296-b74e-b7ddd339223c",
+        "direction": "south"
+      },
+      {
+        "row": 2,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-march",
+        "animation_group_id": "037385e6-9e0f-4296-b74e-b7ddd339223c",
+        "direction": "east"
+      },
+      {
+        "row": 3,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-march",
+        "animation_group_id": "037385e6-9e0f-4296-b74e-b7ddd339223c",
+        "direction": "north"
+      },
+      {
+        "row": 4,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-march",
+        "animation_group_id": "037385e6-9e0f-4296-b74e-b7ddd339223c",
+        "direction": "west"
+      },
+      {
+        "row": 5,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "knight-collapse",
+        "animation_group_id": "129533ac-c419-45f4-90d1-5e28fc47ebe3",
+        "direction": "south"
+      },
+      {
+        "row": 6,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "knight-collapse",
+        "animation_group_id": "129533ac-c419-45f4-90d1-5e28fc47ebe3",
+        "direction": "east"
+      },
+      {
+        "row": 7,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "knight-collapse",
+        "animation_group_id": "129533ac-c419-45f4-90d1-5e28fc47ebe3",
+        "direction": "north"
+      },
+      {
+        "row": 8,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "knight-collapse",
+        "animation_group_id": "129533ac-c419-45f4-90d1-5e28fc47ebe3",
+        "direction": "west"
+      },
+      {
+        "row": 9,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-hurt",
+        "animation_group_id": "330ea1e5-7941-431c-8e74-7180d8e90a73",
+        "direction": "south"
+      },
+      {
+        "row": 10,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-hurt",
+        "animation_group_id": "330ea1e5-7941-431c-8e74-7180d8e90a73",
+        "direction": "east"
+      },
+      {
+        "row": 11,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-hurt",
+        "animation_group_id": "330ea1e5-7941-431c-8e74-7180d8e90a73",
+        "direction": "north"
+      },
+      {
+        "row": 12,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "knight-hurt",
+        "animation_group_id": "330ea1e5-7941-431c-8e74-7180d8e90a73",
+        "direction": "west"
+      },
+      {
+        "row": 13,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "knight-cleave",
+        "animation_group_id": "c8d854f0-2741-4c40-8565-f443e35379a1",
+        "direction": "south"
+      },
+      {
+        "row": 14,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "knight-cleave",
+        "animation_group_id": "c8d854f0-2741-4c40-8565-f443e35379a1",
+        "direction": "east"
+      },
+      {
+        "row": 15,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "knight-cleave",
+        "animation_group_id": "c8d854f0-2741-4c40-8565-f443e35379a1",
+        "direction": "north"
+      },
+      {
+        "row": 16,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "knight-cleave",
+        "animation_group_id": "c8d854f0-2741-4c40-8565-f443e35379a1",
+        "direction": "west"
+      }
+    ]
+  },
+  "export_version": "1.0",
+  "export_date": "2026-09-08T08:31:47.334326+00:00"
+}
