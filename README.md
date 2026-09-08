@@ -81,6 +81,20 @@ still and grants 5 Ichor plus half a health pip; boss summons cannot heal you.
 Movement/actions/damage interrupt absorption. Persistent tutorial text has moved
 out of gameplay; controls remain in pause. See the [HUD/recovery report](docs/testing/hud-40/README.md).
 
+Slime combat now gives each move a different role. Holding LMB chains two opposing
+Water Slashes into a stronger single-target finisher. A timely shot after a backward
+dash is a quick countershot. RMB Tide Wave has a broad front that travels through
+groups, hitting each enemy once; terrain and raised knight shields still stop it.
+Water keeps finite range, drag, swept collisions, stagger resistance and collision-safe knockback.
+
+Swallowing an ordinary guard/knight grants **Iron Membrane**: absorb half a heart
+from one incoming hit. Swallowing a spitter/shaman/hexer grants **Jet Current**:
+water projectiles travel 30% faster, with unchanged damage, range and attack recovery.
+Each trait lasts 10 gameplay seconds; only one can be active, and transformation
+clears it. Boss summons grant neither trait. The corpse prompt previews its trait;
+the HUD shows the active benefit and countdown without replacing health or skill slots.
+See the [slime-depth verification and art review](docs/testing/slime-depth.tdd.md).
+
 ## Verification and scope
 
 `build.sh` compiles with Java 17 compatibility and all lint warnings, runs the

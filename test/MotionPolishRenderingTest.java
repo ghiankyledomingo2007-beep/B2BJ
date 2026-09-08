@@ -72,13 +72,17 @@ public final class MotionPolishRenderingTest {
                 }
             }
             // A right-authored leading lip must not inherit the legacy diagonal correction.
-            var crestField=B2BJ.class.getDeclaredField("tideCrestSheet");crestField.setAccessible(true);
-            var marker=new BufferedImage(48*8,48,BufferedImage.TYPE_INT_ARGB);
-            for(int frame=0;frame<8;frame++)marker.setRGB(frame*48+36,24,0xffff00ff);
-            crestField.set(panel,marker);
-            var straight=new BufferedImage(320,320,BufferedImage.TYPE_INT_ARGB);g=straight.createGraphics();
-            water.invoke(panel,g,0,0,new WaterProjectile(160,160,1,0,true));g.dispose();
-            assert straight.getRGB(184,160)==0xffff00ff : "Tide leading lip faces travel, not a legacy diagonal";
+            for(String fieldName:new String[]{"tideFrontSheet","tideCrestSheet"}) {
+                var field=B2BJ.class.getDeclaredField(fieldName);field.setAccessible(true);
+                int cell=fieldName.equals("tideFrontSheet")?64:48;
+                var marker=new BufferedImage(cell*8,cell,BufferedImage.TYPE_INT_ARGB);
+                for(int frame=0;frame<8;frame++)marker.setRGB(frame*cell+cell/2+12,cell/2,0xffff00ff);
+                field.set(panel,marker);
+                var straight=new BufferedImage(320,320,BufferedImage.TYPE_INT_ARGB);g=straight.createGraphics();
+                water.invoke(panel,g,0,0,new WaterProjectile(160,160,1,0,true));g.dispose();
+                assert straight.getRGB(184,160)==0xffff00ff : fieldName+" leading lip faces travel, not a legacy diagonal";
+                field.set(panel,null); // Exercise the retained crest fallback after the current front.
+            }
             var impacts=B2BJ.class.getDeclaredField("impacts");impacts.setAccessible(true);
             for(String type:new String[]{"TIDE_RELEASE","TIDE_IMPACT","TIDE_DISSIPATE"}) {
                 ((List<?>)impacts.get(panel)).clear();
