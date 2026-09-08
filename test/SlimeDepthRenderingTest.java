@@ -29,10 +29,10 @@ public final class SlimeDepthRenderingTest {
     }
     private static void assetCoverage() {
         for(String name:new String[]{"tide_front","water_finisher","water_finisher_impact","guard_membrane","spitter_current","../characters/slime/slime_finisher"}) {
-            int cell=name.contains("finisher")?48:64;
+            int cell=name.startsWith("..")?64:name.contains("finisher")?48:64;
             String path=name.startsWith("..")?"assets/characters/slime/slime_finisher.png":"assets/effects/"+name+".png";
             var sheet=B2BJ.loadImage(path);
-            assert sheet!=null&&sheet.getWidth()==cell*8&&sheet.getHeight()==(name.startsWith("..")?144:cell)
+            assert sheet!=null&&sheet.getWidth()==cell*8&&sheet.getHeight()==(name.startsWith("..")?192:cell)
                     : "missing native eight-frame art: "+path;
             for(int row=0;row<sheet.getHeight()/cell;row++) {
                 var poses=new HashSet<Integer>();
@@ -43,6 +43,21 @@ public final class SlimeDepthRenderingTest {
                     assert visible>4&&visible<cell*cell*.85 : "transparent readable VFX: "+path;
                 }
                 assert poses.size()>=6 : "not a repeated still: "+path+" row "+row;
+            }
+            if(name.startsWith("..")) {
+                var reference=B2BJ.loadImage("assets/characters/slime/slime_cast.png");
+                for(int row=0;row<3;row++)for(int f=0;f<8;f++) {
+                    int bottom=-1,visible=0;
+                    for(int y=0;y<64;y++)for(int x=0;x<64;x++)if((sheet.getRGB(f*64+x,row*64+y)>>>24)>0) {
+                        visible++;bottom=Math.max(bottom,y);
+                        assert x>0&&x<63&&y>0&&y<63 : "finisher motion must have unclipped transparent margin";
+                    }
+                    assert bottom==55 : "every finisher pose stays planted at the original ground anchor";
+                    assert visible>950&&visible<1750 : "extra canvas must not enlarge or hollow out the slime";
+                }
+                for(int row=0;row<3;row++)for(int y=0;y<48;y++)for(int x=0;x<48;x++)
+                    assert sheet.getRGB(7*64+x+8,row*64+y+8)==reference.getRGB(x,row*48+y)
+                            : "settle pose must return to exact native character pixels";
             }
         }
     }
@@ -65,10 +80,10 @@ public final class SlimeDepthRenderingTest {
     }
     private static void directionalFinishers() throws Exception {
         var panel=new B2BJ(false,fixture());
-        var marked=new BufferedImage(384,144,BufferedImage.TYPE_INT_ARGB);
+        var marked=new BufferedImage(512,192,BufferedImage.TYPE_INT_ARGB);
         int[] colors={0xffff00ff,0xff11dd55,0xff2255ff};
         var ink=marked.createGraphics();
-        for(int row=0;row<3;row++){ink.setColor(new java.awt.Color(colors[row],true));ink.fillRect(0,row*48,384,48);}ink.dispose();
+        for(int row=0;row<3;row++){ink.setColor(new java.awt.Color(colors[row],true));ink.fillRect(0,row*64,512,64);}ink.dispose();
         set(panel,"slimeFinisherSheet",marked);
         set(panel.game(),"waterKind",WaterProjectile.Kind.FINISHER);
         var field=B2BJ.class.getDeclaredField("slimeAnimation");field.setAccessible(true);
