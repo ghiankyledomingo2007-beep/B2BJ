@@ -6,7 +6,7 @@ import java.util.Objects;
 public final class CampaignEnemy {
     public enum Kind {
         OUTPOST_SCOUT("Outpost Remnant", Wisp.Role.SCOUT, 2, 10, 1),
-        OUTPOST_GUARD("Outpost Guard", Wisp.Role.GUARD, 4, 10, 1),
+        OUTPOST_GUARD("Outpost Guard", Wisp.Role.SHIELD_GUARD, 4, 10, 1),
         OUTPOST_SPITTER("Ichor Spitter", Wisp.Role.SPITTER, 3, 10, 1),
         RIFT_IMP("Rift Imp", Wisp.Role.SCOUT, 3, 10, 1),
         THORN_WOLF("Thorn Wolf", Wisp.Role.GUARD, 6, 15, 2),
@@ -74,10 +74,10 @@ public final class CampaignEnemy {
     public boolean hits(double x, double y) {
         if (body.state() != Wisp.State.LUNGE || body.role() == Wisp.Role.SPITTER) return false;
         double dx = x - body.x(), dy = y - body.y();
-        if (kind != Kind.FALLEN_KNIGHT) return Math.hypot(dx, dy) <= RuinedOutpostGame.WISP_CONTACT_RADIUS;
+        if (!body.stationaryMelee()) return Math.hypot(dx, dy) <= RuinedOutpostGame.WISP_CONTACT_RADIUS;
         double forward = dx * body.intentX() + dy * body.intentY();
         double sideways = Math.abs(dx * body.intentY() - dy * body.intentX());
-        return forward >= 0 && forward <= 135 && sideways <= 50;
+        return forward >= 0 && forward <= body.meleeReach() && sideways <= body.meleeHalfWidth();
     }
 
     /** Consume after outgoing player damage: a staggered/dead caster cannot trade a pending shot. */

@@ -104,7 +104,8 @@ public final class CampaignWorld {
             if(id==2&&location==2)count=1; // Introduce the shielded knight alone before mixed encounters.
             for(int i=0;i<count;i++) {
                 var p=landmarks.get(location);
-                enemies.add(new EnemySpawn(p.x()+offsets[i][0],p.y()+offsets[i][1],kinds[i%kinds.length]));
+                int kindIndex=(i+(id==0?location-2:0))%kinds.length;
+                enemies.add(new EnemySpawn(p.x()+offsets[i][0],p.y()+offsets[i][1],kinds[kindIndex]));
             }
         }
         for(int location=9;location<12;location++) {

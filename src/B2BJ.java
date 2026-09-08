@@ -434,6 +434,7 @@ public final class B2BJ extends JPanel {
         canvas.translate(-shakeX, -shakeY);
         drawScreenEffects(canvas);
         if(game.campaignMode()) {
+            drawPlayerHud(canvas);
             CampaignRenderer.drawHud(canvas,game,WIDTH,HEIGHT);
             if(mapShown&&!game.story().blocksGameplay())CampaignRenderer.drawMap(canvas,game,WIDTH,HEIGHT);
             CampaignRenderer.drawOverlay(canvas,game,WIDTH,HEIGHT);
@@ -802,11 +803,11 @@ public final class B2BJ extends JPanel {
                     drawTellRing(pixels,x+Math.cos(direction)*reach,y+Math.sin(direction)*reach,
                             (Player.COLLISION_RADIUS+EnemyProjectile.RADIUS)/2);
                 }
-            } else if(scout.role()==Wisp.Role.KNIGHT) {
+            } else if(scout.stationaryMelee()) {
                 java.awt.Polygon lane=new java.awt.Polygon();
                 for(int corner=0;corner<4;corner++) {
-                    double forward=corner==1||corner==2?135.0/2:0;
-                    double side=corner<2?-25:25;
+                    double forward=corner==1||corner==2?scout.meleeReach()/2:0;
+                    double side=(corner<2?-1:1)*scout.meleeHalfWidth()/2;
                     lane.addPoint((int)Math.round(x+Math.cos(angle)*forward-Math.sin(angle)*side),
                             (int)Math.round(y+Math.sin(angle)*forward+Math.cos(angle)*side));
                 }
@@ -1266,7 +1267,7 @@ public final class B2BJ extends JPanel {
         canvas.drawImage(waterBuffer,x-72,y-72,144,144,null);
     }
 
-    private void drawHud(Graphics2D canvas) {
+    private void drawPlayerHud(Graphics2D canvas) {
         Player p=game.player();
         if(hudFrame!=null) {
             canvas.setColor(new Color(9,15,23,240));canvas.fillRect(32,30,288,98);
@@ -1274,15 +1275,17 @@ public final class B2BJ extends JPanel {
         }
         else uiPanel(canvas,16,16,320,128);
         pixelText(canvas,"RAINORAY",38,32,2,new Color(191,203,209));
-        for(int i=0;i<Player.MAX_HEALTH;i++) {
-            int x=32+i*50;
+        int healthSize=p.maxHealth()>5?32:64, healthStep=p.maxHealth()>5?34:50;
+        int healthY=p.maxHealth()>5?54:42;
+        for(int i=0;i<p.maxHealth();i++) {
+            int x=32+i*healthStep;
             double part=Math.max(0,Math.min(1,p.healthValue()-i));
             var pip=(Graphics2D)canvas.create();
             pip.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,.18f));
-            icon(pip,vitalityIcon,x,42,64);pip.dispose();
+            icon(pip,vitalityIcon,x,healthY,healthSize);pip.dispose();
             pip=(Graphics2D)canvas.create();
-            if(part<1)pip.clipRect(x+6,42,(int)(52*part),64);
-            icon(pip,vitalityIcon,x,42,64);pip.dispose();
+            if(part<1)pip.clipRect(x,healthY,(int)(healthSize*part),healthSize);
+            icon(pip,vitalityIcon,x,healthY,healthSize);pip.dispose();
         }
         for(int i=0;i<10;i++) {
             int x=38+i*26,fill=(int)(Math.max(0,Math.min(1,(p.ichor()-i*10)/10))*11)*2;
@@ -1293,24 +1296,20 @@ public final class B2BJ extends JPanel {
         }
         pixelText(canvas,"ICHOR",38,119,1,GOLD);
         pixelText(canvas,String.format(java.util.Locale.ROOT,"%03d / 100",(int)p.ichor()),236,119,1,GOLD);
-        uiPanel(canvas,1100,20,160,66);
-        icon(canvas,p.bladeForm()?bladeIcon:blobIcon,1106,21,64);
-        pixelText(canvas,p.bladeForm()?"BLADE":"BLOB",1170,38,2,p.bladeForm()?GOLD:TEAL);
-        pixelText(canvas,GameAudio.muted()?"MUTED":"",1170,64,1,new Color(139,156,170));
+        if(!game.campaignMode()) {
+            uiPanel(canvas,1100,20,160,66);
+            icon(canvas,p.bladeForm()?bladeIcon:blobIcon,1106,21,64);
+            pixelText(canvas,p.bladeForm()?"BLADE":"BLOB",1170,38,2,p.bladeForm()?GOLD:TEAL);
+            pixelText(canvas,GameAudio.muted()?"MUTED":"",1170,64,1,new Color(139,156,170));
+        }
         if(p.bladeForm()) {
             Color color=p.bladeSeconds()<=3?RED:TEAL;
             uiPanel(canvas,482,20,316,54);
             pixelText(canvas,"BLADE",500,32,2,color);
             pixelText(canvas,String.format(java.util.Locale.ROOT,"%.1f S",p.bladeSeconds()),702,32,2,color);
             canvas.setColor(new Color(45,48,58));canvas.fillRect(500,58,280,6);
-            canvas.setColor(color);canvas.fillRect(500,58,(int)(280*p.bladeSeconds()/Player.BLADE_DURATION),6);
+            canvas.setColor(color);canvas.fillRect(500,58,(int)(280*p.bladeSeconds()/p.bladeDuration()),6);
         } else if(p.recovering()) pixelCentered(canvas,"REFORMING",640,34,2,RED);
-        if(game.map().room()==9 && game.guardian().alive()) {
-            Guardian boss=game.guardian();
-            pixelCentered(canvas,boss.enraged()?"OUTPOST WARDEN / ENRAGED":"OUTPOST WARDEN",640,94,2,GOLD);
-            drawHealthBar(canvas,640,122,380,boss.health(),Guardian.MAX_HEALTH,
-                    boss.state()==Guardian.State.RECOVER?TEAL:RED);
-        }
         int first=p.bladeForm()?436:478;
         skill(canvas,first,p.bladeForm()?bladeIcon:slashIcon,"LMB",1,!p.recovering());
         skill(canvas,first+84,p.bladeForm()?crescentIcon:waveIcon,"RMB",p.bladeForm()
@@ -1322,6 +1321,16 @@ public final class B2BJ extends JPanel {
         if(p.bladeForm())skill(canvas,first+336,riposteIcon,"F",1-game.riposteCooldown()/RuinedOutpostGame.RIPOSTE_COOLDOWN,
                 p.ichor()>RuinedOutpostGame.BLADE_SKILL_COST);
         if(p.ichor()>=100&&!p.bladeForm())pixelCentered(canvas,"TRANSFORM",770,601,1,GOLD);
+    }
+
+    private void drawHud(Graphics2D canvas) {
+        drawPlayerHud(canvas);
+        if(game.map().room()==9 && game.guardian().alive()) {
+            Guardian boss=game.guardian();
+            pixelCentered(canvas,boss.enraged()?"OUTPOST WARDEN / ENRAGED":"OUTPOST WARDEN",640,94,2,GOLD);
+            drawHealthBar(canvas,640,122,380,boss.health(),Guardian.MAX_HEALTH,
+                    boss.state()==Guardian.State.RECOVER?TEAL:RED);
+        }
         String prompt=compactPrompt();
         if(!prompt.isEmpty()) {
             boolean absorb=prompt.contains("ABSORB");

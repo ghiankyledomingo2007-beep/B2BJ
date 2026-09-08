@@ -170,6 +170,10 @@ public final class CampaignRenderer {
         g.scale(body.renderScale(), body.renderScale());
         g.setColor(new Color(5, 8, 16, 140));
         g.fillOval(-28, -6, 56, 18);
+        // Grounded anticipation/contact/recovery; shadow stays at the collision anchor.
+        int lean = switch(body.state()) { case TELEGRAPH -> -5; case LUNGE -> 10; case RECOVER -> 2; default -> 0; };
+        g.translate(Math.rint(body.intentX()*lean), Math.rint(body.intentY()*lean));
+        if(body.intentX()<-.25)g.scale(-1,1);
         boolean hurt = body.state() == Wisp.State.HURT;
         Color skin = hurt ? TEXT : switch (enemy.kind()) {
             case RIFT_IMP -> new Color(151, 119, 182);
@@ -210,9 +214,13 @@ public final class CampaignRenderer {
                 g.fillRect(-8, -53, 16, 6);
                 g.fillRect(-4, -40, 8, 24);
                 g.setColor(enemy.shielded() ? GOLD : PALETTES[2][3]);
+                int shieldPush = enemy.kind()==CampaignEnemy.Kind.OUTPOST_GUARD
+                        ? switch(body.state()) {case TELEGRAPH -> 8; case LUNGE -> 38; case RECOVER -> 16; default -> 0;} : 0;
+                g.translate(shieldPush,0);
                 g.fillPolygon(new int[]{-37, -14, -14, -26, -37}, new int[]{-40, -40, -10, 2, -10}, 5);
+                g.translate(-shieldPush,0);
                 g.setColor(TEXT);
-                int lift = body.state() == Wisp.State.TELEGRAPH ? -30 : 0;
+                int lift = enemy.kind()==CampaignEnemy.Kind.FALLEN_KNIGHT && body.state()==Wisp.State.TELEGRAPH ? -30 : 0;
                 g.fillRect(28, -54 + lift, 5, 52);
                 g.fillRect(22, -12 + lift, 17, 5);
                 if (enemy.kind() == CampaignEnemy.Kind.OUTPOST_GUARD) {
@@ -314,22 +322,6 @@ public final class CampaignRenderer {
 
     public static void drawHud(Graphics2D g, RuinedOutpostGame game, int width, int height) {
         Player p = game.player();
-        panel(g, 18, 18, 272, 100);
-        text(g, "RAINORAY", 32, 40, 15, TEXT);
-        for (int pip = 0; pip < p.maxHealth(); pip++)
-            bar(g, 34 + pip * 28, 54, 20, 10, p.healthValue() - pip, DANGER);
-        for (int segment = 0; segment < 10; segment++)
-            bar(g, 34 + segment * 24, 78, 19, 8, (p.ichor() - segment * 10) / 10, GOLD);
-        text(g, "ICHOR " + (int) p.ichor() + "/100", 32, 106, 13, GOLD);
-        if (p.ichor() >= 100 && !p.bladeForm()) text(g, "Q  TRANSFORM", 172, 106, 12, CYAN);
-        if (p.bladeForm()) {
-            int x = width / 2 - 150;
-            panel(g, x, 18, 300, 60);
-            Color timer = p.bladeSeconds() <= 3 ? DANGER : CYAN;
-            centered(g, String.format(java.util.Locale.ROOT, "BLADE  %.1fs", p.bladeSeconds()),
-                    width / 2, 40, 15, timer);
-            bar(g, x + 16, 53, 268, 8, p.bladeSeconds() / p.bladeDuration(), timer);
-        }
         int right = width - 354;
         panel(g, right, 18, 336, 136);
         text(g, (game.biome() + 1) + " / 4   " + game.campaignArea().name(), right + 14, 40, 14, GOLD);
@@ -347,17 +339,16 @@ public final class CampaignRenderer {
         miniMap(g, game, width - 254, height - 196, 236, 170, false);
         String prompt = game.interactionPrompt();
         if (!prompt.isEmpty()) {
-            panel(g, 18, height - 96, Math.min(730, width - 290), 48);
-            wrapped(g, prompt, 32, height - 67, Math.min(702, width - 318), 14, 18, 2, GOLD);
+            panel(g, 18, height - 108, 398, 72);
+            wrapped(g, prompt, 32, height - 84, 370, 14, 18, 3, GOLD);
+            if(game.absorptionTarget()!=null)bar(g,32,height-47,370,4,game.absorptionProgress(),GOLD);
         }
-        text(g, "WASD MOVE   LMB ATTACK   RMB SKILL   SPACE DASH   Q TRANSFORM   TAB MAP   ESC PAUSE   F1 TEST MENU",
-                22, height - 16, 11, MUTED);
         boolean danger = game.bossActive() || game.scouts().stream().anyMatch(enemy -> enemy.alive() && enemy.aggro()
                 && Math.hypot(enemy.x() - p.x(), enemy.y() - p.y()) < 700);
         if (!game.campaignNotice().isEmpty() && !danger) {
             int noticeHeight = 20 + Math.min(4, 1 + game.campaignNotice().length() / 70) * 19;
-            panel(g, 308, 94, Math.max(250, width - 682), noticeHeight);
-            wrapped(g, game.campaignNotice(), 322, 117, Math.max(222, width - 710), 13, 19, 4, TEXT);
+            panel(g, 352, 94, Math.max(250, width - 726), noticeHeight);
+            wrapped(g, game.campaignNotice(), 366, 117, Math.max(222, width - 754), 13, 19, 4, TEXT);
         }
         if (game.nearCampaignHub() && !game.campaignStory().dialogueOpen()) {
             panel(g, 18, height - 284, 440, 170);
@@ -376,9 +367,9 @@ public final class CampaignRenderer {
 
     public static void drawDebugStatus(Graphics2D g, RuinedOutpostGame game) {
         if (!game.debugSession()) return;
-        panel(g, 18, 128, 272, 47);
-        text(g, "TEST SESSION", 32, 148, 13, GOLD);
-        text(g, "NORMAL SAVE PROTECTED", 32, 166, 11, TEXT);
+        panel(g, 18, 152, 272, 47);
+        text(g, "TEST SESSION", 32, 172, 13, GOLD);
+        text(g, "NORMAL SAVE PROTECTED", 32, 190, 11, TEXT);
     }
 
     public static void drawMap(Graphics2D g, RuinedOutpostGame game, int width, int height) {
