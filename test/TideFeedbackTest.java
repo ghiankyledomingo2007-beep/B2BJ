@@ -67,8 +67,8 @@ public final class TideFeedbackTest {
         var events=advance(game,1.4);
         assert count(events,RuinedOutpostGame.EventType.TIDE_RELEASE)==1;
         assert count(events,RuinedOutpostGame.EventType.TIDE_IMPACT)==1;
-        assert count(events,RuinedOutpostGame.EventType.TIDE_DISSIPATE)==0;
-        assert enemy.health()==18&&game.projectiles().isEmpty() : "existing damage and non-piercing stop preserved";
+        assert count(events,RuinedOutpostGame.EventType.TIDE_DISSIPATE)==1;
+        assert enemy.health()==18&&game.projectiles().isEmpty() : "body hit is once; piercing Tide then expires naturally";
         noTide(advance(game,.2));
         var wall=fixture(true);wall.player().relocate(155,400);assert wall.tideWave(-1,0);
         var wallEvents=advance(wall,1.2);
