@@ -744,12 +744,18 @@ public final class RuinedOutpostGame {
                     wave.stop();
                 } else {
                     for(Wisp scout:scouts) if(scout.alive()
-                            &&Math.hypot(scout.x()-wave.x(),scout.y()-wave.y())<=Wisp.COLLISION_RADIUS+wave.radius()) {
-                        if(hurtScout(scout,wave.damage(),true,wave.staggers())) {
+                            &&wave.touches(scout.x(),scout.y(),Wisp.COLLISION_RADIUS)
+                            &&map.clearWaterLine(wave.x(),wave.y()+Player.COLLISION_Y_OFFSET,
+                                    scout.x(),scout.y()+Wisp.COLLISION_Y_OFFSET,4)
+                            &&wave.firstContact(scout)) {
+                        boolean damaged=hurtScout(scout,wave.damage(),true,wave.staggers());
+                        if(damaged) {
                             scout.push(wave.directionX()*wave.impulse(),wave.directionY()*wave.impulse());
                             afterScoutHit(scout,true);
+                            if(wave.heavy())emit(EventType.TIDE_IMPACT,scout.x(),scout.y());
                         }
-                        wave.stop(); break;
+                        // Bodies part around the wave; a raised shield or solid terrain stops it.
+                        if(!wave.heavy()||!damaged) {wave.stop();break;}
                     }
                 }
                 if(!wave.alive()) events.add(new Event(wave.heavy()?EventType.TIDE_IMPACT:EventType.WATER_IMPACT,wave.x(),wave.y(),true));

@@ -4,6 +4,7 @@ public final class WaterProjectile {
     private double x, y, speed, age, distance;
     private final double dx, dy;
     private final Kind kind;
+    private final java.util.Set<Wisp> hitBodies = new java.util.HashSet<>();
     private boolean alive = true;
 
     WaterProjectile(double x,double y,int aimX,int aimY,boolean heavy) {
@@ -34,6 +35,13 @@ public final class WaterProjectile {
     public double directionX() { return dx; }
     public double directionY() { return dy; }
     public double radius() { return heavy()?28:kind==Kind.FINISHER?22:16; }
+    public double halfWidth() { return heavy()?56:radius(); }
+    boolean touches(double targetX,double targetY,double targetRadius) {
+        double forward=(targetX-x)*dx+(targetY-y)*dy;
+        double side=(targetX-x)*dy-(targetY-y)*dx;
+        return Math.pow(forward/(radius()+targetRadius),2)+Math.pow(side/(halfWidth()+targetRadius),2)<=1;
+    }
+    boolean firstContact(Wisp target) { return hitBodies.add(target); }
     private double range() { return switch(kind) { case TIDE->280; case FINISHER->270; case COUNTER->300; default->340; }; }
     public Kind kind() { return kind; }
     public boolean heavy() { return kind==Kind.TIDE; }
