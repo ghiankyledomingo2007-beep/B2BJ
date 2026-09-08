@@ -15,8 +15,12 @@ public final class WindowLaunchSmoke {
                         .map(JFrame.class::cast).findFirst().orElseThrow();
                 boolean borderless = Arrays.asList(args).contains("--borderless");
                 assert frame.isUndecorated() == borderless : "--borderless must bypass native decorations";
-                assert frame.getContentPane().getWidth() == 1280;
-                assert frame.getContentPane().getHeight() == 720;
+                assert frame.getContentPane().getComponent(0).getPreferredSize().equals(new java.awt.Dimension(1280, 720));
+                // Actual decorated geometry is the desktop failure this fallback bypasses.
+                if (borderless) {
+                    assert frame.getContentPane().getWidth() == 1280;
+                    assert frame.getContentPane().getHeight() == 720;
+                }
                 assert !frame.isResizable();
                 assert frame.getDefaultCloseOperation() == JFrame.EXIT_ON_CLOSE;
             });

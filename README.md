@@ -27,6 +27,10 @@ java -jar build/B2BJ.jar
 
 Or run `./run-game.sh` to verify, build, and launch.
 Rebuilding does not update an already running game window.
+If Java starts but the desktop never displays its window, use
+`./run-game.sh --borderless` (or `java -jar build/B2BJ.jar --borderless`).
+This bypasses native window decorations; use Alt+F4 to quit. The game stays
+1280×720, and its on-screen Menu still provides Settings and Admin / Testing.
 
 The [Rainoray / Ruined Outpost pass](docs/testing/rainoray-rework/README.md)
 documents the masked human, new skills, whole-body feeding, arena fissures,

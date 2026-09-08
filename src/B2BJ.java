@@ -217,6 +217,7 @@ public final class B2BJ extends JPanel {
         SwingUtilities.invokeLater(() -> {
             B2BJ panel = new B2BJ(true,RuinedOutpostGame.campaign(CampaignSave.defaultPath()));
             JFrame window = new JFrame("B2BJ — Blob to Blade");
+            window.setUndecorated(java.util.Arrays.asList(args).contains("--borderless"));
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.setResizable(false);
             window.add(panel);
