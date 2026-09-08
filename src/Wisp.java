@@ -179,8 +179,7 @@ public final class Wisp {
         double speed=role==Role.GUARD?165:stationaryMelee()?110:PURSUE_SPEED;
         move(direction[0] * speed * seconds,
                 direction[1] * speed * seconds, map);
-        animation.update((int) Math.signum(direction[0]),
-                (int) Math.signum(direction[1]), seconds);
+        animation.update(direction[0], direction[1], seconds);
     }
 
     /** Local navigation: go straight when the next step is free, otherwise slip around the nearer end. */
@@ -268,7 +267,7 @@ public final class Wisp {
             setIntent(targetX - x, targetY - y);
             face(targetX, targetY, seconds);
         } else {
-            animation.update((int) Math.signum(intentX), (int) Math.signum(intentY), seconds);
+            animation.update(intentX, intentY, seconds);
         }
         if (stateTime >= telegraphDuration()) {
             if (role == Role.SPITTER) {
@@ -298,7 +297,7 @@ public final class Wisp {
         move(lungeX * LUNGE_SPEED * active,
                 lungeY * LUNGE_SPEED * active, map);
         double travelled = Math.hypot(x - beforeX, y - beforeY);
-        animation.update((int) Math.signum(lungeX), (int) Math.signum(lungeY), seconds);
+        animation.update(lungeX, lungeY, seconds);
         stateTime += seconds;
         boolean blocked = map != null && active > 0
                 && travelled < LUNGE_SPEED * active * 0.25;
@@ -367,8 +366,7 @@ public final class Wisp {
     }
 
     private void face(double targetX, double targetY, double seconds) {
-        animation.update((int) Math.signum(targetX - x),
-                (int) Math.signum(targetY - y), seconds);
+        animation.update(targetX - x, targetY - y, seconds);
     }
 
     public boolean hitFrom(double attackerX, double attackerY,

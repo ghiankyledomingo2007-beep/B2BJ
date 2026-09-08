@@ -39,3 +39,7 @@ used for that batch without discarding backup1's remaining generations.
 Live balances after this review: backup1 8, backup2 20, backup3 40 (68 total).
 Balances may change on this shared account; do not attribute every provider debit
 to this session. Private keys remain outside the repository.
+The three backups are in `~/.config/pixellab/b2bj-session/keys.json`, in supplied
+order. The existing `tools/pixellab-call.py` accepts a temporary
+`PIXELLAB_AUTH_HEADER` for scoped calls; global Codex/Claude config was not
+changed and other CLI agents were not interrupted.

@@ -5,11 +5,11 @@ public final class WispAnimation {
     private static final int FRAMES = 8;
     private static final double WALK_FPS = 8.0;
 
-    private int facingX;
-    private int facingY = 1;
+    private double facingX;
+    private double facingY = 1;
     private double time;
 
-    public void update(int horizontal, int vertical, double seconds) {
+    public void update(double horizontal, double vertical, double seconds) {
         if (horizontal != 0 || vertical != 0) {
             facingX = horizontal;
             facingY = vertical;
