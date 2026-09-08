@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 /** Reviewed character art with Java2D placeholders for unfinished campaign assets. */
 public final class CampaignRenderer {
     private static final java.awt.image.BufferedImage GUARD = B2BJ.loadImage("assets/characters/campaign/outpost_guard.png");
+    private static final java.awt.image.BufferedImage KNIGHT = B2BJ.loadImage("assets/characters/campaign/fallen_knight.png");
     private static final Color INK = new Color(12, 15, 24);
     private static final Color PANEL = new Color(15, 20, 30, 238);
     private static final Color TEXT = new Color(219, 227, 223);
@@ -164,21 +165,22 @@ public final class CampaignRenderer {
 
     public static void drawEnemy(Graphics2D canvas, CampaignEnemy enemy, int cx, int cy) {
         Wisp body = enemy.body();
-        boolean guardArt = enemy.kind()==CampaignEnemy.Kind.OUTPOST_GUARD && GUARD!=null;
-        if (!body.visible() || (guardArt && !body.alive())) return; // The edible corpse owns the collapse.
+        var sheet=meleeSheet(enemy.kind());
+        boolean knight=enemy.kind()==CampaignEnemy.Kind.FALLEN_KNIGHT;
+        if (!body.visible() || (sheet!=null && !body.alive())) return; // The edible corpse owns the collapse.
         Graphics2D g = (Graphics2D) canvas.create();
         int x = (int) Math.round(body.x()) - cx, y = (int) Math.round(body.y()) - cy + 22;
         g.translate(x, y);
         g.scale(body.renderScale(), body.renderScale());
         g.setColor(new Color(5, 8, 16, 140));
         g.fillOval(-28, -6, 56, 18);
-        if (guardArt) {
+        if (sheet!=null) {
             int direction=body.animation().row();
-            int row=body.usesAttackAnimation()?switch(direction){case 1->10;case 2->12;case 3->14;default->9;}
-                    :body.state()==Wisp.State.HURT?5+direction:16+direction;
-            int frame=body.usesAttackAnimation()?body.attackFrame(8,4,4)
+            int row=body.usesAttackAnimation()?(knight?13+direction:switch(direction){case 1->10;case 2->12;case 3->14;default->9;})
+                    :body.state()==Wisp.State.HURT?(knight?9:5)+direction:(knight?1:16)+direction;
+            int frame=body.usesAttackAnimation()?(knight?body.attackFrame(9,3,4):body.attackFrame(8,4,4))
                     :body.state()==Wisp.State.HURT?body.hurtFrame(8):body.animation().frame();
-            guardFrame(g,row,frame,0,0);
+            meleeFrame(g,sheet,knight,row,frame,0,0);
         } else {
         // Grounded anticipation/contact/recovery; shadow stays at the collision anchor.
         int lean = switch(body.state()) { case TELEGRAPH -> -5; case LUNGE -> 10; case RECOVER -> 2; default -> 0; };
@@ -267,22 +269,29 @@ public final class CampaignRenderer {
         }
         g.dispose();
         if (body.alive() && (body.aggro() || body.health() < body.maxHealth())) {
-            bar(canvas, x - 24, y - (guardArt?128:92), 48, 4, body.health() / (double) body.maxHealth(), DANGER);
-            if (enemy.shielded()) centered(canvas, "SHIELD", x, y - 98, 10, GOLD);
+            bar(canvas, x - 24, y - (sheet!=null?(knight?144:128):92), 48, 4, body.health() / (double) body.maxHealth(), DANGER);
+            if (enemy.shielded()) centered(canvas, "SHIELD", x, y - (sheet!=null?150:98), 10, GOLD);
         }
     }
 
     /** Collapse and edible remains are one sprite, so absorption cannot leave a second body behind. */
     public static boolean drawCorpse(Graphics2D g, RuinedOutpostGame.Corpse corpse, int x, int y) {
-        if (corpse.kind()!=CampaignEnemy.Kind.OUTPOST_GUARD || GUARD==null) return false;
-        guardFrame(g,1+corpse.direction(),Math.min(11,(int)(corpse.age()*20)),x,y);
+        var sheet=meleeSheet(corpse.kind());
+        if (sheet==null) return false;
+        boolean knight=corpse.kind()==CampaignEnemy.Kind.FALLEN_KNIGHT;
+        meleeFrame(g,sheet,knight,(knight?5:1)+corpse.direction(),Math.min(11,(int)(corpse.age()*20)),x,y);
         return true;
     }
 
-    private static void guardFrame(Graphics2D g,int row,int frame,int x,int y) {
-        // Export cells are padded to 88px, not the nominal 64px; boots sit at native y=72.
+    private static java.awt.image.BufferedImage meleeSheet(CampaignEnemy.Kind kind) {
+        return kind==CampaignEnemy.Kind.OUTPOST_GUARD?GUARD:kind==CampaignEnemy.Kind.FALLEN_KNIGHT?KNIGHT:null;
+    }
+
+    private static void meleeFrame(Graphics2D g,java.awt.image.BufferedImage sheet,boolean knight,int row,int frame,int x,int y) {
+        // Export cells include pivot padding; never crop at the nominal 64px generation size.
+        int cell=knight?92:88,foot=knight?76:72;
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-        g.drawImage(GUARD,x-88,y-144,x+88,y+32,frame*88,row*88,frame*88+88,row*88+88,null);
+        g.drawImage(sheet,x-cell,y-foot*2,x+cell,y+(cell-foot)*2,frame*cell,row*cell,(frame+1)*cell,(row+1)*cell,null);
     }
 
     public static void drawBoss(Graphics2D canvas, Guardian boss, int biome, int cx, int cy) {
