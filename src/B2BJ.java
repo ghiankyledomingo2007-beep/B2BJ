@@ -51,6 +51,9 @@ public final class B2BJ extends JPanel {
     private final BufferedImage slimeSheet = loadSlimeSheet();
     private final BufferedImage slimeIdleSheet = loadImage("assets/characters/slime/slime_idle.png");
     private final BufferedImage slimeCastSheet=loadImage("assets/characters/slime/slime_cast.png");
+    private final BufferedImage slimeFinisherSheet=loadImage("assets/characters/slime/slime_finisher.png");
+    private final BufferedImage membraneSheet=loadImage("assets/effects/guard_membrane.png");
+    private final BufferedImage jetSheet=loadImage("assets/effects/spitter_current.png");
     private final java.util.Map<BladeAnimation.Action,BufferedImage> rainoraySheets=new java.util.EnumMap<>(BladeAnimation.Action.class);
     private final BufferedImage transformInSheet=loadImage("assets/effects/transform_in.png");
     private final BufferedImage transformOutSheet=loadImage("assets/effects/transform_out.png");
@@ -67,6 +70,10 @@ public final class B2BJ extends JPanel {
     private final BufferedImage tellBuffer=new BufferedImage(WIDTH/2,HEIGHT/2,BufferedImage.TYPE_INT_ARGB);
     private final java.util.Map<BufferedImage,java.awt.Rectangle[]> telegraphFrameBounds=new java.util.IdentityHashMap<>();
     private final BufferedImage waterBuffer = new BufferedImage(72,72,BufferedImage.TYPE_INT_ARGB);
+    private final BufferedImage tideBuffer = new BufferedImage(96,96,BufferedImage.TYPE_INT_ARGB);
+    private final BufferedImage tideFrontSheet=loadImage("assets/effects/tide_front.png");
+    private final BufferedImage waterFinisherSheet=loadImage("assets/effects/water_finisher.png");
+    private final BufferedImage finisherImpactSheet=loadImage("assets/effects/water_finisher_impact.png");
     private final BufferedImage waterSlashSheet = loadImage("assets/effects/water_slash.png");
     private final BufferedImage tideWaveSheet = loadImage("assets/effects/tide_wave.png");
     private final BufferedImage waterSplashSheet = loadImage("assets/effects/water_splash.png");
@@ -309,6 +316,16 @@ public final class B2BJ extends JPanel {
                     addImpact(event.x(),event.y(),Fx.WATER);
                     GameAudio.play(GameAudio.Cue.WATER_SPLASH);
                 }
+                case FINISHER_RELEASE -> GameAudio.play(GameAudio.Cue.FINISHER_RELEASE);
+                case FINISHER_IMPACT -> {
+                    addImpact(event.x(),event.y(),Fx.FINISHER);
+                    GameAudio.play(GameAudio.Cue.FINISHER_IMPACT);
+                }
+                case TRAIT_GAINED -> GameAudio.play(GameAudio.Cue.TRAIT_GAINED);
+                case MEMBRANE_BREAK -> {
+                    addImpact(event.x(),event.y(),Fx.BLADE);
+                    GameAudio.play(GameAudio.Cue.MEMBRANE_BREAK);
+                }
                 case TIDE_RELEASE -> {
                     addImpact(event.x(),event.y(),Fx.TIDE_RELEASE);
                     GameAudio.play(GameAudio.Cue.TIDE_RELEASE);
@@ -535,6 +552,17 @@ public final class B2BJ extends JPanel {
 
     private void drawPlayer(Graphics2D canvas, int cameraX, int cameraY) {
         Player player = game.player();
+        if(!player.bladeForm()&&player.trait()!=Player.Trait.NONE) {
+            BufferedImage shell=player.trait()==Player.Trait.MEMBRANE?membraneSheet:jetSheet;
+            if(shell!=null) {
+                int frame=(int)(frameCounter/6)%(shell.getWidth()/64);
+                int x=(int)Math.round((player.x()-cameraX)/2)*2-64,y=(int)Math.round((player.y()-cameraY)/2)*2-64;
+                var aura=(Graphics2D)canvas.create();
+                float alpha=(float)Math.min(reducedEffects?.55:.85,player.traitSeconds()/1.5);
+                aura.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,alpha));
+                aura.drawImage(shell,x,y,x+128,y+128,frame*64,0,frame*64+64,64,null);aura.dispose();
+            }
+        }
         BufferedImage morph=transformationAnimation.reverting()?transformOutSheet:transformInSheet;
         if(transformationAnimation.active()&&morph!=null) {
             drawTransformation(canvas,cameraX,cameraY);return;
@@ -583,7 +611,8 @@ public final class B2BJ extends JPanel {
         }
         boolean reviewedIdle=slimeAnimation.row()==0&&slimeIdleSheet!=null;
         boolean reviewedCast=slimeAnimation.attacking()&&slimeCastSheet!=null;
-        BufferedImage sheet=reviewedCast?slimeCastSheet:reviewedIdle?slimeIdleSheet:slimeSheet;
+        boolean finisher=reviewedCast&&game.waterKind()==WaterProjectile.Kind.FINISHER&&slimeFinisherSheet!=null;
+        BufferedImage sheet=reviewedCast?(finisher?slimeFinisherSheet:slimeCastSheet):reviewedIdle?slimeIdleSheet:slimeSheet;
         if (sheet != null) {
             int sourceX = (reviewedCast?slimeAnimation.castFrame():reviewedIdle?slimeAnimation.idleFrame():slimeAnimation.frame()) * SlimeAnimation.CELL_SIZE;
             int castRow=slimeAnimation.row()==3?1:slimeAnimation.row()==4?2:0;
@@ -1164,32 +1193,35 @@ public final class B2BJ extends JPanel {
     }
 
     private void drawWater(Graphics2D canvas,int cameraX,int cameraY,WaterProjectile wave) {
+            boolean broad=wave.heavy()&&tideFrontSheet!=null;
+            boolean finisher=wave.kind()==WaterProjectile.Kind.FINISHER&&waterFinisherSheet!=null;
             boolean crest=wave.heavy()&&tideCrestSheet!=null;
-            BufferedImage sheet=wave.heavy()?(crest?tideCrestSheet:tideWaveSheet):waterSlashSheet;
+            BufferedImage sheet=broad?tideFrontSheet:finisher?waterFinisherSheet:wave.heavy()?(crest?tideCrestSheet:tideWaveSheet):waterSlashSheet;
             if(sheet==null)return;
-            int cell=wave.heavy()?48:32;
+            int cell=broad?64:finisher||wave.heavy()?48:32;
             int frame=(int)(wave.age()*18)%(sheet.getWidth()/cell);
-            Graphics2D nativePixels=waterBuffer.createGraphics();
-            nativePixels.setComposite(java.awt.AlphaComposite.Clear);nativePixels.fillRect(0,0,72,72);
+            BufferedImage buffer=broad?tideBuffer:waterBuffer;int size=buffer.getWidth();
+            Graphics2D nativePixels=buffer.createGraphics();
+            nativePixels.setComposite(java.awt.AlphaComposite.Clear);nativePixels.fillRect(0,0,size,size);
             nativePixels.setComposite(java.awt.AlphaComposite.SrcOver);
             nativePixels.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-            nativePixels.translate(36,36);
+            nativePixels.translate(size/2,size/2);
             double angle=Math.atan2(wave.directionY(),wave.directionX());
             nativePixels.rotate(angle);
             BufferedImage wake=wave.heavy()&&tideFoamSheet!=null?tideFoamSheet:waterWakeSheet;
             if(wake!=null) {
                 int wakeFrame=(int)(wave.age()*20)%(wake.getWidth()/32);
                 int wakeLeft=wave.heavy()&&tideFoamSheet!=null?-32:-34;
-                nativePixels.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,0.45f));
+                nativePixels.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,wave.jet()?.8f:.45f));
                 nativePixels.drawImage(wake,wakeLeft,-16,wakeLeft+32,16,wakeFrame*32,0,wakeFrame*32+32,32,null);
                 nativePixels.setComposite(java.awt.AlphaComposite.SrcOver);
             }
             // The new Tide crest faces right; only legacy diagonal art needs correction.
-            if(!crest)nativePixels.rotate(wave.heavy()?0.6:-0.6);
-            nativePixels.rotate(switch(wave.kind()) {
+            if(!crest&&!broad&&!finisher)nativePixels.rotate(wave.heavy()?0.6:-0.6);
+            if(!finisher)nativePixels.rotate(switch(wave.kind()) {
                 case CUT->-.35;case RETURN_CUT->.35;case FINISHER->-.55;default->0;
             });
-            if(wave.kind()==WaterProjectile.Kind.FINISHER) {
+            if(wave.kind()==WaterProjectile.Kind.FINISHER&&!finisher) {
                 // Two opposed native-size cuts, not an enlarged basic projectile.
                 var crossing=(Graphics2D)nativePixels.create();
                 crossing.rotate(1.1);crossing.translate(0,3);
@@ -1204,12 +1236,18 @@ public final class B2BJ extends JPanel {
             }
             nativePixels.drawImage(sheet,-cell/2,-cell/2,cell/2,cell/2,frame*cell,0,(frame+1)*cell,cell,null);
             nativePixels.dispose();
+            if(broad) {
+                // Clip the broad spray against the same terrain used by its swept collision lane.
+                for(int y=0;y<size;y++)for(int x=0;x<size;x++)if((buffer.getRGB(x,y)>>>24)!=0
+                        &&game.map().waterBlocked(wave.x()+(x-size/2)*2,
+                                wave.y()+(y-size/2)*2+Player.COLLISION_Y_OFFSET,1))buffer.setRGB(x,y,0);
+            }
             int px=(int)Math.round((wave.x()-cameraX)/2)*2,py=(int)Math.round((wave.y()-cameraY)/2)*2;
             Graphics2D effect=(Graphics2D)canvas.create();
             float alpha=(float)wave.opacity();
             effect.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,Math.max(0,alpha)));
             effect.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-            effect.drawImage(waterBuffer,px-72,py-72,144,144,null);
+            effect.drawImage(buffer,px-size,py-size,size*2,size*2,null);
             effect.dispose();
     }
 
@@ -1223,6 +1261,7 @@ public final class B2BJ extends JPanel {
             if(groundLayer!=null&&(impact.kind==Fx.TIDE_RELEASE)!=groundLayer)continue;
             BufferedImage sheet=switch(impact.kind) {
                 case WATER -> waterSplashSheet;
+                case FINISHER -> finisherImpactSheet;
                 case TIDE -> tideBreakSheet;
                 case TIDE_RELEASE -> tideReleaseSheet;
                 case TIDE_FOAM -> tideFoamSheet;
@@ -1242,6 +1281,7 @@ public final class B2BJ extends JPanel {
                     case TIDE_RELEASE -> {sheet=waterChargeSheet;cell=32;}
                     case TIDE_FOAM -> {sheet=waterWakeSheet;cell=32;}
                     case WARDEN -> {sheet=stoneChipsSheet;cell=32;}
+                    case FINISHER -> {sheet=waterSplashSheet;cell=32;}
                     default -> { }
                 }
             }
@@ -1328,6 +1368,16 @@ public final class B2BJ extends JPanel {
         if(p.bladeForm())skill(canvas,first+336,riposteIcon,"F",1-game.riposteCooldown()/RuinedOutpostGame.RIPOSTE_COOLDOWN,
                 p.ichor()>RuinedOutpostGame.BLADE_SKILL_COST);
         if(p.ichor()>=100&&!p.bladeForm())pixelCentered(canvas,"TRANSFORM",770,601,1,GOLD);
+        if(p.trait()!=Player.Trait.NONE) {
+            boolean armor=p.trait()==Player.Trait.MEMBRANE;Color color=armor?GOLD:TEAL;
+            uiPanel(canvas,478,538,332,54);
+            icon(canvas,consumeIcon,486,545,32);
+            pixelText(canvas,p.trait().label(),526,548,2,color);
+            pixelText(canvas,armor?"BLOCK 0.5 HP / ONE HIT":"WATER SHOT SPEED +30%",526,571,1,new Color(191,203,209));
+            pixelText(canvas,String.format(java.util.Locale.ROOT,"%.1f",p.traitSeconds()),774,571,1,color);
+            canvas.setColor(new Color(39,48,57));canvas.fillRect(488,584,312,3);
+            canvas.setColor(color);canvas.fillRect(488,584,(int)(312*p.traitSeconds()/Player.TRAIT_DURATION),3);
+        }
     }
 
     private void drawHud(Graphics2D canvas) {
@@ -1850,7 +1900,7 @@ public final class B2BJ extends JPanel {
     }
 
     private enum Fx {
-        WATER(32,.33),TIDE(64,.4),BLADE(48,.32),SLIME_HURT(48,.38),BLADE_HURT(48,.38),
+        WATER(32,.33),FINISHER(48,.42),TIDE(64,.4),BLADE(48,.32),SLIME_HURT(48,.38),BLADE_HURT(48,.38),
         PICKUP(32,.32),STONE(32,.45),SPIT(48,.3),HEAL(48,.65),COUNTER(80,.35),
         TIDE_RELEASE(64,.46),TIDE_FOAM(32,.36),WARDEN(64,.5);
         final int cell;final double duration;

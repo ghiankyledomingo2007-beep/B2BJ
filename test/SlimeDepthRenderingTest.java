@@ -10,6 +10,7 @@ public final class SlimeDepthRenderingTest {
         releaseFeedback();
         assetCoverage();
         directionalFinishers();
+        projectilePixels();
         readableTraits();
         System.out.println("SlimeDepthRenderingTest passed: release timing, directional art, pixel grid, trait face/HUD preservation");
     }
@@ -27,7 +28,7 @@ public final class SlimeDepthRenderingTest {
         assert cancel.drainEvents().stream().noneMatch(e->e.type().name().equals("FINISHER_RELEASE"));
     }
     private static void assetCoverage() {
-        for(String name:new String[]{"tide_front","water_finisher","guard_membrane","spitter_current","../characters/slime/slime_finisher"}) {
+        for(String name:new String[]{"tide_front","water_finisher","water_finisher_impact","guard_membrane","spitter_current","../characters/slime/slime_finisher"}) {
             int cell=name.contains("finisher")?48:64;
             String path=name.startsWith("..")?"assets/characters/slime/slime_finisher.png":"assets/effects/"+name+".png";
             var sheet=B2BJ.loadImage(path);
@@ -43,6 +44,23 @@ public final class SlimeDepthRenderingTest {
                 }
                 assert poses.size()>=6 : "not a repeated still: "+path+" row "+row;
             }
+        }
+    }
+    private static void projectilePixels() throws Exception {
+        var panel=new B2BJ(false,fixture());
+        var method=B2BJ.class.getDeclaredMethod("drawWater",Graphics2D.class,int.class,int.class,WaterProjectile.class);
+        method.setAccessible(true);
+        for(var kind:WaterProjectile.Kind.values())for(int[] aim:new int[][]{{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}}) {
+            var wave=new WaterProjectile(700,500,aim[0],aim[1],kind,true);
+            var frame=new BufferedImage(1280,720,BufferedImage.TYPE_INT_ARGB);var ink=frame.createGraphics();
+            method.invoke(panel,ink,0,0,wave);ink.dispose();int visible=0;
+            for(int y=380;y<620;y+=2)for(int x=580;x<820;x+=2) {
+                int pixel=frame.getRGB(x,y);
+                if((pixel>>>24)>0)visible++;
+                assert pixel==frame.getRGB(x+1,y)&&pixel==frame.getRGB(x,y+1)&&pixel==frame.getRGB(x+1,y+1)
+                        : "new water art preserves native 2x pixels after rotation";
+            }
+            assert visible>20 : "every attack heading has visible art: "+kind;
         }
     }
     private static void directionalFinishers() throws Exception {

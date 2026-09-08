@@ -7,7 +7,7 @@ import java.util.Set;
 
 public final class RuinedOutpostGame {
     public enum EventType {
-        DASH, ATTACK, WATER_IMPACT, TIDE_IMPACT, TIDE_RELEASE, TIDE_DISSIPATE, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
+        DASH, ATTACK, WATER_IMPACT, FINISHER_RELEASE, FINISHER_IMPACT, TIDE_IMPACT, TIDE_RELEASE, TIDE_DISSIPATE, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
         TRANSFORM, REVERT, GUARDIAN_AWAKENED, GUARDIAN_SLAM, VICTORY, ROOM_ENTERED, SPIT_SHOT, SPIT_IMPACT,
         ABSORB_START, ABSORBED, HEALED, TRAIT_GAINED, MEMBRANE_BREAK, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER
     }
@@ -489,7 +489,7 @@ public final class RuinedOutpostGame {
         comboTime=Math.max(0,comboTime-seconds);
         if (attackDelay > 0) {
             attackDelay=Math.max(0,attackDelay-seconds);
-            if (attackDelay == 0) resolveStrike();
+            if (attackDelay <= 1e-9) {attackDelay=0;resolveStrike();}
         }
         if(campaignMode&&!bossDefeated&&guardian.state()==Guardian.State.DORMANT
                 &&near(guardian.x(),guardian.y(),600)) {
@@ -705,6 +705,7 @@ public final class RuinedOutpostGame {
             if(!player.bladeForm()) {
                 projectiles.add(new WaterProjectile(player.x(),player.y(),aimX,aimY,waterKind,player.trait()==Player.Trait.JET));
                 if(heavyCast)events.add(new Event(EventType.TIDE_RELEASE,player.x(),player.y(),true));
+                else if(waterKind==WaterProjectile.Kind.FINISHER)emit(EventType.FINISHER_RELEASE,player.x(),player.y());
             }
             return;
         }
@@ -762,13 +763,15 @@ public final class RuinedOutpostGame {
                         if(damaged) {
                             scout.push(wave.directionX()*wave.impulse(),wave.directionY()*wave.impulse());
                             afterScoutHit(scout,true);
+                            if(wave.kind()==WaterProjectile.Kind.FINISHER)hitStop=.045;
                             if(wave.heavy())emit(EventType.TIDE_IMPACT,scout.x(),scout.y());
                         }
                         // Bodies part around the wave; a raised shield or solid terrain stops it.
                         if(!wave.heavy()||!damaged) {wave.stop();break;}
                     }
                 }
-                if(!wave.alive()) events.add(new Event(wave.heavy()?EventType.TIDE_IMPACT:EventType.WATER_IMPACT,wave.x(),wave.y(),true));
+                if(!wave.alive()) events.add(new Event(wave.heavy()?EventType.TIDE_IMPACT:
+                        wave.kind()==WaterProjectile.Kind.FINISHER?EventType.FINISHER_IMPACT:EventType.WATER_IMPACT,wave.x(),wave.y(),true));
             }
         }
         projectiles.removeIf(wave->!wave.alive());
@@ -998,6 +1001,7 @@ public final class RuinedOutpostGame {
     public void togglePause() { if(!story.blocksGameplay()) paused=!paused; }
     public void pause() { if(!story.blocksGameplay()) paused=true; }
     public int combo() { return combo; }
+    public WaterProjectile.Kind waterKind() { return waterKind; }
     public double tideCooldown() { return tideCooldown; }
     public double crescentCooldown() { return crescentCooldown; }
     public double riposteCooldown() { return riposteCooldown; }
