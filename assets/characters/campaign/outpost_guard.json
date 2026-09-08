@@ -1,0 +1,197 @@
+{
+  "character": {
+    "id": "2b93b012-320b-47cc-a43e-732499e48695",
+    "name": "Idle",
+    "prompt": "Ruined military outpost shield guard, squat undead infantry silhouette, battered dull olive-grey iron helmet hiding the face with two pale amber eye slits, dark desaturated blue-grey torn tabard, chunky battered round iron buckler in left hand and short blunt mace in right hand. Clear readable small-game sprite, muted slate teal olive palette, strong dark navy outline, crisp pixel clusters, no gradients, no glow, no scenery, transparent background, low top-down 3/4 RPG view. Feet near bottom center, body occupies about 42 pixels of a 64 pixel canvas. Keep shield and mace visible.",
+    "size": {
+      "width": 64,
+      "height": 64
+    },
+    "directions": 8,
+    "view": "low top-down"
+  },
+  "spritesheet": {
+    "path": "B2BJ_Outpost_Shield_Guar-Idle.png",
+    "cell_size": {
+      "width": 88,
+      "height": 88
+    },
+    "sheet_size": {
+      "width": 1408,
+      "height": 1760
+    },
+    "columns": 16,
+    "pivot": "cell-center",
+    "rows": [
+      {
+        "row": 0,
+        "type": "rotations",
+        "frame_count": 8,
+        "directions": [
+          "south",
+          "south-east",
+          "east",
+          "north-east",
+          "north",
+          "north-west",
+          "west",
+          "south-west"
+        ]
+      },
+      {
+        "row": 1,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "guard-death",
+        "animation_group_id": "0df2d7cc-7f7c-4a99-85d3-6cfe2b45eef3",
+        "direction": "south"
+      },
+      {
+        "row": 2,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "guard-death",
+        "animation_group_id": "0df2d7cc-7f7c-4a99-85d3-6cfe2b45eef3",
+        "direction": "east"
+      },
+      {
+        "row": 3,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "guard-death",
+        "animation_group_id": "0df2d7cc-7f7c-4a99-85d3-6cfe2b45eef3",
+        "direction": "north"
+      },
+      {
+        "row": 4,
+        "type": "animation",
+        "frame_count": 12,
+        "animation": "guard-death",
+        "animation_group_id": "0df2d7cc-7f7c-4a99-85d3-6cfe2b45eef3",
+        "direction": "west"
+      },
+      {
+        "row": 5,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-hurt",
+        "animation_group_id": "66b0c4cd-16b7-46e0-9691-150526b24b17",
+        "direction": "south"
+      },
+      {
+        "row": 6,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-hurt",
+        "animation_group_id": "66b0c4cd-16b7-46e0-9691-150526b24b17",
+        "direction": "east"
+      },
+      {
+        "row": 7,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-hurt",
+        "animation_group_id": "66b0c4cd-16b7-46e0-9691-150526b24b17",
+        "direction": "north"
+      },
+      {
+        "row": 8,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-hurt",
+        "animation_group_id": "66b0c4cd-16b7-46e0-9691-150526b24b17",
+        "direction": "west"
+      },
+      {
+        "row": 9,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "shield-bash",
+        "animation_group_id": "9174cd3e-2fd4-4711-a75b-33ba339c7bd3",
+        "direction": "south"
+      },
+      {
+        "row": 10,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "shield-bash",
+        "animation_group_id": "9174cd3e-2fd4-4711-a75b-33ba339c7bd3",
+        "direction": "east"
+      },
+      {
+        "row": 11,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "shield-bash",
+        "animation_group_id": "9174cd3e-2fd4-4711-a75b-33ba339c7bd3",
+        "direction": "north-east"
+      },
+      {
+        "row": 12,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "shield-bash",
+        "animation_group_id": "9174cd3e-2fd4-4711-a75b-33ba339c7bd3",
+        "direction": "north"
+      },
+      {
+        "row": 13,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "shield-bash",
+        "animation_group_id": "9174cd3e-2fd4-4711-a75b-33ba339c7bd3",
+        "direction": "north-west"
+      },
+      {
+        "row": 14,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "shield-bash",
+        "animation_group_id": "9174cd3e-2fd4-4711-a75b-33ba339c7bd3",
+        "direction": "west"
+      },
+      {
+        "row": 15,
+        "type": "animation",
+        "frame_count": 16,
+        "animation": "shield-bash",
+        "animation_group_id": "9174cd3e-2fd4-4711-a75b-33ba339c7bd3",
+        "direction": "south-west"
+      },
+      {
+        "row": 16,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-march",
+        "animation_group_id": "e6b2275c-104e-4006-aee3-7148634efeba",
+        "direction": "south"
+      },
+      {
+        "row": 17,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-march",
+        "animation_group_id": "e6b2275c-104e-4006-aee3-7148634efeba",
+        "direction": "east"
+      },
+      {
+        "row": 18,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-march",
+        "animation_group_id": "e6b2275c-104e-4006-aee3-7148634efeba",
+        "direction": "north"
+      },
+      {
+        "row": 19,
+        "type": "animation",
+        "frame_count": 8,
+        "animation": "guard-march",
+        "animation_group_id": "e6b2275c-104e-4006-aee3-7148634efeba",
+        "direction": "west"
+      }
+    ]
+  },
+  "export_version": "1.0",
+  "export_date": "2026-09-08T08:13:15.105793+00:00"
+}
