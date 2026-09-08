@@ -38,7 +38,7 @@ public final class DebugPanel {
         refresh.run();
         panel.add(status);
         JTextArea help = new JTextArea("Using a cheat disables saving until you return to title and Continue.\n"
-                + "Closing this menu leaves the game paused. Esc resumes play.\n"
+                + "Cheats do not resume gameplay. Use Resume or Esc when ready.\n"
                 + "One-shot attacks still need to connect and cannot pass through walls.");
         help.setEditable(false);
         help.setOpaque(false);

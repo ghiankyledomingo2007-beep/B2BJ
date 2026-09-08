@@ -36,7 +36,9 @@ public final class CampaignMenuTest {
         layout(menu);
         for (String name : List.of("Resume", "Settings", "Admin / Testing", "Return to Title")) {
             assert button(menu, name).getHeight() >= 32
-                    : "first layout must leave every Home button visible: " + name;
+                    : "first layout must leave every Home button visible: " + name + " " + button(menu, name).getBounds()
+                    + " / help " + descendants(menu).stream().filter(javax.swing.JTextArea.class::isInstance)
+                            .map(component -> component.getBounds() + " preferred=" + component.getPreferredSize()).toList();
             var button = button(menu, name);
             var bounds = SwingUtilities.convertRectangle(button.getParent(), button.getBounds(), menu);
             assert new java.awt.Rectangle(0, 0, menu.getWidth(), menu.getHeight()).contains(bounds)

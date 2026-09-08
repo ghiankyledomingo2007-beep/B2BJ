@@ -103,3 +103,13 @@ All ten concrete audit defects were reproduced, fixed, and passed their focused 
 ## Scope and limits
 
 The prior complete-campaign route, both endings, save recovery, boss economy measurements, and performance evidence remain documented in [campaign-quality.md](campaign-quality.md). Admin tests cover the actual six damage paths and preserve collision/range checks; they do not certify every possible input sequence, native display/audio device, or an absence of all bugs. QA's new admin tests were headless and did not take native focus or validate audible playback. Placeholder art and unassisted human difficulty remain outside these automated claims.
+
+## Visible-menu follow-up
+
+The owner clarified that testing/settings must be discoverable through visible buttons, not just F1/O shortcuts. A top-right **Menu** button now opens **Resume**, **Settings**, **Admin / Testing**, and **Return to Title**. Existing settings and cheat panels are embedded with **Back** navigation. **Close**, Resume, or Esc closes the menu; Alt+G also toggles it. Settings remain accessible at the title, while cheats require a live campaign.
+
+`VisibleMenuTest` first failed with `Missing visible menu control: Menu` (checkpoint `48df2cf`); `CampaignMenuTest` first failed because the embedded menu class was missing (`b5e66f1`). A rendered-frame check then exposed wrapped help text collapsing the first layout's buttons. The geometry regression (`a68fbc8`) now checks all four buttons are visible and inside the menu before any second layout. Bounding the static help to three font lines fixes that initial layout.
+
+Focused checks pass for actual native button callbacks, embedded audio controls, current settings state, cheat/save protection, Back/Resume/Title navigation, and suppression of gameplay mouse/keyboard input while the menu is open. Captures from `CampaignMenuTest /tmp/b2bj-visible-menu-proof` were visually inspected for the home, settings and admin pages. Native desktop focus/audio remain unverified; no assets or dependencies were added.
+
+Final `rtk proxy ./build.sh` after the layout fix exited 0: **74/74 test programs passed**, including all 50 admin scenarios and packaged-asset loading from `/tmp`. Java 17 compatibility/lint and diff whitespace checks passed. The rebuilt JAR must be relaunched to update an already-running window. No native processes were stopped and no remote push occurred.

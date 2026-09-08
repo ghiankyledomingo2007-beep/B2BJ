@@ -23,6 +23,7 @@ import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
@@ -43,6 +44,8 @@ public final class B2BJ extends JPanel {
     private static final Font SMALL_FONT = new Font(Font.MONOSPACED, Font.BOLD, 14);
 
     private final RuinedOutpostGame game;
+    private final JButton menuButton = new JButton("Menu");
+    private CampaignMenu menu;
     private final BufferedImage[] terrainTiles = loadEnvironmentTiles();
     private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/ruined_outpost/earth_banks.png"));
     private final BufferedImage slimeSheet = loadSlimeSheet();
@@ -157,10 +160,25 @@ public final class B2BJ extends JPanel {
         setBackground(BACKGROUND);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+        if(game.campaignMode()) {
+            setLayout(null);
+            menu = new CampaignMenu(game,this::closeMenu,()->{
+                if(game.returnToTitle()) {resetVisualState();closeMenu();}
+            },enabled->reducedEffects=enabled,()->reducedEffects);
+            menu.setVisible(false);
+            menuButton.setFont(new Font(Font.MONOSPACED,Font.BOLD,16));
+            menuButton.setMnemonic(KeyEvent.VK_G);
+            menuButton.setForeground(TEAL);menuButton.setBackground(INK);
+            menuButton.setToolTipText("Open Settings, Admin / Testing, or return to title");
+            menuButton.getAccessibleContext().setAccessibleName("Game menu");
+            menuButton.addActionListener(event->{if(menuShown())closeMenu();else openMenu();});
+            add(menu);add(menuButton);
+        }
         bindKeys();
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent event) {
+                if(menuShown())return;
                 if (event.getButton() != MouseEvent.BUTTON1 && event.getButton() != MouseEvent.BUTTON3) {
                     return;
                 }
@@ -178,6 +196,7 @@ public final class B2BJ extends JPanel {
         });
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override public void mouseMoved(MouseEvent event) {
+                if(menuShown())return;
                 mouseX=event.getX(); mouseY=event.getY(); mouseAimed=true;
             }
             @Override public void mouseDragged(MouseEvent event) { mouseMoved(event); }
@@ -213,6 +232,29 @@ public final class B2BJ extends JPanel {
         return game;
     }
 
+    @Override public void doLayout() {
+        super.doLayout();
+        if(menu==null)return;
+        menuButton.setBounds(Math.max(8,getWidth()-138),Math.min(166,Math.max(8,getHeight()-46)),120,36);
+        int width=Math.min(menu.getPreferredSize().width,Math.max(1,getWidth()-32));
+        int height=Math.min(menu.getPreferredSize().height,Math.max(1,getHeight()-32));
+        menu.setBounds((getWidth()-width)/2,(getHeight()-height)/2,width,height);
+        menu.doLayout();
+    }
+
+    private boolean menuShown() { return menu!=null&&menu.isVisible(); }
+    private void openMenu() {
+        clearInput();game.pause();
+        GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
+        menu.home();menu.setVisible(true);menuButton.setText("Close");
+        doLayout();revalidate();repaint();
+    }
+    private void closeMenu() {
+        clearInput();menu.setVisible(false);menuButton.setText("Menu");
+        if(game.paused())game.togglePause();
+        requestFocusInWindow();repaint();
+    }
+
     private void updateGame(ActionEvent event) {
         long now = System.nanoTime();
         double seconds = Math.min((now - previousFrame) / 1_000_000_000.0, 0.05);
@@ -224,7 +266,7 @@ public final class B2BJ extends JPanel {
     }
 
     void step(double seconds) {
-        if (!Double.isFinite(seconds) || seconds <= 0 || game.paused()) return;
+        if (!Double.isFinite(seconds) || seconds <= 0 || game.paused() || menuShown()) return;
         weatherTime+=seconds;
         int horizontal = horizontal();
         int vertical = vertical();
@@ -1744,10 +1786,16 @@ public final class B2BJ extends JPanel {
         inputs.put(KeyStroke.getKeyStroke(keyCode, 0, false), name + "Pressed");
         inputs.put(KeyStroke.getKeyStroke(keyCode, 0, true), name + "Released");
         actions.put(name+"Pressed",action(()->{
+            if(menuShown()) {
+                if(keyCode==KeyEvent.VK_ESCAPE&&pressedKeys.add(keyCode)) {
+                    closeMenu();pressedKeys.add(keyCode);
+                }
+                return;
+            }
             if(pressedKeys.add(keyCode)) keyState.set(true);
         }));
         actions.put(name+"Released",action(()->{
-            pressedKeys.remove(keyCode);keyState.set(false);
+            pressedKeys.remove(keyCode);if(!menuShown())keyState.set(false);
         }));
     }
 

@@ -34,6 +34,10 @@ pixel-art warnings, credit ledger and verification limits.
 
 ## Controls
 
+- Click **Menu** at the top-right for **Resume**, **Settings**, **Admin / Testing**,
+  and **Return to Title**. Settings and testing controls open inside the menu;
+  **Back** returns to its main page. **Close**, **Resume**, or Esc returns to play.
+  Settings are also available from the title screen. Alt+G opens/closes Menu.
 - Enter: new journey. C: continue from saved checkpoint. N explicitly confirms replacing an existing save.
 - WASD / arrows: move. Mouse: aim. Hold left click: Water Slash (Blob) / cuts (Blade).
 - Right click: Tide Wave (Blob, 4.5-second cooldown) / Ichor Crescent (Blade, 5 seconds).
@@ -60,10 +64,10 @@ Blade hits also cost 5 Ichor; reversion has 1.5 seconds of vulnerable recovery.
 Crescent and Riposte each spend 8 Ichor from the remaining Blade timer; they require
 more than 8 remaining so the ability has time to exist before reversion.
 
-Testing cheats are off by default. Opening F1 only pauses; using any cheat marks a
+Testing cheats are off by default. Opening Menu or F1 does not enable cheats; using any cheat marks a
 test session and prevents saving to both disk and the normal Continue snapshot.
-Switching cheats off does not resume saving. To restore normal play: close the menu,
-press T while paused, then C at the title. New Game explicitly replaces the save.
+Switching cheats off does not resume saving. To restore normal play: use Back and
+Return to Title in the menu, then C at the title. New Game explicitly replaces the save.
 God mode blocks damage, not the Blade timer; one-shot still requires a connected hit
 and cannot pass through walls. Boss travel/reset respawns encounters in the test
 session only. See [50-scenario admin audit](docs/testing/admin-audit.md).
