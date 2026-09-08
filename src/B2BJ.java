@@ -166,7 +166,7 @@ public final class B2BJ extends JPanel {
                 }
                 if (game.story().phase() == OutpostStory.Phase.PROLOGUE) {
                     game.begin();
-                } else {
+                } else if (!game.blocked()) {
                     mouseX=event.getX(); mouseY=event.getY(); mouseAimed=true;
                     if(event.getButton()==MouseEvent.BUTTON1) { attackHeld=true; attack(); }
                     else attack(true);
@@ -224,8 +224,8 @@ public final class B2BJ extends JPanel {
     }
 
     void step(double seconds) {
-        if (game.paused()) return;
-        if(Double.isFinite(seconds)&&seconds>0)weatherTime+=seconds;
+        if (!Double.isFinite(seconds) || seconds <= 0 || game.paused()) return;
+        weatherTime+=seconds;
         int horizontal = horizontal();
         int vertical = vertical();
         if (attackHeld) attack();
@@ -318,15 +318,15 @@ public final class B2BJ extends JPanel {
                     GameAudio.play(GameAudio.Cue.HIT);
                 }
                 case TRANSFORM -> {
-                    bladeAnimation.update(slimeAnimation.facingHorizontal(),
-                            slimeAnimation.facingVertical(), false, 0);
+                    bladeAnimation = new BladeAnimation();
+                    bladeAnimation.face(slimeAnimation.facingHorizontal(), slimeAnimation.facingVertical());
                     transformationAnimation.start(false);
                     feedback.transformed();
                     GameAudio.play(GameAudio.Cue.TRANSFORM);
                 }
                 case REVERT -> {
-                    slimeAnimation.update(bladeAnimation.facingHorizontal(),
-                            bladeAnimation.facingVertical(), false, 0);
+                    slimeAnimation = new SlimeAnimation();
+                    slimeAnimation.face(bladeAnimation.facingHorizontal(), bladeAnimation.facingVertical());
                     transformationAnimation.start(true);
                     feedback.transformed();
                     banner("BLADE FADES / RECOVERING", 1.5);
@@ -394,6 +394,7 @@ public final class B2BJ extends JPanel {
             CampaignRenderer.drawHud(canvas,game,WIDTH,HEIGHT);
             if(mapShown&&!game.story().blocksGameplay())CampaignRenderer.drawMap(canvas,game,WIDTH,HEIGHT);
             CampaignRenderer.drawOverlay(canvas,game,WIDTH,HEIGHT);
+            CampaignRenderer.drawDebugStatus(canvas,game);
         } else {
             drawHud(canvas);drawBanner(canvas);drawStoryOverlay(canvas);
             if(game.paused())drawPause(canvas);
@@ -440,7 +441,7 @@ public final class B2BJ extends JPanel {
         }
         if(!game.campaignMode())queueDoors(draws,canvas,cameraX,cameraY);
         Player player=game.player();
-        for(Wisp scout:game.scouts()) if(scout.alive())
+        for(Wisp scout:game.scouts()) if(scout.visible())
             draws.add(new DepthDraw(scout.y()+WispAnimation.RENDER_SIZE/2,
                     ()->{
                         if(game.campaignEnemy(scout)!=null)CampaignRenderer.drawEnemy(canvas,game.campaignEnemy(scout),cameraX,cameraY);
@@ -1624,15 +1625,25 @@ public final class B2BJ extends JPanel {
         bind(KeyEvent.VK_M,"mute",value->{if(value) GameAudio.setMuted(!GameAudio.muted());});
         bind(KeyEvent.VK_V,"effects",value->{if(value) reducedEffects=!reducedEffects;});
         bind(KeyEvent.VK_F,"riposte",value->{if(value)game.riposte();});
-        bind(KeyEvent.VK_C,"continue",value->{if(value){clearInput();game.continueCampaign();}});
-        bind(KeyEvent.VK_N,"newCampaign",value->{if(value){clearInput();game.newCampaign();}});
+        bind(KeyEvent.VK_C,"continue",value->{if(value&&game.continueCampaign())resetVisualState();});
+        bind(KeyEvent.VK_N,"newCampaign",value->{
+            if(value&&game.campaignMode()&&game.story().phase()==OutpostStory.Phase.PROLOGUE) {
+                game.newCampaign();resetVisualState();
+            }
+        });
         bind(KeyEvent.VK_H,"saveCamp",value->{if(value)game.saveCheckpoint();});
-        bind(KeyEvent.VK_T,"title",value->{if(value&&game.returnToTitle())clearInput();});
+        bind(KeyEvent.VK_T,"title",value->{if(value&&game.returnToTitle())resetVisualState();});
         bind(KeyEvent.VK_O,"options",value->{
             if(value)CampaignOptions.show(this,()->{
                 clearInput();game.pause();
                 GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
             },enabled->reducedEffects=enabled,reducedEffects);
+        });
+        bind(KeyEvent.VK_F1,"debug",value->{
+            if(value)DebugPanel.show(this,game,()->{
+                clearInput();game.pause();
+                GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
+            });
         });
         String[] tracks={"vitality","capacity","efficiency","edge"};
         for(int i=0;i<tracks.length;i++) {
@@ -1707,7 +1718,12 @@ public final class B2BJ extends JPanel {
 
     private void restartGame() {
         game.restart();
+        resetVisualState();
+    }
+
+    private void resetVisualState() {
         clearInput(); trails.clear();
+        mouseAimed=false;
         slimeAnimation = new SlimeAnimation();
         bladeAnimation = new BladeAnimation();
         transformationAnimation = new TransformationAnimation();

@@ -140,7 +140,7 @@ public final class CampaignWorld {
         // Authored routes carve connected chambers; merge each row's solid cells into one wall span.
         for(int y=192;y<4096-128;y+=128) {
             int start=-1;
-            for(int x=192;x<=6144-128;x+=128) {
+            for(int x=192;x<6144;x+=128) {
                 boolean wall=x<6144-128 && !nearRoutes(x,y,landmarks,224)
                         && clearOfLandmarks(x,y,landmarks,400)
                         && Math.hypot(x-landmarks.get(8).x(),y-landmarks.get(8).y())>752;

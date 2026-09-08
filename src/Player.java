@@ -29,6 +29,7 @@ public final class Player {
     private double health = MAX_HEALTH;
     private double recoveryTime;
     private int vitality, capacity, efficiency, edge;
+    private boolean godMode;
 
     public Player(double x, double y) {
         this.x = x;
@@ -77,7 +78,7 @@ public final class Player {
     }
 
     public boolean hurt(int damage) {
-        if (damage <= 0 || !alive() || invulnerable()) {
+        if (damage <= 0 || !alive() || godMode || invulnerable()) {
             return false;
         }
         health = Math.max(0, health - damage * (bladeForm() ? 0.75 : 1));
@@ -173,6 +174,15 @@ public final class Player {
         if(bladeForm())bladeTime=bladeDuration()*ichor/MAX_ICHOR;
     }
     public void heal() { health = maxHealth(); }
+    public boolean godMode() { return godMode; }
+    void setGodMode(boolean enabled) { godMode = enabled; }
+    void refillForTesting() {
+        boolean blade = bladeForm();
+        heal();
+        ichor = MAX_ICHOR;
+        bladeTime = blade ? bladeDuration() : 0;
+        recoveryTime = dashTime = dashCooldown = attackCooldown = hurtInvulnerability = 0;
+    }
     public void heal(double amount) {
         if (Double.isFinite(amount) && amount > 0 && alive()) health = Math.min(maxHealth(), health + amount);
     }

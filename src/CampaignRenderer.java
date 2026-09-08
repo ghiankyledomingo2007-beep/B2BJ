@@ -247,7 +247,7 @@ public final class CampaignRenderer {
         g.fillRect(-7, -32, 4, 4);
         g.fillRect(4, -32, 4, 4);
         g.dispose();
-        if (body.aggro() || body.health() < body.maxHealth()) {
+        if (body.alive() && (body.aggro() || body.health() < body.maxHealth())) {
             bar(canvas, x - 24, y - 92, 48, 4, body.health() / (double) body.maxHealth(), DANGER);
             if (enemy.shielded()) centered(canvas, "SHIELD", x, y - 98, 10, GOLD);
         }
@@ -350,7 +350,7 @@ public final class CampaignRenderer {
             panel(g, 18, height - 96, Math.min(730, width - 290), 48);
             wrapped(g, prompt, 32, height - 67, Math.min(702, width - 318), 14, 18, 2, GOLD);
         }
-        text(g, "WASD MOVE   LMB ATTACK   RMB SKILL   SPACE DASH   Q TRANSFORM   TAB MAP   ESC PAUSE",
+        text(g, "WASD MOVE   LMB ATTACK   RMB SKILL   SPACE DASH   Q TRANSFORM   TAB MAP   ESC PAUSE   F1 TEST MENU",
                 22, height - 16, 11, MUTED);
         boolean danger = game.bossActive() || game.scouts().stream().anyMatch(enemy -> enemy.alive() && enemy.aggro()
                 && Math.hypot(enemy.x() - p.x(), enemy.y() - p.y()) < 700);
@@ -372,6 +372,13 @@ public final class CampaignRenderer {
                         level < max && game.shards() >= game.upgradeCost(keys[i]) ? GOLD : MUTED);
             }
         }
+    }
+
+    public static void drawDebugStatus(Graphics2D g, RuinedOutpostGame game) {
+        if (!game.debugSession()) return;
+        panel(g, 18, 128, 272, 47);
+        text(g, "TEST SESSION", 32, 148, 13, GOLD);
+        text(g, "NORMAL SAVE PROTECTED", 32, 166, 11, TEXT);
     }
 
     public static void drawMap(Graphics2D g, RuinedOutpostGame game, int width, int height) {
@@ -514,7 +521,7 @@ public final class CampaignRenderer {
                     "M / V           SOUND / REDUCED EFFECTS"};
             for (int i = 0; i < controls.length; i++)
                 text(g, controls[i], width / 2 - 258, 230 + i * 34, 16, TEXT);
-            centered(g, "ESC RESUME  /  O OPTIONS  /  T TITLE", width / 2, height - 134, 16, CYAN);
+            centered(g, "ESC RESUME / O OPTIONS / T TITLE / F1 TEST MENU", width / 2, height - 134, 14, CYAN);
         }
     }
 

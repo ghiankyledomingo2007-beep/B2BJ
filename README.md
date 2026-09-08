@@ -48,6 +48,8 @@ pixel-art warnings, credit ledger and verification limits.
 - Hold Tab: region/kingdom map; stays live during play or remains paused from pause.
 - M: sound toggle. V: reduced screen effects.
 - O: audio/effects options (master, SFX, music volumes). Settings last for this session.
+- F1: testing menu during a live campaign. God mode, one-shot attacks, refill/cooldown reset,
+  +25 shards, travel to any camp/boss and reset the current region's encounters.
 - R: reform at current region checkpoint after death; return to title after an ending.
 - 1 / 2 at the final rift: choose the ending, only after all four bosses are defeated.
 
@@ -57,6 +59,14 @@ pickups, deals 4× Blob damage, moves at 80% speed and takes 75% incoming damage
 Blade hits also cost 5 Ichor; reversion has 1.5 seconds of vulnerable recovery.
 Crescent and Riposte each spend 8 Ichor from the remaining Blade timer; they require
 more than 8 remaining so the ability has time to exist before reversion.
+
+Testing cheats are off by default. Opening F1 only pauses; using any cheat marks a
+test session and prevents saving to both disk and the normal Continue snapshot.
+Switching cheats off does not resume saving. To restore normal play: close the menu,
+press T while paused, then C at the title. New Game explicitly replaces the save.
+God mode blocks damage, not the Blade timer; one-shot still requires a connected hit
+and cannot pass through walls. Boss travel/reset respawns encounters in the test
+session only. See [50-scenario admin audit](docs/testing/admin-audit.md).
 
 Blob passively regenerates 0.6 Ichor/sec. Absorption takes 0.8 seconds standing
 still and grants 5 Ichor plus half a health pip; boss summons cannot heal you.
