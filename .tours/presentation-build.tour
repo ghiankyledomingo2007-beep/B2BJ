@@ -1,0 +1,74 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "B2BJ Ruined Outpost presentation tour",
+  "description": "A short walkthrough of the game flow and the files to explain during the presentation.",
+  "ref": "main",
+  "steps": [
+    {
+      "file": "src/B2BJ.java",
+      "line": 223,
+      "title": "Desktop entry point",
+      "description": "The Swing window starts here. It loads the saved Outpost campaign, creates the game panel, starts music, and requests keyboard focus."
+    },
+    {
+      "file": "src/B2BJ.java",
+      "line": 453,
+      "title": "Frame rendering path",
+      "description": "Each frame draws the world first, then the player HUD, Outpost HUD, map, overlay, and testing status. This is the main presentation rendering path."
+    },
+    {
+      "file": "src/RuinedOutpostGame.java",
+      "line": 145,
+      "title": "Campaign setup",
+      "description": "Campaign reset creates the Outpost story and player, then enters the only authored campaign area."
+    },
+    {
+      "file": "src/CampaignWorld.java",
+      "line": 5,
+      "title": "One authored region",
+      "description": "The presentation build exposes one area: Ruined Outpost. This file owns its landmarks, enemy placements, routes, and large world obstacles."
+    },
+    {
+      "file": "src/RuinedOutpostMap.java",
+      "line": 4,
+      "title": "Terrain and collision",
+      "description": "The map defines Outpost rooms, gates, terrain masks, props, banks, and collision queries used by movement and attacks."
+    },
+    {
+      "file": "src/RuinedOutpostGame.java",
+      "line": 461,
+      "title": "Simulation loop",
+      "description": "Updates are split into small fixed steps so movement, attacks, projectiles, enemy contact, and collision remain stable across frame timing."
+    },
+    {
+      "file": "src/Player.java",
+      "line": 1,
+      "title": "Player forms",
+      "description": "Player owns Blob movement, Ichor, health, dash, Blade transformation, recovery, and upgrade effects."
+    },
+    {
+      "file": "src/Guardian.java",
+      "line": 1,
+      "title": "Outpost Warden",
+      "description": "Guardian owns the Warden state machine, telegraphs, attacks, recovery windows, and boss damage rules."
+    },
+    {
+      "file": "src/CampaignRenderer.java",
+      "line": 356,
+      "title": "HUD and presentation feedback",
+      "description": "The campaign renderer turns game state into readable objectives, health, Ichor, boss status, camp actions, notices, and the Outpost map."
+    },
+    {
+      "file": "src/CampaignSave.java",
+      "line": 108,
+      "title": "Checkpoint persistence",
+      "description": "Progress is written through a temporary file and atomic replacement, so a failed write does not silently destroy the existing checkpoint."
+    },
+    {
+      "file": "FILE_MAP.md",
+      "line": 1,
+      "title": "Presentation reference",
+      "description": "Use this quick map when explaining what each source folder, asset folder, script, and test group does."
+    }
+  ]
+}

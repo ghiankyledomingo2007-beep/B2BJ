@@ -28,6 +28,25 @@ If Java starts but the desktop never displays its window, use
 This bypasses native window decorations; use Alt+F4 to quit. The game stays
 1280×720, and its on-screen Menu still provides Settings and Admin / Testing.
 
+## How the code works
+
+`B2BJ.java` starts the Swing window and runs one update step about every 16 ms.
+It sends keyboard and mouse input into `RuinedOutpostGame`, then paints the current
+state through `CampaignRenderer`.
+
+`RuinedOutpostGame` owns the live state: player, enemies, Warden, projectiles,
+Ichor drops, checkpoints and story phase. `RuinedOutpostMap` supplies the Outpost
+terrain and collision checks. `Player`, `Wisp`, `Guardian`, `WaterProjectile` and
+`EnemyProjectile` each own their movement or combat rules.
+
+The renderer reads that state and draws the world, actors, effects, HUD and map.
+Images are loaded from `assets/`; the build copies those assets into the JAR, so no
+runtime dependency download is needed. `CampaignSave` writes the checkpoint to
+`~/.b2bj/campaign.properties` with an atomic file replacement.
+
+For a guided walkthrough, open the CodeTour file in `.tours/`. For a quick file
+reference, use [FILE_MAP.md](FILE_MAP.md).
+
 The [Rainoray / Ruined Outpost pass](docs/testing/rainoray-rework/README.md)
 documents the masked human, new skills, whole-body feeding, arena fissures,
 pixel-art warnings, credit ledger and verification limits.
@@ -123,7 +142,7 @@ it is not evidence of a complete unassisted playthrough.
 
 The art reports below describe historical outpost-only passes and their then-current test/credit counts.
 The legacy twelve-section outpost constructors remain available to regression tests;
-the desktop launcher now starts the larger campaign instead.
+the desktop launcher starts the focused Ruined Outpost campaign.
 
 See [GCD audit](docs/gcd-alignment-audit.md) for historical findings.
 See the [combat repair report](docs/testing/combat-repair-2026-09-06/README.md) for
@@ -134,12 +153,11 @@ The subsequent [immersion pass](docs/testing/immersion-40/README.md) adds magnet
 animated Ichor, distinct sprite-based hurt/pickup effects, a ranged Spitter and
 the owner's requested larger3× Warden. All34 Java checks pass; this new key's
 40-generation allowance is fully consumed. See its [art review](docs/art-review/immersion-40/README.md).
-The campaign saves checkpoints, permanent boss victories, shards, upgrades and quests
-to `~/.b2bj/campaign.properties` using atomic replacement. Invalid saves are preserved
+The campaign saves the Outpost checkpoint, shards, upgrades and quest progress to
+`~/.b2bj/campaign.properties` using atomic replacement. Invalid saves are preserved
 and reported; N is an explicit new-game overwrite. Enemies respawn after reloading or
-death, but permanent progression stays. Both endings are tested with actual combat
-damage; automated fixtures refill health/Ichor, so this does not establish unassisted
-difficulty, 4–6 hours of content, or release-quality balance. Final animation/art,
+death, but permanent progression stays. Automated fixtures refill health/Ichor, so this
+does not establish unassisted difficulty or release-quality balance. Final animation/art,
 controller support, remappable bindings and longer human playtesting remain.
 
 Windows release workflow is configured but has not been run in this pass.
