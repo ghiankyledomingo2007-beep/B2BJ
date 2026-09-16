@@ -125,12 +125,9 @@ public final class CampaignRenderer {
         canvas.fillOval(hx - 54, hy + 2, 108, 32);
         canvas.setColor(GOLD);
         canvas.drawOval(hx - 42, hy - 2, 84, 28);
-        drawNpc(canvas, hx + 86, hy - 18, game.biome());
-        centered(canvas, CampaignStory.npcName(game.biome()), hx + 86, hy - 94, 14, GOLD);
         centered(canvas, "CAMP", hx, hy + 72, 12, MUTED);
-        portal(canvas, area.exit(), cx, cy, game.biome() == 3 ? "THE RIFT" : "NEXT REGION",
+        portal(canvas, area.exit(), cx, cy, "EAST GATE",
                 !game.guardian().alive() ? GOLD : MUTED);
-        if (game.biome() > 0) portal(canvas, area.returnPortal(), cx, cy, "RETURN", CYAN);
     }
 
     private static void portal(Graphics2D g, CampaignWorld.Point point, int cx, int cy,
@@ -359,7 +356,7 @@ public final class CampaignRenderer {
         panel(g, right, 18, 336, 136);
         text(g, (game.biome() + 1) + " / " + CampaignWorld.AREA_COUNT + "   " + game.campaignArea().name(), right + 14, 40, 14, GOLD);
         text(g, p.bladeForm() ? "BLADE FORM" : "SLIME FORM", right + 14, 61, 12, CYAN);
-        wrapped(g, game.campaignStory().objective(game.biome(), !game.guardian().alive()),
+        wrapped(g, game.guardian().alive() ? "DEFEAT THE OUTPOST WARDEN" : "CROSS THE EASTERN GATE",
                 right + 14, 85, 306, 13, 19, 3, TEXT);
         text(g, "SHARDS " + game.shards(), right + 14, 141, 12, GOLD);
         if (game.bossActive() && game.guardian().alive()) {
@@ -383,7 +380,7 @@ public final class CampaignRenderer {
             panel(g, 352, 94, Math.max(250, width - 726), noticeHeight);
             wrapped(g, game.campaignNotice(), 366, 117, Math.max(222, width - 754), 13, 19, 4, TEXT);
         }
-        if (game.nearCampaignHub() && !game.campaignStory().dialogueOpen()) {
+        if (game.nearCampaignHub()) {
             panel(g, 18, height - 284, 440, 170);
             text(g, "CAMP  E TALK / H REST + SAVE", 32, height - 258, 14, GOLD);
             String[] keys = {"vitality", "capacity", "efficiency", "edge"};
@@ -423,7 +420,7 @@ public final class CampaignRenderer {
         miniMap(g, game, 40, 128, width - 80, height - 200, true);
         text(g, "CYAN: YOU   GOLD: CAMP / MEMORY / CACHE   DIAMOND: BOSS   SQUARE: PASSAGE",
                 44, height - 44, 12, MUTED);
-        text(g, "OPTIONAL: " + game.campaignStory().questObjective(game.biome()), 44, height - 20, 13, GOLD);
+        text(g, "EXPLORE THE OUTPOST / FIND THE EAST GATE", 44, height - 20, 13, GOLD);
     }
 
     private static void miniMap(Graphics2D g, RuinedOutpostGame game, int x, int y, int width, int height,
@@ -469,7 +466,7 @@ public final class CampaignRenderer {
         g.setColor(GOLD);
         g.setStroke(new BasicStroke(2));
         g.drawOval(hx - 7, hy - 7, 14, 14);
-        if (expanded) centered(g, CampaignStory.npcName(game.biome()) + " / CAMP", hx, hy + 33, 11, GOLD);
+        if (expanded) centered(g, "CAMP", hx, hy + 33, 11, GOLD);
         int bx = ox + (int) (area.boss().x() * sx), by = oy + (int) (area.boss().y() * sy);
         g.setColor(game.guardian().alive() ? DANGER : GOLD);
         g.drawPolygon(new int[]{bx, bx + 8, bx, bx - 8}, new int[]{by - 8, by, by + 8, by}, 4);
@@ -487,21 +484,8 @@ public final class CampaignRenderer {
     }
 
     public static void drawOverlay(Graphics2D g, RuinedOutpostGame game, int width, int height) {
-        var story = game.campaignStory();
-        if (story.dialogueOpen() && game.player().alive()) {
-            g.setColor(new Color(4, 8, 14, 130));
-            g.fillRect(0, 0, width, height);
-            panel(g, 100, height - 246, width - 200, 214);
-            text(g, story.dialogueTitle(), 126, height - 212, 19, GOLD);
-            int lineY = height - 178;
-            for (String line : story.dialogueLines()) {
-                lineY = wrapped(g, line, 126, lineY, width - 252, 15, 23, 2, TEXT) + 4;
-            }
-            text(g, "E / ENTER  CONTINUE", width - 346, height - 52, 13, CYAN);
-            return;
-        }
         boolean title = game.story().phase() == OutpostStory.Phase.PROLOGUE;
-        if (!title && game.player().alive() && !game.choosingEnding() && game.campaignEnding() == null && !game.paused())
+        if (!title && game.player().alive() && !game.paused())
             return;
         g.setColor(new Color(5, 9, 17, 228));
         g.fillRect(0, 0, width, height);
@@ -509,7 +493,7 @@ public final class CampaignRenderer {
         if (title) {
             centered(g, "BLOB TO BLADE", width / 2, 174, 38, CYAN);
             centered(g, "ABSORB. TRANSFORM. CONQUER.", width / 2, 211, 15, GOLD);
-            centeredLines(g, CampaignStory.openingLines(), width, 270, 16, 29);
+            centeredLines(g, OutpostStory.openingLines(), width, 270, 16, 29);
             centered(g, "ENTER  NEW JOURNEY", width / 2, height - 193, 18, CYAN);
             centered(g, game.saveAvailable() ? "C  CONTINUE FROM CAMP" : "NO SAVED JOURNEY", width / 2,
                     height - 158, 14, game.saveAvailable() ? GOLD : MUTED);
@@ -517,22 +501,6 @@ public final class CampaignRenderer {
                     width - 368, 14, 24, 2, GOLD);
             centered(g, "WASD MOVE  /  O OPTIONS  /  M SOUND  /  V EFFECTS", width / 2,
                     height - 126, 12, MUTED);
-        } else if (game.campaignEnding() != null) {
-            centered(g, CampaignStory.endingTitle(game.campaignEnding()), width / 2, 177, 27, GOLD);
-            centeredLines(g, CampaignStory.endingLines(game.campaignEnding()), width, 265, 16, 34);
-            centered(g, "THE JOURNEY IS COMPLETE", width / 2, height - 176, 17, CYAN);
-            centered(g, "R  RETURN TO TITLE", width / 2, height - 134, 14, GOLD);
-        } else if (game.choosingEnding()) {
-            centered(g, "THE LAST CHOICE", width / 2, 174, 30, GOLD);
-            centered(g, "The rift is yours to close. The Ichor is yours to keep.", width / 2, 236, 16, TEXT);
-            int cardWidth = (width - 324) / 2;
-            panel(g, 146, 284, cardWidth, 200);
-            panel(g, width / 2 + 16, 284, cardWidth, 200);
-            centered(g, "1  CLOSE THE RIFT", 146 + cardWidth / 2, 326, 20, CYAN);
-            centered(g, "2  KEEP THE CORE", width / 2 + 16 + cardWidth / 2, 326, 20, GOLD);
-            wrapped(g, "Spend the Ichor. End the breach. Remain a slime.", 168, 374, cardWidth - 44, 16, 28, 3, TEXT);
-            wrapped(g, "Reclaim human form. Leave the rift sealed, but still alive.", width / 2 + 38, 374,
-                    cardWidth - 44, 16, 28, 3, TEXT);
         } else if (!game.player().alive()) {
             centered(g, "SCATTERED, NOT FINISHED", width / 2, 194, 29, DANGER);
             centered(g, game.campaignArea().name(), width / 2, 252, 17, GOLD);

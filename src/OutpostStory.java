@@ -106,4 +106,13 @@ public final class OutpostStory {
             default -> new String[0];
         };
     }
+
+    public static String[] openingLines() {
+        return new String[] {
+                "RAINORAY. ANOTHER SHIFT. THEN NOTHING.",
+                "YOU WAKE AS A SLIME AMONG THE FALLEN KNIGHTS.",
+                "THEIR ICHOR OFFERS A BLADE. ITS POWER WILL NOT LAST.",
+                "DEFEAT THE OUTPOST WARDEN AND ESCAPE."
+        };
+    }
 }

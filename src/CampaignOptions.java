@@ -44,7 +44,7 @@ public final class CampaignOptions {
                 Left click: attack            Space: dash
                 Right click: Tide Wave / Ichor Crescent
                 Q: transform                  F: Riposte
-                E: interact     Enter: advance dialogue
+                E: interact     Enter: start / continue
                 Tab: map     Esc: pause     O: options
                 M: mute      V: reduce effects
                 At camp: 1-4 buy upgrades; H save checkpoint

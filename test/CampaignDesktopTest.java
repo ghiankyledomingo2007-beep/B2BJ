@@ -15,10 +15,8 @@ public final class CampaignDesktopTest {
             assert !game.blocked();
             assert game.map().worldWidth()>5000;
             game.player().relocate(game.campaignArea().hub().x(),game.campaignArea().hub().y());
-            game.interact();assert game.campaignStory().dialogueOpen();
             panel.paint(canvas);
-            assert game.blocked();
-            game.interact();panel.paint(canvas);
+            assert !game.blocked();
             assert game.saveCheckpoint();
             assert !game.campaignNotice().isEmpty();
             for(int i=0;i<20;i++)game.update(.5,0,0);

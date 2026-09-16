@@ -14,7 +14,6 @@ public final class UiAuditTest {
             GameAudio.setMuted(true);
             try {
                 List<String> failures = new ArrayList<>();
-                check("dialogue click must not queue an attack", UiAuditTest::dialogueClickDoesNotQueueAttack, failures);
                 check("new journey must discard prior transformation", UiAuditTest::newJourneyClearsVisualState, failures);
                 check("invalid frame duration must not corrupt rendering", UiAuditTest::invalidFrameDoesNotCorruptRendering, failures);
                 check("dying enemies must remain visible until fade completes", UiAuditTest::enemyDeathRemainsVisible, failures);
@@ -25,23 +24,6 @@ public final class UiAuditTest {
             }
         });
         System.out.println("UiAuditTest passed");
-    }
-
-    private static void dialogueClickDoesNotQueueAttack() {
-        B2BJ panel = startedPanel();
-        var game = panel.game();
-        var hub = game.campaignArea().hub();
-        game.player().relocate(hub.x(), hub.y());
-        press(panel, "interact");
-        assert game.campaignStory().dialogueOpen();
-        MouseEvent click = new MouseEvent(panel, MouseEvent.MOUSE_PRESSED, 0, 0,
-                900, 360, 1, false, MouseEvent.BUTTON1);
-        for (var listener : panel.getMouseListeners()) listener.mousePressed(click);
-        press(panel, "interact");
-        assert !game.blocked();
-        panel.step(.01);
-        assert game.waterCharge() < 0 && game.projectiles().isEmpty()
-                : "a mouse press received while dialogue blocked combat started Water Slash after dismissal";
     }
 
     private static void newJourneyClearsVisualState() {

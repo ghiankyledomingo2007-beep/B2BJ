@@ -22,8 +22,7 @@ public final class CampaignSave {
     private static final int MAX_BYTES = 65_536;
 
     public record Progress(int biome, int checkpoint, Set<Integer> clearedBosses,
-            Set<String> unlocks, Map<String, Integer> upgrades, Set<String> questFlags,
-            Set<String> endings, int shards) {
+            Set<String> unlocks, Map<String, Integer> upgrades, int shards) {
         public Progress {
             if (biome < 0 || biome >= CampaignWorld.AREA_COUNT || checkpoint < 0 || checkpoint > 1)
                 throw new IllegalArgumentException("Invalid biome or checkpoint");
@@ -38,14 +37,6 @@ public final class CampaignSave {
             if (biome > clearedBosses.size())
                 throw new IllegalArgumentException("Biome requires previous bosses cleared");
             unlocks = identifiers(unlocks);
-            CampaignStory story = new CampaignStory();
-            story.restoreQuestFlags(questFlags);
-            questFlags = story.questFlags();
-            endings = identifiers(endings);
-            if (!Set.of("CLOSE_RIFT", "HUMAN_FORM").containsAll(endings))
-                throw new IllegalArgumentException("Invalid ending");
-            if (!endings.isEmpty() && clearedBosses.size() != 4)
-                throw new IllegalArgumentException("Ending requires all bosses cleared");
             upgrades = Map.copyOf(upgrades);
             for (var upgrade : upgrades.entrySet()) {
                 int maximum = switch (upgrade.getKey()) {
@@ -59,8 +50,8 @@ public final class CampaignSave {
         }
 
         public Progress(int biome, int checkpoint, Set<Integer> clearedBosses, Set<String> unlocks,
-                Map<String, Integer> upgrades, Set<String> questFlags, Set<String> endings) {
-            this(biome, checkpoint, clearedBosses, unlocks, upgrades, questFlags, endings, 0);
+                Map<String, Integer> upgrades) {
+            this(biome, checkpoint, clearedBosses, unlocks, upgrades, 0);
         }
     }
 
@@ -98,7 +89,6 @@ public final class CampaignSave {
             return Optional.of(new Progress(Integer.parseInt(required(values, "biome")),
                     Integer.parseInt(required(values, "checkpoint")), bosses,
                     tokens(required(values, "unlocks")), upgrades,
-                    tokens(required(values, "questFlags")), tokens(required(values, "endings")),
                     Integer.parseInt(required(values, "shards"))));
         } catch (IllegalArgumentException invalid) {
             throw new IOException("Invalid campaign save: " + invalid.getMessage(), invalid);
@@ -118,8 +108,6 @@ public final class CampaignSave {
         values.setProperty("upgrades", progress.upgrades().entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .map(upgrade -> upgrade.getKey() + ":" + upgrade.getValue()).collect(Collectors.joining(",")));
-        values.setProperty("questFlags", joined(progress.questFlags()));
-        values.setProperty("endings", joined(progress.endings()));
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         values.store(bytes, "Blob to Blade campaign");
         if (bytes.size() > MAX_BYTES) throw new IOException("Campaign save exceeds size limit");

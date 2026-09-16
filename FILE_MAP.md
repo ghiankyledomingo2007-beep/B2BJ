@@ -29,7 +29,7 @@ Ruined Outpost is the current presentation build. Files are grouped by the part 
 ## Persistence and tests
 
 - `src/CampaignSave.java` — atomic checkpoint save/load at `~/.b2bj/campaign.properties`.
-- `src/CampaignStory.java` — Outpost camp dialogue and optional discovery text.
+- `src/OutpostStory.java` — Outpost progression, title text, death and completion.
 - `test/` — assertion based checks for combat, rendering, map safety, input and packaged assets.
 - `build.sh` — Java 17 compilation, test run and packaged JAR creation.
 - `run-game.sh` — verifies, builds and launches the game.

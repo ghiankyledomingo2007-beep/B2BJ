@@ -4,7 +4,7 @@ Java 17 action adventure with a focused **Ruined Outpost presentation build**.
 Rainoray wakes as a cyan slime among fallen knights; their Ichor grants a temporary Blade form.
 
 Ruined Outpost is a continuous 6144×4096 exploration map with twelve named landmarks,
-alternate paths, three optional discoveries, a safe NPC camp and the Outpost Warden.
+alternate paths, optional discoveries, a safe camp and the Outpost Warden.
 Normal encounters do not lock travel.
 
 Existing player/effect art is reused. New world scenery, enemies, bosses and UI
@@ -35,7 +35,7 @@ It sends keyboard and mouse input into `RuinedOutpostGame`, then paints the curr
 state through `CampaignRenderer`.
 
 `RuinedOutpostGame` owns the live state: player, enemies, Warden, projectiles,
-Ichor drops, checkpoints and story phase. `RuinedOutpostMap` supplies the Outpost
+Ichor drops, checkpoints and game phase. `RuinedOutpostMap` supplies the Outpost
 terrain and collision checks. `Player`, `Wisp`, `Guardian`, `WaterProjectile` and
 `EnemyProjectile` each own their movement or combat rules.
 
@@ -64,7 +64,7 @@ pixel-art warnings, credit ledger and verification limits.
 - Space: dash, with brief invulnerability. Blob dash damages enemies.
 - Q: transform at 100 Ichor.
 - E: talk, read discoveries, absorb nearby remains in Blob form, or use the Outpost gate.
-- H at a safe camp: heal, set checkpoint and save. Dialogue: E / Enter to continue.
+- H at a safe camp: heal, set checkpoint and save.
 - 1–4 at camp: buy Vitality, Capacity, Efficiency or Edge with Ichor Shards.
 - Esc: pause. Focus loss pauses and releases held input.
 - T while paused: save progression and return to title. Continue starts at the checkpoint, not mid-combat.
@@ -153,7 +153,7 @@ The subsequent [immersion pass](docs/testing/immersion-40/README.md) adds magnet
 animated Ichor, distinct sprite-based hurt/pickup effects, a ranged Spitter and
 the owner's requested larger3× Warden. All34 Java checks pass; this new key's
 40-generation allowance is fully consumed. See its [art review](docs/art-review/immersion-40/README.md).
-The campaign saves the Outpost checkpoint, shards, upgrades and quest progress to
+The campaign saves the Outpost checkpoint, shards and upgrades to
 `~/.b2bj/campaign.properties` using atomic replacement. Invalid saves are preserved
 and reported; N is an explicit new-game overwrite. Enemies respawn after reloading or
 death, but permanent progression stays. Automated fixtures refill health/Ichor, so this

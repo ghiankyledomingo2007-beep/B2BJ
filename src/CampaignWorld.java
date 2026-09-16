@@ -36,7 +36,7 @@ public final class CampaignWorld {
     private static Area create() {
         var landmarks = new ArrayList<Landmark>();
         for (int i = 0; i < LANDMARK_NAMES.length; i++) landmarks.add(new Landmark(
-                i == 9 ? CampaignStory.memoryName(0) : LANDMARK_NAMES[i], LOCATIONS[i][0], LOCATIONS[i][1], LORE[i], i >= 9));
+                LANDMARK_NAMES[i], LOCATIONS[i][0], LOCATIONS[i][1], LORE[i], i >= 9));
         var enemies = new ArrayList<EnemySpawn>();
         CampaignEnemy.Kind[] kinds = {CampaignEnemy.Kind.OUTPOST_SCOUT, CampaignEnemy.Kind.OUTPOST_SCOUT,
                 CampaignEnemy.Kind.OUTPOST_GUARD, CampaignEnemy.Kind.OUTPOST_SPITTER};

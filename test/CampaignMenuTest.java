@@ -72,10 +72,6 @@ public final class CampaignMenuTest {
         button(menu, "Resume").doClick();
         button(menu, "Return to Title").doClick();
         assert callbacks[0] == 1 && callbacks[1] == 1 : "only explicit menu actions invoke host callbacks";
-        game.campaignStory().talk(0);
-        menu.home();
-        assert button(menu, "Resume").isEnabled() : "menu must close back into pending dialogue";
-        assert !button(menu, "Admin / Testing").isEnabled() : "dialogue must not enable testing mutations";
     }
 
     private static AbstractButton button(Container root, String text) {

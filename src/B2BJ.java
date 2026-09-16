@@ -1759,12 +1759,10 @@ public final class B2BJ extends JPanel {
         });
         String[] tracks={"vitality","capacity","efficiency","edge"};
         for(int i=0;i<tracks.length;i++) {
-            int choice=i;String track=tracks[i];
+            String track=tracks[i];
             bind(KeyEvent.VK_1+i,"upgrade"+i,value->{
                 if(!value)return;
-                if(game.choosingEnding()) {
-                    if(choice<2)game.chooseEnding(CampaignStory.Ending.values()[choice]);
-                } else game.buyUpgrade(track);
+                game.buyUpgrade(track);
             });
         }
         bind(KeyEvent.VK_R,"restart",value->{
