@@ -56,7 +56,7 @@ public final class CampaignMenu extends JPanel {
         content.add(actions, BorderLayout.CENTER);
         JTextArea help = new JTextArea(game.debugSession()
                 ? "Testing changes stay in this session. Return to title and Continue to restore the normal saved journey."
-                : "Settings change audio and effects. Admin / Testing provides protected controls for trying combat, upgrades, and regions.");
+                : "Settings change audio and effects. Admin / Testing provides protected controls for trying Outpost combat and upgrades.");
         help.setEditable(false);
         help.setOpaque(false);
         help.setLineWrap(true);

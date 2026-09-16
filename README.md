@@ -1,20 +1,16 @@
 # B2BJ — Blob to Blade
 
-Java 17 action adventure with a complete **placeholder campaign** across four regions.
+Java 17 action adventure with a focused **Ruined Outpost presentation build**.
 Rainoray wakes as a cyan slime among fallen knights; their Ichor grants a temporary Blade form.
 
-Ruined Outpost, Corrupted Forest, Demon Catacombs and Rift Citadel are each a
-continuous 6144×4096 exploration map with twelve named landmarks, alternate paths,
-three optional discoveries, a safe NPC camp and a boss. Normal encounters do not
-lock travel. Boss victories permanently open the next region; return portals allow
-backtracking. The last boss opens both GCD endings.
+Ruined Outpost is a continuous 6144×4096 exploration map with twelve named landmarks,
+alternate paths, three optional discoveries, a safe NPC camp and the Outpost Warden.
+Normal encounters do not lock travel.
 
 Existing player/effect art is reused. New world scenery, enemies, bosses and UI
 are deliberate code-drawn placeholders; this is not a final-art or fully tuned release.
 No PixelLab calls, generated assets or paid services were used for this campaign build.
-See [campaign build plan](docs/campaign-build-plan.md), [story](docs/campaign-story.md)
-and [quality report](docs/testing/campaign-quality.md).
-Final test evidence and native-window caveat: [campaign verification](docs/testing/campaign.tdd.md).
+See [FILE_MAP.md](FILE_MAP.md) for the presentation guide and file responsibilities.
 
 ## Build and run
 
@@ -48,18 +44,17 @@ pixel-art warnings, credit ledger and verification limits.
 - F: Riposte (Blade), a 0.3-second one-hit parry with a 6-second cooldown.
 - Space: dash, with brief invulnerability. Blob dash damages enemies.
 - Q: transform at 100 Ichor.
-- E: talk, read discoveries, absorb nearby remains in Blob form, or use region portals.
+- E: talk, read discoveries, absorb nearby remains in Blob form, or use the Outpost gate.
 - H at a safe camp: heal, set checkpoint and save. Dialogue: E / Enter to continue.
 - 1–4 at camp: buy Vitality, Capacity, Efficiency or Edge with Ichor Shards.
 - Esc: pause. Focus loss pauses and releases held input.
 - T while paused: save progression and return to title. Continue starts at the checkpoint, not mid-combat.
-- Hold Tab: region/kingdom map; stays live during play or remains paused from pause.
+- Hold Tab: Outpost map; stays live during play or remains paused from pause.
 - M: sound toggle. V: reduced screen effects.
 - O: audio/effects options (master, SFX, music volumes). Settings last for this session.
 - F1: testing menu during a live campaign. God mode, one-shot attacks, refill/cooldown reset,
   +25 shards, travel to any camp/boss and reset the current region's encounters.
-- R: reform at current region checkpoint after death; return to title after an ending.
-- 1 / 2 at the final rift: choose the ending, only after all four bosses are defeated.
+- R: reform at the Outpost checkpoint after death; return to title after completion.
 
 Health pips and segmented gold Ichor are top-left; Blade timer top-centre; form
 top-right; local terrain minimap bottom-right. Blade lasts 12 seconds before

@@ -357,7 +357,7 @@ public final class CampaignRenderer {
         Player p = game.player();
         int right = width - 354;
         panel(g, right, 18, 336, 136);
-        text(g, (game.biome() + 1) + " / 4   " + game.campaignArea().name(), right + 14, 40, 14, GOLD);
+        text(g, (game.biome() + 1) + " / " + CampaignWorld.AREA_COUNT + "   " + game.campaignArea().name(), right + 14, 40, 14, GOLD);
         text(g, p.bladeForm() ? "BLADE FORM" : "SLIME FORM", right + 14, 61, 12, CYAN);
         wrapped(g, game.campaignStory().objective(game.biome(), !game.guardian().alive()),
                 right + 14, 85, 306, 13, 19, 3, TEXT);
@@ -411,8 +411,8 @@ public final class CampaignRenderer {
         text(g, "THE FALLEN KINGDOM", 40, 43, 24, GOLD);
         text(g, "RELEASE TAB TO CLOSE  /  " + (game.paused() ? "PAUSED" : "WORLD REMAINS LIVE"),
                 width - 476, 40, 12, MUTED);
-        int tabWidth = (width - 92) / 4;
-        for (int biome = 0; biome < 4; biome++) {
+        int tabWidth = width - 80;
+        for (int biome = 0; biome < CampaignWorld.AREA_COUNT; biome++) {
             int x = 40 + biome * (tabWidth + 4);
             panel(g, x, 61, tabWidth, 53);
             text(g, CampaignWorld.area(biome).name(), x + 10, 82, 13,

@@ -48,7 +48,7 @@ public final class CampaignOptions {
                 Tab: map     Esc: pause     O: options
                 M: mute      V: reduce effects
                 At camp: 1-4 buy upgrades; H save checkpoint
-                At the rift: 1 / 2 choose ending
+                Outpost Warden: reach the east gatehouse after victory
                 Title: Enter new game; C continue; N replace save
                 After death: R reform at checkpoint
                 Paused: T return to title

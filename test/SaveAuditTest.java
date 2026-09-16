@@ -33,8 +33,8 @@ public final class SaveAuditTest {
         game.player().collectIchor(100);
         assert game.transform() && game.attack(1, 0);
         game.update(.12, 0, 0);
-        assert !boss.alive() && game.biomeUnlocked(1) && game.map().gateOpen()
-                : "a full wallet must not interrupt boss victory or opening its route";
+        assert !boss.alive() && game.map().gateOpen()
+                : "a full wallet must not interrupt boss victory or opening the Outpost gate";
         var progress = CampaignSave.load(save).orElseThrow();
         assert progress.shards() == 100_000 && progress.clearedBosses().equals(Set.of(0));
     }

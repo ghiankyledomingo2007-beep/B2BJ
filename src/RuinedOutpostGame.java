@@ -284,7 +284,7 @@ public final class RuinedOutpostGame {
     public boolean choosingEnding() { return choosingEnding; }
     public boolean saveAvailable() { return savedProgress!=null; }
     public int campaignCheckpoint() { return campaignCheckpoint; }
-    public boolean biomeUnlocked(int id) { return id>=0&&id<4&&(id==0||clearedBosses.contains(id-1)); }
+    public boolean biomeUnlocked(int id) { return id>=0&&id<CampaignWorld.AREA_COUNT&&id==0; }
 
     private void grantShards(int amount) { shards=(int)Math.min(100_000L,(long)shards+amount); }
 

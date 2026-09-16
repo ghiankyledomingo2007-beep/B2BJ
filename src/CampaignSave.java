@@ -25,11 +25,11 @@ public final class CampaignSave {
             Set<String> unlocks, Map<String, Integer> upgrades, Set<String> questFlags,
             Set<String> endings, int shards) {
         public Progress {
-            if (biome < 0 || biome > 3 || checkpoint < 0 || checkpoint > 1)
+            if (biome < 0 || biome >= CampaignWorld.AREA_COUNT || checkpoint < 0 || checkpoint > 1)
                 throw new IllegalArgumentException("Invalid biome or checkpoint");
             if (shards < 0 || shards > 100_000) throw new IllegalArgumentException("Invalid shard count");
             clearedBosses = Set.copyOf(clearedBosses);
-            if (clearedBosses.stream().anyMatch(boss -> boss < 0 || boss > 3))
+            if (clearedBosses.stream().anyMatch(boss -> boss < 0 || boss >= CampaignWorld.AREA_COUNT))
                 throw new IllegalArgumentException("Invalid cleared boss");
             for (int boss = 0; boss < clearedBosses.size(); boss++) {
                 if (!clearedBosses.contains(boss))
