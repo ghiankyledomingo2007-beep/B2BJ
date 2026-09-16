@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 6fd3b1e2-2274-489e-b97b-cc6104c6fd69\njob_id: 6fd3b1e2-2274-489e-b97b-cc6104c6fd69\naction: One powerful downward sword chop towards the right. The raised straight steel katana swings down as a single rigid piece, held firmly in both hands. Bend both knees and turn shoulders into the blow. Blade ends straight pointing diagonally down to the right. Hold the follow-through. Keep side profile facing right throughout. Hair and coat follow the body. No energy effects, no trails.\nframes: 8\nsize: 80x80px\ntransparent: True\nseed: 92404\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"6fd3b1e2-2274-489e-b97b-cc6104c6fd69\")"
+      }
+    ],
+    "isError": false
+  }
+}

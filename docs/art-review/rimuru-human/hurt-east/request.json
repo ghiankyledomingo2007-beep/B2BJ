@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91812,
+    "action": "A brief readable hit reaction: shoulder and upper torso recoil backward, knees buckle slightly, hair swings forward from inertia, recover footing and straighten into the same ready stance. Katana stays in right hand, no weapon dropping, no death or collapse, no red flash because game renders it. Feet remain near their starting ground contacts. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+  }
+}

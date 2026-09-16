@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 71ce7d9d-a6f3-4c3b-b291-496ac8b02796\njob_id: 71ce7d9d-a6f3-4c3b-b291-496ac8b02796\naction: A fast athletic running loop seen from behind. Strong alternating arm pumps from shoulder to hip, elbows bending. Legs cycle through long airborne strides and low bent-knee landings. The sword hand pumps with the other arm, tilting the rigid blade along with the forearm. Hips and shoulders counter rotate noticeably. Long hair bounces and streams back, coat tails flap freely. Remain facing away throughout. One seamless left-right stride cycle, in place, fixed camera.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92510\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"71ce7d9d-a6f3-4c3b-b291-496ac8b02796\")"
+      }
+    ],
+    "isError": false
+  }
+}

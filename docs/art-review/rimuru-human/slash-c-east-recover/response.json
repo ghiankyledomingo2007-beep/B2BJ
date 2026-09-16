@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 90e07654-3a38-4ba8-b3b7-807f767ae8d9\njob_id: 90e07654-3a38-4ba8-b3b7-807f767ae8d9\naction: Recover from the sword chop into the supplied idle stance. Lower the single straight steel blade smoothly at the side, elbows relax, knees straighten, hair and coat settle. Facing right. No new attack, no sword trails.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92512\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"90e07654-3a38-4ba8-b3b7-807f767ae8d9\")"
+      }
+    ],
+    "isError": false
+  }
+}

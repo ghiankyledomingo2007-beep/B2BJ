@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 92c227f2-89ce-465e-ab11-d03fe8aca82c\njob_id: 92c227f2-89ce-465e-ab11-d03fe8aca82c\naction: Recover naturally from the completed sword strike into the supplied relaxed ready stance. The hands lower the single straight steel katana smoothly; blade stays rigid and connected to grip. Hips settle, hair and coat follow and settle. Keep planted feet grounded. No additional attack, no trails, fixed camera.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92503\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"92c227f2-89ce-465e-ab11-d03fe8aca82c\")"
+      }
+    ],
+    "isError": false
+  }
+}

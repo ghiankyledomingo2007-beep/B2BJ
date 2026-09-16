@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/slash-c-north-open/frame-12.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/north.png",
+    "action": "Smoothly lower the straight sword from the extended upward slash into the supplied resting stance. Hair and blue coat settle after the torso. Feet stay grounded, back view, fixed camera. No extra attack or sword trail.",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 92511
+  },
+  "allocation": "batch-3"
+}

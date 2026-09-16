@@ -1,0 +1,92 @@
+[
+  {
+    "name": "run-east-v2",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/run-east/frame-10.png",
+      "action": "Seamless energetic full-body running cycle, facing east, screen right profile throughout. Begin already in the supplied airborne stride and complete exactly one left-right running cycle before returning to that identical stride. Two distinct foot contacts and pushes, heels flick upward, knees lift through passing poses, hips twist opposite shoulders. IMPORTANT: both arms visibly swing through natural arcs, including the sword arm. Right shoulder leads, elbow bends and extends, wrist follows with a delayed swing; the rigid katana changes angle with the wrist and remains firmly attached to the grip, never frozen in space or rubbery. Free arm counter-swings. Long hair and coat tails flow behind the body's rise and fall with delayed settling. Character stays centered; fixed camera, no turning, no translation across canvas. Entire blade stays visible without clipping. Clear leg separation and body weight, no idle pause, no planted sword arm.",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92210,
+      "last_frame_path": "docs/art-review/rimuru-human/run-east/frame-10.png"
+    }
+  },
+  {
+    "name": "run-north-v2",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/run-north/frame-4.png",
+      "action": "Seamless energetic full-body running cycle, facing north, away from camera, back view throughout. Begin already in the supplied airborne stride and complete exactly one left-right running cycle before returning to that identical stride. Two distinct foot contacts and pushes, heels flick upward, knees lift through passing poses, hips twist opposite shoulders. IMPORTANT: both arms visibly swing through natural arcs, including the sword arm. Right shoulder leads, elbow bends and extends, wrist follows with a delayed swing; the rigid katana changes angle with the wrist and remains firmly attached to the grip, never frozen in space or rubbery. Free arm counter-swings. Long hair and coat tails flow behind the body's rise and fall with delayed settling. Character stays centered; fixed camera, no turning, no translation across canvas. Entire blade stays visible without clipping. Clear leg separation and body weight, no idle pause, no planted sword arm.",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92204,
+      "last_frame_path": "docs/art-review/rimuru-human/run-north/frame-4.png"
+    }
+  },
+  {
+    "name": "slash-a-east-open",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92302,
+      "action": "Rimuru performs a forceful diagonal downward sword cut across the front. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face east, screen-right profile throughout. Stay centered, no background, keep sword inside canvas."
+    }
+  },
+  {
+    "name": "slash-b-east-open",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92303,
+      "action": "Rimuru performs a reverse upward diagonal sword cut, following through above shoulder. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face east, screen-right profile throughout. Stay centered, no background, keep sword inside canvas."
+    }
+  },
+  {
+    "name": "slash-c-east-open",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92304,
+      "action": "Rimuru performs a heavy two-handed overhead sword chop. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face east, screen-right profile throughout. Stay centered, no background, keep sword inside canvas."
+    }
+  },
+  {
+    "name": "slash-a-north-open",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92305,
+      "action": "Rimuru performs a forceful diagonal downward sword cut across the front. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face north, true back view away from camera throughout. Stay centered, no background, keep sword inside canvas."
+    }
+  },
+  {
+    "name": "slash-b-north-open",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92306,
+      "action": "Rimuru performs a reverse upward diagonal sword cut, following through above shoulder. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face north, true back view away from camera throughout. Stay centered, no background, keep sword inside canvas."
+    }
+  },
+  {
+    "name": "slash-c-north-open",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 92307,
+      "action": "Rimuru performs a heavy two-handed overhead sword chop. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face north, true back view away from camera throughout. Stay centered, no background, keep sword inside canvas."
+    }
+  }
+]

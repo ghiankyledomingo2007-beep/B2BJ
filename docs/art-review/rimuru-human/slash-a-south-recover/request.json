@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/slash-a-south-open/frame-15.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/south.png",
+    "action": "Smoothly recover from the horizontal sword cut into the supplied relaxed ready stance. Keep the straight steel blade rigid and attached to the hilt as the wrist lowers it. Settle knees, torso, hair and coat. Facing down towards camera throughout. No new strike, no effects.",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 92514
+  },
+  "allocation": "batch-3"
+}

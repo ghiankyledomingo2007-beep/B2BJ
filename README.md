@@ -7,9 +7,10 @@ Ruined Outpost is a continuous 6144×4096 exploration map with twelve named land
 alternate paths, optional discoveries, a safe camp and the Outpost Warden.
 Normal encounters do not lock travel.
 
-Existing player/effect art is reused. New world scenery, enemies, bosses and UI
-are deliberate code-drawn placeholders; this is not a final-art or fully tuned release.
-No PixelLab calls, generated assets or paid services were used for this campaign build.
+Player sprites and selected props/effects use reviewed PixelLab art. Remaining
+world scenery, enemies, bosses and UI include code-drawn placeholders; this is not
+a final-art or fully tuned release. Generation happens during development;
+the game runs offline without API keys or paid services.
 See [FILE_MAP.md](FILE_MAP.md) for the presentation guide and file responsibilities.
 
 ## Build and run
@@ -47,9 +48,10 @@ runtime dependency download is needed. `CampaignSave` writes the checkpoint to
 For a guided walkthrough, open the CodeTour file in `.tours/`. For a quick file
 reference, use [FILE_MAP.md](FILE_MAP.md).
 
-The [Rainoray / Ruined Outpost pass](docs/testing/rainoray-rework/README.md)
-documents the masked human, new skills, whole-body feeding, arena fissures,
-pixel-art warnings, credit ledger and verification limits.
+The [human form rebuild](docs/art-review/rimuru-human/README.md) documents the
+current Rimuru reference, animation choices and generation budget. The older
+[Rainoray pass](docs/testing/rainoray-rework/README.md) records the previous masked
+design, skills, whole-body feeding and arena fissures.
 
 ## Controls
 
@@ -63,7 +65,7 @@ pixel-art warnings, credit ledger and verification limits.
 - F: Riposte (Blade), a 0.3-second one-hit parry with a 6-second cooldown.
 - Space: dash, with brief invulnerability. Blob dash damages enemies.
 - Q: transform at 100 Ichor.
-- E: talk, read discoveries, absorb nearby remains in Blob form, or use the Outpost gate.
+- E: read discoveries, absorb nearby remains in Blob form, or use the Outpost gate.
 - H at a safe camp: heal, set checkpoint and save.
 - 1–4 at camp: buy Vitality, Capacity, Efficiency or Edge with Ichor Shards.
 - Esc: pause. Focus loss pauses and releases held input.

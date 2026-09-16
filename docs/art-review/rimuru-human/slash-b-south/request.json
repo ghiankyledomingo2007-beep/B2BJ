@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91805,
+    "action": "One distinct reverse diagonal katana cut rising across the body, a follow-up combo strike: first two generated poses anticipate low, third generated pose reaches the extended upward contact cut, then controlled follow-through and recovery to ready stance. Weight shifts between planted feet, hair and split coat follow the twist. No turning away from facing, no full spin, no huge sword glow. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+  }
+}

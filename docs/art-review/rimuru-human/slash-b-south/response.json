@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 6a43033e-8b76-4916-bb20-e4bde1029c5a\njob_id: 6a43033e-8b76-4916-bb20-e4bde1029c5a\naction: One distinct reverse diagonal katana cut rising across the body, a follow-up combo strike: first two generated poses anticipate low, third generated pose reaches the extended upward contact cut, then controlled follow-through and recovery to ready stance. Weight shifts between planted feet, hair and split coat follow the twist. No turning away from facing, no full spin, no huge sword glow. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 91805\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"6a43033e-8b76-4916-bb20-e4bde1029c5a\")"
+      }
+    ],
+    "isError": false
+  }
+}

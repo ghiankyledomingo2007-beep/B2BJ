@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 67b1f0d5-7000-4ebe-a0df-a4a7d445907f\njob_id: 67b1f0d5-7000-4ebe-a0df-a4a7d445907f\naction: A single strong horizontal sword slash. Bend knees, twist torso and draw the straight sword back. Swing the rigid steel sword across the body with a firm grip and rotate shoulders into the cut. Finish with sword extended to the other side, knees bent. Hair and coat lag naturally behind. Facing down towards camera, centered, full body. No energy, no trails.\nframes: 16\nsize: 80x80px\ntransparent: True\nseed: 92402\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"67b1f0d5-7000-4ebe-a0df-a4a7d445907f\")"
+      }
+    ],
+    "isError": false
+  }
+}

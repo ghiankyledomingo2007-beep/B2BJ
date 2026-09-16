@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 7182fe2f-1df1-4077-b9ab-c90808ad6570\njob_id: 7182fe2f-1df1-4077-b9ab-c90808ad6570\naction: The exact Rimuru human melts smoothly into the cyan slime at the last frame: knees soften, blue coat and hair liquefy into cyan gel, sword dissolves into a few tiny gold droplets, the whole body compresses into the rounded slime. Face north (back facing camera; never show a face) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 91926\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"7182fe2f-1df1-4077-b9ab-c90808ad6570\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "action": "Seamless relaxed ready idle, facing the camera south throughout. Very subtle breathing in chest and shoulders, occasional gentle blink, long hair tips and scarf ends sway softly then settle. Both feet remain planted at identical ground coordinates. Sword stays securely in the right hand with small relaxed wrist motion, low and to the side. No walking, no turning, no jumping, no camera motion or scale change. Ends exactly in the starting pose.",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91701
+  }
+}

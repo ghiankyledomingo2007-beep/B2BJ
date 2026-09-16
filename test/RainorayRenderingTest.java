@@ -4,7 +4,7 @@ public final class RainorayRenderingTest {
                 : "Rainoray must share one native canvas across all actions";
         var blade=new BladeAnimation();
         blade.update(0,0,false,.5);
-        assert blade.frame()>0 : "masked human needs a breathing idle, not a frozen run frame";
+        assert blade.frame()>0 : "human form needs a breathing idle, not a frozen run frame";
         blade.face(1,0);blade.slash();blade.update(0,0,false,.29);
         assert blade.frame()==7 : "side slash must reach all eight authored poses";
         assert blade.sheetPath().endsWith("rainoray_slash.png");

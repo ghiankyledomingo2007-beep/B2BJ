@@ -1,0 +1,15 @@
+{
+  "tool": "create_image_pixflux",
+  "arguments": {
+    "description": "Rimuru Tempest from the anime That Time I Got Reincarnated as a Slime, recognizable accurate anime human form adapted into an exceptionally clean 80x80 pixel-art action RPG playable sprite. One full body character, front facing south, slightly elevated low top-down game camera. Androgynous slender youthful swordsman, pale skin, large bright golden yellow eyes, long straight pale silver sky-blue hair reaching shoulders with distinct parted bangs. No hood, no mask, no helmet. Black navy open knee-length coat with white ivory fluffy fur collar, black tunic, broad waist belt, charcoal gray trousers and black boots. Coat divided into two narrow tails so both legs remain clearly visible. Slim steel katana held naturally low at right side, silver blade pointing diagonally downward, small gold tsuba, dark hilt. Relaxed battle-ready idle stance, both boots planted, arms separate from torso. Natural elegant anatomy about 3.5 heads tall, not big-headed chibi. Body about 52 pixels tall, centered at x40, head y20, soles y72, all sword pixels inside canvas, generous transparent margins. Limited harmonious colors, dark indigo single-pixel outlines, crisp deliberate clusters, sharp anime face and hair highlights. No ground, no shadow, no glow, no text.",
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "view": "low top-down",
+    "direction": "south",
+    "outline": "single color outline",
+    "shading": "detailed shading",
+    "detail": "highly detailed",
+    "seed": 91626
+  }
+}

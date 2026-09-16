@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91800,
+    "action": "A single fast low sword dash: compress knees briefly, lean torso forward and drive off one foot, extend into a low gliding lunge, hair and coat tails stream backward, then plant leading foot and recover. Sword stays firmly gripped at the side. Show clear anticipation, burst and landing. Keep actor centered in the frame; movement across the map is handled by the game. No teleport, no duplicate body, no particle trails. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+  }
+}

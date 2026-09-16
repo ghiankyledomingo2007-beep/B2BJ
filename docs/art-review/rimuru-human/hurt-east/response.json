@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: c7f3f5fe-148e-4934-8d67-6086295d3655\njob_id: c7f3f5fe-148e-4934-8d67-6086295d3655\naction: A brief readable hit reaction: shoulder and upper torso recoil backward, knees buckle slightly, hair swings forward from inertia, recover footing and straighten into the same ready stance. Katana stays in right hand, no weapon dropping, no death or collapse, no red flash because game renders it. Feet remain near their starting ground contacts. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 91812\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"c7f3f5fe-148e-4934-8d67-6086295d3655\")"
+      }
+    ],
+    "isError": false
+  }
+}

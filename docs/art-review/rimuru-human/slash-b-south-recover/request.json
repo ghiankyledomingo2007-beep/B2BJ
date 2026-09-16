@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/slash-b-south-open/frame-16.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/south.png",
+    "action": "Return smoothly from the raised sword follow-through to the supplied idle stance. Lower the rigid steel sword firmly held by the grip, settle hips and knees. Hair and blue coat trail behind the settling body. No extra attack, no effects. Facing toward camera.",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 92513
+  },
+  "allocation": "batch-3"
+}

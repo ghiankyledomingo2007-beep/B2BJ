@@ -5,8 +5,9 @@ public final class RainorayArtTest {
             crescentCoreMatchesDamageDiameter();
         } catch(Exception error) { throw new AssertionError("Render fixture failed",error); }
         if(args.length>0&&args[0].equals("--runtime-only"))return;
-        for(String action:new String[]{"idle","run","dash","cast","guard","hurt"})
+        for(String action:new String[]{"idle","dash","cast","guard","hurt"})
             CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,8,3,8);
+        CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,BladeAnimation.RUN_FRAMES,3,BladeAnimation.RUN_FRAMES);
         CombatArtTest.check("assets/characters/blade/rainoray_slash.png",80,80,8,9,8);
         CombatArtTest.check("assets/characters/slime/slime_engulf.png",80,80,16,3,16);
         for(String name:new String[]{"transform_in","transform_out"})

@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/south.png",
+    "action": "A single strong horizontal sword slash. Bend knees, twist torso and draw the straight sword back. Swing the rigid steel sword across the body with a firm grip and rotate shoulders into the cut. Finish with sword extended to the other side, knees bent. Hair and coat lag naturally behind. Facing down towards camera, centered, full body. No energy, no trails.",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92402
+  },
+  "allocation": "batch-2"
+}

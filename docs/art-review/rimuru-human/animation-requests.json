@@ -1,0 +1,395 @@
+[
+  {
+    "name": "idle-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "action": "Seamless relaxed ready idle, facing south toward the camera throughout. Very subtle breathing in chest and shoulders, occasional gentle blink, long hair tips and scarf ends sway softly then settle. Both feet remain planted at identical ground coordinates. Sword stays securely in the right hand with small relaxed wrist motion, low and to the side. No walking, no turning, no jumping, no camera motion or scale change. Ends exactly in the starting pose.",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91711
+    }
+  },
+  {
+    "name": "run-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "action": "A smooth energetic seamless RUN CYCLE in place facing south toward the camera, retaining this exact character design, proportions and scale. Immediately enter a proper running stride: alternate left and right foot forward contacts, knees lift and fold through passing poses, push off into short airborne phases. Hips and torso bob subtly with each stride. Hair and split coat tails trail and rebound with secondary motion. Free arm swings opposite the legs; sword hand carries the blade low diagonally behind beside the hip, never drawing it up to the head. Keep feet and both legs readable, keep character centered in the same location. No turning, no sideways walking, no skating, no levitation, no background or dust. Show two complete alternating steps at a constant rhythm and end on a pose continuing into the first stride.",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91721
+    }
+  },
+  {
+    "name": "idle-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "action": "Seamless relaxed ready idle, facing east toward screen-right in strict side profile throughout. Very subtle breathing in chest and shoulders, occasional gentle blink, long hair tips and scarf ends sway softly then settle. Both feet remain planted at identical ground coordinates. Sword stays securely in the right hand with small relaxed wrist motion, low and to the side. No walking, no turning, no jumping, no camera motion or scale change. Ends exactly in the starting pose.",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91713
+    }
+  },
+  {
+    "name": "run-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "action": "Seamless energetic full-body running cycle, facing east (screen right) in side profile throughout. Quickly enter an energetic running stride and complete one full left-right cycle, without slowing back to idle. Two distinct foot contacts and pushes, heels flick upward, knees lift through passing poses, hips twist opposite shoulders. IMPORTANT: both arms visibly swing through natural arcs, including the sword arm. Right shoulder leads, elbow bends and extends, wrist follows with a delayed swing; the rigid katana changes angle with the wrist and remains firmly attached to the grip, never frozen in space or rubbery. Free arm counter-swings. Long hair and coat tails flow behind the body's rise and fall with delayed settling. Character stays centered; fixed camera, no turning, no translation across canvas. Entire blade stays visible without clipping. Clear leg separation and body weight, no idle pause, no planted sword arm.",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91723
+    }
+  },
+  {
+    "name": "idle-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "action": "Seamless relaxed ready idle, facing north away from the camera in true back view, no face visible throughout. Very subtle breathing in chest and shoulders, occasional gentle blink, long hair tips and scarf ends sway softly then settle. Both feet remain planted at identical ground coordinates. Sword stays securely in the right hand with small relaxed wrist motion, low and to the side. No walking, no turning, no jumping, no camera motion or scale change. Ends exactly in the starting pose.",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91715
+    }
+  },
+  {
+    "name": "run-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "action": "A smooth energetic seamless RUN CYCLE in place facing north away from the camera in true back view, no face visible, retaining this exact character design, proportions and scale. Immediately enter a proper running stride: alternate left and right foot forward contacts, knees lift and fold through passing poses, push off into short airborne phases. Hips and torso bob subtly with each stride. Hair and split coat tails trail and rebound with secondary motion. Free arm swings opposite the legs; sword hand carries the blade low diagonally behind beside the hip, never drawing it up to the head. Keep feet and both legs readable, keep character centered in the same location. No turning, no sideways walking, no skating, no levitation, no background or dust. Show two complete alternating steps at a constant rhythm and end on a pose continuing into the first stride.",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91725
+    }
+  },
+  {
+    "name": "dash-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91800,
+      "action": "A single fast low sword dash: compress knees briefly, lean torso forward and drive off one foot, extend into a low gliding lunge, hair and coat tails stream backward, then plant leading foot and recover. Sword stays firmly gripped at the side. Show clear anticipation, burst and landing. Keep actor centered in the frame; movement across the map is handled by the game. No teleport, no duplicate body, no particle trails. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "cast-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91801,
+      "action": "A single focused magic sword cast: plant feet, draw free left hand toward chest in anticipation, thrust palm forward decisively at the third generated pose, hair and coat recoil, then bring the arm back to idle. Keep katana gripped in right hand with recognizable blade. No huge magic cloud covering body; magic is rendered separately. Keep feet on the ground and keep the same facing. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "guard-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91802,
+      "action": "A controlled defensive katana parry: lift sword across torso into a firm braced guard with knees slightly bent, catch an invisible strike, small recoil and brief cloth/hair follow-through, recover to the same idle ready stance. No changing facing, no dodge or spin, no magic effect covering the body. Both feet stay grounded. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "hurt-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91803,
+      "action": "A brief readable hit reaction: shoulder and upper torso recoil backward, knees buckle slightly, hair swings forward from inertia, recover footing and straighten into the same ready stance. Katana stays in right hand, no weapon dropping, no death or collapse, no red flash because game renders it. Feet remain near their starting ground contacts. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-a-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91804,
+      "action": "One fast diagonal katana cut with clean readable poses: first two generated poses wind sword back, third generated pose is the fully extended contact cut downward across the front, then follow through and return to original ready stance. Clear torso twist and opposing arm motion, trailing hair and coat, a planted stance with one short forward step. No spins, no duplicate sword, no large energy trail. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-b-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91805,
+      "action": "One distinct reverse diagonal katana cut rising across the body, a follow-up combo strike: first two generated poses anticipate low, third generated pose reaches the extended upward contact cut, then controlled follow-through and recovery to ready stance. Weight shifts between planted feet, hair and split coat follow the twist. No turning away from facing, no full spin, no huge sword glow. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-c-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91806,
+      "action": "One powerful two-handed downward katana finisher: first two generated poses raise the katana overhead with both hands and bend knees, third generated pose brings the blade down through the extended contact arc, then settle low and return to the exact ready stance. Strong clear silhouette, visible wrists holding one blade, deliberate weight transfer, coat and hair settle after impact. No body flipping, no duplicate limbs, no magic effect obscuring body. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "transform-in-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91907,
+      "action": "Cyan slime transforms smoothly into the exact Rimuru human at the last frame: body stretches upward in liquid ribbons, feet and blue coat form, pale blue hair and gold eyes resolve, ivory scarf and sword appear last. Face south (toward camera) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+    }
+  },
+  {
+    "name": "transform-out-south",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91908,
+      "action": "The exact Rimuru human melts smoothly into the cyan slime at the last frame: knees soften, blue coat and hair liquefy into cyan gel, sword dissolves into a few tiny gold droplets, the whole body compresses into the rounded slime. Face south (toward camera) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+    }
+  },
+  {
+    "name": "dash-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91809,
+      "action": "A single fast low sword dash: compress knees briefly, lean torso forward and drive off one foot, extend into a low gliding lunge, hair and coat tails stream backward, then plant leading foot and recover. Sword stays firmly gripped at the side. Show clear anticipation, burst and landing. Keep actor centered in the frame; movement across the map is handled by the game. No teleport, no duplicate body, no particle trails. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "cast-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91810,
+      "action": "A single focused magic sword cast: plant feet, draw free left hand toward chest in anticipation, thrust palm forward decisively at the third generated pose, hair and coat recoil, then bring the arm back to idle. Keep katana gripped in right hand with recognizable blade. No huge magic cloud covering body; magic is rendered separately. Keep feet on the ground and keep the same facing. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "guard-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91811,
+      "action": "A controlled defensive katana parry: lift sword across torso into a firm braced guard with knees slightly bent, catch an invisible strike, small recoil and brief cloth/hair follow-through, recover to the same idle ready stance. No changing facing, no dodge or spin, no magic effect covering the body. Both feet stay grounded. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "hurt-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91812,
+      "action": "A brief readable hit reaction: shoulder and upper torso recoil backward, knees buckle slightly, hair swings forward from inertia, recover footing and straighten into the same ready stance. Katana stays in right hand, no weapon dropping, no death or collapse, no red flash because game renders it. Feet remain near their starting ground contacts. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-a-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91813,
+      "action": "One fast diagonal katana cut with clean readable poses: first two generated poses wind sword back, third generated pose is the fully extended contact cut downward across the front, then follow through and return to original ready stance. Clear torso twist and opposing arm motion, trailing hair and coat, a planted stance with one short forward step. No spins, no duplicate sword, no large energy trail. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-b-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91814,
+      "action": "One distinct reverse diagonal katana cut rising across the body, a follow-up combo strike: first two generated poses anticipate low, third generated pose reaches the extended upward contact cut, then controlled follow-through and recovery to ready stance. Weight shifts between planted feet, hair and split coat follow the twist. No turning away from facing, no full spin, no huge sword glow. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-c-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91815,
+      "action": "One powerful two-handed downward katana finisher: first two generated poses raise the katana overhead with both hands and bend knees, third generated pose brings the blade down through the extended contact arc, then settle low and return to the exact ready stance. Strong clear silhouette, visible wrists holding one blade, deliberate weight transfer, coat and hair settle after impact. No body flipping, no duplicate limbs, no magic effect obscuring body. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "transform-in-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/east.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91916,
+      "action": "Cyan slime transforms smoothly into the exact Rimuru human at the last frame: body stretches upward in liquid ribbons, feet and blue coat form, pale blue hair and gold eyes resolve, ivory scarf and sword appear last. Face east (screen right profile) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+    }
+  },
+  {
+    "name": "transform-out-east",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/east.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/east.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91917,
+      "action": "The exact Rimuru human melts smoothly into the cyan slime at the last frame: knees soften, blue coat and hair liquefy into cyan gel, sword dissolves into a few tiny gold droplets, the whole body compresses into the rounded slime. Face east (screen right profile) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+    }
+  },
+  {
+    "name": "dash-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91818,
+      "action": "A single fast low sword dash: compress knees briefly, lean torso forward and drive off one foot, extend into a low gliding lunge, hair and coat tails stream backward, then plant leading foot and recover. Sword stays firmly gripped at the side. Show clear anticipation, burst and landing. Keep actor centered in the frame; movement across the map is handled by the game. No teleport, no duplicate body, no particle trails. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "cast-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91819,
+      "action": "A single focused magic sword cast: plant feet, draw free left hand toward chest in anticipation, thrust palm forward decisively at the third generated pose, hair and coat recoil, then bring the arm back to idle. Keep katana gripped in right hand with recognizable blade. No huge magic cloud covering body; magic is rendered separately. Keep feet on the ground and keep the same facing. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "guard-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91820,
+      "action": "A controlled defensive katana parry: lift sword across torso into a firm braced guard with knees slightly bent, catch an invisible strike, small recoil and brief cloth/hair follow-through, recover to the same idle ready stance. No changing facing, no dodge or spin, no magic effect covering the body. Both feet stay grounded. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "hurt-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91821,
+      "action": "A brief readable hit reaction: shoulder and upper torso recoil backward, knees buckle slightly, hair swings forward from inertia, recover footing and straighten into the same ready stance. Katana stays in right hand, no weapon dropping, no death or collapse, no red flash because game renders it. Feet remain near their starting ground contacts. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-a-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91822,
+      "action": "One fast diagonal katana cut with clean readable poses: first two generated poses wind sword back, third generated pose is the fully extended contact cut downward across the front, then follow through and return to original ready stance. Clear torso twist and opposing arm motion, trailing hair and coat, a planted stance with one short forward step. No spins, no duplicate sword, no large energy trail. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-b-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91823,
+      "action": "One distinct reverse diagonal katana cut rising across the body, a follow-up combo strike: first two generated poses anticipate low, third generated pose reaches the extended upward contact cut, then controlled follow-through and recovery to ready stance. Weight shifts between planted feet, hair and split coat follow the twist. No turning away from facing, no full spin, no huge sword glow. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "slash-c-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 8,
+      "no_background": true,
+      "seed": 91824,
+      "action": "One powerful two-handed downward katana finisher: first two generated poses raise the katana overhead with both hands and bend knees, third generated pose brings the blade down through the extended contact arc, then settle low and return to the exact ready stance. Strong clear silhouette, visible wrists holding one blade, deliberate weight transfer, coat and hair settle after impact. No body flipping, no duplicate limbs, no magic effect obscuring body. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+    }
+  },
+  {
+    "name": "transform-in-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+      "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91925,
+      "action": "Cyan slime transforms smoothly into the exact Rimuru human at the last frame: body stretches upward in liquid ribbons, feet and blue coat form, pale blue hair and gold eyes resolve, ivory scarf and sword appear last. Face north (back facing camera; never show a face) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+    }
+  },
+  {
+    "name": "transform-out-north",
+    "tool": "animate_image",
+    "args": {
+      "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+      "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+      "frame_count": 16,
+      "no_background": true,
+      "seed": 91926,
+      "action": "The exact Rimuru human melts smoothly into the cyan slime at the last frame: knees soften, blue coat and hair liquefy into cyan gel, sword dissolves into a few tiny gold droplets, the whole body compresses into the rounded slime. Face north (back facing camera; never show a face) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+    }
+  }
+]

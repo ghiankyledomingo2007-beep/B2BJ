@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/run-north/frame-4.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/run-north/frame-4.png",
+    "action": "A fast athletic running loop seen from behind. Strong alternating arm pumps from shoulder to hip, elbows bending. Legs cycle through long airborne strides and low bent-knee landings. The sword hand pumps with the other arm, tilting the rigid blade along with the forearm. Hips and shoulders counter rotate noticeably. Long hair bounces and streams back, coat tails flap freely. Remain facing away throughout. One seamless left-right stride cycle, in place, fixed camera.",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92510
+  },
+  "allocation": "batch-3"
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/south.png",
+    "action": "One quick reverse diagonal sword slash from low right to high left. Lean back and load the hips, swing the straight steel sword upward, follow through with shoulder and hips. One solid rigid steel blade held firmly at hilt, no trails. Finish in raised sword stance. Long hair and blue coat swing behind the movement. Facing down toward camera throughout, full body centered.",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92403
+  },
+  "allocation": "batch-2"
+}

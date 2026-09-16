@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 301bf94f-97f2-425a-abc2-763811fc839b\njob_id: 301bf94f-97f2-425a-abc2-763811fc839b\ndescription: Rimuru Tempest from the anime That Time I Got Reincarnated as a Slime, clean pixel art HUD portrait matching the early anime blue winter-coat human form. A close cropped head and shoulders portrait centered on transparent canvas, pale silver-blue layered straight hair with long bangs, large bright golden yellow eyes, pale skin, gentle confident expression, ivory beige fluffy fur scarf collar and rich cobalt blue coat shoulders. No hood or mask. Recognizable androgynous anime face, crisp dark indigo one-pixel outlines, carefully grouped pixel highlights, limited palette. Face large and readable in a 64x64 game UI portrait, complete hair silhouette with four pixel clear margin, no frame, no text, no background.\nsize: 64x64px\ntransparent: True\nforced_palette: yes\nseed: 91629\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"301bf94f-97f2-425a-abc2-763811fc839b\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/slash-east-straight/frame-6.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/east.png",
+    "action": "Recover from the sword chop into the supplied idle stance. Lower the single straight steel blade smoothly at the side, elbows relax, knees straighten, hair and coat settle. Facing right. No new attack, no sword trails.",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 92512
+  },
+  "allocation": "batch-3"
+}

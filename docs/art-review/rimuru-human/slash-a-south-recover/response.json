@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: c846fc2f-e346-4a48-88ac-99850c9714b8\njob_id: c846fc2f-e346-4a48-88ac-99850c9714b8\naction: Smoothly recover from the horizontal sword cut into the supplied relaxed ready stance. Keep the straight steel blade rigid and attached to the hilt as the wrist lowers it. Settle knees, torso, hair and coat. Facing down towards camera throughout. No new strike, no effects.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92514\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"c846fc2f-e346-4a48-88ac-99850c9714b8\")"
+      }
+    ],
+    "isError": false
+  }
+}

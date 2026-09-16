@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: c48fec36-00c8-4b11-87d8-033a0300ccbb\njob_id: c48fec36-00c8-4b11-87d8-033a0300ccbb\naction: Seamless energetic full-body running cycle, facing east, screen right profile throughout. Begin already in the supplied airborne stride and complete exactly one left-right running cycle before returning to that identical stride. Two distinct foot contacts and pushes, heels flick upward, knees lift through passing poses, hips twist opposite shoulders. IMPORTANT: both arms visibly swing through natural arcs, including the sword arm. Right shoulder leads, elbow bends and extends, wrist follows with a delayed swing; the rigid katana changes angle with the wrist and remains firmly attached to the grip, never frozen in space or rubbery. Free arm counter-swings. Long hair and coat tails flow behind the body's rise and fall with delayed settling. Character stays centered; fixed camera, no turning, no translation across canvas. Entire blade stays visible without clipping. Clear leg separation and body weight, no idle pause, no planted sword arm.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92210\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"c48fec36-00c8-4b11-87d8-033a0300ccbb\")"
+      }
+    ],
+    "isError": false
+  }
+}

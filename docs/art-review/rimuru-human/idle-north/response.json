@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 8f772325-7e5d-4dc3-b7c2-c43711dae36b\njob_id: 8f772325-7e5d-4dc3-b7c2-c43711dae36b\naction: Seamless relaxed ready idle, facing north away from the camera in true back view, no face visible throughout. Very subtle breathing in chest and shoulders, occasional gentle blink, long hair tips and scarf ends sway softly then settle. Both feet remain planted at identical ground coordinates. Sword stays securely in the right hand with small relaxed wrist motion, low and to the side. No walking, no turning, no jumping, no camera motion or scale change. Ends exactly in the starting pose.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 91715\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"8f772325-7e5d-4dc3-b7c2-c43711dae36b\")"
+      }
+    ],
+    "isError": false
+  }
+}

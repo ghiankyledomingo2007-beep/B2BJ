@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 85afc8e3-2dc7-4872-85d5-09d1a5e79a11\njob_id: 85afc8e3-2dc7-4872-85d5-09d1a5e79a11\naction: A smooth energetic seamless RUN CYCLE in place facing south toward camera, retaining this exact character design, proportions and scale. Immediately enter a proper running stride: alternate left and right foot forward contacts, knees lift and fold through passing poses, push off into short airborne phases. Hips and torso bob subtly with each stride. Hair and split coat tails trail and rebound with secondary motion. Free arm swings opposite the legs; sword hand carries the blade low diagonally behind beside the hip, never drawing it up to the head. Keep feet and both legs readable, keep character centered in the same location. No turning, no sideways walking, no skating, no levitation, no background or dust. Show two complete alternating steps at a constant rhythm and end on a pose continuing into the first stride.\nframes: 16\nsize: 80x80px\ntransparent: True\nseed: 91702\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"85afc8e3-2dc7-4872-85d5-09d1a5e79a11\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91804,
+    "action": "One fast diagonal katana cut with clean readable poses: first two generated poses wind sword back, third generated pose is the fully extended contact cut downward across the front, then follow through and return to original ready stance. Clear torso twist and opposing arm motion, trailing hair and coat, a planted stance with one short forward step. No spins, no duplicate sword, no large energy trail. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: a8fd31e7-0cbc-4a85-89b8-e1ba3a0cea24\njob_id: a8fd31e7-0cbc-4a85-89b8-e1ba3a0cea24\naction: Rimuru performs a heavy two-handed overhead sword chop. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face north, true back view away from camera throughout. Stay centered, no background, keep sword inside canvas.\nframes: 16\nsize: 80x80px\ntransparent: True\nseed: 92307\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"a8fd31e7-0cbc-4a85-89b8-e1ba3a0cea24\")"
+      }
+    ],
+    "isError": false
+  }
+}

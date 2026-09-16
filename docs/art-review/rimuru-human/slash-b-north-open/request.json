@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92306,
+    "action": "Rimuru performs a reverse upward diagonal sword cut, following through above shoulder. Full-body attack: step into the strike, hips turn first then shoulders and arms, accelerate a single katana through a wide readable arc, follow through and recover. Keep the blade rigid and connected to the gripping hand throughout, preserve sword length. Hair and coat lag behind torso. Clear anticipation, decisive extended strike and recovery. Face north, true back view away from camera throughout. Stay centered, no background, keep sword inside canvas."
+  },
+  "allocation": "batch-2"
+}

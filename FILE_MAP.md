@@ -43,6 +43,24 @@ Ruined Outpost is the current presentation build. Files are grouped by the part 
 - `assets/tilesets/ruined_outpost/` — Wang terrain tiles and banks.
 - `assets/ui/` — HUD icons and frames.
 
+## Explaining the human animation
+
+1. `B2BJ.step()` reads movement/actions and updates `BladeAnimation` with elapsed time.
+2. `BladeAnimation.java` chooses idle, run, dash, slash, cast, guard or hurt. It remembers
+   which way the player faces and selects a picture from that action's sprite sheet.
+3. `B2BJ.drawBlade()` draws the chosen 80×80 picture at 2× size. Sheet rows mean
+   south, east and north; west uses a mirrored east picture. The run has 16 pictures;
+   idle and other actions have eight. Hair and clothing motion are drawn into the pictures.
+4. `B2BJ.sideAttackFrame()` places the contact picture at the exact combat windup time.
+   `RuinedOutpostGame` still decides whether the hit connects and how much damage it does.
+5. `TransformationAnimation.java` advances the 16-picture slime/human transition.
+
+`assets/characters/blade/rainoray_*.png` holds the human pictures,
+`assets/effects/transform_*.png` holds transformations, and `assets/ui/blade.png`
+is the portrait. `tools/pack-rimuru.sh` joins reviewed source pictures into these sheets;
+it is a development tool, not part of the running game. See
+`docs/art-review/rimuru-human/README.md` for sources, review and timing.
+
 ## Presentation flow
 
 1. Run `./run-game.sh`.

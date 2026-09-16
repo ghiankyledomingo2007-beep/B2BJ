@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/slash-b-east-open/frame-4.png",
+    "action": "One powerful downward sword chop towards the right. The raised straight steel katana swings down as a single rigid piece, held firmly in both hands. Bend both knees and turn shoulders into the blow. Blade ends straight pointing diagonally down to the right. Hold the follow-through. Keep side profile facing right throughout. Hair and coat follow the body. No energy effects, no trails.",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 92404
+  },
+  "allocation": "batch-2"
+}

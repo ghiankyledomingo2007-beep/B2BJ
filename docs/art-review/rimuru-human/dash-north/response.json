@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 701ada3e-fdf2-4fa0-ba7e-3dd46c607219\njob_id: 701ada3e-fdf2-4fa0-ba7e-3dd46c607219\naction: A single fast low sword dash: compress knees briefly, lean torso forward and drive off one foot, extend into a low gliding lunge, hair and coat tails stream backward, then plant leading foot and recover. Sword stays firmly gripped at the side. Show clear anticipation, burst and landing. Keep actor centered in the frame; movement across the map is handled by the game. No teleport, no duplicate body, no particle trails. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 91818\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"701ada3e-fdf2-4fa0-ba7e-3dd46c607219\")"
+      }
+    ],
+    "isError": false
+  }
+}

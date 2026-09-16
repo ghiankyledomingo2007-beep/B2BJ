@@ -1,0 +1,12 @@
+{
+  "tool": "animate_character",
+  "arguments": {
+    "character_id": "56db8063-52de-4182-8baa-c1afdb62a0f7",
+    "template_animation_id": "running-8-frames",
+    "directions": [
+      "south"
+    ],
+    "mode": "template",
+    "animation_name": "run-template-study"
+  }
+}

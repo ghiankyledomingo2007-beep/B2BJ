@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "credits: $0.00\ngenerations_remaining: 11\ngenerations_used: 29\ngenerations_total: 40\nsubscription: trial"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "tool": "get_character",
+  "arguments": {
+    "character_id": "56db8063-52de-4182-8baa-c1afdb62a0f7",
+    "include_preview": false
+  }
+}

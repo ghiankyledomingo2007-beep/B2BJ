@@ -1,0 +1,14 @@
+{
+  "tool": "animate_character",
+  "arguments": {
+    "character_id": "56db8063-52de-4182-8baa-c1afdb62a0f7",
+    "action_description": "Powerful katana slash. Wind up overhead, step forward and cut down in a broad forceful arc, swing through, recover. Hips lead shoulders, shoulders lead sword arm, blade stays gripped. Hair and coat whip after torso. Face south throughout.",
+    "directions": [
+      "south"
+    ],
+    "mode": "v3",
+    "frame_count": 16,
+    "animation_name": "slash-body-study",
+    "keep_first_frame": false
+  }
+}

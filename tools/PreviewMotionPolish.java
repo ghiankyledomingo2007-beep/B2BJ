@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 /** Staged native-scale render evidence, never a GUI or a claim of an unassisted playthrough. */
 public final class PreviewMotionPolish {
-    private static final Path OUT=Path.of("docs/testing/motion-polish");
+    private static final Path OUT=Path.of(System.getProperty("b2bj.previewDir","docs/testing/motion-polish"));
     private static final int[][] DIRECTIONS={{0,1},{1,0},{0,-1},{-1,0},{1,-1},{-1,1}};
     private static final String[] NAMES={"south","east","north","west","north-east","south-west"};
     private static int screenshots;
@@ -39,14 +39,14 @@ public final class PreviewMotionPolish {
             key(panel,keys[d],true);panel.step(.001);
             var animation=(BladeAnimation)get(panel,"bladeAnimation");
             var crops=new ArrayList<BufferedImage>();var labels=new ArrayList<String>();
-            for(int pose=0;pose<8;pose++) {
+            for(int pose=0;pose<BladeAnimation.RUN_FRAMES;pose++) {
                 for(int tick=0;tick<100&&animation.frame()!=pose;tick++)panel.step(.005);
                 if(animation.action()!=BladeAnimation.Action.RUN||animation.frame()!=pose)
                     throw new IllegalStateException("Missing real run pose "+NAMES[d]+" "+pose);
                 var image=save(panel,"run-"+NAMES[d]+"-"+pose);
                 crops.add(crop(image,screenX(panel, panel.game().player().x()),screenY(panel,panel.game().player().y()),320,240));
                 labels.add(NAMES[d]+" run "+pose+" / row "+animation.row());
-                if(pose<7)advance(panel,.075);
+                if(pose<BladeAnimation.RUN_FRAMES-1)advance(panel,.036);
             }
             key(panel,keys[d],false);contact("run-"+NAMES[d]+"-contact",crops,labels,4);
         }

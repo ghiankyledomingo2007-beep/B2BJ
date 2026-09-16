@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91819,
+    "action": "A single focused magic sword cast: plant feet, draw free left hand toward chest in anticipation, thrust palm forward decisively at the third generated pose, hair and coat recoil, then bring the arm back to idle. Keep katana gripped in right hand with recognizable blade. No huge magic cloud covering body; magic is rendered separately. Keep feet on the ground and keep the same facing. Facing north (back facing camera; never show a face) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+  },
+  "allocation": "batch-1"
+}

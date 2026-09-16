@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-0.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 91907,
+    "action": "Cyan slime transforms smoothly into the exact Rimuru human at the last frame: body stretches upward in liquid ribbons, feet and blue coat form, pale blue hair and gold eyes resolve, ivory scarf and sword appear last. Face south (toward camera) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+  }
+}

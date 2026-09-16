@@ -12,7 +12,9 @@ public final class BladeAnimation {
     public static final int RENDER_WIDTH = CELL_WIDTH * 2;
     public static final int RENDER_HEIGHT = CELL_HEIGHT * 2;
 
-    private static final double RUN_FPS = 14.0;
+    public static final int RUN_FRAMES = 16;
+    // Twice the poses at twice the frame rate preserves the original stride duration.
+    private static final double RUN_FPS = 28.0;
     private static final double SLASH_DURATION = 0.3;
     private static final double SLASH_FPS = 8.0 / SLASH_DURATION;
 
@@ -68,7 +70,7 @@ public final class BladeAnimation {
     public int frame() {
         return switch (action) {
             case IDLE -> (int)(time*6)%8;
-            case RUN -> (int) (time * RUN_FPS) % 8;
+            case RUN -> (int) (time * RUN_FPS) % RUN_FRAMES;
             case DASH -> Math.min(7,(int)(time*8/Player.DASH_DURATION));
             case SLASH -> Math.min(7, (int) (time * SLASH_FPS));
             case CAST, GUARD, HURT -> Math.min(7,(int)(time*8/duration));

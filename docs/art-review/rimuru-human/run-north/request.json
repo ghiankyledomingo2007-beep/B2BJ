@@ -1,0 +1,10 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+    "action": "A smooth energetic seamless RUN CYCLE in place facing north away from the camera in true back view, no face visible, retaining this exact character design, proportions and scale. Immediately enter a proper running stride: alternate left and right foot forward contacts, knees lift and fold through passing poses, push off into short airborne phases. Hips and torso bob subtly with each stride. Hair and split coat tails trail and rebound with secondary motion. Free arm swings opposite the legs; sword hand carries the blade low diagonally behind beside the hip, never drawing it up to the head. Keep feet and both legs readable, keep character centered in the same location. No turning, no sideways walking, no skating, no levitation, no background or dust. Show two complete alternating steps at a constant rhythm and end on a pose continuing into the first stride.",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 91725
+  }
+}

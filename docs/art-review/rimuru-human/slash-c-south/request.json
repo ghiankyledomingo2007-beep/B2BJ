@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91806,
+    "action": "One powerful two-handed downward katana finisher: first two generated poses raise the katana overhead with both hands and bend knees, third generated pose brings the blade down through the extended contact arc, then settle low and return to the exact ready stance. Strong clear silhouette, visible wrists holding one blade, deliberate weight transfer, coat and hair settle after impact. No body flipping, no duplicate limbs, no magic effect obscuring body. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: b66e392b-5f58-4992-a2d3-451287e577ab\njob_id: b66e392b-5f58-4992-a2d3-451287e577ab\ndescription: The exact same Rimuru Tempest pixel art human character from input, strict right-facing east profile, same pale blue long hair, blue anime coat, fur scarf collar, proportions, palette and crisp pixel style. Fix the combat-ready weapon silhouette ONLY: extend his right forearm slightly forward at waist level, hand firmly grips a long slender silver katana with small golden guard, blade points diagonally down and forward toward the lower right. Clearly separate the blade from his blue coat and boots so it is visible in side view. Face and both toes point right. No second sword sticking up out of the back. Keep both feet planted at y72, head near y8, centered body x40 and all blade pixels inside 80x80 canvas. Transparent background, no ground shadow.\nsize: 80x80px\ntransparent: True\ninit_image: yes (strength 280)\nseed: 91710\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"b66e392b-5f58-4992-a2d3-451287e577ab\")"
+      }
+    ],
+    "isError": false
+  }
+}

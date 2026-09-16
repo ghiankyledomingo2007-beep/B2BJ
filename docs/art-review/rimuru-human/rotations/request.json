@@ -1,0 +1,14 @@
+{
+  "tool": "create_character",
+  "arguments": {
+    "name": "B2BJ Rimuru human \u2014 blue anime coat",
+    "description": "Rimuru Tempest anime human form, same exact reference sprite and native pixel scale in all eight views. Long pale sky blue hair and gold eyes, blue split winter coat, ivory fur scarf collar, dark trousers and blue boots, slim silver katana carried low in right hand. Keep feet ground line consistent. North must be a true back view showing hair and back of coat without a face. East is a true right-facing profile. Preserve recognizable outfit, body proportions, palette and low top-down game camera.",
+    "size": 80,
+    "view": "low top-down",
+    "mode": "v3",
+    "n_directions": 8,
+    "reference_image_path": "docs/art-review/rimuru-human/hero-b/download.png",
+    "outline": "single color outline",
+    "detail": "high detail"
+  }
+}

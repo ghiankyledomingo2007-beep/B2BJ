@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: f3f44dd7-5d80-4a52-9297-1f0957ca8fb6\njob_id: f3f44dd7-5d80-4a52-9297-1f0957ca8fb6\naction: One quick reverse diagonal sword slash from low right to high left. Lean back and load the hips, swing the straight steel sword upward, follow through with shoulder and hips. One solid rigid steel blade held firmly at hilt, no trails. Finish in raised sword stance. Long hair and blue coat swing behind the movement. Facing down toward camera throughout, full body centered.\nframes: 16\nsize: 80x80px\ntransparent: True\nseed: 92403\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"f3f44dd7-5d80-4a52-9297-1f0957ca8fb6\")"
+      }
+    ],
+    "isError": false
+  }
+}

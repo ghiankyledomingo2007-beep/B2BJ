@@ -7,8 +7,10 @@ public final class MotionPolishRenderingTest {
         GameAudio.setMuted(true);
         String check=args.length==0?"all":args[0];
         if(check.equals("all")||check.equals("cadence")) {
-            var run=new BladeAnimation();run.update(1,0,false,0);run.update(1,0,false,.5);
-            assert run.frame()==7 : "running cadence must reach pose7 in half a second";
+            var run=new BladeAnimation();run.update(1,0,false,0);run.update(1,0,false,.55);
+            assert run.frame()==15 : "running must reach the second half of the sixteen-pose cycle";
+            run.update(1,0,false,.03);
+            assert run.frame()==0 : "running must loop after the last pose";
             run.update(0,0,false,.01);assert run.action()==BladeAnimation.Action.IDLE&&run.frame()==0;
         }
         if(check.equals("all")||check.equals("engulf")) {
@@ -22,9 +24,12 @@ public final class MotionPolishRenderingTest {
         }
         if(check.equals("all")||check.equals("carry")) {
             var run=B2BJ.loadImage("assets/characters/blade/rainoray_run.png");
-            for(int row=0;row<3;row++)for(int frame=0;frame<8;frame++)
-                assert bladeRaised(run.getSubimage(frame*80,row*80,80,80))
-                        : "run keeps blade tip above hood throughout the loop: row "+row+" frame "+frame;
+            CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,16,3,16);
+            for(int row=0;row<3;row++)for(int frame=0;frame<16;frame++) {
+                var box=bounds(run.getSubimage(frame*80,row*80,80,80));
+                assert box[0]>0&&box[1]>0&&box[2]<79&&box[3]<79
+                        : "running body, hair and katana must not clip: row "+row+" frame "+frame;
+            }
         }
         if(check.equals("all")||check.equals("carry")||check.equals("carry-candidates")) {
             for(String candidate:new String[]{"sprint-cycle-south","sprint-locked-east","sprint-cycle-north",

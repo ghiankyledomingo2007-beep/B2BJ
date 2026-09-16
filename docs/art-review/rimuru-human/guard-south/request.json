@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "last_frame_path": "docs/art-review/rimuru-human/anchors/south.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 91802,
+    "action": "A controlled defensive katana parry: lift sword across torso into a firm braced guard with knees slightly bent, catch an invisible strike, small recoil and brief cloth/hair follow-through, recover to the same idle ready stance. No changing facing, no dodge or spin, no magic effect covering the body. Both feet stay grounded. Facing south (toward camera) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background."
+  }
+}

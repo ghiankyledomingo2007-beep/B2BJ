@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 
 /** Deliberately staged render review; not a live-playthrough claim. Never opens a window. */
 public final class PreviewRainoray {
-    private static final Path OUT=Path.of("docs/testing/rainoray-pass");
+    private static final Path OUT=Path.of(System.getProperty("b2bj.previewDir","docs/testing/rainoray-pass"));
     public static void main(String[] args)throws Exception {
         Files.createDirectories(OUT);GameAudio.setMuted(true);
         if(args.length>0&&args[0].equals("--engulf-only")) { engulfScenes();return; }

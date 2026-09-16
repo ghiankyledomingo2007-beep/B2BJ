@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: ad39f200-37d4-4769-925b-836a1f3aad2e\njob_id: ad39f200-37d4-4769-925b-836a1f3aad2e\naction: Powerful sword slash attack. Rimuru raises the katana overhead with both hands, twists his hips and shoulders, steps into a forceful downward diagonal cut, swings fully through and recovers. Big readable full-body motion. The steel blade is rigid and attached to both hands, not floating. Hair and coat whip behind the torso. Face south toward camera, stay centered within canvas.\nframes: 16\nsize: 80x80px\ntransparent: True\nseed: 92101\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"ad39f200-37d4-4769-925b-836a1f3aad2e\")"
+      }
+    ],
+    "isError": false
+  }
+}

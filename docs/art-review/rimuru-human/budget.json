@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-09-16T07:59:21.044339+00:00",
+  "allocations": [
+    {
+      "allocation": "batch-1",
+      "generations_remaining": 0,
+      "generations_used": 41,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-2",
+      "generations_remaining": 11,
+      "generations_used": 29,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-3",
+      "generations_remaining": 34,
+      "generations_used": 6,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-4",
+      "generations_remaining": 40,
+      "generations_used": 0,
+      "generations_total": 40
+    }
+  ],
+  "remaining_total": 85
+}

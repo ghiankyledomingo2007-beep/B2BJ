@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/run-north/frame-4.png",
+    "action": "Seamless energetic full-body running cycle, facing north, away from camera, back view throughout. Begin already in the supplied airborne stride and complete exactly one left-right running cycle before returning to that identical stride. Two distinct foot contacts and pushes, heels flick upward, knees lift through passing poses, hips twist opposite shoulders. IMPORTANT: both arms visibly swing through natural arcs, including the sword arm. Right shoulder leads, elbow bends and extends, wrist follows with a delayed swing; the rigid katana changes angle with the wrist and remains firmly attached to the grip, never frozen in space or rubbery. Free arm counter-swings. Long hair and coat tails flow behind the body's rise and fall with delayed settling. Character stays centered; fixed camera, no turning, no translation across canvas. Entire blade stays visible without clipping. Clear leg separation and body weight, no idle pause, no planted sword arm.",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92204,
+    "last_frame_path": "docs/art-review/rimuru-human/run-north/frame-4.png"
+  },
+  "allocation": "batch-2"
+}

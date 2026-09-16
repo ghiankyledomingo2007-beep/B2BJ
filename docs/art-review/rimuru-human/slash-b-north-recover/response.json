@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 0a38d66f-279c-4a28-8949-1e2caf3e432f\njob_id: 0a38d66f-279c-4a28-8949-1e2caf3e432f\naction: Smoothly lower the straight sword from the extended upward slash into the supplied resting stance. Hair and blue coat settle after the torso. Feet stay grounded, back view, fixed camera. No extra attack or sword trail.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92511\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"0a38d66f-279c-4a28-8949-1e2caf3e432f\")"
+      }
+    ],
+    "isError": false
+  }
+}

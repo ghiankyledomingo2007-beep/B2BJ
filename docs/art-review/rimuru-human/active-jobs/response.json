@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "3 jobs:\nad39f200-37d4-4769-925b-836a1f3aad2e processing 21%, eta ~246s (animation, 1m5s old)\n635e7ce9-df5f-43af-b00a-d223ac57e4d9 processing 40%, eta ~172s (animation, 1m55s old)\n701ada3e-fdf2-4fa0-ba7e-3dd46c607219 processing 40%, eta ~188s (animation, 2m5s old)\nhint: cancel_job(job_id=\"...\") to release a stuck job's concurrency slot"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/slash-a-east-open/frame-6.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/east.png",
+    "action": "Recover naturally from the completed sword strike into the supplied relaxed ready stance. The hands lower the single straight steel katana smoothly; blade stays rigid and connected to grip. Hips settle, hair and coat follow and settle. Keep planted feet grounded. No additional attack, no trails, fixed camera.",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 92501
+  },
+  "allocation": "batch-2"
+}

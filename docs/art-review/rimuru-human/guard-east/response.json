@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 34663870-3a63-45f4-b522-99b7b80c324c\njob_id: 34663870-3a63-45f4-b522-99b7b80c324c\naction: A controlled defensive katana parry: lift sword across torso into a firm braced guard with knees slightly bent, catch an invisible strike, small recoil and brief cloth/hair follow-through, recover to the same idle ready stance. No changing facing, no dodge or spin, no magic effect covering the body. Both feet stay grounded. Facing east (screen right profile) throughout. Preserve the exact input character, body size, pixel palette and foot baseline. Full body, sword and hair remain within canvas. Fixed camera, transparent background.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 91811\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"34663870-3a63-45f4-b522-99b7b80c324c\")"
+      }
+    ],
+    "isError": false
+  }
+}

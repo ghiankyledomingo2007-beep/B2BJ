@@ -1,0 +1,13 @@
+{
+  "tool": "animate_image_pixminimax",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/east.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/east.png",
+    "description": "One powerful sword attack towards screen right: bend knees and draw the rigid steel sword back, step into a quick straight downward slash, then smoothly return to the starting stance. Firm two-handed grip. The steel blade stays straight, solid and attached to the hands. Side profile throughout. Torso rotation, hair and coat follow through. No energy effects, no sword trails. Fixed camera, character centered.",
+    "direction": "east",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92401
+  },
+  "allocation": "batch-3"
+}

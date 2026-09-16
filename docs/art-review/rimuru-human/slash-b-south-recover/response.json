@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: a4d11ab6-14e4-49a5-ab4c-9515b481ff3c\njob_id: a4d11ab6-14e4-49a5-ab4c-9515b481ff3c\naction: Return smoothly from the raised sword follow-through to the supplied idle stance. Lower the rigid steel sword firmly held by the grip, settle hips and knees. Hair and blue coat trail behind the settling body. No extra attack, no effects. Facing toward camera.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92513\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"a4d11ab6-14e4-49a5-ab4c-9515b481ff3c\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Animate with text (PixMiniMax) is in beta and needs a tier 1 subscription or higher."
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/anchors/north.png",
+    "last_frame_path": "docs/art-review/rainoray-rework/slime-anchors/frame-2.png",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 91926,
+    "action": "The exact Rimuru human melts smoothly into the cyan slime at the last frame: knees soften, blue coat and hair liquefy into cyan gel, sword dissolves into a few tiny gold droplets, the whole body compresses into the rounded slime. Face north (back facing camera; never show a face) throughout. Ground contact remains at row72; fluid continuous silhouette, tiny restrained motes, no background, no flash covering the character, no old hood or mask. Reach exact provided last frame."
+  },
+  "allocation": "batch-1"
+}
