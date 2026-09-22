@@ -63,6 +63,14 @@ public final class CampaignMenuTest {
         button(menu, "Back").doClick();
         button(menu, "Admin / Testing").doClick();
         assert !game.debugSession() : "navigation into Admin must remain read-only";
+        assert !button(menu, "Unlimited Blade form").isSelected();
+        button(menu, "Unlimited Blade form").doClick();
+        assert game.debugUnlimitedBlade() && game.debugSession() && game.player().ichor() == 100;
+        button(menu, "Back").doClick();
+        button(menu, "Admin / Testing").doClick();
+        assert button(menu, "Unlimited Blade form").isSelected() : "reopened panel reflects active cheat";
+        button(menu, "Unlimited Blade form").doClick();
+        assert !game.debugUnlimitedBlade() && game.debugSession() : "disabling never restores saving";
         button(menu, "God mode").doClick();
         assert game.debugGodMode() && game.debugSession();
         button(menu, "Back").doClick();
@@ -102,6 +110,7 @@ public final class CampaignMenuTest {
         button(desktop, "Back").doClick();
         button(desktop, "Admin / Testing").doClick();
         button(desktop, "God mode").doClick();
+        button(desktop, "Unlimited Blade form").doClick();
         capture(desktop, output.resolve("menu-admin.png"));
         button(desktop, "Back").doClick();
         capture(desktop, output.resolve("menu-protected-home.png"));

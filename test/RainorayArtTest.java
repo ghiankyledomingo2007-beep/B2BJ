@@ -5,13 +5,22 @@ public final class RainorayArtTest {
             crescentCoreMatchesDamageDiameter();
         } catch(Exception error) { throw new AssertionError("Render fixture failed",error); }
         if(args.length>0&&args[0].equals("--runtime-only"))return;
-        for(String action:new String[]{"idle","dash","cast","guard","hurt"})
-            CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,8,3,8);
-        CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,BladeAnimation.RUN_FRAMES,3,BladeAnimation.RUN_FRAMES);
-        CombatArtTest.check("assets/characters/blade/rainoray_slash.png",80,80,8,9,8);
+        for(String action:new String[]{"idle","guard","hurt","charge","hold"})
+            CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,8,4,8);
+        // Moves that travel get cells twice the body canvas (the body stays in the middle 80 px).
+        for(String action:new String[]{"dash","cast","counter"})
+            CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",160,160,8,4,8);
+        CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,BladeAnimation.RUN_FRAMES,4,BladeAnimation.RUN_FRAMES);
+        // A completed attack may return to its exact starting ready pose.
+        // Blocks of four facings: combo moves 0-3, then the dash slash.
+        CombatArtTest.check("assets/characters/blade/rainoray_slash.png",160,160,12,20,11);
+        for(String action:new String[]{"start","stop","turn"})
+            CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,4,4,4);
+        // The cleave, then the full-charge spin.
+        CombatArtTest.check("assets/characters/blade/rainoray_cleave.png",160,160,12,8,11);
         CombatArtTest.check("assets/characters/slime/slime_engulf.png",80,80,16,3,16);
         for(String name:new String[]{"transform_in","transform_out"})
-            CombatArtTest.check("assets/effects/"+name+".png",80,80,16,3,16);
+            CombatArtTest.check("assets/effects/"+name+".png",80,80,16,4,16);
         for(String name:new String[]{"telegraph_chevron","aim_reticle","fissure_tile"})
             CombatArtTest.check("assets/effects/"+name+".png",32,32,8,1,8);
         CombatArtTest.check("assets/effects/telegraph_ring.png",128,128,8,1,8);

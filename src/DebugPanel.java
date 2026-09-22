@@ -39,6 +39,7 @@ public final class DebugPanel {
         panel.add(status);
         JTextArea help = new JTextArea("Using a cheat disables saving until you return to title and Continue.\n"
                 + "Cheats do not resume gameplay. Use Resume or Esc when ready.\n"
+                + "Unlimited Blade refills Ichor. Press Q; form lasts until disabled.\n"
                 + "One-shot attacks still need to connect and cannot pass through walls.");
         help.setEditable(false);
         help.setOpaque(false);
@@ -57,6 +58,16 @@ public final class DebugPanel {
             refresh.run();
         });
         panel.add(god);
+        JCheckBox unlimited = new JCheckBox("Unlimited Blade form", game.debugUnlimitedBlade());
+        unlimited.setMnemonic('U');
+        unlimited.setToolTipText("Stops timer, skill and damage Ichor drain. Health still takes damage.");
+        unlimited.setEnabled(game.debugAvailable());
+        unlimited.addActionListener(event -> {
+            game.setDebugUnlimitedBlade(unlimited.isSelected());
+            unlimited.setSelected(game.debugUnlimitedBlade());
+            refresh.run();
+        });
+        panel.add(unlimited);
         JCheckBox oneShot = new JCheckBox("One-shot attacks", game.debugOneShot());
         oneShot.setMnemonic('O');
         oneShot.setEnabled(game.debugAvailable());

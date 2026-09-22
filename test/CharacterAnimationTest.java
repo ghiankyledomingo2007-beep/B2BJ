@@ -13,7 +13,7 @@ public final class CharacterAnimationTest {
         BladeAnimation animation = new BladeAnimation();
 
         animation.update(0, 1, false, 0);
-        assert animation.action() == BladeAnimation.Action.RUN;
+        assert animation.action() == BladeAnimation.Action.START;
         assert animation.row() == 0 : "down movement must use Blade front row";
 
         animation.update(-1, 0, false, 0);

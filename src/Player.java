@@ -36,7 +36,7 @@ public final class Player {
     private double health = MAX_HEALTH;
     private double recoveryTime;
     private int vitality, capacity, efficiency, edge;
-    private boolean godMode;
+    private boolean godMode, unlimitedBlade;
     private Trait trait=Trait.NONE;
     private double traitTime;
 
@@ -46,13 +46,17 @@ public final class Player {
     }
 
     public void move(int horizontal, int vertical, double seconds, RuinedOutpostMap map) {
+        move(horizontal,vertical,seconds,map,1);
+    }
+
+    void move(int horizontal, int vertical, double seconds, RuinedOutpostMap map, double movementScale) {
         if (!Double.isFinite(seconds) || seconds <= 0) return;
         recoveryTime = Math.max(0, recoveryTime - seconds);
         dashCooldown = Math.max(0, dashCooldown - seconds);
         attackCooldown = Math.max(0, attackCooldown - seconds);
         hurtInvulnerability = Math.max(0, hurtInvulnerability - seconds);
         traitTime = Math.max(0, traitTime - seconds);
-        if (bladeTime > 0) {
+        if (bladeTime > 0 && !unlimitedBlade) {
             bladeTime = Math.max(0, bladeTime - seconds);
             ichor = MAX_ICHOR * bladeTime / bladeDuration();
             if (bladeTime == 0) beginRecovery();
@@ -68,7 +72,7 @@ public final class Player {
         double length = Math.hypot(horizontal, vertical);
         if (length > 0) {
             double speed = bladeForm() ? SPEED * BLADE_SPEED_MULTIPLIER : SPEED;
-            double distance = speed * seconds;
+            double distance = speed * seconds * movementScale;
             int steps = Math.max(1, (int) Math.ceil(distance / 8));
             for (int i = 0; i < steps; i++)
                 moveStep(horizontal / length, vertical / length, distance / steps, map);
@@ -83,6 +87,14 @@ public final class Player {
         return true;
     }
 
+    double attackCooldown() { return attackCooldown; }
+    double dashSeconds() { return dashTime; }
+    void attackRecovery(double duration) { attackCooldown = duration; }
+    void attackStep(double dx,double dy,double distance,RuinedOutpostMap map) {
+        int steps=Math.max(1,(int)Math.ceil(distance/4));
+        for(int i=0;i<steps;i++)moveStep(dx,dy,distance/steps,map);
+    }
+
     public int attackDamage() {
         return bladeForm() ? BLADE_DAMAGE : SLIME_DAMAGE;
     }
@@ -94,7 +106,7 @@ public final class Player {
         double protection=trait()==Trait.MEMBRANE?.5:0;
         health = Math.max(0, health - damage * (bladeForm() ? 0.75 : 1) + protection);
         if(protection>0||!alive())traitTime=0;
-        if (bladeForm()) {
+        if (bladeForm() && !unlimitedBlade) {
             ichor = Math.max(0, ichor - 5);
             bladeTime = bladeDuration() * ichor / MAX_ICHOR;
             if (bladeTime == 0) beginRecovery();
@@ -119,6 +131,8 @@ public final class Player {
     public boolean invulnerable() {
         return alive() && (hurtInvulnerability > 0 || dashing());
     }
+
+    public boolean damageFlashing() { return alive() && hurtInvulnerability > 0; }
 
     public void collectIchor(double amount) {
         if (!Double.isFinite(amount) || amount <= 0 || !alive()) return;
@@ -155,10 +169,11 @@ public final class Player {
         return value!=Trait.NONE&&(trait()!=value||traitTime<TRAIT_DURATION/2);
     }
 
-    /** Skill costs shorten the same finite transformation reservoir, never a second mana pool. */
+    /** Skill costs share the form reservoir; unlimited testing mode preserves it. */
     public boolean spendBladeIchor(double amount) {
         if (!Double.isFinite(amount) || amount <= 0 || !alive() || !bladeForm() || ichor < amount)
             return false;
+        if (unlimitedBlade) return true;
         ichor -= amount;
         bladeTime = bladeDuration() * ichor / MAX_ICHOR;
         if (bladeTime == 0) beginRecovery();
@@ -189,7 +204,8 @@ public final class Player {
     public int maxHealth() { return MAX_HEALTH+vitality; }
     public double dropMultiplier() { return 1+capacity*.1; }
     public double bladeDuration() { return MAX_ICHOR/(MAX_ICHOR/BLADE_DURATION-efficiency*.5); }
-    public int bladeComboLength() { return edge>0?4:3; }
+    public int bladeComboLength() { return 4; }
+    public int bladeFinisherBonus() { return edge>0?2:0; }
     public void configureUpgrades(int vitality,int capacity,int efficiency,int edge) {
         if(vitality<0||vitality>3||capacity<0||capacity>3||efficiency<0||efficiency>3||edge<0||edge>1)
             throw new IllegalArgumentException("Invalid upgrade levels");
@@ -200,6 +216,11 @@ public final class Player {
     public void heal() { health = maxHealth(); }
     public boolean godMode() { return godMode; }
     void setGodMode(boolean enabled) { godMode = enabled; }
+    public boolean unlimitedBlade() { return unlimitedBlade; }
+    void setUnlimitedBlade(boolean enabled) {
+        unlimitedBlade = enabled;
+        if (enabled) collectIchor(MAX_ICHOR);
+    }
     void refillForTesting() {
         boolean blade = bladeForm();
         heal();

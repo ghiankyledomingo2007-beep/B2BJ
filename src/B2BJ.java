@@ -55,6 +55,9 @@ public final class B2BJ extends JPanel {
     private final BufferedImage membraneSheet=loadImage("assets/effects/guard_membrane.png");
     private final BufferedImage jetSheet=loadImage("assets/effects/spitter_current.png");
     private final java.util.Map<BladeAnimation.Action,BufferedImage> rainoraySheets=new java.util.EnumMap<>(BladeAnimation.Action.class);
+    /** The sword's swoosh, a layer of its own over the body: cell for cell with the blade sheet, twice the size. */
+    private final java.util.Map<BladeAnimation.Action,BufferedImage> bladeTrailSheets=new java.util.EnumMap<>(BladeAnimation.Action.class);
+    static final int TRAIL_CELL=BladeAnimation.CELL_WIDTH*2;
     private final BufferedImage transformInSheet=loadImage("assets/effects/transform_in.png");
     private final BufferedImage transformOutSheet=loadImage("assets/effects/transform_out.png");
     private final BufferedImage engulfSheet=loadImage("assets/characters/slime/slime_engulf.png");
@@ -161,6 +164,9 @@ public final class B2BJ extends JPanel {
         this.game=java.util.Objects.requireNonNull(game);
         for(var action:BladeAnimation.Action.values())rainoraySheets.put(action,loadImage(
                 "assets/characters/blade/rainoray_"+action.name().toLowerCase(java.util.Locale.ROOT)+".png"));
+        for(var action:new BladeAnimation.Action[]{BladeAnimation.Action.SLASH,BladeAnimation.Action.CLEAVE,
+                BladeAnimation.Action.CAST,BladeAnimation.Action.COUNTER})
+            bladeTrailSheets.put(action,loadImage("assets/effects/rainoray_"+action.name().toLowerCase(java.util.Locale.ROOT)+"_trail.png"));
         for(var prop:RuinedOutpostMap.Prop.values())propSprites.put(prop,loadImage(prop.path()));
         for(var decoration:RuinedOutpostMap.Decoration.values())dressingSprites.put(decoration,loadImage(decoration.path()));
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -193,18 +199,32 @@ public final class B2BJ extends JPanel {
                     game.begin();
                 } else if (!game.blocked()) {
                     mouseX=event.getX(); mouseY=event.getY(); mouseAimed=true;
-                    if(event.getButton()==MouseEvent.BUTTON1) { attackHeld=true; attack(); }
+                    if(event.getButton()==MouseEvent.BUTTON1) {
+                        attackHeld=true;
+                        if(game.player().bladeForm()) {int[] aim=aimDirection();game.primaryPress(aim[0],aim[1]);}
+                        else attack();
+                    }
                     else attack(true);
                 }
             }
             @Override public void mouseReleased(MouseEvent event) {
-                if (event.getButton()==MouseEvent.BUTTON1) attackHeld=false;
+                if (event.getButton()==MouseEvent.BUTTON1) {
+                    if(attackHeld&&game.player().bladeForm()) {
+                        mouseX=event.getX();mouseY=event.getY();int[] aim=aimDirection();game.primaryRelease(aim[0],aim[1]);
+                    }
+                    attackHeld=false;
+                }
             }
         });
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override public void mouseMoved(MouseEvent event) {
                 if(menuShown())return;
                 mouseX=event.getX(); mouseY=event.getY(); mouseAimed=true;
+                // Only fresh mouse input changes idle facing; a parked cursor must not undo movement.
+                if(game.player().bladeForm()&&!game.blocked()&&horizontal()==0&&vertical()==0
+                        &&!game.player().dashing()&&!game.bladeAttacking()&&bladeAnimation.canAim()) {
+                    int[] aim=aimDirection();bladeAnimation.face(aim[0],aim[1]);
+                }
             }
             @Override public void mouseDragged(MouseEvent event) { mouseMoved(event); }
         });
@@ -269,7 +289,7 @@ public final class B2BJ extends JPanel {
         previousFrame = now;
 
         if(game.campaignMode())GameAudio.setMusicState(game.biome(),game.player().bladeForm(),!game.blocked());
-        if (game.paused()) { repaint(); return; }
+        if (game.paused()||!game.campaignMode()||game.blocked()) { GameAudio.stopLoops(); repaint(); return; }
         step(seconds);
     }
 
@@ -278,28 +298,90 @@ public final class B2BJ extends JPanel {
         weatherTime+=seconds;
         int horizontal = horizontal();
         int vertical = vertical();
-        if (attackHeld) attack();
+        int[] aim=aimDirection();
+        if (attackHeld&&!game.player().bladeForm()) attack();
         game.update(seconds, horizontal, vertical);
 
         int animationX = game.blocked() ? 0 : horizontal;
         int animationY = game.blocked() ? 0 : vertical;
         Player player = game.player();
         if (player.recovering()) { animationX=0; animationY=0; }
-        if (player.dashing()) trails.add(new double[]{player.x(),player.y(),0});
+        if (player.dashing()&&(!reducedEffects||frameCounter%3==0))trails.add(new double[]{player.x(),player.y(),0});
         for (double[] trail:trails) trail[2]+=seconds;
         trails.removeIf(trail->trail[2]>0.14);
-        if (player.bladeForm()) {
-            bladeAnimation.update(animationX, animationY, player.dashing(), seconds);
+        if(!player.alive()||horizontal!=0||vertical!=0)transformationAnimation.cancel();
+        boolean morphing=transformationAnimation.active();
+        transformationAnimation.update(seconds);
+        if (!player.alive()) {
+            if(player.bladeForm())bladeAnimation.pose(BladeAnimation.Action.HURT,.20,.32);
+        } else if(morphing) {
+            // Start the revealed pose at its authored endpoint, not an invisible running clock.
+            if(!transformationAnimation.active()) {
+                bladeAnimation.play(BladeAnimation.Action.IDLE,0);
+                slimeAnimation = new SlimeAnimation();
+                slimeAnimation.face(bladeAnimation.facingHorizontal(),bladeAnimation.facingVertical());
+            }
+        } else if (player.bladeForm()) {
+            if(game.bladeAttacking()) {
+                bladeAnimation.face(game.bladeAimX(),game.bladeAimY());
+                bladeAnimation.pose(bladeAction(game.bladeMove()),
+                        game.bladeElapsed(),RuinedOutpostGame.strikeDuration(game.bladeMove()));
+            } else if(game.bladeCountering()) {
+                bladeAnimation.face(game.bladeAimX(),game.bladeAimY());
+                bladeAnimation.pose(BladeAnimation.Action.COUNTER,game.counterElapsed(),RuinedOutpostGame.COUNTER_DURATION);
+            } else if(game.bladeCasting()) {
+                bladeAnimation.face(game.bladeAimX(),game.bladeAimY());
+                bladeAnimation.pose(BladeAnimation.Action.CAST,game.bladeCastElapsed(),RuinedOutpostGame.BLADE_CAST_DURATION);
+            } else if(game.bladePreparing()) {
+                bladeAnimation.face(aim[0],aim[1]);
+                double held=game.chargeSeconds();
+                bladeAnimation.pose(held<.35?BladeAnimation.Action.CHARGE:BladeAnimation.Action.HOLD,held<.35?held:held-.35,0);
+            } else {
+                bladeAnimation.update(player.dashing()?game.dashAimX():animationX,
+                        player.dashing()?game.dashAimY():animationY,player.dashing(),seconds);
+                footsteps();
+            }
+            if(game.bladePreparing())GameAudio.startLoop(GameAudio.Loop.CHARGE,Math.min(1,game.chargeSeconds()/RuinedOutpostGame.FULL_CHARGE));
+            else GameAudio.stopLoop(GameAudio.Loop.CHARGE);
         } else {
             slimeAnimation.update(animationX, animationY, player.dashing(), seconds);
         }
-        transformationAnimation.update(seconds);
+        if(!player.bladeForm())GameAudio.stopLoop(GameAudio.Loop.CHARGE);
+        if(player.alive()&&player.health()<=LOW_HEALTH)GameAudio.startLoop(GameAudio.Loop.HEARTBEAT,1);
+        else GameAudio.stopLoop(GameAudio.Loop.HEARTBEAT);
+        GameAudio.startLoop(GameAudio.Loop.AMBIENCE,1);
         feedback.update(seconds);
         updateImpacts(seconds);
         bannerTime = Math.max(0, bannerTime - seconds);
         handleEvents(game.drainEvents());
         frameCounter++;
         repaint();
+    }
+
+
+    /** The recording each blade move is heard with; the moves are RuinedOutpostGame's numbering. */
+    static GameAudio.Cue bladeCue(int move) {
+        return switch(move) {
+            case 1 -> GameAudio.Cue.THRUST;
+            case 3 -> GameAudio.Cue.SLASH_HEAVY;
+            case 4 -> GameAudio.Cue.CLEAVE;
+            case RuinedOutpostGame.DASH_SLASH -> GameAudio.Cue.DASH_SLASH;
+            case RuinedOutpostGame.SPIN_CLEAVE -> GameAudio.Cue.SPIN_CLEAVE;
+            default -> GameAudio.Cue.SLASH;
+        };
+    }
+
+    private static final double SWING_LEAD = .08;                // the whoosh starts this long before the blade lands
+    private static final int LOW_HEALTH = 1;                     // hearts left when the heartbeat starts
+    private static final int[] RUN_CONTACT_FRAMES = {1, 5};      // of the 8-frame run: each foot lands once
+    private int lastRunFrame = -1;
+
+    /** A footstep the first time the run shows a foot landing; nothing while he stands or turns. */
+    private void footsteps() {
+        int frame = bladeAnimation.action()==BladeAnimation.Action.RUN ? bladeAnimation.frame() : -1;
+        if(frame!=lastRunFrame && frame>=0 && java.util.Arrays.stream(RUN_CONTACT_FRAMES).anyMatch(f->f==frame))
+            GameAudio.play(GameAudio.Cue.FOOTSTEP);
+        lastRunFrame = frame;
     }
 
     private void handleEvents(List<RuinedOutpostGame.Event> events) {
@@ -310,8 +392,18 @@ public final class B2BJ extends JPanel {
             }
             switch (event.type()) {
                 case DASH -> GameAudio.play(GameAudio.Cue.DASH);
-                case ATTACK -> GameAudio.play(game.player().bladeForm()
-                        ? GameAudio.Cue.ATTACK : GameAudio.Cue.BLOB_ATTACK);
+                case ATTACK -> {
+                    if(game.player().bladeForm()) {
+                        bladeAnimation.face(game.bladeAimX(),game.bladeAimY());
+                        bladeAnimation.pose(bladeAction(game.bladeMove()),
+                                game.bladeElapsed(),RuinedOutpostGame.strikeDuration(game.bladeMove()));
+                    }
+                    if(game.player().bladeForm()) {
+                        GameAudio.play(bladeCue(game.bladeMove()),Math.max(0,RuinedOutpostGame.strikeWindup(game.bladeMove())-SWING_LEAD));
+                        if(RuinedOutpostGame.strikeKind(game.bladeMove())>=4)GameAudio.duck(.4,.4);
+                    } else GameAudio.play(GameAudio.Cue.BLOB_ATTACK);
+                }
+                case CHARGE_READY -> GameAudio.play(GameAudio.Cue.CHARGE_READY);
                 case WATER_IMPACT -> {
                     addImpact(event.x(),event.y(),Fx.WATER);
                     GameAudio.play(GameAudio.Cue.WATER_SPLASH);
@@ -320,6 +412,7 @@ public final class B2BJ extends JPanel {
                 case FINISHER_IMPACT -> {
                     addImpact(event.x(),event.y(),Fx.FINISHER);
                     GameAudio.play(GameAudio.Cue.FINISHER_IMPACT);
+                    GameAudio.duck(.4,.4);
                 }
                 case TRAIT_GAINED -> GameAudio.play(GameAudio.Cue.TRAIT_GAINED);
                 case MEMBRANE_BREAK -> {
@@ -339,19 +432,22 @@ public final class B2BJ extends JPanel {
                     feedback.enemyHit(false);
                     if(!event.water()) {
                         addImpact(event.x(),event.y(),game.player().bladeForm()?Fx.BLADE:Fx.WATER);
-                        GameAudio.play(GameAudio.Cue.HIT);
+                        GameAudio.play(GameAudio.Cue.ENEMY_HIT);
                     }
                 }
                 case ENEMY_DEFEATED -> {
                     feedback.enemyHit(true);
                     impacts.removeIf(impact->impact.x==event.x()&&impact.y==event.y()&&impact.time==0);
                     if(!event.water())addImpact(event.x(),event.y(),game.player().bladeForm()?Fx.BLADE:Fx.WATER);
+                    GameAudio.play(GameAudio.Cue.KILL);
+                    GameAudio.duck(.3,.25);
                 }
                 case PLAYER_HIT -> {
                     if(game.player().bladeForm())bladeAnimation.play(BladeAnimation.Action.HURT,.32);
                     feedback.playerHit();
                     addImpact(game.player().x(),game.player().y(),game.player().bladeForm()?Fx.BLADE_HURT:Fx.SLIME_HURT);
                     GameAudio.play(GameAudio.Cue.HURT);
+                    GameAudio.duck(.5,.35);
                 }
                 case PICKUP -> {
                     addImpact(event.x(),event.y(),Fx.PICKUP);
@@ -360,22 +456,32 @@ public final class B2BJ extends JPanel {
                 case ABSORB_START -> {
                     int dx=(int)Math.round(event.x()-game.player().x()),dy=(int)Math.round(event.y()-game.player().y());
                     slimeAnimation.face(dx,dy);
-                    GameAudio.play(GameAudio.Cue.BLOB_ATTACK);
+                    GameAudio.play(GameAudio.Cue.ABSORB);
                 }
                 case ABSORBED -> {
                     addImpact(event.x(),event.y(),Fx.PICKUP);
-                    GameAudio.play(GameAudio.Cue.PICKUP);
+                    GameAudio.play(GameAudio.Cue.ABSORBED);
                 }
-                case HEALED -> addImpact(event.x(),event.y(),Fx.HEAL);
+                case HEALED -> {
+                    addImpact(event.x(),event.y(),Fx.HEAL);
+                    GameAudio.play(GameAudio.Cue.HEALED);
+                }
                 case CRESCENT_CAST -> {
-                    bladeAnimation.play(BladeAnimation.Action.CAST,.35);
-                    GameAudio.play(GameAudio.Cue.ATTACK);
+                    bladeAnimation.face(game.bladeAimX(),game.bladeAimY());
+                    bladeAnimation.pose(BladeAnimation.Action.CAST,game.bladeCastElapsed(),RuinedOutpostGame.BLADE_CAST_DURATION);
+                    GameAudio.play(GameAudio.Cue.CAST);
                 }
-                case CRESCENT_IMPACT -> addImpact(event.x(),event.y(),Fx.BLADE);
-                case RIPOSTE_START -> bladeAnimation.play(BladeAnimation.Action.GUARD,RuinedOutpostGame.RIPOSTE_DURATION);
+                case CRESCENT_IMPACT -> {
+                    addImpact(event.x(),event.y(),Fx.BLADE);
+                    GameAudio.play(GameAudio.Cue.CRESCENT_IMPACT);
+                }
+                case RIPOSTE_START -> {
+                    bladeAnimation.play(BladeAnimation.Action.GUARD,RuinedOutpostGame.RIPOSTE_DURATION);
+                    GameAudio.play(GameAudio.Cue.GUARD);
+                }
                 case RIPOSTE_COUNTER -> {
                     addImpact(event.x(),event.y(),Fx.COUNTER);feedback.enemyHit(true);
-                    GameAudio.play(GameAudio.Cue.HIT);
+                    GameAudio.play(GameAudio.Cue.COUNTER);
                 }
                 case TRANSFORM -> {
                     bladeAnimation = new BladeAnimation();
@@ -385,16 +491,17 @@ public final class B2BJ extends JPanel {
                     GameAudio.play(GameAudio.Cue.TRANSFORM);
                 }
                 case REVERT -> {
+                    attackHeld=false;
                     slimeAnimation = new SlimeAnimation();
                     slimeAnimation.face(bladeAnimation.facingHorizontal(), bladeAnimation.facingVertical());
                     transformationAnimation.start(true);
                     feedback.transformed();
                     banner("BLADE FADES / RECOVERING", 1.5);
-                    GameAudio.play(GameAudio.Cue.TRANSFORM);
+                    GameAudio.play(GameAudio.Cue.REVERT);
                 }
                 case GUARDIAN_AWAKENED -> {
                     banner("THE OUTPOST WARDEN WAKES", 2.6);
-                    GameAudio.play(GameAudio.Cue.GUARDIAN_SLAM);
+                    GameAudio.play(GameAudio.Cue.GUARDIAN_AWAKENED);
                 }
                 case GUARDIAN_SLAM -> {
                     feedback.guardianSlam();
@@ -403,13 +510,17 @@ public final class B2BJ extends JPanel {
                     addImpact(charge?guardian.x():event.x(),charge?guardian.y():event.y(),Fx.WARDEN);
                     GameAudio.play(GameAudio.Cue.GUARDIAN_SLAM);
                 }
-                case SPIT_SHOT -> GameAudio.play(GameAudio.Cue.BLOB_ATTACK);
-                case SPIT_IMPACT -> addImpact(event.x(),event.y(),Fx.SPIT);
+                case SPIT_SHOT -> GameAudio.play(GameAudio.Cue.SPIT_SHOT);
+                case SPIT_IMPACT -> {
+                    addImpact(event.x(),event.y(),Fx.SPIT);
+                    GameAudio.play(GameAudio.Cue.SPIT_IMPACT);
+                }
                 case ROOM_ENTERED -> {
-                    trails.clear(); impacts.clear(); attackHeld=false;
+                    trails.clear(); impacts.clear(); attackHeld=false;bladeAnimation=new BladeAnimation();
                 }
                 case VICTORY -> {
                     feedback.victory();
+                    GameAudio.stopLoops();
                     GameAudio.play(GameAudio.Cue.VICTORY);
                 }
             }
@@ -523,7 +634,12 @@ public final class B2BJ extends JPanel {
                 ghost.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,
                         (float)(0.25*(1-trail[2]/0.14))));
                 int gx=cameraX+(int)(player.x()-trail[0]),gy=cameraY+(int)(player.y()-trail[1]);
-                if(player.bladeForm())drawBlade(ghost,gx,gy);else drawSlime(ghost,gx,gy);
+                if(player.bladeForm()) {
+                    drawBlade(ghost,gx,gy);
+                    ghost.setColor(new Color(89,223,245));
+                    int tx=(int)Math.round(trail[0]-cameraX),ty=(int)Math.round(trail[1]-cameraY)+40;
+                    ghost.fillOval(tx-18,ty-4,36,8);
+                } else drawSlime(ghost,gx,gy);
                 ghost.dispose();
             }));
         }
@@ -567,14 +683,16 @@ public final class B2BJ extends JPanel {
         if(transformationAnimation.active()&&morph!=null) {
             drawTransformation(canvas,cameraX,cameraY);return;
         }
-        if (!player.invulnerable() || frameCounter / 3 % 2 == 0) {
+        if (!player.damageFlashing() || frameCounter / 3 % 2 == 0) {
             if (player.bladeForm()) {
                 drawBlade(canvas, cameraX, cameraY);
+                drawBladeTrail(canvas, cameraX, cameraY);
             } else {
                 drawSlime(canvas, cameraX, cameraY);
             }
         }
         drawTransformation(canvas, cameraX, cameraY);
+        if(player.bladeForm())drawChargeGlow(canvas,cameraX,cameraY);
         if(game.guarding()&&riposteSheet!=null) {
             int frame=Math.min(7,(int)(game.guardProgress()*8));
             int x=(int)Math.round(player.x())-cameraX-80,y=(int)Math.round(player.y())-cameraY+48-144;
@@ -646,11 +764,19 @@ public final class B2BJ extends JPanel {
                 + SlimeAnimation.RENDER_SIZE / 2;
         int y = floorY-BladeAnimation.FOOT_ROW*2;
         BufferedImage sheet=rainoraySheets.get(bladeAnimation.action());
-        int frame=bladeAnimation.action()==BladeAnimation.Action.SLASH
-                ?sideAttackFrame(bladeAnimation.elapsed(),Math.min(2,game.combo())):bladeAnimation.frame();
-        int sourceRow=bladeAnimation.row()+(bladeAnimation.action()==BladeAnimation.Action.SLASH?Math.min(2,game.combo())*3:0);
+        boolean slash=bladeAnimation.action()==BladeAnimation.Action.SLASH;
+        // A sheet may carry cells wider than the 80 px body canvas: the body stays in the middle 80 px and
+        // the margin is room to lunge, leap and swing. Four facing rows per block of a modern sheet.
+        if(sheet!=null)cellWidth=cellHeight=bladeCell(sheet,bladeAnimation.action());
+        boolean modern=sheet!=null&&sheet.getHeight()%(cellHeight*4)==0;
+        int frame=bladeAnimation.frame();
+        int sourceRow=modern?bladeAnimation.directionRow():bladeAnimation.row();
+        if(slash||bladeAnimation.action()==BladeAnimation.Action.CLEAVE) {
+            frame=modern?bladeAttackFrame(game.bladeElapsed(),game.bladeMove()):sideAttackFrame(bladeAnimation.elapsed(),Math.min(2,game.combo()));
+            sourceRow+=modern?Math.min(bladeBlock(game.bladeMove()),sheet.getHeight()/(cellHeight*4)-1)*4:slash?Math.min(2,game.combo())*3:0;
+        }
         if(sheet==null) {
-            sheet=rainoraySheets.get(BladeAnimation.Action.IDLE);frame=0;sourceRow=bladeAnimation.row();
+            sheet=rainoraySheets.get(BladeAnimation.Action.IDLE);frame=0;modern=sheet!=null&&sheet.getHeight()==320;sourceRow=modern?bladeAnimation.directionRow():bladeAnimation.row();
             if(sheet==null) {
                 // Error-only silhouette: a damaged installation must not hide the player.
                 canvas.setColor(INK);canvas.fillRect(x+52,y+32,56,112);
@@ -661,17 +787,83 @@ public final class B2BJ extends JPanel {
                 return;
             }
         }
+        frame=Math.min(frame,sheet.getWidth()/cellWidth-1);
         int sourceX=frame*cellWidth;
         int sourceY = sourceRow * cellHeight;
-        int imageLeft = bladeAnimation.flipHorizontal()
+        int margin=cellWidth-BladeAnimation.CELL_WIDTH;            // screen px each side at the shared 2x scale
+        x-=margin;y-=margin;renderWidth=cellWidth*2;renderHeight=cellHeight*2;
+        int imageLeft = !modern&&bladeAnimation.flipHorizontal()
                 ? x + renderWidth : x;
-        int imageRight = bladeAnimation.flipHorizontal()
+        int imageRight = !modern&&bladeAnimation.flipHorizontal()
                 ? x : x + renderWidth;
         canvas.drawImage(sheet, imageLeft, y,
                 imageRight, y + renderHeight,
                 sourceX, sourceY,
                 sourceX + cellWidth,
                 sourceY + cellHeight, null);
+    }
+
+    /**
+     * The blade's trail is photographed from the same puppet pose as the body cell, so it shares that cell's
+     * frame and row and is drawn centred on it. It already has the body cut out of it where he is in front.
+     */
+    private void drawBladeTrail(Graphics2D canvas,int cameraX,int cameraY) {
+        BufferedImage sheet=bladeTrailSheets.get(bladeAnimation.action());
+        if(sheet==null)return;
+        int frame=bladeAnimation.frame(),row=bladeAnimation.directionRow();
+        if(bladeAnimation.action()==BladeAnimation.Action.SLASH||bladeAnimation.action()==BladeAnimation.Action.CLEAVE) {
+            frame=bladeAttackFrame(game.bladeElapsed(),game.bladeMove());row+=bladeBlock(game.bladeMove())*4;
+        }
+        if(frame>=sheet.getWidth()/TRAIL_CELL||row>=sheet.getHeight()/TRAIL_CELL)return;
+        Player player=game.player();
+        int grow=TRAIL_CELL-BladeAnimation.CELL_WIDTH;
+        int x=(int)Math.round(player.x())-cameraX-BladeAnimation.RENDER_WIDTH/2-grow;
+        int y=(int)Math.round(player.y())-cameraY+SlimeAnimation.RENDER_SIZE/2-BladeAnimation.FOOT_ROW*2-grow;
+        var layer=(Graphics2D)canvas.create();
+        if(reducedEffects)layer.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,.6f));
+        layer.drawImage(sheet,x,y,x+TRAIL_CELL*2,y+TRAIL_CELL*2,
+                frame*TRAIL_CELL,row*TRAIL_CELL,(frame+1)*TRAIL_CELL,(row+1)*TRAIL_CELL,null);
+        layer.dispose();
+    }
+
+    /** Which sheet a blade move is drawn from... */
+    static BladeAnimation.Action bladeAction(int move) {
+        return RuinedOutpostGame.strikeKind(move)==4?BladeAnimation.Action.CLEAVE:BladeAnimation.Action.SLASH;
+    }
+    /** ...and which block of four facing rows inside it: combo moves 0-3 then the dash slash; cleave then the spin. */
+    static int bladeBlock(int move) {
+        return move==RuinedOutpostGame.DASH_SLASH?4:move==RuinedOutpostGame.SPIN_CLEAVE?1:move<4?move:0;
+    }
+    /** A blade sheet's cell size: its width over the action's frames per row (80, or wider with margin). */
+    static int bladeCell(BufferedImage sheet,BladeAnimation.Action action) {
+        return Math.max(BladeAnimation.CELL_WIDTH,sheet.getWidth()/BladeAnimation.columns(action));
+    }
+
+    static int bladeAttackFrame(double elapsed,int move) {
+        double contact=RuinedOutpostGame.strikeWindup(move),duration=RuinedOutpostGame.strikeDuration(move);
+        return elapsed<contact?Math.max(0,Math.min(3,(int)(elapsed/contact*4)))
+                :4+Math.min(7,(int)((elapsed-contact)/(duration-contact)*8));
+    }
+
+    /**
+     * The glow of a held charge. The swing itself is no longer drawn here: the blade's trail is a layer of its
+     * own, photographed from the same puppet pose as the body (drawBladeTrail), so it always sits on the sword.
+     */
+    private void drawChargeGlow(Graphics2D canvas,int cameraX,int cameraY) {
+        if(!game.bladePreparing())return;
+        int px=(int)Math.round((game.player().x()-cameraX)/2)*2;
+        int py=(int)Math.round((game.player().y()-cameraY)/2)*2;
+        double charge=game.chargeProgress();
+        var glow=(Graphics2D)canvas.create();
+        glow.setColor(new Color(80,190,255,80+(int)(charge*120)));
+        int width=(int)(36*charge)*2;
+        glow.fillRect(px-36,py-80,width,4);
+        glow.setColor(charge>=1?new Color(215,255,255):new Color(77,211,250));
+        for(int i=0;i<4;i++)if(charge>(i+1)*.2) {
+            int offset=(int)(Math.sin(weatherTime*5+i)*8)*2;
+            glow.fillRect(px-24+i*16,py-30-offset,2,4);
+        }
+        glow.dispose();
     }
 
     static int sideAttackFrame(double elapsed,int combo) {
@@ -689,8 +881,8 @@ public final class B2BJ extends JPanel {
         int y = (int)Math.round(player.y())-cameraY+48-BladeAnimation.FOOT_ROW*2;
         int sourceX = transformationAnimation.frame()
                 * TransformationAnimation.CELL_SIZE;
-        int sourceY=Math.min(bladeAnimation.row(),sheet.getHeight()/80-1)*80;
-        boolean flip=bladeAnimation.flipHorizontal();
+        int sourceY=Math.min(sheet.getHeight()==320?bladeAnimation.directionRow():bladeAnimation.row(),sheet.getHeight()/80-1)*80;
+        boolean flip=sheet.getHeight()!=320&&bladeAnimation.flipHorizontal();
         canvas.drawImage(sheet, flip?x+160:x, y,
                 flip?x:x+160,
                 y + TransformationAnimation.RENDER_SIZE,
@@ -1356,7 +1548,8 @@ public final class B2BJ extends JPanel {
             Color color=p.bladeSeconds()<=3?RED:TEAL;
             uiPanel(canvas,482,20,316,54);
             pixelText(canvas,"BLADE",500,32,2,color);
-            pixelText(canvas,String.format(java.util.Locale.ROOT,"%.1f S",p.bladeSeconds()),702,32,2,color);
+            if(p.unlimitedBlade())pixelText(canvas,"UNLIMITED",650,32,2,color);
+            else pixelText(canvas,String.format(java.util.Locale.ROOT,"%.1f S",p.bladeSeconds()),702,32,2,color);
             canvas.setColor(new Color(45,48,58));canvas.fillRect(500,58,280,6);
             canvas.setColor(color);canvas.fillRect(500,58,(int)(280*p.bladeSeconds()/p.bladeDuration()),6);
         } else if(p.recovering()) pixelCentered(canvas,"REFORMING",640,34,2,RED);
@@ -1368,6 +1561,14 @@ public final class B2BJ extends JPanel {
                 !p.recovering()&&(!p.bladeForm()||p.ichor()>RuinedOutpostGame.BLADE_SKILL_COST));
         skill(canvas,first+168,dashIcon,"SPACE",1-p.dashCooldown()/Player.DASH_COOLDOWN,!p.recovering());
         skill(canvas,first+252,bladeIcon,"Q",p.ichor()/100,!p.bladeForm()&&!p.recovering());
+        if(p.bladeForm()) {
+            for(int i=0;i<4;i++) {
+                canvas.setColor(i<game.comboStep()?TEAL:new Color(62,77,90));
+                canvas.fillRect(first+8+i*15,594,11,4);
+            }
+            pixelCentered(canvas,game.bladePreparing()?(game.chargeProgress()>=1?"CHARGED / RELEASE":"CHARGING"):
+                    "CLICK COMBO / HOLD CHARGE",640,578,1,TEAL);
+        }
         if(p.bladeForm())skill(canvas,first+336,riposteIcon,"F",1-game.riposteCooldown()/RuinedOutpostGame.RIPOSTE_COOLDOWN,
                 p.ichor()>RuinedOutpostGame.BLADE_SKILL_COST);
         if(p.ichor()>=100&&!p.bladeForm())pixelCentered(canvas,"TRANSFORM",770,601,1,GOLD);
@@ -1550,7 +1751,7 @@ public final class B2BJ extends JPanel {
         uiPanel(canvas,300,96,680,532);
         pixelCentered(canvas,"PAUSED",640,136,4,GOLD);
         pixelCentered(canvas,game.map().description().name(),640,190,2,new Color(176,191,195));
-        String[][] controls={{"WASD / ARROWS","MOVE"},{"LMB / RMB",game.player().bladeForm()?"CUT / CRESCENT":"SLASH / TIDE"},{"SPACE / F","DASH / RIPOSTE"},
+        String[][] controls={{"WASD / ARROWS","MOVE"},{"LMB / RMB",game.player().bladeForm()?"CLICK COMBO / RMB ARC":"SLASH / TIDE"},{"SPACE / F","DASH / RIPOSTE"},
                 {"Q","TRANSFORM AT 100"},{"E","ABSORB / INTERACT"},{"TAB","HOLD MAP"},
                 {"M",GameAudio.muted()?"SOUND OFF":"SOUND ON"},{"V",reducedEffects?"EFFECTS REDUCED":"EFFECTS FULL"}};
         for(int i=0;i<controls.length;i++) {
@@ -1732,7 +1933,7 @@ public final class B2BJ extends JPanel {
         bind(KeyEvent.VK_Q,"transform",value->{if(value) transform();});
         bind(KeyEvent.VK_ENTER,"begin",value->{if(value) game.begin();});
         bind(KeyEvent.VK_E,"interact",value->{if(value) game.interact();});
-        bind(KeyEvent.VK_ESCAPE,"pause",value->{if(value){game.togglePause();attackHeld=false;}});
+        bind(KeyEvent.VK_ESCAPE,"pause",value->{if(value){clearInput();game.togglePause();}});
         bind(KeyEvent.VK_TAB,"map",value->mapShown=value);
         bind(KeyEvent.VK_M,"mute",value->{if(value) GameAudio.setMuted(!GameAudio.muted());});
         bind(KeyEvent.VK_V,"effects",value->{if(value) reducedEffects=!reducedEffects;});
@@ -1777,7 +1978,7 @@ public final class B2BJ extends JPanel {
     private int vertical() {
         return (held(KeyEvent.VK_S,KeyEvent.VK_DOWN)?1:0)-(held(KeyEvent.VK_W,KeyEvent.VK_UP)?1:0);
     }
-    private void clearInput() { pressedKeys.clear();attackHeld=false;mapShown=false; }
+    private void clearInput() { pressedKeys.clear();attackHeld=false;mapShown=false;game.cancelBladeInput(); }
 
     private void dash() {
         int horizontal = horizontal();
@@ -1797,29 +1998,28 @@ public final class B2BJ extends JPanel {
         attack(false);
     }
     private void attack(boolean heavy) {
-        Player player = game.player();
-        int facingX = player.bladeForm()
-                ? bladeAnimation.facingHorizontal() : slimeAnimation.facingHorizontal();
-        int facingY = player.bladeForm()
-                ? bladeAnimation.facingVertical() : slimeAnimation.facingVertical();
+        Player player=game.player();int[] aim=aimDirection();int facingX=aim[0],facingY=aim[1];
+        if(player.bladeForm()) {
+            if(heavy)game.requestBladeAttack(true,facingX,facingY);
+            else game.requestBladeAttack(false,facingX,facingY);
+            return;
+        }
+        if(!(heavy?game.tideWave(facingX,facingY):game.attack(facingX,facingY)))return;
+        slimeAnimation.face(facingX,facingY);slimeAnimation.attack();
+    }
+
+    private int[] aimDirection() {
+        Player player=game.player();
+        int x=player.bladeForm()?bladeAnimation.facingHorizontal():slimeAnimation.facingHorizontal();
+        int y=player.bladeForm()?bladeAnimation.facingVertical():slimeAnimation.facingVertical();
         if(mouseAimed) {
             double dx=mouseX+cameraPosition(player.x(),WIDTH,game.map().worldWidth())-player.x();
             double dy=mouseY+cameraPosition(player.y(),HEIGHT,game.map().worldHeight())-player.y();
-            double angle=Math.atan2(dy,dx);
-            facingX=(int)Math.round(Math.cos(angle)*1000);
-            facingY=(int)Math.round(Math.sin(angle)*1000);
+            if(Math.hypot(dx,dy)>4) {
+                double angle=Math.atan2(dy,dx);x=(int)Math.round(Math.cos(angle)*1000);y=(int)Math.round(Math.sin(angle)*1000);
+            }
         }
-        if (!(heavy?(player.bladeForm()?game.ichorCrescent(facingX,facingY):game.tideWave(facingX,facingY))
-                :game.attack(facingX,facingY))) {
-            return;
-        }
-        if (player.bladeForm()) {
-            bladeAnimation.face(facingX,facingY);
-            if(heavy)bladeAnimation.play(BladeAnimation.Action.CAST,.35);else bladeAnimation.slash();
-        } else {
-            slimeAnimation.face(facingX,facingY);
-            slimeAnimation.attack();
-        }
+        return new int[]{x,y};
     }
 
     private void transform() {

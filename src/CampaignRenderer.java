@@ -384,7 +384,7 @@ public final class CampaignRenderer {
             panel(g, 18, height - 284, 440, 170);
             text(g, "CAMP  E TALK / H REST + SAVE", 32, height - 258, 14, GOLD);
             String[] keys = {"vitality", "capacity", "efficiency", "edge"};
-            String[] labels = {"VITALITY  +1 HEALTH", "CAPACITY  +10% ICHOR", "EFFICIENCY  SLOWER DRAIN", "EDGE  FOURTH BLADE HIT"};
+            String[] labels = {"VITALITY  +1 HEALTH", "CAPACITY  +10% ICHOR", "EFFICIENCY  SLOWER DRAIN", "EDGE  STRONGER FINISHER"};
             for (int i = 0; i < keys.length; i++) {
                 int level = game.upgradeLevel(keys[i]), max = i == 3 ? 1 : 3;
                 String cost = level == max ? "MAX" : game.upgradeCost(keys[i]) + " SHARDS";
@@ -508,7 +508,7 @@ public final class CampaignRenderer {
             centered(g, "R  RETRY", width / 2, height - 177, 22, CYAN);
         } else {
             centered(g, "PAUSED", width / 2, 166, 32, GOLD);
-            String[] controls = {"WASD / ARROWS   MOVE", "LMB / RMB       ATTACK / FORM SKILL", "SPACE / Q       DASH / TRANSFORM",
+            String[] controls = {"WASD / ARROWS   MOVE", game.player().bladeForm()?"LMB CLICK / HOLD   COMBO / CHARGED CLEAVE":"LMB / RMB       ATTACK / FORM SKILL", "SPACE / Q       DASH / TRANSFORM",
                     "F / E           RIPOSTE / INTERACT", "H / 1-4         REST + SAVE / CAMP UPGRADES", "TAB             HOLD REGION MAP",
                     "M / V           SOUND / REDUCED EFFECTS"};
             for (int i = 0; i < controls.length; i++)

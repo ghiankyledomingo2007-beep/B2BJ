@@ -7,11 +7,12 @@ public final class MotionPolishRenderingTest {
         GameAudio.setMuted(true);
         String check=args.length==0?"all":args[0];
         if(check.equals("all")||check.equals("cadence")) {
-            var run=new BladeAnimation();run.update(1,0,false,0);run.update(1,0,false,.55);
-            assert run.frame()==15 : "running must reach the second half of the sixteen-pose cycle";
-            run.update(1,0,false,.03);
+            var run=new BladeAnimation();run.update(1,0,false,0);run.update(1,0,false,.13);run.update(1,0,false,.45);
+            assert run.frame()==BladeAnimation.RUN_FRAMES-1 : "running must reach the last pose of the 0.5 s stride";
+            run.update(1,0,false,.06);
             assert run.frame()==0 : "running must loop after the last pose";
-            run.update(0,0,false,.01);assert run.action()==BladeAnimation.Action.IDLE&&run.frame()==0;
+            run.update(0,0,false,.01);assert run.action()==BladeAnimation.Action.STOP&&run.frame()==0;
+            run.update(0,0,false,.13);assert run.action()==BladeAnimation.Action.IDLE;
         }
         if(check.equals("all")||check.equals("engulf")) {
             var sheet=B2BJ.loadImage("assets/characters/slime/slime_engulf.png");
@@ -24,8 +25,8 @@ public final class MotionPolishRenderingTest {
         }
         if(check.equals("all")||check.equals("carry")) {
             var run=B2BJ.loadImage("assets/characters/blade/rainoray_run.png");
-            CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,16,3,16);
-            for(int row=0;row<3;row++)for(int frame=0;frame<16;frame++) {
+            CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,BladeAnimation.RUN_FRAMES,4,BladeAnimation.RUN_FRAMES);
+            for(int row=0;row<4;row++)for(int frame=0;frame<BladeAnimation.RUN_FRAMES;frame++) {
                 var box=bounds(run.getSubimage(frame*80,row*80,80,80));
                 assert box[0]>0&&box[1]>0&&box[2]<79&&box[3]<79
                         : "running body, hair and katana must not clip: row "+row+" frame "+frame;

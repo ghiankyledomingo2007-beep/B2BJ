@@ -51,11 +51,16 @@ public final class DepthRenderingTest {
             Graphics2D g=actual.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
             var sheet=B2BJ.loadImage(animation.sheetPath());
             assert sheet!=null : "reviewed Rainoray asset required: "+animation.sheetPath();
-            int row=animation.row();
+            // A sheet may carry cells wider than the 80 px body canvas; the body stays in the middle 80 px,
+            // so the wider cell is drawn around the same anchor at the same 2x scale.
+            int cell=B2BJ.bladeCell(sheet,action),margin=cell-BladeAnimation.CELL_WIDTH;
+            boolean modern=sheet.getHeight()%(cell*4)==0;
+            int row=modern?animation.directionRow():animation.row();
+            boolean flip=!modern&&animation.flipHorizontal();
             var expected=new BufferedImage(256,256,BufferedImage.TYPE_INT_ARGB);
             g=expected.createGraphics();
-            g.drawImage(sheet,animation.flipHorizontal()?208:48,32,animation.flipHorizontal()?48:208,192,
-                    0,row*80,80,row*80+80,null);g.dispose();
+            g.drawImage(sheet,flip?208+margin:48-margin,32-margin,flip?48-margin:208+margin,192+margin,
+                    0,row*cell,cell,row*cell+cell,null);g.dispose();
             assert java.util.Arrays.equals(actual.getRGB(0,0,256,256,null,0,256),
                     expected.getRGB(0,0,256,256,null,0,256))
                     : "every action must share exact 2x pixels and foot row72";
