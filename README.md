@@ -48,8 +48,9 @@ runtime dependency download is needed. `CampaignSave` writes the checkpoint to
 For a guided walkthrough, open the CodeTour file in `.tours/`. For a quick file
 reference, use [FILE_MAP.md](FILE_MAP.md).
 
-The [human form rebuild](docs/art-review/rimuru-human/README.md) documents the
-current Rimuru reference, animation choices and generation budget. The older
+The [masked motion pass](docs/art-review/human-motion-fix/README.md) documents the
+current Rimuru mask, four-direction motion, click combos and charged attack.
+The [human form rebuild](docs/art-review/rimuru-human/README.md) records the earlier unmasked design. The older
 [Rainoray pass](docs/testing/rainoray-rework/README.md) records the previous masked
 design, skills, whole-body feeding and arena fissures.
 
@@ -60,7 +61,11 @@ design, skills, whole-body feeding and arena fissures.
   **Back** returns to its main page. **Close**, **Resume**, or Esc returns to play.
   Settings are also available from the title screen. Alt+G opens/closes Menu.
 - Enter: new journey. C: continue from saved checkpoint. N explicitly confirms replacing an existing save.
-- WASD / arrows: move. Mouse: aim. Hold left click: Water Slash (Blob) / cuts (Blade).
+- WASD / arrows: move; stopping keeps your last facing. Move the mouse while standing to aim Blade.
+- Blob: hold left click for Water Slash. Blade: four short left clicks chain a cut,
+  thrust, rising cut and overhead finisher. One click requests one move.
+- Blade: hold left click to charge; release for a blue cleave (10 Ichor). Full power
+  at 0.8 seconds; dash cancels charge. Hurt, pause and focus loss clear stored input.
 - Right click: Tide Wave (Blob, 4.5-second cooldown) / Ichor Crescent (Blade, 5 seconds).
 - F: Riposte (Blade), a 0.3-second one-hit parry with a 6-second cooldown.
 - Space: dash, with brief invulnerability. Blob dash damages enemies.
@@ -73,14 +78,14 @@ design, skills, whole-body feeding and arena fissures.
 - Hold Tab: Outpost map; stays live during play or remains paused from pause.
 - M: sound toggle. V: reduced screen effects.
 - O: audio/effects options (master, SFX, music volumes). Settings last for this session.
-- F1: testing menu during a live campaign. God mode, one-shot attacks, refill/cooldown reset,
+- F1: testing menu during a live campaign. God mode, unlimited Blade form, one-shot attacks, refill/cooldown reset,
   +25 shards, travel to any camp/boss and reset the current region's encounters.
 - R: reform at the Outpost checkpoint after death; return to title after completion.
 
 Health pips and segmented gold Ichor are top-left; Blade timer top-centre; form
 top-right; local terrain minimap bottom-right. Blade lasts 12 seconds before
 pickups, deals 4× Blob damage, moves at 80% speed and takes 75% incoming damage.
-Blade hits also cost 5 Ichor; reversion has 1.5 seconds of vulnerable recovery.
+Taking damage in Blade form also costs 5 Ichor; reversion has 1.5 seconds of vulnerable recovery.
 Crescent and Riposte each spend 8 Ichor from the remaining Blade timer; they require
 more than 8 remaining so the ability has time to exist before reversion.
 
@@ -89,7 +94,11 @@ test session and prevents saving to both disk and the normal Continue snapshot.
 Switching cheats off does not resume saving. To restore normal play: use Back and
 Return to Title in the menu, then C at the title. New Game explicitly replaces the save.
 God mode blocks damage, not the Blade timer; one-shot still requires a connected hit
-and cannot pass through walls. Boss travel/reset respawns encounters in the test
+and cannot pass through walls. **Menu > Admin / Testing > Unlimited Blade form** refills
+Ichor: resume and press Q to transform. The timer, skills and incoming hits cannot drain
+Ichor while enabled; the HUD reads UNLIMITED. Health still takes damage. Switching it off
+resumes normal drain. The setting survives testing travel/reset and death, but resets
+on Continue or New Game. Boss travel/reset respawns encounters in the test
 session only. See [50-scenario admin audit](docs/testing/admin-audit.md).
 
 Blob passively regenerates 0.6 Ichor/sec. Absorption takes 0.8 seconds standing
@@ -119,7 +128,7 @@ coverage claim is made.
 
 Checks include terrain pixel scale, section connectivity, collision reachability,
 combat gates, directional attacks, dash immunity, Ichor, pause/focus handling,
-checkpoint recovery, story transitions, sound synthesis and headless rendering.
+checkpoint recovery, story transitions, packaged recordings, the audio mixer and headless rendering.
 Standing props and actors now sort by ground contact. Reviewed PixelLab palisades,
 cots, military standard and low walls render at native 2× with fitted footprints;
 regression checks cover Blob/Blade occlusion and all four approach directions.
