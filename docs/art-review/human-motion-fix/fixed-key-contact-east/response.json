@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: f62d9a75-eeaa-46a9-af92-80b67b62f408\njob_id: f62d9a75-eeaa-46a9-af92-80b67b62f408\nmodel: pixen\nedit: Fix only sword and hands. Both hands grip ONE black handle at x47 y48. Gold guard below hands, a single straight silver blade extends ONLY DOWN-RIGHT from guard to x65 y69. Remove all sword pixels above hands and remove white floor fragments. Keep exact pose, mask, hair, outfit, size and transparency.\nsource: 80x80px\nsize: 80x80px\ntransparent: True\nseed: 94001\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"f62d9a75-eeaa-46a9-af92-80b67b62f408\")"
+      }
+    ],
+    "isError": false
+  }
+}

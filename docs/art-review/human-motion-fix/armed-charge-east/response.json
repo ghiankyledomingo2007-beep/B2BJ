@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: ac2e0b7c-24c1-4a67-b335-a9dbcad0c304\njob_id: ac2e0b7c-24c1-4a67-b335-a9dbcad0c304\naction: Prepare but DO NOT release a powerful charged cut. Both hands share the sword handle. Widen stance and bend knees, rotate shoulders away from target. Pull both hands near rear hip; blade tip points LEFT behind the character. Finish braced low with sword entirely behind body, not horizontally across torso. Tiny hair settling; no swing, no return to idle. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nseed: 93404\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"ac2e0b7c-24c1-4a67-b335-a9dbcad0c304\")"
+      }
+    ],
+    "isError": false
+  }
+}

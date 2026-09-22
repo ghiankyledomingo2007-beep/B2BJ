@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 93901,
+    "action": "Very subtle breathing idle with planted feet, shoulders rise then fall, hair tips and coat settle gently. Keep exact east facing and body proportions; do not turn or walk. Ivory original mask, curved dark markings, red dot, blue hair and coat preserved. Single straight drawn katana stays rigid at side in hand, never sheathes or vanishes. Pure back view reveals no face. Same80x80 transparent canvas and foot baseline72."
+  },
+  "allocation": "batch-5"
+}

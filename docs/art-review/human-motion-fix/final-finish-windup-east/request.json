@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/fixed-key-windup-east/download.png",
+    "frame_count": 4,
+    "action": "Raise both hands above head into final sword-overhead pose, bend knees and coil torso for a powerful downward chop. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94300
+  },
+  "allocation": "batch-7"
+}

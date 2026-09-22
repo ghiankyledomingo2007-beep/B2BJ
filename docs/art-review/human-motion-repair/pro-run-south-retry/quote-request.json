@@ -1,0 +1,10 @@
+{
+  "character_id": "5b2c5cce-a763-48d1-ace3-6895077c58cc",
+  "mode": "pro",
+  "animation_name": "repair-sprint-pro-retry",
+  "action_description": "Fast running in place, facing south. Alternate long strides with bent knees and an airborne phase. Carry the katana low in the right hand while the left arm pumps separately. Keep the rigid mask markings unchanged. Hair and coat trail behind. Loop.",
+  "directions": [
+    "south"
+  ],
+  "confirm_cost": false
+}

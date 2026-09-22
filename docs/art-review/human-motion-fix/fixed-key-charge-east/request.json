@@ -1,0 +1,12 @@
+{
+  "tool": "edit_image_pixen",
+  "arguments": {
+    "image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "description": "Keep exact character size, style, mask and right-facing profile. Change pose: low wide stance, knees bent, torso coiled. Bring both hands together at REAR hip x29 y49. One sword handle in both hands. Straight silver blade extends BACKWARDS LEFT from hands toward x7 y39. Blade entirely behind body, no sword in front. Preparing charged horizontal cut.",
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "seed": 94003
+  },
+  "allocation": "batch-2"
+}

@@ -1,0 +1,12 @@
+{
+  "image_path": "docs/art-review/human-motion-fix/armed-idle-south/frame-0.png",
+  "description": "Repair ONLY the rigid ivory anti-magic mask worn by Rimuru Tempest. In this exact front-facing pose, a smooth opaque ivory mask covers the entire face. Two fixed charcoal curved flame-shaped markings descend beside the eyes, one tiny red dot at the center between the markings, and one thin curved charcoal line across the lower mask with short downward outer hooks. The mask is a solid object with no human eyes, no eyelids, no open mouth, no teeth, no blinking, no smile expression. Keep the existing light blue bangs overlapping the top and edges of the mask. Preserve head size and position, exact pixel-art style and existing palette. Do not change the blue coat, scarf, arms, sword, stance or silhouette. Crisp native pixel clusters, transparent background.",
+  "mask_x": 32,
+  "mask_y": 12,
+  "mask_width": 16,
+  "mask_height": 18,
+  "no_background": true,
+  "output_method": "Modify current layer",
+  "crop_to_mask": true,
+  "seed": 1979
+}

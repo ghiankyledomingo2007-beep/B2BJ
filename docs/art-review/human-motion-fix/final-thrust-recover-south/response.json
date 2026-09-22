@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: f8df899a-19f7-4130-a67e-4f2ff08ae14c\njob_id: f8df899a-19f7-4130-a67e-4f2ff08ae14c\naction: Recover from extended forward thrust. Pull sword and hand back toward body, shift weight back and lower into final ready stance. Keep FRONT VIEW, target toward bottom of image. Keep full mask, hair, outfit, scale, one straight rigid katana. No camera turn, no effects, no duplicate blade. Transparent80x80 canvas.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94603\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"f8df899a-19f7-4130-a67e-4f2ff08ae14c\")"
+      }
+    ],
+    "isError": false
+  }
+}

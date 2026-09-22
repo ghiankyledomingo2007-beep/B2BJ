@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 588eeccc-346f-42cd-9091-fd8c43fc0eee\njob_id: 588eeccc-346f-42cd-9091-fd8c43fc0eee\naction: Powerful overhead downward sword chop toward target in facing direction. Both hands drive blade through one descending arc, front knee bends deeply. Blade ends pointing toward floor in front. Recover slowly to final ready stance. Keep LEFT PROFILE, target screen left. Keep full mask, hair, outfit, scale, one straight rigid katana. No camera turn, no effects, no duplicate blade. Transparent80x80 canvas.\nframes: 12\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94631\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"588eeccc-346f-42cd-9091-fd8c43fc0eee\")"
+      }
+    ],
+    "isError": false
+  }
+}

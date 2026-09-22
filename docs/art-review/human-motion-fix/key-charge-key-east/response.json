@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 573f22c0-2deb-429c-ab66-c3d97e400419\njob_id: 573f22c0-2deb-429c-ab66-c3d97e400419\ndescription: Rimuru Tempest masked human, pale blue hair, ivory white mask with dark curves and red dot hiding whole face, blue coat and beige fur collar, dark pants and boots. Same pixel-art style, character proportions and scale as input. STRICT SIDE PROFILE FACING RIGHT. Whole character inside80x80 transparent canvas, foot baseline72. One slim straight SILVER KATANA, small gold guard at END of blade, black handle; blade is22pixels long, no sword behind the handle. Single rigid sword with clean one-piece silhouette. Pose: low braced stance, wide separated feet, knees bent. Twist torso slightly left while head remains looking right. BOTH hands at REAR hip x28 y48 gripping ONE handle. The single straight silver blade extends BACKWARD LEFT from hands, tip at x6 y36. Hands and blade all to rear of torso. Coiled to release horizontal cut. No forward-pointing sword.\nsize: 80x80px\ntransparent: True\ninit_image: yes (strength 55)\nseed: 93702\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"573f22c0-2deb-429c-ab66-c3d97e400419\")"
+      }
+    ],
+    "isError": false
+  }
+}

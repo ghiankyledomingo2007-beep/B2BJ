@@ -1,0 +1,107 @@
+[
+  {
+    "path": "assets/characters/blade/rainoray_idle.png",
+    "width": 640,
+    "height": 320,
+    "cells": 32,
+    "sha256": "c03db3d8926331466790d12ffa5815826021db07878a6be07bb842669de48e61"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_dash.png",
+    "width": 640,
+    "height": 320,
+    "cells": 32,
+    "sha256": "229a17f1118076e1912794a7446a56b6a002b47cb388c55f3328441093975377"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_guard.png",
+    "width": 640,
+    "height": 320,
+    "cells": 32,
+    "sha256": "8399069ab243228c5461a36442b8b5f80e18afa8f02dae05b3524ee9b632543d"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_cast.png",
+    "width": 640,
+    "height": 320,
+    "cells": 32,
+    "sha256": "370df12a91ce56617c505efdcf7885f0cefa863d48c3547814d93889398494fe"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_hurt.png",
+    "width": 640,
+    "height": 320,
+    "cells": 32,
+    "sha256": "a245e4c40392884767b5dc3d225797822251b656f0cbcc4ba0d7efa13d55ab51"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_start.png",
+    "width": 320,
+    "height": 320,
+    "cells": 16,
+    "sha256": "e27d9a42b55c0342fe428d425d837971f92b74db87618101b9ee12dbaeb21318"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_stop.png",
+    "width": 320,
+    "height": 320,
+    "cells": 16,
+    "sha256": "5b97d66052ee6e5017e929146df4cb96f05517bcb7a75597024e970ed572dd4d"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_turn.png",
+    "width": 320,
+    "height": 320,
+    "cells": 16,
+    "sha256": "49b76beda4805c640420e0fa8202b24e65151c622d162abfc3751e81846b8b49"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_run.png",
+    "width": 960,
+    "height": 320,
+    "cells": 48,
+    "sha256": "0d7c43ddfee866d5f6ba1c1144c8920f70d53fb8f7376da519c073512c250f8a"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_charge.png",
+    "width": 640,
+    "height": 320,
+    "cells": 32,
+    "sha256": "f4ed54b97f09f899bfb6423e7216b13a4fdbbad855d7ff66ea884df51a562e95"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_hold.png",
+    "width": 640,
+    "height": 320,
+    "cells": 32,
+    "sha256": "677d43da7f6fa1efb74e7231c0e554d314de5858ed6b5d9e294900dcb5141389"
+  },
+  {
+    "path": "assets/effects/transform_out.png",
+    "width": 1280,
+    "height": 320,
+    "cells": 64,
+    "sha256": "bc96e239ff0238baabb581cb6c1fccfcec312d8dad0cdb81f86cece17740c8d9"
+  },
+  {
+    "path": "assets/effects/transform_in.png",
+    "width": 1280,
+    "height": 320,
+    "cells": 64,
+    "sha256": "a79aac2522ddba0df29e7835b1c3858dbffff0e40feef2c6f85b89f3cbcdd6d4"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_slash.png",
+    "width": 960,
+    "height": 1280,
+    "cells": 192,
+    "sha256": "1903f9b3fda9b66369e8acd1fda308c6bdfb1ef28ed830366bf921bd196aaf3c"
+  },
+  {
+    "path": "assets/characters/blade/rainoray_cleave.png",
+    "width": 960,
+    "height": 320,
+    "cells": 48,
+    "sha256": "36c50c7ff484f258339280225b5ef1761af87123632d7aaf54a0a4532dd0b1fc"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/key-directions-windup/base-north.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-3.png",
+    "frame_count": 12,
+    "action": "Single fast diagonal DOWNWARD sword cut toward SCREEN LEFT. Blade starts raised behind head pointing right, rotates over shoulder, cuts down-left in front of body. Front knee bends. Recover into final left-facing ready pose. Maintain left facing throughout. Keep ONE straight rigid sword and its constant length, no trails, no effects, no fragments or duplicate blade. Same mask, hair, coat, scale, transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94800
+  },
+  "allocation": "batch-6"
+}

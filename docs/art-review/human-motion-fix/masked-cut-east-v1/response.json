@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 410eecc0-a440-4703-bc08-cf7b84c19a5e\njob_id: 410eecc0-a440-4703-bc08-cf7b84c19a5e\naction: One quick diagonal sword cut. Grip the katana at right hip, pull it upward back in anticipation, rotate hips then shoulders and slash down-forward toward screen right. Extend the one straight blade at contact. Finish low, then recover to the supplied starting stance. Clear whole-body pivot and short step; fast contact, controlled recovery. Keep strict right-facing side profile, no turn toward camera. Preserve exact masked Rimuru: pale blue hair, white mask with dark markings and red dot, beige fur collar, blue coat. One straight rigid silver katana, black grip, no duplicate blade, no bent sword. Body stays centered, fixed camera, transparent background, foot baseline row72, all hair/feet/blade inside 80x80. No magic effects. \nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92900\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"410eecc0-a440-4703-bc08-cf7b84c19a5e\")"
+      }
+    ],
+    "isError": false
+  }
+}

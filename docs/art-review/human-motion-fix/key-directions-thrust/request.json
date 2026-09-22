@@ -1,0 +1,13 @@
+{
+  "tool": "create_character",
+  "arguments": {
+    "name": "B2BJ Masked thrust",
+    "mode": "v3",
+    "n_directions": 8,
+    "size": 80,
+    "reference_image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/fixed-key-thrust-east/download.png",
+    "description": "Rotate exact supplied masked swordsman and preserve pose: fully extended forward sword thrust, leading arm extends rigid blade straight forward at chest height, front knee bent, rear leg stretched. Preserve blue hair, ivory full-face mask with dark markings and red center dot, blue coat, beige collar, single straight silver katana. Same size and proportions. Do not replace pose with idle. Back view shows hair only. Transparent80x80, feet baseline72, no effects.",
+    "view": "low top-down"
+  },
+  "allocation": "batch-6"
+}

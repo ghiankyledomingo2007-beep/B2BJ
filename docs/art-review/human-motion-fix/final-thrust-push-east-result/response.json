@@ -1,0 +1,17 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "status: completed\nid: 7fa30481-7361-411a-a450-825bd3bd5c1a\njob_id: 7fa30481-7361-411a-a450-825bd3bd5c1a\nframes: 5\ndownload: https://api.pixellab.ai/mcp/images/7fa30481-7361-411a-a450-825bd3bd5c1a/download?index=0 ... ?index=4"
+      },
+      {
+        "type": "text",
+        "text": "(1 more frames not shown \u2014 fetch them from the download URLs above)"
+      }
+    ],
+    "isError": false
+  }
+}

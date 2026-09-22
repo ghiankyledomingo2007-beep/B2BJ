@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-directions-v1/base-west.png",
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-directions-v1/base-west.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 93003,
+    "action": "Quiet confident breathing idle. Shoulders and chest rise and fall gently once, hair tips sway only one or two pixels, fur collar and coat settle softly. Feet stay planted exactly, no walking, no arm waving or turning. Preserve the exact ivory full-face mask, dark curved markings and red center dot, blue hair and coat. strict side profile looking screen left. Keep original proportions and palette, centered in 80x80, same foot baseline and transparent background. No effects."
+  },
+  "allocation": "batch-4"
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: ab927f2f-cf5d-465e-8436-ba9a0eecd8f6\njob_id: ab927f2f-cf5d-465e-8436-ba9a0eecd8f6\naction: Short grounded weight shift and foot pivot, shoulders lead and coat follows subtly, then settle back into the identical armed ready pose. Keep facing right throughout; no full spin. Strict right side profile, preserve masked character identity and single rigid katana attached to hand. No loose hair pixels. Same80x80 canvas, feet around row72, transparent background.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93502\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"ab927f2f-cf5d-465e-8436-ba9a0eecd8f6\")"
+      }
+    ],
+    "isError": false
+  }
+}

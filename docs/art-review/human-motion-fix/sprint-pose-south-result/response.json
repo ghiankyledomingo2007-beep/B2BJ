@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "status: completed\nid: ae335847-6c31-44ab-9564-1d367a1d93ce\njob_id: ae335847-6c31-44ab-9564-1d367a1d93ce\nframes: 1\ndownload: https://api.pixellab.ai/mcp/images/ae335847-6c31-44ab-9564-1d367a1d93ce/download"
+      }
+    ],
+    "isError": false
+  }
+}

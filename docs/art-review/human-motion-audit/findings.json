@@ -1,0 +1,205 @@
+{
+  "date": "2026-09-16",
+  "scope": "15 runtime sheets / 688 frame cells / 72 directional action sequences",
+  "status": "art rejected; existing runtime preserved for review",
+  "clips": [
+    {
+      "key": "idle",
+      "title": "Idle",
+      "sheet": "idle",
+      "group": 0,
+      "frames": 8,
+      "duration": 1.333,
+      "contact": null,
+      "issue": "Mask changes expression: down frames 3\u20134 compress the eye markings and widen the mouth; right frames 3\u20134 look like a blink. Left face also shifts. Mask must be a rigid object.",
+      "loop": true
+    },
+    {
+      "key": "run",
+      "title": "Run",
+      "sheet": "run",
+      "group": 0,
+      "frames": 12,
+      "duration": 0.6,
+      "contact": null,
+      "issue": "DOWN: hands stay together at chest all 12 frames; sword reads as sheathed. LEFT: fixed raised hands all 12 frames. UP: both arms drop/spread together around frames 3\u20139. RIGHT: better leg stride, but exposed oval mask and missing fringe differ from idle. All four rows need correction.",
+      "loop": true
+    },
+    {
+      "key": "start",
+      "title": "Start moving",
+      "sheet": "start",
+      "group": 0,
+      "frames": 4,
+      "duration": 0.12,
+      "contact": null,
+      "issue": "All directions change hair/head/sword design by frame 3 to match the rejected run. Right and left frame 2 contain competing blade-like shapes. Fix after replacing run; these transitions cannot remain.",
+      "loop": false
+    },
+    {
+      "key": "stop",
+      "title": "Stop moving",
+      "sheet": "stop",
+      "group": 0,
+      "frames": 4,
+      "duration": 0.12,
+      "contact": null,
+      "issue": "Head/fringe and weapon jump from run design back to idle. Down frame 0 keeps clasped hands; left frame 0 keeps the folded-arm run. Replace alongside start/run.",
+      "loop": false
+    },
+    {
+      "key": "turn",
+      "title": "Turn",
+      "sheet": "turn",
+      "group": 0,
+      "frames": 4,
+      "duration": 0.12,
+      "contact": null,
+      "issue": "Mostly a small ready-pose foot shuffle; does not bridge the running pose. Lower priority than run, but match the replacement stance and locked mask.",
+      "loop": false
+    },
+    {
+      "key": "dash",
+      "title": "Dash",
+      "sheet": "dash",
+      "group": 0,
+      "frames": 8,
+      "duration": 0.16,
+      "contact": null,
+      "issue": "Right/left have readable forward lean. Down has compressed hop-like poses; up mostly pushes hair sideways. Keep as motion reference, review mask and joins before accepting.",
+      "loop": false
+    },
+    {
+      "key": "cast",
+      "title": "Crescent cast",
+      "sheet": "cast",
+      "group": 0,
+      "frames": 8,
+      "duration": 0.35,
+      "contact": null,
+      "issue": "Free hand extends and sword stays held. Down hand points sideways; up hand points sideways too. Check direction-specific cast silhouette. Up frame 4 has art touching a cell edge.",
+      "loop": false
+    },
+    {
+      "key": "guard",
+      "title": "Riposte guard",
+      "sheet": "guard",
+      "group": 0,
+      "frames": 8,
+      "duration": 0.3,
+      "contact": null,
+      "issue": "Guard idea is readable. Right rotates toward camera; left lifts sword alongside head. Keep two-handed grip here only where intentional; mask and recovery still need a consistency pass.",
+      "loop": false
+    },
+    {
+      "key": "hurt",
+      "title": "Hit reaction",
+      "sheet": "hurt",
+      "group": 0,
+      "frames": 8,
+      "duration": 0.32,
+      "contact": null,
+      "issue": "Right poses resemble a forward dash more than recoil. Down/left around frame 5 change the mouth into an open expression. North turns sword forward. Rework recoil and keep rigid mask.",
+      "loop": false
+    },
+    {
+      "key": "charge",
+      "title": "Charge preparation",
+      "sheet": "charge",
+      "group": 0,
+      "frames": 8,
+      "duration": 0.35,
+      "contact": null,
+      "issue": "Mask/hair design changes through preparation. Down final pose rotates to three-quarter; left late frames expose the smooth oval mask. Down frame 2 reaches a cell edge.",
+      "loop": false
+    },
+    {
+      "key": "hold",
+      "title": "Charged hold",
+      "sheet": "hold",
+      "group": 0,
+      "frames": 8,
+      "duration": 1,
+      "contact": null,
+      "issue": "Down sword oscillates from left to right within the hold loop; should mostly hold tension. Left frame 3 flares hair sharply. Mask and head differ from normal idle/run.",
+      "loop": true
+    },
+    {
+      "key": "slash-0",
+      "title": "Combo 1 \u2014 cut",
+      "sheet": "slash",
+      "group": 0,
+      "frames": 12,
+      "duration": 0.3,
+      "contact": 0.09,
+      "issue": "Cut has windup/follow-through, but right turns frontward and left resembles an overhead cut. Keep direction-specific contact consistent. Up frame 6 touches a cell edge; standardize mask.",
+      "loop": false
+    },
+    {
+      "key": "slash-1",
+      "title": "Combo 2 \u2014 thrust",
+      "sheet": "slash",
+      "group": 1,
+      "frames": 12,
+      "duration": 0.34,
+      "contact": 0.1,
+      "issue": "Right/left thrusts read clearly. Up contact extends sideways instead of strongly up; needs a clearer foreshortened thrust. Right recovery frame 5 touches a cell edge. Down mask changes during recovery.",
+      "loop": false
+    },
+    {
+      "key": "slash-2",
+      "title": "Combo 3 \u2014 rising cut",
+      "sheet": "slash",
+      "group": 2,
+      "frames": 12,
+      "duration": 0.4,
+      "contact": 0.14,
+      "issue": "Rising sword path is visible, but direction rows have different body turns/kicks. Down frame 1 touches a cell edge. Review weapon continuity and locked mask before accepting.",
+      "loop": false
+    },
+    {
+      "key": "slash-3",
+      "title": "Combo 4 \u2014 finisher",
+      "sheet": "slash",
+      "group": 3,
+      "frames": 12,
+      "duration": 0.54,
+      "contact": 0.2,
+      "issue": "Down/right show overhead-to-low contact; left has a much less decisive finish and jumps to ready sooner. Mask/head still change with pose. Keep distinct finisher silhouette in all directions.",
+      "loop": false
+    },
+    {
+      "key": "cleave",
+      "title": "Charged release",
+      "sheet": "cleave",
+      "group": 0,
+      "frames": 12,
+      "duration": 0.58,
+      "contact": 0.18,
+      "issue": "Left contact turns almost frontward and down frames 9\u201310 open the mask mouth. Right release reads more like a thrust. Standardize the intended broad cleave and rigid mask.",
+      "loop": false
+    },
+    {
+      "key": "transform_in",
+      "title": "Slime to human",
+      "sheet": "transform_in",
+      "group": 0,
+      "frames": 16,
+      "duration": 0.64,
+      "contact": null,
+      "issue": "Reverse of transform-out. Directional morphs exist, but inherit changing human mask and unrelated facial expressions. Check mask becoming solid and the join to idle after canonical head is fixed.",
+      "loop": false
+    },
+    {
+      "key": "transform_out",
+      "title": "Human to slime",
+      "sheet": "transform_out",
+      "group": 0,
+      "frames": 16,
+      "duration": 0.64,
+      "contact": null,
+      "issue": "Down human frames 3\u20137 change facial markings before liquefying. Side morphs alter face/head during transition. The mask can dissolve with the body, but should not emote while still solid.",
+      "loop": false
+    }
+  ]
+}

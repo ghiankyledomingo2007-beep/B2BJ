@@ -20,7 +20,7 @@ public final class PlayerProgressionTest {
         Player basic=new Player(400,400);
         assert basic.maxHealth()==Player.MAX_HEALTH;
         assert basic.bladeDuration()==Player.BLADE_DURATION;
-        assert basic.bladeComboLength()==3;
+        assert basic.bladeComboLength()==4;
         System.out.println("Player progression tests passed");
     }
 }

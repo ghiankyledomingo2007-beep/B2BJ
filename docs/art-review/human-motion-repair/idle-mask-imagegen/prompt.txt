@@ -1,0 +1,3 @@
+Use case: precise-object-edit. Edit the existing 640x320 transparent idle atlas (8 columns, 4 rows, 80x80 cells). Use ../human-motion-fix/references/mask-3.png only as the original Rimuru mask reference. Change only front/side masks: fixed ivory shape, curved dark markings, centered red dot, fixed curved lower line, no blinking or expressions. Preserve every body pose, hair, sword, foot anchor, directional row and native pixel density. Back-facing row unchanged. Preserve transparent alpha and exact grid; exact dimensions or an integer enlargement only. No labels, backdrop, padding, scenery or extra elements.
+
+Provider: built-in image_gen tool; no PixelLab generations used. Rejected output: changed pixels and dimensions, opaque checkerboard.

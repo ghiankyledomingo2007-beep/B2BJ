@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "action": "Straight THRUST, not slash. Retract already-drawn sword handle to hip, point the rigid blade horizontally right. Step forward on front foot, extend elbow and entire sword straight forward at waist level. At maximum contact the blade is horizontal and extends toward screen right. Retract arms, shift weight back, return to original armed ready stance. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 93401,
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png"
+  },
+  "allocation": "batch-4"
+}

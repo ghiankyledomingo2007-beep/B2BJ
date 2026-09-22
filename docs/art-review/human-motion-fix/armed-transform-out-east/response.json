@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 69a6fc09-7cc8-47dc-b374-e94d3f7c1f8f\njob_id: 69a6fc09-7cc8-47dc-b374-e94d3f7c1f8f\naction: The exact masked Rimuru human smoothly liquefies into the cyan slime shown in final frame. Knees bend, coat and pale blue hair become cyan gel, the ivory mask and single sword dissolve into the body. Entire silhouette compresses fluidly down into slime with tiny ripples. Keep east facing throughout; never turn toward camera. No visible unmasked human face at any time. Same80x80 canvas, fixed ground row72, transparent background, no blinding flash. Arrive exactly at target slime.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93601\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"69a6fc09-7cc8-47dc-b374-e94d3f7c1f8f\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: cb869727-346d-49ef-b885-2ade69d3afbb\njob_id: cb869727-346d-49ef-b885-2ade69d3afbb\naction: Short hit reaction. Chest recoils backward, knees compress, hair follows with a small delayed swing; regain footing and return to armed stance. Keep feet close to initial anchor. Do not drop sword or mask, no death, no red flash. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93407\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"cb869727-346d-49ef-b885-2ade69d3afbb\")"
+      }
+    ],
+    "isError": false
+  }
+}

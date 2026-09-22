@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: fa1f290f-6162-4fe4-93ce-a7d2bb9f1b3a\njob_id: fa1f290f-6162-4fe4-93ce-a7d2bb9f1b3a\naction: One swift grounded forward dash. Crouch, push forcefully off back foot, lean far forward, extend legs into low airborne glide, then front foot plants and knees absorb landing. Hair and coat trail naturally, mask remains fixed, one sword carried low and rigid. Return to armed stance without turning. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93405\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"fa1f290f-6162-4fe4-93ce-a7d2bb9f1b3a\")"
+      }
+    ],
+    "isError": false
+  }
+}

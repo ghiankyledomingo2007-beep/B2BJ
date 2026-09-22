@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: c58eaaf2-40aa-47cc-9a1b-88dd511fe385\njob_id: c58eaaf2-40aa-47cc-9a1b-88dd511fe385\naction: Crouch, push off and dash forward in the facing direction. Lean torso into motion, hair and coat trail. Front foot lands, knees absorb landing, return to ready stance. Maintain exact FRONT VIEW, looking down toward camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94100\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"c58eaaf2-40aa-47cc-9a1b-88dd511fe385\")"
+      }
+    ],
+    "isError": false
+  }
+}

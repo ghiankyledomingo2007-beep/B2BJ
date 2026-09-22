@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: d3874a9f-f839-4fb8-a324-ee2e2f2d2271\njob_id: d3874a9f-f839-4fb8-a324-ee2e2f2d2271\naction: Stop running: plant leading foot, bend knee to absorb momentum, hair trails then settles, return to final upright ready stance. Maintain exact BACK VIEW, looking away from camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94145\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"d3874a9f-f839-4fb8-a324-ee2e2f2d2271\")"
+      }
+    ],
+    "isError": false
+  }
+}

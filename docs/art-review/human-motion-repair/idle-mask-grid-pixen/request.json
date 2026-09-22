@@ -1,0 +1,6 @@
+{
+  "image_path": "docs/art-review/human-motion-repair/idle-mask-grid-pixen/input.png",
+  "description": "Eight animation frames in a 3x3 grid, 80x80 cells. Keep every pose, position, hair, body and sword exactly. ONLY fix the mask: IDENTICAL WHITE porcelain mask in EVERY frame, two dark curved flame markings, RED CENTER DOT, ONE THIN dark curved line with hooked ends across lower mask. Rimuru original anti-magic mask. CLOSE ALL OPEN MOUTHS with white porcelain. No eyes, eyelids, teeth or expressions. Rigid face markings never move. Preserve 240x240 grid and transparent final empty cell.",
+  "no_background": true,
+  "seed": 6773
+}

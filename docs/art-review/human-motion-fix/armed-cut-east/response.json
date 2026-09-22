@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 03214eab-d841-4474-b44b-6a5a47026166\njob_id: 03214eab-d841-4474-b44b-6a5a47026166\naction: Quick diagonal cut: raise the already-drawn sword back past the shoulder in a clear anticipation, then rotate hips and shoulders and cut diagonally down in front toward screen right. Front knee bends slightly on contact, rear foot pushes off. Follow through low and return to original armed ready stance. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93400\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"03214eab-d841-4474-b44b-6a5a47026166\")"
+      }
+    ],
+    "isError": false
+  }
+}

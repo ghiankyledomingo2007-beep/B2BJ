@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: d5229b93-7afc-4dfa-96a1-0f683b5db906\njob_id: d5229b93-7afc-4dfa-96a1-0f683b5db906\naction: Release one powerful horizontal sword sweep toward right. Rotate hips then shoulders, extend sword through wide waist-height arc, follow through, settle to final ready stance. One decisive swing, no repeated attack. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94306\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"d5229b93-7afc-4dfa-96a1-0f683b5db906\")"
+      }
+    ],
+    "isError": false
+  }
+}

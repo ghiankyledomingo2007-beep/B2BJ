@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: ff60a9b5-3812-4b6b-8878-5cac5aab345f\njob_id: ff60a9b5-3812-4b6b-8878-5cac5aab345f\naction: Straight THRUST, not slash. Retract already-drawn sword handle to hip, point the rigid blade horizontally right. Step forward on front foot, extend elbow and entire sword straight forward at waist level. At maximum contact the blade is horizontal and extends toward screen right. Retract arms, shift weight back, return to original armed ready stance. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93401\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"ff60a9b5-3812-4b6b-8878-5cac5aab345f\")"
+      }
+    ],
+    "isError": false
+  }
+}

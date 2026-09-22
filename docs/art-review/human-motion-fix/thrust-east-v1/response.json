@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: cbb814ed-6091-4bcf-a3fb-1ac8bb88631b\njob_id: cbb814ed-6091-4bcf-a3fb-1ac8bb88631b\naction: One powerful straight fencing thrust. First draw the sword hand to the hip with point directly right at waist height, bend both knees and coil torso. Then lunge right: front knee bends, rear leg extends, right shoulder and elbow extend so a single straight horizontal katana points directly screen right. Freeze the clean fully extended contact pose briefly. Then pull sword back and recover to the initial stance. Clear anticipation, fast extension, controlled recovery. No slash or overhead swing. Strict right-facing side profile throughout. Keep the exact character, pixel palette, proportions and one straight rigid katana attached to the right hand. Fixed camera and centered body, transparent background. All hair, feet and blade remain inside the 80x80 canvas. No effects, no duplicate weapon, no camera movement. \nframes: 12\nsize: 80x80px\ntransparent: True\nseed: 92702\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"cbb814ed-6091-4bcf-a3fb-1ac8bb88631b\")"
+      }
+    ],
+    "isError": false
+  }
+}

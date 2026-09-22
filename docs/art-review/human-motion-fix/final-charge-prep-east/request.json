@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/fixed-key-charge-east/download.png",
+    "frame_count": 8,
+    "action": "Lower hips into wide stance and draw sword backward beside hip into final coiled pose. Do not swing. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94304
+  },
+  "allocation": "batch-7"
+}

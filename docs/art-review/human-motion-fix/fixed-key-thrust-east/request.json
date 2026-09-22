@@ -1,0 +1,12 @@
+{
+  "tool": "edit_image_pixen",
+  "arguments": {
+    "image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/armed-thrust-east/frame-9.png",
+    "description": "Keep exact character appearance and mask. Turn torso to strict right-facing side profile. Change pose to extended rightward thrust: both arms reach forward, sword handle at x50 y43, small guard x55 y43, ONE straight blade extends horizontally right to x76 y43. No blade left of handle. Front knee bent, back leg extended. Keep character scale and baseline.",
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "seed": 94002
+  },
+  "allocation": "batch-2"
+}

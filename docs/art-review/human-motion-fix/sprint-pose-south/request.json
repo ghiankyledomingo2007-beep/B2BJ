@@ -1,0 +1,18 @@
+{
+  "tool": "create_image_pixflux",
+  "arguments": {
+    "description": "Same Rimuru Tempest character and pixel style as input: pale blue long hair, blue split coat, beige fur scarf, dark pants, blue boots, slim straight steel katana. Change posture dramatically into an athletic SPRINT, not walking: torso pitched forward 30 degrees from hips, head leading the pelvis, low centre of gravity, long scissoring leg stride, front knee raised and bent, trailing leg kicked far back with toe off ground, clear airborne flight. Free arm bent 90 degrees drives forward; sword hand trails beside hip holding rigid blade back along travel direction. Hair and coat tails stream backward. Both legs clearly separated, feet never below y73, all anatomy and blade inside 80x80. Same body proportions and palette, no growth, no shadow or effects, transparent background. Front view running directly DOWN toward camera. Symmetrical frontal face looking at viewer, both golden eyes visible, torso leaning toward viewer. NOT side view or three-quarter view.",
+    "width": 80,
+    "height": 80,
+    "init_image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/rimuru-human/anchors/south.png",
+    "init_image_strength": 140,
+    "no_background": true,
+    "view": "low top-down",
+    "direction": "south",
+    "outline": "single color outline",
+    "shading": "detailed shading",
+    "detail": "highly detailed",
+    "seed": 92611
+  },
+  "allocation": "batch-3"
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: d0772f79-7162-406e-8aba-a572abb8506a\njob_id: d0772f79-7162-406e-8aba-a572abb8506a\naction: Lower hips into wide stance and draw sword backward beside hip into final coiled pose. Do not swing. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94304\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"d0772f79-7162-406e-8aba-a572abb8506a\")"
+      }
+    ],
+    "isError": false
+  }
+}

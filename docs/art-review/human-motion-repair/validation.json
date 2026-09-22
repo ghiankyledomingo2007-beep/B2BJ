@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-09-16T12:08:25.267101+00:00",
+  "build_command": "rtk proxy ./build.sh",
+  "assertion_programs": 68,
+  "build_result": "passed Java 17 -Xlint:all, assertion programs and packaged asset check",
+  "jar_sha256": "f0ddea9d190a1f55cea0eeff4adcf9de6dc0f6cfca006970c20619e50435177a",
+  "runtime_scenarios": 76,
+  "captured_frames": 3616,
+  "artwork_replacements_installed": false
+}

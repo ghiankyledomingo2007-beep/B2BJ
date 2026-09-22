@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 48d6350f-274b-47c4-8ea2-00a5346b9f75\njob_id: 48d6350f-274b-47c4-8ea2-00a5346b9f75\naction: Prepare a charged horizontal katana cleave without releasing it. Spread feet, bend knees and coil shoulders away from target. Draw the SINGLE straight blade back low beside rear hip, both hands sharing the ONE handle. Tip points backward (left), entire sword lies behind the hips, never crosses torso. Hold the final loaded stance; small breathing and hair settling. Do NOT swing or return to idle. Keep strict right-facing side profile, no turn toward camera. Preserve exact masked Rimuru: pale blue hair, white mask with dark markings and red dot, beige fur collar, blue coat. One straight rigid silver katana, black grip, no duplicate blade, no bent sword. Body stays centered, fixed camera, transparent background, foot baseline row72, all hair/feet/blade inside 80x80. No magic effects. \nframes: 8\nsize: 80x80px\ntransparent: True\nseed: 92904\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"48d6350f-274b-47c4-8ea2-00a5346b9f75\")"
+      }
+    ],
+    "isError": false
+  }
+}

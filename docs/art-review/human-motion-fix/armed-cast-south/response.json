@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: a7b2d59a-a127-41b4-b321-399136d19c6f\njob_id: a7b2d59a-a127-41b4-b321-399136d19c6f\naction: Extend free hand forward in facing direction to cast magic, sword stays low in other hand. Torso follows the reach, then settle into initial ready stance. No particles. Maintain exact FRONT VIEW, looking down toward camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94103\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"a7b2d59a-a127-41b4-b321-399136d19c6f\")"
+      }
+    ],
+    "isError": false
+  }
+}

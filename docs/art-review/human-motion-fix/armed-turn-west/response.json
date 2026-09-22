@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 46ab46ab-82c5-4b73-9ec1-7e184fd56f7a\njob_id: 46ab46ab-82c5-4b73-9ec1-7e184fd56f7a\naction: Small agile pivot in place. Knees soften, hips rotate slightly then shoulders settle. End in same facing ready stance. No full spin. Maintain exact LEFT SIDE PROFILE, looking screen left throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94166\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"46ab46ab-82c5-4b73-9ec1-7e184fd56f7a\")"
+      }
+    ],
+    "isError": false
+  }
+}

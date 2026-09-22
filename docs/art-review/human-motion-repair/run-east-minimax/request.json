@@ -1,0 +1,9 @@
+{
+  "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-repair/run-pose-east/pose.png",
+  "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-repair/run-pose-east/pose.png",
+  "frame_count": 8,
+  "direction": "east",
+  "no_background": true,
+  "seed": 61291,
+  "description": "Exactly one complete fast RUNNING cycle in place, right-facing profile. Alternate right and left foot contacts: each leg extends, pushes off, folds at the knee, passes the other leg, reaches forward and lands. Two brief flight phases. Keep forward lean, fixed rigid mask, low katana carry in one hand. The other arm swings independently opposite its leg, hands separate. Do not freeze legs in one pose; do not walk, rotate, or stop. Hair and coat trail the hips with restrained secondary motion. Return to the initial stride pose."
+}

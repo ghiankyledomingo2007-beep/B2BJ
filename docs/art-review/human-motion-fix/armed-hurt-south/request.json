@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-0.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-0.png",
+    "action": "Short hit recoil: shoulders jerk backward, knees bend, hair follows with slight delay. Regain balance, return to initial ready stance without dropping weapon. Maintain exact FRONT VIEW, looking down toward camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 94102
+  },
+  "allocation": "batch-6"
+}

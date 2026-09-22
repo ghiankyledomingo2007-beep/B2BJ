@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: adf25862-305f-450f-b752-bc8107fd3abb\njob_id: adf25862-305f-450f-b752-bc8107fd3abb\naction: One quick diagonal cut. Raise sword behind shoulder, rotate shoulders into strong diagonal downward sweep in facing direction. Front knee bends, rear foot pushes. Follow through, then recover to initial ready stance. Maintain exact FRONT VIEW looking toward camera; cut toward bottom of image. One straight silver sword, attached to gripping hand. Keep mask, hair, outfit, scale and foot baseline72. No camera rotation, no effects, no duplicated or bent sword, transparent80x80 canvas.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94400\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"adf25862-305f-450f-b752-bc8107fd3abb\")"
+      }
+    ],
+    "isError": false
+  }
+}

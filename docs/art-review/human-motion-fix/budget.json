@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-09-16T10:16:04.054944+00:00",
+  "allocations": [
+    {
+      "allocation": "batch-1",
+      "generations_remaining": 0,
+      "generations_used": 41,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-2",
+      "generations_remaining": 0,
+      "generations_used": 40,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-3",
+      "generations_remaining": 0,
+      "generations_used": 40,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-4",
+      "generations_remaining": 2,
+      "generations_used": 38,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-5",
+      "generations_remaining": 0,
+      "generations_used": 40,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-6",
+      "generations_remaining": 10,
+      "generations_used": 30,
+      "generations_total": 40
+    },
+    {
+      "allocation": "batch-7",
+      "generations_remaining": 1,
+      "generations_used": 39,
+      "generations_total": 40
+    }
+  ],
+  "remaining_total": 13
+}

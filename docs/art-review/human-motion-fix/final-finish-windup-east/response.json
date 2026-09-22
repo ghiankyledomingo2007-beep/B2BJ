@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 67cd8a44-a434-40b8-b7e5-0c2b4e25f37e\njob_id: 67cd8a44-a434-40b8-b7e5-0c2b4e25f37e\naction: Raise both hands above head into final sword-overhead pose, bend knees and coil torso for a powerful downward chop. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94300\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"67cd8a44-a434-40b8-b7e5-0c2b4e25f37e\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-run-east-v2/frame-0.png",
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 93501,
+    "action": "Brake from the running pose: front foot plants, knee compresses and torso rises, hair and coat settle naturally into the supplied armed idle. No hopping or turning. Strict right side profile, preserve masked character identity and single rigid katana attached to hand. No loose hair pixels. Same80x80 canvas, feet around row72, transparent background."
+  },
+  "allocation": "batch-2"
+}

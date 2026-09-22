@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-09-16T12:42:22.437497+00:00",
+  "total_remaining": 3,
+  "allocations": [
+    {
+      "label": "batch-1",
+      "generations_remaining": 0,
+      "generations_used": 41,
+      "generations_total": 40
+    },
+    {
+      "label": "batch-2",
+      "generations_remaining": 0,
+      "generations_used": 40,
+      "generations_total": 40
+    },
+    {
+      "label": "batch-3",
+      "generations_remaining": 0,
+      "generations_used": 40,
+      "generations_total": 40
+    },
+    {
+      "label": "batch-4",
+      "generations_remaining": 1,
+      "generations_used": 39,
+      "generations_total": 40
+    },
+    {
+      "label": "human-motion-5",
+      "generations_remaining": 0,
+      "generations_used": 40,
+      "generations_total": 40
+    },
+    {
+      "label": "human-motion-6",
+      "generations_remaining": 0,
+      "generations_used": 40,
+      "generations_total": 40
+    },
+    {
+      "label": "human-motion-7",
+      "generations_remaining": 1,
+      "generations_used": 39,
+      "generations_total": 40
+    },
+    {
+      "label": "human-repair-8",
+      "generations_remaining": 1,
+      "generations_used": 39,
+      "generations_total": 40
+    }
+  ],
+  "repair_generations_spent": 50,
+  "this_allocation_turn_generations_spent": 41,
+  "pending_jobs": 0,
+  "pending_estimated_generations": 0,
+  "available_after_pending_estimate": 3
+}

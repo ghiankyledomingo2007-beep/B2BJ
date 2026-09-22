@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 964bbe97-85ed-46f4-aaa1-cb503614b68e\njob_id: 964bbe97-85ed-46f4-aaa1-cb503614b68e\ndescription: Pixel art game HUD bust portrait of Rimuru Tempest wearing the original anti-magic mask: entire face covered by ivory-white oval mask, pair of dark charcoal curved jagged markings near eye area, one tiny red circular center dot and dark curved line across lower mask with pointed end markings. NO visible human eyes, skin, mouth or nose. Pale ice-blue hair bangs fall OVER the upper mask, longer side locks. Beige fur collar and blue coat shoulders. Symmetrical front view toward camera. Crisp deliberate pixel clusters, dark blue outline, matching input pixel style. Transparent background, head and shoulders fill64x64, no words or border.\nsize: 64x64px\ntransparent: True\ninit_image: yes (strength 100)\nseed: 93430\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"964bbe97-85ed-46f4-aaa1-cb503614b68e\")"
+      }
+    ],
+    "isError": false
+  }
+}

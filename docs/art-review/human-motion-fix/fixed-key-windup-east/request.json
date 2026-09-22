@@ -1,0 +1,12 @@
+{
+  "tool": "edit_image_pixen",
+  "arguments": {
+    "image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "description": "Change pose to preparing overhead sword chop. Keep exact right-facing profile, mask, hair, outfit, size, 80px canvas. Lift BOTH hands together above forehead holding single sword handle. Blade extends up-left behind from hands. Feet apart, knees bent. Entire straight sword inside canvas. No blade below handle.",
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "seed": 94000
+  },
+  "allocation": "batch-2"
+}

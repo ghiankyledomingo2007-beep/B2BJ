@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 5920cb8f-308b-45da-b9c5-336b2f980916\njob_id: 5920cb8f-308b-45da-b9c5-336b2f980916\naction: Seamless athletic RUN CYCLE facing screen right in strict side profile. Maintain this forward leaning sprint silhouette. ONE complete left-right stride, alternating two long opposing foot contacts and two airborne flight phases. Knees lift, rear heel folds upward, hips compress on contact. Free arm swings opposite legs. Sword stays a single rigid blade in the trailing hand below hip height, never bending or passing through torso. Hair and coat trail left then rebound with delayed follow through. Stay centered; no turn, no walking, no stop, no idle pause. Preserve ivory mask with dark markings and tiny red dot; never reveal eyes or face. Keep entire body and blade inside 80x80 transparent canvas with stable floor row72. Return precisely to input running pose for a seamless loop.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92800\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"5920cb8f-308b-45da-b9c5-336b2f980916\")"
+      }
+    ],
+    "isError": false
+  }
+}

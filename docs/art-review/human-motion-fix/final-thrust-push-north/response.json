@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: a90f32cc-d6d9-4864-a1c1-533d4daa7dd0\njob_id: a90f32cc-d6d9-4864-a1c1-533d4daa7dd0\naction: Step into a straight forward sword thrust in facing direction, extend leading arm and sword into final pose. Not a slash. Keep BACK VIEW, target toward top of image. Keep full mask, hair, outfit, scale, one straight rigid katana. No camera turn, no effects, no duplicate blade. Transparent80x80 canvas.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94622\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"a90f32cc-d6d9-4864-a1c1-533d4daa7dd0\")"
+      }
+    ],
+    "isError": false
+  }
+}

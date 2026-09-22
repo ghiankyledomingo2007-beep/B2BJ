@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-3.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/key-directions-windup/base-north.png",
+    "frame_count": 4,
+    "action": "Lift both hands together above head into final overhead sword stance. Knees bend, torso prepares powerful chop. Keep LEFT PROFILE, target screen left. Keep full mask, hair, outfit, scale, one straight rigid katana. No camera turn, no effects, no duplicate blade. Transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94630
+  },
+  "allocation": "batch-5"
+}

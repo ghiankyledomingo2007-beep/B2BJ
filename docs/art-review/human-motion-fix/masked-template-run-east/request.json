@@ -1,0 +1,12 @@
+{
+  "tool": "animate_character",
+  "arguments": {
+    "character_id": "16389695-45d2-47b6-957c-7b2315296099",
+    "mode": "template",
+    "template_animation_id": "running-8-frames",
+    "directions": [
+      "east"
+    ]
+  },
+  "allocation": "batch-3"
+}

@@ -11,3 +11,6 @@ __pycache__/
 .env
 .env.*
 .claude/
+*.blend1
+docs/art-review/sprite3d-run/sword-run-east/
+docs/art-review/sprite3d-run/sword-run-east-v2/

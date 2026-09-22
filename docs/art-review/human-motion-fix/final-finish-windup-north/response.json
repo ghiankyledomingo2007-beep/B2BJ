@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: b5ea8b45-5aca-4671-9585-9ef2780826da\njob_id: b5ea8b45-5aca-4671-9585-9ef2780826da\naction: Lift both hands together above head into final overhead sword stance. Knees bend, torso prepares powerful chop. Keep BACK VIEW, target toward top of image. Keep full mask, hair, outfit, scale, one straight rigid katana. No camera turn, no effects, no duplicate blade. Transparent80x80 canvas.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94620\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"b5ea8b45-5aca-4671-9585-9ef2780826da\")"
+      }
+    ],
+    "isError": false
+  }
+}

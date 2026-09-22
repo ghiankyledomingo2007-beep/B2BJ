@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: e877bf68-f800-4959-a3b9-64fc1e4a8af6\njob_id: e877bf68-f800-4959-a3b9-64fc1e4a8af6\nmode: reference\nframes: 8\nsize: 80x80px\ntransparent: True\nedit: ONLY add Rimuru Tempest original white anti-magic mask matching the reference. Ivory-white whole face covering with paired dark curved jagged markings near eye area, one small red center dot, dark curved line across lower mask and two pointed lower markings. Mask hides every visible facial feature including eyes; pale blue bangs lie OVER mask. Render clear pixel-art markings and one red pixel dot at this small scale. Preserve input pose, anatomy, hair, blue outfit, beige fur collar, straight katana, body size and exact 80x80 framing. On strict side profile show projecting white mask profile with dark marking and tiny red dot if visible; on back view mask is hidden. Keep transparent background. Do not alter motion or add glow.\nseed: 92730\ncost: ~20 generations\nstatus: processing (~30-90s)\n\nhint: get_image(job_id=\"e877bf68-f800-4959-a3b9-64fc1e4a8af6\")"
+      }
+    ],
+    "isError": false
+  }
+}

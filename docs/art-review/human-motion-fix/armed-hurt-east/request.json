@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "action": "Short hit reaction. Chest recoils backward, knees compress, hair follows with a small delayed swing; regain footing and return to armed stance. Keep feet close to initial anchor. Do not drop sword or mask, no death, no red flash. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 93407,
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png"
+  },
+  "allocation": "batch-4"
+}

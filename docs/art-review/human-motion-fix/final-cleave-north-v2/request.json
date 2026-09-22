@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/key-directions-charge/base-north-east.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-2.png",
+    "frame_count": 12,
+    "action": "BACK VIEW STAYS BACK VIEW. The blue-haired swordsman sweeps sword once from right to left across front of body AWAY FROM CAMERA, then settles to final pose. Most blade motion is occluded behind torso and hair. Head and shoulders stay facing away for every frame. Never rotate to side or front. Never show face or eyes. Small hip twist only. Both feet grounded. One straight attached sword, no trails or effects, transparent80px canvas.",
+    "no_background": true,
+    "seed": 95000
+  },
+  "allocation": "batch-4"
+}

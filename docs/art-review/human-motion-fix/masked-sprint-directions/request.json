@@ -1,0 +1,13 @@
+{
+  "tool": "create_character",
+  "arguments": {
+    "name": "B2BJ Masked Sprint Pose",
+    "mode": "v3",
+    "n_directions": 8,
+    "size": 80,
+    "reference_image_path": "docs/art-review/human-motion-fix/masked-run-east-v2/frame-0.png",
+    "description": "Rotate the exact supplied running masked Rimuru sprite while preserving its dynamic pose: forward leaning athletic SPRINT, front leg reaches ahead, rear leg pushes behind, body airborne, free arm bent and pumping, single rigid silver katana carried low behind hip. Keep pale blue hair trailing opposite motion, ivory original mask with dark markings and tiny red dot, blue coat and beige fur collar. NOT standing or idle. Keep proportions, same pixel style and80x80 canvas, ground reference row72. Pure back view has no mask/face visible; strict right and left profiles; frontal view faces down toward camera. No effects or shadows.",
+    "view": "low top-down"
+  },
+  "allocation": "batch-6"
+}

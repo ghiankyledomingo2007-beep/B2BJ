@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "character: 16389695-45d2-47b6-957c-7b2315296099\nanimation: running-8-frames\ndirections: east (1 jobs)\ngroup: fbb191ee-1b25-4da3-8c48-604c9548824d\neta: ~2-4 min\nadd more directions to this group: animate_character(character_id=\"16389695-45d2-47b6-957c-7b2315296099\", template_animation_id=\"running-8-frames\", animation_group_id=\"fbb191ee-1b25-4da3-8c48-604c9548824d\", directions=[...])\n\nhint: get_character(character_id=\"16389695-45d2-47b6-957c-7b2315296099\")\nif poor: delete_animation(character_id=\"16389695-45d2-47b6-957c-7b2315296099\", animation_type=\"...\") then retry with mode=\"v3\""
+      }
+    ],
+    "isError": false
+  }
+}

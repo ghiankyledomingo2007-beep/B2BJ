@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: e7c881eb-30e7-4675-86dd-a4b0fc4299a2\njob_id: e7c881eb-30e7-4675-86dd-a4b0fc4299a2\naction: One rising diagonal katana cut toward screen RIGHT. Begin low sword near rear hip, bend knees, turn hips and shoulders and drive the single rigid blade upward across the front. Arms extend in a rising cut, coat swings with body pivot, feet planted. Finish with blade forward-high then lower and return to supplied starting stance. No spin to face camera, no aerial jump. Keep strict right-facing side profile, no turn toward camera. Preserve exact masked Rimuru: pale blue hair, white mask with dark markings and red dot, beige fur collar, blue coat. One straight rigid silver katana, black grip, no duplicate blade, no bent sword. Body stays centered, fixed camera, transparent background, foot baseline row72, all hair/feet/blade inside 80x80. No magic effects. \nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92902\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"e7c881eb-30e7-4675-86dd-a4b0fc4299a2\")"
+      }
+    ],
+    "isError": false
+  }
+}

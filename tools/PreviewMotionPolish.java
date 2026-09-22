@@ -36,7 +36,7 @@ public final class PreviewMotionPolish {
         for(int d=0;d<4;d++) {
             var panel=scene(0);panel.game().player().collectIchor(100);
             key(panel,"transform",true);key(panel,"transform",false);advance(panel,.72);
-            key(panel,keys[d],true);panel.step(.001);
+            key(panel,keys[d],true);advance(panel,.14);
             var animation=(BladeAnimation)get(panel,"bladeAnimation");
             var crops=new ArrayList<BufferedImage>();var labels=new ArrayList<String>();
             for(int pose=0;pose<BladeAnimation.RUN_FRAMES;pose++) {
@@ -46,7 +46,7 @@ public final class PreviewMotionPolish {
                 var image=save(panel,"run-"+NAMES[d]+"-"+pose);
                 crops.add(crop(image,screenX(panel, panel.game().player().x()),screenY(panel,panel.game().player().y()),320,240));
                 labels.add(NAMES[d]+" run "+pose+" / row "+animation.row());
-                if(pose<BladeAnimation.RUN_FRAMES-1)advance(panel,.036);
+                if(pose<BladeAnimation.RUN_FRAMES-1)advance(panel,.035);
             }
             key(panel,keys[d],false);contact("run-"+NAMES[d]+"-contact",crops,labels,4);
         }

@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/key-directions-windup/base-east.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-2.png",
+    "frame_count": 12,
+    "action": "Powerful overhead downward sword chop toward target in facing direction. Both hands drive blade through one descending arc, front knee bends deeply. Blade ends pointing toward floor in front. Recover slowly to final ready stance. Keep BACK VIEW, target toward top of image. Keep full mask, hair, outfit, scale, one straight rigid katana. No camera turn, no effects, no duplicate blade. Transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94621
+  },
+  "allocation": "batch-4"
+}

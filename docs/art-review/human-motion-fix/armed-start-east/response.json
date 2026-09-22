@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 01674033-b81c-4011-9874-44dd5cfc8faf\njob_id: 01674033-b81c-4011-9874-44dd5cfc8faf\naction: Launch into the supplied forward-leaning running pose: bend knees, pitch torso forward, rear toe pushes off, free arm drives forward and one leg extends. Hair follows with a small delay. Strict right side profile, preserve masked character identity and single rigid katana attached to hand. No loose hair pixels. Same80x80 canvas, feet around row72, transparent background.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93500\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"01674033-b81c-4011-9874-44dd5cfc8faf\")"
+      }
+    ],
+    "isError": false
+  }
+}

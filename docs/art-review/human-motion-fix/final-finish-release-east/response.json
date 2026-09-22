@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 41d1f713-48f2-45ae-ad46-bc16ca5246f2\njob_id: 41d1f713-48f2-45ae-ad46-bc16ca5246f2\naction: Powerful overhead chop DOWNWARD toward right. Hands drive downward together, blade rotates in a single arc from above head down in front to near ground on right. Deep front-knee bend at contact, then lift blade and settle into final ready pose. Sword stays single and straight. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.\nframes: 12\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94301\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"41d1f713-48f2-45ae-ad46-bc16ca5246f2\")"
+      }
+    ],
+    "isError": false
+  }
+}

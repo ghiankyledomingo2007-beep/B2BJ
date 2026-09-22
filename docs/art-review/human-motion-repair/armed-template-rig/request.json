@@ -1,0 +1,10 @@
+{
+  "reference_image_path": "docs/art-review/human-motion-fix/armed-idle-south/frame-0.png",
+  "description": "Rimuru Tempest wearing his rigid white anti-magic mask with fixed dark flame markings and red center dot, long pale blue hair, cream fur scarf, blue long coat and dark boots. Holding one long katana in the right hand at the side, free left hand relaxed separately. Keep the same small adult proportions, outline and palette as the source. Upright relaxed stance, directions face their named direction.",
+  "name": "B2BJ armed movement repair prototype",
+  "mode": "v3",
+  "size": 80,
+  "view": "low top-down",
+  "n_directions": 8,
+  "body_type": "humanoid"
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 625584bb-7228-4a28-bf11-568956e4057e\njob_id: 625584bb-7228-4a28-bf11-568956e4057e\nmodel: pixen\ndescription: Pixel art game HUD head-and-shoulders portrait, Rimuru Tempest WEARING SHIZU ORIGINAL ANTI-MAGIC MASK. Vivid pale cyan-blue straight hair and bangs. Entire face is a smooth IVORY WHITE MASK: two dark charcoal hooked jagged lines on upper cheeks, a dark broad curved line across lower mask, tiny RED circle at center. Mask has NO eye holes, NO visible eyes, NO skin or human mouth. Cream fur scarf, cobalt-blue coat. Front view, clean crisp limited-palette pixel art, transparent background, portrait fills64x64 canvas.\nsize: 64x64px\ntransparent: True\nseed: 94900\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"625584bb-7228-4a28-bf11-568956e4057e\")"
+      }
+    ],
+    "isError": false
+  }
+}

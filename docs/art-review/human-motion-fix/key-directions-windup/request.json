@@ -1,0 +1,13 @@
+{
+  "tool": "create_character",
+  "arguments": {
+    "name": "B2BJ Masked windup",
+    "mode": "v3",
+    "n_directions": 8,
+    "size": 80,
+    "reference_image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/fixed-key-windup-east/download.png",
+    "description": "Rotate exact supplied masked swordsman and preserve pose: overhead sword preparation, both hands share single handle ABOVE HEAD, blade extends backward from handle. Preserve blue hair, ivory full-face mask with dark markings and red center dot, blue coat, beige collar, single straight silver katana. Same size and proportions. Do not replace pose with idle. Back view shows hair only. Transparent80x80, feet baseline72, no effects.",
+    "view": "low top-down"
+  },
+  "allocation": "batch-6"
+}

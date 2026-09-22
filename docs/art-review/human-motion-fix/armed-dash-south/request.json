@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-0.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-0.png",
+    "action": "Crouch, push off and dash forward in the facing direction. Lean torso into motion, hair and coat trail. Front foot lands, knees absorb landing, return to ready stance. Maintain exact FRONT VIEW, looking down toward camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 94100
+  },
+  "allocation": "batch-6"
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: cf6f6f9e-cf7b-49f1-a62f-e0b18f630042\njob_id: cf6f6f9e-cf7b-49f1-a62f-e0b18f630042\naction: One forceful two-handed overhead sword chop toward screen RIGHT. Slowly raise one rigid katana above head with both hands on its one grip, widen feet and lean back slightly. Then step forward and bring shoulders, elbows and straight blade down hard in front of body. Deep knee compression at contact. Follow through downward and settle back to starting stance. Distinct longer anticipation and heavy recovery; no horizontal slash. Keep strict right-facing side profile, no turn toward camera. Preserve exact masked Rimuru: pale blue hair, white mask with dark markings and red dot, beige fur collar, blue coat. One straight rigid silver katana, black grip, no duplicate blade, no bent sword. Body stays centered, fixed camera, transparent background, foot baseline row72, all hair/feet/blade inside 80x80. No magic effects. \nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 92903\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"cf6f6f9e-cf7b-49f1-a62f-e0b18f630042\")"
+      }
+    ],
+    "isError": false
+  }
+}

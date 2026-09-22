@@ -1,0 +1,22 @@
+{
+  "tool": "edit_image",
+  "arguments": {
+    "image_paths": [
+      "docs/art-review/rimuru-human/idle-south/frame-0.png",
+      "docs/art-review/rimuru-human/idle-east/frame-0.png",
+      "docs/art-review/rimuru-human/idle-north/frame-0.png",
+      "docs/art-review/human-motion-fix/sprint-east-v1/frame-4.png",
+      "docs/art-review/human-motion-fix/sprint-east-v1/frame-9.png",
+      "docs/art-review/human-motion-fix/thrust-east-v1/frame-6.png",
+      "docs/art-review/human-motion-fix/charge-east-v1/frame-4.png",
+      "docs/art-review/rimuru-human/slash-a-east-open/frame-6.png"
+    ],
+    "reference_image_path": "docs/art-review/human-motion-fix/references/mask-2.png",
+    "description": "ONLY add Rimuru Tempest original white anti-magic mask matching the reference. Ivory-white whole face covering with paired dark curved jagged markings near eye area, one small red center dot, dark curved line across lower mask and two pointed lower markings. Mask hides every visible facial feature including eyes; pale blue bangs lie OVER mask. Render clear pixel-art markings and one red pixel dot at this small scale. Preserve input pose, anatomy, hair, blue outfit, beige fur collar, straight katana, body size and exact 80x80 framing. On strict side profile show projecting white mask profile with dark marking and tiny red dot if visible; on back view mask is hidden. Keep transparent background. Do not alter motion or add glow.",
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "seed": 92730
+  },
+  "allocation": "batch-5"
+}

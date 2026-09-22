@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 10c147bd-50c2-4268-aff3-5ea79ef3f197\njob_id: 10c147bd-50c2-4268-aff3-5ea79ef3f197\naction: Plant feet and extend free hand toward screen right in a decisive magic release gesture. Sword stays held low in the other hand. Torso twists with reach, hair and coat follow, then recover to armed ready stance. No drawn magic or particles. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the gripping hand, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93408\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"10c147bd-50c2-4268-aff3-5ea79ef3f197\")"
+      }
+    ],
+    "isError": false
+  }
+}

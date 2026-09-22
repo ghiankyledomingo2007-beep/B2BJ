@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 7fa30481-7361-411a-a450-825bd3bd5c1a\njob_id: 7fa30481-7361-411a-a450-825bd3bd5c1a\naction: Draw handle back slightly then step and extend sword straight right at chest height into final fully extended thrust. No cutting arc. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94302\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"7fa30481-7361-411a-a450-825bd3bd5c1a\")"
+      }
+    ],
+    "isError": false
+  }
+}

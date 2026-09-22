@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: ea835a05-4bfd-4753-b1b9-cd680b79c661\nname: B2BJ Masked charge\nmode: v3 reference (1 generations, 8 directions)\nbody: humanoid\nsize: 80x80px\nview: low top-down\nstyle: from reference image (outline/detail hints ignored)\nstatus: processing (~3-5 min)\n\nhint: get_character(character_id=\"ea835a05-4bfd-4753-b1b9-cd680b79c661\")"
+      }
+    ],
+    "isError": false
+  }
+}

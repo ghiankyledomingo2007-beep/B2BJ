@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "action": "Vertical TWO-HANDED OVERHEAD CHOP. From armed stance put BOTH hands on ONE sword grip. Raise both hands together well ABOVE THE HEAD; blade points upward and slightly back. Hold this unmistakable overhead preparation for several frames. Then bend front knee deeply and drive both hands straight DOWN in front of chest, chopping vertically through target on the right. Blade ends pointing down-forward near floor. Let shoulders and hips follow the powerful downward strike, then recover slowly to armed ready stance. No horizontal slash and no sword-drawing motion. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 93403,
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png"
+  },
+  "allocation": "batch-4"
+}

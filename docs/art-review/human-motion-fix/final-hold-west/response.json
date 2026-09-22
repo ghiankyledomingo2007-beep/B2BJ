@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: b0ae6013-079c-48e7-8360-68a7ab194f39\njob_id: b0ae6013-079c-48e7-8360-68a7ab194f39\naction: Hold this coiled charged stance. Gentle breathing and small hair motion only. Feet stay planted; sword stays back. Maintain LEFT-FACING PROFILE; face and attack stay in this direction. Keep exact mask, hair, outfit and scale. Single rigid straight silver katana attached to gripping hand, constant length. No drawn effects. Transparent80x80 canvas.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94731\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"b0ae6013-079c-48e7-8360-68a7ab194f39\")"
+      }
+    ],
+    "isError": false
+  }
+}

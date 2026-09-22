@@ -1,0 +1,7 @@
+{
+  "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/armed-idle-south/frame-0.png",
+  "action": "Front view running toward the viewer, always facing down. A complete seamless 12-pose RUNNING stride in place, two alternating footfalls with a brief airborne passing phase, body leaning into travel. One hand holds the katana low beside the hip, blade trailing safely away from legs. The OTHER empty hand swings freely opposite its leg, hands always far apart, never clasped at the chest. Small head bob, coat tails and hair trail a beat behind the hips. Preserve this exact rigid ivory mask with fixed dark curved markings, red dot, and blue bangs: no blinking, no mouth movement, no facial expression. Keep the same head proportions and outfit, no turning toward the camera. Return to the same running stride for a clean loop, not a standing pose.",
+  "frame_count": 12,
+  "no_background": true,
+  "seed": 20260916
+}

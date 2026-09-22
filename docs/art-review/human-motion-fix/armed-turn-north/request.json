@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-2.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-2.png",
+    "action": "Small agile pivot in place. Knees soften, hips rotate slightly then shoulders settle. End in same facing ready stance. No full spin. Maintain exact BACK VIEW, looking away from camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 94146
+  },
+  "allocation": "batch-4"
+}

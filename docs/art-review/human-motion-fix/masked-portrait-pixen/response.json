@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 1f64aebd-b42f-4a89-9670-9c4826d303d6\njob_id: 1f64aebd-b42f-4a89-9670-9c4826d303d6\nmodel: pixen\nedit: Replace entire exposed face with Rimuru original ivory white full-face mask: charcoal hooked curved vertical markings on each cheek, curved dark line across lower face, small RED dot at center. NO visible eyes, mouth, eyebrows or skin. Pale blue bangs overlap upper mask. Keep original blue hair, beige fur collar, blue outfit, portrait composition, exact pixel art style and64x64 canvas.\nsource: 64x64px\nsize: 64x64px\ntransparent: True\nseed: 94200\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"1f64aebd-b42f-4a89-9670-9c4826d303d6\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/idle-east/frame-0.png",
+    "frame_count": 12,
+    "no_background": true,
+    "seed": 92702,
+    "action": "One powerful straight fencing thrust. First draw the sword hand to the hip with point directly right at waist height, bend both knees and coil torso. Then lunge right: front knee bends, rear leg extends, right shoulder and elbow extend so a single straight horizontal katana points directly screen right. Freeze the clean fully extended contact pose briefly. Then pull sword back and recover to the initial stance. Clear anticipation, fast extension, controlled recovery. No slash or overhead swing. Strict right-facing side profile throughout. Keep the exact character, pixel palette, proportions and one straight rigid katana attached to the right hand. Fixed camera and centered body, transparent background. All hair, feet and blade remain inside the 80x80 canvas. No effects, no duplicate weapon, no camera movement. "
+  },
+  "allocation": "batch-3"
+}

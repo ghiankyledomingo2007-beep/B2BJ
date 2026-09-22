@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 9616d8f1-ac4a-4739-b8b5-064c8c802b53\njob_id: 9616d8f1-ac4a-4739-b8b5-064c8c802b53\naction: One rising cut. Bend knees and lower sword behind hip. Push up through legs and sweep sword diagonally UP in facing direction. Finish sword high in front, then lower into initial ready stance. No jump or spin. Maintain exact BACK VIEW looking away; cut toward top of image. One straight silver sword, attached to gripping hand. Keep mask, hair, outfit, scale and foot baseline72. No camera rotation, no effects, no duplicated or bent sword, transparent80x80 canvas.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94421\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"9616d8f1-ac4a-4739-b8b5-064c8c802b53\")"
+      }
+    ],
+    "isError": false
+  }
+}

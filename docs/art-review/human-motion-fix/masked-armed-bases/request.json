@@ -1,0 +1,17 @@
+{
+  "tool": "edit_image",
+  "arguments": {
+    "image_paths": [
+      "docs/art-review/human-motion-fix/masked-directions-v1/base-south.png",
+      "docs/art-review/human-motion-fix/masked-directions-v1/base-east.png",
+      "docs/art-review/human-motion-fix/masked-directions-v1/base-north.png",
+      "docs/art-review/human-motion-fix/masked-directions-v1/base-west.png"
+    ],
+    "description": "Keep all four exact views, pose, character size, face mask, hair, outfit and transparent 80x80 canvas unchanged. ONLY change the weapon to an UNSHEATHED katana held in the RIGHT HAND low beside the body. One straight silver-white steel blade 22 pixels long, dark navy handle, small gold guard. Tip angles down behind the character and stays fully inside frame. Replace brown weapon/scabbard with this steel sword. No second sword, no blade crossing torso, no pose rotation, no extra hands. Mask always covers face, ivory with dark curves and red dot. Preserve every other detail.",
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "seed": 93300
+  },
+  "allocation": "batch-7"
+}

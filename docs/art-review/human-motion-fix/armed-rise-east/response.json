@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: b79738a7-04fd-4bc9-98fa-cfbdea7521e4\njob_id: b79738a7-04fd-4bc9-98fa-cfbdea7521e4\naction: Rising cut. Bend knees and lower the already-drawn sword tip beside rear hip. Push up through legs while hips and shoulders pivot; sweep single rigid katana diagonally upward forward across target. Finish sword extended forward high, then lower into original armed ready stance. Both feet stay grounded; do not jump or spin around. EXACT right-facing side profile. Keep the exact mask with dark markings and red dot, blue hair and coat. Katana is already drawn: do NOT sheathe or draw it again. ONE rigid straight steel blade attached to the two hands sharing its ONE handle, constant blade length, no duplicates or bending. No turning toward camera. Keep body centered, feet around row72, whole body/sword inside80x80, transparent background. No effects.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93402\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"b79738a7-04fd-4bc9-98fa-cfbdea7521e4\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: e9b94807-6b16-496a-be51-ec851b51aac3\njob_id: e9b94807-6b16-496a-be51-ec851b51aac3\nmodel: pixen\nedit: Change pose to preparing overhead sword chop. Keep exact right-facing profile, mask, hair, outfit, size, 80px canvas. Lift BOTH hands together above forehead holding single sword handle. Blade extends up-left behind from hands. Feet apart, knees bent. Entire straight sword inside canvas. No blade below handle.\nsource: 80x80px\nsize: 80x80px\ntransparent: True\nseed: 94000\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"e9b94807-6b16-496a-be51-ec851b51aac3\")"
+      }
+    ],
+    "isError": false
+  }
+}

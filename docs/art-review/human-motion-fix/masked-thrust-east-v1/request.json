@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-directions-v1/base-east.png",
+    "action": "One straight horizontal katana thrust toward screen RIGHT. Bend knees, draw sword grip to hip with point aimed right, then lunge with front knee bent and back leg extended. At contact fully extend right elbow and one long straight silver blade horizontally. Keep clear line from shoulder through sword tip. Retract smoothly to starting pose. No slash, no spin. Keep strict right-facing side profile, no turn toward camera. Preserve exact masked Rimuru: pale blue hair, white mask with dark markings and red dot, beige fur collar, blue coat. One straight rigid silver katana, black grip, no duplicate blade, no bent sword. Body stays centered, fixed camera, transparent background, foot baseline row72, all hair/feet/blade inside 80x80. No magic effects. ",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92901,
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-directions-v1/base-east.png"
+  },
+  "allocation": "batch-3"
+}

@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-sprint-directions/base-east.png",
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-sprint-directions/base-east.png",
+    "frame_count": 12,
+    "no_background": true,
+    "seed": 93801,
+    "action": "Exactly ONE complete left-right running stride cycle, TWO opposite foot contacts and two flight phases. Athletic forward lean, separated legs, folded passing knee, rear foot pushes strongly. Free arm counter-swings; rigid katana stays low behind hip. BACK view running away from camera, no mask or eyes visible. Hair stays attached, trails opposite motion only slightly, tips sway2pixels; no flying fragments or explosions. Coat tails follow legs naturally. Preserve exact masked blue-haired character, colors and proportions. Stay centered in80x80 transparent canvas, foot baseline72 on contacts. No turn, walk, stop, or extra repeated cycle. End exactly in first pose."
+  },
+  "allocation": "batch-7"
+}

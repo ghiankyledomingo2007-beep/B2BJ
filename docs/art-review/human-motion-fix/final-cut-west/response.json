@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 961754ac-bf22-4142-a381-889be3daab51\njob_id: 961754ac-bf22-4142-a381-889be3daab51\naction: Single fast diagonal DOWNWARD sword cut toward SCREEN LEFT. Blade starts raised behind head pointing right, rotates over shoulder, cuts down-left in front of body. Front knee bends. Recover into final left-facing ready pose. Maintain left facing throughout. Keep ONE straight rigid sword and its constant length, no trails, no effects, no fragments or duplicate blade. Same mask, hair, coat, scale, transparent80x80 canvas.\nframes: 12\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94800\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"961754ac-bf22-4142-a381-889be3daab51\")"
+      }
+    ],
+    "isError": false
+  }
+}

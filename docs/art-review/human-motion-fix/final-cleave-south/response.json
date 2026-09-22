@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 99b57747-524a-4cfe-a1fc-6a6e9b81ae5b\njob_id: 99b57747-524a-4cfe-a1fc-6a6e9b81ae5b\naction: Release ONE powerful horizontal sword sweep toward target in facing direction. Hips turn then shoulders, sword sweeps across front with straight attached blade. Body follows through and settles into final ready stance. Maintain FRONT VIEW toward camera; face and attack stay in this direction. Keep exact mask, hair, outfit and scale. Single rigid straight silver katana attached to gripping hand, constant length. No drawn effects. Transparent80x80 canvas.\nframes: 16\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94702\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"99b57747-524a-4cfe-a1fc-6a6e9b81ae5b\")"
+      }
+    ],
+    "isError": false
+  }
+}

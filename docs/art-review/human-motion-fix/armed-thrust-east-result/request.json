@@ -1,0 +1,7 @@
+{
+  "tool": "get_image",
+  "arguments": {
+    "job_id": "ff60a9b5-3812-4b6b-8878-5cac5aab345f"
+  },
+  "allocation": "batch-4"
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 10129f3b-7da7-487f-b8a1-4ca1cd2c8325\njob_id: 10129f3b-7da7-487f-b8a1-4ca1cd2c8325\naction: Short hit recoil: shoulders jerk backward, knees bend, hair follows with slight delay. Regain balance, return to initial ready stance without dropping weapon. Maintain exact FRONT VIEW, looking down toward camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94102\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"10129f3b-7da7-487f-b8a1-4ca1cd2c8325\")"
+      }
+    ],
+    "isError": false
+  }
+}

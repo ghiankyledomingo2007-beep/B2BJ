@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/key-directions-thrust/base-north.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-3.png",
+    "frame_count": 8,
+    "action": "Recover from extended forward thrust. Pull sword and hand back toward body, shift weight back and lower into final ready stance. Keep LEFT PROFILE, target screen left. Keep full mask, hair, outfit, scale, one straight rigid katana. No camera turn, no effects, no duplicate blade. Transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94633
+  },
+  "allocation": "batch-5"
+}

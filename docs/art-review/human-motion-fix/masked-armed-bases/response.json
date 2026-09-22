@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: ff0e66bf-750d-4ab1-a88d-70a6171df9e4\njob_id: ff0e66bf-750d-4ab1-a88d-70a6171df9e4\nmode: text\nframes: 4\nsize: 80x80px\ntransparent: True\nedit: Keep all four exact views, pose, character size, face mask, hair, outfit and transparent 80x80 canvas unchanged. ONLY change the weapon to an UNSHEATHED katana held in the RIGHT HAND low beside the body. One straight silver-white steel blade 22 pixels long, dark navy handle, small gold guard. Tip angles down behind the character and stays fully inside frame. Replace brown weapon/scabbard with this steel sword. No second sword, no blade crossing torso, no pose rotation, no extra hands. Mask always covers face, ivory with dark curves and red dot. Preserve every other detail.\nseed: 93300\ncost: ~20 generations\nstatus: processing (~30-90s)\n\nhint: get_image(job_id=\"ff0e66bf-750d-4ab1-a88d-70a6171df9e4\")"
+      }
+    ],
+    "isError": false
+  }
+}

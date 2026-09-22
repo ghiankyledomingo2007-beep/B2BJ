@@ -1,0 +1,13 @@
+{
+  "tool": "create_character",
+  "arguments": {
+    "name": "B2BJ Masked Rimuru",
+    "description": "The exact provided masked Rimuru Tempest pixel sprite. Pale blue long hair, ivory white full-face mask with dark curved markings and a tiny red center dot, blue split coat with beige fur collar, dark pants and blue boots, slim single straight katana held low at right side. Rotate the same whole body into every requested direction: front, strict right profile, pure back (no face or mask visible), strict left profile. Preserve exact 80x80 pixel style, slim proportions, body about 55 pixels tall with feet on row72 and centered near x40. No sword bending or multiple weapons, no background, no floor shadow or magic effects.",
+    "mode": "v3",
+    "n_directions": 8,
+    "size": 80,
+    "reference_image_path": "docs/art-review/human-motion-fix/masked-keyframes-v1/frame-1.png",
+    "view": "low top-down"
+  },
+  "allocation": "batch-3"
+}

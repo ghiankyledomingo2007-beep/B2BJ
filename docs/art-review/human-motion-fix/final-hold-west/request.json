@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/key-directions-charge/base-north-west.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/key-directions-charge/base-north-west.png",
+    "frame_count": 8,
+    "action": "Hold this coiled charged stance. Gentle breathing and small hair motion only. Feet stay planted; sword stays back. Maintain LEFT-FACING PROFILE; face and attack stay in this direction. Keep exact mask, hair, outfit and scale. Single rigid straight silver katana attached to gripping hand, constant length. No drawn effects. Transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94731
+  },
+  "allocation": "batch-7"
+}

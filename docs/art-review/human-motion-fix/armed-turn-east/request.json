@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "frame_count": 4,
+    "no_background": true,
+    "seed": 93502,
+    "action": "Short grounded weight shift and foot pivot, shoulders lead and coat follows subtly, then settle back into the identical armed ready pose. Keep facing right throughout; no full spin. Strict right side profile, preserve masked character identity and single rigid katana attached to hand. No loose hair pixels. Same80x80 canvas, feet around row72, transparent background."
+  },
+  "allocation": "batch-2"
+}

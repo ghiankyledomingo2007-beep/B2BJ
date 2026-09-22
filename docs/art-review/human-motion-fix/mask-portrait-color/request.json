@@ -1,0 +1,12 @@
+{
+  "tool": "edit_image_pixen",
+  "arguments": {
+    "image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/mask-portrait-fresh-0/download.png",
+    "description": "Keep full ivory face mask and portrait exactly. Make hair PALE CYAN BLUE, matching Rimuru Tempest. Add tiny bright RED center dot to the mask between charcoal hooked cheek markings. Mask completely covers all skin and eyes. Do not turn mask into a human face. Keep dark blue outfit and beige fur collar, pixel style, transparency and64x64 size.",
+    "width": 64,
+    "height": 64,
+    "no_background": true,
+    "seed": 94550
+  },
+  "allocation": "batch-2"
+}

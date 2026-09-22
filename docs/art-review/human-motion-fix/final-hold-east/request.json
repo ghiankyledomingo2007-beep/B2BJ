@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/fixed-key-charge-east/download.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/fixed-key-charge-east/download.png",
+    "frame_count": 8,
+    "action": "Hold this coiled sword stance, tiny breathing and hair-tip flutter only. Feet planted, sword stays back, no swing or turning. Keep right-facing profile and whole mask, blue hair, coat, scale. One straight rigid silver blade attached to one handle. No turning to camera, no duplicate blade, no drawn effects. Transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94305
+  },
+  "allocation": "batch-7"
+}

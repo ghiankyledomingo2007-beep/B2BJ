@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-2.png",
+    "last_frame_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/masked-armed-bases/frame-2.png",
+    "frame_count": 16,
+    "action": "One rising cut. Bend knees and lower sword behind hip. Push up through legs and sweep sword diagonally UP in facing direction. Finish sword high in front, then lower into initial ready stance. No jump or spin. Maintain exact BACK VIEW looking away; cut toward top of image. One straight silver sword, attached to gripping hand. Keep mask, hair, outfit, scale and foot baseline72. No camera rotation, no effects, no duplicated or bent sword, transparent80x80 canvas.",
+    "no_background": true,
+    "seed": 94421
+  },
+  "allocation": "batch-4"
+}

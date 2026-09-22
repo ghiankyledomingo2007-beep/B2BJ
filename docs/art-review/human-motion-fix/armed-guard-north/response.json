@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: f9bdc289-713b-420b-9c04-f281edbd61c9\njob_id: f9bdc289-713b-420b-9c04-f281edbd61c9\naction: Raise sword in both hands diagonally across chest, spread feet slightly and brace firmly behind blade. Brief hold then lower into initial ready stance. Maintain exact BACK VIEW, looking away from camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94141\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"f9bdc289-713b-420b-9c04-f281edbd61c9\")"
+      }
+    ],
+    "isError": false
+  }
+}

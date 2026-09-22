@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 01f95a2d-65d8-4965-a9b4-d9e7dd4e4927\njob_id: 01f95a2d-65d8-4965-a9b4-d9e7dd4e4927\nmodel: pixen\nedit: Keep exact character size, style, mask and right-facing profile. Change pose: low wide stance, knees bent, torso coiled. Bring both hands together at REAR hip x29 y49. One sword handle in both hands. Straight silver blade extends BACKWARDS LEFT from hands toward x7 y39. Blade entirely behind body, no sword in front. Preparing charged horizontal cut.\nsource: 80x80px\nsize: 80x80px\ntransparent: True\nseed: 94003\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"01f95a2d-65d8-4965-a9b4-d9e7dd4e4927\")"
+      }
+    ],
+    "isError": false
+  }
+}

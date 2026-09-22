@@ -1,0 +1,12 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/human-motion-fix/masked-keyframes-v1/frame-3.png",
+    "last_frame_path": "docs/art-review/human-motion-fix/masked-keyframes-v1/frame-3.png",
+    "frame_count": 16,
+    "no_background": true,
+    "seed": 92800,
+    "action": "Seamless athletic RUN CYCLE facing screen right in strict side profile. Maintain this forward leaning sprint silhouette. ONE complete left-right stride, alternating two long opposing foot contacts and two airborne flight phases. Knees lift, rear heel folds upward, hips compress on contact. Free arm swings opposite legs. Sword stays a single rigid blade in the trailing hand below hip height, never bending or passing through torso. Hair and coat trail left then rebound with delayed follow through. Stay centered; no turn, no walking, no stop, no idle pause. Preserve ivory mask with dark markings and tiny red dot; never reveal eyes or face. Keep entire body and blade inside 80x80 transparent canvas with stable floor row72. Return precisely to input running pose for a seamless loop."
+  },
+  "allocation": "batch-3"
+}

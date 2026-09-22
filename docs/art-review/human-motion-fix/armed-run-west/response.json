@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 99a2bea7-c101-4cf4-87b4-677715c3b830\njob_id: 99a2bea7-c101-4cf4-87b4-677715c3b830\naction: Exactly ONE complete left-right running stride cycle, TWO opposite foot contacts and two flight phases. Athletic forward lean, separated legs, folded passing knee, rear foot pushes strongly. Free arm counter-swings; rigid katana stays low behind hip. strict LEFT side profile, face and knees point screen left. Hair stays attached, trails opposite motion only slightly, tips sway2pixels; no flying fragments or explosions. Coat tails follow legs naturally. Preserve exact masked blue-haired character, colors and proportions. Stay centered in80x80 transparent canvas, foot baseline72 on contacts. No turn, walk, stop, or extra repeated cycle. End exactly in first pose.\nframes: 12\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93802\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"99a2bea7-c101-4cf4-87b4-677715c3b830\")"
+      }
+    ],
+    "isError": false
+  }
+}

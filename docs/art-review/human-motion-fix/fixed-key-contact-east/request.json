@@ -1,0 +1,12 @@
+{
+  "tool": "edit_image_pixen",
+  "arguments": {
+    "image_path": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/docs/art-review/human-motion-fix/armed-finish-east/frame-11.png",
+    "description": "Fix only sword and hands. Both hands grip ONE black handle at x47 y48. Gold guard below hands, a single straight silver blade extends ONLY DOWN-RIGHT from guard to x65 y69. Remove all sword pixels above hands and remove white floor fragments. Keep exact pose, mask, hair, outfit, size and transparency.",
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "seed": 94001
+  },
+  "allocation": "batch-2"
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "animate_image",
+  "arguments": {
+    "first_frame_path": "docs/art-review/rimuru-human/idle-east/frame-0.png",
+    "frame_count": 8,
+    "no_background": true,
+    "seed": 92703,
+    "action": "Slowly prepare a powerful two-handed horizontal sword cut. Spread feet slightly, bend knees, turn shoulders left, lower hips. Bring both hands together on katana handle low beside the rear hip, blade held behind the body, ready to sweep forward. Hair and coat settle as weight loads onto rear foot. Finish HOLDING the braced preparation pose. Do not swing or attack yet. Strict right-facing side profile throughout. Keep the exact character, pixel palette, proportions and one straight rigid katana attached to the right hand. Fixed camera and centered body, transparent background. All hair, feet and blade remain inside the 80x80 canvas. No effects, no duplicate weapon, no camera movement. "
+  },
+  "allocation": "batch-3"
+}

@@ -1,0 +1,11 @@
+{
+  "character_id": "5b2c5cce-a763-48d1-ace3-6895077c58cc",
+  "mode": "template",
+  "template_animation_id": "running-6-frames",
+  "directions": [
+    "south",
+    "east",
+    "north",
+    "west"
+  ]
+}

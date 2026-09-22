@@ -1,0 +1,8 @@
+{
+  "tool": "get_character",
+  "arguments": {
+    "character_id": "b23392a5-4c1b-4b28-84f4-6ec36c59a082",
+    "include_preview": false
+  },
+  "allocation": "batch-6"
+}

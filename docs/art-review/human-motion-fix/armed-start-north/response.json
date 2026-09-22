@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 79cf3391-6c7b-4da7-9d81-68f0d6a7f488\njob_id: 79cf3391-6c7b-4da7-9d81-68f0d6a7f488\naction: Accelerate into running: knees compress, lean forward, push from rear foot into final running pose. No idle pause. Maintain exact BACK VIEW, looking away from camera throughout. Keep mask, hair, outfit, one straight sword and same scale. Whole character inside80px transparent canvas, ground baseline72. No camera rotation, no effects.\nframes: 4\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 94144\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"79cf3391-6c7b-4da7-9d81-68f0d6a7f488\")"
+      }
+    ],
+    "isError": false
+  }
+}

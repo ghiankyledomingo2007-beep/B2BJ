@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 0a4e40ae-6c51-4ee6-a5e7-02b28df8f9b5\njob_id: 0a4e40ae-6c51-4ee6-a5e7-02b28df8f9b5\ndescription: Same Rimuru Tempest character and pixel style as input: pale blue long hair, blue split coat, beige fur scarf, dark pants, blue boots, slim straight steel katana. Change posture dramatically into an athletic SPRINT, not walking: torso pitched forward 30 degrees from hips, head leading the pelvis, low centre of gravity, long scissoring leg stride, front knee raised and bent, trailing leg kicked far back with toe off ground, clear airborne flight. Free arm bent 90 degrees drives forward; sword hand trails beside hip holding rigid blade back along travel direction. Hair and coat tails stream backward. Both legs clearly separated, feet never below y73, all anatomy and blade inside 80x80. Same body proportions and palette, no growth, no shadow or effects, transparent background. Strict REAR view sprinting UP away from camera, back of head visible, no eyes or face, shoulders and back pitched away.\nsize: 80x80px\ntransparent: True\ninit_image: yes (strength 140)\nseed: 92612\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"0a4e40ae-6c51-4ee6-a5e7-02b28df8f9b5\")"
+      }
+    ],
+    "isError": false
+  }
+}

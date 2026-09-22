@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: b23392a5-4c1b-4b28-84f4-6ec36c59a082\nname: B2BJ Masked thrust\nmode: v3 reference (1 generations, 8 directions)\nbody: humanoid\nsize: 80x80px\nview: low top-down\nstyle: from reference image (outline/detail hints ignored)\nstatus: processing (~3-5 min)\n\nhint: get_character(character_id=\"b23392a5-4c1b-4b28-84f4-6ec36c59a082\")"
+      }
+    ],
+    "isError": false
+  }
+}

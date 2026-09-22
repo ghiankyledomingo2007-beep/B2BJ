@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: c7ac47d3-f15c-42c3-aa7a-f77b53f3c3e8\njob_id: c7ac47d3-f15c-42c3-aa7a-f77b53f3c3e8\nmodel: pixen\nedit: Keep exact character appearance and mask. Turn torso to strict right-facing side profile. Change pose to extended rightward thrust: both arms reach forward, sword handle at x50 y43, small guard x55 y43, ONE straight blade extends horizontally right to x76 y43. No blade left of handle. Front knee bent, back leg extended. Keep character scale and baseline.\nsource: 80x80px\nsize: 80x80px\ntransparent: True\nseed: 94002\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"c7ac47d3-f15c-42c3-aa7a-f77b53f3c3e8\")"
+      }
+    ],
+    "isError": false
+  }
+}

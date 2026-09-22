@@ -1,0 +1,16 @@
+{
+  "tool": "create_image_pixflux",
+  "arguments": {
+    "description": "Rimuru Tempest masked human, pale blue hair, ivory white mask with dark curves and red dot hiding whole face, blue coat and beige fur collar, dark pants and boots. Same pixel-art style, character proportions and scale as input. STRICT SIDE PROFILE FACING RIGHT. Whole character inside80x80 transparent canvas, foot baseline72. One slim straight SILVER KATANA, small gold guard at END of blade, black handle; blade is22pixels long, no sword behind the handle. Single rigid sword with clean one-piece silhouette. Pose: feet spread, front knee bent, torso coiled slightly back, BOTH HANDS together gripping ONE handle ABOVE forehead. Sword blade points up-left backward from those hands. Elbows raised. Preparing a powerful downward chop. Clear visible hands above head and raised sword.",
+    "init_image_path": "docs/art-review/human-motion-fix/masked-armed-bases/frame-1.png",
+    "init_image_strength": 55,
+    "width": 80,
+    "height": 80,
+    "no_background": true,
+    "text_guidance_scale": 10,
+    "direction": "east",
+    "view": "side",
+    "seed": 93700
+  },
+  "allocation": "batch-3"
+}

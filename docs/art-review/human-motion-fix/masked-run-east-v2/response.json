@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 55744024-b9bd-4089-b34f-cd98aae53e0b\njob_id: 55744024-b9bd-4089-b34f-cd98aae53e0b\naction: Exactly ONE fluid full running stride cycle with TWO opposing foot contacts, strict right side view. Maintain strong 25-degree forward lean. Each leg extends forward, lands, compresses, pushes off and folds the heel under the hips; show both feet clear of ground during flight. The free arm counter-swings backward and forward vigorously. Katana stays straight in the other hand low behind the hip. Hair is a single solid flowing mass attached to the head, trailing only slightly left, its tips moving at most 2 pixels. NO floating hair, loose pixels, hair explosion or exaggerated flapping. Coat tails follow legs subtly. Preserve white mask with dark curved markings and tiny red center dot. Same character proportions and scale. Stay centered inside 80x80 transparent canvas, feet at row72 on contacts. No walking, no starting or stopping, no extra repeated stride. End exactly at first pose.\nframes: 12\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93210\ncost: 2 generations\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"55744024-b9bd-4089-b34f-cd98aae53e0b\")"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: ad3dc15d-f43c-4e52-8c12-42ac09e99540\njob_id: ad3dc15d-f43c-4e52-8c12-42ac09e99540\nmodel: pixen\nedit: Keep full ivory face mask and portrait exactly. Make hair PALE CYAN BLUE, matching Rimuru Tempest. Add tiny bright RED center dot to the mask between charcoal hooked cheek markings. Mask completely covers all skin and eyes. Do not turn mask into a human face. Keep dark blue outfit and beige fur collar, pixel style, transparency and64x64 size.\nsource: 64x64px\nsize: 64x64px\ntransparent: True\nseed: 94550\ncost: 1 generation\nstatus: processing (~10-40s)\n\nhint: get_image(job_id=\"ad3dc15d-f43c-4e52-8c12-42ac09e99540\")"
+      }
+    ],
+    "isError": false
+  }
+}

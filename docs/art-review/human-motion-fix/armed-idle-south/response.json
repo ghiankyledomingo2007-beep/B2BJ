@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "id: 5d3a613e-4cd2-4f78-ab40-8a537bbfb7ae\njob_id: 5d3a613e-4cd2-4f78-ab40-8a537bbfb7ae\naction: Very subtle breathing idle with planted feet, shoulders rise then fall, hair tips and coat settle gently. Keep exact south facing and body proportions; do not turn or walk. Ivory original mask, curved dark markings, red dot, blue hair and coat preserved. Single straight drawn katana stays rigid at side in hand, never sheathes or vanishes. Pure back view reveals no face. Same80x80 transparent canvas and foot baseline72.\nframes: 8\nsize: 80x80px\ntransparent: True\nlast_frame: yes (interpolating to it)\nseed: 93900\ncost: 1 generation\nstatus: processing (~30-180s)\n\nhint: get_image(job_id=\"5d3a613e-4cd2-4f78-ab40-8a537bbfb7ae\")"
+      }
+    ],
+    "isError": false
+  }
+}
