@@ -9,6 +9,10 @@ public final class GameAudioTest {
         sessionVolumesScalePlaybackWithoutChangingLegacySynthesis();
         ambientThemesAreDistinctAndVolumeAware();
         frameStateUpdatesNeverStartAudioWorkers();
+        packagedRecordingsPlayInSessionFormat();
+        detuneLayersAndDucking();
+        loopsRunUntilStopped();
+        mixerSumsVoicesOnTime();
         System.out.println("GameAudioTest passed");
     }
 
@@ -61,10 +65,10 @@ public final class GameAudioTest {
                 }
             }
             invoke("setSfxVolume", new Class<?>[] {double.class}, 0.0);
-            assert silent((byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class}, GameAudio.Cue.HIT));
+            assert silent((byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class}, GameAudio.Cue.ENEMY_HIT));
             invoke("setSfxVolume", new Class<?>[] {double.class}, 1.0);
             GameAudio.setMuted(true);
-            assert silent((byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class}, GameAudio.Cue.HIT));
+            assert silent((byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class}, GameAudio.Cue.ENEMY_HIT));
         } finally {
             GameAudio.setMuted(false);
             invoke("setMasterVolume", new Class<?>[] {double.class}, 1.0);
@@ -98,12 +102,130 @@ public final class GameAudioTest {
     }
 
     private static void frameStateUpdatesNeverStartAudioWorkers() {
-        long before = Thread.getAllStackTraces().keySet().stream().filter(thread -> thread.getName().equals("b2bj-music")).count();
+        long before = Thread.getAllStackTraces().keySet().stream().filter(thread -> thread.getName().equals("b2bj-mixer")).count();
         for (int frame = 0; frame < 100; frame++)
             invoke("setMusicState", new Class<?>[] {int.class, boolean.class, boolean.class}, frame % 4, frame % 2 == 0, true);
         invoke("setMusicState", new Class<?>[] {int.class, boolean.class, boolean.class}, 0, false, false);
-        long after = Thread.getAllStackTraces().keySet().stream().filter(thread -> thread.getName().equals("b2bj-music")).count();
+        long after = Thread.getAllStackTraces().keySet().stream().filter(thread -> thread.getName().equals("b2bj-mixer")).count();
         assert after == before : "frame state updates must never create audio threads";
+    }
+
+    /** Every cue ships a recording (tools/audio/generate_sfx.py); the chirp is only the fallback. */
+    private static void packagedRecordingsPlayInSessionFormat() {
+        int recorded = 0;
+        for (GameAudio.Cue cue : GameAudio.Cue.values()) {
+            byte[][] takes = (byte[][]) invoke("samples", new Class<?>[] {GameAudio.Cue.class}, cue);
+            assert takes.length > 0 : cue + " has no recording in assets/audio";
+            for (byte[] take : takes) {
+                assert take.length >= 2_000 && take.length % 2 == 0 : cue + " recording must be audible 16-bit mono";
+                assert Math.abs(sample(take, 0)) < 128 && Math.abs(sample(take, take.length - 2)) < 128
+                        : cue + " recording must have click-free edges";
+                assert !silent(take);
+            }
+            recorded++;
+        }
+        assert recorded == GameAudio.Cue.values().length;
+        for (GameAudio.Cue cue : GameAudio.Cue.values()) {
+            byte[][] takes = (byte[][]) invoke("samples", new Class<?>[] {GameAudio.Cue.class}, cue);
+            for (byte[] take : takes)
+                assert take.length <= 2.3 * 22_050 * 2 : cue + " rings too long for a pixel game";
+            if (cue.layer != null)
+                assert ((byte[][]) invoke("samples", new Class<?>[] {String.class}, cue.layer)).length > 0
+                        : cue + " names a layer family with no recording: " + cue.layer;
+        }
+        for (GameAudio.Loop loop : GameAudio.Loop.values()) {
+            byte[][] takes = (byte[][]) invoke("samples", new Class<?>[] {String.class}, loop.family);
+            assert takes.length > 0 : loop + " needs a recording";
+            assert loop.gapSeconds > 0 || takes[0].length >= 2 * 22_050
+                    : loop + " repeats back to back, so it needs at least a second";
+        }
+        byte[] full = (byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class, int.class, double.class}, GameAudio.Cue.ENEMY_HIT, 0, 1.0);
+        byte[] again = (byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class, int.class, double.class}, GameAudio.Cue.ENEMY_HIT, 0, 1.0);
+        assert Arrays.equals(full, again) : "a take is deterministic";
+        try {
+            invoke("setSfxVolume", new Class<?>[] {double.class}, .5);
+            byte[] half = (byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class, int.class, double.class}, GameAudio.Cue.ENEMY_HIT, 0, 1.0);
+            for (int index = 0; index < full.length; index += 2)
+                assert Math.abs(sample(half, index) - sample(full, index) * .5) <= 1 : "sliders scale recordings too";
+            GameAudio.setMuted(true);
+            assert silent((byte[]) invoke("playbackSamples", new Class<?>[] {GameAudio.Cue.class, int.class, double.class}, GameAudio.Cue.ENEMY_HIT, 0, 1.0));
+        } finally {
+            GameAudio.setMuted(false);
+            invoke("setSfxVolume", new Class<?>[] {double.class}, 1.0);
+        }
+        boolean rejected = false;
+        try { GameAudio.play(GameAudio.Cue.SLASH, -1); } catch (IllegalArgumentException expected) { rejected = true; }
+        assert rejected : "a negative delay is a bug";
+    }
+
+    private static void detuneLayersAndDucking() {
+        Class<?>[] signature = {GameAudio.Cue.class, int.class, double.class};
+        byte[] plain = (byte[]) invoke("playbackSamples", signature, GameAudio.Cue.ENEMY_HIT, 0, 1.0);
+        byte[] fast = (byte[]) invoke("playbackSamples", signature, GameAudio.Cue.ENEMY_HIT, 0, 1.05);
+        byte[] slow = (byte[]) invoke("playbackSamples", signature, GameAudio.Cue.ENEMY_HIT, 0, 0.95);
+        assert fast.length < plain.length && plain.length < slow.length : "a higher pitch is a shorter sound";
+        assert Math.abs(sample(fast, 0)) < 128 && Math.abs(sample(slow, slow.length - 2)) < 128 : "detuning keeps the edges clean";
+        byte[][] bare = (byte[][]) invoke("samples", new Class<?>[] {GameAudio.Cue.class}, GameAudio.Cue.ENEMY_HIT);
+        byte[] scaledBare = (byte[]) invoke("scaled", new Class<?>[] {byte[].class, double.class}, bare[0], .8);
+        assert !Arrays.equals(plain, scaledBare) : "a cue with a layer plays more than its bare take";
+        boolean rejected = false;
+        try { invoke("resampled", new Class<?>[] {byte[].class, double.class}, plain, 0.0); }
+        catch (IllegalArgumentException expected) { rejected = true; }
+        assert rejected;
+        rejected = false;
+        try { GameAudio.duck(1.5, .1); } catch (IllegalArgumentException expected) { rejected = true; }
+        assert rejected : "duck depth must stay within 0..1";
+        GameAudio.duck(.5, .05);
+        double during = (double) invoke("duckGain", new Class<?>[0]);
+        assert during < .6 : "music must dip at once: " + during;
+        try { Thread.sleep(90); } catch (InterruptedException ignored) { Thread.currentThread().interrupt(); }
+        assert (double) invoke("duckGain", new Class<?>[0]) == 1.0 : "music must recover after the duck window";
+    }
+
+    private static void loopsRunUntilStopped() {
+        GameAudio.setMuted(true);
+        try {
+            GameAudio.startLoop(GameAudio.Loop.CHARGE, .5);
+            assert !(boolean) invoke("loopRunning", new Class<?>[] {GameAudio.Loop.class}, GameAudio.Loop.CHARGE)
+                    : "a muted session starts no loop thread";
+        } finally { GameAudio.setMuted(false); }
+        GameAudio.startLoop(GameAudio.Loop.CHARGE, .5);
+        GameAudio.startLoop(GameAudio.Loop.CHARGE, .9);
+        long threads = Thread.getAllStackTraces().keySet().stream().filter(t -> t.getName().startsWith("b2bj-")).count();
+        assert threads == 0 : "loops are mixer voices, never threads of their own";
+        GameAudio.stopLoop(GameAudio.Loop.CHARGE);
+        assert !(boolean) invoke("loopRunning", new Class<?>[] {GameAudio.Loop.class}, GameAudio.Loop.CHARGE);
+        boolean rejected = false;
+        try { GameAudio.startLoop(GameAudio.Loop.HEARTBEAT, 2); } catch (IllegalArgumentException expected) { rejected = true; }
+        assert rejected : "loop gain is a volume";
+        GameAudio.stopLoops();
+    }
+
+    /** A delayed cue is silent for exactly its delay, then audible, then gone; a loop never ends. */
+    private static void mixerSumsVoicesOnTime() {
+        GameAudio.stopLoops();
+        int chunk = 256;
+        int[] sum = new int[chunk];
+        GameAudio.play(GameAudio.Cue.ENEMY_HIT, chunk * 2 / 22_050.0);          // two chunks of delay
+        invoke("mixVoices", new Class<?>[] {int[].class}, (Object) sum);
+        assert Arrays.stream(sum).allMatch(v -> v == 0) : "nothing before the delay";
+        invoke("mixVoices", new Class<?>[] {int[].class}, (Object) sum);
+        assert Arrays.stream(sum).allMatch(v -> v == 0);
+        Arrays.fill(sum, 0);
+        invoke("mixVoices", new Class<?>[] {int[].class}, (Object) sum);
+        assert Arrays.stream(sum).anyMatch(v -> v != 0) : "the cue plays right after its delay";
+        for (int i = 0; i < 200; i++) { Arrays.fill(sum, 0); invoke("mixVoices", new Class<?>[] {int[].class}, (Object) sum); }
+        assert Arrays.stream(sum).allMatch(v -> v == 0) : "a one-shot ends";
+        GameAudio.startLoop(GameAudio.Loop.AMBIENCE, 1);
+        boolean heard = false;
+        for (int i = 0; i < 2000 && !heard; i++) {
+            Arrays.fill(sum, 0); invoke("mixVoices", new Class<?>[] {int[].class}, (Object) sum);
+            heard = Arrays.stream(sum).anyMatch(v -> v != 0);
+        }
+        assert heard && (boolean) invoke("loopRunning", new Class<?>[] {GameAudio.Loop.class}, GameAudio.Loop.AMBIENCE)
+                : "a loop keeps playing";
+        GameAudio.stopLoops();
+        assert !(boolean) invoke("loopRunning", new Class<?>[] {GameAudio.Loop.class}, GameAudio.Loop.AMBIENCE);
     }
 
     private static boolean silent(byte[] samples) {

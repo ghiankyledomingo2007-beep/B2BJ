@@ -1,0 +1,12 @@
+- `blob_attack`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_04.ogg, slime_16.ogg, slime_08.ogg
+- `hit` (removed 2026-09-22, one enemy_hit for all): 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_10.ogg, splash_03.ogg, splash_14.ogg
+- `water_splash`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_08.ogg, splash_02.ogg
+- `spit_shot`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_11.ogg, slime_07.ogg
+- `spit_impact`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_01.ogg, slime_13.ogg
+- `absorb`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_10.ogg, slime_03.ogg
+- `absorbed`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — bubble_01.ogg, bubble_02.ogg
+- `membrane_break`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_12.ogg, slime_02.ogg
+- `finisher_release`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_04.ogg
+- `finisher_impact`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_07.ogg
+- `tide_release`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_11.ogg
+- `tide_impact`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_01.ogg
