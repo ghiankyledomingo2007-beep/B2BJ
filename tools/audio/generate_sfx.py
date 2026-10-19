@@ -82,11 +82,22 @@ CUES = {
     "membrane_break": ("water shield bursting, deep wet elastic pop with a bubbly splash, no chime, no glass, short", 0.6, 2, "impact", "water"),
     "spit_shot": ("small goo bolt launched, soft wet bubbly pop, no chime, short", 0.5, 2, "action", "water"),
     "spit_impact": ("goo bolt splatting, soft wet splat with a bubbly fizzle, no chime, short", 0.5, 2, "impact", "water"),
-    "absorb": ("slime magically drawing in energy, wet elastic stretch with a rising shimmer, short", 0.7, 2, "action", "hit"),
     "absorbed": ("slime absorbing a soul, wet gulp with a warm magical chime, short", 0.7, 2, "action", "cue"),
     "pickup": ("bright small collectible pickup, soft glassy pop with a sparkle, short", 0.5, 2, "ui", "cue"),
     "healed": ("gentle healing chime, warm soft glassy shimmer rising, short", 0.9, 1, "ui", "cue"),
     "trait_gained": ("trait unlocked, short triumphant glassy magical chord swell", 1.2, 1, "ui", "cue"),
+    # ---- the moments that had no sound (owner's inventory, 2026-09-23)
+    "slime_move": ("anime slime blob hopping along, tiny soft wet squelch, very short", 0.5, 4, "foley", "hit"),
+    "slime_dash": ("anime slime dash, quick wet stretchy burst of goo with a light magical shimmer, short", 0.6, 2, "action", "water"),
+    "death_blade": ("anime hero collapsing to one knee, armor and sword clatter on stone, low defeated tone", 1.2, 1, "impact", "big"),
+    "death_slime": ("anime slime melting away, long wet gooey deflating splat with a sad low tone", 1.2, 1, "impact", "big"),
+    "blade_fades": ("anime warning: magic armor beginning to fade, low pulsing crystalline tone with a falling shimmer", 1.0, 1, "ui", "cue"),
+    "denied": ("anime UI denied, short dull low double blip, muted, no sparkle", 0.5, 1, "ui", "hit"),
+    "checkpoint": ("anime checkpoint saved at a campfire, warm rising magical chime with a soft fire crackle", 1.2, 1, "ui", "cue"),
+    "upgrade": ("anime upgrade purchased, bright ascending three-note magical chime", 1.0, 1, "ui", "cue"),
+    "ui_open": ("anime menu open, soft short glassy swipe upward", 0.5, 1, "ui", "hit"),
+    "ui_close": ("anime menu close, soft short glassy swipe downward", 0.5, 1, "ui", "hit"),
+    "tide_dissipate": ("anime water wave dissolving into foam and sparkles, soft fizzle", 0.8, 1, "foley", "water"),
     # ---- the warden, the world and the end
     "sub_boom": ("deep sub-bass boom, 40 hertz thump, one hit, short, no high end", 0.6, 1, "ui", "hit"),
     "guardian_awakened": ("giant stone guardian awakening, deep grinding rumble of stone and a low monstrous groan", 2.0, 1, "impact", "big"),
@@ -170,11 +181,10 @@ def finish(pcm, level, tail, family):
     gain = level * 32_000 / peak
     n = len(a)
     fi, fo = int(FADE_IN * RATE), int(FADE_OUT * RATE)
-    if tail is None:                    # a loop must meet itself: no edge fades
-        fi = fo = 1
+    loop = tail is None                 # a loop must meet itself: no edge fades at all
     out = array.array("h")
     for i, x in enumerate(a):
-        env = min(1.0, i / fi, (n - 1 - i) / fo)
+        env = 1.0 if loop else min(1.0, i / fi, (n - 1 - i) / fo)
         out.append(int(max(-32_767, min(32_767, x * gain * max(env, 0.0)))))
     return out
 

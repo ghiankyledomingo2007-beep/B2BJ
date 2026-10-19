@@ -26,6 +26,11 @@ public final class BladeCombatTest {
         assert game.bladeAimY()==-1 : "buffer keeps intentional direction";
         advance(game,.7);assert !game.bladeAttacking() : "buffer never repeats";
 
+        game=fixture();assert game.ichorCrescent(1,0);game.drainEvents();
+        assert !game.ichorCrescent(1,0) : "crescent is on cooldown";
+        assert game.drainEvents().stream().anyMatch(e->e.type()==RuinedOutpostGame.EventType.DENIED)
+                : "a refused skill is heard as a denied cue";
+
         game=fixture();assert game.primaryPress(1,0);advance(game,1);
         assert game.charging()&&!game.bladeAttacking() : "hold never fires normal attacks";
         long ready=game.drainEvents().stream().filter(e->e.type()==RuinedOutpostGame.EventType.CHARGE_READY).count();

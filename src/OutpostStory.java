@@ -72,7 +72,7 @@ public final class OutpostStory {
             case HUNT -> "REACH THE EAST GATEHOUSE";
             case GUARDIAN -> "BREAK THE OUTPOST WARDEN";
             case ESCAPE -> "CROSS THE EASTERN GATE";
-            case COMPLETE -> "OUTPOST CLEARED";
+            case COMPLETE -> "FOREST CLEARED";
             case DEAD -> "PRESS R TO REFORM";
         };
     }
@@ -80,7 +80,7 @@ public final class OutpostStory {
     public String overlayTitle() {
         return switch (phase) {
             case PROLOGUE -> "RUINED OUTPOST";
-            case COMPLETE -> "OUTPOST CLEARED";
+            case COMPLETE -> "FOREST CLEARED";
             case DEAD -> "FORM LOST";
             default -> "";
         };
@@ -95,8 +95,8 @@ public final class OutpostStory {
                     "PRESS ENTER"
             };
             case COMPLETE -> new String[] {
-                    "THE KINGDOM OPENS BEFORE YOU.",
-                    "THE CORRUPTED FOREST WAITS. THIS IS ONLY THE BEGINNING.",
+                    "BRIARHEART'S ROOTS LOOSEN ABOVE THE STAIR.",
+                    "THE CATACOMBS RING BELOW. THIS IS ONLY THE BEGINNING.",
                     "PRESS R TO RUN AGAIN"
             };
             case DEAD -> new String[] {

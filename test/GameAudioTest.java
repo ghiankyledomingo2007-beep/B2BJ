@@ -13,6 +13,7 @@ public final class GameAudioTest {
         detuneLayersAndDucking();
         loopsRunUntilStopped();
         mixerSumsVoicesOnTime();
+        onceLoopsEndAndLoopsSurviveABusyMix();
         System.out.println("GameAudioTest passed");
     }
 
@@ -206,6 +207,7 @@ public final class GameAudioTest {
         GameAudio.stopLoops();
         int chunk = 256;
         int[] sum = new int[chunk];
+        for (int i = 0; i < 400; i++) { Arrays.fill(sum, 0); invoke("mixVoices", new Class<?>[] {int[].class}, (Object) sum); }  // stopped loops fade out, earlier one-shots finish
         GameAudio.play(GameAudio.Cue.ENEMY_HIT, chunk * 2 / 22_050.0);          // two chunks of delay
         invoke("mixVoices", new Class<?>[] {int[].class}, (Object) sum);
         assert Arrays.stream(sum).allMatch(v -> v == 0) : "nothing before the delay";
@@ -226,6 +228,38 @@ public final class GameAudioTest {
                 : "a loop keeps playing";
         GameAudio.stopLoops();
         assert !(boolean) invoke("loopRunning", new Class<?>[] {GameAudio.Loop.class}, GameAudio.Loop.AMBIENCE);
+        try {
+            invoke("setMusicVolume", new Class<?>[] {double.class}, 0.0);
+            GameAudio.startLoop(GameAudio.Loop.BOSS_MUSIC, 1);
+            assert !(boolean) invoke("loopRunning", new Class<?>[] {GameAudio.Loop.class}, GameAudio.Loop.BOSS_MUSIC)
+                    : "boss music follows the music slider";
+            invoke("setMusicVolume", new Class<?>[] {double.class}, .25);
+            invoke("setSfxVolume", new Class<?>[] {double.class}, 0.0);
+            GameAudio.startLoop(GameAudio.Loop.BOSS_MUSIC, 1);
+            assert (boolean) invoke("loopRunning", new Class<?>[] {GameAudio.Loop.class}, GameAudio.Loop.BOSS_MUSIC)
+                    : "muting effects does not mute the boss music";
+        } finally {
+            GameAudio.stopLoops();
+            invoke("setSfxVolume", new Class<?>[] {double.class}, 1.0);
+            invoke("setMusicVolume", new Class<?>[] {double.class}, .25);
+        }
+    }
+
+    /** The eating sound is a stoppable one-shot that must not come back; a crowd of one-shots never evicts a loop. */
+    private static void onceLoopsEndAndLoopsSurviveABusyMix() {
+        GameAudio.stopLoops();
+        int[] sum = new int[256];
+        Class<?>[] mix = {int[].class};
+        Class<?>[] running = {GameAudio.Loop.class};
+        for (int i = 0; i < 20; i++) { java.util.Arrays.fill(sum, 0); invoke("mixVoices", mix, (Object) sum); }  // drain fades
+        GameAudio.startLoop(GameAudio.Loop.EATING, 1);
+        assert (boolean) invoke("loopRunning", running, GameAudio.Loop.EATING);
+        for (int i = 0; i < 200; i++) { java.util.Arrays.fill(sum, 0); invoke("mixVoices", mix, (Object) sum); }  // > 2 s
+        assert !(boolean) invoke("loopRunning", running, GameAudio.Loop.EATING) : "eating plays once and ends";
+        GameAudio.startLoop(GameAudio.Loop.AMBIENCE, 1);
+        for (int i = 0; i < 40; i++) GameAudio.play(GameAudio.Cue.DENIED);
+        assert (boolean) invoke("loopRunning", running, GameAudio.Loop.AMBIENCE) : "one-shots never push a loop out";
+        GameAudio.stopLoops();
     }
 
     private static boolean silent(byte[] samples) {

@@ -52,6 +52,9 @@ public final class SlimeAnimation {
         return dashing ? 5 : attacking ? 0 : moving ? 6 : 0;
     }
 
+    /** Hopping along under its own power: the moment a footfall sound belongs to. */
+    public boolean hopping() { return moving && !attacking && !dashing; }
+
     public int frame() {
         if (attacking) return (int)(time*8)%COLUMNS;
         double framesPerSecond = dashing ? DASH_FPS

@@ -7,10 +7,12 @@ Ruined Outpost is a continuous 6144×4096 exploration map with twelve named land
 alternate paths, optional discoveries, a safe camp and the Outpost Warden.
 Normal encounters do not lock travel.
 
-Player sprites and selected props/effects use reviewed PixelLab art. Remaining
-world scenery, enemies, bosses and UI include code-drawn placeholders; this is not
-a final-art or fully tuned release. Generation happens during development;
-the game runs offline without API keys or paid services.
+Player sprites and selected effects use reviewed PixelLab art. The Outpost itself — floor,
+forest edge, walls, palisades, landmark set pieces, fires and night lighting, and the
+Warden's fight effects — is pixel art drawn by code in `tools/art/` (see its README; one
+command rebuilds it, hand retouches are kept). Some enemies and UI still use code-drawn
+placeholders; this is not a fully tuned release. The game runs offline without API keys
+or paid services.
 See [FILE_MAP.md](FILE_MAP.md) for the presentation guide and file responsibilities.
 
 ## Build and run

@@ -1,0 +1,85 @@
+# Outpost art pipeline
+
+Every Ruined Outpost environment pixel — the floor, the walls and palisades, the landmark set
+pieces, the fires and the Warden's effects — is drawn by the Java code in this folder from one
+night palette (`Pal.java`, exported as `assets/source/outpost/outpost_night.gpl`). No image
+generators, no credits, deterministic: the same code and map always give the same pixels.
+
+## Rebuild
+
+```bash
+tools/art/build-art.sh            # everything (about 3 s)
+tools/art/build-art.sh ground     # only the floor, after changing the map layout
+tools/art/export-sources.sh       # editable .pixie-dust copies with the palette loaded
+./build.sh                        # then the normal build and tests
+```
+
+`OutpostArtTest` fails with "run tools/art/build-art.sh ground" when `CampaignWorld`, the
+obstacles or `src/SetPieces.java` change without a rebake (the floor stores a layout fingerprint).
+
+## Retouching by hand
+
+- Edit the `.pixie-dust` file in `assets/source/outpost/`, export PNG over the asset. The build
+  remembers what it generated (`generated.sha`) and **keeps** any PNG you changed; `--force` regenerates.
+- The floor is rebaked from code, so paint floor fixes on a transparent layer saved as
+  `assets/source/outpost/outpost_ground_retouch.png` (3072x2048); every bake paints it on top.
+
+## What each file draws
+
+| File | Output |
+|---|---|
+| `GroundBake.java` | `assets/tilesets/outpost/outpost_ground.png`: grass, meadow, dirt, puddles, rutted roads along the real routes, a floor per landmark (flagstone, cobble, gravel, camp dirt, flooded ditch, the Warden's carved arena), decals, cast shadows, fire-lit ground |
+| `Canopy.java` | the forest pressing on the boundary banks |
+| `Decals.java` | tufts, reeds, glowing mushrooms, stones and the fallen expedition's kit (`outpost_decals.png`) |
+| `Props.java` | ruined walls, log palisades, supplies for the map's obstacle clusters (same footprints as before) |
+| `Structures.java`, `Buildings.java` | landmark set pieces, placed by `src/SetPieces.java` |
+| `Kit.java` | stone, plank, shingle, cylinder and fire builders |
+| `WardenArt.java` | `assets/effects/warden_*.png`: cracks, debris, dust, sweep, spikes, flames, beams, motes |
+| `Tiles16.java` | `outpost_tileset.png`, `forest_tileset.png`: 16 px fills with variants + Wang corner sets (three versions of every edge tile) |
+| `ForestBake.java` | `assets/tilesets/forest/forest_ground.png`: the Corrupted Forest floor, built tile by tile from the forest tileset, then decals, tree shade, light pools and the canopy |
+| `Creatures.java` | `assets/characters/forest/`: Rift Imp, Thorn Wolf, Mire Shaman in the remnants' sheet format (48 px cells; walk 4 frames, attack 8; front, side, back) |
+| `BossArt.java` | `assets/characters/guardian/briarheart_motion.png`: Briarheart, 96 px cells drawn at 2x, rows in Guardian.Animation order |
+| `WardenArt.briar` | `assets/effects/briar_*.png`: the Warden's effect sheets recoloured for Briarheart (cyan becomes violet in the dark steps, gold in the bright) |
+| `ForestArt.java` | forest set pieces (oaks, pines, withered trees, bushes, logs, boulders, the boat, white cloth, the hollow tree, the Moonwell, the orchard, brambles, roots, the stair, rift stones, the lean-to), placed by `src/SetPieces.java` |
+
+## Tileset layout (`outpost_tileset.png`, 16 px cells, 16 columns)
+
+Every B2BJ tileset is 16x16.
+
+Rows 0-3: Outpost — grass, meadow, dirt, flagstone, cobble, water, mud, gravel; Forest — leaf litter, moss,
+grass, dirt, blackwater, dry riverbed, blight, mud. 8 variants each. Variants
+0-3 are plain and 4-7 carry one small detail (flowers, a pebble, a crack, a lily pad); every
+variant joins every other, so paint them at random, mostly 0-3.
+Then Wang corner sets, three rows per pair. Outpost (rows 4-27): grass/dirt, grass/meadow, grass/water,
+grass/flagstone, grass/cobble, dirt/flagstone, dirt/water, grass/mud. Forest (rows 4-33): litter/dirt,
+litter/moss, litter/grass, litter/blackwater, litter/riverbed, riverbed/blackwater, litter/blight,
+grass/dirt, dirt/riverbed, litter/mud. The forest floor itself is baked from exactly these tiles. Same corner-mask columns
+as the fill rows. Column = corner mask: 1 top-left, 2 top-right, 4 bottom-left, 8 bottom-right;
+a set bit is the second material. The three rows are versions of the same tiles: give them one Wang id and let the editor
+pick at random so long borders don't repeat. Same pixel size as the game, so tiles sit next to
+the 64 px characters without mismatched pixels; 16 px cells allow finer paths and edges than 32.
+`build-art.sh` proves the sheet seamless before saving it (`Tiles16.verifySeams`) and fails on a seam.
+
+Scale: a person is about 64 native pixels tall; the game draws everything at 2x.
+
+## UI, title and loading art (`build-art.sh ui`)
+
+- `fonts.py` (Python + fontTools, run on its own): the two pixel fonts as real TrueType files in
+  `assets/ui/fonts/`. **B2BJ Sans** is the proportional UI text (caps 7 px, x-height 5, descenders 2);
+  **B2BJ Display** is the chunky title face (11 px capitals, 2 px stems). Each glyph is a row of `#`
+  pixels in the file: edit a row, rerun `python3 tools/art/fonts.py --preview /tmp/glyphs.png`, rebuild.
+  One font pixel is 100 units on a 1000-unit em, so Java size 20 draws the game's 2x pixels exactly.
+- `UiArt.java` + `UiIcons.java` -> `assets/ui/kit.png`: window/panel/card/inset frames, buttons (idle, hover,
+  pressed, disabled), key caps, check boxes, slider parts, boss-bar parts and emblems, the sword cursor,
+  trims and 24 icons. Rectangles come from `Ui.Piece` / `Ui.Icon` in `src/Ui.java`, so the game slices exactly
+  what is drawn. The icons are character maps in `UiIcons.java` (one letter per palette colour).
+- `LogoArt.java` -> `assets/ui/title/logo.png`: BLOB in dripping goo, TO in gold, BLADE in steel on a sword.
+- `TitleArt.java` -> `assets/ui/title/{sky,clouds,moon,far,mist,mid,fore}.png`: the title scene in layers
+  (640x360 art pixels). The game scrolls clouds and mist, twinkles stars and animates motes, fireflies, the
+  sword's glow and Rainoray in `src/TitleScreen.java`. The loading screen reuses the sky and the outpost or
+  forest silhouettes.
+- `UiArt.splash()` -> `assets/ui/splash.png`: the boot splash, already doubled to 640x360 screen pixels because
+  the JVM shows it unscaled (`tools/manifest.txt` names it in the jar). `src/Splash.java` fills its load bar.
+
+Audio: `tools/audio/slime_sfx.py` rebuilds the slime hop and dash sounds from the CC0 slime pack credited in
+`assets/audio/CREDITS.md` (download URL in the script).

@@ -31,7 +31,7 @@ public final class CampaignOptions {
         volume(panel, "Master volume", 'M', "masterVolume", GameAudio.masterVolume(), GameAudio::setMasterVolume);
         volume(panel, "Sound effects", 'S', "sfxVolume", GameAudio.sfxVolume(), GameAudio::setSfxVolume);
         volume(panel, "Ambient music", 'U', "musicVolume", GameAudio.musicVolume(), GameAudio::setMusicVolume);
-        JCheckBox effects = new JCheckBox("Reduce flashes, weather and camera shake", reducedEffects);
+        JCheckBox effects = new JCheckBox("Reduce flashes, weather, shake", reducedEffects);
         effects.setMnemonic('R');
         effects.addActionListener(event -> reducedEffectsChanged.accept(effects.isSelected()));
         panel.add(effects);
@@ -39,26 +39,14 @@ public final class CampaignOptions {
         mute.setMnemonic('A');
         mute.addActionListener(event -> GameAudio.setMuted(mute.isSelected()));
         panel.add(mute);
-        JTextArea help = new JTextArea("""
-                WASD / Arrow keys: move       Mouse: aim
-                Left click: attack            Space: dash
-                Right click: Tide Wave / Ichor Crescent
-                Q: transform                  F: Riposte
-                E: interact     Enter: start / continue
-                Tab: map     Esc: pause     O: options
-                M: mute      V: reduce effects
-                At camp: 1-4 buy upgrades; H save checkpoint
-                Outpost Warden: reach the east gatehouse after victory
-                Title: Enter new game; C continue; N replace save
-                After death: R reform at checkpoint
-                Paused: T return to title
-
-                Music at 0 disables ambience. Changes apply now.
-                Settings last for this session.
-                """);
+        JTextArea help = new JTextArea("WASD / arrows move, Space dashes; Menu > Controls lists every key. "
+                + "Music at 0 turns ambience off. Changes apply now and last for this session.");
         help.setEditable(false);
         help.setOpaque(false);
         help.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+        help.setLineWrap(true);
+        help.setWrapStyleWord(true);
+        help.setColumns(36);
         help.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
         help.getAccessibleContext().setAccessibleName("Game controls and settings help");
         panel.add(help);
@@ -76,8 +64,16 @@ public final class CampaignOptions {
         JLabel label = new JLabel(text);
         label.setDisplayedMnemonic(mnemonic);
         label.setLabelFor(slider);
+        label.putClientProperty("pixel.color", new java.awt.Color(0xece2c8));
+        JLabel value = new JLabel(slider.getValue() + "%");
+        value.putClientProperty("pixel.color", new java.awt.Color(0xeeb840));
+        slider.addChangeListener(event -> value.setText(slider.getValue() + "%"));
         slider.getAccessibleContext().setAccessibleName(text);
-        panel.add(label);
+        JPanel head = new JPanel(new java.awt.BorderLayout());
+        head.add(label, java.awt.BorderLayout.WEST);
+        head.add(value, java.awt.BorderLayout.EAST);
+        head.setBorder(BorderFactory.createEmptyBorder(6, 0, 2, 0));
+        panel.add(head);
         panel.add(slider);
     }
 }

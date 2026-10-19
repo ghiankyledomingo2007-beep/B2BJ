@@ -1,9 +1,11 @@
 import java.awt.image.BufferedImage;
 
 public final class PackagedAssetLoadingTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         loadsRuntimeAssetFromClasspath();
         RainorayArtTest.main(new String[0]);
+        OutpostArtTest.main(new String[0]);     // floor, layout stamp, prop and set piece sheets, from the classpath only
+        ForestArtTest.main(new String[0]);      // the forest floor, its stamp, tileset and every forest sheet, from the jar too
         System.out.println("PackagedAssetLoadingTest passed");
     }
 
@@ -11,6 +13,7 @@ public final class PackagedAssetLoadingTest {
         BufferedImage image = B2BJ.loadImage("assets/characters/slime/slime_sprite_sheet.png");
 
         assert image != null : "packaged slime asset must load";
+        assert Ui.fontsLoaded() : "the pixel fonts must load from the packaged classpath";
         assert image.getWidth() > 0 : "packaged slime asset must have pixels";
         for(String path:new String[]{
                 "assets/characters/blade/blade_run.png",
@@ -23,6 +26,16 @@ public final class PackagedAssetLoadingTest {
                 "assets/characters/slime/slime_effects.png",
                 "assets/characters/slime/slime_idle.png",
                 "assets/ui/pixel_font.png",
+                "assets/ui/kit.png",
+                "assets/ui/splash.png",
+                "assets/ui/title/sky.png",
+                "assets/ui/title/clouds.png",
+                "assets/ui/title/moon.png",
+                "assets/ui/title/far.png",
+                "assets/ui/title/mist.png",
+                "assets/ui/title/mid.png",
+                "assets/ui/title/fore.png",
+                "assets/ui/title/logo.png",
                 "assets/ui/hud_frame.png",
                 "assets/ui/skill_frame.png",
                 "assets/ui/vitality.png",
@@ -53,7 +66,18 @@ public final class PackagedAssetLoadingTest {
                 "assets/props/outpost/standard.png",
                 "assets/props/outpost/wall.png",
                 "assets/props/outpost/supply-barrel.png",
-                "assets/props/outpost/dead-tree.png"}) {
+                "assets/props/outpost/dead-tree.png",
+                "assets/characters/guardian/warden_motion.png",
+                "assets/effects/fire_camp.png",
+                "assets/effects/fire_brazier.png",
+                "assets/effects/warden_debris.png",
+                "assets/effects/warden_dust.png",
+                "assets/effects/warden_crack.png",
+                "assets/effects/warden_sweep.png",
+                "assets/effects/warden_flame.png",
+                "assets/effects/warden_spike.png",
+                "assets/effects/warden_beam.png",
+                "assets/effects/warden_mote.png"}) {
             assert B2BJ.loadImage(path)!=null : "missing packaged runtime asset "+path;
         }
         for(var prop:RuinedOutpostMap.Prop.values()) {

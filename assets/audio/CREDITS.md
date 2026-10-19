@@ -3,10 +3,15 @@
 - `water_splash`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_08.ogg, splash_02.ogg
 - `spit_shot`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_11.ogg, slime_07.ogg
 - `spit_impact`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_01.ogg, slime_13.ogg
-- `absorb`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_10.ogg, slime_03.ogg
+- `absorb` (replaced 2026-09-23 by the owner's `eating`): 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_10.ogg, slime_03.ogg
 - `absorbed`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — bubble_01.ogg, bubble_02.ogg
 - `membrane_break`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_12.ogg, slime_02.ogg
 - `finisher_release`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_04.ogg
 - `finisher_impact`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_07.ogg
 - `tide_release`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_11.ogg
 - `tide_impact`: 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — splash_01.ogg
+- `respawn`: "Game Respawn" by Universfield (Pixabay, Pixabay Content License), supplied by the owner 2026-09-23 — universfield-game-respawn-153317.mp3
+- `boss_music`: "Video Game Music Loop" by freesound_community (Pixabay, Pixabay Content License), supplied by the owner 2026-09-23 — video-game-music-loop-27629.mp3
+- `eating`: "Eating Effect" (Pixabay, Pixabay Content License, uploader u_scysdwddsp), supplied by the owner 2026-09-23 — u_scysdwddsp-eating-effect-254996.mp3
+- `slime_move` (redone 2026-10-16; the old hiss takes are in gamedev-vault/backups/audio-slime-2026-10-16): 40 CC0 water / splash / slime SFX by rubberduck (CC0), https://opengameart.org/content/40-cc0-water-splash-slime-sfx — slime_06.ogg, slime_10.ogg, slime_15.ogg, slime_09.ogg, trimmed, pitched down and low-passed over a small low thump by tools/audio/slime_sfx.py
+- `slime_dash` (redone 2026-10-16): same pack — slime_14.ogg, slime_05.ogg with a filtered pink-noise rush and low thump, by tools/audio/slime_sfx.py

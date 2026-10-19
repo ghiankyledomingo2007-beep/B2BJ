@@ -32,7 +32,7 @@ public final class Wisp {
     private static final double RECOVER_DURATION = 0.45;
     private static final double HURT_DURATION = 0.28;
     private static final double STAGGER_COOLDOWN = 1.2;
-    private static final double LUNGE_SPEED = 520.0;
+    public static final double LUNGE_SPEED = 520.0;
     private static final double PROBE_DISTANCE = 24.0;
     private static final double DETOUR_COMMIT = 0.35;
     private static final double SEPARATION_SPEED = 120.0;
@@ -56,6 +56,9 @@ public final class Wisp {
     private double impulseX, impulseY;
     private double aggroTime;
     private int detourSign;
+    /** Another enemy holds an attack slot: keep the pressure on, circle at range, start no new attack. */
+    private boolean waitTurn;
+    private int circleSide;
     private double detourTime, detourX, detourY;
     private int shotNumber;
     private double staggerCooldown;
@@ -165,6 +168,7 @@ public final class Wisp {
         }
         double attackRange = role==Role.SPITTER?300:role==Role.GUARD?220:stationaryMelee()?meleeReach():ATTACK_RANGE;
         if (distance <= attackRange && lineClear(targetX, targetY, map)) {
+            if (waitTurn) { circle(dx, dy, distance, attackRange, seconds, map); return; }
             setIntent(dx, dy);
             enter(State.TELEGRAPH);
             face(targetX, targetY, 0);
@@ -181,6 +185,23 @@ public final class Wisp {
                 direction[1] * speed * seconds, map);
         animation.update(direction[0], direction[1], seconds);
     }
+
+    /** While waiting for an attack slot: strafe round the target, easing back out to the edge of reach. */
+    private void circle(double dx, double dy, double distance, double range, double seconds, RuinedOutpostMap map) {
+        if (circleSide == 0) circleSide = ((int) Math.floor(x + y) & 1) == 0 ? 1 : -1;
+        double ux = dx / Math.max(1e-6, distance), uy = dy / Math.max(1e-6, distance);
+        double back = distance < range * .75 ? -.7 : 0;
+        double mx = -uy * circleSide + ux * back, my = ux * circleSide + uy * back, len = Math.hypot(mx, my);
+        mx /= len; my /= len;
+        setIntent(dx, dy);
+        if (map != null && !probeFree(mx, my, map)) { circleSide = -circleSide; animation.update(ux, uy, seconds); return; }
+        double speed = (role == Role.GUARD ? 165 : stationaryMelee() ? 110 : PURSUE_SPEED) * .55;
+        move(mx * speed * seconds, my * speed * seconds, map);
+        animation.update(ux, uy, seconds);                                  // keeps facing its target while it circles
+    }
+
+    public void waitForTurn(boolean wait) { waitTurn = wait; }
+    public boolean attacking() { return state == State.TELEGRAPH || state == State.LUNGE; }
 
     /** Local navigation: go straight when the next step is free, otherwise slip around the nearer end. */
     private double[] steer(double ux, double uy, double seconds, RuinedOutpostMap map) {
@@ -475,6 +496,8 @@ public final class Wisp {
     public double meleeHalfWidth(){return role==Role.KNIGHT?50:55;}
     private double lockWindow(){return role==Role.SPITTER||role==Role.SHIELD_GUARD?0.25:LUNGE_LOCK_WINDOW;}
     public double telegraphDuration(){return role==Role.SPITTER?0.75:role==Role.GUARD?0.6:role==Role.KNIGHT?.85:role==Role.SHIELD_GUARD?.65:TELEGRAPH_DURATION;}
+    /** How far a lunge carries the body: its warning marks exactly this path. */
+    public double lungeReach(){return LUNGE_SPEED*lungeDuration();}
     public double lungeDuration(){return role==Role.GUARD?0.35:role==Role.KNIGHT?.22:role==Role.SHIELD_GUARD?.20:LUNGE_DURATION;}
     public double recoverDuration(){return role==Role.SPITTER?1.4:role==Role.GUARD?0.85:role==Role.KNIGHT?1.1:role==Role.SHIELD_GUARD?1.0:RECOVER_DURATION;}
     public double stateSeconds(){return stateTime;}

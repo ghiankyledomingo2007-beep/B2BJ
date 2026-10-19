@@ -1,6 +1,5 @@
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
@@ -8,6 +7,21 @@ import java.awt.RenderingHints;
 public final class CampaignRenderer {
     private static final java.awt.image.BufferedImage GUARD = B2BJ.loadImage("assets/characters/campaign/outpost_guard.png");
     private static final java.awt.image.BufferedImage KNIGHT = B2BJ.loadImage("assets/characters/campaign/fallen_knight.png");
+    /** The whole Outpost floor at native resolution (1 px = 2 world px), baked by tools/art from this map's layout. */
+    private static final java.awt.image.BufferedImage GROUND = opaque(B2BJ.loadImage("assets/tilesets/outpost/outpost_ground.png"));
+    /** The Corrupted Forest floor, baked by tools/art from 16x16 tiles of the forest tileset. */
+    private static final java.awt.image.BufferedImage FOREST_GROUND = opaque(B2BJ.loadImage("assets/tilesets/forest/forest_ground.png"));
+    private static final java.awt.image.BufferedImage RUIN_WALL = B2BJ.loadImage("assets/props/outpost/ruin_wall.png");
+    private static final java.awt.image.BufferedImage STAKE_WALL = B2BJ.loadImage("assets/props/outpost/stake_wall.png");
+    private static final java.awt.image.BufferedImage SUPPLIES = B2BJ.loadImage("assets/props/outpost/supplies.png");
+    private static final java.util.Map<SetPieces.Kind, java.awt.image.BufferedImage> SET_PIECES = new java.util.EnumMap<>(SetPieces.Kind.class);
+    static { for (var kind : SetPieces.Kind.values()) { var sheet = B2BJ.loadImage(kind.sheet()); if (sheet != null) SET_PIECES.put(kind, sheet); } }
+    private static final java.awt.image.BufferedImage FIRE_CAMP = B2BJ.loadImage("assets/effects/fire_camp.png");
+    private static final java.awt.image.BufferedImage FIRE_BRAZIER = B2BJ.loadImage("assets/effects/fire_brazier.png");
+    /** The baked floor replaces the placeholder blocks only when every prop and set piece drawn over it loads too. */
+    private static final boolean OUTPOST_ART = GROUND != null && RUIN_WALL != null && STAKE_WALL != null && SUPPLIES != null
+            && SET_PIECES.size() == SetPieces.Kind.values().length;
+    private static final boolean FOREST_ART = FOREST_GROUND != null && SET_PIECES.size() == SetPieces.Kind.values().length;
     private static final Color INK = new Color(12, 15, 24);
     private static final Color PANEL = new Color(15, 20, 30, 238);
     private static final Color TEXT = new Color(219, 227, 223);
@@ -27,6 +41,17 @@ public final class CampaignRenderer {
     public static void drawGround(Graphics2D canvas, RuinedOutpostGame game,
             int cx, int cy, int width, int height) {
         var map = game.map();
+        if (bakedGround(game)) {
+            canvas.setColor(INK);
+            canvas.fillRect(0, 0, width, height);
+            // The camera may look past the map edge; copy only the part that exists, 2x nearest-neighbour.
+            int left = Math.max(0, cx), top = Math.max(0, cy);
+            int right = Math.min(map.worldWidth(), cx + width), bottom = Math.min(map.worldHeight(), cy + height);
+            if (right > left && bottom > top)
+                canvas.drawImage(groundImage(game), left - cx, top - cy, right - cx, bottom - cy,
+                        left / 2, top / 2, right / 2, bottom / 2, null);
+            return;
+        }
         Color[] colors = PALETTES[game.biome()];
         canvas.setColor(colors[0]);
         canvas.fillRect(0, 0, width, height);
@@ -60,13 +85,15 @@ public final class CampaignRenderer {
     public static void drawScenery(Graphics2D canvas, RuinedOutpostGame game,
             int cx, int cy, int width, int height) {
         Color[] colors = PALETTES[game.biome()];
-        for (var bank : game.map().banks()) {
+        boolean baked = bakedGround(game);
+        if (!baked) for (var bank : game.map().banks()) {
             int x = (int) (bank.centerX() - bank.width() / 2) - cx;
             int y = (int) (bank.centerY() - bank.height() / 2) - cy;
             canvas.setColor(INK);
             canvas.fillRect(x, y, (int) bank.width(), (int) bank.height());
         }
         for (var obstacle : game.map().barriers()) {
+            if (baked) continue; // props and set pieces are drawn depth-sorted with the actors
             int x = (int) (obstacle.centerX() - obstacle.width() / 2) - cx;
             int y = (int) (obstacle.centerY() - obstacle.height() / 2) - cy;
             int w = (int) obstacle.width(), h = (int) obstacle.height();
@@ -115,19 +142,138 @@ public final class CampaignRenderer {
             int x = (int) landmark.x() - cx, y = (int) landmark.y() - cy;
             if (x < -120 || x > width + 120 || y < -120 || y > height + 120) continue;
             canvas.setColor(landmark.optional() ? GOLD : colors[4]);
-            canvas.drawRect(x - 10, y - 8, 20, 16);
-            canvas.fillRect(x - 2, y - 18, 4, 8);
-            if (Math.hypot(game.player().x() - landmark.x(), game.player().y() - landmark.y()) < 280)
-                centered(canvas, landmark.name(), x, y - 28, 13, landmark.optional() ? GOLD : MUTED);
+            if (!baked) {
+                canvas.drawRect(x - 10, y - 8, 20, 16);
+                canvas.fillRect(x - 2, y - 18, 4, 8);
+            }
+            if (!game.bossActive() && Math.hypot(game.player().x() - landmark.x(), game.player().y() - landmark.y()) < 280)
+                Ui.outlinedCentered(canvas, landmark.name(), x, y - 28, 2, landmark.optional() ? Ui.GOLD : Ui.MUTED);
         }
         int hx = (int) area.hub().x() - cx, hy = (int) area.hub().y() - cy;
-        canvas.setColor(new Color(51, 61, 60));
-        canvas.fillOval(hx - 54, hy + 2, 108, 32);
-        canvas.setColor(GOLD);
-        canvas.drawOval(hx - 42, hy - 2, 84, 28);
-        centered(canvas, "CAMP", hx, hy + 72, 12, MUTED);
-        portal(canvas, area.exit(), cx, cy, "EAST GATE",
-                !game.guardian().alive() ? GOLD : MUTED);
+        if (!baked) {
+            canvas.setColor(new Color(51, 61, 60));
+            canvas.fillOval(hx - 54, hy + 2, 108, 32);
+            canvas.setColor(GOLD);
+            canvas.drawOval(hx - 42, hy - 2, 84, 28);
+        }
+        Ui.outlinedCentered(canvas, "CAMP", hx, hy + 72, 2, Ui.MUTED);
+        if (!baked) portal(canvas, area.exit(), cx, cy, "EAST GATE", !game.guardian().alive() ? GOLD : MUTED);
+        else Ui.outlinedCentered(canvas, game.biome() == 0 ? "EAST GATE" : "ROOTED STAIR", (int) area.exit().x() - cx,
+                (int) area.exit().y() - cy - 316, 2, !game.guardian().alive() ? Ui.GOLD : Ui.MUTED);
+    }
+
+    /** One landmark set piece; animated kinds take their cell from the clock, fires play on top. */
+    static void drawSetPiece(Graphics2D g, SetPieces.Piece p, RuinedOutpostGame game, int cx, int cy, long frame) {
+        var kind = p.kind();
+        var sheet = SET_PIECES.get(kind);
+        if (sheet == null) return;
+        int cells = Math.max(1, sheet.getWidth() / kind.width);
+        int phase = Math.floorMod((int) p.x() * 7 + (int) p.y() * 3, 64);
+        int cell = switch (kind) {
+            case BANNER -> (int) ((frame + phase) * 8 / 60 % cells);
+            case LAMP -> ((frame + phase) / 7 * 1103515245L >>> 16 & 7) < 2 ? 1 : 0;
+            case EAST_GATE -> game.guardian().alive() ? 0 : Math.min(1, cells - 1);
+            default -> Math.min(p.variant(), cells - 1);
+        };
+        int left = (int) Math.round(p.x()) - cx - kind.anchorX * 2;
+        int top = (int) Math.round(p.y()) - cy - kind.anchorY * 2;
+        cell2x(g, sheet, left, top, cell * kind.width, 0, kind.width, sheet.getHeight());
+        switch (kind) {
+            case CAMPFIRE -> fire(g, FIRE_CAMP, 30, p.x(), p.y() - 16, cx, cy, frame + phase);
+            case BRAZIER -> {
+                boolean cold = SetPieces.arenaBrazier(p) && game.guardian().alive() && game.guardian().state() == Guardian.State.DORMANT;
+                if (!cold) fire(g, FIRE_BRAZIER, 22, p.x(), p.y() - 60, cx, cy, frame + phase);
+            }
+            case WATCHTOWER -> fire(g, FIRE_BRAZIER, 22, p.x() + 4, p.y() - 376, cx, cy, frame + phase);
+            default -> { }
+        }
+    }
+
+    /** Screen box a set piece paints into, its fire included; null without its sheet. */
+    static java.awt.Rectangle bounds(SetPieces.Piece p, int cx, int cy) {
+        var kind = p.kind();
+        var sheet = SET_PIECES.get(kind);
+        if (sheet == null) return null;
+        int flame = kind == SetPieces.Kind.CAMPFIRE || kind == SetPieces.Kind.BRAZIER ? 48 : 0;   // fire rising over the sheet
+        int left = (int) Math.round(p.x()) - cx - kind.anchorX * 2, top = (int) Math.round(p.y()) - cy - kind.anchorY * 2;
+        return new java.awt.Rectangle(left, top - flame, kind.width * 2, sheet.getHeight() * 2 + flame);
+    }
+
+    /** A looping fire sheet whose second-to-last row sits on (x, y), drawn at 2x. */
+    private static void fire(Graphics2D g, java.awt.image.BufferedImage sheet, int cell, double x, double y,
+            int cx, int cy, long frame) {
+        if (sheet == null) return;
+        int frames = sheet.getWidth() / cell, f = (int) (frame * 12 / 60 % frames);
+        int left = (int) Math.round(x) - cx - cell, top = (int) Math.round(y) - cy - (sheet.getHeight() - 2) * 2;
+        cell2x(g, sheet, left, top, f * cell, 0, cell, sheet.getHeight());
+    }
+
+    /** PNGs decode to a slow pixel layout; the floor is copied once into plain RGB so each frame is a fast blit. */
+    private static java.awt.image.BufferedImage opaque(java.awt.image.BufferedImage source) {
+        if (source == null) return null;
+        var image = new java.awt.image.BufferedImage(source.getWidth(), source.getHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
+        var g = image.createGraphics();
+        g.drawImage(source, 0, 0, null);
+        g.dispose();
+        return image;
+    }
+
+    private static java.awt.image.BufferedImage propSheet(RuinedOutpostMap.Prop prop) {
+        if (prop == null) return null;
+        return switch (prop) { case WALL -> RUIN_WALL; case PALISADE -> STAKE_WALL; case BARREL -> SUPPLIES; default -> null; };
+    }
+
+    /**
+     * Outpost obstacle art over its unchanged collision footprint. Sprite anchor = the footprint's
+     * front-centre in native pixels; the variant follows the position, so every visit looks the same.
+     */
+    static void drawProp(Graphics2D g, RuinedOutpostMap.Obstacle o, int cx, int cy) {
+        var box = propBounds(o, cx, cy);
+        if (box == null) return;
+        var sheet = propSheet(o.prop());
+        int cell = box.width / 2;
+        int mix = (int) o.centerX() * 73856093 ^ (int) o.centerY() * 19349663;
+        int variant = Math.floorMod(mix ^ mix >>> 13, sheet.getWidth() / cell);
+        cell2x(g, sheet, box.x, box.y, variant * cell, 0, cell, sheet.getHeight());
+    }
+
+    /** Screen box an Outpost prop paints into; null for obstacles without art. */
+    static java.awt.Rectangle propBounds(RuinedOutpostMap.Obstacle o, int cx, int cy) {
+        var sheet = propSheet(o.prop());
+        if (sheet == null) return null;
+        int cell = o.prop() == RuinedOutpostMap.Prop.BARREL ? 56 : 96;
+        int anchorY = switch (o.prop()) { case WALL -> 76; case PALISADE -> 108; default -> 68; };
+        return new java.awt.Rectangle((int) Math.round(o.centerX()) - cx - cell,
+                (int) Math.round(o.centerY() + o.height() / 2) - cy - anchorY * 2, cell * 2, sheet.getHeight() * 2);
+    }
+
+    private static final java.util.Map<java.awt.image.BufferedImage, java.awt.image.BufferedImage> DOUBLED = new java.util.IdentityHashMap<>();
+    /** A sheet enlarged 2x once (premultiplied), so each frame is a plain copy instead of a scaled draw. */
+    static java.awt.image.BufferedImage doubled(java.awt.image.BufferedImage sheet) {
+        return DOUBLED.computeIfAbsent(sheet, s -> {
+            var big = new java.awt.image.BufferedImage(s.getWidth() * 2, s.getHeight() * 2, java.awt.image.BufferedImage.TYPE_INT_ARGB_PRE);
+            var g = big.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+            g.drawImage(s, 0, 0, big.getWidth(), big.getHeight(), null);
+            g.dispose();
+            return big;
+        });
+    }
+    /** Copies native cell (sx, sy, w, h) of a sheet to (left, top) at 2x. */
+    private static void cell2x(Graphics2D g, java.awt.image.BufferedImage sheet, int left, int top, int sx, int sy, int w, int h) {
+        var big = doubled(sheet);
+        g.drawImage(big, left, top, left + w * 2, top + h * 2, sx * 2, sy * 2, (sx + w) * 2, (sy + h) * 2, null);
+    }
+
+    private static java.awt.image.BufferedImage groundImage(RuinedOutpostGame game) {
+        return switch (game.biome()) { case 0 -> OUTPOST_ART ? GROUND : null; case 1 -> FOREST_ART ? FOREST_GROUND : null; default -> null; };
+    }
+
+    /** The baked floor already carries the forest banks and is sized to this map. */
+    static boolean bakedGround(RuinedOutpostGame game) {
+        var ground = groundImage(game);
+        return game.campaignMode() && ground != null && ground.getWidth() * 2 == game.map().worldWidth()
+                && ground.getHeight() * 2 == game.map().worldHeight();
     }
 
     private static void portal(Graphics2D g, CampaignWorld.Point point, int cx, int cy,
@@ -140,7 +286,7 @@ public final class CampaignRenderer {
         g.fillRect(x + 40, y - 84, 12, 118);
         g.fillRect(x - 52, y - 84, 104, 12);
         g.drawRect(x - 32, y - 62, 64, 84);
-        centered(g, label, x, y - 100, 13, color);
+        Ui.outlinedCentered(g, label, x, y - 100, 2, color);
     }
 
     private static void drawNpc(Graphics2D g, int x, int y, int biome) {
@@ -177,7 +323,7 @@ public final class CampaignRenderer {
                     :body.state()==Wisp.State.HURT?(knight?9:5)+direction:(knight?1:16)+direction;
             int frame=body.usesAttackAnimation()?(knight?body.attackFrame(9,3,4):body.attackFrame(8,4,4))
                     :body.state()==Wisp.State.HURT?body.hurtFrame(8):body.animation().frame();
-            meleeFrame(g,sheet,knight,row,frame,0,0);
+            meleeFrame(g,B2BJ.hitTint(sheet,B2BJ.whiteHit(body)),knight,row,frame,0,0);
         } else {
         // Grounded anticipation/contact/recovery; shadow stays at the collision anchor.
         int lean = switch(body.state()) { case TELEGRAPH -> -5; case LUNGE -> 10; case RECOVER -> 2; default -> 0; };
@@ -267,7 +413,7 @@ public final class CampaignRenderer {
         g.dispose();
         if (body.alive() && (body.aggro() || body.health() < body.maxHealth())) {
             bar(canvas, x - 24, y - (sheet!=null?(knight?144:128):92), 48, 4, body.health() / (double) body.maxHealth(), DANGER);
-            if (enemy.shielded()) centered(canvas, "SHIELD", x, y - (sheet!=null?150:98), 10, GOLD);
+            if (enemy.shielded()) Ui.outlinedCentered(canvas, "SHIELD", x, y - (sheet!=null?150:98), 2, Ui.GOLD);
         }
     }
 
@@ -351,204 +497,459 @@ public final class CampaignRenderer {
     }
 
     public static void drawHud(Graphics2D g, RuinedOutpostGame game, int width, int height) {
+        Ui.crisp(g);
         Player p = game.player();
-        int right = width - 354;
-        panel(g, right, 18, 336, 136);
-        text(g, (game.biome() + 1) + " / " + CampaignWorld.AREA_COUNT + "   " + game.campaignArea().name(), right + 14, 40, 14, GOLD);
-        text(g, p.bladeForm() ? "BLADE FORM" : "SLIME FORM", right + 14, 61, 12, CYAN);
-        wrapped(g, game.guardian().alive() ? "DEFEAT THE OUTPOST WARDEN" : "CROSS THE EASTERN GATE",
-                right + 14, 85, 306, 13, 19, 3, TEXT);
-        text(g, "SHARDS " + game.shards(), right + 14, 141, 12, GOLD);
-        if (game.bossActive() && game.guardian().alive()) {
-            panel(g, width / 2 - 250, 90, 500, 57);
-            centered(g, game.guardian().bossName(), width / 2, 113, 16, GOLD);
-            bar(g, width / 2 - 232, 127, 464, 8,
-                    game.guardian().health() / (double) game.guardian().maxHealth(), DANGER);
-        }
-
-        miniMap(g, game, width - 254, height - 196, 236, 170, false);
+        if (game.bossActive() && game.guardian().alive()) bossBar(g, game, width);
+        tracker(g, game, width);
+        drawMiniMap(g, game, width - 240 - 16, height - 196 - 16, 240, 196);
         String prompt = game.interactionPrompt();
-        if (!prompt.isEmpty()) {
-            panel(g, 18, height - 108, 398, 72);
-            wrapped(g, prompt, 32, height - 84, 370, 14, 18, 3, GOLD);
-            if(game.absorptionTarget()!=null)bar(g,32,height-47,370,4,game.absorptionProgress(),GOLD);
-        }
+        if (!prompt.isEmpty() && !game.nearCampaignHub()) prompt(g, game, prompt, 16, height - 16 - 60);
         boolean danger = game.bossActive() || game.scouts().stream().anyMatch(enemy -> enemy.alive() && enemy.aggro()
                 && Math.hypot(enemy.x() - p.x(), enemy.y() - p.y()) < 700);
-        if (!game.campaignNotice().isEmpty() && !danger) {
-            int noticeHeight = 20 + Math.min(4, 1 + game.campaignNotice().length() / 70) * 19;
-            panel(g, 352, 94, Math.max(250, width - 726), noticeHeight);
-            wrapped(g, game.campaignNotice(), 366, 117, Math.max(222, width - 754), 13, 19, 4, TEXT);
+        if (!game.campaignNotice().isEmpty() && !danger) toast(g, game.campaignNotice(), width / 2, 108);
+        if (game.nearCampaignHub()) campCard(g, game, 16, height - 16 - 214);
+    }
+
+    // ------------------------------------------------------------------ boss bar
+
+    private static double ghost = 1, shown = 1;
+    private static long ghostHoldUntil, lastFrame;
+    private static Guardian ghostOwner;
+
+    /** Ornate top-centre bar: emblem, name, health with a pale trail that drains after each hit, a 50% notch. */
+    private static void bossBar(Graphics2D g, RuinedOutpostGame game, int width) {
+        Guardian boss = game.guardian();
+        double health = Math.max(0, boss.health() / (double) boss.maxHealth());
+        long now = System.nanoTime();
+        if (ghostOwner != boss) { ghostOwner = boss; ghost = shown = health; ghostHoldUntil = now; lastFrame = now; }
+        double dt = Math.min(.1, (now - lastFrame) / 1e9);
+        lastFrame = now;
+        if (health < shown) ghostHoldUntil = now + 450_000_000L;     // the trail waits, then drains
+        shown = health;
+        if (ghost < health) ghost = health;
+        else if (now > ghostHoldUntil) ghost = Math.max(health, ghost - dt * .6);
+
+        int w = 560, x0 = width / 2 - w / 2, y0 = 40;
+        Ui.drawTitleCentered(g, boss.bossName().toUpperCase(java.util.Locale.ROOT), width / 2, 8, 2,
+                boss.enraged() ? Ui.BLOOD_RAMP : Ui.GOLD_RAMP);
+        int left = Ui.Piece.BOSS_LEFT.w * Ui.S, right = Ui.Piece.BOSS_RIGHT.w * Ui.S;
+        for (int x = x0 + left; x < x0 + w - right; x += Ui.Piece.BOSS_MID.w * Ui.S) {
+            int tile = Math.min(Ui.Piece.BOSS_MID.w * Ui.S, x0 + w - right - x);
+            Ui.nine(g, Ui.Piece.BOSS_MID, x, y0, tile, Ui.Piece.BOSS_MID.h * Ui.S);
         }
-        if (game.nearCampaignHub()) {
-            panel(g, 18, height - 284, 440, 170);
-            text(g, "CAMP  E TALK / H REST + SAVE", 32, height - 258, 14, GOLD);
-            String[] keys = {"vitality", "capacity", "efficiency", "edge"};
-            String[] labels = {"VITALITY  +1 HEALTH", "CAPACITY  +10% ICHOR", "EFFICIENCY  SLOWER DRAIN", "EDGE  STRONGER FINISHER"};
-            for (int i = 0; i < keys.length; i++) {
-                int level = game.upgradeLevel(keys[i]), max = i == 3 ? 1 : 3;
-                String cost = level == max ? "MAX" : game.upgradeCost(keys[i]) + " SHARDS";
-                text(g, (i + 1) + " " + labels[i], 32, height - 229 + i * 25, 12, TEXT);
-                text(g, level + "/" + max + "  " + cost, 298, height - 229 + i * 25, 12,
-                        level < max && game.shards() >= game.upgradeCost(keys[i]) ? GOLD : MUTED);
+        // trough between the rails
+        int tx = x0 + 46, ty = y0 + 18, tw = w - 46 - right, th = 14;
+        g.setColor(new Color(0x14101c));
+        g.fillRect(tx, ty, tw, th);
+        int ghostW = (int) Math.round(tw * ghost) / Ui.S * Ui.S, fillW = (int) Math.round(tw * health) / Ui.S * Ui.S;
+        if (ghostW > fillW) { g.setColor(new Color(0xf4dcc0)); g.fillRect(tx + fillW, ty, ghostW - fillW, th); }
+        boolean stagger = boss.state() == Guardian.State.RECOVER;
+        Color base = stagger ? new Color(0x2cc6c8) : boss.enraged() ? new Color(0xcc5222) : new Color(0xb8323a);
+        Color light = stagger ? new Color(0xcffff9) : boss.enraged() ? new Color(0xffc45e) : new Color(0xf16458);
+        Color dark = stagger ? new Color(0x178a93) : boss.enraged() ? new Color(0x8c2c16) : new Color(0x7a1c26);
+        if (fillW > 0) {
+            g.setColor(base); g.fillRect(tx, ty, fillW, th);
+            g.setColor(light); g.fillRect(tx, ty, fillW, 4);
+            g.setColor(dark); g.fillRect(tx, ty + th - 4, fillW, 4);
+        }
+        int notch = tx + tw / 2 / Ui.S * Ui.S;
+        g.setColor(Ui.INK);
+        g.fillRect(notch, ty, Ui.S, th);
+        Ui.piece(g, Ui.Piece.DIAMOND, notch - Ui.Piece.DIAMOND.w + 1, ty - 12);
+        Ui.piece(g, Ui.Piece.BOSS_LEFT, x0, y0);
+        Ui.piece(g, Ui.Piece.BOSS_RIGHT, x0 + w - right, y0);
+        Ui.piece(g, game.biome() == 0 ? Ui.Piece.EMBLEM_WARDEN : Ui.Piece.EMBLEM_BRIAR, x0 + 8, y0 + 8);
+    }
+
+    // ------------------------------------------------------------------ tracker
+
+    /** Top-right: chapter and region, the current goal, shards. No box: a soft dark plate and shadowed type. */
+    private static void tracker(Graphics2D g, RuinedOutpostGame game, int width) {
+        int right = width - 16;
+        String goal = game.guardian().alive() ? "Defeat the " + game.guardian().bossName()
+                : game.biome() == 0 ? "Cross the Eastern Gate" : "Descend the Rooted Stair";
+        var lines = Ui.wrap(goal, 300, 2);
+        int plateH = 64 + lines.size() * 22 + 30;
+        Ui.fade(g, width - 420, 60, 420, plateH, 0, 190);
+        String area = Ui.roman(game.biome() + 1) + "  \u00b7  " + game.campaignArea().name();
+        Ui.textRight(g, area, right, 86, 2, Ui.GOLD);
+        for (int x = 0; x < 240; x += Ui.S) {
+            if (x > 150 && (x / Ui.S) % 2 == 1) continue;
+            g.setColor(new Color(0xc48a26));
+            g.fillRect(right - Ui.S - x, 96, Ui.S, Ui.S);
+        }
+        int y = 122;
+        for (int i = 0; i < lines.size(); i++) {
+            Ui.textRight(g, lines.get(i), right, y, 2, Ui.TEXT);
+            if (i == 0) Ui.icon(g, Ui.Icon.OBJECTIVE, right - Ui.width(lines.get(0), 2) - 32, y - 18);
+            y += 22;
+        }
+        String shards = Integer.toString(game.shards());
+        Ui.textRight(g, shards, right, y + 8, 2, Ui.GOLD);
+        Ui.icon(g, Ui.Icon.SHARD, right - Ui.width(shards, 2) - 30, y - 10);
+    }
+
+    // ------------------------------------------------------------------ prompts, toasts, camp
+
+    private static final java.util.regex.Pattern KEYED = java.util.regex.Pattern.compile("^([A-Z0-9])\\s+(.+)$");
+
+    /** Bottom-left: a key cap and what it does; absorbing shows its progress under the words. */
+    private static void prompt(Graphics2D g, RuinedOutpostGame game, String prompt, int x, int y) {
+        var m = KEYED.matcher(prompt);
+        String key = m.matches() ? m.group(1) : null, words = m.matches() ? m.group(2).trim() : prompt;
+        int textW = Math.min(420, Ui.width(words, 2));
+        int w = (key != null ? 44 : 0) + textW + 36, h = 52;
+        Ui.nine(g, Ui.Piece.PANEL, x, y, w, h);
+        int tx = x + 18;
+        if (key != null) { Ui.keycap(g, key, tx, y + 12); tx += 44; }
+        Ui.wrapped(g, words, tx, y + 32, 420, 2, 20, 1, Ui.GOLD_LIGHT);
+        if (game.absorptionTarget() != null) Ui.bar(g, tx, y + 40, textW, 4, game.absorptionProgress(), Ui.GOLD, Ui.GOLD_LIGHT);
+    }
+
+    /** A short message centred near the top, in a panel sized to its words. */
+    private static void toast(Graphics2D g, String message, int center, int y) {
+        var lines = Ui.wrap(message, 560, 2);
+        if (lines.size() > 3) lines = lines.subList(0, 3);
+        int textW = 0;
+        for (String line : lines) textW = Math.max(textW, Ui.width(line, 2));
+        int w = textW + 48, h = 26 + lines.size() * 22;
+        int x = center - w / 2 / Ui.S * Ui.S;
+        Ui.nine(g, Ui.Piece.PANEL, x, y, w, h);
+        for (int i = 0; i < lines.size(); i++) Ui.textCentered(g, lines.get(i), center, y + 30 + i * 22, 2, Ui.TEXT);
+    }
+
+    private static final String[] TRACKS = {"vitality", "capacity", "efficiency", "edge"};
+    private static final String[][] TRACK_TEXT = {{"Vitality", "+1 health"}, {"Capacity", "+10% ichor"},
+            {"Efficiency", "slower drain"}, {"Edge", "stronger finisher"}};
+
+    /** Camp upgrades: one row per track with its key, level pips and price. */
+    private static void campCard(Graphics2D g, RuinedOutpostGame game, int x, int y) {
+        int w = 470, h = 214;
+        Ui.nine(g, Ui.Piece.CARD, x, y, w, h);
+        Ui.drawTitle(g, "FIELD CAMP", x + 20, y + 14, 2, Ui.GOLD_RAMP);
+        int hx = x + w - 20;
+        hx -= Ui.width("Rest + save", 2);
+        Ui.text(g, "Rest + save", hx, y + 34, 2, Ui.MUTED);
+        hx -= Ui.keycap(g, "H", hx - 34, y + 16) + 12;
+        hx -= Ui.width("Talk", 2);
+        Ui.text(g, "Talk", hx, y + 34, 2, Ui.MUTED);
+        Ui.keycap(g, "E", hx - 34, y + 16);
+        for (int i = 0; i < TRACKS.length; i++) {
+            int ry = y + 56 + i * 38;
+            int level = game.upgradeLevel(TRACKS[i]), max = i == 3 ? 1 : 3;
+            boolean affordable = level < max && game.shards() >= game.upgradeCost(TRACKS[i]);
+            Ui.keycap(g, Integer.toString(i + 1), x + 20, ry);
+            Ui.text(g, TRACK_TEXT[i][0], x + 60, ry + 19, 2, affordable ? Ui.TEXT : Ui.MUTED);
+            Ui.text(g, TRACK_TEXT[i][1], x + 186, ry + 19, 2, Ui.DIM);
+            for (int k = 0; k < max; k++) {
+                g.setColor(Ui.INK);
+                g.fillRect(x + 336 + k * 14, ry + 8, 10, 10);
+                g.setColor(k < level ? Ui.TEAL : new Color(0x252037));
+                g.fillRect(x + 338 + k * 14, ry + 10, 6, 6);
+            }
+            if (level >= max) Ui.textRight(g, "MAX", x + w - 20, ry + 19, 2, Ui.CYAN);
+            else {
+                String cost = Integer.toString(game.upgradeCost(TRACKS[i]));
+                Ui.textRight(g, cost, x + w - 20, ry + 19, 2, affordable ? Ui.GOLD : Ui.DIM);
+                Ui.icon(g, Ui.Icon.SHARD, x + w - 20 - Ui.width(cost, 2) - 28, ry + 2);
             }
         }
     }
 
     public static void drawDebugStatus(Graphics2D g, RuinedOutpostGame game) {
         if (!game.debugSession()) return;
-        panel(g, 18, 152, 272, 47);
-        text(g, "TEST SESSION", 32, 172, 13, GOLD);
-        text(g, "NORMAL SAVE PROTECTED", 32, 190, 11, TEXT);
+        String label = "TEST SESSION";
+        int w = Ui.width(label, 2) + 54;
+        Ui.nine(g, Ui.Piece.TAG, 20, 150, w, 32);
+        Ui.icon(g, Ui.Icon.FLASK, 26, 154);
+        Ui.text(g, label, 54, 172, 2, Ui.AMBER);
     }
 
-    public static void drawMap(Graphics2D g, RuinedOutpostGame game, int width, int height) {
-        g.setColor(new Color(5, 8, 15, 245));
-        g.fillRect(0, 0, width, height);
-        text(g, "THE FALLEN KINGDOM", 40, 43, 24, GOLD);
-        text(g, "RELEASE TAB TO CLOSE  /  " + (game.paused() ? "PAUSED" : "WORLD REMAINS LIVE"),
-                width - 476, 40, 12, MUTED);
-        int tabWidth = width - 80;
-        for (int biome = 0; biome < CampaignWorld.AREA_COUNT; biome++) {
-            int x = 40 + biome * (tabWidth + 4);
-            panel(g, x, 61, tabWidth, 53);
-            text(g, CampaignWorld.area(biome).name(), x + 10, 82, 13,
-                    biome == game.biome() ? CYAN : game.biomeUnlocked(biome) ? TEXT : MUTED);
-            text(g, biome == game.biome() ? "YOU ARE HERE" : game.biomeUnlocked(biome) ? "OPEN" : "BEYOND THE GATE",
-                    x + 10, 102, 11, biome == game.biome() ? CYAN : MUTED);
+    // ------------------------------------------------------------------ minimap
+
+    /** Shrunk floors by biome and size: the minimap and the full map each keep their own. */
+    private static final java.util.Map<Long, java.awt.image.BufferedImage> THUMBS = new java.util.HashMap<>();
+
+    /** The region's real baked floor, shrunk to the minimap's art size (progressive halving keeps it smooth). */
+    static java.awt.image.BufferedImage thumbnail(int biome, int artW, int artH) {
+        long key = ((long) biome << 40) | ((long) artW << 20) | artH;
+        var cached = THUMBS.get(key);
+        if (cached != null) return cached;
+        var source = biome == 0 ? GROUND : FOREST_GROUND;
+        if (source == null) return null;
+        java.awt.image.BufferedImage step = source;
+        int w = source.getWidth(), h = source.getHeight();
+        while (w / 2 >= artW && h / 2 >= artH) {
+            w /= 2; h /= 2;
+            var half = new java.awt.image.BufferedImage(w, h, java.awt.image.BufferedImage.TYPE_INT_RGB);
+            var hg = half.createGraphics();
+            hg.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            hg.drawImage(step, 0, 0, w, h, null);
+            hg.dispose();
+            step = half;
         }
-        miniMap(g, game, 40, 128, width - 80, height - 200, true);
-        text(g, "CYAN: YOU   GOLD: CAMP / MEMORY / CACHE   DIAMOND: BOSS   SQUARE: PASSAGE",
-                44, height - 44, 12, MUTED);
-        text(g, "EXPLORE THE OUTPOST / FIND THE EAST GATE", 44, height - 20, 13, GOLD);
+        var out = new java.awt.image.BufferedImage(artW, artH, java.awt.image.BufferedImage.TYPE_INT_RGB);
+        var og = out.createGraphics();
+        og.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        og.drawImage(step, 0, 0, artW, artH, null);
+        og.dispose();
+        // night floors are near black once shrunk; lift them so roads, water and clearings read
+        for (int py = 0; py < artH; py++) for (int px = 0; px < artW; px++) {
+            int rgb = out.getRGB(px, py), r = rgb >> 16 & 255, gr = rgb >> 8 & 255, b = rgb & 255;
+            r = Math.min(255, (int) (r * 1.75 + 6)); gr = Math.min(255, (int) (gr * 1.75 + 6)); b = Math.min(255, (int) (b * 1.75 + 10));
+            out.setRGB(px, py, r << 16 | gr << 8 | b);
+        }
+        THUMBS.put(key, out);
+        return out;
     }
 
-    private static void miniMap(Graphics2D g, RuinedOutpostGame game, int x, int y, int width, int height,
-            boolean expanded) {
-        panel(g, x, y, width, height);
+    /** Framed minimap: header, the real floor in miniature, walls, landmarks, camp, boss, passages and you. */
+    static void drawMiniMap(Graphics2D g, RuinedOutpostGame game, int x, int y, int w, int h) {
+        Ui.window(g, x, y, w, h);
+        Ui.text(g, "REGION MAP", x + 16, y + 30, 2, Ui.MUTED);
+        int capW = Ui.width("TAB", 2) + 14;
+        Ui.keycap(g, "TAB", x + w - 16 - Math.max(26, capW), y + 12);
+        int mx = x + 12, my = y + 44, mw = w - 24, mh = h - 44 - 12;
+        mw = mw / Ui.S * Ui.S; mh = mh / Ui.S * Ui.S;
+        mapArea(g, game, mx, my, mw, mh, false);
+    }
+
+    /** The map picture shared by the minimap and the full map. */
+    private static void mapArea(Graphics2D g, RuinedOutpostGame game, int mx, int my, int mw, int mh, boolean large) {
         var area = game.campaignArea();
-        int inset = expanded ? 38 : 10;
-        int ox = x + inset, oy = y + (expanded ? 18 : 30);
-        int mw = width - inset * 2, mh = height - (expanded ? 40 : 44);
+        var thumb = thumbnail(game.biome(), mw / Ui.S, mh / Ui.S);
+        g.setColor(Ui.INK);
+        g.fillRect(mx - Ui.S, my - Ui.S, mw + 2 * Ui.S, mh + 2 * Ui.S);
+        if (thumb != null) g.drawImage(thumb, mx, my, mw, mh, null);
+        else { g.setColor(PALETTES[game.biome()][0]); g.fillRect(mx, my, mw, mh); }
         double sx = mw / (double) area.width(), sy = mh / (double) area.height();
-        if (!expanded) text(g, "REGION MAP                  TAB", x + 10, y + 18, 10, MUTED);
-        g.setColor(PALETTES[game.biome()][0]);
-        g.fillRect(ox, oy, mw, mh);
-        for (int ty = 0; ty < game.map().heightInTiles(); ty += 2) {
-            for (int tx = 0; tx < game.map().widthInTiles(); tx += 2) {
-                if (game.map().tileMask(tx, ty) == 0) continue;
-                g.setColor(PALETTES[game.biome()][1]);
-                g.fillRect(ox + (int) (tx * 64 * sx), oy + (int) (ty * 64 * sy),
-                        Math.max(1, (int) Math.ceil(128 * sx)), Math.max(1, (int) Math.ceil(128 * sy)));
+        g.setColor(new Color(0x2a2741));
+        for (var obstacle : area.obstacles()) {
+            int l = (int) Math.floor((obstacle.centerX() - obstacle.width() / 2) * sx / Ui.S) * Ui.S;
+            int t = (int) Math.floor((obstacle.centerY() - obstacle.height() / 2) * sy / Ui.S) * Ui.S;
+            int r = (int) Math.ceil((obstacle.centerX() + obstacle.width() / 2) * sx / Ui.S) * Ui.S;
+            int b = (int) Math.ceil((obstacle.centerY() + obstacle.height() / 2) * sy / Ui.S) * Ui.S;
+            g.fillRect(mx + l, my + t, Math.max(Ui.S, r - l), Math.max(Ui.S, b - t));
+        }
+        int dot = large ? 3 : 2;
+        for (var landmark : area.landmarks()) {
+            int lx = snap(mx + landmark.x() * sx), ly = snap(my + landmark.y() * sy);
+            mark(g, lx, ly, dot, landmark.optional() ? Ui.GOLD : new Color(0xb8b09a));
+        }
+        for (var point : new CampaignWorld.Point[]{area.exit(), area.returnPortal()}) {
+            int px = snap(mx + point.x() * sx), py = snap(my + point.y() * sy);
+            mark(g, px, py, dot, new Color(0x7b8da4));
+        }
+        int hx = snap(mx + area.hub().x() * sx), hy = snap(my + area.hub().y() * sy);
+        mark(g, hx, hy, dot + 1, new Color(0xf08a32));
+        int bx = snap(mx + area.boss().x() * sx), by = snap(my + area.boss().y() * sy);
+        diamond(g, bx, by, large ? 5 : 4, game.guardian().alive() ? Ui.DANGER : Ui.GOLD);
+        int px = snap(mx + game.player().x() * sx), py = snap(my + game.player().y() * sy);
+        boolean pulse = System.currentTimeMillis() / 400 % 2 == 0;
+        if (pulse) { g.setColor(new Color(0x2cc6c8)); g.drawRect(px - 7, py - 7, 13, 13); g.drawRect(px - 6, py - 6, 11, 11); }
+        mark(g, px, py, dot + 1, Ui.CYAN);
+    }
+
+    private static int snap(double v) { return (int) Math.floor(v / Ui.S) * Ui.S; }
+
+    /** A square map mark `size` art pixels wide with an ink rim. */
+    private static void mark(Graphics2D g, int cx, int cy, int size, Color color) {
+        int half = size * Ui.S / 2 / Ui.S * Ui.S;
+        g.setColor(Ui.INK);
+        g.fillRect(cx - half - Ui.S, cy - half - Ui.S, size * Ui.S + 2 * Ui.S, size * Ui.S + 2 * Ui.S);
+        g.setColor(color);
+        g.fillRect(cx - half, cy - half, size * Ui.S, size * Ui.S);
+    }
+
+    private static void diamond(Graphics2D g, int cx, int cy, int r, Color color) {
+        for (int pass = 0; pass < 2; pass++) {
+            int rr = pass == 0 ? r + 1 : r;
+            g.setColor(pass == 0 ? Ui.INK : color);
+            for (int dy = -rr; dy <= rr; dy++) {
+                int span = rr - Math.abs(dy);
+                g.fillRect(cx - span * Ui.S, cy + dy * Ui.S, (2 * span + 1) * Ui.S, Ui.S);
             }
         }
-        g.setColor(PALETTES[game.biome()][3]);
-        for (var obstacle : area.obstacles()) {
-            int left = (int) Math.floor((obstacle.centerX() - obstacle.width() / 2) * sx);
-            int top = (int) Math.floor((obstacle.centerY() - obstacle.height() / 2) * sy);
-            int right = (int) Math.ceil((obstacle.centerX() + obstacle.width() / 2) * sx);
-            int bottom = (int) Math.ceil((obstacle.centerY() + obstacle.height() / 2) * sy);
-            g.fillRect(ox + left, oy + top, Math.max(1, right - left), Math.max(1, bottom - top));
-        }
+    }
+
+    /** TAB: the region map. The real floor framed on the left; regions, goal and a legend on the right. */
+    public static void drawMap(Graphics2D g, RuinedOutpostGame game, int width, int height) {
+        Ui.crisp(g);
+        Ui.veil(g, width, height, 238);
+        var area = game.campaignArea();
+        Ui.drawTitle(g, Ui.roman(game.biome() + 1) + "  " + area.name(), 36, 18, 2, Ui.GOLD_RAMP);
+        int hx = width - 168;   // clear of the Menu button
+        hx -= Ui.width(game.paused() ? "Paused" : "The world keeps moving", 2);
+        Ui.text(g, game.paused() ? "Paused" : "The world keeps moving", hx, 42, 2, Ui.MUTED);
+        hx -= 22 + Ui.width("Release", 2);
+        Ui.text(g, "Release", hx, 42, 2, Ui.MUTED);
+        Ui.keycap(g, "TAB", hx - 60, 24);
+        int fx = 28, fy = 66, fw = 916, fh = 628;
+        Ui.window(g, fx, fy, fw, fh);
+        int mx = fx + 16, my = fy + 16, mw = (fw - 32) / Ui.S * Ui.S, mh = (fh - 32) / Ui.S * Ui.S;
+        mapArea(g, game, mx, my, mw, mh, true);
+        double sx = mw / (double) area.width(), sy = mh / (double) area.height();
         boolean firstOptional = true;
         for (var landmark : area.landmarks()) {
-            int lx = ox + (int) (landmark.x() * sx), ly = oy + (int) (landmark.y() * sy);
-            g.setColor(landmark.optional() ? GOLD : MUTED);
-            int size = expanded ? 5 : 2;
-            g.fillRect(lx - size, ly - size, size * 2, size * 2);
-            if (expanded) {
-                centered(g, landmark.name(), lx, ly - 12, 12, landmark.optional() ? GOLD : TEXT);
-                if (landmark.optional()) centered(g, firstOptional ? "MEMORY" : "CACHE", lx, ly + 20, 10, MUTED);
-            }
+            int lx = snap(mx + landmark.x() * sx), ly = snap(my + landmark.y() * sy);
+            Ui.outlinedCentered(g, landmark.name(), lx, ly - 12, 2, landmark.optional() ? Ui.GOLD : Ui.TEXT);
+            if (landmark.optional()) Ui.outlinedCentered(g, firstOptional ? "memory" : "cache", lx, ly + 26, 2, Ui.MUTED);
             if (landmark.optional()) firstOptional = false;
         }
-        int hx = ox + (int) (area.hub().x() * sx), hy = oy + (int) (area.hub().y() * sy);
-        g.setColor(GOLD);
-        g.setStroke(new BasicStroke(2));
-        g.drawOval(hx - 7, hy - 7, 14, 14);
-        if (expanded) centered(g, "CAMP", hx, hy + 33, 11, GOLD);
-        int bx = ox + (int) (area.boss().x() * sx), by = oy + (int) (area.boss().y() * sy);
-        g.setColor(game.guardian().alive() ? DANGER : GOLD);
-        g.drawPolygon(new int[]{bx, bx + 8, bx, bx - 8}, new int[]{by - 8, by, by + 8, by}, 4);
-        for (var point : new CampaignWorld.Point[]{area.exit(), area.returnPortal()}) {
-            int px = ox + (int) (point.x() * sx), py = oy + (int) (point.y() * sy);
-            g.setColor(MUTED);
-            g.drawRect(px - 5, py - 5, 10, 10);
+        int camp = snap(mx + area.hub().x() * sx), campY = snap(my + area.hub().y() * sy);
+        Ui.outlinedCentered(g, "CAMP", camp, campY + 28, 2, new Color(0xf08a32));
+
+        int cx = fx + fw + 20, cw = width - cx - 28;
+        int y = fy;
+        Ui.text(g, "REGIONS", cx, y + 16, 2, Ui.MUTED);
+        y += 28;
+        for (int biome = 0; biome < CampaignWorld.AREA_COUNT; biome++) {
+            boolean here = biome == game.biome(), open = game.biomeUnlocked(biome);
+            Ui.nine(g, here ? Ui.Piece.CARD : Ui.Piece.PANEL, cx, y, cw, 62);
+            Ui.text(g, Ui.roman(biome + 1) + "  " + CampaignWorld.area(biome).name(), cx + 14, y + 26, 2,
+                    here ? Ui.GOLD_LIGHT : open ? Ui.TEXT : Ui.DIM);
+            Ui.text(g, here ? "You are here" : open ? "Open" : "Beyond the gate", cx + 14, y + 48, 2, here ? Ui.CYAN : Ui.MUTED);
+            y += 72;
         }
-        int px = ox + (int) (game.player().x() * sx), py = oy + (int) (game.player().y() * sy);
-        g.setColor(INK);
-        g.fillOval(px - 7, py - 7, 14, 14);
-        g.setColor(CYAN);
-        g.fillOval(px - 4, py - 4, 8, 8);
-        g.setStroke(new BasicStroke(1));
+        y += 8;
+        Ui.text(g, "GOAL", cx, y + 16, 2, Ui.MUTED);
+        String goal = game.guardian().alive() ? "Defeat the " + game.guardian().bossName()
+                : game.biome() == 0 ? "Cross the Eastern Gate" : "Descend the Rooted Stair";
+        y = Ui.wrapped(g, goal, cx, y + 42, cw, 2, 22, 3, Ui.TEXT) + 10;
+        Ui.text(g, "KEY", cx, y + 16, 2, Ui.MUTED);
+        y += 30;
+        Object[][] legend = {{Ui.CYAN, "You"}, {new Color(0xf08a32), "Camp"}, {Ui.DANGER, "Guardian"},
+                {Ui.GOLD, "Memory, cache"}, {new Color(0xb8b09a), "Landmark"}, {new Color(0x7b8da4), "Passage"}};
+        for (Object[] row : legend) {
+            if (row[0] == Ui.DANGER) diamond(g, cx + 8, y + 8, 4, Ui.DANGER);
+            else mark(g, cx + 8, y + 8, 3, (Color) row[0]);
+            Ui.text(g, (String) row[1], cx + 30, y + 16, 2, Ui.TEXT);
+            y += 28;
+        }
+    }
+
+    private static final String[] TAGLINES = {"Where the last knights fell", "Where the roots drink ichor"};
+    private static final int[][] AREA_RAMPS = {Ui.STEEL_RAMP, Ui.GOLD_RAMP};
+
+    /**
+     * The region title card: chapter, name, a flourish that unfurls, a tagline. It floats over play for about
+     * three seconds and never stops the game (short loads want an overlay, not a loading screen).
+     */
+    public static void drawAreaCard(Graphics2D g, int biome, double t, int width, boolean reduced) {
+        if (biome < 0 || biome >= CampaignWorld.AREA_COUNT || t >= 3.3) return;
+        double alpha = Math.min(1, Math.min(t / .45, (3.3 - t) / .7));
+        if (alpha <= 0) return;
+        var card = (Graphics2D) g.create();
+        card.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, (float) alpha));
+        Ui.crisp(card);
+        int cx = width / 2, top = 168;
+        for (int[] band : new int[][]{{top - 30, 12, 70}, {top - 18, 170, 180}, {top + 152, 12, 70}}) {   // soft top and bottom
+            Ui.fade(card, 0, band[0], width / 2, band[1], 0, band[2]);
+            Ui.fade(card, width / 2, band[0], width / 2, band[1], band[2], 0);
+        }
+        Ui.textCentered(card, "C H A P T E R   " + Ui.roman(biome + 1), cx, top + 6, 2, Ui.GOLD);
+        Ui.drawTitleCentered(card, CampaignWorld.area(biome).name(), cx, top + 20, 4, AREA_RAMPS[Math.min(biome, AREA_RAMPS.length - 1)]);
+        int open = reduced ? Ui.Piece.FLOURISH.w : (int) Math.min(Ui.Piece.FLOURISH.w, 12 + t * 200);
+        var clip = (Graphics2D) card.create();
+        clip.clipRect(cx - open, top + 88, open * 2, 36);
+        Ui.piece(clip, Ui.Piece.FLOURISH, cx - Ui.Piece.FLOURISH.w, top + 90);
+        clip.dispose();
+        Ui.textCentered(card, TAGLINES[Math.min(biome, TAGLINES.length - 1)], cx, top + 140, 2, Ui.MUTED);
+        card.dispose();
+    }
+
+    /** Over the animated title art: the tagline, any notice, control hints, and the veil under an open menu. */
+    public static void drawTitleExtras(Graphics2D g, RuinedOutpostGame game, int width, int height, boolean menuOpen) {
+        Ui.crisp(g);
+        Ui.text(g, "ABSORB  \u00b7  TRANSFORM  \u00b7  CONQUER", 58, 276, 2, Ui.GOLD);
+        if (!game.campaignNotice().isEmpty()) {
+            var lines = Ui.wrap(game.campaignNotice(), 330, 2);
+            Ui.nine(g, Ui.Piece.PANEL, 56, 524, 344, 24 + Math.min(3, lines.size()) * 22);
+            for (int i = 0; i < lines.size() && i < 3; i++) Ui.text(g, lines.get(i), 74, 552 + i * 22, 2, Ui.GOLD_LIGHT);
+        }
+        int x = 58, y = height - 44;
+        x += Ui.keycap(g, "\u2191", x, y) + 4;
+        x += Ui.keycap(g, "\u2193", x, y) + 10;
+        Ui.text(g, "Select", x, y + 19, 2, Ui.MUTED);
+        x += Ui.width("Select", 2) + 24;
+        x += Ui.keycap(g, "ENTER", x, y) + 10;
+        Ui.text(g, "Confirm", x, y + 19, 2, Ui.MUTED);
+        if (menuOpen) Ui.veil(g, width, height, 150);
     }
 
     public static void drawOverlay(Graphics2D g, RuinedOutpostGame game, int width, int height) {
+        drawOverlay(g, game, width, height, false);
+    }
+
+    public static void drawOverlay(Graphics2D g, RuinedOutpostGame game, int width, int height, boolean menuOpen) {
         boolean title = game.story().phase() == OutpostStory.Phase.PROLOGUE;
-        if (!title && game.player().alive() && !game.paused())
+        boolean complete = game.story().phase() == OutpostStory.Phase.COMPLETE;
+        if (!title && !complete && game.player().alive() && !game.paused())
             return;
-        g.setColor(new Color(5, 9, 17, 228));
-        g.fillRect(0, 0, width, height);
-        panel(g, 120, 106, width - 240, height - 212);
-        if (title) {
-            centered(g, "BLOB TO BLADE", width / 2, 174, 38, CYAN);
-            centered(g, "ABSORB. TRANSFORM. CONQUER.", width / 2, 211, 15, GOLD);
-            centeredLines(g, OutpostStory.openingLines(), width, 270, 16, 29);
-            centered(g, "ENTER  NEW JOURNEY", width / 2, height - 193, 18, CYAN);
-            centered(g, game.saveAvailable() ? "C  CONTINUE FROM CAMP" : "NO SAVED JOURNEY", width / 2,
-                    height - 158, 14, game.saveAvailable() ? GOLD : MUTED);
-            if (!game.campaignNotice().isEmpty()) wrapped(g, game.campaignNotice(), 184, height - 264,
-                    width - 368, 14, 24, 2, GOLD);
-            centered(g, "WASD MOVE  /  O OPTIONS  /  M SOUND  /  V EFFECTS", width / 2,
-                    height - 126, 12, MUTED);
-        } else if (!game.player().alive()) {
-            centered(g, "SCATTERED, NOT FINISHED", width / 2, 194, 29, DANGER);
-            centered(g, game.campaignArea().name(), width / 2, 252, 17, GOLD);
-            centered(g, "Reform at your last camp. Recovered strength stays with you.", width / 2, 333, 15, TEXT);
-            centered(g, "R  RETRY", width / 2, height - 177, 22, CYAN);
-        } else {
-            centered(g, "PAUSED", width / 2, 166, 32, GOLD);
-            String[] controls = {"WASD / ARROWS   MOVE", game.player().bladeForm()?"LMB CLICK / HOLD   COMBO / CHARGED CLEAVE":"LMB / RMB       ATTACK / FORM SKILL", "SPACE / Q       DASH / TRANSFORM",
-                    "F / E           RIPOSTE / INTERACT", "H / 1-4         REST + SAVE / CAMP UPGRADES", "TAB             HOLD REGION MAP",
-                    "M / V           SOUND / REDUCED EFFECTS"};
-            for (int i = 0; i < controls.length; i++)
-                text(g, controls[i], width / 2 - 258, 230 + i * 34, 16, TEXT);
-            centered(g, "ESC RESUME / O OPTIONS / T TITLE / F1 TEST MENU", width / 2, height - 134, 14, CYAN);
-        }
-    }
-
-    private static void centeredLines(Graphics2D g, String[] lines, int width, int y, int size, int spacing) {
-        for (int i = 0; i < lines.length; i++) centered(g, lines[i], width / 2, y + i * spacing, size, TEXT);
-    }
-
-    private static int wrapped(Graphics2D g, String value, int x, int y, int width, int size,
-            int spacing, int maxLines, Color color) {
-        g.setFont(new Font(Font.MONOSPACED, Font.BOLD, size));
-        StringBuilder line = new StringBuilder();
-        int count = 0;
-        for (String word : value.split("\\s+")) {
-            String candidate = line.isEmpty() ? word : line + " " + word;
-            if (!line.isEmpty() && g.getFontMetrics().stringWidth(candidate) > width) {
-                text(g, line.toString(), x, y, size, color);
-                y += spacing;
-                if (++count >= maxLines) return y;
-                line.setLength(0);
+        if (!title && !complete && game.player().alive()) {
+            // paused: the world stays visible, dimmed, behind the menu (or this banner when focus was lost)
+            Ui.veil(g, width, height, 170);
+            if (!menuOpen) {
+                Ui.nine(g, Ui.Piece.PANEL, width / 2 - 170, height / 2 - 40, 340, 84);
+                Ui.drawTitleCentered(g, "PAUSED", width / 2, height / 2 - 26, 3, Ui.GOLD_RAMP);
+                Ui.textCentered(g, "ESC TO RESUME", width / 2, height / 2 + 30, 2, Ui.MUTED);
             }
-            if (!line.isEmpty()) line.append(' ');
-            line.append(word);
+            return;
         }
-        if (!line.isEmpty()) {
-            text(g, line.toString(), x, y, size, color);
-            y += spacing;
-        }
-        return y;
+        Ui.crisp(g);
+        if (complete) { victory(g, game, width, height); return; }
+        if (!title) { death(g, game, width, height); return; }
+        // title fallback (only when the title art failed to load): the old text card, in pixel type
+        Ui.veil(g, width, height, 228);
+        Ui.window(g, 120, 106, width - 240, height - 212);
+        Ui.drawTitleCentered(g, "BLOB TO BLADE", width / 2, 150, 4, Ui.CYAN_RAMP);
+        Ui.textCentered(g, "ABSORB \u00b7 TRANSFORM \u00b7 CONQUER", width / 2, 250, 2, Ui.GOLD);
+        String[] lines = OutpostStory.openingLines();
+        for (int i = 0; i < lines.length; i++) Ui.textCentered(g, lines[i], width / 2, 300 + i * 26, 2, Ui.TEXT);
+        Ui.textCentered(g, "ENTER  NEW JOURNEY", width / 2, height - 190, 2, Ui.CYAN);
+        Ui.textCentered(g, game.saveAvailable() ? "C  CONTINUE FROM CAMP" : "NO SAVED JOURNEY", width / 2, height - 160, 2,
+                game.saveAvailable() ? Ui.GOLD : Ui.MUTED);
+        if (!game.campaignNotice().isEmpty()) Ui.textCentered(g, game.campaignNotice(), width / 2, height - 130, 2, Ui.GOLD_LIGHT);
     }
 
-    private static void panel(Graphics2D g, int x, int y, int width, int height) {
-        g.setColor(PANEL);
-        g.fillRect(x, y, width, height);
-        g.setColor(new Color(70, 79, 84));
-        g.drawRect(x, y, width - 1, height - 1);
+    /** Death: the world stays, darkened; a blood-red title, where you fell, and the one key that matters. */
+    private static void death(Graphics2D g, RuinedOutpostGame game, int width, int height) {
+        Ui.veil(g, width, height, 205);
+        int cx = width / 2;
+        Ui.drawTitleCentered(g, "SCATTERED", cx, 186, 5, Ui.BLOOD_RAMP);
+        Ui.drawTitleCentered(g, "NOT FINISHED", cx, 268, 2, Ui.BONE_RAMP);
+        Ui.piece(g, Ui.Piece.FLOURISH, cx - Ui.Piece.FLOURISH.w, 316);
+        Ui.textCentered(g, Ui.roman(game.biome() + 1) + "  \u00b7  " + game.campaignArea().name(), cx, 376, 2, Ui.GOLD);
+        Ui.textCentered(g, "Your ichor returns to the stones. Recovered strength stays with you.", cx, 408, 2, Ui.TEXT);
+        boolean bright = System.currentTimeMillis() / 600 % 2 == 0;
+        String words = "Reform at your last camp";
+        int w = 26 + 12 + Ui.width(words, 2), x = cx - w / 2 / Ui.S * Ui.S;
+        Ui.keycap(g, "R", x, 470);
+        Ui.text(g, words, x + 38, 489, 2, bright ? Ui.GOLD_LIGHT : Ui.GOLD);
+    }
+
+    /** Victory: the crown, the cleared region, what comes next, and how to go again. */
+    private static void victory(Graphics2D g, RuinedOutpostGame game, int width, int height) {
+        Ui.veil(g, width, height, 210);
+        int cx = width / 2;
+        var crown = (Graphics2D) g.create();
+        crown.drawImage(Ui.KIT, cx - 36, 112, cx + 36, 184, Ui.Icon.CROWN.x(), Ui.Icon.CROWN.y(),
+                Ui.Icon.CROWN.x() + Ui.Icon.CELL, Ui.Icon.CROWN.y() + Ui.Icon.CELL, null);
+        crown.dispose();
+        Ui.drawTitleCentered(g, game.story().overlayTitle(), cx, 206, 4, Ui.GOLD_RAMP);
+        Ui.piece(g, Ui.Piece.FLOURISH, cx - Ui.Piece.FLOURISH.w, 282);
+        String[] lines = game.story().overlayLines();
+        int y = 350;
+        for (String line : lines) {
+            if (line.startsWith("PRESS")) continue;
+            Ui.textCentered(g, line, cx, y, 2, Ui.TEXT);
+            y += 28;
+        }
+        boolean bright = System.currentTimeMillis() / 600 % 2 == 0;
+        String words = "Run again";
+        int w = 26 + 12 + Ui.width(words, 2), x = cx - w / 2 / Ui.S * Ui.S;
+        Ui.keycap(g, "R", x, y + 40);
+        Ui.text(g, words, x + 38, y + 59, 2, bright ? Ui.GOLD_LIGHT : Ui.GOLD);
     }
 
     private static void bar(Graphics2D g, int x, int y, int width, int height, double fraction, Color color) {
@@ -560,15 +961,5 @@ public final class CampaignRenderer {
         g.fillRect(x, y, (int) (width * Math.max(0, Math.min(1, fraction))), height);
     }
 
-    private static void text(Graphics2D g, String value, int x, int y, int size, Color color) {
-        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
-        g.setFont(new Font(Font.MONOSPACED, Font.BOLD, size));
-        g.setColor(color);
-        g.drawString(value, x, y);
-    }
 
-    private static void centered(Graphics2D g, String value, int x, int y, int size, Color color) {
-        g.setFont(new Font(Font.MONOSPACED, Font.BOLD, size));
-        text(g, value, x - g.getFontMetrics().stringWidth(value) / 2, y, size, color);
-    }
 }

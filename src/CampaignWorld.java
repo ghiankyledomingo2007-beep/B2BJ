@@ -2,9 +2,9 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
 
-/** The presentation build contains one authored region: Ruined Outpost. */
+/** Authored regions in campaign order: Ruined Outpost, then the Corrupted Forest beyond its east gate. */
 public final class CampaignWorld {
-    public static final int AREA_COUNT = 1;
+    public static final int AREA_COUNT = 2;
     public record Point(double x, double y) { }
     public record Landmark(String name, double x, double y, String lore, boolean optional) { }
     public record EnemySpawn(double x, double y, CampaignEnemy.Kind kind) { }
@@ -31,7 +31,11 @@ public final class CampaignWorld {
             "Spare weapons wait for an army that will never collect them."};
     private static final Area OUTPOST = create();
     private CampaignWorld() { }
-    public static Area area(int id) { if (id != 0) throw new IllegalArgumentException("Only Ruined Outpost is included"); return OUTPOST; }
+    public static Area area(int id) {
+        return switch (id) { case 0 -> OUTPOST; case 1 -> FOREST; default -> throw new IllegalArgumentException("No region " + id); };
+    }
+    /** Landmark index pairs joined by a road; the baked ground draws its tracks along these. */
+    static int[][] routes() { return java.util.Arrays.stream(ROUTES).map(int[]::clone).toArray(int[][]::new); }
 
     private static Area create() {
         var landmarks = new ArrayList<Landmark>();
@@ -65,12 +69,67 @@ public final class CampaignWorld {
         return new Area(0, "RUINED OUTPOST", 6144, 4096, spawn, hub, boss,
                 new Point(boss.x() + 384, boss.y() - 224), new Point(spawn.x() - 160, spawn.y()), landmarks, enemies, obstacles);
     }
+    // ------------------------------------------------------------------ Corrupted Forest
+    private static final String[] FOREST_NAMES = {"ASHEN TRAIL", "FERRY REFUGE", "IMP CLEARING", "ROOT CROSSING",
+            "HOLLOW GROVE", "WHITE CLOTH RIDGE", "BLACKWATER FORD", "THORN APPROACH", "BRIARHEART ROOTS",
+            "WAYFINDER'S REST", "MOONWELL", "ABANDONED ORCHARD"};
+    private static final int[][] FOREST_LOCATIONS = {{576,3072},{1280,2624},{2112,3264},{2816,2368},{2176,1280},
+            {3840,768},{4224,2432},{5120,3008},{5376,1536},{896,960},{2816,512},{5056,3648}};
+    private static final String[] FOREST_LORE = {"Gold light moves between the roots.",
+            "Sedge marks the way back with white cloth.", "Rift Imps gather where the canopy opens.",
+            "Old roots divide the road into two ways forward.", "The trees drank what the knights spilled.",
+            "The high road overlooks the ruined watercourse.", "The ford has gone dry, but its stones still lead east.",
+            "Thorns grip the stair beneath the clearing.", "Briarheart has rooted itself across the descent.",
+            "If the flags go dark, follow the white cloth. It was never a surrender.",
+            "A quiet spring reflects a sky the forest can no longer see.", "The last harvest lies untouched beneath black leaves."};
+    /** The dry watercourse, east to west: past the ridge, through the ford, under Sedge's ferry, out of the woods. */
+    private static final int[][] CHANNEL = {{4560,-40},{4380,520},{4420,1200},{4300,1850},{4224,2432},{4000,2850},
+            {3450,3020},{2900,2950},{2450,2800},{1950,2650},{1450,2470},{1000,2330},{520,2260},{-40,2180}};
+    /** Half the dry channel's width in world pixels. */
+    static final double CHANNEL_HALF_WIDTH = 104;
+    // Declared after the tables it reads: static fields initialise in source order.
+    private static final Area FOREST = createForest();
+
+    static List<Point> forestChannel() {
+        var list = new ArrayList<Point>();
+        for (int[] p : CHANNEL) list.add(new Point(p[0], p[1]));
+        return List.copyOf(list);
+    }
+    /** Distance from (x, y) to the dry channel's centre line. */
+    static double channelDistance(double x, double y) {
+        double best = Double.MAX_VALUE;
+        for (int i = 0; i + 1 < CHANNEL.length; i++)
+            best = Math.min(best, Line2D.ptSegDist(CHANNEL[i][0], CHANNEL[i][1], CHANNEL[i + 1][0], CHANNEL[i + 1][1], x, y));
+        return best;
+    }
+
+    private static Area createForest() {
+        var landmarks = new ArrayList<Landmark>();
+        for (int i = 0; i < FOREST_NAMES.length; i++) landmarks.add(new Landmark(
+                FOREST_NAMES[i], FOREST_LOCATIONS[i][0], FOREST_LOCATIONS[i][1], FOREST_LORE[i], i >= 9));
+        var enemies = new ArrayList<EnemySpawn>();
+        CampaignEnemy.Kind[] kinds = {CampaignEnemy.Kind.RIFT_IMP, CampaignEnemy.Kind.RIFT_IMP,
+                CampaignEnemy.Kind.THORN_WOLF, CampaignEnemy.Kind.MIRE_SHAMAN};
+        int[][] offsets = {{-96,64},{112,64},{0,-112},{128,-96}};
+        for (int location = 2; location < 8; location++) for (int i = 0; i < offsets.length; i++) {
+            var point = landmarks.get(location);
+            enemies.add(new EnemySpawn(point.x() + offsets[i][0], point.y() + offsets[i][1], kinds[i]));
+        }
+        for (int location = 9; location < 12; location++) {
+            var point = landmarks.get(location);
+            enemies.add(new EnemySpawn(point.x() + 112, point.y() + 96, kinds[location - 9]));
+        }
+        Point spawn = point(landmarks.get(0)), hub = point(landmarks.get(1)), boss = point(landmarks.get(8));
+        return new Area(1, "CORRUPTED FOREST", 6144, 4096, spawn, hub, boss,
+                new Point(boss.x() + 384, boss.y() - 224), new Point(spawn.x() - 160, spawn.y()), landmarks, enemies, List.of());
+    }
+
     private static Point point(Landmark landmark) { return new Point(landmark.x(), landmark.y()); }
     private static boolean clearOfLandmarks(double x, double y, List<Landmark> landmarks, double radius) {
         for (var point : landmarks) if (Math.hypot(x - point.x(), y - point.y()) < radius) return false;
         return true;
     }
-    private static boolean nearRoutes(double x, double y, List<Landmark> landmarks, double radius) {
+    static boolean nearRoutes(double x, double y, List<Landmark> landmarks, double radius) {
         for (int[] route : ROUTES) { var a = landmarks.get(route[0]); var b = landmarks.get(route[1]);
             if (Line2D.ptSegDist(a.x(), a.y(), b.x(), b.y(), x, y) < radius) return true; }
         return false;

@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
+import java.awt.event.InputEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.KeyEvent;
@@ -44,8 +45,17 @@ public final class B2BJ extends JPanel {
     private static final Font SMALL_FONT = new Font(Font.MONOSPACED, Font.BOLD, 14);
 
     private final RuinedOutpostGame game;
-    private final JButton menuButton = new JButton("Menu");
+    private final JButton menuButton = new PixelSwing.Button("Menu", Ui.Icon.MENU);
     private CampaignMenu menu;
+    private TitleMenu titleMenu;
+    private final TitleScreen titleScreen = new TitleScreen();
+    private double titleTime;
+    private int cardBiome = -1;
+    private double cardTime = 99;
+    private OutpostStory.Phase lastPhase;
+    private final LoadingScreen loading = new LoadingScreen();
+    private double loadingClock;
+    private int seenBiome = -1;
     private final BufferedImage[] terrainTiles = loadEnvironmentTiles();
     private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/ruined_outpost/earth_banks.png"));
     private final BufferedImage slimeSheet = loadSlimeSheet();
@@ -61,17 +71,13 @@ public final class B2BJ extends JPanel {
     private final BufferedImage transformInSheet=loadImage("assets/effects/transform_in.png");
     private final BufferedImage transformOutSheet=loadImage("assets/effects/transform_out.png");
     private final BufferedImage engulfSheet=loadImage("assets/characters/slime/slime_engulf.png");
-    private final BufferedImage tellRing=loadImage("assets/effects/telegraph_ring.png");
-    private final BufferedImage tellChevron=loadImage("assets/effects/telegraph_chevron.png");
     private final BufferedImage aimReticle=loadImage("assets/effects/aim_reticle.png");
     private final BufferedImage crescentSheet=loadImage("assets/effects/ichor_crescent.png");
     private final BufferedImage riposteSheet=loadImage("assets/effects/riposte_guard.png");
     private final BufferedImage counterSheet=loadImage("assets/effects/riposte_counter.png");
-    private final BufferedImage fissureSheet=loadImage("assets/effects/fissure_tile.png");
     private final BufferedImage crescentIcon=loadImage("assets/ui/crescent.png");
     private final BufferedImage riposteIcon=loadImage("assets/ui/riposte.png");
-    private final BufferedImage tellBuffer=new BufferedImage(WIDTH/2,HEIGHT/2,BufferedImage.TYPE_INT_ARGB);
-    private final java.util.Map<BufferedImage,java.awt.Rectangle[]> telegraphFrameBounds=new java.util.IdentityHashMap<>();
+    private final Telegraphs tells=new Telegraphs(WIDTH/2,HEIGHT/2);
     private final BufferedImage waterBuffer = new BufferedImage(72,72,BufferedImage.TYPE_INT_ARGB);
     private final BufferedImage tideBuffer = new BufferedImage(96,96,BufferedImage.TYPE_INT_ARGB);
     private final BufferedImage tideFrontSheet=loadImage("assets/effects/tide_front.png");
@@ -88,16 +94,33 @@ public final class B2BJ extends JPanel {
     private final BufferedImage tideBreakSheet=loadImage("assets/effects/tide_break.png");
     private final BufferedImage tideFoamSheet=loadImage("assets/effects/tide_foam.png");
     private final BufferedImage wardenImpactSheet=loadImage("assets/effects/warden_impact.png");
+    private final BufferedImage briarImpactSheet=loadImage("assets/effects/briar_impact.png");
     private final BufferedImage remnantSheet = tintRemnant(slimeSheet);
     private final BufferedImage wispWalkSheet = loadImage(
             "assets/characters/wisp/wisp_walk.png");
     private final BufferedImage remnantWalkSheet=loadImage("assets/characters/wisp/remnant_walk.png");
     private final BufferedImage remnantAttackSheet=loadImage("assets/characters/wisp/remnant_attack.png");
+    /** Forest enemies in the remnants' sheet format (tools/art/Creatures.java): {walk, attack} per kind. */
+    private final java.util.Map<CampaignEnemy.Kind,BufferedImage[]> kindSheets=forestSheets();
+    private static java.util.Map<CampaignEnemy.Kind,BufferedImage[]> forestSheets() {
+        var sheets=new java.util.EnumMap<CampaignEnemy.Kind,BufferedImage[]>(CampaignEnemy.Kind.class);
+        for(var kind:new CampaignEnemy.Kind[]{CampaignEnemy.Kind.RIFT_IMP,CampaignEnemy.Kind.THORN_WOLF,CampaignEnemy.Kind.MIRE_SHAMAN}) {
+            String base="assets/characters/forest/"+kind.name().toLowerCase(java.util.Locale.ROOT);
+            var walk=loadImage(base+"_walk.png");var attack=loadImage(base+"_attack.png");
+            if(walk!=null&&attack!=null)sheets.put(kind,new BufferedImage[]{walk,attack});
+        }
+        return sheets;
+    }
     private final BufferedImage wispAttackSheet = loadImage(
             "assets/characters/wisp/wisp_attack.png");
     private final BufferedImage guardianSheet = loadImage(
             "assets/characters/guardian/guardian_actions.png");
     private final BufferedImage wardenMotionSheet=loadImage("assets/characters/guardian/warden_motion.png");
+    private final BufferedImage briarheartSheet=loadImage("assets/characters/guardian/briarheart_motion.png");
+    private WardenFx wardenFx=new WardenFx(wardenMotionSheet);
+    /** The boss effects for the area being played: the Warden's cyan, or Briarheart's gold and violet. */
+    private WardenFx bossFx(){return game.campaignMode()&&game.biome()==1?new WardenFx(briarheartSheet,WardenFx.Theme.BRIARHEART):new WardenFx(wardenMotionSheet);}
+    private final MobFx mobFx=new MobFx();
     private final BufferedImage guardianWalkSheet=loadImage("assets/characters/guardian/guardian_walk.png");
     private final BufferedImage guardianDeathSheet=loadImage("assets/characters/guardian/guardian_death.png");
     private final BufferedImage guardianSweepSheet=loadImage("assets/characters/guardian/guardian_sweep.png");
@@ -179,24 +202,38 @@ public final class B2BJ extends JPanel {
                 if(game.returnToTitle()) {resetVisualState();closeMenu();}
             },enabled->reducedEffects=enabled,()->reducedEffects);
             menu.setVisible(false);
-            menuButton.setFont(new Font(Font.MONOSPACED,Font.BOLD,16));
             menuButton.setMnemonic(KeyEvent.VK_G);
-            menuButton.setForeground(TEAL);menuButton.setBackground(INK);
             menuButton.setToolTipText("Open Settings, Admin / Testing, or return to title");
             menuButton.getAccessibleContext().setAccessibleName("Game menu");
             menuButton.addActionListener(event->{if(menuShown())closeMenu();else openMenu();});
             add(menu);add(menuButton);
+            titleMenu = new TitleMenu(game::saveAvailable,
+                    () -> { var from=snapshot(); if(game.continueCampaign()) { resetVisualState(); startLoading(from,LoadingScreen.Kind.ENTER); } },
+                    () -> {
+                        var from=snapshot();
+                        if(game.saveAvailable())game.newCampaign(); else game.begin();
+                        resetVisualState();
+                        if(game.story().phase()!=OutpostStory.Phase.PROLOGUE)startLoading(from,LoadingScreen.Kind.ENTER);
+                    },
+                    () -> { openMenu(); menu.settings(); },
+                    () -> {
+                        var window=SwingUtilities.getWindowAncestor(this);
+                        if(window!=null)window.dispatchEvent(new java.awt.event.WindowEvent(window,java.awt.event.WindowEvent.WINDOW_CLOSING));
+                    });
+            titleMenu.setVisible(false);
+            add(titleMenu);
         }
         bindKeys();
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent event) {
+                if(loading.covering()) { loading.skip(); return; }
                 if(menuShown())return;
                 if (event.getButton() != MouseEvent.BUTTON1 && event.getButton() != MouseEvent.BUTTON3) {
                     return;
                 }
                 if (game.story().phase() == OutpostStory.Phase.PROLOGUE) {
-                    game.begin();
+                    if(!titleArt())game.begin();   // with the title art, its buttons start the game, not stray clicks
                 } else if (!game.blocked()) {
                     mouseX=event.getX(); mouseY=event.getY(); mouseAimed=true;
                     if(event.getButton()==MouseEvent.BUTTON1) {
@@ -263,7 +300,8 @@ public final class B2BJ extends JPanel {
     @Override public void doLayout() {
         super.doLayout();
         if(menu==null)return;
-        menuButton.setBounds(Math.max(8,getWidth()-138),Math.min(166,Math.max(8,getHeight()-46)),120,36);
+        menuButton.setBounds(Math.max(8,getWidth()-140),16,124,40);
+        if(titleMenu!=null) { titleMenu.setBounds(56,300,330,206); titleMenu.doLayout(); }
         int width=Math.min(menu.getPreferredSize().width,Math.max(1,getWidth()-32));
         int height=Math.min(menu.getPreferredSize().height,Math.max(1,getHeight()-32));
         menu.setBounds((getWidth()-width)/2,(getHeight()-height)/2,width,height);
@@ -271,19 +309,89 @@ public final class B2BJ extends JPanel {
     }
 
     private boolean menuShown() { return menu!=null&&menu.isVisible(); }
+
+    /** The current frame as an image: what the loading goo floods over. */
+    private BufferedImage snapshot() {
+        var image=new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
+        var g=image.createGraphics();
+        paint(g);
+        g.dispose();
+        return image;
+    }
+
+    /** Starts a loading screen; the region card is not repeated after it (the screen names the region). */
+    private void startLoading(BufferedImage from,LoadingScreen.Kind kind) {
+        if(!game.campaignMode())return;
+        clearInput();
+        loading.start(from,kind,game.biome());
+        loadingClock=0;
+        cardBiome=game.biome();cardTime=99;lastPhase=game.story().phase();seenBiome=game.biome();
+        syncTitle();
+    }
+
+    /** A region change from anywhere (gates, the testing menu) gets a loading screen, already covered. */
+    private void watchRegion() {
+        if(!game.campaignMode())return;
+        if(game.story().phase()==OutpostStory.Phase.PROLOGUE) { seenBiome=-1; return; }
+        if(seenBiome>=0&&game.biome()!=seenBiome&&!loading.active())startLoading(null,LoadingScreen.Kind.ENTER);
+        seenBiome=game.biome();
+    }
+
+    /** True when Rainoray stands where E could take him to another region (so a snapshot is worth taking). */
+    private boolean nearPassage() {
+        if(!game.campaignMode())return false;
+        var area=game.campaignArea();
+        double x=game.player().x(),y=game.player().y();
+        return Math.hypot(area.exit().x()-x,area.exit().y()-y)<260||Math.hypot(area.returnPortal().x()-x,area.returnPortal().y()-y)<260;
+    }
+
+    /** A region's title card plays when a run starts and whenever Rainoray enters another region. */
+    private void areaCard(double seconds) {
+        if(!game.campaignMode())return;
+        var phase=game.story().phase();
+        if(phase!=OutpostStory.Phase.PROLOGUE&&(game.biome()!=cardBiome||lastPhase==OutpostStory.Phase.PROLOGUE)) {
+            cardBiome=game.biome();cardTime=0;
+        }
+        lastPhase=phase;
+        cardTime+=seconds;
+    }
+    private boolean titleArt() { return game.campaignMode()&&TitleScreen.available(); }
+    private boolean titleShown() { return titleMenu!=null&&titleMenu.isVisible(); }
+
+    /** Title menu shows on the title screen while the game menu is closed; the corner Menu button does not. */
+    private void syncTitle() {
+        if(titleMenu==null)return;
+        boolean title=titleArt()&&game.story().phase()==OutpostStory.Phase.PROLOGUE;
+        boolean show=title&&!menuShown();
+        if(titleMenu.isVisible()!=show) {
+            titleMenu.setVisible(show);
+            if(show) { titleMenu.refresh(); titleMenu.focusDefault(); titleTime=0; }
+        }
+        boolean corner=!title&&!loading.active();
+        if(menuButton.isVisible()!=corner)menuButton.setVisible(corner);
+        if(show)titleMenu.refresh();
+    }
     private void openMenu() {
         clearInput();game.pause();
         GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
+        GameAudio.play(GameAudio.Cue.UI_OPEN);
         menu.home();menu.setVisible(true);menuButton.setText("Close");
-        doLayout();revalidate();repaint();
+        doLayout();revalidate();repaint();menu.focusFirst();
     }
     private void closeMenu() {
         clearInput();menu.setVisible(false);menuButton.setText("Menu");
+        GameAudio.play(GameAudio.Cue.UI_CLOSE);
         if(game.paused())game.togglePause();
         requestFocusInWindow();repaint();
     }
 
     private void updateGame(ActionEvent event) {
+        // A javax.swing.Timer that throws once never fires again: the game would freeze for good.
+        try { tick(); }
+        catch (RuntimeException failure) { failure.printStackTrace(); }
+    }
+
+    private void tick() {
         long now = System.nanoTime();
         double seconds = Math.min((now - previousFrame) / 1_000_000_000.0, 0.05);
         previousFrame = now;
@@ -294,7 +402,16 @@ public final class B2BJ extends JPanel {
     }
 
     void step(double seconds) {
+        if (Double.isFinite(seconds) && seconds > 0) titleTime += seconds;
+        syncTitle();
+        if (loading.active() && Double.isFinite(seconds) && seconds > 0) {
+            loadingClock += seconds;
+            loading.update(seconds);
+            if (loading.covering()) return;                         // the world waits behind the screen
+        }
+        watchRegion();
         if (!Double.isFinite(seconds) || seconds <= 0 || game.paused() || menuShown()) return;
+        areaCard(seconds);
         weatherTime+=seconds;
         int horizontal = horizontal();
         int vertical = vertical();
@@ -345,15 +462,24 @@ public final class B2BJ extends JPanel {
             else GameAudio.stopLoop(GameAudio.Loop.CHARGE);
         } else {
             slimeAnimation.update(animationX, animationY, player.dashing(), seconds);
+            slimeHops();
         }
+        deathAndFadeCues(player);
         if(!player.bladeForm())GameAudio.stopLoop(GameAudio.Loop.CHARGE);
         if(player.alive()&&player.health()<=LOW_HEALTH)GameAudio.startLoop(GameAudio.Loop.HEARTBEAT,1);
         else GameAudio.stopLoop(GameAudio.Loop.HEARTBEAT);
         GameAudio.startLoop(GameAudio.Loop.AMBIENCE,1);
+        bossMusic(seconds);
         feedback.update(seconds);
         updateImpacts(seconds);
+        if(wardenArea())wardenFx.update(seconds,game.guardian());
+        mobFx.update(seconds,game);
         bannerTime = Math.max(0, bannerTime - seconds);
         handleEvents(game.drainEvents());
+        if(eating&&game.absorptionProgress()==0) {             // moved, hit or transformed mid-eat
+            GameAudio.stopLoop(GameAudio.Loop.EATING);
+            eating=false;
+        }
         frameCounter++;
         repaint();
     }
@@ -372,7 +498,50 @@ public final class B2BJ extends JPanel {
     }
 
     private static final double SWING_LEAD = .08;                // the whoosh starts this long before the blade lands
-    private static final int LOW_HEALTH = 1;                     // hearts left when the heartbeat starts
+    private static final double BLADE_FADE_WARNING = 3.0;        // seconds of Blade left when the warning plays
+    private boolean wasAlive = true, bladeWarned;
+    private int lastHopFrame = -1;
+
+    /** One squelch per hop while the blob travels under its own power. */
+    private void slimeHops() {
+        int frame = slimeAnimation.hopping() ? slimeAnimation.frame() : -1;
+        if(frame != lastHopFrame && frame == 0) GameAudio.play(GameAudio.Cue.SLIME_MOVE);
+        lastHopFrame = frame;
+    }
+
+    /** The two cues that come from state rather than an event: dying, and the Blade about to fade. */
+    private void deathAndFadeCues(Player player) {
+        boolean alive = player.alive();
+        if(wasAlive && !alive) {
+            GameAudio.stopLoops();
+            GameAudio.play(player.bladeForm() ? GameAudio.Cue.DEATH_BLADE : GameAudio.Cue.DEATH_SLIME);
+        }
+        wasAlive = alive;
+        if(!player.bladeForm()) bladeWarned = false;
+        else if(!bladeWarned && alive && player.bladeSeconds() > 0 && player.bladeSeconds() < BLADE_FADE_WARNING) {
+            bladeWarned = true;
+            GameAudio.play(GameAudio.Cue.BLADE_FADES);
+        }
+    }
+    private static final int LOW_HEALTH = 1;
+    private static final double BOSS_MUSIC_RANGE = 900;          // px from the Warden; he wakes at 600
+    private static final double BOSS_FADE_IN = 1.0, BOSS_FADE_OUT = 1.5;   // seconds
+    private double bossMusicLevel;
+    private boolean eating;
+
+    /** The Warden's track: fades in while the fight is on and near, out when he dies, you die or run off. */
+    private void bossMusic(double seconds) {
+        Guardian warden=game.guardian();
+        Player player=game.player();
+        boolean fighting=game.bossActive()&&warden.alive()&&player.alive()
+                &&Math.hypot(warden.x()-player.x(),warden.y()-player.y())<=BOSS_MUSIC_RANGE;
+        // something else stopped every loop (death, victory, pause): start again from silence, not full blast
+        if(bossMusicLevel>0&&!GameAudio.loopRunning(GameAudio.Loop.BOSS_MUSIC))bossMusicLevel=0;
+        bossMusicLevel=fighting?Math.min(1,bossMusicLevel+seconds/BOSS_FADE_IN)
+                :Math.max(0,bossMusicLevel-seconds/BOSS_FADE_OUT);
+        if(bossMusicLevel>0)GameAudio.startLoop(GameAudio.Loop.BOSS_MUSIC,bossMusicLevel);
+        else GameAudio.stopLoop(GameAudio.Loop.BOSS_MUSIC);
+    }                     // hearts left when the heartbeat starts
     private static final int[] RUN_CONTACT_FRAMES = {1, 5};      // of the 8-frame run: each foot lands once
     private int lastRunFrame = -1;
 
@@ -427,7 +596,13 @@ public final class B2BJ extends JPanel {
                     addImpact(event.x(),event.y(),Fx.TIDE);
                     GameAudio.play(GameAudio.Cue.TIDE_IMPACT);
                 }
-                case TIDE_DISSIPATE -> addImpact(event.x(),event.y(),Fx.TIDE_FOAM);
+                case TIDE_DISSIPATE -> {
+                    addImpact(event.x(),event.y(),Fx.TIDE_FOAM);
+                    GameAudio.play(GameAudio.Cue.TIDE_DISSIPATE);
+                }
+                case DENIED -> GameAudio.play(GameAudio.Cue.DENIED);
+                case CHECKPOINT -> GameAudio.play(GameAudio.Cue.CHECKPOINT);
+                case UPGRADE -> GameAudio.play(GameAudio.Cue.UPGRADE);
                 case ENEMY_HIT -> {
                     feedback.enemyHit(false);
                     if(!event.water()) {
@@ -437,6 +612,7 @@ public final class B2BJ extends JPanel {
                 }
                 case ENEMY_DEFEATED -> {
                     feedback.enemyHit(true);
+                    mobFx.defeated(event.x(),event.y(),reducedEffects);
                     impacts.removeIf(impact->impact.x==event.x()&&impact.y==event.y()&&impact.time==0);
                     if(!event.water())addImpact(event.x(),event.y(),game.player().bladeForm()?Fx.BLADE:Fx.WATER);
                     GameAudio.play(GameAudio.Cue.KILL);
@@ -444,6 +620,8 @@ public final class B2BJ extends JPanel {
                 }
                 case PLAYER_HIT -> {
                     if(game.player().bladeForm())bladeAnimation.play(BladeAnimation.Action.HURT,.32);
+                    // the killing blow shows the collapsed pose (frame 5), as step() does for the dead body
+                    if(game.player().bladeForm()&&!game.player().alive())bladeAnimation.pose(BladeAnimation.Action.HURT,.20,.32);
                     feedback.playerHit();
                     addImpact(game.player().x(),game.player().y(),game.player().bladeForm()?Fx.BLADE_HURT:Fx.SLIME_HURT);
                     GameAudio.play(GameAudio.Cue.HURT);
@@ -456,11 +634,14 @@ public final class B2BJ extends JPanel {
                 case ABSORB_START -> {
                     int dx=(int)Math.round(event.x()-game.player().x()),dy=(int)Math.round(event.y()-game.player().y());
                     slimeAnimation.face(dx,dy);
-                    GameAudio.play(GameAudio.Cue.ABSORB);
+                    GameAudio.stopLoop(GameAudio.Loop.EATING);
+                    GameAudio.startLoop(GameAudio.Loop.EATING,1);
+                    eating=true;
                 }
                 case ABSORBED -> {
                     addImpact(event.x(),event.y(),Fx.PICKUP);
                     GameAudio.play(GameAudio.Cue.ABSORBED);
+                    eating=false;                                // a finished eat lets the munching play out
                 }
                 case HEALED -> {
                     addImpact(event.x(),event.y(),Fx.HEAL);
@@ -501,6 +682,7 @@ public final class B2BJ extends JPanel {
                 }
                 case GUARDIAN_AWAKENED -> {
                     banner("THE OUTPOST WARDEN WAKES", 2.6);
+                    if(wardenArea())wardenFx.awaken(game.guardian());
                     GameAudio.play(GameAudio.Cue.GUARDIAN_AWAKENED);
                 }
                 case GUARDIAN_SLAM -> {
@@ -508,6 +690,7 @@ public final class B2BJ extends JPanel {
                     Guardian guardian=game.guardian();
                     boolean charge=guardian.attack()==Guardian.Attack.CHARGE;
                     addImpact(charge?guardian.x():event.x(),charge?guardian.y():event.y(),Fx.WARDEN);
+                    if(wardenArea())wardenFx.slam(guardian,event.x(),event.y());
                     GameAudio.play(GameAudio.Cue.GUARDIAN_SLAM);
                 }
                 case SPIT_SHOT -> GameAudio.play(GameAudio.Cue.SPIT_SHOT);
@@ -517,6 +700,7 @@ public final class B2BJ extends JPanel {
                 }
                 case ROOM_ENTERED -> {
                     trails.clear(); impacts.clear(); attackHeld=false;bladeAnimation=new BladeAnimation();
+                    wardenFx=bossFx();mobFx.clear();
                 }
                 case VICTORY -> {
                     feedback.victory();
@@ -551,6 +735,13 @@ public final class B2BJ extends JPanel {
         canvas.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_OFF);
 
+        syncTitle();
+        if(titleArt()&&game.story().phase()==OutpostStory.Phase.PROLOGUE) {
+            titleScreen.draw(canvas,WIDTH,HEIGHT,titleTime,slimeIdleSheet,reducedEffects);
+            CampaignRenderer.drawTitleExtras(canvas,game,WIDTH,HEIGHT,menuShown());
+            canvas.dispose();
+            return;
+        }
         Player player = game.player();
         RuinedOutpostMap map = game.map();
         int cameraX = cameraPosition(player.x(), WIDTH, map.worldWidth());
@@ -564,9 +755,12 @@ public final class B2BJ extends JPanel {
         if(game.campaignMode()) {
             drawPlayerHud(canvas);
             CampaignRenderer.drawHud(canvas,game,WIDTH,HEIGHT);
+            CampaignRenderer.drawAreaCard(canvas,cardBiome,cardTime,WIDTH,reducedEffects);
+            wardenFx.drawTitle(canvas,WIDTH,HEIGHT);
             if(mapShown&&!game.story().blocksGameplay())CampaignRenderer.drawMap(canvas,game,WIDTH,HEIGHT);
-            CampaignRenderer.drawOverlay(canvas,game,WIDTH,HEIGHT);
+            CampaignRenderer.drawOverlay(canvas,game,WIDTH,HEIGHT,menuShown());
             CampaignRenderer.drawDebugStatus(canvas,game);
+            loading.draw(canvas,loadingClock,slimeIdleSheet,transformInSheet,transformOutSheet,reducedEffects);
         } else {
             drawHud(canvas);drawBanner(canvas);drawStoryOverlay(canvas);
             if(game.paused())drawPause(canvas);
@@ -575,9 +769,13 @@ public final class B2BJ extends JPanel {
         canvas.dispose();
     }
 
-    private record DepthDraw(double groundY, Runnable paint) { }
+    /** box: the screen area a wall or set piece paints, so Rainoray can show through it. */
+    private record DepthDraw(double groundY, Runnable paint, java.awt.Rectangle box) {
+        DepthDraw(double groundY, Runnable paint) { this(groundY, paint, null); }
+    }
 
     private void drawWorld(Graphics2D canvas, int cameraX, int cameraY) {
+        boolean outpostArt=CampaignRenderer.bakedGround(game);
         if(game.campaignMode()) {
             CampaignRenderer.drawGround(canvas,game,cameraX,cameraY,WIDTH,HEIGHT);
             CampaignRenderer.drawScenery(canvas,game,cameraX,cameraY,WIDTH,HEIGHT);
@@ -591,12 +789,25 @@ public final class B2BJ extends JPanel {
         drawIchor(canvas, cameraX, cameraY);
         drawGuardianTelegraph(canvas, cameraX, cameraY);
         drawImpacts(canvas,cameraX,cameraY,true);
+        if(wardenArea())wardenFx.drawGround(canvas,game.guardian(),cameraX,cameraY);
+        mobFx.drawGround(canvas,cameraX,cameraY,reducedEffects);
 
         // Painter's order uses ground contact, never sprite centre or asset loading order.
         List<DepthDraw> draws=new ArrayList<>();
         if(!game.campaignMode())for(var barrier:game.map().barriers())
             draws.add(new DepthDraw(barrier.centerY()+barrier.height()/2,
                     ()->drawBarrier(canvas,barrier,cameraX,cameraY)));
+        // Cull on each sprite's whole painted box; the 16 px margin covers screen shake.
+        else if(outpostArt)for(var barrier:game.map().barriers()) {
+            var box=CampaignRenderer.propBounds(barrier,cameraX,cameraY);
+            if(box!=null&&box.intersects(-16,-16,WIDTH+32,HEIGHT+32))draws.add(new DepthDraw(barrier.centerY()+barrier.height()/2,
+                    ()->CampaignRenderer.drawProp(canvas,barrier,cameraX,cameraY),box));
+        }
+        if(outpostArt)for(var piece:SetPieces.pieces(game.biome())) {
+            var box=CampaignRenderer.bounds(piece,cameraX,cameraY);
+            if(box!=null&&box.intersects(-16,-16,WIDTH+32,HEIGHT+32))draws.add(new DepthDraw(piece.y(),
+                    ()->CampaignRenderer.drawSetPiece(canvas,piece,game,cameraX,cameraY,frameCounter),box));
+        }
         for(var dressing:game.map().dressing()) {
             Runnable paint=()->{
             var decoration=dressing.decoration();var sprite=dressingSprites.get(decoration);
@@ -618,14 +829,14 @@ public final class B2BJ extends JPanel {
                     ()->{
                         var enemy=game.campaignEnemy(scout);
                         if(enemy!=null && enemy.kind()!=CampaignEnemy.Kind.OUTPOST_SCOUT
-                                && enemy.kind()!=CampaignEnemy.Kind.OUTPOST_SPITTER)
+                                && enemy.kind()!=CampaignEnemy.Kind.OUTPOST_SPITTER && !kindSheets.containsKey(enemy.kind()))
                             CampaignRenderer.drawEnemy(canvas,enemy,cameraX,cameraY);
                         else drawWisp(canvas,scout,cameraX,cameraY);
                     }));
         if((game.campaignMode()||game.map().room()==9)&&game.guardian().visible())
             draws.add(new DepthDraw(game.guardian().y()+Guardian.GROUND_Y_OFFSET,
                     ()->{
-                        if(game.campaignMode()&&game.biome()!=0)CampaignRenderer.drawBoss(canvas,game.guardian(),game.biome(),cameraX,cameraY);
+                        if(game.campaignMode()&&game.biome()!=0&&!(game.biome()==1&&briarheartSheet!=null))CampaignRenderer.drawBoss(canvas,game.guardian(),game.biome(),cameraX,cameraY);
                         else drawGuardian(canvas,cameraX,cameraY);
                     }));
         for(double[] trail:trails) {
@@ -654,10 +865,31 @@ public final class B2BJ extends JPanel {
         for(var crescent:game.crescents())
             draws.add(new DepthDraw(crescent.y()+Player.COLLISION_Y_OFFSET,
                     ()->drawCrescent(canvas,cameraX,cameraY,crescent)));
+        if(wardenArea())wardenFx.queue((y,paint)->draws.add(new DepthDraw(y,paint)),canvas,game.guardian(),
+                cameraX,cameraY,frameCounter,reducedEffects);
         draws.sort(java.util.Comparator.comparingDouble(DepthDraw::groundY));
         for(DepthDraw draw:draws)draw.paint().run();
+        // Walls and towers stand taller than Rainoray: where one covers it, a faint copy shows through.
+        // Clipped to those sprites, so actors in front stay clean; it blinks with the hurt flash.
+        if(outpostArt&&player.alive()&&!transformationAnimation.active()&&(!player.damageFlashing()||frameCounter/3%2==0)) {
+            double feet=player.y()+SlimeAnimation.RENDER_SIZE/2;
+            var body=new java.awt.Rectangle((int)Math.round(player.x())-cameraX-80,(int)Math.round(feet)-cameraY-150,160,166);
+            var cover=new java.awt.geom.Area();
+            for(DepthDraw draw:draws)if(draw.box()!=null&&draw.groundY()>feet&&draw.box().intersects(body))
+                cover.add(new java.awt.geom.Area(draw.box()));
+            if(!cover.isEmpty()) {
+                var ghost=(Graphics2D)canvas.create();
+                ghost.clip(cover);
+                ghost.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,.3f));
+                if(player.bladeForm())drawBlade(ghost,cameraX,cameraY);else drawSlime(ghost,cameraX,cameraY);
+                ghost.dispose();
+            }
+        }
 
         drawImpacts(canvas,cameraX,cameraY,false);
+        if(wardenArea())wardenFx.drawAbove(canvas,game.guardian(),cameraX,cameraY,frameCounter);
+        mobFx.drawAbove(canvas,cameraX,cameraY,reducedEffects);
+        if(outpostArt)OutpostLights.draw(canvas,game,cameraX,cameraY,frameCounter,reducedEffects);
         if(!game.campaignMode()||game.biome()==0)drawWeather(canvas,cameraX,cameraY,false);
         if(mouseAimed&&!game.blocked()&&aimReticle!=null) {
             int frame=(int)(frameCounter/6)%(aimReticle.getWidth()/32);
@@ -747,6 +979,7 @@ public final class B2BJ extends JPanel {
                     sourceX, sourceY,
                     sourceX + cell,
                     sourceY + cell, null);
+            return;
         } else {
             canvas.setColor(TEAL);
             canvas.fillOval(x, y + 16, SlimeAnimation.RENDER_SIZE,
@@ -896,6 +1129,7 @@ public final class B2BJ extends JPanel {
         if (!scout.flashVisible()) {
             return;
         }
+        boolean whiteHit=whiteHit(scout);
         int size = (int) Math.round(WispAnimation.RENDER_SIZE
                 * scout.renderScale());
         if (size <= 0) {
@@ -905,19 +1139,31 @@ public final class B2BJ extends JPanel {
         int floorY = (int) Math.round(scout.y()) - cameraY
                 + WispAnimation.RENDER_SIZE / 2;
         int y = floorY - size;
+        int spriteY = y;
         BufferedImage sheet = scout.usesAttackAnimation() && wispAttackSheet != null
                 ? wispAttackSheet : wispWalkSheet;
-        if(scout.role()==Wisp.Role.SPITTER&&spitterWalkSheet!=null&&spitterAttackSheet!=null) {
+        var enemy=game.campaignEnemy(scout);
+        var own=enemy==null?null:kindSheets.get(enemy.kind());
+        if(own!=null) {
+            int direction=scout.animation().row(),row=direction==2?2:direction==1||direction==3?1:0;
+            int frame=scout.usesAttackAnimation()?scout.attackFrame():scout.animation().frame()%4;
+            sheet = scout.usesAttackAnimation()?own[1]:own[0];
+            canvas.drawImage(hitTint(sheet,whiteHit),direction==1?x+size:x,y,direction==1?x:x+size,y+size,
+                    frame*48,row*48,frame*48+48,row*48+48,null);
+        } else if(scout.role()==Wisp.Role.SPITTER&&spitterWalkSheet!=null&&spitterAttackSheet!=null) {
             int direction=scout.animation().row(),row=direction==2?2:direction==1||direction==3?1:0;
             int frame=scout.usesAttackAnimation()?scout.attackFrame():scout.animation().frame()%4;
             int groundCorrection=row==2?(int)Math.round(4*size/48.0):0;
-            canvas.drawImage(scout.usesAttackAnimation()?spitterAttackSheet:spitterWalkSheet,direction==1?x+size:x,y+groundCorrection,direction==1?x:x+size,y+size+groundCorrection,
+            sheet = scout.usesAttackAnimation()?spitterAttackSheet:spitterWalkSheet;
+            spriteY += groundCorrection;
+            canvas.drawImage(hitTint(sheet,whiteHit),direction==1?x+size:x,spriteY,direction==1?x:x+size,spriteY+size,
                     frame*48,row*48,frame*48+48,row*48+48,null);
         } else if(game.map().room()!=9&&remnantWalkSheet!=null&&remnantAttackSheet!=null) {
             int direction=scout.animation().row();
             int row=direction==2?2:direction==1||direction==3?1:0;
             int frame=scout.usesAttackAnimation()?scout.attackFrame():scout.animation().frame()%4;
-            canvas.drawImage(scout.usesAttackAnimation()?remnantAttackSheet:remnantWalkSheet,direction==1?x+size:x,y,direction==1?x:x+size,y+size,
+            sheet = scout.usesAttackAnimation()?remnantAttackSheet:remnantWalkSheet;
+            canvas.drawImage(hitTint(sheet,whiteHit),direction==1?x+size:x,y,direction==1?x:x+size,y+size,
                     frame*48,row*48,frame*48+48,row*48+48,null);
         } else if (game.map().room()!=9 && remnantSheet!=null) {
             int direction=scout.animation().row();
@@ -925,7 +1171,8 @@ public final class B2BJ extends JPanel {
             boolean attacking=scout.usesAttackAnimation();
             int row=attacking?(side?10:direction==2?11:5):(side?7:direction==2?8:6);
             int frame=attacking?Math.min(3,scout.attackFrame()/2):scout.animation().frame()%4;
-            canvas.drawImage(remnantSheet,direction==1?x+size:x,y,direction==1?x:x+size,y+size,
+            sheet = remnantSheet;
+            canvas.drawImage(hitTint(sheet,whiteHit),direction==1?x+size:x,y,direction==1?x:x+size,y+size,
                     frame*48,row*48,frame*48+48,row*48+48,null);
         } else if (sheet == null) {
             canvas.setColor(PURPLE);
@@ -936,7 +1183,7 @@ public final class B2BJ extends JPanel {
                     ? scout.attackFrame() : scout.animation().frame())
                     * WispAnimation.CELL_SIZE;
             int sourceY = scout.animation().row() * WispAnimation.CELL_SIZE;
-            canvas.drawImage(sheet, x, y, x + size, y + size,
+            canvas.drawImage(hitTint(sheet,whiteHit), x, y, x + size, y + size,
                     sourceX, sourceY,
                     sourceX + WispAnimation.CELL_SIZE,
                     sourceY + WispAnimation.CELL_SIZE, null);
@@ -960,7 +1207,10 @@ public final class B2BJ extends JPanel {
         if (!guardian.visible() || (guardian.alive() && !guardian.flashVisible())) {
             return;
         }
-        boolean motion=wardenMotionSheet!=null&&wardenMotionSheet.getWidth()>=512&&wardenMotionSheet.getHeight()>=448;
+        // Briarheart's atlas uses 96 px cells drawn at 2x; the Warden's, 64 px at 3x. Both fill the same box.
+        BufferedImage motionSheet=game.campaignMode()&&game.biome()==1&&briarheartSheet!=null?briarheartSheet:wardenMotionSheet;
+        int cell=motionSheet==briarheartSheet?96:Guardian.CELL_SIZE,foot=cell*Guardian.SPRITE_FOOT_ROW/Guardian.CELL_SIZE;
+        boolean motion=motionSheet!=null&&motionSheet.getWidth()>=8*cell&&motionSheet.getHeight()>=7*cell;
         int size = motion||guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null?Guardian.RENDER_SIZE
                 :(int) Math.round(Guardian.RENDER_SIZE * guardian.renderScale());
         if (size <= 0) {
@@ -968,17 +1218,17 @@ public final class B2BJ extends JPanel {
         }
         int x = (int) Math.round(guardian.x()) - cameraX - size / 2;
         int floorY = (int) Math.round(guardian.y()) - cameraY
-                + Guardian.GROUND_Y_OFFSET+(Guardian.CELL_SIZE-Guardian.SPRITE_FOOT_ROW)*Guardian.RENDER_SIZE/Guardian.CELL_SIZE;
+                + Guardian.GROUND_Y_OFFSET+(cell-foot)*Guardian.RENDER_SIZE/cell;
         int y = floorY - size;
         BufferedImage actionSheet=switch(guardian.attack()) {
             case CHARGE -> guardianChargeSheet; case SWEEP -> guardianSweepSheet;
             case SHOCKWAVE -> guardianWaveSheet; default -> null;
         };
         if(motion) {
-            int sourceX=guardian.animationFrame()*Guardian.CELL_SIZE;
-            int sourceY=guardian.animation().ordinal()*Guardian.CELL_SIZE;
-            canvas.drawImage(wardenMotionSheet,x,y,x+size,y+size,sourceX,sourceY,
-                    sourceX+Guardian.CELL_SIZE,sourceY+Guardian.CELL_SIZE,null);
+            int sourceX=guardian.animationFrame()*cell;
+            int sourceY=guardian.animation().ordinal()*cell;
+            canvas.drawImage(motionSheet,x,y,x+size,y+size,sourceX,sourceY,
+                    sourceX+cell,sourceY+cell,null);
         } else if(guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null) {
             int frame=Math.min(11,(int)(guardian.stateSeconds()/Guardian.DEATH_DURATION*12));
             canvas.drawImage(guardianDeathSheet,x,y,x+size,y+size,frame*64,0,frame*64+64,64,null);
@@ -1011,150 +1261,91 @@ public final class B2BJ extends JPanel {
         }
     }
 
+    /** The Warden's own effects belong to its arena; other bosses do not borrow them. */
+    private boolean wardenArea(){return game.campaignMode()&&(game.biome()==0||game.biome()==1&&briarheartSheet!=null);}
+
+    /** Native px from an enemy's centre where its aim line starts (clear of its body), and the hexer's spoke length. */
+    static final double AIM_START=9, SPOKE=16;
+
+    /** Every live attack warning, painted at native resolution by {@link Telegraphs}. */
     private void drawGuardianTelegraph(Graphics2D canvas,int cameraX,int cameraY) {
-        Graphics2D pixels=tellBuffer.createGraphics();
-        pixels.setComposite(java.awt.AlphaComposite.Clear);pixels.fillRect(0,0,WIDTH/2,HEIGHT/2);
-        pixels.setComposite(java.awt.AlphaComposite.SrcOver);
-        pixels.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-        for(var scout:game.scouts())if(scout.state()==Wisp.State.TELEGRAPH) {
-            pixels.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,scout.directionLocked()?1f:.5f));
-            double x=(scout.x()-cameraX)/2,y=(scout.y()-cameraY)/2;
+        tells.begin();
+        for(var scout:game.scouts()) {
+            boolean telling=scout.state()==Wisp.State.TELEGRAPH;
+            boolean striking=scout.state()==Wisp.State.LUNGE&&scout.stationaryMelee();
+            if(!telling&&!striking)continue;
+            double x=(scout.x()-cameraX)/2.,y=(scout.y()-cameraY)/2.;
             double angle=Math.atan2(scout.intentY(),scout.intentX());
-            if(scout.role()==Wisp.Role.SPITTER) {
-                double reach=EnemyProjectile.MAX_TRAVEL/2;
+            double charge=telling?scout.stateSeconds()/scout.telegraphDuration():1;
+            boolean locked=scout.directionLocked();
+            if(scout.stationaryMelee()) {
+                double reach=scout.meleeReach()/2;
+                double hit=striking?Math.max(.05,1-scout.stateSeconds()/scout.lungeDuration()):0;
+                tells.box(x+Math.cos(angle)*reach/2,y+Math.sin(angle)*reach/2,angle,reach,scout.meleeHalfWidth()/2,
+                        charge,hit,locked,false,reducedEffects);
+            } else if(scout.role()==Wisp.Role.SPITTER) {
+                // each shot's flight as a thin aim line; the hexer's ring of eight as short spokes
                 var profile=game.campaignEnemy(scout);
                 boolean radial=profile!=null&&profile.kind()==CampaignEnemy.Kind.CINDER_HEXER;
+                double reach=radial?AIM_START+SPOKE:EnemyProjectile.MAX_TRAVEL/2;
                 for(int side=0;side<(radial?8:3);side++) {
                     double direction=angle+(radial?side*Math.PI/4:(side-1)*.20);
-                    drawTellLane(pixels,x,y,direction,reach,side==1?16:12);
-                    drawTellRing(pixels,x+Math.cos(direction)*reach,y+Math.sin(direction)*reach,
-                            (Player.COLLISION_RADIUS+EnemyProjectile.RADIUS)/2);
+                    tells.aim(x,y,x+Math.cos(direction)*reach,y+Math.sin(direction)*reach,AIM_START,charge,locked);
                 }
-            } else if(scout.stationaryMelee()) {
-                java.awt.Polygon lane=new java.awt.Polygon();
-                for(int corner=0;corner<4;corner++) {
-                    double forward=corner==1||corner==2?scout.meleeReach()/2:0;
-                    double side=(corner<2?-1:1)*scout.meleeHalfWidth()/2;
-                    lane.addPoint((int)Math.round(x+Math.cos(angle)*forward-Math.sin(angle)*side),
-                            (int)Math.round(y+Math.sin(angle)*forward+Math.cos(angle)*side));
-                }
-                pixels.setColor(new Color(230,91,73,65));pixels.fillPolygon(lane);
-                pixels.setColor(RED);pixels.drawPolygon(lane);
-            } else drawTellLane(pixels,x,y,angle,520*scout.lungeDuration()/2,16);
+            } else {
+                // a lunge: the line of the rush and an arrowhead as wide as the body it sweeps
+                double reach=scout.lungeReach()/2;
+                tells.lunge(x,y,x+Math.cos(angle)*reach,y+Math.sin(angle)*reach,RuinedOutpostGame.WISP_CONTACT_RADIUS/2,
+                        AIM_START,charge,locked);
+            }
         }
-        pixels.setComposite(java.awt.AlphaComposite.SrcOver);
         Guardian guardian=game.guardian();
-        if(game.campaignMode()&&guardian.auraRadius()>0) {
-            int radius=(int)guardian.auraRadius()/2;
-            int left=(int)(guardian.x()-cameraX)/2-radius,top=(int)(guardian.y()-cameraY)/2-radius;
-            pixels.setColor(new Color(210,77,87,20));pixels.fillOval(left,top,radius*2,radius*2);
-            pixels.setColor(new Color(228,100,100,125));pixels.drawOval(left,top,radius*2,radius*2);
-        }
+        if(game.campaignMode()&&guardian.auraRadius()>0)
+            tells.aura((guardian.x()-cameraX)/2.,(guardian.y()-cameraY)/2.,guardian.auraRadius()/2);
         boolean warning=guardian.state()==Guardian.State.TELEGRAPH;
         if(game.bossActive()&&(warning||guardian.state()==Guardian.State.SLAM)) {
-            double x=(guardian.targetX()-cameraX)/2,y=(guardian.targetY()-cameraY)/2;
-            double radius=guardian.slamRadius()/2;
-            if(guardian.attack()==Guardian.Attack.FISSURE) {
-                var bounds=guardian.fissureBounds();
-                if(bounds!=null) {
-                    var lane=(Graphics2D)pixels.create();
-                    int left=(int)Math.round((bounds.centerX()-bounds.width()/2-cameraX)/2);
-                    int top=(int)Math.round((bounds.centerY()-bounds.height()/2-cameraY)/2);
-                    int w=(int)bounds.width()/2,h=(int)bounds.height()/2;
-                    lane.clipRect(left,top,w+1,h+1);
-                    lane.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,warning?.65f:1f));
-                    if(fissureSheet!=null&&fissureSheet.getWidth()>=256&&fissureSheet.getHeight()>=32) {
-                        int frame=warning?(int)(frameCounter/6)%4:4+Math.min(3,(int)(guardian.stateSeconds()/guardian.activeDuration()*4));
-                        var art=telegraphFrameBounds.computeIfAbsent(fissureSheet,sheet->frameAlphaBounds(sheet,32))[frame];
-                        if(!art.isEmpty()) {
-                            boolean horizontal=w>h;
-                            int length=horizontal?w:h,breadth=horizontal?h:w;
-                            lane.translate(left,top);
-                            if(horizontal){lane.translate(0,h+1);lane.rotate(-Math.PI/2);}
-                            // Three native-pixel strands mark both edges and the middle of one lane.
-                            for(int cross:new int[]{0,(breadth+1-art.width)/2,breadth+1-art.width})
-                                for(int along=0;along<=length;along+=art.height) {
-                                    boolean flip=along/art.height%2==1;
-                                    // Mirrored joins reuse the same endpoint pixels, without gaps between tiles.
-                                    lane.drawImage(fissureSheet,cross,flip?along+art.height:along,
-                                            cross+art.width,flip?along:along+art.height,
-                                            art.x,art.y,art.x+art.width,art.y+art.height,null);
-                                }
-                        } else {lane.setColor(warning?RED:GOLD);lane.drawRect(left,top,w,h);}
-                    } else {
-                        lane.setColor(warning?RED:GOLD);lane.drawRect(left,top,w,h);
+            double charge=warning?guardian.stateSeconds()/guardian.telegraphDuration():1;
+            double hit=warning?0:Math.max(.05,1-guardian.stateSeconds()/guardian.activeDuration());
+            double x=(guardian.targetX()-cameraX)/2.,y=(guardian.targetY()-cameraY)/2.;
+            switch(guardian.attack()) {
+                case FISSURE -> {
+                    var lane=guardian.fissureBounds();
+                    if(lane!=null) {
+                        boolean across=lane.width()>lane.height();
+                        tells.box((lane.centerX()-cameraX)/2.,(lane.centerY()-cameraY)/2.,across?0:Math.PI/2,
+                                Math.max(lane.width(),lane.height())/2,Math.min(lane.width(),lane.height())/4,
+                                charge,hit,true,true,reducedEffects);
                     }
-                    lane.dispose();
                 }
-            } else if(guardian.attack()==Guardian.Attack.CHARGE) {
-                double bx=(guardian.x()-cameraX)/2,by=(guardian.y()-cameraY)/2;
-                if(warning) {
-                    double angle=Math.atan2(guardian.directionY(),guardian.directionX());
-                    drawTellLane(pixels,bx,by,angle,620*.55/2,32);
-                    // Edge runes describe the actual 92px charge capsule.
-                    for(int side:new int[]{-1,1})drawTellLane(pixels,bx-side*guardian.directionY()*46,
-                            by+side*guardian.directionX()*46,angle,620*.55/2,12);
-                    drawTellRing(pixels,bx+guardian.directionX()*620*.55/2,by+guardian.directionY()*620*.55/2,46);
+                case CHARGE -> {
+                    double bx=(guardian.x()-cameraX)/2.,by=(guardian.y()-cameraY)/2.,reach=Guardian.CHARGE_SPEED*Guardian.CHARGE_DURATION/2;
+                    double radius=Guardian.CHARGE_RADIUS/2;
+                    if(warning)tells.capsule(bx,by,bx+guardian.directionX()*reach,by+guardian.directionY()*reach,radius,charge,true);
+                    else tells.disc(bx,by,radius,1,hit,reducedEffects);
                 }
-                drawTellRing(pixels,bx,by,46);
-            } else {
-                if(guardian.attack()==Guardian.Attack.SHOCKWAVE&&!warning)radius=guardian.waveRadius()/2;
-                if(guardian.attack()==Guardian.Attack.SHOCKWAVE) {
-                    drawTellRing(pixels,x,y,warning?16:Math.max(1,radius-14));
-                    drawTellRing(pixels,x,y,radius+14);
-                } else drawTellRing(pixels,x,y,radius);
+                case SHOCKWAVE -> {
+                    double band=Guardian.WAVE_HALF_WIDTH,reach=(guardian.slamRadius()+band)/2;
+                    if(warning)tells.wave(x,y,(Guardian.WAVE_START+band)/2,reach,charge,reducedEffects);
+                    else tells.band(x,y,(guardian.waveRadius()-band)/2,(guardian.waveRadius()+band)/2,reach,hit,reducedEffects);
+                }
+                default -> tells.disc(x,y,guardian.slamRadius()/2,charge,hit,reducedEffects);
             }
         }
-        pixels.dispose();canvas.drawImage(tellBuffer,0,0,WIDTH,HEIGHT,null);
+        tells.drawTo(canvas,2);
     }
 
-    private void drawTellRing(Graphics2D pixels,double x,double y,double radius) {
-        if(radius<=0)return;
-        int left=(int)Math.round(x-radius),top=(int)Math.round(y-radius),size=(int)Math.round(radius*2);
-        if(tellRing!=null&&tellRing.getWidth()>=128&&tellRing.getHeight()>=128) {
-            var frames=telegraphFrameBounds.computeIfAbsent(tellRing,sheet->frameAlphaBounds(sheet,128));
-            var bounds=frames[(int)(frameCounter/5)%frames.length];
-            if(!bounds.isEmpty()) {
-                pixels.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-                // Alpha margins are not part of the radius. Both damage-boundary pixels are inclusive.
-                var rim=(Graphics2D)pixels.create();
-                if(radius>64) {
-                    var visible=new java.awt.geom.Area(new java.awt.Rectangle(left,top,size+1,size+1));
-                    visible.subtract(new java.awt.geom.Area(new java.awt.geom.Ellipse2D.Double(left+4,top+4,size-7,size-7)));
-                    rim.clip(visible);
-                }
-                rim.drawImage(tellRing,left,top,left+size+1,top+size+1,bounds.x,bounds.y,
-                        bounds.x+bounds.width,bounds.y+bounds.height,null);
-                rim.dispose();
-                return;
-            }
-        }
-        // Missing or blank art must never turn an active damage boundary invisible.
-        pixels.setColor(RED);pixels.drawOval(left,top,size,size);
-    }
-    private static java.awt.Rectangle[] frameAlphaBounds(BufferedImage sheet,int cell) {
-        var bounds=new java.awt.Rectangle[sheet.getWidth()/cell];
-        for(int frame=0;frame<bounds.length;frame++) {
-            int minX=cell,minY=cell,maxX=-1,maxY=-1;
-            for(int y=0;y<cell;y++)for(int x=0;x<cell;x++)if((sheet.getRGB(frame*cell+x,y)>>>24)!=0) {
-                minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);
-            }
-            bounds[frame]=maxX<0?new java.awt.Rectangle():new java.awt.Rectangle(frame*cell+minX,minY,maxX-minX+1,maxY-minY+1);
-        }
-        return bounds;
-    }
-    private void drawTellLane(Graphics2D pixels,double x,double y,double angle,double reach,int size) {
-        var lane=(Graphics2D)pixels.create();lane.translate(x,y);lane.rotate(angle);
-        if(tellChevron!=null&&tellChevron.getWidth()>=32&&tellChevron.getHeight()>=32) {
-            int frame=(int)(frameCounter/5)%(tellChevron.getWidth()/32);
-            for(int distance=size/2;distance<=reach-size/2;distance+=size+8)
-                lane.drawImage(tellChevron,distance-size/2,-size/2,distance+size/2,size/2,
-                        frame*32,0,frame*32+32,32,null);
-        } else {
-            int end=(int)Math.round(reach);lane.setColor(RED);lane.drawLine(0,0,end,0);
-            lane.drawLine(end,0,end-6,-4);lane.drawLine(end,0,end-6,4);
-        }
-        lane.dispose();
+    /** A struck enemy shows pure white for its first two frames, then blinks: one hit, one clear frame of contact. */
+    static boolean whiteHit(Wisp body){return body.state()==Wisp.State.HURT&&body.stateSeconds()<1/30.;}
+    private static final java.util.Map<BufferedImage,BufferedImage> WHITE=new java.util.WeakHashMap<>();
+    /** The sheet itself, or its white silhouette (made once per sheet) while a hit flashes. */
+    static BufferedImage hitTint(BufferedImage sheet,boolean white) {
+        if(!white||sheet==null)return sheet;
+        return WHITE.computeIfAbsent(sheet,s->{
+            var out=new BufferedImage(s.getWidth(),s.getHeight(),BufferedImage.TYPE_INT_ARGB);
+            for(int y=0;y<s.getHeight();y++)for(int x=0;x<s.getWidth();x++)
+                if((s.getRGB(x,y)>>>24)>0x40)out.setRGB(x,y,0xffffffff);
+            return out;
+        });
     }
 
     private void drawBarrier(Graphics2D canvas, RuinedOutpostMap.Obstacle barrier, int cameraX, int cameraY) {
@@ -1460,7 +1651,7 @@ public final class B2BJ extends JPanel {
                 case TIDE -> tideBreakSheet;
                 case TIDE_RELEASE -> tideReleaseSheet;
                 case TIDE_FOAM -> tideFoamSheet;
-                case WARDEN -> wardenImpactSheet;
+                case WARDEN -> game.campaignMode()&&game.biome()==1&&briarImpactSheet!=null?briarImpactSheet:wardenImpactSheet;
                 case BLADE,BLADE_HURT -> armorSparksSheet;
                 case SLIME_HURT -> slimeHurtSheet;
                 case PICKUP -> ichorPickupSheet;
@@ -1932,8 +2123,20 @@ public final class B2BJ extends JPanel {
         bind(KeyEvent.VK_SPACE,"dash",value->{if(value) dash();});
         bind(KeyEvent.VK_Q,"transform",value->{if(value) transform();});
         bind(KeyEvent.VK_ENTER,"begin",value->{if(value) game.begin();});
-        bind(KeyEvent.VK_E,"interact",value->{if(value) game.interact();});
-        bind(KeyEvent.VK_ESCAPE,"pause",value->{if(value){clearInput();game.togglePause();}});
+        bind(KeyEvent.VK_E,"interact",value->{
+            if(!value)return;
+            int before=game.biome();
+            var from=nearPassage()?snapshot():null;
+            game.interact();
+            if(game.biome()!=before&&from!=null)startLoading(from,LoadingScreen.Kind.ENTER);
+        });
+        // clearInput() empties pressedKeys; put ESC back so a held key does not toggle pause on every repeat
+        bind(KeyEvent.VK_ESCAPE,"pause",value->{
+            if(!value)return;
+            clearInput();pressedKeys.add(KeyEvent.VK_ESCAPE);
+            if(menu!=null&&!game.paused()&&!game.story().blocksGameplay()&&game.player().alive())openMenu();
+            else game.togglePause();
+        });
         bind(KeyEvent.VK_TAB,"map",value->mapShown=value);
         bind(KeyEvent.VK_M,"mute",value->{if(value) GameAudio.setMuted(!GameAudio.muted());});
         bind(KeyEvent.VK_V,"effects",value->{if(value) reducedEffects=!reducedEffects;});
@@ -1945,15 +2148,17 @@ public final class B2BJ extends JPanel {
             }
         });
         bind(KeyEvent.VK_H,"saveCamp",value->{if(value)game.saveCheckpoint();});
-        bind(KeyEvent.VK_T,"title",value->{if(value&&game.returnToTitle())resetVisualState();});
+        bind(KeyEvent.VK_T,"title",value->{if(value&&game.returnToTitle()){resetVisualState();if(menuShown())closeMenu();}});
         bind(KeyEvent.VK_O,"options",value->{
-            if(value)CampaignOptions.show(this,()->{
+            if(value&&menu!=null){if(!menuShown())openMenu();menu.settings();}
+            else if(value)CampaignOptions.show(this,()->{
                 clearInput();game.pause();
                 GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
             },enabled->reducedEffects=enabled,reducedEffects);
         });
         bind(KeyEvent.VK_F1,"debug",value->{
-            if(value)DebugPanel.show(this,game,()->{
+            if(value&&menu!=null){if(!menuShown())openMenu();menu.admin();}
+            else if(value)DebugPanel.show(this,game,()->{
                 clearInput();game.pause();
                 GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
             });
@@ -1967,8 +2172,12 @@ public final class B2BJ extends JPanel {
             });
         }
         bind(KeyEvent.VK_R,"restart",value->{
-            if(value&&(game.story().phase()==OutpostStory.Phase.DEAD
-                    ||game.story().phase()==OutpostStory.Phase.COMPLETE)) restartGame();
+            if(!value)return;
+            if(game.story().phase()==OutpostStory.Phase.DEAD&&game.campaignMode()) {
+                var from=snapshot();
+                restartGame();
+                startLoading(from,LoadingScreen.Kind.REFORM);
+            } else if(game.story().phase()==OutpostStory.Phase.DEAD||game.story().phase()==OutpostStory.Phase.COMPLETE) restartGame();
         });
     }
     private boolean held(int a,int b) { return pressedKeys.contains(a)||pressedKeys.contains(b); }
@@ -2027,8 +2236,10 @@ public final class B2BJ extends JPanel {
     }
 
     private void restartGame() {
+        boolean reforming=game.story().phase()==OutpostStory.Phase.DEAD;
         game.restart();
         resetVisualState();
+        if(reforming)GameAudio.play(GameAudio.Cue.RESPAWN);
     }
 
     private void resetVisualState() {
@@ -2039,6 +2250,7 @@ public final class B2BJ extends JPanel {
         transformationAnimation = new TransformationAnimation();
         feedback = new CombatFeedback();
         impacts.clear();
+        wardenFx = bossFx();mobFx.clear();
         bannerText = "";
         bannerTime = 0;
     }
@@ -2048,17 +2260,54 @@ public final class B2BJ extends JPanel {
         bannerTime = seconds;
     }
 
+    private static final int[] RELEASE_MODIFIERS = {0, InputEvent.SHIFT_DOWN_MASK, InputEvent.CTRL_DOWN_MASK,
+            InputEvent.ALT_DOWN_MASK, InputEvent.META_DOWN_MASK};
+
+    /** Arrow keys / W S walk the menu's controls; Enter presses the focused one. True when used. */
+    private boolean menuKey(int keyCode) { return walk(menu,keyCode,true); }
+
+    /** The same on the title menu; Enter with nothing focused falls through to the classic start key. */
+    private boolean titleKey(int keyCode) { return walk(titleMenu,keyCode,false); }
+
+    private static boolean walk(java.awt.Container root,int keyCode,boolean enterAlways) {
+        var controls=PixelSwing.controls(root).stream().filter(c->c.isEnabled()&&c.isShowing()).toList();
+        var owner=java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+        int at=controls.indexOf(owner);
+        switch(keyCode) {
+            case KeyEvent.VK_UP,KeyEvent.VK_W,KeyEvent.VK_DOWN,KeyEvent.VK_S -> {
+                if(controls.isEmpty())return true;
+                int step=keyCode==KeyEvent.VK_UP||keyCode==KeyEvent.VK_W?-1:1;
+                int next=at<0?(step>0?0:controls.size()-1):Math.floorMod(at+step,controls.size());
+                controls.get(next).requestFocusInWindow();
+                return true;
+            }
+            case KeyEvent.VK_ENTER -> {
+                if(owner instanceof javax.swing.AbstractButton button&&button.isEnabled()&&at>=0) { button.doClick(); return true; }
+                return enterAlways;
+            }
+            default -> {return false;}
+        }
+    }
+
     private void bind(int keyCode, String name, KeyState keyState) {
         InputMap inputs = getInputMap(WHEN_IN_FOCUSED_WINDOW);
         ActionMap actions = getActionMap();
         inputs.put(KeyStroke.getKeyStroke(keyCode, 0, false), name + "Pressed");
-        inputs.put(KeyStroke.getKeyStroke(keyCode, 0, true), name + "Released");
+        inputs.put(KeyStroke.getKeyStroke(keyCode, InputEvent.SHIFT_DOWN_MASK, false), name + "Pressed");
+        // a key let go while a modifier is held must still be released, or he keeps walking
+        for (int modifiers : RELEASE_MODIFIERS)
+            inputs.put(KeyStroke.getKeyStroke(keyCode, modifiers, true), name + "Released");
         actions.put(name+"Pressed",action(()->{
+            if(loading.covering()) { loading.skip(); return; }      // any key hurries the screen along
+            if(!menuShown()&&titleShown()&&titleKey(keyCode))return;
             if(menuShown()) {
                 if(keyCode==KeyEvent.VK_ESCAPE&&pressedKeys.add(keyCode)) {
                     closeMenu();pressedKeys.add(keyCode);
                 }
-                return;
+                if(menuKey(keyCode))return;
+                // title, mute, effects and the menu's own page keys keep working over it; gameplay keys wait
+                if(keyCode!=KeyEvent.VK_T&&keyCode!=KeyEvent.VK_M&&keyCode!=KeyEvent.VK_V
+                        &&keyCode!=KeyEvent.VK_O&&keyCode!=KeyEvent.VK_F1)return;
             }
             if(pressedKeys.add(keyCode)) keyState.set(true);
         }));
@@ -2081,6 +2330,7 @@ public final class B2BJ extends JPanel {
     }
 
     static BufferedImage loadImage(String path) {
+        Splash.step();
         try (InputStream resource = B2BJ.class.getResourceAsStream("/" + path)) {
             if (resource != null) {
                 return ImageIO.read(resource);

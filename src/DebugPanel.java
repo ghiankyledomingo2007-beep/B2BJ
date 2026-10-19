@@ -107,7 +107,7 @@ public final class DebugPanel {
     }
 
     private static JPanel row() {
-        JPanel row = new JPanel(new GridLayout(1, 0, 8, 0));
+        JPanel row = new JPanel(new GridLayout(0, 1, 0, 8));
         row.setBorder(BorderFactory.createEmptyBorder(8, 0, 0, 0));
         row.setAlignmentX(Component.LEFT_ALIGNMENT);
         return row;

@@ -28,7 +28,6 @@ public final class GameAudio {
         REVERT(0.44, 900, 160, 0.20, false, null, false),
         SPIT_SHOT(0.12, 380, 220, 0.14, true, null, true, true),
         SPIT_IMPACT(0.12, 300, 90, 0.16, true, null, true, true),
-        ABSORB(0.20, 300, 480, 0.16, true, null, true, true),
         ABSORBED(0.18, 360, 200, 0.16, false, null, true, true),
         HEALED(0.30, 520, 780, 0.14, false, null, false),
         BLOB_ATTACK(0.18, 420, 160, 0.16, true, null, true, true),
@@ -44,7 +43,19 @@ public final class GameAudio {
         FINISHER_IMPACT(0.24, 125, 48, 0.25, true, "sub_boom", true, true),
         MEMBRANE_BREAK(0.18, 310, 95, 0.18, true, null, true, true),
         TRAIT_GAINED(0.36, 330, 740, 0.17, false, null, false),
-        GUARDIAN_AWAKENED(0.60, 60, 30, 0.30, true, null, false);
+        GUARDIAN_AWAKENED(0.60, 60, 30, 0.30, true, null, false),
+        SLIME_MOVE(0.06, 200, 120, 0.08, true),
+        SLIME_DASH(0.14, 300, 110, 0.18, true, null, true, true),
+        DEATH_BLADE(0.50, 160, 40, 0.28, true, null, false),
+        DEATH_SLIME(0.55, 240, 60, 0.24, true, null, false),
+        BLADE_FADES(0.40, 700, 350, 0.16, false, null, false),
+        DENIED(0.12, 180, 120, 0.16, false, null, false),
+        CHECKPOINT(0.40, 440, 880, 0.16, false, null, false),
+        UPGRADE(0.36, 520, 1040, 0.16, false, null, false),
+        UI_OPEN(0.10, 600, 900, 0.12, false, null, false),
+        UI_CLOSE(0.10, 900, 600, 0.12, false, null, false),
+        TIDE_DISSIPATE(0.30, 260, 120, 0.12, true),
+        RESPAWN(0.50, 330, 660, 0.18, false, null, false);
 
         private final double duration;
         private final double startFrequency;
@@ -83,13 +94,35 @@ public final class GameAudio {
 
     /** Sounds that run until stopped: the charge hum, the low-health heartbeat, the rain bed. */
     public enum Loop {
-        CHARGE("charge_loop", 0.0), HEARTBEAT("heartbeat", 0.6), AMBIENCE("ambience_rain", 0.0);
+        CHARGE("charge_loop", 0.0), HEARTBEAT("heartbeat", 0.6), AMBIENCE("ambience_rain", 0.0),
+        BOSS_MUSIC("boss_music", 0.0, true, BOSS_MUSIC_LEVEL),
+        // the slime eating a remain: plays once, and can be stopped if the eat is cut short
+        EATING("eating", 0.0, false, 1.0, true);
 
         final String family;
         final double gapSeconds;          // silence between repeats (a heartbeat is not continuous)
+        final boolean music;              // follows the music slider, and replaces the synthesized pad while it plays
+        final double level;               // gain on top of the slider
+        final boolean once;               // plays through once; a loop voice only so it can be stopped
 
-        Loop(String family, double gapSeconds) { this.family = family; this.gapSeconds = gapSeconds; }
+        Loop(String family, double gapSeconds) { this(family, gapSeconds, false, 1.0, false); }
+
+        Loop(String family, double gapSeconds, boolean music, double level) {
+            this(family, gapSeconds, music, level, false);
+        }
+
+        Loop(String family, double gapSeconds, boolean music, double level, boolean once) {
+            this.family = family;
+            this.gapSeconds = gapSeconds;
+            this.music = music;
+            this.level = level;
+            this.once = once;
+        }
     }
+
+    /** The recorded track is full scale and the music slider defaults to 0.25: 3.0 plays it at 0.75 there,
+     *  just under the effects. The mixer caps slider x level at 1 so a high slider can't clip it. */
+    private static final double BOSS_MUSIC_LEVEL = 3.0;
 
     private static final int SAMPLE_RATE = 22_050;
     private static final AudioFormat FORMAT = new AudioFormat(
@@ -119,14 +152,16 @@ public final class GameAudio {
     }
 
     // ---------------------------------------------------------------- the mixer
-    // One line, opened once and kept warm. Every sound is summed into it in small chunks, so a cue
-    // starts within ~12 ms of being asked for. Opening a line per sound cost 20-200 ms here, and that
-    // wandering delay is what made the attacks feel wrong however good the recordings were.
+    // One line, opened once and kept warm. Every sound is summed into it in small chunks. A cue joins
+    // behind the audio already queued in the line (LINE_CHUNKS, ~90 ms), a fixed delay; opening a line
+    // per sound cost a wandering 20-200 ms, which is what made the attacks feel wrong.
 
     private static final int CHUNK = 256;                 // samples per write: ~12 ms
+
     private static final int LINE_CHUNKS = 8;             // line buffer: ~93 ms of lead; 3 (35 ms) starved on frame hiccups and crackled
     private static volatile long underruns;               // times the line ran dry between writes (diagnostics)
     private static final int MAX_VOICES = 24;
+    private static final int STOP_FADE = 441;             // samples (20 ms) a stopped loop fades over: no click
 
     private static final class Voice {
         final byte[] pcm;
@@ -134,6 +169,8 @@ public final class GameAudio {
         final int gap;                                    // samples of silence between repeats of a loop
         int wait;                                         // samples still to wait before the first one
         int at;                                           // byte offset into pcm; past the end while in the gap
+        boolean stopping;                                 // fading out after stopLoop, removed when silent
+        double fade = 1;
 
         Voice(byte[] pcm, int wait, Loop loop, int gap) {
             this.pcm = pcm;
@@ -145,18 +182,24 @@ public final class GameAudio {
         /** The next sample at unit gain, advancing; 0 in the wait or the gap. */
         int next() {
             if (wait > 0) { wait--; return 0; }
-            if (at < pcm.length) {
-                int value = (short) ((pcm[at] & 0xff) | pcm[at + 1] << 8);
-                at += 2;
-                return value;
+            if (at >= pcm.length) {
+                if (loop == null || loop.once) return 0;
+                if (at < pcm.length + gap * 2) { at += 2; return 0; }   // still in the gap
+                at = 0;                                                   // repeat on this very sample: no notch
             }
-            if (loop == null) return 0;
+            int value = (short) ((pcm[at] & 0xff) | pcm[at + 1] << 8);
             at += 2;
-            if (at >= pcm.length + gap * 2) at = 0;
-            return 0;
+            if (stopping) {
+                fade = Math.max(0, fade - 1.0 / STOP_FADE);
+                return (int) (value * fade);
+            }
+            return value;
         }
 
-        boolean done() { return loop == null && wait == 0 && at >= pcm.length; }
+        boolean done() {
+            return (stopping && fade <= 0)
+                    || ((loop == null || loop.once) && wait == 0 && at >= pcm.length);
+        }
     }
 
     private static final java.util.List<Voice> VOICES = new java.util.ArrayList<>();
@@ -165,7 +208,11 @@ public final class GameAudio {
 
     private static void addVoice(Voice voice) {
         synchronized (VOICES) {
-            if (VOICES.size() >= MAX_VOICES) VOICES.remove(0);
+            if (VOICES.size() >= MAX_VOICES) {
+                for (int index = 0; index < VOICES.size(); index++)
+                    if (VOICES.get(index).loop == null) { VOICES.remove(index); break; }
+                if (VOICES.size() >= MAX_VOICES) return;             // only loops left: skip the newcomer
+            }
             VOICES.add(voice);
         }
     }
@@ -188,7 +235,7 @@ public final class GameAudio {
                 if (line == null) {
                     try {
                         line = AudioSystem.getSourceDataLine(FORMAT);
-                        line.open(FORMAT, CHUNK * 2 * LINE_CHUNKS);
+                        line.open(FORMAT, chunk.length * LINE_CHUNKS);
                         line.start();
                     } catch (LineUnavailableException | IllegalArgumentException | SecurityException unavailable) {
                         line = null;
@@ -214,11 +261,13 @@ public final class GameAudio {
     }
 
     static void mixVoices(int[] sum) {
-        double session = muted ? 0 : masterVolume * sfxVolume;
+        double sfx = muted ? 0 : masterVolume * sfxVolume;
+        double music = muted ? 0 : masterVolume * musicVolume * duckGain();
         synchronized (VOICES) {
             for (java.util.Iterator<Voice> it = VOICES.iterator(); it.hasNext();) {
                 Voice voice = it.next();
-                double gain = session * (voice.loop == null ? 1 : LOOP_GAIN[voice.loop.ordinal()]);
+                double gain = voice.loop == null ? sfx
+                        : (voice.loop.music ? Math.min(1, music * voice.loop.level) : sfx) * LOOP_GAIN[voice.loop.ordinal()];
                 for (int index = 0; index < sum.length; index++) sum[index] += (int) Math.round(voice.next() * gain);
                 if (voice.done()) it.remove();
             }
@@ -227,7 +276,11 @@ public final class GameAudio {
 
     private static void mixMusic(int[] sum) {
         if (!musicAudible()) return;
-        byte[] music = renderMusicChunk(musicBiome, musicBlade, musicSample, sum.length, masterVolume * musicVolume * duckGain());
+        // the boss track crossfades with the pad: as it fades in, the pad fades out
+        double pad = loopRunning(Loop.BOSS_MUSIC) ? 1 - LOOP_GAIN[Loop.BOSS_MUSIC.ordinal()] : 1;
+        if (pad <= 0) return;
+        byte[] music = renderMusicChunk(musicBiome, musicBlade, musicSample, sum.length,
+                masterVolume * musicVolume * duckGain() * pad);
         musicSample += sum.length;
         for (int index = 0; index < sum.length; index++) sum[index] += sample(music, index * 2);
     }
@@ -456,7 +509,7 @@ public final class GameAudio {
     public static void startLoop(Loop loop, double gain) {
         validateVolume(gain);
         LOOP_GAIN[loop.ordinal()] = gain;
-        if (loopRunning(loop) || muted || masterVolume == 0 || sfxVolume == 0) return;
+        if (loopRunning(loop) || muted || masterVolume == 0 || (loop.music ? musicVolume : sfxVolume) == 0) return;
         byte[][] takes = samples(loop.family);
         if (takes.length == 0) return;
         addVoice(new Voice(scaled(takes[0], SAMPLE_GAIN), 0, loop, (int) (loop.gapSeconds * SAMPLE_RATE)));
@@ -464,7 +517,7 @@ public final class GameAudio {
 
     public static void stopLoop(Loop loop) {
         synchronized (VOICES) {
-            VOICES.removeIf(voice -> voice.loop == loop);
+            for (Voice voice : VOICES) if (voice.loop == loop) voice.stopping = true;
         }
     }
 
@@ -476,7 +529,7 @@ public final class GameAudio {
 
     static boolean loopRunning(Loop loop) {
         synchronized (VOICES) {
-            for (Voice voice : VOICES) if (voice.loop == loop) return true;
+            for (Voice voice : VOICES) if (voice.loop == loop && !voice.stopping && !voice.done()) return true;
         }
         return false;
     }

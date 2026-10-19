@@ -16,6 +16,8 @@ public final class Guardian {
     public static final int GROUND_Y_OFFSET=48, SPRITE_FOOT_ROW=56;
     public static final double SLAM_RADIUS=112, TELEGRAPH_DURATION=0.9, SLAM_DURATION=0.18;
     public static final double RECOVER_DURATION=1.5, DEATH_DURATION=0.5;
+    /** Shared with the attack warnings, so a balance change can never make a warning lie. */
+    public static final double CHARGE_SPEED=620, CHARGE_DURATION=0.55, CHARGE_RADIUS=92, WAVE_START=32, WAVE_HALF_WIDTH=28;
     private double x,y,targetX,targetY,stateTime,hurtFlash,chargeX,chargeY;
     private final Profile profile;
     private int health,impactNumber;
@@ -64,7 +66,7 @@ public final class Guardian {
                 }
             }
             case SLAM -> {
-                if(attack==Attack.CHARGE)move(chargeX*620*dt,chargeY*620*dt,map,px,py);
+                if(attack==Attack.CHARGE)move(chargeX*CHARGE_SPEED*dt,chargeY*CHARGE_SPEED*dt,map,px,py);
                 stateTime+=dt;
                 if(stateTime+1e-8>=activeDuration()) {state=State.RECOVER;stateTime=0;}
             }
@@ -115,13 +117,13 @@ public final class Guardian {
             return Math.abs(px-lane.centerX())<=lane.width()/2
                     &&Math.abs(py-lane.centerY())<=lane.height()/2;
         }
-        if(attack==Attack.CHARGE)return Math.hypot(px-x,py-y)<=92;
+        if(attack==Attack.CHARGE)return Math.hypot(px-x,py-y)<=CHARGE_RADIUS;
         double distance=Math.hypot(px-targetX,py-targetY);
-        if(attack==Attack.SHOCKWAVE)return Math.abs(distance-waveRadius())<=28;
+        if(attack==Attack.SHOCKWAVE)return Math.abs(distance-waveRadius())<=WAVE_HALF_WIDTH;
         return distance<=slamRadius();
     }
-    public double waveRadius() {return 32+(slamRadius()-32)*Math.min(1,stateTime/activeDuration());}
-    public double activeDuration() {return attack==Attack.FISSURE?0.32:attack==Attack.CHARGE?0.55:attack==Attack.SHOCKWAVE?0.75:SLAM_DURATION;}
+    public double waveRadius() {return WAVE_START+(slamRadius()-WAVE_START)*Math.min(1,stateTime/activeDuration());}
+    public double activeDuration() {return attack==Attack.FISSURE?0.32:attack==Attack.CHARGE?CHARGE_DURATION:attack==Attack.SHOCKWAVE?0.75:SLAM_DURATION;}
     public double telegraphDuration() {
         if(attack==Attack.FISSURE)return 1.1;
         return profile==Profile.BRIARHEART?1.05:profile==Profile.OATHKEEPER?.8:TELEGRAPH_DURATION;

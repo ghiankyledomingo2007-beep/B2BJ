@@ -9,7 +9,8 @@ public final class RuinedOutpostGame {
     public enum EventType {
         DASH, ATTACK, WATER_IMPACT, FINISHER_RELEASE, FINISHER_IMPACT, TIDE_IMPACT, TIDE_RELEASE, TIDE_DISSIPATE, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
         TRANSFORM, REVERT, GUARDIAN_AWAKENED, GUARDIAN_SLAM, VICTORY, ROOM_ENTERED, SPIT_SHOT, SPIT_IMPACT,
-        ABSORB_START, ABSORBED, HEALED, TRAIT_GAINED, MEMBRANE_BREAK, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER, CHARGE_READY
+        ABSORB_START, ABSORBED, HEALED, TRAIT_GAINED, MEMBRANE_BREAK, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER, CHARGE_READY,
+        DENIED, CHECKPOINT, UPGRADE
     }
     public record Event(EventType type, double x, double y, boolean water) {
         public Event(EventType type,double x,double y) { this(type,x,y,false); }
@@ -55,6 +56,8 @@ public final class RuinedOutpostGame {
         }
     }
     public static final double WISP_CONTACT_RADIUS = 58;
+    /** Enemies allowed to wind up or strike at the same moment. */
+    public static final int MAX_ATTACKERS = 2;
     public static final double TIDE_COOLDOWN = 4.5;
     public static final double CRESCENT_COOLDOWN = 5, RIPOSTE_COOLDOWN = 6, RIPOSTE_DURATION = .3;
     public static final double BLADE_SKILL_COST = 8, RIPOSTE_RANGE = 120;
@@ -214,9 +217,9 @@ public final class RuinedOutpostGame {
         if(!campaignMode||blocked()||!nearCampaignHub())return false;
         if(scouts.stream().anyMatch(w->w.alive()&&near(w.x(),w.y(),400))
                 ||(bossActive()&&near(guardian.x(),guardian.y(),600))) {
-            notice("CAMP IS NOT SAFE YET");return false;
+            notice("CAMP IS NOT SAFE YET");deny();return false;
         }
-        campaignCheckpoint=1;player.heal();
+        campaignCheckpoint=1;player.heal();emit(EventType.CHECKPOINT,player.x(),player.y());
         notice(debugSession?"RESTED AT CAMP / TEST SESSION NOT SAVED":"RESTED AT CAMP / CHECKPOINT SAVED");
         saveProgress();return true;
     }
@@ -230,15 +233,16 @@ public final class RuinedOutpostGame {
     public boolean buyUpgrade(String name) {
         if(!campaignMode||blocked()||!nearCampaignHub()||name==null||!Set.of("vitality","capacity","efficiency","edge").contains(name))return false;
         int level=upgradeLevel(name),cost=upgradeCost(name);
-        if(level>=(name.equals("edge")?1:3)||shards<cost) {notice("NOT ENOUGH SHARDS OR TRACK COMPLETE");return false;}
-        shards-=cost;upgrades.put(name,level+1);applyUpgrades();
+        if(level>=(name.equals("edge")?1:3)||shards<cost) {notice("NOT ENOUGH SHARDS OR TRACK COMPLETE");deny();return false;}
+        shards-=cost;upgrades.put(name,level+1);applyUpgrades();emit(EventType.UPGRADE,player.x(),player.y());
         if(name.equals("vitality"))player.heal(1);
         notice(name.toUpperCase(java.util.Locale.ROOT)+" UPGRADED");saveProgress();return true;
     }
 
     public boolean returnToTitle() {
         if(!campaignMode||!paused||!player.alive()||story.blocksGameplay())return false;
-        saveProgress();cancelAbsorption();story=new OutpostStory();paused=false;return true;
+        saveProgress();cancelAbsorption();story=new OutpostStory();paused=false;
+        campaignNotice="";noticeTime=0;return true;
     }
 
     private boolean campaignInteract() {
@@ -250,7 +254,14 @@ public final class RuinedOutpostGame {
         }
         if(near(campaignArea().exit().x(),campaignArea().exit().y(),140)) {
             if(!bossDefeated) {notice("DEFEAT "+guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" TO OPEN THIS ROUTE");return false;}
-            notice("OUTPOST CLEARED");story.escaped();saveProgress();return true;
+            if(biome+1<CampaignWorld.AREA_COUNT) {
+                // the open gate leads on into the next region
+                cancelAbsorption();enterBiome(biome+1,0);notice(campaignArea().name());saveProgress();return true;
+            }
+            // the campaign story never passes the gatehouse phases on its own; the last exit is where it ends
+            story.enterGatehouse();story.guardianDefeated();story.escaped();
+            cancelAbsorption();notice(campaignArea().name()+" CLEARED");saveProgress();
+            emit(EventType.VICTORY,player.x(),player.y());return true;
         }
         if(biome>0&&near(campaignArea().returnPortal().x(),campaignArea().returnPortal().y(),120)) {
             story.resume();enterBiome(biome-1,2);notice("RETURNED TO "+campaignArea().name());saveProgress();return true;
@@ -467,7 +478,7 @@ public final class RuinedOutpostGame {
         if (!player.alive()) { projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear(); attackDelay=0; cancelBladeInput(); cancelAbsorption(); story.playerDied(); return; }
         if (hitStop > 0) { hitStop=Math.max(0,hitStop-seconds); return; }
         passageCooldown=Math.max(0,passageCooldown-seconds);
-        tideCooldown=Math.max(0,tideCooldown-seconds);
+        tideCooldown=Math.max(0,tideCooldown-seconds);denyTime=Math.max(0,denyTime-seconds);
         crescentCooldown=Math.max(0,crescentCooldown-seconds);
         riposteCooldown=Math.max(0,riposteCooldown-seconds);
         guardTime=Math.max(0,guardTime-seconds);
@@ -501,10 +512,17 @@ public final class RuinedOutpostGame {
             map.setGuardianPresent(true);guardian.activate(player.x(),player.y());
             emit(EventType.GUARDIAN_AWAKENED,guardian.x(),guardian.y());
         }
+        // Attack slots: at most two enemies wind up or strike at once; the rest circle until one frees
+        // (docs/design/attack-feel.md). Campaign only, so the legacy rooms keep their tuned pressure.
+        int attackers=0;
+        for(Wisp scout:scouts)if(scout.alive()&&scout.attacking())attackers++;
         for (Wisp scout : scouts) {
+            boolean was=scout.attacking();
+            scout.waitForTurn(campaignMode&&!was&&attackers>=MAX_ATTACKERS);
             CampaignEnemy enemy=campaignEnemies.get(scout);
             if(enemy==null)scout.update(seconds,player.x(),player.y(),map);
             else enemy.update(seconds,player.x(),player.y(),map);
+            if(!was&&scout.attacking())attackers++;
         }
         // Keep authored indices stable (elite rewards), but retire expired summons after their death pose.
         scouts.removeIf(scout->{
@@ -624,7 +642,7 @@ public final class RuinedOutpostGame {
             if(membrane)emit(EventType.MEMBRANE_BREAK,player.x(),player.y());
             cancelAbsorption();cancelBladeInput();
             emit(EventType.PLAYER_HIT,x,y);
-            hitStop=0.045;
+            hitStop=0.1;                         // getting hurt lands hardest: six frames of stillness
             if (blade&&!player.bladeForm()) emit(EventType.REVERT,player.x(),player.y());
         }
     }
@@ -793,6 +811,7 @@ public final class RuinedOutpostGame {
     public int comboStep() {return comboTime>0?combo+1:0;}
 
     public boolean ichorCrescent(int facingX,int facingY) {
+        if(!blocked()&&player.bladeForm()&&(crescentCooldown>0||player.ichor()<=BLADE_SKILL_COST))deny();
         if(blocked()||guarding()||!player.bladeForm()||crescentCooldown>0
                 ||player.ichor()<=BLADE_SKILL_COST||(facingX==0&&facingY==0)||!player.startAttack())return false;
         player.spendBladeIchor(BLADE_SKILL_COST);
@@ -803,6 +822,7 @@ public final class RuinedOutpostGame {
         emit(EventType.CRESCENT_CAST,player.x(),player.y());return true;
     }
     public boolean riposte() {
+        if(!blocked()&&player.bladeForm()&&(riposteCooldown>0||player.ichor()<=BLADE_SKILL_COST))deny();
         if(blocked()||!player.bladeForm()||riposteCooldown>0||player.ichor()<=BLADE_SKILL_COST
                 ||!player.startAttack())return false;
         player.spendBladeIchor(BLADE_SKILL_COST);
@@ -811,6 +831,7 @@ public final class RuinedOutpostGame {
         emit(EventType.RIPOSTE_START,player.x(),player.y());return true;
     }
     public boolean tideWave(int facingX,int facingY) {
+        if(!blocked()&&!player.bladeForm()&&tideCooldown>0)deny();
         if(blocked()||player.bladeForm()||tideCooldown>0||(facingX==0&&facingY==0)
                 ||!player.startAttack()) return false;
         cancelAbsorption();
@@ -845,7 +866,7 @@ public final class RuinedOutpostGame {
                 double length=Math.max(1,Math.hypot(aimX,aimY));
                 double force=kind==4?220+100*releasedCharge:kind==3?260:kind==1?110:55;
                 scout.push(aimX/length*force,aimY/length*force);afterScoutHit(scout);
-                if(kind>=3)hitStop=.045;
+                if(kind>=3)hitStop=.1;
             }
         }
         if(bossHit&&(kind!=1||bossFirst)&&guardian.hurt(bossDamage(strikeDamage)))afterGuardianHit(false);
@@ -859,7 +880,7 @@ public final class RuinedOutpostGame {
     }
     private void afterGuardianHit(boolean water) {
         events.add(new Event(EventType.ENEMY_HIT,guardian.x(),guardian.y(),water));
-        hitStop=0.04;
+        hitStop=0.06;
         if (!guardian.alive()) {
                 bossDefeated=true;
                 if(campaignMode) {
@@ -899,7 +920,7 @@ public final class RuinedOutpostGame {
                         if(damaged) {
                             scout.push(wave.directionX()*wave.impulse(),wave.directionY()*wave.impulse());
                             afterScoutHit(scout,true);
-                            if(wave.kind()==WaterProjectile.Kind.FINISHER)hitStop=.045;
+                            if(wave.kind()==WaterProjectile.Kind.FINISHER)hitStop=.1;
                             if(wave.heavy())emit(EventType.TIDE_IMPACT,scout.x(),scout.y());
                         }
                         // Bodies part around the wave; a raised shield or solid terrain stops it.
@@ -971,8 +992,9 @@ public final class RuinedOutpostGame {
     }
     private void afterScoutHit(Wisp scout,boolean water) {
         events.add(new Event(EventType.ENEMY_HIT,scout.x(),scout.y(),water));
-        hitStop=0.025;
+        hitStop=Math.max(hitStop,0.05);          // light hits hold three frames, kills five (docs/design/attack-feel.md)
         if (scout.alive()) return;
+        hitStop=Math.max(hitStop,0.085);
         var enemy=campaignEnemies.get(scout);
         double ichor=bossAdds.contains(scout)?15:enemy==null?SCOUT_ICHOR:enemy.ichor();
         drops.add(new IchorDrop(scout.x(),scout.y(),ichor*player.dropMultiplier()));
@@ -1038,7 +1060,8 @@ public final class RuinedOutpostGame {
         if(campaignMode) {
             if(nearCampaignHub())return "E TALK / H REST + SAVE / 1-4 UPGRADES";
             for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120))return "E EXAMINE "+landmark.name();
-            if(near(campaignArea().exit().x(),campaignArea().exit().y(),140))return bossDefeated?(biome==3?"E APPROACH THE RIFT":"E ENTER NEXT REGION"):"DEFEAT "+guardian.bossName();
+            if(near(campaignArea().exit().x(),campaignArea().exit().y(),140))return !bossDefeated?"DEFEAT "+guardian.bossName()
+                    :biome+1<CampaignWorld.AREA_COUNT?"E ENTER THE "+CampaignWorld.area(biome+1).name():"E DESCEND THE STAIR";
             if(biome>0&&near(campaignArea().returnPortal().x(),campaignArea().returnPortal().y(),120))return "E RETURN TO PREVIOUS REGION";
             return absorptionTarget!=null?"ABSORBING":absorbPrompt();
         }
@@ -1149,6 +1172,13 @@ public final class RuinedOutpostGame {
     public List<EnemyProjectile> hostileProjectiles(){return Collections.unmodifiableList(hostileProjectiles);}
     public boolean visited(int room) { return visited[room]; }
     public boolean cleared(int room) { return cleared[room]; }
+    /** A skill or purchase refused for a reason the player can hear: cooldown, cost, unsafe camp. */
+    private void deny() {
+        if(denyTime>0)return;
+        denyTime=DENY_REPEAT;emit(EventType.DENIED,player.x(),player.y());
+    }
+    private static final double DENY_REPEAT=.3;       // one denied cue per press, not one per queued retry
+    private double denyTime;
     public List<Event> drainEvents() { List<Event> copy=List.copyOf(events); events.clear(); return copy; }
     public Player player() { return player; }
     public RuinedOutpostMap map() { return map; }

@@ -39,11 +39,9 @@ pack_rows assets/props/outpost/brazier.png 8 -1 64 brazier-animated
 cp docs/art-review/rainoray-rework/rubble/frame-0.png assets/props/outpost/rubble.png
 cp docs/art-review/rainoray-rework/crescent-icon/frame-0.png assets/ui/crescent.png
 cp docs/art-review/rainoray-rework/portrait-mask/frame-0.png assets/ui/blade.png
-pack_rows assets/effects/telegraph_ring.png 8 -1 128 ring-polish
 pack_rows assets/effects/ichor_crescent.png 8 -1 64 crescent-animated
 cp docs/art-review/rainoray-rework/riposte-icon/frame-0.png assets/ui/riposte.png
 # Warning dim-to-red, then active flare; source frames arrived in reverse brightness order.
-java -cp "$pack_dir" PackFrames 32 32 8 -1 assets/effects/fissure_tile.png docs/art-review/rainoray-rework/fissure-animated/frame-8.png docs/art-review/rainoray-rework/fissure-animated/frame-7.png docs/art-review/rainoray-rework/fissure-animated/frame-6.png docs/art-review/rainoray-rework/fissure-animated/frame-5.png docs/art-review/rainoray-rework/fissure-animated/frame-3.png docs/art-review/rainoray-rework/fissure-animated/frame-2.png docs/art-review/rainoray-rework/fissure-animated/frame-1.png docs/art-review/rainoray-rework/fissure-animated/frame-4.png
 # Reversion keeps both exact endpoints and omits one redundant early held pose.
 morph_frames=()
 for row in south east north; do
@@ -53,6 +51,5 @@ for row in south east north; do
 done
 java -cp "$pack_dir" -Db2bj.maxFloorShift=16 PackFrames 80 80 16 72 assets/effects/transform_out.png "${morph_frames[@]}"
 pack_rows assets/effects/aim_reticle.png 8 -1 32 reticle-animated
-pack_rows assets/effects/telegraph_chevron.png 8 -1 32 chevron-polish
 pack_rows assets/effects/riposte_counter.png 8 -1 80 counter-polish
 pack_rows assets/effects/riposte_guard.png 8 -1 80 guard-polish

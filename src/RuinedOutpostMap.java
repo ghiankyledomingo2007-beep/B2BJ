@@ -139,6 +139,7 @@ public final class RuinedOutpostMap {
         bankMasks=new int[heightInTiles()][widthInTiles()];
         liveGuardianX=guardianX();liveGuardianY=guardianY();
         barriers.addAll(area.obstacles());
+        barriers.addAll(SetPieces.footprints(area.id()));
         buildBanks();
     }
     public static RuinedOutpostMap campaign(int biome) { return new RuinedOutpostMap(CampaignWorld.area(biome)); }

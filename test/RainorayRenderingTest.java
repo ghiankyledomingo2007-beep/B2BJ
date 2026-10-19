@@ -24,23 +24,14 @@ public final class RainorayRenderingTest {
         wardenMapMarkerNeverUsesPlayerPortrait();
         System.out.println("RainorayRenderingTest passed");
     }
-    private static void nativeTelegraphsKeepPhysicsExtent() throws Exception {
-        var panel=new B2BJ(false);
-        var ring=new java.awt.image.BufferedImage(128*8,128,java.awt.image.BufferedImage.TYPE_INT_ARGB);
-        var ink=ring.createGraphics();ink.setColor(java.awt.Color.RED);
-        for(int f=0;f<8;f++){ink.fillRect(f*128,0,128,1);ink.fillRect(f*128,127,128,1);
-            ink.fillRect(f*128,0,1,128);ink.fillRect(f*128+127,0,1,128);}ink.dispose();
-        var field=B2BJ.class.getDeclaredField("tellRing");field.setAccessible(true);field.set(panel,ring);
-        var draw=B2BJ.class.getDeclaredMethod("drawTellRing",java.awt.Graphics2D.class,double.class,double.class,double.class);
-        draw.setAccessible(true);
-        var nativeLayer=new java.awt.image.BufferedImage(320,320,java.awt.image.BufferedImage.TYPE_INT_ARGB);
-        var g=nativeLayer.createGraphics();draw.invoke(panel,g,160.,160.,92.);g.dispose();
+    private static void nativeTelegraphsKeepPhysicsExtent() {
+        var tells=new Telegraphs(320,320);tells.begin();tells.disc(160,160,92,0,0,false);
         var output=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
-        g=output.createGraphics();g.drawImage(nativeLayer,0,0,640,640,null);g.dispose();
-        assert output.getRGB(136,136)!=0&&output.getRGB(505,505)!=0 : "inclusive 184px radius must match physics, not fixed 2x art size";
+        var g=output.createGraphics();tells.drawTo(g,2);g.dispose();
+        assert output.getRGB(136,320)!=0&&output.getRGB(505,320)!=0 : "inclusive 184px radius must match physics";
         assert output.getRGB(135,320)==0&&output.getRGB(506,320)==0;
         for(int y=0;y<640;y+=2)for(int x=0;x<640;x+=2)assert output.getRGB(x,y)==output.getRGB(x+1,y+1)
-                : "telegraph scaling must happen before native2x upscale";
+                : "telegraphs are drawn natively before the 2x upscale";
     }
     private static void humanSkillInputAndEffectsStaySeparate() {
         GameAudio.setMuted(true);

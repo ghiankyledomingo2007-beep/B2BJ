@@ -1,0 +1,99 @@
+AbsorbedTraitTest passed: shield, jet, channel, pause, expiry, replacement, summons, death/form reset
+AbsorptionTest passed
+AnimationPlaybackTest passed
+ArenaTwistTest passed
+AttackSlotsTest passed: peak 2 attackers, 53 attacks by 4 enemies in 20 s
+B2BJIntegrationTest passed
+BladeCombatTest passed
+BladeTrailTest passed
+Campaign desktop integration tests passed
+CampaignMenuTest passed
+CampaignOptionsTest passed
+CampaignVictoryTest passed
+CharacterAnimationTest passed
+CharacterAssetQualityTest passed
+CollisionLabTest passed: bounds, overlap, camera, forms, both regions, F2, save isolation
+CombatArtTest passed
+CombatAuditTest passed
+CombatFeedbackTest passed
+CombatLoopTest passed
+DepthRenderingTest passed
+EnemyFacingTest passed: 40 role/heading scenarios
+EnemyProjectileTest passed
+ForestArtTest passed
+GameAudioTest passed
+GuardianAnimationTest passed
+GuardianDeathLoopTest passed
+GuardianMobilityTest passed
+GuardianPresentationTest passed
+GuardianPressureTest passed
+GuardianScaleTest passed
+GuardianTest passed
+HudOverhaulTest passed
+HurtFeedbackPositionTest passed
+IchorMagnetTest passed
+ImmersionRenderingTest passed
+Carry control sprint-cycle-south: lowered poses=0, accepted=true
+Carry control sprint-locked-east: lowered poses=0, accepted=true
+Carry control sprint-cycle-north: lowered poses=0, accepted=true
+Carry control sprint-north: lowered poses=5, accepted=false
+Carry control sprint-locked-north: lowered poses=3, accepted=false
+MotionPolishRenderingTest all passed
+OutpostArtTest passed
+OutpostFoundationTest passed
+OutpostStoryTest passed
+Outpost variety roster passed
+Outpost variety guard passed
+Outpost variety poses passed
+OutpostVarietyTest passed
+Engulf runtime16-pose check passed
+Crescent native-size check passed
+RainorayArtTest passed
+OutpostArtTest passed
+ForestArtTest passed
+PackagedAssetLoadingTest passed
+PlayerCheatsTest passed
+PlayerMovementTest passed
+Player progression tests passed
+RainRenderingTest passed
+RainSpriteTest passed
+Engulf runtime16-pose check passed
+Crescent native-size check passed
+RainorayArtTest passed
+RainorayRenderingTest passed
+RainoraySkillsTest passed
+RecoveryArtTest passed
+RemnantFacingTest passed
+RemnantRolesTest passed
+ReversionSafetyTest passed
+RuinedOutpostGameTest passed
+RuinedOutpostMapTest passed
+SaveAuditTest passed
+SlimeAnimationTest passed
+SlimeAttackRenderingTest passed
+SlimeComboTest passed
+SlimeDepthRenderingTest passed: release timing, directional art, pixel grid, trait face/HUD preservation
+SpitterBehaviorTest passed
+SpitterCombatTest passed
+SummonSafetyTest passed
+TelegraphGeometryTest passed
+TelegraphHitTableTest passed: 112 warnings matched to their hit tests
+TerrainRenderingTest passed
+TideCrowdTest passed: 8 headings, repeat contacts, focused M1, solid cover
+TideFeedbackTest passed
+TideLayerTest passed
+UiAuditTest passed
+UiOverhaulTest passed
+VisibleMenuTest passed
+WardenFxTest passed
+WaterCombatTest passed
+WispCombatTest passed
+WispPursuitTest passed
+WispTest passed
+Engulf runtime16-pose check passed
+Crescent native-size check passed
+RainorayArtTest passed
+OutpostArtTest passed
+ForestArtTest passed
+PackagedAssetLoadingTest passed
+Verified build: /home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/build/B2BJ.jar

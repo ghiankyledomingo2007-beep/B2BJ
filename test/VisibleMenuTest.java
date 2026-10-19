@@ -13,16 +13,23 @@ public final class VisibleMenuTest {
             var game = RuinedOutpostGame.campaign();
             var panel = new B2BJ(false, game);
             panel.setSize(1280, 720); panel.doLayout();
+            panel.step(.01);                                     // the title screen takes over with its own menu
             AbstractButton menu = button(panel, "Menu");
-            assert menu.isVisible() && menu.getWidth() >= 90 && menu.getHeight() >= 30;
-            menu.doClick();
-            assert button(panel, "Settings").isVisible();
-            assert !button(panel, "Admin / Testing").isEnabled();
+            assert !menu.isVisible() : "the title screen has its own menu, not the corner button";
+            AbstractButton settings = shown(panel, "Settings");
+            assert settings.getWidth() >= 90 && settings.getHeight() >= 30 : "title Settings must be a real mouse target";
+            settings.doClick();
+            assert children(panel).stream().anyMatch(c -> c instanceof javax.swing.JSlider && c.isVisible())
+                    : "Settings must open the real audio controls from the title";
+            press(panel, "debug");
+            assert !button(panel, "God mode").isEnabled() : "the title screen cannot enable cheats";
             press(panel, "begin");
             var click = new MouseEvent(panel, MouseEvent.MOUSE_PRESSED, 0, 0, 500, 500, 1, false, MouseEvent.BUTTON1);
             for (var listener : panel.getMouseListeners()) listener.mousePressed(click);
             assert game.story().phase() == OutpostStory.Phase.PROLOGUE : "menu clicks and keys cannot start a hidden game";
-            press(panel, "pause");
+            press(panel, "pause");                               // Esc closes the menu, back to the title
+            panel.step(.01);
+            assert shown(panel, "New Journey").isVisible() && !menu.isVisible();
             press(panel, "begin");
             assert !game.blocked();
             press(panel, "right"); panel.step(.1);
@@ -46,6 +53,18 @@ public final class VisibleMenuTest {
             assert game.continueCampaign() && !game.debugSession() : "menu title flow must preserve normal save";
         });
         System.out.println("VisibleMenuTest passed");
+    }
+
+    /** The button with this text whose whole chain of parents is visible (titles and menus reuse labels). */
+    private static AbstractButton shown(B2BJ panel, String text) {
+        return children(panel).stream().filter(AbstractButton.class::isInstance).map(AbstractButton.class::cast)
+                .filter(button -> button.getText().equals(text) && visibleChain(button, panel)).findFirst()
+                .orElseThrow(() -> new AssertionError("No visible control: " + text));
+    }
+
+    private static boolean visibleChain(Component c, B2BJ root) {
+        for (Component at = c; at != null && at != root; at = at.getParent()) if (!at.isVisible()) return false;
+        return true;
     }
 
     private static AbstractButton button(Container parent, String text) {
