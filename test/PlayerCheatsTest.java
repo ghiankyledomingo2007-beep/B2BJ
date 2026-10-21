@@ -6,7 +6,7 @@ public final class PlayerCheatsTest {
         assert player.transform();
         player.setGodMode(true);
         assert !player.invulnerable() : "god mode must not masquerade as dash/parry invulnerability";
-        assert !player.hurt(10) && player.healthValue() == 5 && player.ichor() == 100;
+        assert !player.hurt(10) && player.healthValue() == 100 && player.ichor() == 100;
         player.move(0, 0, 1, new RuinedOutpostMap(0));
         assert player.ichor() < 100 : "god mode does not freeze the form timer";
         assert player.startAttack() && player.dash(1, 0);
@@ -14,9 +14,9 @@ public final class PlayerCheatsTest {
         assert player.bladeForm() && player.ichor() == 100 && !player.dashing();
         assert player.dashCooldown() == 0 && player.startAttack();
         player.setGodMode(false);
-        assert player.hurt(1) && player.healthValue() < 5 && player.ichor() == 95;
+        assert player.hurt(1) && player.healthValue() < 100 && player.ichor() == 95;
         player.refillForTesting();
-        assert player.healthValue() == 5 && player.ichor() == 100;
+        assert player.healthValue() == 100 && player.ichor() == 100;
         unlimitedBladeAndSaveProtection();
         System.out.println("PlayerCheatsTest passed");
     }
@@ -49,7 +49,7 @@ public final class PlayerCheatsTest {
         var save = java.nio.file.Files.createTempDirectory("b2bj-unlimited-").resolve("campaign.properties");
         var game = RuinedOutpostGame.campaign(save);
         assert !game.setDebugUnlimitedBlade(true) && !game.debugSession() : "title cannot enable cheat";
-        game.begin();
+        game.setCriticalRollForTesting(()->1);game.begin();
         byte[] normalSave = java.nio.file.Files.readAllBytes(save);
         assert game.setDebugUnlimitedBlade(false) && !game.debugSession() : "no-op remains normal";
         assert game.setDebugUnlimitedBlade(true) && game.debugSession();

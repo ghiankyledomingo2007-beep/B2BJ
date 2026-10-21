@@ -46,12 +46,21 @@ def pose(p, t, amp, breath, view):
     p.turn("forearm.L", X_AXIS, mix(-12 + 4 * math.sin(b + 0.7), -95 - 15 * s, amp))
 
     # sword arm: low guard when standing; locked back with the blade trailing when running
+    carry = view.get("carry_direction")
     p.turn("upperarm.R", Y_AXIS, mix(-30, view["arm_in"], amp))
-    p.turn("upperarm.R", X_AXIS, amp * (view["arm_back"] + 4 * math.sin(2 * a)))
+    p.turn("upperarm.R", X_AXIS, amp * (view["arm_back"] + (1 if carry else 4) * math.sin(2 * a)))
     p.turn("forearm.R", X_AXIS, mix(-8 + 5 * math.sin(b + 2.0), 10, amp))    # the guard drifts as he breathes
-    p.turn("hand.R", Z_AXIS, amp * view["sword_yaw"])                        # blade from forward-out to behind
-    # lift early (sqrt) so the tip never dips under the floor while the arm is still swinging back
-    p.turn("hand.R", X_AXIS, math.sqrt(amp) * (58 + 5 * math.sin(2 * a + 0.8)))
+    if carry:
+        if amp > 0:
+            # Front/back carry stays beside the right leg instead of pointing into the camera.
+            direction = p.direction("blade")
+            target = direction.lerp(Vector(carry).normalized(), math.sqrt(amp)).normalized()
+            rotation = direction.rotation_difference(target)
+            p.turn("hand.R", rotation.axis, math.degrees(rotation.angle))
+    else:
+        p.turn("hand.R", Z_AXIS, amp * view["sword_yaw"])
+        # Lift early so the tip clears the floor during the transition into the sprint.
+        p.turn("hand.R", X_AXIS, math.sqrt(amp) * (58 + 5 * math.sin(2 * a + 0.8)))
 
 
 def frames(action, n):

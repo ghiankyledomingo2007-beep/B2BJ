@@ -10,9 +10,10 @@ public final class RuinedOutpostGame {
         DASH, ATTACK, WATER_IMPACT, FINISHER_RELEASE, FINISHER_IMPACT, TIDE_IMPACT, TIDE_RELEASE, TIDE_DISSIPATE, ENEMY_HIT, ENEMY_DEFEATED, PLAYER_HIT, PICKUP,
         TRANSFORM, REVERT, GUARDIAN_AWAKENED, GUARDIAN_SLAM, VICTORY, ROOM_ENTERED, SPIT_SHOT, SPIT_IMPACT,
         ABSORB_START, ABSORBED, HEALED, TRAIT_GAINED, MEMBRANE_BREAK, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER, CHARGE_READY,
-        DENIED, CHECKPOINT, UPGRADE
+        DENIED, CHECKPOINT, UPGRADE, DAMAGE_DEALT, DAMAGE_TAKEN
     }
-    public record Event(EventType type, double x, double y, boolean water) {
+    public record Event(EventType type, double x, double y, boolean water, int damage, boolean critical, boolean heavy) {
+        public Event(EventType type,double x,double y,boolean water) { this(type,x,y,water,0,false,false); }
         public Event(EventType type,double x,double y) { this(type,x,y,false); }
     }
     public static final class IchorDrop {
@@ -113,6 +114,8 @@ public final class RuinedOutpostGame {
     private double attackDelay;
     private int aimX, aimY;
     private int strikeDamage;
+    private java.util.function.DoubleSupplier criticalRoll = Math::random;
+    void setCriticalRollForTesting(java.util.function.DoubleSupplier roll) { criticalRoll=java.util.Objects.requireNonNull(roll); }
     private double strikeRange;
     private int combo;
     private double comboTime;
@@ -235,7 +238,7 @@ public final class RuinedOutpostGame {
         int level=upgradeLevel(name),cost=upgradeCost(name);
         if(level>=(name.equals("edge")?1:3)||shards<cost) {notice("NOT ENOUGH SHARDS OR TRACK COMPLETE");deny();return false;}
         shards-=cost;upgrades.put(name,level+1);applyUpgrades();emit(EventType.UPGRADE,player.x(),player.y());
-        if(name.equals("vitality"))player.heal(1);
+        if(name.equals("vitality"))player.heal(20);
         notice(name.toUpperCase(java.util.Locale.ROOT)+" UPGRADED");saveProgress();return true;
     }
 
@@ -431,7 +434,7 @@ public final class RuinedOutpostGame {
                 double sx=map.authored(positions[i][0]), sy=map.authored(positions[i][1]);
                 boolean guard=room>=2&&(i==0||(room>=3&&i==3));
                 boolean spitter=(room==5||room==6||room==8||room==11)&&i==1;
-                scouts.add(new Wisp(sx,sy,sx-56,sx+56,spitter?3:guard?4:2,
+                scouts.add(new Wisp(sx,sy,sx-56,sx+56,spitter?72:guard?80:64,
                         spitter?Wisp.Role.SPITTER:guard?Wisp.Role.GUARD:Wisp.Role.SCOUT));
             }
         }
@@ -552,7 +555,7 @@ public final class RuinedOutpostGame {
                         &&map.clearLine(scout.x(),scout.y()+Wisp.COLLISION_Y_OFFSET,
                                 player.x(),player.y()+Player.COLLISION_Y_OFFSET)) {
                     lungeHits.add(scout);
-                    if(!dashProtected)hurtPlayer(campaignEnemies.containsKey(scout)?campaignEnemies.get(scout).damage():1,scout.x(),scout.y());
+                    if(!dashProtected)hurtPlayer(campaignEnemies.containsKey(scout)?campaignEnemies.get(scout).damage():20,scout.x(),scout.y());
                 }
             }
         }
@@ -608,7 +611,7 @@ public final class RuinedOutpostGame {
                 if(campaignMode) {
                     var enemy=new CampaignEnemy(biome==0?CampaignEnemy.Kind.OUTPOST_SCOUT:CampaignEnemy.Kind.RIFT_IMP,x,y);
                     add=enemy.body();campaignEnemies.put(add,enemy);
-                } else add=new Wisp(x,y,x-60,x+60,2);
+                } else add=new Wisp(x,y,x-60,x+60,64);
                 scouts.add(add);bossAdds.add(add);addTimer=0;break;
             }
         }
@@ -626,19 +629,21 @@ public final class RuinedOutpostGame {
             counterTime=COUNTER_DURATION;player.attackRecovery(COUNTER_DURATION*.6);
             emit(EventType.RIPOSTE_COUNTER,player.x(),player.y());
             for(Wisp scout:scouts)if(scout.alive()&&near(scout.x(),scout.y(),RIPOSTE_RANGE)
-                    &&map.clearLine(player.x(),player.y(),scout.x(),scout.y())&&hurtScout(scout,3,false,true)) {
+                    &&map.clearLine(player.x(),player.y(),scout.x(),scout.y())&&hurtScout(scout,36,false,true)) {
                 double dx=scout.x()-player.x(),dy=scout.y()-player.y(),length=Math.max(1,Math.hypot(dx,dy));
                 scout.push(dx/length*300,dy/length*300);afterScoutHit(scout);
             }
             if(bossActive()&&!bossDefeated&&bossVulnerable()
                     &&near(guardian.x(),guardian.y(),RIPOSTE_RANGE)
-                    &&map.clearLine(player.x(),player.y(),guardian.x(),guardian.y())&&guardian.hurt(bossDamage(3)))
+                    &&map.clearLine(player.x(),player.y(),guardian.x(),guardian.y())&&hurtGuardian(36,false))
                 afterGuardianHit(false);
             return;
         }
         boolean blade=player.bladeForm();
         boolean membrane=player.trait()==Player.Trait.MEMBRANE;
+        int before=player.health();
         if (player.hurt(damage)) {
+            events.add(new Event(EventType.DAMAGE_TAKEN,player.x(),player.y(),false,before-player.health(),false,false));
             if(membrane)emit(EventType.MEMBRANE_BREAK,player.x(),player.y());
             cancelAbsorption();cancelBladeInput();
             emit(EventType.PLAYER_HIT,x,y);
@@ -655,12 +660,12 @@ public final class RuinedOutpostGame {
         guardTime=0;
         attackDelay=0;
         dashHits.clear();
-        comboTime=preserve?Player.DASH_DURATION+.5:0;
+        comboTime=preserve?player.dashSeconds()+.5:0;
         comboDodged=preserve;
-        dashOpener=player.bladeForm()&&!preserve?Player.DASH_DURATION+.3:0;
+        dashOpener=player.bladeForm()&&!preserve?player.dashSeconds()+.3:0;
         double length=Math.hypot(horizontal,vertical);
         dashX=horizontal/length;dashY=vertical/length;
-        counterWindow=player.bladeForm()?0:Player.DASH_DURATION+.3;
+        counterWindow=player.bladeForm()?0:player.dashSeconds()+.3;
         emit(EventType.DASH,player.x(),player.y());
         return true;
     }
@@ -692,7 +697,7 @@ public final class RuinedOutpostGame {
         comboTime=0.9;
         aimX=facingX; aimY=facingY;
         strikeDamage=player.attackDamage();
-        if(player.bladeForm()&&combo==3)strikeDamage+=2+player.bladeFinisherBonus();
+        if(player.bladeForm()&&combo==3)strikeDamage+=12+player.bladeFinisherBonus();
         strikeRange=BLADE_ATTACK_RANGE;
         waterCast=!player.bladeForm(); heavyCast=false;
         if(waterCast) {
@@ -782,7 +787,7 @@ public final class RuinedOutpostGame {
         // Held to the charge-ready cue, the cut carries him right round; anything less is the plain cleave.
         aimX=x;aimY=y;releasedCharge=power;bladeMove=power>=1?SPIN_CLEAVE:4;counterTime=0;
         bladeDuration=bladeTime=strikeDuration(bladeMove);player.attackRecovery(bladeDuration);
-        strikeDamage=5+(int)Math.round(5*power);strikeRange=BLADE_ATTACK_RANGE;
+        strikeDamage=player.attackDamage()+(int)Math.round(36*power);strikeRange=BLADE_ATTACK_RANGE;
         waterCast=heavyCast=false;attackDelay=strikeWindup(bladeMove);comboTime=dashOpener=0;combo=0;
         emit(EventType.ATTACK,player.x(),player.y());return true;
     }
@@ -869,7 +874,7 @@ public final class RuinedOutpostGame {
                 if(kind>=3)hitStop=.1;
             }
         }
-        if(bossHit&&(kind!=1||bossFirst)&&guardian.hurt(bossDamage(strikeDamage)))afterGuardianHit(false);
+        if(bossHit&&(kind!=1||bossFirst)&&hurtGuardian(strikeDamage,false))afterGuardianHit(false);
     }
     private boolean bladeHits(double x,double y) {
         double length=Math.max(1,Math.hypot(aimX,aimY)),dx=x-player.x(),dy=y-player.y();
@@ -908,7 +913,7 @@ public final class RuinedOutpostGame {
                     wave.stop();
                 } else if(bossActive()&&guardian.alive()
                         &&map.touchesGuardian(wave.x(),wave.y()+Player.COLLISION_Y_OFFSET,wave.radius())) {
-                    if(bossVulnerable()&&guardian.hurt(bossDamage(wave.damage()))) afterGuardianHit(true);
+                    if(bossVulnerable()&&hurtGuardian(wave.damage(),true)) afterGuardianHit(true);
                     wave.stop();
                 } else {
                     for(Wisp scout:scouts) if(scout.alive()
@@ -943,11 +948,11 @@ public final class RuinedOutpostGame {
                 if(map.waterBlocked(arc.x,arc.y+Player.COLLISION_Y_OFFSET,arc.radius()))arc.alive=false;
                 else if(bossActive()&&guardian.alive()
                         &&map.touchesGuardian(arc.x,arc.y+Player.COLLISION_Y_OFFSET,arc.radius())) {
-                    if(bossVulnerable()&&guardian.hurt(bossDamage(3)))afterGuardianHit(false);
+                    if(bossVulnerable()&&hurtGuardian(36,false))afterGuardianHit(false);
                     arc.alive=false;
                 } else for(Wisp scout:scouts)if(scout.alive()
                         &&Math.hypot(scout.x()-arc.x,scout.y()-arc.y)<=Wisp.COLLISION_RADIUS+arc.radius()) {
-                    if(hurtScout(scout,3,false,true)) {
+                    if(hurtScout(scout,36,false,true)) {
                         scout.push(arc.dx*260,arc.dy*260);afterScoutHit(scout);
                     }
                     arc.alive=false;break;
@@ -961,12 +966,27 @@ public final class RuinedOutpostGame {
         afterScoutHit(scout,false);
     }
     private boolean hurtScout(Wisp scout,int damage,boolean slime,boolean stagger) {
-        if(debugOneShot)return scout.hurt(scout.health(),stagger);
         var enemy=campaignEnemies.get(scout);
-        return enemy==null?scout.hurt(damage,stagger):enemy.receiveDamage(damage,slime,stagger);
+        if (!scout.alive() || damage<=0 || (!debugOneShot && slime && enemy!=null && enemy.shielded())) return false;
+        boolean critical=!debugOneShot && criticalRoll.getAsDouble()<CombatStats.CRITICAL_CHANCE;
+        int amount=debugOneShot?scout.health():CombatStats.damage(damage,scout.defense(),critical);
+        int before=scout.health();
+        boolean hit=debugOneShot || enemy==null ? scout.hurt(amount,stagger) : enemy.receiveDamage(amount,slime,stagger);
+        if(hit) damageEvent(scout.x(),scout.y(),before-scout.health(),critical,damage>Player.BLADE_DAMAGE,slime);
+        return hit;
     }
     private boolean bossVulnerable() { return debugOneShot||guardian.state()==Guardian.State.RECOVER; }
-    private int bossDamage(int normal) { return debugOneShot?guardian.health():normal; }
+    private boolean hurtGuardian(int attack,boolean water) {
+        if(!bossVulnerable() || !guardian.alive() || attack<=0)return false;
+        boolean critical=!debugOneShot && criticalRoll.getAsDouble()<CombatStats.CRITICAL_CHANCE;
+        int before=guardian.health();
+        boolean hit=guardian.hurt(debugOneShot?before:CombatStats.damage(attack,25,critical));
+        if(hit)damageEvent(guardian.x(),guardian.y(),before-guardian.health(),critical,attack>Player.BLADE_DAMAGE,water);
+        return hit;
+    }
+    private void damageEvent(double x,double y,int damage,boolean critical,boolean heavy,boolean water) {
+        events.add(new Event(EventType.DAMAGE_DEALT,x,y,water,damage,critical,heavy));
+    }
     private void emitSpit(Wisp scout) {
         // ponytail: 24 active shots covers authored encounters; use pooling only if profiled necessary.
         if(hostileProjectiles.size()>21)return;
@@ -983,7 +1003,7 @@ public final class RuinedOutpostGame {
                 if(!shot.alive())break;
                 if(map.isBlocked(shot.x(),shot.y()+Wisp.COLLISION_Y_OFFSET,EnemyProjectile.RADIUS))shot.stop();
                 else if(Math.hypot(shot.x()-player.x(),shot.y()-player.y())<=Player.COLLISION_RADIUS+EnemyProjectile.RADIUS) {
-                    if(!dashProtected)hurtPlayer(1,shot.x(),shot.y());shot.stop();
+                    if(!dashProtected)hurtPlayer(18,shot.x(),shot.y());shot.stop();
                 }
                 if(!shot.alive())emit(EventType.SPIT_IMPACT,shot.x(),shot.y());
             }
@@ -1146,7 +1166,7 @@ public final class RuinedOutpostGame {
         if(absorptionTime+1e-9<ABSORB_DURATION)return;
         player.collectIchor(5);
         double beforeHealth=player.healthValue();
-        if(absorptionTarget.healing())player.heal(.5);
+        if(absorptionTarget.healing())player.heal(10);
         if(player.healthValue()>beforeHealth)emit(EventType.HEALED,player.x(),player.y());
         if(absorptionTarget.trait()!=Player.Trait.NONE) {
             player.gainTrait(absorptionTarget.trait());

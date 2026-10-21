@@ -10,26 +10,32 @@ public final class Player {
     public static final double RADIUS = 48.0;
     public static final double COLLISION_RADIUS = 24.0;
     public static final double COLLISION_Y_OFFSET = 24.0;
-    public static final double DASH_SPEED = 850.0;
+    public static final double DASH_SPEED = 900.0;
     public static final double DASH_DURATION = 0.16;
-    public static final double DASH_COOLDOWN = 0.4;
+    public static final double BLADE_DASH_SPEED = 1000.0;
+    public static final double BLADE_DASH_DURATION = 0.12;
+    public static final double DASH_COOLDOWN = 0.32;
     public static final double ATTACK_COOLDOWN = 0.35;
-    public static final double WATER_COOLDOWN = 0.48;
+    public static final double WATER_COOLDOWN = 0.60;
+    public static final double WATER_SLOW_DURATION = 0.20;
+    public static final double WATER_SPEED_MULTIPLIER = 0.65;
     public static final double HURT_INVULNERABILITY = 0.65;
     public static final double MAX_ICHOR = 100.0;
     public static final double BLADE_DURATION = 12.0;
     public static final double BLADE_SPEED_MULTIPLIER = 0.8;
-    public static final int SLIME_DAMAGE = 1;
-    public static final int BLADE_DAMAGE = SLIME_DAMAGE * 4;
-    public static final int MAX_HEALTH = 5;
+    public static final int SLIME_DAMAGE = 18;
+    public static final int BLADE_DAMAGE = 24;
+    public static final int MAX_HEALTH = 100;
 
     private double x;
     private double y;
     private double dashX;
     private double dashY;
     private double dashTime;
+    private double dashSpeed;
     private double dashCooldown;
     private double attackCooldown;
+    private double waterSlowTime;
     private double ichor;
     private double bladeTime;
     private double hurtInvulnerability;
@@ -54,6 +60,8 @@ public final class Player {
         recoveryTime = Math.max(0, recoveryTime - seconds);
         dashCooldown = Math.max(0, dashCooldown - seconds);
         attackCooldown = Math.max(0, attackCooldown - seconds);
+        double slowedSeconds = Math.min(seconds, waterSlowTime);
+        waterSlowTime = Math.max(0, waterSlowTime - seconds);
         hurtInvulnerability = Math.max(0, hurtInvulnerability - seconds);
         traitTime = Math.max(0, traitTime - seconds);
         if (bladeTime > 0 && !unlimitedBlade) {
@@ -64,7 +72,7 @@ public final class Player {
         if (recovering() || !alive()) return;
         if (dashTime > 0) {
             double activeSeconds = Math.min(seconds, dashTime);
-            moveDash(DASH_SPEED * activeSeconds, map);
+            moveDash(dashSpeed * activeSeconds, map);
             dashTime -= activeSeconds;
             return;
         }
@@ -72,7 +80,7 @@ public final class Player {
         double length = Math.hypot(horizontal, vertical);
         if (length > 0) {
             double speed = bladeForm() ? SPEED * BLADE_SPEED_MULTIPLIER : SPEED;
-            double distance = speed * seconds * movementScale;
+            double distance = speed * (seconds - slowedSeconds * (1 - WATER_SPEED_MULTIPLIER)) * movementScale;
             int steps = Math.max(1, (int) Math.ceil(distance / 8));
             for (int i = 0; i < steps; i++)
                 moveStep(horizontal / length, vertical / length, distance / steps, map);
@@ -84,6 +92,7 @@ public final class Player {
             return false;
         }
         attackCooldown = bladeForm() ? ATTACK_COOLDOWN : WATER_COOLDOWN;
+        if (!bladeForm()) waterSlowTime = WATER_SLOW_DURATION;
         return true;
     }
 
@@ -103,9 +112,9 @@ public final class Player {
         if (damage <= 0 || !alive() || godMode || invulnerable()) {
             return false;
         }
-        double protection=trait()==Trait.MEMBRANE?.5:0;
-        health = Math.max(0, health - damage * (bladeForm() ? 0.75 : 1) + protection);
-        if(protection>0||!alive())traitTime=0;
+        boolean membrane=trait()==Trait.MEMBRANE;
+        health = Math.max(0, health - CombatStats.damage(damage, defense(), false));
+        if(membrane||!alive())traitTime=0;
         if (bladeForm() && !unlimitedBlade) {
             ichor = Math.max(0, ichor - 5);
             bladeTime = bladeDuration() * ichor / MAX_ICHOR;
@@ -114,6 +123,8 @@ public final class Player {
         hurtInvulnerability = HURT_INVULNERABILITY;
         return true;
     }
+
+    public int defense() { return (bladeForm() ? 30 : 0) + (trait()==Trait.MEMBRANE ? 50 : 0); }
 
     public int health() {
         return (int) Math.ceil(health);
@@ -146,6 +157,7 @@ public final class Player {
             return false;
         }
         bladeTime = bladeDuration();
+        waterSlowTime = 0;
         traitTime = 0;
         return true;
     }
@@ -188,7 +200,9 @@ public final class Player {
 
         dashX = horizontal / length;
         dashY = vertical / length;
-        dashTime = DASH_DURATION;
+        dashTime = bladeForm() ? BLADE_DASH_DURATION : DASH_DURATION;
+        dashSpeed = bladeForm() ? BLADE_DASH_SPEED : DASH_SPEED;
+        waterSlowTime = 0;
         dashCooldown = DASH_COOLDOWN;
         return true;
     }
@@ -201,11 +215,11 @@ public final class Player {
     public double dashCooldown() { return dashCooldown; }
     public double healthValue() { return health; }
     public double bladeSeconds() { return bladeTime; }
-    public int maxHealth() { return MAX_HEALTH+vitality; }
+    public int maxHealth() { return MAX_HEALTH+vitality*20; }
     public double dropMultiplier() { return 1+capacity*.1; }
     public double bladeDuration() { return MAX_ICHOR/(MAX_ICHOR/BLADE_DURATION-efficiency*.5); }
     public int bladeComboLength() { return 4; }
-    public int bladeFinisherBonus() { return edge>0?2:0; }
+    public int bladeFinisherBonus() { return edge>0?12:0; }
     public void configureUpgrades(int vitality,int capacity,int efficiency,int edge) {
         if(vitality<0||vitality>3||capacity<0||capacity>3||efficiency<0||efficiency>3||edge<0||edge>1)
             throw new IllegalArgumentException("Invalid upgrade levels");
@@ -226,7 +240,7 @@ public final class Player {
         heal();
         ichor = MAX_ICHOR;
         bladeTime = blade ? bladeDuration() : 0;
-        recoveryTime = dashTime = dashCooldown = attackCooldown = hurtInvulnerability = 0;
+        recoveryTime = dashTime = dashCooldown = attackCooldown = hurtInvulnerability = waterSlowTime = 0;
     }
     public void heal(double amount) {
         if (Double.isFinite(amount) && amount > 0 && alive()) health = Math.min(maxHealth(), health + amount);
@@ -235,6 +249,7 @@ public final class Player {
         x = newX;
         y = newY;
         dashTime = 0;
+        waterSlowTime = 0;
     }
 
     private void moveDash(double distance, RuinedOutpostMap map) {

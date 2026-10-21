@@ -95,7 +95,7 @@ public final class BladeAnimation {
         return switch (action) {
             case IDLE -> (int)(time*6)%8;
             case RUN -> (int) (time * RUN_FPS) % RUN_FRAMES;
-            case DASH -> Math.min(7,(int)(time*8/Player.DASH_DURATION));
+            case DASH -> Math.min(7,(int)(time*8/Player.BLADE_DASH_DURATION));
             case SLASH -> Math.min(7, (int) (time * SLASH_FPS));
             case START, STOP, TURN -> Math.min(3,(int)(time*4/.12));
             case CHARGE -> Math.min(7,(int)(time*8/.35));

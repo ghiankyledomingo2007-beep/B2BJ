@@ -1,9 +1,9 @@
 public final class Guardian {
     public enum Profile {
-        OUTPOST_WARDEN("Outpost Warden", 240),
-        BRIARHEART("Briarheart", 260),
-        OATHKEEPER("Oathkeeper", 280),
-        ICHOR_GOLEM("Ichor Golem", 320);
+        OUTPOST_WARDEN("Outpost Warden", 1200),
+        BRIARHEART("Briarheart", 1300),
+        OATHKEEPER("Oathkeeper", 1400),
+        ICHOR_GOLEM("Ichor Golem", 1600);
         private final String name;
         private final int health;
         Profile(String name,int health) { this.name=name;this.health=health; }
@@ -12,7 +12,7 @@ public final class Guardian {
     public enum Attack { TARGET, SWEEP, CHARGE, SHOCKWAVE, FISSURE }
     /** Row order in warden_motion.png: eight native 64px frames per row. */
     public enum Animation { IDLE, APPROACH, WINDUP, STRIKE, RECOVER, CHARGE, DEATH }
-    public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*3, MAX_HEALTH=240, SLAM_DAMAGE=2;
+    public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*3, MAX_HEALTH=1200, SLAM_DAMAGE=35;
     public static final int GROUND_Y_OFFSET=48, SPRITE_FOOT_ROW=56;
     public static final double SLAM_RADIUS=112, TELEGRAPH_DURATION=0.9, SLAM_DURATION=0.18;
     public static final double RECOVER_DURATION=1.5, DEATH_DURATION=0.5;

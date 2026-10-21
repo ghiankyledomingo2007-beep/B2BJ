@@ -24,15 +24,18 @@ import render_frames  # noqa: E402
 import trail  # noqa: E402
 
 # Per-facing presets. Side views yaw the head so the mask shows and trail the blade straight
-# behind; the front view keeps the sword arm out or the body hides the blade; from behind a blade
-# trailing straight back would point at the camera. Twist is a side-view-only flourish.
+# behind. Front/back runs keep the hand low and the blade beside the leg, clear of the floor.
+# Twist is a side-view-only flourish.
 # ahead_bias bends a dead-ahead thrust so the front and back cameras can see it (channels.apply).
-SIDE = {"face_turn": -46.0, "sword_yaw": -118.0, "arm_in": -34.0, "arm_back": 38.0, "twist": 1.0}
+SIDE = {"face_turn": -46.0, "sword_yaw": -118.0, "arm_in": -34.0, "arm_back": 38.0, "twist": 1.0,
+        "carry_direction": (-0.4, 0.78, -0.55)}
 VIEWS = {
-    "south": {"face_turn": 0.0, "sword_yaw": -35.0, "arm_in": -12.0, "arm_back": 12.0, "twist": 0.15,
+    "south": {"face_turn": 0.0, "sword_yaw": -35.0, "arm_in": -30.0, "arm_back": 18.0, "twist": 0.15,
+              "carry_direction": (-0.14, 0.78, -0.61),
               "ahead_bias": (0.0, 0.0, -0.7)},
     "east": SIDE,
-    "north": {**SIDE, "face_turn": 0.0, "sword_yaw": -92.0, "arm_in": -20.0, "twist": 0.15,
+    "north": {**SIDE, "face_turn": 0.0, "sword_yaw": -92.0, "arm_in": -30.0, "arm_back": 18.0, "twist": 0.15,
+              "carry_direction": (-0.14, 0.78, -0.61),
               "ahead_bias": (0.45, 0.0, 0.1)},
     # a real left-facing render, not a mirrored east: he stays right-handed and his cuts keep travelling
     # the way the game's slash arc does
@@ -84,7 +87,8 @@ def main():
     bpy.ops.wm.open_mainfile(filepath=a.puppet)
     scene = bpy.context.scene
     arm = next(o for o in scene.objects if o.type == "ARMATURE")
-    body_mesh = next(o for o in scene.objects if o.type == "MESH")
+    body_meshes = [o for o in scene.objects if o.type == "MESH" and not o.hide_render]
+    sword = scene.objects.get("RainoraySword")
     p = puppet.Poser(arm)
     render_frames.setup_render(scene, a.cell, a.canvas)
 
@@ -107,9 +111,9 @@ def main():
             p.restore(snap)
             scene.render.filepath = os.path.join(shots, f"{facing}_{i:02d}.png")
             bpy.ops.render.render(write_still=True)
-        if a.trail and motion:
+        if a.trail and motion and (sword is None or not sword.hide_render):
             pose, (first, last, *root) = motion
-            trail.render(scene, p, body_mesh, snaps, trail.sample(p, pose, len(snaps)), shots, facing,
+            trail.render(scene, p, body_meshes, snaps, trail.sample(p, pose, len(snaps)), shots, facing,
                          (first, last), *root)
         print(f"ANIMATE ok action={a.action} facing={facing} frames={len(snaps)} floor={floor:.3f}")
 

@@ -104,7 +104,7 @@ public final class AuditPlayerPlayback {
             case "charge", "charge_late" -> {if(scenario.equals("charge_late"))advance("wait",.3);hold();advance("charge_hold",1.1);release();advance("release_recover",.9);}
             case "cast" -> {blade.face(-AIM[direction][0],-AIM[direction][1]);mouse(MouseEvent.MOUSE_PRESSED,MouseEvent.BUTTON3);advance("cast_opposite_aim",.7);}
             case "guard" -> {tap("riposte");advance("guard_idle",.7);}
-            case "dash_slash" -> {advance("idle",.15);tap("dash");advance("dash",Player.DASH_DURATION+.04);hold();advance("click",.033333333);release();advance("dash_slash",RuinedOutpostGame.strikeDuration(RuinedOutpostGame.DASH_SLASH)+.25);}
+            case "dash_slash" -> {advance("idle",.15);tap("dash");advance("dash",Player.BLADE_DASH_DURATION+.04);hold();advance("click",.033333333);release();advance("dash_slash",RuinedOutpostGame.strikeDuration(RuinedOutpostGame.DASH_SLASH)+.25);}
             case "riposte_counter" -> {game.player().setGodMode(false);tap("riposte");advance("guard",.08);HURT.invoke(game,1,game.player().x()+AIM[direction][0]*90,game.player().y()+AIM[direction][1]*90);advance("counter_idle",.7);}
             case "hurt", "slime_hurt" -> {game.player().setGodMode(false);HURT.invoke(game,1,game.player().x()+100,game.player().y());advance("hurt_idle",.9);}
             case "death" -> {game.player().setGodMode(false);HURT.invoke(game,100,game.player().x()+100,game.player().y());advance("dead",1.3);}

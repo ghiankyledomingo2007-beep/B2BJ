@@ -4,7 +4,7 @@ public final class GuardianAnimationTest {
         stateSequenceUsesSeparateEightFrameRows();
         specialAttacksKeepTheirOwnDurations();
         assert Guardian.CELL_SIZE==64&&Guardian.RENDER_SIZE==192&&Guardian.SPRITE_FOOT_ROW==56;
-        assert Guardian.MAX_HEALTH==240&&Guardian.SLAM_DAMAGE==2&&Guardian.SLAM_RADIUS==112;
+        assert Guardian.MAX_HEALTH==1200&&Guardian.SLAM_DAMAGE==35&&Guardian.SLAM_RADIUS==112;
         System.out.println("GuardianAnimationTest passed");
     }
     private static void dormantIdleLoopsWithoutActivating() {
@@ -17,7 +17,7 @@ public final class GuardianAnimationTest {
         assert seen==255 : "dormant idle must visit all eight breathing poses";
         assert guardian.animationFrame()<4 : "idle loops instead of holding its final pose";
         assert guardian.state()==Guardian.State.DORMANT&&guardian.stateSeconds()==0;
-        assert guardian.x()==400&&guardian.y()==300&&guardian.health()==240&&guardian.impactNumber()==0;
+        assert guardian.x()==400&&guardian.y()==300&&guardian.health()==Guardian.MAX_HEALTH&&guardian.impactNumber()==0;
     }
     private static void stateSequenceUsesSeparateEightFrameRows() {
         Guardian guardian=new Guardian(300,200);guardian.activate(120,140);
@@ -43,7 +43,7 @@ public final class GuardianAnimationTest {
         double x=guardian.x();
         oneShot(guardian,Guardian.Animation.CHARGE,.55,x+600,400);
         assert Math.abs(guardian.x()-x-620*.55)<.001 : "charge animation must not change displacement";
-        guardian.hurt(120);
+        guardian.hurt(guardian.maxHealth()/2);
         oneShot(guardian,Guardian.Animation.RECOVER,1.25,guardian.x()+600,400);
         seek(guardian,Guardian.Animation.WINDUP,Guardian.Attack.FISSURE);
         var lane=guardian.fissureBounds();

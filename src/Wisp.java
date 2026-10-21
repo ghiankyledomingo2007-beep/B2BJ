@@ -14,7 +14,7 @@ public final class Wisp {
 
     public static final double SPEED = 70.0;
     public static final double PURSUE_SPEED = 130.0;
-    public static final int MAX_HEALTH = 4;
+    public static final int MAX_HEALTH = 72;
     public static final double COLLISION_RADIUS = 20.0;
     public static final double COLLISION_Y_OFFSET = 22.0;
     public static final double TELEGRAPH_DURATION = 0.4;
@@ -62,6 +62,8 @@ public final class Wisp {
     private double detourTime, detourX, detourY;
     private int shotNumber;
     private double staggerCooldown;
+
+    public int defense() { return switch(role) { case GUARD, SHIELD_GUARD -> 20; case KNIGHT -> 35; default -> 0; }; }
 
     public Wisp(double x, double y, double minimumX, double maximumX) {
         this(x, y, minimumX, maximumX, MAX_HEALTH);

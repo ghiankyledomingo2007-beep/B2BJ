@@ -18,32 +18,32 @@ public final class SlimeComboTest {
         game.update(.2, 0, 0);
         WaterProjectile first = latest(game);
         assert first.y() > game.player().y() : "first M1 must sweep to one side of aim";
-        assert first.damage() == 1 && !first.heavy();
-        game.update(.3, 0, 0);
+        assert first.damage() == Player.SLIME_DAMAGE && !first.heavy();
+        game.update(.41, 0, 0);
         assert game.attack(1, 0);
         game.update(.2, 0, 0);
         WaterProjectile second = latest(game);
         assert second.y() < game.player().y() : "second M1 must reverse the water cut";
-        game.update(.3, 0, 0);
+        game.update(.41, 0, 0);
         assert game.attack(1, 0);
         game.update(.2, 0, 0);
         WaterProjectile third = latest(game);
-        assert third.damage() == 2 && third.impulse() > first.impulse()
+        assert third.damage() == 32 && third.impulse() > first.impulse()
                 : "third M1 must finish with a stronger impact";
         assert !third.heavy() && game.tideCooldown() == 0 : "finisher is not a free Tide Wave";
         game.update(.5, 0, 0);
-        game.update(.5, 0, 0);
+        game.update(.5, 0, 0);game.update(.11,0,0);
         assert game.attack(1, 0);
         game.update(.2, 0, 0);
-        assert latest(game).damage() == 1 && latest(game).y() > game.player().y()
+        assert latest(game).damage() == Player.SLIME_DAMAGE && latest(game).y() > game.player().y()
                 : "expired combo starts at first cut";
-        game.update(.3, 0, 0);
+        game.update(.41, 0, 0);
         assert game.attack(1, 0);
         assert game.dash(0, 1) : "dash may cancel the second windup";
-        game.update(.5, 0, 0);
+        game.update(.5, 0, 0);game.update(.11,0,0);
         assert game.attack(1, 0);
         game.update(.2, 0, 0);
-        assert latest(game).damage() == 1 : "cancelled cast must not bank a finisher";
+        assert latest(game).damage() == Player.SLIME_DAMAGE : "cancelled cast must not bank a finisher";
     }
 
     private static void backDashCounter() {
@@ -56,10 +56,10 @@ public final class SlimeComboTest {
         back.update(.06, 0, 0);
         assert back.projectiles().size() == 1 : "back-dash counter has a short release";
         WaterProjectile counter = latest(back);
-        assert counter.damage() == 1 && counter.impulse() > 140 && !counter.heavy()
+        assert counter.damage() == Player.SLIME_DAMAGE && counter.impulse() > 140 && !counter.heavy()
                 : "counter rewards timing with control, not bonus damage";
         assert !back.attack(1, 0) : "counter still spends normal casting cooldown";
-        back.update(.5, 0, 0);
+        back.update(.5, 0, 0);back.update(.05,0,0);
         assert back.attack(1, 0);
         back.update(.06, 0, 0);
         assert back.waterCharge() >= 0 : "counter window is consumed once";
@@ -81,7 +81,7 @@ public final class SlimeComboTest {
     @SuppressWarnings("unchecked")
     private static void impactBeforeRetaliation() throws Exception {
         for (Wisp.Role role : Wisp.Role.values()) {
-            var enemy = new Wisp(350, 300, 350, 350, 4, role);
+            var enemy = new Wisp(350, 300, 350, 350, 100, role);
             var game = fixture(List.of(enemy));
             set(enemy, "state", Wisp.State.TELEGRAPH);
             set(enemy, "stateTime", enemy.telegraphDuration() - .005);
@@ -89,7 +89,7 @@ public final class SlimeComboTest {
             waves.setAccessible(true);
             ((List<WaterProjectile>) waves.get(game)).add(new WaterProjectile(350, 300, 1, 0, true));
             game.update(.01, 0, 0);
-            assert enemy.health() == 2 && enemy.state() == Wisp.State.HURT;
+            assert enemy.health() == 100-CombatStats.damage(32,enemy.defense(),false) && enemy.state() == Wisp.State.HURT;
             assert game.player().health() == Player.MAX_HEALTH
                     : role + " dealt contact damage before the same-step stagger";
             assert game.hostileProjectiles().isEmpty() : "interrupted release must not leave a ghost volley";
@@ -97,7 +97,7 @@ public final class SlimeComboTest {
     }
 
     private static void staggerCannotBeRefreshedForever() {
-        var enemy = new Wisp(350, 300, 350, 350, 20);
+        var enemy = new Wisp(350, 300, 350, 350, 100);
         assert enemy.hurt(1, true);
         enemy.update(.1);
         assert enemy.hurt(1, true);
@@ -112,11 +112,11 @@ public final class SlimeComboTest {
     }
 
     private static void slamShovesOnce() {
-        var enemy = new Wisp(365, 300, 365, 365, 20);
+        var enemy = new Wisp(365, 300, 365, 365, 100);
         var game = fixture(List.of(enemy));
         assert game.dash(1, 0);
         for (int i = 0; i < 22; i++) game.update(.01, 0, 0);
-        assert enemy.health() == 19 : "one damage per enemy per body slam";
+        assert enemy.health() == 100-Player.SLIME_DAMAGE : "one hit per enemy per body slam";
         assert enemy.x() > 380 : "body slam must visibly push the enemy out of the slime";
         assert game.player().health() == Player.MAX_HEALTH : "staggered target cannot trade through slam";
     }
@@ -129,7 +129,7 @@ public final class SlimeComboTest {
             for(int i=0;i<24;i++)split.advance(.01);
             assert Math.hypot(one.x()-split.x(),one.y()-split.y())<1e-8
                     : "water path must not depend on update chunking: "+kind;
-            assert one.damage()==(kind==WaterProjectile.Kind.FINISHER||kind==WaterProjectile.Kind.TIDE?2:1);
+            assert one.damage()==(kind==WaterProjectile.Kind.FINISHER||kind==WaterProjectile.Kind.TIDE?32:Player.SLIME_DAMAGE);
             assert one.staggers()==(kind!=WaterProjectile.Kind.CUT&&kind!=WaterProjectile.Kind.RETURN_CUT);
             one.advance(Double.NaN);one.advance(-1);
             assert Double.isFinite(one.x());
@@ -139,7 +139,7 @@ public final class SlimeComboTest {
     }
 
     private static void finalDashStepIsProtected() throws Exception {
-        var enemy=new Wisp(350,300,350,350,20);
+        var enemy=new Wisp(350,300,350,350,100);
         var game=fixture(List.of(enemy));
         enemy.hurt(1,true);enemy.update(.3); // Stagger-resistant enemy can still be mid-attack.
         set(enemy,"state",Wisp.State.LUNGE);
@@ -160,6 +160,6 @@ public final class SlimeComboTest {
     private static RuinedOutpostGame fixture(List<Wisp> enemies) {
         var game = new RuinedOutpostGame(new RuinedOutpostMap(), new Player(300, 300),
                 enemies, new Guardian(900, 300));
-        game.begin(); return game;
+        game.setCriticalRollForTesting(()->1);game.begin(); return game;
     }
 }

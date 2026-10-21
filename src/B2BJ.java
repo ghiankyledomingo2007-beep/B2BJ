@@ -121,6 +121,7 @@ public final class B2BJ extends JPanel {
     /** The boss effects for the area being played: the Warden's cyan, or Briarheart's gold and violet. */
     private WardenFx bossFx(){return game.campaignMode()&&game.biome()==1?new WardenFx(briarheartSheet,WardenFx.Theme.BRIARHEART):new WardenFx(wardenMotionSheet);}
     private final MobFx mobFx=new MobFx();
+    private final DamageNumbers damageNumbers=new DamageNumbers();
     private final BufferedImage guardianWalkSheet=loadImage("assets/characters/guardian/guardian_walk.png");
     private final BufferedImage guardianDeathSheet=loadImage("assets/characters/guardian/guardian_death.png");
     private final BufferedImage guardianSweepSheet=loadImage("assets/characters/guardian/guardian_sweep.png");
@@ -163,7 +164,17 @@ public final class B2BJ extends JPanel {
     private boolean attackHeld, mouseAimed, mapShown;
     private boolean reducedEffects;
     private int mouseX = 640, mouseY = 360;
-    private final List<double[]> trails = new ArrayList<>();
+    private final List<DashEcho> trails = new ArrayList<>();
+    private BufferedImage bladeDashEcho;
+
+    private static final class DashEcho {
+        final double x,y;
+        final int row,frame;
+        double age;
+        DashEcho(Player player,BladeAnimation animation) {
+            x=player.x();y=player.y();row=animation.directionRow();frame=animation.frame();
+        }
+    }
 
     private SlimeAnimation slimeAnimation = new SlimeAnimation();
     private BladeAnimation bladeAnimation = new BladeAnimation();
@@ -187,6 +198,7 @@ public final class B2BJ extends JPanel {
         this.game=java.util.Objects.requireNonNull(game);
         for(var action:BladeAnimation.Action.values())rainoraySheets.put(action,loadImage(
                 "assets/characters/blade/rainoray_"+action.name().toLowerCase(java.util.Locale.ROOT)+".png"));
+        bladeDashEcho=silhouette(rainoraySheets.get(BladeAnimation.Action.DASH),0xff6acbfa);
         for(var action:new BladeAnimation.Action[]{BladeAnimation.Action.SLASH,BladeAnimation.Action.CLEAVE,
                 BladeAnimation.Action.CAST,BladeAnimation.Action.COUNTER})
             bladeTrailSheets.put(action,loadImage("assets/effects/rainoray_"+action.name().toLowerCase(java.util.Locale.ROOT)+"_trail.png"));
@@ -425,9 +437,8 @@ public final class B2BJ extends JPanel {
         int animationY = game.blocked() ? 0 : vertical;
         Player player = game.player();
         if (player.recovering()) { animationX=0; animationY=0; }
-        if (player.dashing()&&(!reducedEffects||frameCounter%3==0))trails.add(new double[]{player.x(),player.y(),0});
-        for (double[] trail:trails) trail[2]+=seconds;
-        trails.removeIf(trail->trail[2]>0.14);
+        for (DashEcho trail:trails) trail.age+=seconds;
+        trails.removeIf(trail->trail.age>.14);
         if(!player.alive()||horizontal!=0||vertical!=0)transformationAnimation.cancel();
         boolean morphing=transformationAnimation.active();
         transformationAnimation.update(seconds);
@@ -463,12 +474,20 @@ public final class B2BJ extends JPanel {
             if(game.bladePreparing())GameAudio.startLoop(GameAudio.Loop.CHARGE,Math.min(1,game.chargeSeconds()/RuinedOutpostGame.FULL_CHARGE));
             else GameAudio.stopLoop(GameAudio.Loop.CHARGE);
         } else {
-            slimeAnimation.update(animationX, animationY, player.dashing(), seconds);
+            slimeAnimation.update(player.dashing()?game.dashAimX():animationX,
+                    player.dashing()?game.dashAimY():animationY, player.dashing(), seconds);
             slimeHops();
+        }
+        if(player.dashing()&&!reducedEffects) {
+            if(player.bladeForm()&&frameCounter%2==0) {
+                if(trails.size()>=6)trails.remove(0);
+                trails.add(new DashEcho(player,bladeAnimation));
+            } else if(!player.bladeForm()&&frameCounter%3==0)
+                addImpact(player.x(),player.y()+32,Fx.DASH_WAKE);
         }
         deathAndFadeCues(player);
         if(!player.bladeForm())GameAudio.stopLoop(GameAudio.Loop.CHARGE);
-        if(player.alive()&&player.health()<=LOW_HEALTH)GameAudio.startLoop(GameAudio.Loop.HEARTBEAT,1);
+        if(player.alive()&&player.health()<=player.maxHealth()*.2)GameAudio.startLoop(GameAudio.Loop.HEARTBEAT,1);
         else GameAudio.stopLoop(GameAudio.Loop.HEARTBEAT);
         GameAudio.startLoop(GameAudio.Loop.AMBIENCE,1);
         bossMusic(seconds);
@@ -476,6 +495,7 @@ public final class B2BJ extends JPanel {
         updateImpacts(seconds);
         if(wardenArea())wardenFx.update(seconds,game.guardian());
         mobFx.update(seconds,game);
+        damageNumbers.update(seconds);
         bannerTime = Math.max(0, bannerTime - seconds);
         handleEvents(game.drainEvents());
         if(eating&&game.absorptionProgress()==0) {             // moved, hit or transformed mid-eat
@@ -525,7 +545,6 @@ public final class B2BJ extends JPanel {
             GameAudio.play(GameAudio.Cue.BLADE_FADES);
         }
     }
-    private static final int LOW_HEALTH = 1;
     private static final double BOSS_MUSIC_RANGE = 900;          // px from the Warden; he wakes at 600
     private static final double BOSS_FADE_IN = 1.0, BOSS_FADE_OUT = 1.5;   // seconds
     private double bossMusicLevel;
@@ -543,7 +562,7 @@ public final class B2BJ extends JPanel {
                 :Math.max(0,bossMusicLevel-seconds/BOSS_FADE_OUT);
         if(bossMusicLevel>0)GameAudio.startLoop(GameAudio.Loop.BOSS_MUSIC,bossMusicLevel);
         else GameAudio.stopLoop(GameAudio.Loop.BOSS_MUSIC);
-    }                     // hearts left when the heartbeat starts
+    }
     private static final int[] RUN_CONTACT_FRAMES = {1, 5};      // of the 8-frame run: each foot lands once
     private int lastRunFrame = -1;
 
@@ -562,7 +581,10 @@ public final class B2BJ extends JPanel {
                 default -> { }
             }
             switch (event.type()) {
-                case DASH -> GameAudio.play(GameAudio.Cue.DASH);
+                case DASH -> {
+                    GameAudio.play(game.player().bladeForm()?GameAudio.Cue.DASH:GameAudio.Cue.WATER_SPLASH);
+                    if(!game.player().bladeForm())addImpact(event.x(),event.y()+32,Fx.DASH_WAKE);
+                }
                 case ATTACK -> {
                     if(game.player().bladeForm()) {
                         bladeAnimation.face(game.bladeAimX(),game.bladeAimY());
@@ -605,6 +627,12 @@ public final class B2BJ extends JPanel {
                 case DENIED -> GameAudio.play(GameAudio.Cue.DENIED);
                 case CHECKPOINT -> GameAudio.play(GameAudio.Cue.CHECKPOINT);
                 case UPGRADE -> GameAudio.play(GameAudio.Cue.UPGRADE);
+                case DAMAGE_DEALT -> {
+                    damageNumbers.add(event.x(),event.y(),event.damage(),event.critical(),false);
+                    mobFx.hit(event.x(),event.y(),event.critical(),event.heavy(),event.water(),reducedEffects);
+                    if(event.critical()||event.heavy())feedback.enemyHit(true);
+                }
+                case DAMAGE_TAKEN -> damageNumbers.add(event.x(),event.y(),event.damage(),false,true);
                 case ENEMY_HIT -> {
                     feedback.enemyHit(false);
                     if(!event.water()) {
@@ -702,7 +730,7 @@ public final class B2BJ extends JPanel {
                 }
                 case ROOM_ENTERED -> {
                     trails.clear(); impacts.clear(); attackHeld=false;bladeAnimation=new BladeAnimation();
-                    wardenFx=bossFx();mobFx.clear();
+                    wardenFx=bossFx();mobFx.clear();damageNumbers.clear();
                 }
                 case VICTORY -> {
                     feedback.victory();
@@ -841,20 +869,8 @@ public final class B2BJ extends JPanel {
                         if(game.campaignMode()&&game.biome()!=0&&!(game.biome()==1&&briarheartSheet!=null))CampaignRenderer.drawBoss(canvas,game.guardian(),game.biome(),cameraX,cameraY);
                         else drawGuardian(canvas,cameraX,cameraY);
                     }));
-        for(double[] trail:trails) {
-            draws.add(new DepthDraw(trail[1]+SlimeAnimation.RENDER_SIZE/2,()->{
-                Graphics2D ghost=(Graphics2D)canvas.create();
-                ghost.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,
-                        (float)(0.25*(1-trail[2]/0.14))));
-                int gx=cameraX+(int)(player.x()-trail[0]),gy=cameraY+(int)(player.y()-trail[1]);
-                if(player.bladeForm()) {
-                    drawBlade(ghost,gx,gy);
-                    ghost.setColor(new Color(89,223,245));
-                    int tx=(int)Math.round(trail[0]-cameraX),ty=(int)Math.round(trail[1]-cameraY)+40;
-                    ghost.fillOval(tx-18,ty-4,36,8);
-                } else drawSlime(ghost,gx,gy);
-                ghost.dispose();
-            }));
+        for(DashEcho trail:trails) {
+            draws.add(new DepthDraw(trail.y+SlimeAnimation.RENDER_SIZE/2,()->drawDashEcho(canvas,cameraX,cameraY,trail)));
         }
         draws.add(new DepthDraw(player.y()+SlimeAnimation.RENDER_SIZE/2,
                 ()->drawPlayer(canvas,cameraX,cameraY)));
@@ -893,6 +909,7 @@ public final class B2BJ extends JPanel {
         mobFx.drawAbove(canvas,cameraX,cameraY,reducedEffects);
         if(outpostArt)OutpostLights.draw(canvas,game,cameraX,cameraY,frameCounter,reducedEffects);
         if(!game.campaignMode()||game.biome()==0)drawWeather(canvas,cameraX,cameraY,false);
+        drawDamageNumbers(canvas,cameraX,cameraY);
         if(mouseAimed&&!game.blocked()&&aimReticle!=null) {
             int frame=(int)(frameCounter/6)%(aimReticle.getWidth()/32);
             int x=Math.round(mouseX/2f)*2,y=Math.round(mouseY/2f)*2;
@@ -919,6 +936,7 @@ public final class B2BJ extends JPanel {
         }
         if (!player.damageFlashing() || frameCounter / 3 % 2 == 0) {
             if (player.bladeForm()) {
+                drawBladeAura(canvas, cameraX, cameraY);
                 drawBlade(canvas, cameraX, cameraY);
                 drawBladeTrail(canvas, cameraX, cameraY);
             } else {
@@ -932,6 +950,31 @@ public final class B2BJ extends JPanel {
             int x=(int)Math.round(player.x())-cameraX-80,y=(int)Math.round(player.y())-cameraY+48-144;
             canvas.drawImage(riposteSheet,x,y,x+160,y+160,frame*80,0,frame*80+80,80,null);
         }
+    }
+
+    private void drawBladeAura(Graphics2D canvas,int cameraX,int cameraY) {
+        Player player=game.player();
+        if(reducedEffects||!player.alive()||!player.bladeForm()||transformationAnimation.active())return;
+        int x=(int)Math.round((player.x()-cameraX)/2)*2;
+        int y=(int)Math.round((player.y()-cameraY)/2)*2;
+        var aura=(Graphics2D)canvas.create();
+        if(waterChargeSheet!=null) {
+            int frame=(int)(weatherTime*5)%(waterChargeSheet.getWidth()/32);
+            aura.setComposite(java.awt.AlphaComposite.SrcOver.derive(.18f));
+            aura.drawImage(waterChargeSheet,x-32,y+14,x+32,y+78,frame*32,0,frame*32+32,32,null);
+            aura.setComposite(java.awt.AlphaComposite.SrcOver);
+        }
+        // Fixed motes need no particle list and stay outside the face and torso.
+        for(int i=0;i<5;i++) {
+            double phase=(weatherTime*.55+i*.2)%1;
+            int dx=(i%2==0?-1:1)*(30+(i%3)*6)+(int)Math.round(Math.sin(phase*Math.PI*2+i)*2)*2;
+            int dy=32-(int)Math.round(phase*48)*2;
+            aura.setColor(new Color(120,200,255,(int)(Math.sin(phase*Math.PI)*150)));
+            aura.fillRect(x+dx,y+dy,2,4);
+            aura.setColor(new Color(220,246,255,(int)(Math.sin(phase*Math.PI)*180)));
+            aura.fillRect(x+dx,y+dy,2,2);
+        }
+        aura.dispose();
     }
 
     private void drawSlime(Graphics2D canvas, int cameraX, int cameraY) {
@@ -1259,15 +1302,15 @@ public final class B2BJ extends JPanel {
         }
         if (guardian.alive() && guardian.state() != Guardian.State.DORMANT) {
             drawHealthBar(canvas, (int) Math.round(guardian.x()) - cameraX,
-                    y - 12, 88, guardian.health(), Guardian.MAX_HEALTH, RED);
+                    y - 12, 88, guardian.health(), guardian.maxHealth(), RED);
         }
     }
 
     /** The Warden's own effects belong to its arena; other bosses do not borrow them. */
     private boolean wardenArea(){return game.campaignMode()&&(game.biome()==0||game.biome()==1&&briarheartSheet!=null);}
 
-    /** Native px from an enemy's centre where its aim line starts (clear of its body), and the hexer's spoke length. */
-    static final double AIM_START=9, SPOKE=16;
+    /** Native pixels for compact projectile windup cues; these show direction, not the shot's range. */
+    static final double AIM_START=9, SHOT_CUE_LENGTH=26, SPOKE=16;
 
     /** Every live attack warning, painted at native resolution by {@link Telegraphs}. */
     private void drawGuardianTelegraph(Graphics2D canvas,int cameraX,int cameraY) {
@@ -1286,10 +1329,10 @@ public final class B2BJ extends JPanel {
                 tells.box(x+Math.cos(angle)*reach/2,y+Math.sin(angle)*reach/2,angle,reach,scout.meleeHalfWidth()/2,
                         charge,hit,locked,false,reducedEffects);
             } else if(scout.role()==Wisp.Role.SPITTER) {
-                // each shot's flight as a thin aim line; the hexer's ring of eight as short spokes
+                // Keep projectile windups near the caster; travelling shots carry their own danger cue.
                 var profile=game.campaignEnemy(scout);
                 boolean radial=profile!=null&&profile.kind()==CampaignEnemy.Kind.CINDER_HEXER;
-                double reach=radial?AIM_START+SPOKE:EnemyProjectile.MAX_TRAVEL/2;
+                double reach=AIM_START+(radial?SPOKE:SHOT_CUE_LENGTH);
                 for(int side=0;side<(radial?8:3);side++) {
                     double direction=angle+(radial?side*Math.PI/4:(side-1)*.20);
                     tells.aim(x,y,x+Math.cos(direction)*reach,y+Math.sin(direction)*reach,AIM_START,charge,locked);
@@ -1336,18 +1379,32 @@ public final class B2BJ extends JPanel {
         tells.drawTo(canvas,2);
     }
 
+    private void drawDashEcho(Graphics2D canvas,int cameraX,int cameraY,DashEcho trail) {
+        if(bladeDashEcho==null)return;
+        int cell=bladeCell(bladeDashEcho,BladeAnimation.Action.DASH),margin=cell-BladeAnimation.CELL_WIDTH;
+        int x=(int)Math.round((trail.x-cameraX)/2)*2-BladeAnimation.RENDER_WIDTH/2-margin;
+        int y=(int)Math.round((trail.y-cameraY)/2)*2+SlimeAnimation.RENDER_SIZE/2-BladeAnimation.FOOT_ROW*2-margin;
+        var ghost=(Graphics2D)canvas.create();
+        ghost.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)Math.max(0,.3*(1-trail.age/.14))));
+        ghost.drawImage(bladeDashEcho,x,y,x+cell*2,y+cell*2,
+                trail.frame*cell,trail.row*cell,(trail.frame+1)*cell,(trail.row+1)*cell,null);
+        ghost.dispose();
+    }
+
     /** A struck enemy shows pure white for its first two frames, then blinks: one hit, one clear frame of contact. */
     static boolean whiteHit(Wisp body){return body.state()==Wisp.State.HURT&&body.stateSeconds()<1/30.;}
     private static final java.util.Map<BufferedImage,BufferedImage> WHITE=new java.util.WeakHashMap<>();
     /** The sheet itself, or its white silhouette (made once per sheet) while a hit flashes. */
     static BufferedImage hitTint(BufferedImage sheet,boolean white) {
         if(!white||sheet==null)return sheet;
-        return WHITE.computeIfAbsent(sheet,s->{
-            var out=new BufferedImage(s.getWidth(),s.getHeight(),BufferedImage.TYPE_INT_ARGB);
-            for(int y=0;y<s.getHeight();y++)for(int x=0;x<s.getWidth();x++)
-                if((s.getRGB(x,y)>>>24)>0x40)out.setRGB(x,y,0xffffffff);
-            return out;
-        });
+        return WHITE.computeIfAbsent(sheet,s->silhouette(s,0xffffffff));
+    }
+    private static BufferedImage silhouette(BufferedImage sheet,int color) {
+        if(sheet==null)return null;
+        var out=new BufferedImage(sheet.getWidth(),sheet.getHeight(),BufferedImage.TYPE_INT_ARGB);
+        for(int y=0;y<sheet.getHeight();y++)for(int x=0;x<sheet.getWidth();x++)
+            if((sheet.getRGB(x,y)>>>24)>0x40)out.setRGB(x,y,color);
+        return out;
     }
 
     private void drawBarrier(Graphics2D canvas, RuinedOutpostMap.Obstacle barrier, int cameraX, int cameraY) {
@@ -1646,13 +1703,14 @@ public final class B2BJ extends JPanel {
     /** Null includes both layers for standalone previews; world painting separates the source burst. */
     private void drawImpacts(Graphics2D canvas,int cameraX,int cameraY,Boolean groundLayer) {
         for (Impact impact : impacts) {
-            if(groundLayer!=null&&(impact.kind==Fx.TIDE_RELEASE)!=groundLayer)continue;
+            if(groundLayer!=null&&(impact.kind==Fx.TIDE_RELEASE||impact.kind==Fx.DASH_WAKE)!=groundLayer)continue;
             BufferedImage sheet=switch(impact.kind) {
                 case WATER -> waterSplashSheet;
                 case FINISHER -> finisherImpactSheet;
                 case TIDE -> tideBreakSheet;
                 case TIDE_RELEASE -> tideReleaseSheet;
                 case TIDE_FOAM -> tideFoamSheet;
+                case DASH_WAKE -> waterWakeSheet;
                 case WARDEN -> game.campaignMode()&&game.biome()==1&&briarImpactSheet!=null?briarImpactSheet:wardenImpactSheet;
                 case BLADE,BLADE_HURT -> armorSparksSheet;
                 case SLIME_HURT -> slimeHurtSheet;
@@ -1680,7 +1738,7 @@ public final class B2BJ extends JPanel {
             int x=(int)Math.round((impact.x-cameraX)/2)*2-cell,y=(int)Math.round((impact.y-cameraY)/2)*2-cell;
             var effect=(Graphics2D)canvas.create();
             float alpha=(float)Math.max(0,Math.min(1,(impact.kind.duration-impact.time)/.12));
-            if(impact.kind==Fx.TIDE_FOAM)alpha*=.55f;
+            if(impact.kind==Fx.TIDE_FOAM||impact.kind==Fx.DASH_WAKE)alpha*=.55f;
             if(reducedEffects&&impact.kind!=Fx.SLIME_HURT&&impact.kind!=Fx.BLADE_HURT)alpha*=.65f;
             effect.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,alpha));
             boolean flip=(impact.variant&2)!=0;
@@ -1702,35 +1760,39 @@ public final class B2BJ extends JPanel {
         canvas.drawImage(waterBuffer,x-72,y-72,144,144,null);
     }
 
+    private void drawDamageNumbers(Graphics2D canvas,int cameraX,int cameraY) {
+        for(var n:damageNumbers.active()) {
+            var ink=(Graphics2D)canvas.create();
+            float alpha=(float)Math.min(1,(DamageNumbers.LIFE-n.age)/.25);
+            ink.setComposite(java.awt.AlphaComposite.SrcOver.derive(alpha));
+            int x=(int)Math.round((n.x-cameraX)/2)*2;
+            int y=(int)Math.round((n.y-cameraY-n.age*(reducedEffects?18:46))/2)*2;
+            int scale=n.critical?3:2;
+            String label="-"+n.damage;
+            Color color=n.incoming?new Color(255,137,137):n.critical?new Color(255,211,92):new Color(240,248,255);
+            pixelCentered(ink,label,x+2,y+2,scale,new Color(15,18,27));
+            pixelCentered(ink,label,x,y,scale,color);
+            if(n.critical)pixelCentered(ink,"CRIT",x,y-12,1,color);
+            ink.dispose();
+        }
+    }
+
     private void drawPlayerHud(Graphics2D canvas) {
         Player p=game.player();
-        if(hudFrame!=null) {
-            canvas.setColor(new Color(9,15,23,240));canvas.fillRect(32,30,288,98);
-            canvas.drawImage(hudFrame,16,16,320,128,null);
-        }
-        else uiPanel(canvas,16,16,320,128);
-        pixelText(canvas,"RAINORAY",38,32,2,new Color(191,203,209));
-        int healthSize=p.maxHealth()>5?32:64, healthStep=p.maxHealth()>5?34:50;
-        int healthY=p.maxHealth()>5?54:42;
-        for(int i=0;i<p.maxHealth();i++) {
-            int x=32+i*healthStep;
-            double part=Math.max(0,Math.min(1,p.healthValue()-i));
-            var pip=(Graphics2D)canvas.create();
-            pip.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER,.18f));
-            icon(pip,vitalityIcon,x,healthY,healthSize);pip.dispose();
-            pip=(Graphics2D)canvas.create();
-            if(part<1)pip.clipRect(x,healthY,(int)(healthSize*part),healthSize);
-            icon(pip,vitalityIcon,x,healthY,healthSize);pip.dispose();
-        }
-        for(int i=0;i<10;i++) {
-            int x=38+i*26,fill=(int)(Math.max(0,Math.min(1,(p.ichor()-i*10)/10))*11)*2;
-            canvas.setColor(new Color(55,44,33));canvas.fillRect(x,100,22,10);
-            canvas.setColor(p.ichor()>=100&&!reducedEffects&&frameCounter/24%2==0?new Color(255,228,147):GOLD);
-            canvas.fillRect(x,100,fill,10);
-            canvas.setColor(new Color(255,231,164));canvas.fillRect(x,100,fill,2);
-        }
-        pixelText(canvas,"ICHOR",38,119,1,GOLD);
-        pixelText(canvas,String.format(java.util.Locale.ROOT,"%03d / 100",(int)p.ichor()),236,119,1,GOLD);
+        drawHudFrame(canvas,16,16,128);
+        pixelText(canvas,"HP",40,34,2,new Color(225,193,194));
+        String health=p.health()+" / "+p.maxHealth();
+        pixelText(canvas,health,312-health.length()*12,34,2,new Color(235,239,237));
+        drawVitalsMeter(canvas,40,56,272,20,p.healthValue()/p.maxHealth(),
+                p.health()<=p.maxHealth()*.2?RED:new Color(178,51,70),
+                new Color(244,155,145),new Color(106,32,52));
+        pixelText(canvas,"ICHOR",40,84,2,GOLD);
+        String ichor=(int)p.ichor()+" / 100";
+        pixelText(canvas,ichor,312-ichor.length()*12,84,2,new Color(235,219,181));
+        drawVitalsMeter(canvas,40,106,272,16,p.ichor()/Player.MAX_ICHOR,
+                p.ichor()>=Player.MAX_ICHOR&&!reducedEffects&&frameCounter/24%2==0
+                        ?new Color(230,188,92):new Color(197,149,61),
+                new Color(254,226,139),new Color(118,78,35));
         if(!game.campaignMode()) {
             uiPanel(canvas,1100,20,160,66);
             icon(canvas,p.bladeForm()?bladeIcon:blobIcon,1106,21,64);
@@ -1738,13 +1800,14 @@ public final class B2BJ extends JPanel {
             pixelText(canvas,GameAudio.muted()?"MUTED":"",1170,64,1,new Color(139,156,170));
         }
         if(p.bladeForm()) {
-            Color color=p.bladeSeconds()<=3?RED:TEAL;
-            uiPanel(canvas,482,20,316,54);
-            pixelText(canvas,"BLADE",500,32,2,color);
-            if(p.unlimitedBlade())pixelText(canvas,"UNLIMITED",650,32,2,color);
-            else pixelText(canvas,String.format(java.util.Locale.ROOT,"%.1f S",p.bladeSeconds()),702,32,2,color);
-            canvas.setColor(new Color(45,48,58));canvas.fillRect(500,58,280,6);
-            canvas.setColor(color);canvas.fillRect(500,58,(int)(280*p.bladeSeconds()/p.bladeDuration()),6);
+            boolean ending=!p.unlimitedBlade()&&p.bladeSeconds()<=3;
+            Color color=ending?RED:new Color(120,200,255);
+            drawHudFrame(canvas,480,16,88);
+            pixelText(canvas,"BLADE",504,36,2,color);
+            String time=p.unlimitedBlade()?"UNLIMITED":String.format(java.util.Locale.ROOT,"%.1f S",p.bladeSeconds());
+            pixelText(canvas,time,776-time.length()*12,36,2,color);
+            drawVitalsMeter(canvas,504,62,272,16,p.unlimitedBlade()?1:p.bladeSeconds()/p.bladeDuration(),
+                    ending?RED:new Color(49,137,190),new Color(192,237,255),new Color(32,69,112));
         } else if(p.recovering()) pixelCentered(canvas,"REFORMING",640,34,2,RED);
         int first=p.bladeForm()?436:478;
         skill(canvas,first,p.bladeForm()?bladeIcon:slashIcon,"LMB",1,!p.recovering());
@@ -1770,10 +1833,36 @@ public final class B2BJ extends JPanel {
             uiPanel(canvas,478,538,332,54);
             icon(canvas,consumeIcon,486,545,32);
             pixelText(canvas,p.trait().label(),526,548,2,color);
-            pixelText(canvas,armor?"BLOCK 0.5 HP / ONE HIT":"SHOT SPEED 1.3X",526,571,1,new Color(191,203,209));
+            pixelText(canvas,armor?"+50 DEF / ONE HIT":"SHOT SPEED 1.3X",526,571,1,new Color(191,203,209));
             pixelText(canvas,String.format(java.util.Locale.ROOT,"%.1f",p.traitSeconds()),774,571,1,color);
             canvas.setColor(new Color(39,48,57));canvas.fillRect(488,584,312,3);
             canvas.setColor(color);canvas.fillRect(488,584,(int)(312*p.traitSeconds()/Player.TRAIT_DURATION),3);
+        }
+    }
+
+    private void drawHudFrame(Graphics2D canvas,int x,int y,int height) {
+        if(hudFrame==null) {uiPanel(canvas,x,y,320,height);return;}
+        canvas.setColor(new Color(9,15,23,240));canvas.fillRect(x+16,y+14,288,height-30);
+        // Preserve the ornate ends at native 2x; only the plain side rails change height.
+        canvas.drawImage(hudFrame,x,y,x+320,y+32,0,0,160,16,null);
+        canvas.drawImage(hudFrame,x,y+32,x+320,y+height-32,0,16,160,48,null);
+        canvas.drawImage(hudFrame,x,y+height-32,x+320,y+height,0,48,160,64,null);
+    }
+
+    private void drawVitalsMeter(Graphics2D canvas,int x,int y,int width,int height,double fraction,
+            Color fill,Color light,Color shade) {
+        int amount=(int)Math.round((width-4)*Math.max(0,Math.min(1,fraction))/2)*2;
+        Color rim=new Color(76,72,94),rimShade=new Color(29,30,43),empty=new Color(32,26,38);
+        for(int row=0;row<height;row+=2) {
+            int inset=row==0||row==height-2?6:row==2||row==height-4?2:0;
+            canvas.setColor(row<height/2?rim:rimShade);
+            canvas.fillRect(x+inset,y+row,width-inset*2,2);
+        }
+        for(int row=0;row<height-4;row+=2) {
+            int inset=row==0||row==height-6?4:row==2||row==height-8?2:0;
+            canvas.setColor(empty);canvas.fillRect(x+2+inset,y+2+row,width-4-inset*2,2);
+            canvas.setColor(row==0?light:row>=height-8?shade:fill);
+            if(amount>inset*2)canvas.fillRect(x+2+inset,y+2+row,amount-inset*2,2);
         }
     }
 
@@ -1782,7 +1871,7 @@ public final class B2BJ extends JPanel {
         if(game.map().room()==9 && game.guardian().alive()) {
             Guardian boss=game.guardian();
             pixelCentered(canvas,boss.enraged()?"OUTPOST WARDEN / ENRAGED":"OUTPOST WARDEN",640,94,2,GOLD);
-            drawHealthBar(canvas,640,122,380,boss.health(),Guardian.MAX_HEALTH,
+            drawHealthBar(canvas,640,122,380,boss.health(),boss.maxHealth(),
                     boss.state()==Guardian.State.RECOVER?TEAL:RED);
         }
         String prompt=compactPrompt();
@@ -1980,7 +2069,7 @@ public final class B2BJ extends JPanel {
             canvas.fillRect(0, 0, WIDTH, HEIGHT);
         }
         int damageAlpha = feedback.damageAlpha();
-        if (game.player().health() == 1 && game.player().alive()) {
+        if (game.player().health() <= game.player().maxHealth()*.2 && game.player().alive()) {
             damageAlpha = Math.max(damageAlpha,
                     35 + (int) (Math.abs(Math.sin(frameCounter * 0.08)) * 35));
         }
@@ -2252,7 +2341,7 @@ public final class B2BJ extends JPanel {
         transformationAnimation = new TransformationAnimation();
         feedback = new CombatFeedback();
         impacts.clear();
-        wardenFx = bossFx();mobFx.clear();
+        wardenFx = bossFx();mobFx.clear();damageNumbers.clear();
         bannerText = "";
         bannerTime = 0;
     }
@@ -2355,7 +2444,7 @@ public final class B2BJ extends JPanel {
     private enum Fx {
         WATER(32,.33),FINISHER(48,.42),TIDE(64,.4),BLADE(48,.32),SLIME_HURT(48,.38),BLADE_HURT(48,.38),
         PICKUP(32,.32),STONE(32,.45),SPIT(48,.3),HEAL(48,.65),COUNTER(80,.35),
-        TIDE_RELEASE(64,.46),TIDE_FOAM(32,.36),WARDEN(64,.5);
+        TIDE_RELEASE(64,.46),TIDE_FOAM(32,.36),DASH_WAKE(32,.28),WARDEN(64,.5);
         final int cell;final double duration;
         Fx(int cell,double duration){this.cell=cell;this.duration=duration;}
     }

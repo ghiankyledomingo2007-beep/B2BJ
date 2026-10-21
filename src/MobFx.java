@@ -112,6 +112,19 @@ final class MobFx {
         m.ax = mx; m.ay = my;
     }
 
+    void hit(double x,double y,boolean critical,boolean heavy,boolean water,boolean reduced) {
+        int color=critical?0xffce62:water?0x8ceafa:0xeaf6ff;
+        if(!reduced)add(Kind.FLASH,x,y-20,.07,0xffffff);
+        if(critical)add(Kind.GLINT,x,y-28,.22,color);
+        int count=reduced?3:critical?12:heavy?10:6;
+        for(int i=0;i<count;i++) {
+            double angle=(i+rnd()*.4)*Math.PI*2/count;
+            double speed=(heavy||critical?180:110)+rnd()*80;
+            var spark=add(Kind.SPARK,x,y-20,.18+rnd()*.16,color);
+            spark.vx=Math.cos(angle)*speed;spark.vy=Math.sin(angle)*speed*.65;
+        }
+    }
+
     /** An enemy dies: one white flash, then its ichor bursts outward and settles. */
     void defeated(double x, double y, boolean reduced) {
         add(Kind.FLASH, x, y - 20, .08, 0xffffff).ax = 0;

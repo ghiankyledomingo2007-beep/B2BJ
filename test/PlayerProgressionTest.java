@@ -2,9 +2,9 @@ public final class PlayerProgressionTest {
     public static void main(String[] args) {
         Player player=new Player(400,400);
         player.configureUpgrades(2,2,2,1);
-        assert player.maxHealth()==7;
+        assert player.maxHealth()==140;
         player.heal();
-        assert player.health()==7;
+        assert player.health()==140;
         assert player.bladeComboLength()==4;
         assert Math.abs(player.dropMultiplier()-1.2)<1e-9;
         player.collectIchor(100);

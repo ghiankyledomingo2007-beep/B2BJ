@@ -69,11 +69,12 @@ def build(quads, colour, name):
     return ob
 
 
-def render(scene, p, body_mesh, snaps, samples, shots, facing, window, root=ROOT):
+def render(scene, p, body_meshes, snaps, samples, shots, facing, window, root=ROOT):
     """Photograph every sheet frame's trail, with the posed body in black as an occluder."""
     shading = scene.display.shading
     shading.color_type = "OBJECT"
-    body_mesh.color = BODY
+    for mesh in body_meshes:
+        mesh.color = BODY
     for i, snap in enumerate(snaps):
         p.restore(snap)
         made = [build(quads, colour, f"trail{b}") for b, (quads, (_, colour)) in

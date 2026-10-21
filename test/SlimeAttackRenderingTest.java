@@ -81,7 +81,7 @@ public final class SlimeAttackRenderingTest {
                 }
                 assert changed>union*.25 : "return cut silhouette must change substantially, not just a few pixels";
             }
-            panel.game().update(.3,0,0);
+            panel.game().update(Player.WATER_COOLDOWN-.2+.01,0,0);
         }
         assert hashes[0]!=hashes[1] : "return cut needs a visibly different sprite pose";
         assert hashes[1]!=hashes[2]&&hashes[0]!=hashes[2] : "finisher must read differently from basic cuts";

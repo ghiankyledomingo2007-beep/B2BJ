@@ -8,8 +8,8 @@ import java.util.List;
  * every boss attack (warning and live), and every enemy archetype (aiming, locked, striking), at an odd
  * camera and fractional positions. No painted pixel ever lies more than 2 native pixels (4 world px) from
  * real damage. Boss attacks and standing blows outline their whole damage area: every edge pixel has a
- * painted pixel within 2 native pixels. A regular enemy's shot or rush is drawn as a thin line instead
- * (lanes for every shot buried the screen): that line must trace the attack's true path to its full reach.
+ * painted pixel within 2 native pixels. Projectile cues mark only the initial heading near their caster;
+ * rush warnings still trace their full path. Both must follow the actual direction of damage.
  */
 public final class TelegraphHitTableTest {
     interface Zone { boolean at(double wx, double wy); }
@@ -96,12 +96,12 @@ public final class TelegraphHitTableTest {
             } else zone = (x, y) -> segment(x, y, bx, by, bx + ix * b.lungeReach(), by + iy * b.lungeReach()) <= RuinedOutpostGame.WISP_CONTACT_RADIUS;
             String name = kind + (phase == 0 ? " aiming" : phase == 1 ? " locked" : " striking");
             if (b.stationaryMelee()) { check(name, game, zone); continue; }
-            // the paths the lines must trace, in world px from the body's centre
+            // The paths cues must follow, in world pixels from the body's centre.
             double from = B2BJ.AIM_START * 2 + 4;
             java.util.List<double[]> paths = new java.util.ArrayList<>();
             if (b.role() == Wisp.Role.SPITTER) {
                 boolean radial = kind == CampaignEnemy.Kind.CINDER_HEXER;
-                double reach = radial ? (B2BJ.AIM_START + B2BJ.SPOKE) * 2 : EnemyProjectile.MAX_TRAVEL;
+                double reach = (B2BJ.AIM_START + (radial ? B2BJ.SPOKE : B2BJ.SHOT_CUE_LENGTH)) * 2;
                 for (int s = 0; s < (radial ? 8 : 3); s++) {
                     double d = angle + (radial ? s * Math.PI / 4 : (s - 1) * .20);
                     paths.add(new double[]{Math.cos(d), Math.sin(d), reach});

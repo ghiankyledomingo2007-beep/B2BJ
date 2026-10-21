@@ -36,7 +36,7 @@ public final class IchorMagnetTest {
                 &&Math.abs(blocked.player().ichor()-.3)<1e-8
                 : "magnet and collection cannot cross cover";
         var dead=fixture(new RuinedOutpostMap(),300,300,300,300,10);
-        dead.player().hurt(99);dead.update(.1,0,0);
+        dead.player().hurt(1000);dead.update(.1,0,0);
         assert dead.player().ichor()==0;
         System.out.println("IchorMagnetTest passed");
     }

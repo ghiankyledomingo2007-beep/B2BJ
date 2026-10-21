@@ -12,7 +12,7 @@ public final class TideFeedbackTest {
     }
     private static RuinedOutpostGame fixture(boolean begin,Wisp... enemies) {
         var game=new RuinedOutpostGame(new RuinedOutpostMap(),new Player(500,400),List.of(enemies),new Guardian(1500,600));
-        if(begin)game.begin();return game;
+        game.setCriticalRollForTesting(()->1);if(begin)game.begin();return game;
     }
     private static List<RuinedOutpostGame.Event> advance(RuinedOutpostGame game,double seconds) {
         for(double remaining=seconds;remaining>1e-8;remaining-=.01)game.update(Math.min(.01,remaining),0,0);
@@ -42,7 +42,7 @@ public final class TideFeedbackTest {
         assert release.x()==fixedX&&release.x()!=game.player().x() : "source event does not follow moving player";
         assert count(game.drainEvents(),RuinedOutpostGame.EventType.TIDE_RELEASE)==0;
         var wave=game.projectiles().get(0);
-        assert wave.damage()==2&&wave.radius()==28&&wave.impulse()==420;
+        assert wave.damage()==32&&wave.radius()==28&&wave.impulse()==420;
         assert Math.abs(game.tideCooldown()-4.22)<1e-6 : "feedback must not change cooldown";
     }
     private static void naturalFinish(boolean lifetime) throws Exception {
@@ -62,13 +62,13 @@ public final class TideFeedbackTest {
         noTide(advance(game,1));
     }
     private static void collisionFinishesOnce() {
-        var enemy=new Wisp(610,400,610,610,20);
+        var enemy=new Wisp(610,400,610,610,100);
         var game=fixture(true,enemy);assert game.tideWave(1,0);
         var events=advance(game,1.4);
         assert count(events,RuinedOutpostGame.EventType.TIDE_RELEASE)==1;
         assert count(events,RuinedOutpostGame.EventType.TIDE_IMPACT)==1;
         assert count(events,RuinedOutpostGame.EventType.TIDE_DISSIPATE)==1;
-        assert enemy.health()==18&&game.projectiles().isEmpty() : "body hit is once; piercing Tide then expires naturally";
+        assert enemy.health()==68&&game.projectiles().isEmpty() : "body hit is once; piercing Tide then expires naturally";
         noTide(advance(game,.2));
         var wall=fixture(true);wall.player().relocate(155,400);assert wall.tideWave(-1,0);
         var wallEvents=advance(wall,1.2);
@@ -84,7 +84,7 @@ public final class TideFeedbackTest {
             switch(action) {
                 case "dash" -> {assert game.dash(1,0);}
                 case "transform" -> {game.player().collectIchor(100);assert game.transform();}
-                case "death" -> game.player().hurt(99);
+                case "death" -> game.player().hurt(1000);
             }
             noTide(advance(game,1));assert game.projectiles().isEmpty();
         }
@@ -95,7 +95,7 @@ public final class TideFeedbackTest {
     }
     private static void slashHasNoTideFeedback() {
         var empty=fixture(true);assert empty.attack(1,0);noTide(advance(empty,1.2));
-        var target=fixture(true,new Wisp(610,400,610,610,20));assert target.attack(1,0);
+        var target=fixture(true,new Wisp(610,400,610,610,100));assert target.attack(1,0);
         var events=advance(target,1.2);noTide(events);
         assert count(events,RuinedOutpostGame.EventType.WATER_IMPACT)==1;
     }

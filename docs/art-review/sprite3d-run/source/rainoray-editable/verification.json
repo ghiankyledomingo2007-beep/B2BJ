@@ -1,0 +1,27 @@
+{
+  "source_sha256": "c4c2c7fea4ffeccdfccbdf7819352fe977b1142978416363d5d4f1331d425271",
+  "original_faces": 20431,
+  "sword_original_faces": 688,
+  "cap_faces": {
+    "RainorayBody": 49,
+    "RainoraySword": 48
+  },
+  "bones": 20,
+  "pose_samples": 228,
+  "maximum_unaffected_vertex_error": 0.0,
+  "maximum_reweighted_vertex_delta": 0.28649385273456573,
+  "reweighted_vertices": {
+    "RainorayBody": 335,
+    "RainoraySword": 91
+  },
+  "objects": {
+    "RainorayBody": 9871,
+    "RainoraySword": 372,
+    "RainorayMask": 481
+  },
+  "final_blend_sha256": "9d1a1d060eddcf4c56498f87e2964faf78f00dda18cacdc6e2df9b7dd60d12ff",
+  "pipeline_check": "PASS: original and split occluders, hidden sword suppresses trail",
+  "trail_palette_check": "PASS at build_sheets.py cutoff <24",
+  "native_front_idle_red_dot_pixels": 1,
+  "live_game_assets_changed": false
+}

@@ -56,7 +56,7 @@ public final class WispCombatTest {
     private static void deathShrinksToNothing() {
         Wisp wisp = new Wisp(100, 100, 0, 200);
 
-        assert wisp.hitFrom(0, 100, 1, 0, 120, Player.BLADE_DAMAGE);
+        assert wisp.hitFrom(0, 100, 1, 0, 120, wisp.health());
         assert !wisp.alive();
         assert wisp.visible() : "death pose must remain briefly visible";
 

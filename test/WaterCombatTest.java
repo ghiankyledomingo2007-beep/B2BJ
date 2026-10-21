@@ -2,27 +2,27 @@ import java.util.List;
 
 public final class WaterCombatTest {
     public static void main(String[] args) {
-        var enemy=new Wisp(510,300,510,510,4);
+        var enemy=new Wisp(510,300,510,510,80);
         var game=fixture(new Player(300,300),List.of(enemy));
         assert game.attack(1,0);
         game.update(0.12,0,0);
-        assert enemy.health()==4 : "water must travel, never deal instant melee damage";
+        assert enemy.health()==80 : "water must travel, never deal instant melee damage";
         assert game.projectiles().size()==1;
         double x=game.projectiles().get(0).x();
         game.pause(); game.update(0.3,0,0);
         assert game.projectiles().get(0).x()==x;
         assert !game.tideWave(1,0);
         game.togglePause(); game.update(0.3,0,0);
-        assert enemy.health()==3 : "one projectile damages once; health="+enemy.health()
+        assert enemy.health()==80-Player.SLIME_DAMAGE : "one projectile damages once; health="+enemy.health()
                 +", enemy="+enemy.x()+","+enemy.y()+", events="+game.drainEvents();
         assert enemy.state()!=Wisp.State.HURT : "basic water must not repeatedly stun-lock enemies";
         assert game.projectiles().isEmpty();
 
-        var heavy=fixture(new Player(300,260),List.of(new Wisp(430,260,430,430,4)));
+        var heavy=fixture(new Player(300,260),List.of(new Wisp(430,260,430,430,80)));
         assert heavy.tideWave(1,0);
         assert !heavy.attack(1,0) && !heavy.tideWave(1,0) : "skills share casting recovery";
         heavy.update(0.5,0,0);
-        assert heavy.scouts().get(0).health()==2;
+        assert heavy.scouts().get(0).health()==48;
         assert heavy.scouts().get(0).x()>430 : "heavy water transfers momentum";
         assert !heavy.tideWave(1,0) : "Tide Wave cannot be spammed";
         for(int i=0;i<10;i++)heavy.update(0.5,0,0);
@@ -56,7 +56,7 @@ public final class WaterCombatTest {
         double y=cover.centerY()-Player.COLLISION_Y_OFFSET;
         var target=new Wisp(cover.centerX()+100,y,cover.centerX()+100,cover.centerX()+100,4);
         var game=new RuinedOutpostGame(map,new Player(cover.centerX()-100,y),List.of(target),new Guardian(900,300));
-        game.begin(); assert game.attack(1,0); game.update(0.3,0,0);
+        game.setCriticalRollForTesting(()->1);game.begin(); assert game.attack(1,0); game.update(0.3,0,0);
         assert target.health()==4 && game.projectiles().isEmpty() : "cover blocks water damage";
         target.push(-2000,0); target.update(0.1,0,0,map);
         assert !map.isBlocked(target.x(),target.y()+Wisp.COLLISION_Y_OFFSET,Wisp.COLLISION_RADIUS)
@@ -66,14 +66,14 @@ public final class WaterCombatTest {
         double sign=gate.x()<gateMap.spawnX()?-1:1;
         var gates=new RuinedOutpostGame(gateMap,new Player(gate.x()-sign*140,gate.y()),
                 List.of(new Wisp(960,300,960,960,4)),new Guardian(900,300));
-        gates.begin(); assert gates.attack((int)sign,0); gates.update(0.5,0,0);
+        gates.setCriticalRollForTesting(()->1);gates.begin(); assert gates.attack((int)sign,0); gates.update(0.5,0,0);
         assert gates.map().room()==1 && gates.projectiles().isEmpty() : "closed breach stops water";
     }
     private static void bossArmorAndCastCancellation() {
         var map=new RuinedOutpostMap(9);
         var guardian=new Guardian(map.guardianX(),map.guardianY());
         var game=new RuinedOutpostGame(map,new Player(guardian.x()-140,guardian.y()),List.of(),guardian);
-        game.begin(); guardian.activate(game.player().x(),game.player().y());
+        game.setCriticalRollForTesting(()->1);game.begin(); guardian.activate(game.player().x(),game.player().y());
         assert game.attack(1,0); game.update(0.3,0,0);
         assert guardian.health()==Guardian.MAX_HEALTH : "water cannot bypass guarded boss armor";
         var cancel=fixture(new Player(300,300),List.of());
@@ -87,6 +87,6 @@ public final class WaterCombatTest {
     }
     private static RuinedOutpostGame fixture(Player player,List<Wisp> enemies) {
         var game=new RuinedOutpostGame(new RuinedOutpostMap(),player,enemies,new Guardian(900,300));
-        game.begin(); return game;
+        game.setCriticalRollForTesting(()->1);game.begin(); return game;
     }
 }

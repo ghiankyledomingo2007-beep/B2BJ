@@ -4,7 +4,7 @@ public final class GuardianScaleTest {
         var map=new RuinedOutpostMap(9);
         assert map.touchesGuardian(map.guardianX()+52,map.guardianY()+32,1) : "wider rendered feet need matching collision";
         assert !map.touchesGuardian(map.guardianX()+64,map.guardianY()+32,1) : "collision must not include transparent sprite padding";
-        assert Guardian.MAX_HEALTH==240&&Guardian.SLAM_DAMAGE==2&&Guardian.SLAM_RADIUS==112
+        assert Guardian.MAX_HEALTH==1200&&Guardian.SLAM_DAMAGE==35&&Guardian.SLAM_RADIUS==112
                 : "visual size request must not silently buff boss stats";
         System.out.println("GuardianScaleTest passed");
     }

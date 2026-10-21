@@ -17,14 +17,14 @@ public final class SlimeDepthRenderingTest {
     }
     private static void releaseFeedback() {
         var game=fixture();
-        for(int i=0;i<2;i++) {assert game.attack(1,0);game.update(.5,0,0);game.drainEvents();}
+        for(int i=0;i<2;i++) {assert game.attack(1,0);game.update(.5,0,0);game.update(.11,0,0);game.drainEvents();}
         assert game.attack(1,0);
         assert game.drainEvents().stream().noneMatch(e->e.type().name().equals("FINISHER_RELEASE"));
         game.update(.12,0,0);
         assert game.drainEvents().stream().filter(e->e.type().name().equals("FINISHER_RELEASE")).count()==1
                 : "finisher needs a distinct cue at physical release, not input acceptance";
         var cancel=fixture();
-        for(int i=0;i<2;i++) {assert cancel.attack(1,0);cancel.update(.5,0,0);}
+        for(int i=0;i<2;i++) {assert cancel.attack(1,0);cancel.update(.5,0,0);cancel.update(.11,0,0);}
         cancel.drainEvents();assert cancel.attack(1,0)&&cancel.dash(0,1);cancel.update(.5,0,0);
         assert cancel.drainEvents().stream().noneMatch(e->e.type().name().equals("FINISHER_RELEASE"));
     }

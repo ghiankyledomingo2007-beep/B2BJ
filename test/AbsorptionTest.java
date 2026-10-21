@@ -11,20 +11,20 @@ public final class AbsorptionTest {
         System.out.println("AbsorptionTest passed");
     }
     private static void dashCooldownTracksSimulation() {
-        var game=empty(new RuinedOutpostMap(),300,300);game.begin();
+        var game=empty(new RuinedOutpostMap(),300,300);game.setCriticalRollForTesting(()->1);game.begin();
         assert game.player().dashCooldown()==0;
         assert game.dash(1,0);assert game.player().dashCooldown()==Player.DASH_COOLDOWN;
-        advance(game,.1);assert close(game.player().dashCooldown(),.3);
-        game.pause();advance(game,2);assert close(game.player().dashCooldown(),.3);
+        advance(game,.1);assert close(game.player().dashCooldown(),Player.DASH_COOLDOWN-.1);
+        game.pause();advance(game,2);assert close(game.player().dashCooldown(),Player.DASH_COOLDOWN-.1);
         game.togglePause();advance(game,.1);
-        assert !game.player().dashing()&&close(game.player().dashCooldown(),.2)
+        assert !game.player().dashing()&&close(game.player().dashCooldown(),Player.DASH_COOLDOWN-.2)
                 : "HUD must retain cooldown after dash movement ends";
         advance(game,.2);assert game.player().dashCooldown()==0;
     }
     private static void realKillLeavesEdibleRemains() {
         var enemy=new Wisp(375,300,375,375,1);
         var game=new RuinedOutpostGame(new RuinedOutpostMap(),new Player(300,300),
-                List.of(enemy),new Guardian(900,300));game.begin();
+                List.of(enemy),new Guardian(900,300));game.setCriticalRollForTesting(()->1);game.begin();
         assert game.attack(1,0);advance(game,.6);
         assert !enemy.alive()&&game.corpses().size()==1 : "real killing strike must create remains";
         assert game.player().ichor()>=10 : "normal kill pickup is retained";
@@ -35,7 +35,7 @@ public final class AbsorptionTest {
         var game=empty(new RuinedOutpostMap(),300,300);
         game.update(.5,0,0);
         assert game.player().ichor()==0 : "story overlay must freeze regeneration";
-        game.begin();advance(game,5);
+        game.setCriticalRollForTesting(()->1);game.begin();advance(game,5);
         assert close(game.player().ichor(),3) : "Blob regenerates 0.6 Ichor per second";
         game.pause();advance(game,2);
         assert close(game.player().ichor(),3);
@@ -45,23 +45,23 @@ public final class AbsorptionTest {
         advance(game,11.1);assert game.player().recovering();
         assert game.player().ichor()==0;
         advance(game,.5);assert game.player().ichor()==0 : "reversion blocks regen";
-        game.player().hurt(99);advance(game,2);assert game.player().ichor()==0;
-        var full=empty(new RuinedOutpostMap(),300,300);full.begin();full.player().collectIchor(100);
+        game.player().hurt(1000);advance(game,2);assert game.player().ichor()==0;
+        var full=empty(new RuinedOutpostMap(),300,300);full.setCriticalRollForTesting(()->1);full.begin();full.player().collectIchor(100);
         advance(full,2);assert full.player().ichor()==100;
     }
     private static void consumeOnceAndCancel() throws Exception {
-        var game=corpse(false);var player=game.player();player.hurt(1);
+        var game=corpse(false);var player=game.player();player.hurt(20);
         assert game.corpses().size()==1 && game.corpses().get(0).healing();
         assert game.interact();assert game.absorptionTarget()!=null;
         double ichor=player.ichor();advance(game,.4);
         assert game.corpses().get(0).x()<330 : "absorbed remains must actually draw toward the player";
-        assert close(player.healthValue(),4) : "no healing before channel completion";
+        assert close(player.healthValue(),80) : "no healing before channel completion";
         assert game.absorptionProgress()>.4 && game.absorptionProgress()<.6;
         assert !game.interact() : "repeat input cannot restart channel";
         game.pause();double progress=game.absorptionProgress();advance(game,1);
         assert game.absorptionProgress()==progress;
         game.togglePause();advance(game,.41);
-        assert close(player.healthValue(),4.5) : "ordinary corpse heals half a heart";
+        assert close(player.healthValue(),90) : "ordinary corpse heals 10 HP";
         assert player.ichor()>ichor+5 && player.ichor()<ichor+5.5;
         assert game.corpses().isEmpty() && game.absorptionTarget()==null;
         assert !game.interact() : "corpse cannot be consumed twice";
@@ -70,7 +70,7 @@ public final class AbsorptionTest {
         assert events.stream().filter(e->e.type().name().equals("HEALED")).count()==1 : "healing needs distinct feedback";
 
         for(String action:new String[]{"move","dash","attack","tide","transform","hurt"}) {
-            game=corpse(false);player=game.player();player.hurt(1);
+            game=corpse(false);player=game.player();player.hurt(20);
             assert game.interact();advance(game,.3);
             switch(action) {
                 case "move" -> game.update(.01,1,0);
@@ -78,47 +78,47 @@ public final class AbsorptionTest {
                 case "attack" -> { assert game.attack(1,0); }
                 case "tide" -> { assert game.tideWave(1,0); }
                 case "transform" -> { player.collectIchor(100);assert game.transform(); }
-                case "hurt" -> { player.move(0,0,.7,game.map());assert player.hurt(1);game.update(.01,0,0); }
+                case "hurt" -> { player.move(0,0,.7,game.map());assert player.hurt(20);game.update(.01,0,0); }
             }
             assert game.absorptionTarget()==null : action+" must cancel absorption";
             double corpseX=game.corpses().get(0).x(),corpseY=game.corpses().get(0).y();
             advance(game,.6);assert game.corpses().size()==1 : "cancelled corpse remains available";
             assert game.corpses().get(0).x()==corpseX&&game.corpses().get(0).y()==corpseY
                     : "cancelled remains must not snap back";
-            assert player.healthValue()<=4;
+            assert player.healthValue()<=80;
         }
     }
     private static void limitsAndTerrain() throws Exception {
-        var add=corpse(true);add.player().hurt(1);assert !add.corpses().get(0).healing();
+        var add=corpse(true);add.player().hurt(20);assert !add.corpses().get(0).healing();
         assert add.interact();advance(add,.81);
-        assert add.player().healthValue()==4 : "infinite boss adds cannot farm health";
+        assert add.player().healthValue()==80 : "infinite boss adds cannot farm health";
         assert add.drainEvents().stream().noneMatch(e->e.type().name().equals("HEALED"));
         var full=corpse(false);full.player().collectIchor(100);
         assert !full.interact() && full.corpses().size()==1 : "do not waste corpse at full health/energy";
         advance(full,21);assert full.corpses().isEmpty();
 
         var map=new RuinedOutpostMap(2);var wall=map.barriers().get(0);
-        var blocked=empty(map,wall.centerX()-35,wall.centerY()-24);blocked.begin();
+        var blocked=empty(map,wall.centerX()-35,wall.centerY()-24);blocked.setCriticalRollForTesting(()->1);blocked.begin();
         addCorpse(blocked,wall.centerX()+35,wall.centerY()-24,false);
         assert !blocked.interact() : "cannot eat through solid terrain";
         double wallX=wall.centerX()-wall.width()/2-Player.COLLISION_RADIUS;
-        var pressed=empty(map,wallX,wall.centerY()-24);pressed.begin();
+        var pressed=empty(map,wallX,wall.centerY()-24);pressed.setCriticalRollForTesting(()->1);pressed.begin();
         addCorpse(pressed,wallX-30,wall.centerY()-24,false);advance(pressed,.1);
         assert pressed.interact();advance(pressed,.2);pressed.update(.01,1,0);
         assert pressed.player().x()==wallX && pressed.absorptionTarget()==null
                 : "movement intent cancels absorption even when wall prevents displacement";
         var far=corpse(false);far.player().relocate(700,300);assert !far.interact();
-        var dead=corpse(false);dead.player().hurt(99);assert !dead.interact();
-        var cap=empty(new RuinedOutpostMap(),300,300);cap.begin();
+        var dead=corpse(false);dead.player().hurt(1000);assert !dead.interact();
+        var cap=empty(new RuinedOutpostMap(),300,300);cap.setCriticalRollForTesting(()->1);cap.begin();
         for(int i=0;i<25;i++)addCorpse(cap,330,300,false);
         assert cap.corpses().size()<=16 : "corpse collection must remain bounded";
         cap.restart();assert cap.corpses().isEmpty() && cap.absorptionTarget()==null;
-        Player p=new Player(0,0);p.hurt(1);p.heal(Double.NaN);p.heal(-1);
-        assert p.healthValue()==4;p.heal(99);assert p.healthValue()==5;
-        p=new Player(0,0);p.hurt(99);p.heal(1);assert !p.alive() : "partial healing cannot revive";
+        Player p=new Player(0,0);p.hurt(20);p.heal(Double.NaN);p.heal(-1);
+        assert p.healthValue()==80;p.heal(99);assert p.healthValue()==100;
+        p=new Player(0,0);p.hurt(1000);p.heal(1);assert !p.alive() : "partial healing cannot revive";
     }
     private static RuinedOutpostGame corpse(boolean add) throws Exception {
-        var game=empty(new RuinedOutpostMap(),300,300);game.begin();
+        var game=empty(new RuinedOutpostMap(),300,300);game.setCriticalRollForTesting(()->1);game.begin();
         addCorpse(game,330,300,add);advance(game,.6);
         return game;
     }

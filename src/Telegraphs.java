@@ -9,6 +9,7 @@ import java.util.Arrays;
  * Every hazard speaks one flat language so it reads as information, never as an object:
  * a 1 px outline whose outermost pixels are the inclusive hit boundary, a faint fill that
  * grows from the source and meets the outline when damage lands, and one flash on impact.
+ * Projectile windups use short, soft direction marks instead of full-flight lines.
  * Overlapping warnings keep the strongest pixel instead of stacking into a solid blob.
  */
 final class Telegraphs {
@@ -130,17 +131,27 @@ final class Telegraphs {
         cap(bx, by, radius, ux, uy, alpha);
     }
 
-    /**
-     * A regular enemy's aim: a one-pixel line from `start` px out from the body to the end of the shot's
-     * flight, fading with distance. Dashed while the aim still tracks, solid once locked; the stretch up
-     * to `charge` of the way out burns brighter, so the timing reads along the line itself. No lane, no
-     * outline: the projectile shows its own size, and three lanes at once were clutter.
-     */
+    /** A soft ground glint along the shot's heading, brightening as the caster commits. */
     void aim(double ax, double ay, double bx, double by, double start, double charge, boolean locked) {
         double length = Math.hypot(bx - ax, by - ay);
         if (length <= start + 1) return;
         double ux = (bx - ax) / length, uy = (by - ay) / length;
-        ray(ax + ux * start, ay + uy * start, bx, by, charge, locked, AIM, 235, 120);
+        double sx = ax + ux * start, sy = ay + uy * start;
+        int left = clampX(Math.min(sx, bx) - 5), right = clampX(Math.max(sx, bx) + 5);
+        int top = clampY(Math.min(sy, by) - 5), bottom = clampY(Math.max(sy, by) + 5);
+        double brightness = (60 + 60 * clamp(charge)) * (locked ? 1 : .75);
+        for (int y = top; y <= bottom; y++) for (int x = left; x <= right; x++) {
+            double along = (x - ax) * ux + (y - ay) * uy;
+            if (along <= start || along >= length) continue;
+            double t = (along - start) / (length - start), envelope = 4 * t * (1 - t);
+            double half = 1 + 4 * envelope, side = Math.abs((x - ax) * uy - (y - ay) * ux);
+            if (side < half) put(x, y, AIM, (int) (brightness * envelope * (1 - side / half)));
+        }
+        int tipX = (int) Math.round(bx - ux * 5), tipY = (int) Math.round(by - uy * 5);
+        int spark = (int) (100 + 90 * clamp(charge));
+        put(tipX, tipY, FRONT, spark);
+        put(tipX - 1, tipY, AIM, spark / 2); put(tipX + 1, tipY, AIM, spark / 2);
+        put(tipX, tipY - 1, AIM, spark / 2); put(tipX, tipY + 1, AIM, spark / 2);
     }
 
     /**

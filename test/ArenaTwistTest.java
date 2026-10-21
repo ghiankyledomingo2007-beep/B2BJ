@@ -5,7 +5,7 @@ public final class ArenaTwistTest {
             healthy.update(.01,800,500);
             assert healthy.attack()!=Guardian.Attack.FISSURE : "phase one keeps its original move set";
         }
-        Guardian boss=new Guardian(1000,500);boss.activate(800,500);boss.hurt(120);
+        Guardian boss=new Guardian(1000,500);boss.activate(800,500);boss.hurt(boss.maxHealth()/2);
         boolean lastHorizontal=false;int lanes=0;
         for(int i=0;i<12000&&lanes<4;i++) {
             boss.update(.01,800,500);
@@ -45,7 +45,7 @@ public final class ArenaTwistTest {
         RuinedOutpostMap map=new RuinedOutpostMap(9);map.clearGuardian();
         double[][] positions={{192,192},{1728,192},{192,960},{1728,960},{960,576},{64,576},{960,64},{1664,576}};
         for(double[] p:positions) {
-            Guardian boss=new Guardian(map.guardianX(),map.guardianY());boss.activate(p[0],p[1]);boss.hurt(120);
+            Guardian boss=new Guardian(map.guardianX(),map.guardianY());boss.activate(p[0],p[1]);boss.hurt(boss.maxHealth()/2);
             for(int turn=0;turn<2;turn++) {
                 for(int i=0;i<4000;i++) {
                     boss.update(.01,p[0],p[1]);

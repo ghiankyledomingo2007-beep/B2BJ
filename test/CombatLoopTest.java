@@ -58,7 +58,7 @@ public final class CombatLoopTest {
         player.collectIchor(Player.MAX_ICHOR);
         player.transform();
         assert player.attackDamage() == Player.BLADE_DAMAGE
-                : "Blade attack must deal four times Slime damage";
+                : "Blade uses its stronger attack stat";
     }
 
     private static void damageUsesInvulnerabilityAndCanKill() {

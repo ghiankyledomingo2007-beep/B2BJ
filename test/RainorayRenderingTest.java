@@ -8,7 +8,7 @@ public final class RainorayRenderingTest {
         blade.face(1,0);blade.slash();blade.update(0,0,false,.29);
         assert blade.frame()==7 : "side slash must reach all eight authored poses";
         assert blade.sheetPath().endsWith("rainoray_slash.png");
-        blade.update(1,0,true,0);blade.update(1,0,true,Player.DASH_DURATION-.001);
+        blade.update(1,0,true,0);blade.update(1,0,true,Player.BLADE_DASH_DURATION-.001);
         assert blade.frame()==7 : "dash must finish all poses within the actual dash duration";
         var transform=new TransformationAnimation();transform.start();
         transform.update(TransformationAnimation.DURATION/2);

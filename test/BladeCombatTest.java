@@ -134,12 +134,12 @@ public final class BladeCombatTest {
     private static void damageGeometryAndInterruption() throws Exception {
         var a=new Wisp(1000,550,1000,1000,100);var b=new Wisp(1020,550,1020,1020,100);
         var player=new Player(900,550);player.collectIchor(100);player.transform();player.setGodMode(true);
-        var game=new RuinedOutpostGame(new RuinedOutpostMap(5),player,List.of(a,b),new Guardian(1600,1000));game.begin();
+        var game=new RuinedOutpostGame(new RuinedOutpostMap(5),player,List.of(a,b),new Guardian(1600,1000));game.setCriticalRollForTesting(()->1);game.begin();
         // Resolve the thrust with two targets in one lane; the farther one must remain untouched.
         var combo=RuinedOutpostGame.class.getDeclaredField("combo");combo.setAccessible(true);combo.setInt(game,0);
         var timer=RuinedOutpostGame.class.getDeclaredField("comboTime");timer.setAccessible(true);timer.setDouble(game,.5);
         click(game,1,0);advance(game,.14);
-        assert a.health()==96&&b.health()==100 : "thrust strikes one nearest target";
+        assert a.health()==76&&b.health()==100 : "thrust strikes one nearest target";
         int health=a.health();advance(game,.1);assert a.health()==health : "animation never repeats damage";
         game=fixture();game.player().setGodMode(false);click(game,1,0);
         var hurt=RuinedOutpostGame.class.getDeclaredMethod("hurtPlayer",int.class,double.class,double.class);hurt.setAccessible(true);
@@ -187,7 +187,7 @@ public final class BladeCombatTest {
     static RuinedOutpostGame fixture() {
         var player=new Player(900,550);player.collectIchor(100);player.transform();player.setGodMode(true);
         var game=new RuinedOutpostGame(new RuinedOutpostMap(5),player,List.of(),new Guardian(1600,1000));
-        game.begin();game.drainEvents();return game;
+        game.setCriticalRollForTesting(()->1);game.begin();game.drainEvents();return game;
     }
     static void click(RuinedOutpostGame game,int x,int y) {game.primaryPress(x,y);game.primaryRelease(x,y);}
     static void advance(RuinedOutpostGame game,double seconds) {

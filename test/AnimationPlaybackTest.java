@@ -69,13 +69,13 @@ public final class AnimationPlaybackTest {
         int holdFrame=blade(early).frame();advance(early,1.125);
         assert blade(early).frame()!=holdFrame : "full charge hold keeps breathing instead of freezing at the charge cap";
 
-        var dead=panel();dead.game().player().setGodMode(false);dead.game().player().hurt(100);advance(dead,.4);
+        var dead=panel();dead.game().player().setGodMode(false);dead.game().player().hurt(1000);advance(dead,.4);
         assert !dead.game().player().alive()&&blade(dead).action()!=BladeAnimation.Action.IDLE;
         var pixels=body(dead).getRGB(0,0,360,320,null,0,360);advance(dead,.7);
         assert java.util.Arrays.equals(pixels,body(dead).getRGB(0,0,360,320,null,0,360)) : "dead body must not breathe";
 
         var player=new Player(900,550);player.collectIchor(100);player.setUnlimitedBlade(true);
-        var game=new RuinedOutpostGame(new RuinedOutpostMap(5),player,List.of(),new Guardian(1700,1000));game.begin();
+        var game=new RuinedOutpostGame(new RuinedOutpostMap(5),player,List.of(),new Guardian(1700,1000));game.setCriticalRollForTesting(()->1);game.begin();
         var morph=new B2BJ(false,game);morph.setSize(1280,720);
         morph.getActionMap().get("transformPressed").actionPerformed(new ActionEvent(morph,0,""));advance(morph,.69);
         assert player.bladeForm()&&blade(morph).action()==BladeAnimation.Action.IDLE&&blade(morph).frame()==0

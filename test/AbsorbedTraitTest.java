@@ -12,17 +12,17 @@ public final class AbsorbedTraitTest {
     }
     private static void protection() {
         var p=new Player(500,400);p.gainTrait(Player.Trait.MEMBRANE);
-        p.setGodMode(true);assert !p.hurt(2)&&p.trait()==Player.Trait.MEMBRANE;
-        p.setGodMode(false);assert p.hurt(2)&&p.healthValue()==3.5 : "membrane absorbs half a heart once";
+        p.setGodMode(true);assert !p.hurt(30)&&p.trait()==Player.Trait.MEMBRANE;
+        p.setGodMode(false);assert p.hurt(30)&&p.healthValue()==80 : "membrane grants 50 defense for one hit";
         assert p.trait()==Player.Trait.NONE;
-        p.gainTrait(Player.Trait.MEMBRANE);assert !p.hurt(1)&&p.trait()==Player.Trait.MEMBRANE
+        p.gainTrait(Player.Trait.MEMBRANE);assert !p.hurt(30)&&p.trait()==Player.Trait.MEMBRANE
                 : "invulnerable contacts never consume protection";
-        p.move(0,0,.7,new RuinedOutpostMap());assert p.hurt(1)&&p.healthValue()==3;
-        p.move(0,0,.7,new RuinedOutpostMap());assert p.hurt(1)&&p.healthValue()==2;
+        p.move(0,0,.7,new RuinedOutpostMap());assert p.hurt(30)&&p.healthValue()==60;
+        p.move(0,0,.7,new RuinedOutpostMap());assert p.hurt(30)&&p.healthValue()==30;
         p.gainTrait(Player.Trait.MEMBRANE);p.collectIchor(100);assert p.transform();
         assert p.trait()==Player.Trait.NONE : "slime traits cannot stack with Blade defense";
         p.gainTrait(Player.Trait.JET);assert p.trait()==Player.Trait.NONE;
-        var dead=new Player(500,400);dead.gainTrait(Player.Trait.JET);dead.hurt(99);
+        var dead=new Player(500,400);dead.gainTrait(Player.Trait.JET);dead.hurt(1000);
         assert dead.trait()==Player.Trait.NONE;dead.gainTrait(Player.Trait.MEMBRANE);
         assert dead.trait()==Player.Trait.NONE;
     }
@@ -40,7 +40,7 @@ public final class AbsorbedTraitTest {
         corpse(game,CampaignEnemy.Kind.OUTPOST_SPITTER,false);
         assert game.interact();advance(game,.81);
         assert game.player().trait()==Player.Trait.JET : "new trait replaces, never stacks";
-        assert game.player().hurt(1)&&game.player().healthValue()==4;
+        assert game.player().hurt(1)&&game.player().healthValue()==99;
         game.restart();assert game.player().trait()==Player.Trait.NONE;
     }
     private static void jetAndExpiry() {
@@ -66,7 +66,7 @@ public final class AbsorbedTraitTest {
     }
     @SuppressWarnings("unchecked")
     private static void corpse(RuinedOutpostGame game,CampaignEnemy.Kind kind,boolean summon) throws Exception {
-        var enemy=new CampaignEnemy(kind,530,400);enemy.body().hurt(100);
+        var enemy=new CampaignEnemy(kind,530,400);enemy.body().hurt(enemy.body().health());
         var identities=RuinedOutpostGame.class.getDeclaredField("campaignEnemies");identities.setAccessible(true);
         ((Map<Wisp,CampaignEnemy>)identities.get(game)).put(enemy.body(),enemy);
         if(summon) {
@@ -79,7 +79,7 @@ public final class AbsorbedTraitTest {
     }
     private static RuinedOutpostGame fixture() {
         var game=new RuinedOutpostGame(new RuinedOutpostMap(),new Player(500,400),List.of(),new Guardian(1500,900));
-        game.begin();return game;
+        game.setCriticalRollForTesting(()->1);game.begin();return game;
     }
     private static void advance(RuinedOutpostGame game,double seconds) {
         for(double left=seconds;left>1e-8;left-=.01)game.update(Math.min(.01,left),0,0);

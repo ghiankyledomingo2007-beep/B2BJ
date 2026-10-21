@@ -11,7 +11,7 @@ public final class TelegraphGeometryTest {
         overlapsKeepTheStrongestPixel();
         chargeCapsuleMatchesDamage();
         fissureEdgesMatchDamage();
-        spitterTellReachesActualVolley();
+        spitterCueIsCompactAndFollowsVolley();
         System.out.println("TelegraphGeometryTest passed");
     }
 
@@ -77,7 +77,7 @@ public final class TelegraphGeometryTest {
         assert visible(image,x,y-92)&&visible(image,x,y+92) : "a live charge keeps marking its true hit radius";
     }
     private static void fissureEdgesMatchDamage() throws Exception {
-        Guardian guardian=new Guardian(500,360);guardian.activate(640,360);guardian.hurt(120);
+        Guardian guardian=new Guardian(500,360);guardian.activate(640,360);guardian.hurt(Guardian.MAX_HEALTH/2);
         var panel=arena(guardian);
         for(int turn=0;turn<2;turn++) {
             for(int i=0;i<3000&&guardian.fissureBounds()==null;i++)guardian.update(.01,640,360);
@@ -107,7 +107,7 @@ public final class TelegraphGeometryTest {
             guardian.update(guardian.activeDuration()+.01,640,360);
         }
     }
-    private static void spitterTellReachesActualVolley() throws Exception {
+    private static void spitterCueIsCompactAndFollowsVolley() throws Exception {
         var scout=new Wisp(320,360,320,320,2,Wisp.Role.SPITTER);
         for(int i=0;i<100&&scout.state()!=Wisp.State.TELEGRAPH;i++)scout.update(.01,560,360);
         assert scout.state()==Wisp.State.TELEGRAPH;
@@ -119,25 +119,37 @@ public final class TelegraphGeometryTest {
         center.advance(EnemyProjectile.LIFETIME-.001);
         assert center.alive()&&Math.abs(center.x()-scout.x()-399.75)<.001;
         var panel=new B2BJ(false);set(panel,"game",game);
+        int aimingAlpha=0;
         for(boolean locked:new boolean[]{false,true}) {
             while(locked&&!scout.directionLocked())scout.update(.01,560,360);
             var image=drawHazards(panel);
-            double lane=Player.COLLISION_RADIUS+EnemyProjectile.RADIUS;
+            int strongest=0;
+            for(int y=0;y<720;y+=2)for(int x=0;x<1280;x+=2) {
+                int a=alpha(image,x,y);strongest=Math.max(strongest,a);
+                assert a<=190 : "projectile cue stays translucent, including its small charge spark";
+                if(a>0) assert Math.hypot(x-scout.x(),y-scout.y())<=74
+                        : "projectile warning stays near its caster, not across the arena";
+                assert image.getRGB(x,y)==image.getRGB(x+1,y+1) : "soft cues keep native pixel edges";
+            }
+            assert strongest>20 : "windup must still be visible";
+            if(locked)assert strongest>aimingAlpha : "locked windup brightens before release";
+            else aimingAlpha=strongest;
             for(int l=0;l<3;l++) {
                 var shot=game.hostileProjectiles().get(l);
                 assert Math.abs(Math.atan2(shot.directionY(),shot.directionX())-(l-1)*.20)<.00001;
                 double ux=shot.directionX(),uy=shot.directionY();
-                // the aim line runs out to the end of the shot's flight (dashes while aiming, solid once locked)
-                double end=EnemyProjectile.MAX_TRAVEL-6;
-                assert markedWithin(image,scout.x()+ux*end,scout.y()+uy*end,8)
-                        : "volley line "+l+" must reach the end of the shot's flight";
-                // halfway out it sits on the shot's path: a line, not a lane beside it
-                double mx=scout.x()+ux*EnemyProjectile.MAX_TRAVEL/2,my=scout.y()+uy*EnemyProjectile.MAX_TRAVEL/2;
-                assert markedWithin(image,mx,my,8) : "volley line "+l+" must follow the shot's path";
-                if(l==1) assert !markedWithin(image,mx-uy*lane,my+ux*lane,3)&&!markedWithin(image,mx+uy*lane,my-ux*lane,3)
-                        : "a shot's warning is a thin line, not a lane";
+                double near=(B2BJ.AIM_START+B2BJ.SHOT_CUE_LENGTH/2)*2;
+                assert markedWithin(image,scout.x()+ux*near,scout.y()+uy*near,4)
+                        : "compact cue follows volley heading "+l;
+                double far=EnemyProjectile.MAX_TRAVEL/2;
+                assert !markedWithin(image,scout.x()+ux*far,scout.y()+uy*far,8)
+                        : "long targeting lines must be gone";
             }
         }
+        while(scout.state()==Wisp.State.TELEGRAPH)scout.update(.01,560,360);
+        var released=drawHazards(panel);
+        assert java.util.Arrays.stream(released.getRGB(0,0,1280,720,null,0,1280)).allMatch(p->(p>>>24)==0)
+                : "windup cue clears when the projectile releases";
         assert EnemyProjectile.MAX_TRAVEL==400 : "warning follows original speed/lifetime without a balance change";
     }
 

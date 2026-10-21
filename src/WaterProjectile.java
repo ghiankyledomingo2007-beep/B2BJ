@@ -53,6 +53,6 @@ public final class WaterProjectile {
     public boolean heavy() { return kind==Kind.TIDE; }
     public boolean staggers() { return heavy()||kind==Kind.FINISHER||kind==Kind.COUNTER; }
     public boolean alive() { return alive; }
-    public int damage() { return heavy()||kind==Kind.FINISHER?2:1; }
+    public int damage() { return heavy()||kind==Kind.FINISHER?32:Player.SLIME_DAMAGE; }
     public double impulse() { return switch(kind) { case TIDE->420; case FINISHER->300; case COUNTER->220; default->140; }; }
 }

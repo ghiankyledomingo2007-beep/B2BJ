@@ -619,7 +619,7 @@ public final class CampaignRenderer {
     }
 
     private static final String[] TRACKS = {"vitality", "capacity", "efficiency", "edge"};
-    private static final String[][] TRACK_TEXT = {{"Vitality", "+1 health"}, {"Capacity", "+10% ichor"},
+    private static final String[][] TRACK_TEXT = {{"Vitality", "+20 HP"}, {"Capacity", "+10% ichor"},
             {"Efficiency", "slower drain"}, {"Edge", "stronger finisher"}};
 
     /** Camp upgrades: one row per track with its key, level pips and price. */

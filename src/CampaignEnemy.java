@@ -5,14 +5,14 @@ import java.util.Objects;
 /** Campaign identity and combat rules around the existing terrain-aware enemy body. */
 public final class CampaignEnemy {
     public enum Kind {
-        OUTPOST_SCOUT("Outpost Remnant", Wisp.Role.SCOUT, 2, 10, 1),
-        OUTPOST_GUARD("Outpost Guard", Wisp.Role.SHIELD_GUARD, 4, 10, 1),
-        OUTPOST_SPITTER("Ichor Spitter", Wisp.Role.SPITTER, 3, 10, 1),
-        RIFT_IMP("Rift Imp", Wisp.Role.SCOUT, 3, 10, 1),
-        THORN_WOLF("Thorn Wolf", Wisp.Role.GUARD, 6, 15, 2),
-        MIRE_SHAMAN("Mire Shaman", Wisp.Role.SPITTER, 5, 15, 1),
-        FALLEN_KNIGHT("Fallen Knight", Wisp.Role.KNIGHT, 12, 25, 2),
-        CINDER_HEXER("Cinder Hexer", Wisp.Role.SPITTER, 6, 20, 1);
+        OUTPOST_SCOUT("Outpost Remnant", Wisp.Role.SCOUT, 64, 10, 20),
+        OUTPOST_GUARD("Outpost Guard", Wisp.Role.SHIELD_GUARD, 80, 10, 20),
+        OUTPOST_SPITTER("Ichor Spitter", Wisp.Role.SPITTER, 72, 10, 18),
+        RIFT_IMP("Rift Imp", Wisp.Role.SCOUT, 76, 10, 20),
+        THORN_WOLF("Thorn Wolf", Wisp.Role.GUARD, 80, 15, 28),
+        MIRE_SHAMAN("Mire Shaman", Wisp.Role.SPITTER, 80, 15, 22),
+        FALLEN_KNIGHT("Fallen Knight", Wisp.Role.KNIGHT, 160, 25, 32),
+        CINDER_HEXER("Cinder Hexer", Wisp.Role.SPITTER, 90, 20, 24);
 
         private final String name;
         private final Wisp.Role role;
