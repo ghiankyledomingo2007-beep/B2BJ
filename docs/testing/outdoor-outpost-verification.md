@@ -48,7 +48,7 @@ Follow-up: fix barricade depth ordering and integrate four reviewed environment 
 The route test uses deliberate actor placement and a nearly defeated boss
 fixture. No claim of a complete unassisted live playthrough, 3–5-cycle boss
 balance, line coverage, perceptual audio mastering, Windows installer testing,
-or finished art. See the [current audit](../gcd-alignment-audit.md).
+or finished art. See the [September audit](../archive/design/gcd-alignment-audit.md).
 
 Existing running game was left untouched. Reopen `build/B2BJ.jar` or execute
 `run-game.sh` to load this build. Progress is currently session-only.

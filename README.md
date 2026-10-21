@@ -1,178 +1,90 @@
 # B2BJ — Blob to Blade
 
-Java 17 action adventure with a focused **Ruined Outpost presentation build**.
-Rainoray wakes as a cyan slime among fallen knights; their Ichor grants a temporary Blade form.
+Java 17 desktop action adventure. Rainoray changes from a cyan slime into a temporary
+Blade form by gathering Ichor. The current campaign includes **Ruined Outpost** and
+**Corrupted Forest**, with the Outpost Warden and Briarheart. Each region is a
+6144×4096 map with twelve landmarks, optional discoveries and a safe camp.
 
-Ruined Outpost is a continuous 6144×4096 exploration map with twelve named landmarks,
-alternate paths, optional discoveries, a safe camp and the Outpost Warden.
-Normal encounters do not lock travel.
+## Start here
 
-Player sprites and selected effects use reviewed PixelLab art. The Outpost itself — floor,
-forest edge, walls, palisades, landmark set pieces, fires and night lighting, and the
-Warden's fight effects — is pixel art drawn by code in `tools/art/` (see its README; one
-command rebuilds it, hand retouches are kept). Some enemies and UI still use code-drawn
-placeholders; this is not a fully tuned release. The game runs offline without API keys
-or paid services.
-See [FILE_MAP.md](FILE_MAP.md) for the presentation guide and file responsibilities.
+- [File map](FILE_MAP.md): where the game systems, tests and art tools live.
+- [Documentation index](docs/README.md): current guides and historical records.
+- [School files](School/START-HERE.md): GDD, progress reports, handouts and lab submissions.
+  `School/` is a local shortcut, excluded from Git.
 
 ## Build and run
 
-Requires a JDK 17 or newer. No downloaded dependencies.
+Requires JDK 17 or newer. The game runs offline without downloaded Java dependencies.
 
 ```bash
 ./build.sh
 java -jar build/B2BJ.jar
 ```
 
-Or run `./run-game.sh` to verify, build, and launch.
-Rebuilding does not update an already running game window.
-If Java starts but the desktop never displays its window, use
-`./run-game.sh --borderless` (or `java -jar build/B2BJ.jar --borderless`).
-This bypasses native window decorations; use Alt+F4 to quit. The game stays
-1280×720, and its on-screen Menu still provides Settings and Admin / Testing.
+`./run-game.sh` builds, checks and launches. Rebuilding does not update a game window
+that is already open. If native window decorations fail, use `./run-game.sh --borderless`.
+Alt+F4 closes that window.
 
-## How the code works
+### Laboratory 6
 
-`B2BJ.java` starts the Swing window and runs one update step about every 16 ms.
-It sends keyboard and mouse input into `RuinedOutpostGame`, then paints the current
-state through `CampaignRenderer`.
+After building, run `./run-lab6.sh`. It launches the separate enemy-chase demonstration
+with a small Java heap and borderless window. You can also use
+`java -jar build/B2BJ.jar --lab6`.
 
-`RuinedOutpostGame` owns the live state: player, enemies, Warden, projectiles,
-Ichor drops, checkpoints and game phase. `RuinedOutpostMap` supplies the Outpost
-terrain and collision checks. `Player`, `Wisp`, `Guardian`, `WaterProjectile` and
-`EnemyProjectile` each own their movement or combat rules.
+The lab uses 300 px detection, 80 px stopping distance and 80 px/s enemy speed.
+WASD/arrows move the player; 1/2/3 select demonstration cases; Space pauses; R resets.
+Red/blue boxes and collision text remain visible. This mode does not load or write
+campaign saves. See the [Lab 6 guide](docs/testing/lab6/README.md).
 
-The renderer reads that state and draws the world, actors, effects, HUD and map.
-Images are loaded from `assets/`; the build copies those assets into the JAR, so no
-runtime dependency download is needed. `CampaignSave` writes the checkpoint to
-`~/.b2bj/campaign.properties` with an atomic file replacement.
+## Folder guide
 
-For a guided walkthrough, open the CodeTour file in `.tours/`. For a quick file
-reference, use [FILE_MAP.md](FILE_MAP.md).
+| Folder | Contents |
+| --- | --- |
+| `src/` | Game code and the separate lab panel |
+| `test/` | Java assertion-based tests |
+| `assets/` | Runtime art/audio and editable art sources |
+| `tools/` | Art generation, sprite packing, previews and audio tools |
+| `docs/` | Design, testing, art reviews and historical notes |
+| `build/` | Generated runnable JAR |
+| `out/` | IntelliJ compiler output |
+| `release/` | Existing platform release outputs |
+| `School/` | Local shortcut to school documents and submissions |
 
-The [masked motion pass](docs/art-review/human-motion-fix/README.md) documents the
-current Rimuru mask, four-direction motion, click combos and charged attack.
-The [human form rebuild](docs/art-review/rimuru-human/README.md) records the earlier unmasked design. The older
-[Rainoray pass](docs/testing/rainoray-rework/README.md) records the previous masked
-design, skills, whole-body feeding and arena fissures.
+The Java build reads `src/*.java` and `test/*.java`. Asset and review-fixture paths are
+also used by the build, tests and art tools; the file map groups them by responsibility.
 
-## Controls
+## Campaign controls
 
-- Click **Menu** at the top-right for **Resume**, **Settings**, **Admin / Testing**,
-  and **Return to Title**. Settings and testing controls open inside the menu;
-  **Back** returns to its main page. **Close**, **Resume**, or Esc returns to play.
-  Settings are also available from the title screen. Alt+G opens/closes Menu.
-- Enter: new journey. C: continue from saved checkpoint. N explicitly confirms replacing an existing save.
-- WASD / arrows: move; stopping keeps your last facing. Move the mouse while standing to aim Blade.
-- Blob: hold left click for Water Slash. Blade: four short left clicks chain a cut,
-  thrust, rising cut and overhead finisher. One click requests one move.
-- Blade: hold left click to charge; release for a blue cleave (10 Ichor). Full power
-  at 0.8 seconds; dash cancels charge. Hurt, pause and focus loss clear stored input.
-- Right click: Tide Wave (Blob, 4.5-second cooldown) / Ichor Crescent (Blade, 5 seconds).
-- F: Riposte (Blade), a 0.3-second one-hit parry with a 6-second cooldown.
-- Space: dash, with brief invulnerability. Blob dash damages enemies.
-- Q: transform at 100 Ichor.
-- E: read discoveries, absorb nearby remains in Blob form, or use the Outpost gate.
-- H at a safe camp: heal, set checkpoint and save.
-- 1–4 at camp: buy Vitality, Capacity, Efficiency or Edge with Ichor Shards.
-- Esc: pause. Focus loss pauses and releases held input.
-- T while paused: save progression and return to title. Continue starts at the checkpoint, not mid-combat.
-- Hold Tab: Outpost map; stays live during play or remains paused from pause.
-- M: sound toggle. V: reduced screen effects.
-- O: audio/effects options (master, SFX, music volumes). Settings last for this session.
-- F1: testing menu during a live campaign. God mode, unlimited Blade form, one-shot attacks, refill/cooldown reset,
-  +25 shards, travel to any camp/boss and reset the current region's encounters.
-- R: reform at the Outpost checkpoint after death; return to title after completion.
+- Enter starts a journey; C continues. N confirms replacing an existing save.
+- WASD/arrows move. The mouse aims. Left click attacks; hold left click to charge in Blade form.
+- Right click uses Tide Wave in Blob form or Ichor Crescent in Blade form. F uses Riposte.
+- Space dashes. Q transforms at 100 Ichor. E interacts with discoveries, remains and gates.
+- H at camp heals, saves and sets the checkpoint. 1–4 buy camp upgrades.
+- Esc pauses; losing focus also pauses. T while paused saves and returns to the title.
+- Hold Tab for the regional map. M toggles audio; V reduces effects; O opens audio/effects options.
+- Menu or Alt+G opens the in-game menu. F1 opens testing controls during a campaign.
 
-Health pips and segmented gold Ichor are top-left; Blade timer top-centre; form
-top-right; local terrain minimap bottom-right. Blade lasts 12 seconds before
-pickups, deals 4× Blob damage, moves at 80% speed and takes 75% incoming damage.
-Taking damage in Blade form also costs 5 Ichor; reversion has 1.5 seconds of vulnerable recovery.
-Crescent and Riposte each spend 8 Ichor from the remaining Blade timer; they require
-more than 8 remaining so the ability has time to exist before reversion.
+Blade form starts with a base duration of 12 seconds. Pickups, damage, skills and
+upgrades alter that duration. At zero Ichor, Rainoray returns to slime form and recovers
+for 1.5 seconds. Camp progression is saved at `~/.b2bj/campaign.properties`.
 
-Testing cheats are off by default. Opening Menu or F1 does not enable cheats; using any cheat marks a
-test session and prevents saving to both disk and the normal Continue snapshot.
-Switching cheats off does not resume saving. To restore normal play: use Back and
-Return to Title in the menu, then C at the title. New Game explicitly replaces the save.
-God mode blocks damage, not the Blade timer; one-shot still requires a connected hit
-and cannot pass through walls. **Menu > Admin / Testing > Unlimited Blade form** refills
-Ichor: resume and press Q to transform. The timer, skills and incoming hits cannot drain
-Ichor while enabled; the HUD reads UNLIMITED. Health still takes damage. Switching it off
-resumes normal drain. The setting survives testing travel/reset and death, but resets
-on Continue or New Game. Boss travel/reset respawns encounters in the test
-session only. See [50-scenario admin audit](docs/testing/admin-audit.md).
+Using a testing cheat disables saving for that test session. Turning the cheat off
+does not restore saving; return to the title and Continue to resume the normal save.
+New Game explicitly replaces it. The [admin audit](docs/testing/admin-audit.md)
+explains the tested behavior.
 
-Blob passively regenerates 0.6 Ichor/sec. Absorption takes 0.8 seconds standing
-still and grants 5 Ichor plus half a health pip; boss summons cannot heal you.
-Movement/actions/damage interrupt absorption. Persistent tutorial text has moved
-out of gameplay; controls remain in pause. See the [HUD/recovery report](docs/testing/hud-40/README.md).
+## Art and verification
 
-Slime combat now gives each move a different role. Holding LMB chains two opposing
-Water Slashes into a stronger single-target finisher. A timely shot after a backward
-dash is a quick countershot. RMB Tide Wave has a broad front that travels through
-groups, hitting each enemy once; terrain and raised knight shields still stop it.
-Water keeps finite range, drag, swept collisions, stagger resistance and collision-safe knockback.
+Environment art and UI are built in [tools/art](tools/art/README.md). The current human
+sprite pipeline lives in `tools/sprite3d/`; audio tools are in `tools/audio/`.
+See the [documentation index](docs/README.md) for the latest overhaul captures and
+older art decisions. Review outputs are separate from runtime assets.
 
-Swallowing an ordinary guard/knight grants **Iron Membrane**: absorb half a heart
-from one incoming hit. Swallowing a spitter/shaman/hexer grants **Jet Current**:
-water projectiles travel 30% faster, with unchanged damage, range and attack recovery.
-Each trait lasts 10 gameplay seconds; only one can be active, and transformation
-clears it. Boss summons grant neither trait. The corpse prompt previews its trait;
-the HUD shows the active benefit and countdown without replacing health or skill slots.
-See the [slime-depth verification and art review](docs/testing/slime-depth.tdd.md).
+`build.sh` compiles with Java 17 compatibility and lint checks, runs the Java tests,
+checks packaged asset loading and writes `build/B2BJ.jar`. The tests cover movement,
+combat, saving, rendering, map safety and lab behavior. They do not replace human
+playtesting or prove release balance.
 
-## Verification and scope
-
-`build.sh` compiles with Java 17 compatibility and all lint warnings, runs the
-assertion-based tests, and creates a self-contained asset JAR. No numeric
-coverage claim is made.
-
-Checks include terrain pixel scale, section connectivity, collision reachability,
-combat gates, directional attacks, dash immunity, Ichor, pause/focus handling,
-checkpoint recovery, story transitions, packaged recordings, the audio mixer and headless rendering.
-Standing props and actors now sort by ground contact. Reviewed PixelLab palisades,
-cots, military standard and low walls render at native 2× with fitted footprints;
-regression checks cover Blob/Blade occlusion and all four approach directions.
-The latest reviewed batch adds grounded supply barrels and bare trees, an eight-pose
-Blob idle, dissipating teal hits and a clearer Warden wind-up. See the
-[27-generation review](docs/art-review/outpost-batch-27/README.md) for accepted,
-staged and rejected candidates; raw generations are not automatically packaged.
-The [Blade direction pass](docs/art-review/blade-direction-pass/README.md) integrates
-eight-pose front/back cuts with unchanged body scale and corrects side mirroring.
-The [combat repair batch](docs/art-review/combat-repair-40/README.md) now adds two
-reviewed side-attack sequences, body-ripple casting, helmeted remnant actions and
-Warden movement/attacks. Player/remnant native 2× body scale is preserved; rejected candidates
-remain outside the packaged assets.
-At the owner's request, Blob's close-range jelly punch is removed. Water Slash
-deals one damage with 0.48-second recovery; Tide Wave deals two with a 4.5-second
-cooldown. Both have windup, finite travel, drag, wall/gate impacts and collision-safe
-enemy knockback. Blade retains its melee cuts. This is an explicit change from the
-GCD's original Blob attack, not a claim that the document already specified water skills.
-See [water pass](docs/art-review/water-slash/README.md) for art and balance checks.
-The route test positions actors deliberately and uses an end-of-boss fixture;
-it is not evidence of a complete unassisted playthrough.
-
-The art reports below describe historical outpost-only passes and their then-current test/credit counts.
-The legacy twelve-section outpost constructors remain available to regression tests;
-the desktop launcher starts the focused Ruined Outpost campaign.
-
-See [GCD audit](docs/gcd-alignment-audit.md) for historical findings.
-See the [combat repair report](docs/testing/combat-repair-2026-09-06/README.md) for
-26 regression programs, fresh-route observations and adaptive boss scenarios.
-The [official PixelLab guide snapshot](docs/reference/pixellab-mcp-guide.md) was
-read and saved on 2026-09-06; this pass exhausted its 40-generation allowance.
-The subsequent [immersion pass](docs/testing/immersion-40/README.md) adds magnetic
-animated Ichor, distinct sprite-based hurt/pickup effects, a ranged Spitter and
-the owner's requested larger3× Warden. All34 Java checks pass; this new key's
-40-generation allowance is fully consumed. See its [art review](docs/art-review/immersion-40/README.md).
-The campaign saves the Outpost checkpoint, shards and upgrades to
-`~/.b2bj/campaign.properties` using atomic replacement. Invalid saves are preserved
-and reported; N is an explicit new-game overwrite. Enemies respawn after reloading or
-death, but permanent progression stays. Automated fixtures refill health/Ichor, so this
-does not establish unassisted difficulty or release-quality balance. Final animation/art,
-controller support, remappable bindings and longer human playtesting remain.
-
-Windows release workflow is configured but has not been run in this pass.
-Checkpoint `446420e` was pushed to the owner's personal GitHub on 2026-09-07;
-its verification workflow passed. No release tag or installer publication was made.
+[Earlier development notes](docs/archive/development-notes-2026-10-21.md) preserve
+previous art passes, test counts and release history. The September school GDD still
+needs reconciliation with the two-region build.

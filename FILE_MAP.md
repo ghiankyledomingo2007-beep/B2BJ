@@ -1,96 +1,80 @@
 # B2BJ file map
 
-Ruined Outpost is the current presentation build. Files are grouped by the part of the game they own.
+The current campaign contains Ruined Outpost and Corrupted Forest. This map groups the
+existing Java files by responsibility; `build.sh` continues to compile `src/*.java`.
 
-## Start here
+## Entry points and world
 
-- `src/B2BJ.java` — desktop window, input bindings, game loop, rendering order and HUD wiring.
-- `src/RuinedOutpostGame.java` — game state, movement, combat, encounters and checkpoint flow.
-- `src/RuinedOutpostMap.java` — Outpost terrain, rooms, gates, collision, props and landmarks.
-- `src/OutpostStory.java` — Outpost progression: prologue, scouts, Warden, escape, death and completion.
+- `src/B2BJ.java`: desktop entry point, input, frame loop and `--lab6` selection.
+- `src/RuinedOutpostGame.java`: live game state, combat integration, encounters and checkpoints.
+- `src/CampaignWorld.java`: both regions, landmarks, routes, enemy placement and the forest channel.
+- `src/RuinedOutpostMap.java`: terrain, obstacles, region collision and map queries.
+- `src/OutpostStory.java`: story text, discoveries, boss progression and completion.
+- `src/CampaignSave.java`: atomic save/load at `~/.b2bj/campaign.properties`.
 
 ## Player and combat
 
-- `src/Player.java` — Blob movement, Blade transformation, health, Ichor, dash and upgrades.
-- `src/Wisp.java` — enemy movement, telegraphs, melee attacks and ranged attacks.
-- `src/CampaignEnemy.java` — Outpost enemy profiles and shared enemy combat rules.
-- `src/Guardian.java` — Outpost Warden behavior, attack cycles and damage windows.
-- `src/WaterProjectile.java` — Water Slash, Tide Wave and finisher projectiles.
-- `src/EnemyProjectile.java` — hostile projectile movement and collision.
-- `src/GameAudio.java` — the sound mixer: recorded effects in `assets/audio/`, loops, music ducking and volume controls.
-- `tools/audio/generate_sfx.py`, `tools/audio/import_free.py` — how the recordings are made (ElevenLabs) or imported (CC0 packs).
-- `tools/sprite3d/` — the Blender puppet that renders every human-form sprite sheet (`build_sheets.py --install`).
+- `src/Player.java`: health, Ichor, forms, movement, attacks and upgrades.
+- `src/Wisp.java`: ordinary enemy movement, attacks and telegraphs.
+- `src/CampaignEnemy.java`: region-specific enemy profiles.
+- `src/Guardian.java`: boss behavior and attack cycles.
+- `src/WaterProjectile.java`, `src/EnemyProjectile.java`: player and enemy projectiles.
+- `src/CombatFeedback.java`: hit stop, camera shake and combat feedback.
+- `src/GameAudio.java`: sound effects, music, mixer and volume settings.
 
-## Visuals and interface
+## Rendering and animation
 
-- `src/CampaignRenderer.java` — Outpost world, scenery, enemy sprites, boss, map and campaign HUD.
-- `src/OutpostSet.java` — landmark set pieces: art, placement, solid footprints and light sources (one table for renderer, collision and art bake).
-- `src/OutpostLights.java` — night lighting: dithered fire, lamp, Ichor and Warden glows.
-- `src/WardenFx.java` — visual-only Warden effects: wake shock, slam cracks and rubble, spin smear, charge afterimages, spikes, enrage flames, hit flash, death and remains, name card.
-- `tools/art/` — the code that draws all Outpost environment art and the Warden effects (`build-art.sh`, README).
-- `src/SlimeAnimation.java`, `src/BladeAnimation.java`, `src/WispAnimation.java`, `src/TransformationAnimation.java` — animation timing and sprite frames.
-- `src/CombatFeedback.java` — hit stop, camera shake and combat feedback.
-- `src/CampaignMenu.java`, `src/CampaignOptions.java`, `src/DebugPanel.java` — pause menu, settings and testing controls.
+- `src/CampaignRenderer.java`: world, actors, effects, HUD and map rendering.
+- `src/SetPieces.java`: Outpost and Forest scenery, placement and footprints.
+- `src/OutpostLights.java`: world lighting and glows.
+- `src/WardenFx.java`, `src/MobFx.java`: boss and ordinary-enemy visual effects.
+- `src/Telegraphs.java`: attack warnings and hazard shapes.
+- `src/SlimeAnimation.java`, `src/BladeAnimation.java`, `src/WispAnimation.java`: actor animation timing.
+- `src/TransformationAnimation.java`: slime/Blade transitions.
+- `src/WangTileset.java`: legacy terrain tile rendering used by older map paths.
 
-## Persistence and tests
+## Menus and interface
 
-- `src/CampaignSave.java` — atomic checkpoint save/load at `~/.b2bj/campaign.properties`.
-- `src/OutpostStory.java` — Outpost progression, title text, death and completion.
-- `test/` — assertion based checks for combat, rendering, map safety, input and packaged assets.
-- `build.sh` — Java 17 compilation, test run and packaged JAR creation.
-- `run-game.sh` — verifies, builds and launches the game.
+- `src/Ui.java`, `src/PixelSwing.java`: shared visual components and Swing presentation.
+- `src/TitleScreen.java`, `src/TitleMenu.java`: title presentation and choices.
+- `src/LoadingScreen.java`, `src/Splash.java`: loading and startup display.
+- `src/CampaignMenu.java`, `src/CampaignOptions.java`: pause menu and settings.
+- `src/DebugPanel.java`: campaign testing controls.
 
-## Assets
+## School demonstration
 
-- `assets/characters/` — player, Warden and Outpost enemy sprites.
-- `assets/effects/` — attacks, impacts, telegraphs, rain and pickups.
-- `assets/environment/ruined_outpost/` — Outpost environment masks and scenery (legacy room mode).
-- `assets/props/outpost/` — Outpost props; `ruin_wall`, `stake_wall`, `supplies` and `set_*` are generated by `tools/art/`.
-- `assets/tilesets/outpost/` — the baked Outpost floor, its layout fingerprint, decals and the reusable 32 px tileset.
-- `assets/tilesets/ruined_outpost/` — legacy Wang terrain tiles (room mode).
-- `assets/source/outpost/` — editable `.pixie-dust` sources, the `outpost_night.gpl` palette, the optional floor retouch layer (not packaged).
-- `assets/ui/` — HUD icons and frames.
+- `src/EnemyAiLab.java`: separate center-based chase demonstration.
+- `test/EnemyAiLabTest.java`: detection boundaries, stopping, speed, controls and rendered states.
+- `run-lab6.sh`: local Lab 6 launcher after building.
+- [Lab 6 guide](docs/testing/lab6/README.md): specification, controls and demonstration order.
+- [School document index](School/START-HERE.md): local GDD, reports and submission files.
 
-## Explaining the human animation and combat
+## Assets and tools
 
-1. `B2BJ` forwards mouse presses/releases and aim to `RuinedOutpostGame`.
-   Movement faces travel; stopping keeps that direction. Fresh mouse movement aims
-   while standing, and clicks aim attacks. An active strike keeps its aim.
-2. `RuinedOutpostGame.primaryPress/primaryRelease` distinguishes short clicks from
-   holds. A click advances the four-step combo; a hold charges one cleave on release.
-   One short input buffer accepts a click near recovery. Pause, hurt, focus loss and
-   form loss cancel stored input. The existing parry and Crescent stay separate skills.
-3. `RuinedOutpostGame.resolveStrike()` applies damage once at the contact time.
-   Thrust hits the nearest target in a narrow lane; the finisher pushes farther.
-   `Player.attackStep()` uses the same wall collision as ordinary movement.
-4. `BladeAnimation` selects idle, start, run, stop, turn, dash, cut, charge, hold,
-   cleave, cast, guard or hurt. The selected pictures contain hair and clothing motion;
-   there is no cloth-physics engine or online generation during gameplay.
-5. `B2BJ.drawBlade()` draws native 80×80 pictures at 2× scale. New sheets have four
-   directional rows (south, east, north, west). `bladeAttackFrame()` synchronizes the
-   contact picture to the game's damage clock. `drawBladeTrail()` paints the blade's
-   swoosh from a separate trail sheet; impact sparks happen only on a connected hit.
-6. `TransformationAnimation` advances the slime/human transition.
+- `assets/characters/`, `assets/effects/`, `assets/ui/`, `assets/audio/`: packaged actor art, effects, interface and sound.
+- `assets/props/outpost/`, `assets/props/forest/`: regional scenery.
+- `assets/tilesets/outpost/`, `assets/tilesets/forest/`: current regional ground art.
+- `assets/source/`: editable art source files, excluded from JAR packaging.
+- `assets/environment/ruined_outpost/`, `assets/tilesets/ruined_outpost/`: legacy room-mode art.
+- [Art pipeline](tools/art/README.md): generation, editable exports and retouch safeguards.
+- `tools/sprite3d/`: human sprite generation and packing pipeline.
+- `tools/audio/`: sound generation and import helpers.
+- Other files in `tools/` are preview, packing and inspection utilities; earlier helpers may describe historical pipelines.
 
-Human pictures live in `assets/characters/blade/rainoray_*.png` (rendered from the
-3D puppet in `tools/sprite3d/`, one command rebuilds all of them); transformations
-in `assets/effects/transform_*.png`; portrait in `assets/ui/blade.png`.
-`test/BladeCombatTest.java` checks click/hold timing, cancellations, charge cost,
-combo sequencing, direction, wall collision, single-target thrust and pixel-size effects.
-`test/AnimationPlaybackTest.java` checks cast facing, planted action feet, dash buffering
-and visibility, local charge timing, death pose and transformation-to-idle timing.
-Full-body human actions plant the feet; dash remains available under the existing
-cancel rules. Charge animation uses time since the press, and running turns keep
-the current stride. Only damage triggers blinking, not dash protection.
-`tools/PreviewHumanCombat.java` produces input-driven development screenshots without
-changing the campaign save. Art sources and the current plan live in
-`docs/art-review/human-motion-fix/`. Its `selection.json` lists every source frame
-used in each runtime sheet; `tools/pack-human-motion.py` rebuilds those sheets offline.
+## Build and verification
 
-## Presentation flow
+- `build.sh`: Java compilation, test execution, packaged-asset checks and JAR creation.
+- `run-game.sh`: build and launch the regular game.
+- `test/`: all Java assertion-based tests.
+- `.github/workflows/`: CI and Windows release definitions.
+- `build/`, `out/`, `release/`: generated outputs; excluded from Git.
 
-1. Run `./run-game.sh`.
-2. Press Enter to begin.
-3. Explore the Outpost, defeat its encounters, then reach the east gatehouse.
-4. Defeat the Outpost Warden and cross the eastern gate.
-5. Use `Menu` or `Esc` to show controls during the presentation.
+## Documentation
+
+Start with [docs/README.md](docs/README.md). Current design notes stay in `docs/design/`;
+old campaign plans and audits are in `docs/archive/design/`. Art reviews and testing
+fixtures keep their existing paths because tools and tests reference them, including
+`docs/art-review/motion-polish/`.
+
+The [previous file map](docs/archive/file-map-before-2026-10-21.md) retains the detailed
+September combat walkthrough and historical pipeline descriptions.

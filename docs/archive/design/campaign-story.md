@@ -1,5 +1,7 @@
 # Blob to Blade: campaign story
 
+> Historical design record from September 2026. Current implementation and file locations are described in the [project map](../../../FILE_MAP.md).
+
 Source: *Blob to Blade Game Concept Document*, v1.0, August 5, 2026,
 sections 3.4 and 4.1–4.4. The Java game remains the implementation.
 Rainoray, the four biome names, his former life, the Ichor premise, the final

@@ -20,7 +20,7 @@ All four have transparent margins. Native visible bounds, respectively:
 `[4,8..91,59]`, `[15,10..97,52]`, `[9,5..38,90]`, `[4,19..91,49]`.
 No placeholder platform or procedural wall is drawn underneath these sprites.
 The first wall candidate had separated diagonal pieces and was rejected;
-its exact job ID is retained in the [ledger](../../ruined-outpost-animation-plan.md).
+its exact job ID is retained in the [ledger](../../archive/design/ruined-outpost-animation-plan.md).
 
 Screenshots: `behind-blob.png`, `front-blob.png`, `behind-blade.png`,
 `front-blade.png`, `barracks.png`, `standard-yard.png`, `north-watch.png`.

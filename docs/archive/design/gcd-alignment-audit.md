@@ -1,15 +1,17 @@
 # Ruined Outpost — GCD alignment and remaining issues
 
+> Historical design record from September 2026. Current implementation and file locations are described in the [project map](../../../FILE_MAP.md).
+
 **Historical audit.** The September 8 placeholder campaign now implements all four
 regions, connected exploration, quests/upgrades, disk saves and both GCD endings.
 Current scope/evidence: [campaign plan](campaign-build-plan.md),
-[story](campaign-story.md), [quality report](testing/campaign-quality.md).
+[story](campaign-story.md), [quality report](../../testing/campaign-quality.md).
 The outpost-only status and generation counts below are retained as history.
 
 Updated: 2026-09-06.
 
 Later owner-approved changes and current verification are recorded in the
-[2026-09-07 immersion report](testing/immersion-40/README.md): ranged Spitter,
+[2026-09-07 immersion report](../../testing/immersion-40/README.md): ranged Spitter,
 magnetic/overflow-preserving Ichor, corrected hit/facing effects and larger Warden.
 The historical status and generation counts below describe the earlier audit pass.
 
@@ -75,7 +77,7 @@ Owner-requested change after the original GCD audit: Blob's jelly punch is now
 replaced by travelling cyan Water Slash and a cooldown-limited Tide Wave. Both use
 reviewed PixelLab effects, collision/drag/knockback and native 2x rendering. Basic
 water does not stun-lock enemies; heavy water interrupts. This is a deliberate
-design revision, not text from the GCD. See [water pass](art-review/water-slash/README.md).
+design revision, not text from the GCD. See [water pass](../../art-review/water-slash/README.md).
 
 | Priority | Issue | Evidence / next check |
 | --- | --- | --- |

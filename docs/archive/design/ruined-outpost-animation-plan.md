@@ -1,5 +1,7 @@
 # Ruined Outpost animation / effect review
 
+> Historical design record from September 2026. Current implementation and file locations are described in the [project map](../../../FILE_MAP.md).
+
 Updated: 2026-09-06. Supersedes the earlier three-Wisp shrine plan.
 
 ## Runtime scale
@@ -46,7 +48,7 @@ or a reason to accept poor art. No credentials or provider limits were changed.
 
 Historical settled provider balance after the prop batch: **27 of 40** generations remaining, 13 used,
 $0 purchased credit. Five generations used in this prop batch. This is inventory,
-not a project budget cap. See [prop review](art-review/outpost-props/README.md).
+not a project budget cap. See [prop review](../../art-review/outpost-props/README.md).
 
 ### Owner-requested full allowance batch
 
@@ -54,7 +56,7 @@ The subsequent explicit instruction was "use it all". All 27 remaining
 generations were spent on completed Ruined Outpost jobs. Final live balance:
 **0 remaining / 40 used**, $0 purchased credit. No pending jobs or new purchases.
 All 155 PNG outputs and exact IDs are preserved in
-[27-job review](art-review/outpost-batch-27/README.md) and its JSON ledger.
+[27-job review](../../art-review/outpost-batch-27/README.md) and its JSON ledger.
 
 Runtime now includes an eight-pose Blob idle, a nine-frame teal hit, clearer
 Warden anticipation/slam/recovery, supply barrels and bare trees. Other candidates
@@ -88,4 +90,4 @@ eight ordinary jobs cost 8 total and one seven-frame Pro correction cost 20.
 New side candidates failed visual review, including the expensive correction.
 Only the previously reviewed front/back cuts were integrated; the facing fix and
 native-scale regression checks also shipped. See the exact requests, rejection
-reasons and outputs in [direction review](art-review/blade-direction-pass/README.md).
+reasons and outputs in [direction review](../../art-review/blade-direction-pass/README.md).

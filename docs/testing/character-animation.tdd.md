@@ -1,6 +1,6 @@
 # Character Animation TDD Evidence
 
-Source: [Ruined Outpost animation plan](../ruined-outpost-animation-plan.md)
+Source: [Ruined Outpost animation plan](../archive/design/ruined-outpost-animation-plan.md)
 
 ## User journeys
 

@@ -3,7 +3,7 @@
 ## Delivered scope
 
 Source: GCD v1.0, pp. 9–20, plus the owner's explicit continuous-exploration,
-Java, water-attack and placeholder-art overrides. See [build plan](../campaign-build-plan.md).
+Java, water-attack and placeholder-art overrides. See [build plan](../archive/design/campaign-build-plan.md).
 The pre-build state is preserved at `cb8c35d` and branch `checkpoint/pre-campaign-20260908`.
 Claude's independent `outpost-art-fable` branch was neither overwritten nor merged.
 

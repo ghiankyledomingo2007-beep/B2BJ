@@ -279,7 +279,9 @@ public final class B2BJ extends JPanel {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            B2BJ panel = new B2BJ(true,RuinedOutpostGame.campaign(CampaignSave.defaultPath()));
+            boolean lab6 = java.util.Arrays.asList(args).contains("--lab6");
+            JPanel panel = lab6 ? new EnemyAiLab(true)
+                    : new B2BJ(true,RuinedOutpostGame.campaign(CampaignSave.defaultPath()));
             JFrame window = new JFrame("B2BJ — Blob to Blade");
             window.setUndecorated(java.util.Arrays.asList(args).contains("--borderless"));
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -288,7 +290,7 @@ public final class B2BJ extends JPanel {
             window.pack();
             window.setLocationRelativeTo(null);
             window.setVisible(true);
-            GameAudio.startMusic();
+            if (!lab6) GameAudio.startMusic();
             panel.requestFocusInWindow();
         });
     }

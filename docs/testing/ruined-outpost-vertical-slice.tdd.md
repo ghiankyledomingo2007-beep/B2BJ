@@ -2,7 +2,7 @@
 
 > Historical record of the discarded three-Wisp courtyard prototype.
 > Its story, room design, boss health and completion claims are superseded by
-> [the current GCD audit](../gcd-alignment-audit.md). Do not use this as current design authority.
+> [the September GCD audit](../archive/design/gcd-alignment-audit.md). Do not use this as current design authority.
 
 Date: 2026-09-05
 

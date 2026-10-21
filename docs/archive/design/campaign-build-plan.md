@@ -1,5 +1,7 @@
 # Complete placeholder campaign
 
+> Historical design record from September 2026. Current implementation and file locations are described in the [project map](../../../FILE_MAP.md).
+
 Checkpoint: `cb8c35d`, branch `checkpoint/pre-campaign-20260908`.
 Claude's separately committed `outpost-art-fable` remains untouched.
 
