@@ -14,3 +14,10 @@ Dash cooldown is now 0.32 seconds in both forms. Slime uses a longer 144-pixel w
 
 
 [Dash comparison](Dash-Variants.mp4) — four seconds at normal gameplay speed, 60 fps. Controlled campaign renderer captures show right/down/left/up in Slime, then Blade, with no save access. [Slime still](slime-dash.png) · [Blade still](human-dash.png).
+
+
+## Sprite recovery — 2026-10-22
+
+[Restored Rainoray, four directions](restored-four-directions.png) was rendered from the rebuilt JAR after recovering eleven accidentally replaced sprites from checkpoint `dee64ef`. The pre-repair files are preserved online in `0d6f3ff`. Historical source art remains available; the shared packer now blocks old three-facing sheets from replacing current human/morph assets. The real legacy packing command was tested and left all 371 runtime assets unchanged. All 81 game checks, packaged assets and the separate packing-tool regression passed. The screenshot uses temporary in-memory state with no save access.
+
+Sword slash redesign remains pending. The existing Blade timer/aura draft was preserved, not completed as part of this recovery.

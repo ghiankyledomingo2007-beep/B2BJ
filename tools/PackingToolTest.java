@@ -28,7 +28,30 @@ public final class PackingToolTest {
             assert expected.getMessage().contains("floor drift");
         }
         transparentTailIsExplicitAndTerminal(dir,input);
+        legacyHumanSheetsCannotReplaceCurrentArt(dir,input);
         System.out.println("\nPackingToolTest passed");
+    }
+    private static void legacyHumanSheetsCannotReplaceCurrentArt(java.nio.file.Path dir,java.nio.file.Path input)throws Exception {
+        for(String name:new String[]{"assets/characters/blade/rainoray_idle.png",
+                "assets/characters/blade/rainoray_slash.png","assets/effects/transform_in.png","assets/effects/transform_out.png"}) {
+            var target=dir.resolve(name);Files.createDirectories(target.getParent());Files.copy(input,target);
+            byte[] before=Files.readAllBytes(target);
+            for(int rows:new int[]{3,9}) {
+                String[] args=new String[5+8*rows];java.util.Arrays.fill(args,input.toString());
+                args[0]="80";args[1]="80";args[2]="8";args[3]="-1";args[4]=target.toString();
+                try {PackFrames.main(args);throw new AssertionError("legacy human grid must be rejected: "+name);}
+                catch(IllegalArgumentException expected) {assert expected.getMessage().contains("four facing rows");}
+                assert java.util.Arrays.equals(before,Files.readAllBytes(target)) : "rejected legacy pack overwrote current art";
+            }
+        }
+        for(String name:new String[]{"assets/characters/blade/rainoray_idle.png","archive/rainoray_idle.png"}) {
+            int rows=name.startsWith("assets/")?4:3;
+            var target=dir.resolve(name);Files.createDirectories(target.getParent());
+            String[] args=new String[5+8*rows];java.util.Arrays.fill(args,input.toString());
+            args[0]="80";args[1]="80";args[2]="8";args[3]="-1";args[4]=target.toString();
+            PackFrames.main(args);
+            assert ImageIO.read(target.toFile()).getHeight()==80*rows : "modern game art and archived legacy exports remain supported";
+        }
     }
     private static void transparentTailIsExplicitAndTerminal(java.nio.file.Path dir,java.nio.file.Path input)throws Exception {
         var empty=dir.resolve("empty.png");ImageIO.write(new BufferedImage(80,80,BufferedImage.TYPE_INT_ARGB),"png",empty.toFile());

@@ -2,6 +2,11 @@
 
 Owner requested a pause and GitHub backup before sleeping. Do not resume feature work until asked.
 
+Later on 2026-10-22, the owner requested recovery after an old art pack replaced 11 sprites.
+The pre-repair state was separately backed up online as `0d6f3ff`. Recovery restores those
+files from this original overnight checkpoint (`dee64ef`) and blocks legacy three-facing
+exports into the live Rainoray asset paths. The unfinished VFX work below remains paused.
+
 Saved in this checkpoint:
 
 - Separate Rainoray body, sword and mask source, reviewed game sprite sheets, calmer four-direction sword carry and animation evidence.

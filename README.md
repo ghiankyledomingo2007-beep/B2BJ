@@ -25,6 +25,10 @@ java -jar build/B2BJ.jar
 that is already open. If native window decorations fail, use `./run-game.sh --borderless`.
 Alt+F4 closes that window.
 
+In IntelliJ, run `B2BJ.main()` or `run-game.sh`. The `tools/pack-*.sh` scripts are
+historical art exporters, not game launchers. Legacy three-facing Rainoray exports
+are blocked from overwriting the current four-facing game assets.
+
 ### Laboratory 6
 
 After building, run `./run-lab6.sh`. It launches the separate enemy-chase demonstration
