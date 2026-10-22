@@ -139,14 +139,18 @@ final class WardenArt {
         return c;
     }
 
-    /** A rock spike bursting from the floor on a cyan crack, then crumbling. */
+    /** A rock spike bursting through broken rubble, with small glints in its split face. */
     static Canvas spike(int f) {
         Canvas c = new Canvas(20, 30);
         int base = 27, cx = 10;
         int[] heights = {0, 8, 19, 20, 12, 0};
         int h = heights[f];
-        if (f <= 4) for (int x = cx - 7; x <= cx + 7; x++) c.set(x, base, f == 0 ? Pal.CYAN[4] : Pal.CYAN[2]);
-        if (f == 0) { c.set(cx, base, Pal.CYAN[5]); c.set(cx - 1, base, Pal.CYAN[5]); }
+        if (f <= 4) {
+            c.blit(Decals.stone(5, 4, false, 947), cx - 8, base - 2);
+            c.blit(Decals.stone(4, 3, false, 948), cx + 4, base - 1);
+            c.set(cx - 2, base - 1, Pal.CYAN[2]);
+            c.set(cx, base - 2, Pal.CYAN[4]);
+        }
         if (h > 0) for (int y = 0; y < h; y++) {
             // a split, leaning shard: two facets, a lit left face and a dark right face, jagged edges
             double t = y / (double) h;
@@ -158,8 +162,7 @@ final class WardenArt {
                 int colour = x < ridge - 1 ? Pal.STONE[5] : x <= ridge ? Pal.STONE[6] : x < right ? Pal.STONE[3] : Pal.STONE[2];
                 if (x == left) colour = Pal.STONE[4];
                 if (y >= h - 2) colour = x <= ridge ? Pal.STONE[7] : Pal.STONE[4];
-                if (y < 3) colour = Pal.CYAN[y == 0 ? 3 : 2];                         // glow where it tore out
-                if (y >= 3 && y < 6 && x == ridge) colour = Pal.CYAN[1];               // light bleeding up the crack
+                if (y < 6 && x == ridge && y % 2 == 0) colour = Pal.CYAN[y < 3 ? 3 : 1];
                 if (f == 4 && Noise.rnd(x, y, 941) < .3) continue;
                 c.set(cx + x, base - 1 - y, colour);
             }

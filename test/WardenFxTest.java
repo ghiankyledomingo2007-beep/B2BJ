@@ -5,7 +5,10 @@ import java.util.Arrays;
 
 /** Warden effects stay capped, run without art, and sit in depth order so actors in front cover the Warden's flash. */
 public final class WardenFxTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        spikeArtHasNoBars();
+        groundAttacksKeepNaturalWindups();
+        waveSpikesFollowTheDamageCircle();
         BufferedImage atlas = B2BJ.loadImage("assets/characters/guardian/warden_motion.png");
         var view = new BufferedImage(640, 480, BufferedImage.TYPE_INT_ARGB);
         int[] pixels = ((DataBufferInt) view.getRaster().getDataBuffer()).getData();
@@ -55,5 +58,69 @@ public final class WardenFxTest {
         for (int p : pixels) assert p == 0 : "reduced effects keep the plain blink, without the white flash";
         g.dispose();
         System.out.println("WardenFxTest passed");
+    }
+
+    private static void spikeArtHasNoBars() {
+        for(String prefix:new String[]{"warden","briar"}) {
+            var sheet=B2BJ.loadImage("assets/effects/"+prefix+"_spike.png");
+            assert sheet!=null&&sheet.getWidth()==120&&sheet.getHeight()==30;
+            for(int f=0;f<6;f++)for(int y=0;y<30;y++) {
+                int run=0;
+                for(int x=0;x<20;x++) {
+                    int p=sheet.getRGB(f*20+x,y),r=p>>16&255,g=p>>8&255,b=p&255;
+                    boolean glow=prefix.equals("warden")?g>r*1.4&&b>r*1.3:r>g&&g>b*1.4;
+                    run=(p>>>24)>0&&glow?run+1:0;
+                    assert run<=3 : prefix+" spike has a horizontal glow bar in frame "+f;
+                }
+            }
+            int height=0;
+            for(int y=0;y<27;y++)if((sheet.getRGB(2*20+10,y)>>>24)>0)height++;
+            assert height>10 : "spikes retain their rising stone silhouette";
+        }
+    }
+
+    private static void groundAttacksKeepNaturalWindups() throws Exception {
+        for(var theme:new WardenFx.Theme[]{WardenFx.Theme.WARDEN,WardenFx.Theme.BRIARHEART})
+            for(var attack:new Guardian.Attack[]{Guardian.Attack.TARGET,Guardian.Attack.FISSURE}) {
+                var boss=new Guardian(320,300);boss.activate(400,300);
+                set(boss,"state",Guardian.State.TELEGRAPH);set(boss,"attack",attack);
+                set(boss,"targetX",400.);set(boss,"targetY",300.);set(boss,"stateTime",.4);
+                var image=new BufferedImage(800,600,BufferedImage.TYPE_INT_ARGB);
+                var g=image.createGraphics();new WardenFx(null,theme).drawGround(g,boss,0,0);g.dispose();
+                assert Arrays.stream(((DataBufferInt)image.getRaster().getDataBuffer()).getData()).anyMatch(p->p!=0)
+                        : attack+" needs a visible dust windup before it damages the player";
+                if(attack==Guardian.Attack.TARGET) {
+                    int left=0,right=0;
+                    for(int y=260;y<380;y++)for(int x=320;x<480;x++)if(image.getRGB(x,y)!=0) {
+                        if(x<352)left++;
+                        if(x>448)right++;
+                    }
+                    assert left>0&&right>0 : "slam dust must show beyond the player's 96px-wide body";
+                }
+            }
+    }
+
+    private static void waveSpikesFollowTheDamageCircle() throws Exception {
+        var boss=new Guardian(320,300);boss.activate(320,300);
+        set(boss,"state",Guardian.State.SLAM);set(boss,"attack",Guardian.Attack.SHOCKWAVE);
+        set(boss,"targetX",320.);set(boss,"targetY",300.);set(boss,"stateTime",.4);
+        var fx=new WardenFx(null);fx.slam(boss,320,300);fx.update(.01,boss);
+        var field=WardenFx.class.getDeclaredField("bits");field.setAccessible(true);
+        int count=0;
+        for(var bit:(java.util.List<?>)field.get(fx)) {
+            var kind=bit.getClass().getDeclaredField("kind");kind.setAccessible(true);
+            if(!kind.get(bit).toString().equals("SPIKE"))continue;
+            var x=bit.getClass().getDeclaredField("x");x.setAccessible(true);
+            var y=bit.getClass().getDeclaredField("y");y.setAccessible(true);
+            double radius=Math.hypot(x.getDouble(bit)-320,y.getDouble(bit)-300);
+            assert Math.abs(radius/58-Math.rint(radius/58))<.000001
+                    : "spike feet must follow the damage circle, not a squashed/offset ellipse";
+            count++;
+        }
+        assert count>=8;
+    }
+
+    private static void set(Object target,String name,Object value) throws Exception {
+        var field=target.getClass().getDeclaredField(name);field.setAccessible(true);field.set(target,value);
     }
 }

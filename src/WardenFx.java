@@ -191,7 +191,7 @@ final class WardenFx {
                 double turn = rnd();
                 for (int i = 0; i < count; i++) {
                     double a = (i + turn) * Math.PI * 2 / count;
-                    add(Kind.SPIKE, g.targetX() + Math.cos(a) * waveDone, g.targetY() + 30 + Math.sin(a) * waveDone * .62, .42, 0);
+                    add(Kind.SPIKE, g.targetX() + Math.cos(a) * waveDone, g.targetY() + Math.sin(a) * waveDone, .42, 0);
                 }
             }
         }
@@ -225,6 +225,19 @@ final class WardenFx {
     // ------------------------------------------------------------------ drawing
     /** Below the actors: cracks, dust, the fallen Warden's remains. */
     void drawGround(Graphics2D g, Guardian guardian, int cx, int cy) {
+        if (guardian.state() == Guardian.State.TELEGRAPH && DUST != null) {
+            int f = (int) (guardian.stateSeconds() * 10) % 3;
+            if (guardian.attack() == Guardian.Attack.TARGET)
+                for (int side = -1; side <= 1; side++)
+                    cell(g, DUST, 28, f, guardian.targetX() + side * 40, guardian.targetY() + (side == 0 ? 40 : 10), cx, cy, 14, 18);
+            var lane = guardian.fissureBounds();
+            if (lane != null) {
+                boolean across = lane.width() > lane.height();
+                double length = Math.max(lane.width(), lane.height());
+                for (double s = -length / 2 + 24; s < length / 2; s += 46)
+                    cell(g, DUST, 28, f, lane.centerX() + (across ? s : 0), lane.centerY() + (across ? 0 : s), cx, cy, 14, 18);
+            }
+        }
         if (CRACK != null) for (double[] c : cracks) {
             int f = c[2] < .12 ? 0 : c[2] < .4 ? 1 : c[2] < 1.1 ? 2 : 3;
             if (c[2] > 3.8 && ((int) (c[2] * 20)) % 2 == 0) continue;

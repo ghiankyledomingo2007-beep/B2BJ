@@ -8,6 +8,7 @@ Blade form by gathering Ichor. The current campaign includes **Ruined Outpost** 
 ## Start here
 
 - [File map](FILE_MAP.md): where the game systems, tests and art tools live.
+- [Tilesets by area](assets/tilesets/README.md): Outpost, Forest and legacy room art.
 - [Documentation index](docs/README.md): current guides and historical records.
 - [School files](School/START-HERE.md): GDD, progress reports, handouts and lab submissions.
   `School/` is a local shortcut, excluded from Git.

@@ -28,7 +28,7 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 - `src/SetPieces.java`: Outpost and Forest scenery, placement and footprints.
 - `src/OutpostLights.java`: world lighting and glows.
 - `src/WardenFx.java`, `src/MobFx.java`: boss and ordinary-enemy visual effects.
-- `src/Telegraphs.java`: attack warnings and hazard shapes.
+- `src/Telegraphs.java`: compact enemy windup glints; boss windups and impacts use `WardenFx`.
 - `src/SlimeAnimation.java`, `src/BladeAnimation.java`, `src/WispAnimation.java`: actor animation timing.
 - `src/TransformationAnimation.java`: slime/Blade transitions.
 - `src/WangTileset.java`: legacy terrain tile rendering used by older map paths.
@@ -53,9 +53,9 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 
 - `assets/characters/`, `assets/effects/`, `assets/ui/`, `assets/audio/`: packaged actor art, effects, interface and sound.
 - `assets/props/outpost/`, `assets/props/forest/`: regional scenery.
-- `assets/tilesets/outpost/`, `assets/tilesets/forest/`: current regional ground art.
-- `assets/source/`: editable art source files, excluded from JAR packaging.
-- `assets/environment/ruined_outpost/`, `assets/tilesets/ruined_outpost/`: legacy room-mode art.
+- `assets/tilesets/outpost/`, `assets/tilesets/forest/`: current regional ground art; [tile guide](assets/tilesets/README.md).
+- `assets/source/outpost/`, `assets/source/forest/`, `assets/source/shared/`: editable art grouped by region, excluded from JAR packaging.
+- `assets/environment/ruined_outpost/`, `assets/tilesets/legacy/ruined_outpost/`: legacy room-mode art.
 - [Art pipeline](tools/art/README.md): generation, editable exports and retouch safeguards.
 - `tools/sprite3d/`: human sprite generation and packing pipeline.
 - `tools/audio/`: sound generation and import helpers.

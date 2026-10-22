@@ -2,7 +2,7 @@
 
 Every Ruined Outpost environment pixel — the floor, the walls and palisades, the landmark set
 pieces, the fires and the Warden's effects — is drawn by the Java code in this folder from one
-night palette (`Pal.java`, exported as `assets/source/outpost/outpost_night.gpl`). No image
+night palette (`Pal.java`, exported as `assets/source/shared/outpost_night.gpl`). No image
 generators, no credits, deterministic: the same code and map always give the same pixels.
 
 ## Rebuild
@@ -10,16 +10,18 @@ generators, no credits, deterministic: the same code and map always give the sam
 ```bash
 tools/art/build-art.sh            # everything (about 3 s)
 tools/art/build-art.sh ground     # only the floor, after changing the map layout
-tools/art/export-sources.sh       # editable .pixie-dust copies with the palette loaded
+tools/art/export-sources.sh       # missing editable projects, grouped by region; existing projects kept
 ./build.sh                        # then the normal build and tests
 ```
 
 `OutpostArtTest` fails with "run tools/art/build-art.sh ground" when `CampaignWorld`, the
 obstacles or `src/SetPieces.java` change without a rebake (the floor stores a layout fingerprint).
+`python3 tools/art/ExportSourcesTest.py` checks source-folder routing and preserves existing
+editable layers, using a temporary folder and a mock editor.
 
 ## Retouching by hand
 
-- Edit the `.pixie-dust` file in `assets/source/outpost/`, export PNG over the asset. The build
+- Edit the `.pixie-dust` file in `assets/source/outpost/` or `assets/source/forest/`, then export PNG over the matching asset. Shared fire and palette sources are in `assets/source/shared/`. The build
   remembers what it generated (`generated.sha`) and **keeps** any PNG you changed; `--force` regenerates.
 - The floor is rebaked from code, so paint floor fixes on a transparent layer saved as
   `assets/source/outpost/outpost_ground_retouch.png` (3072x2048); every bake paints it on top.
@@ -44,7 +46,9 @@ obstacles or `src/SetPieces.java` change without a rebake (the floor stores a la
 
 ## Tileset layout (`outpost_tileset.png`, 16 px cells, 16 columns)
 
-Every B2BJ tileset is 16x16.
+Current campaign tilesets use 16×16 cells. [Tilesets by area](../../assets/tilesets/README.md)
+lists their runtime and editable folders. Older room tiles are kept under
+`assets/tilesets/legacy/ruined_outpost/`.
 
 Rows 0-3: Outpost — grass, meadow, dirt, flagstone, cobble, water, mud, gravel; Forest — leaf litter, moss,
 grass, dirt, blackwater, dry riverbed, blight, mud. 8 variants each. Variants

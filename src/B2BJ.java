@@ -57,7 +57,7 @@ public final class B2BJ extends JPanel {
     private double loadingClock;
     private int seenBiome = -1;
     private final BufferedImage[] terrainTiles = loadEnvironmentTiles();
-    private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/ruined_outpost/earth_banks.png"));
+    private final BufferedImage[] bankTiles=renderTiles(loadImage("assets/tilesets/legacy/ruined_outpost/earth_banks.png"));
     private final BufferedImage slimeSheet = loadSlimeSheet();
     private final BufferedImage slimeIdleSheet = loadImage("assets/characters/slime/slime_idle.png");
     private final BufferedImage slimeCastSheet=loadImage("assets/characters/slime/slime_cast.png");
@@ -1312,23 +1312,16 @@ public final class B2BJ extends JPanel {
     /** Native pixels for compact projectile windup cues; these show direction, not the shot's range. */
     static final double AIM_START=9, SHOT_CUE_LENGTH=26, SPOKE=16;
 
-    /** Every live attack warning, painted at native resolution by {@link Telegraphs}. */
+    /** Compact enemy windup glints; bosses use their animation, dust and physical effects. */
     private void drawGuardianTelegraph(Graphics2D canvas,int cameraX,int cameraY) {
         tells.begin();
         for(var scout:game.scouts()) {
-            boolean telling=scout.state()==Wisp.State.TELEGRAPH;
-            boolean striking=scout.state()==Wisp.State.LUNGE&&scout.stationaryMelee();
-            if(!telling&&!striking)continue;
+            if(scout.state()!=Wisp.State.TELEGRAPH)continue;
             double x=(scout.x()-cameraX)/2.,y=(scout.y()-cameraY)/2.;
             double angle=Math.atan2(scout.intentY(),scout.intentX());
-            double charge=telling?scout.stateSeconds()/scout.telegraphDuration():1;
+            double charge=scout.stateSeconds()/scout.telegraphDuration();
             boolean locked=scout.directionLocked();
-            if(scout.stationaryMelee()) {
-                double reach=scout.meleeReach()/2;
-                double hit=striking?Math.max(.05,1-scout.stateSeconds()/scout.lungeDuration()):0;
-                tells.box(x+Math.cos(angle)*reach/2,y+Math.sin(angle)*reach/2,angle,reach,scout.meleeHalfWidth()/2,
-                        charge,hit,locked,false,reducedEffects);
-            } else if(scout.role()==Wisp.Role.SPITTER) {
+            if(scout.role()==Wisp.Role.SPITTER) {
                 // Keep projectile windups near the caster; travelling shots carry their own danger cue.
                 var profile=game.campaignEnemy(scout);
                 boolean radial=profile!=null&&profile.kind()==CampaignEnemy.Kind.CINDER_HEXER;
@@ -1338,42 +1331,8 @@ public final class B2BJ extends JPanel {
                     tells.aim(x,y,x+Math.cos(direction)*reach,y+Math.sin(direction)*reach,AIM_START,charge,locked);
                 }
             } else {
-                // a lunge: the line of the rush and an arrowhead as wide as the body it sweeps
-                double reach=scout.lungeReach()/2;
-                tells.lunge(x,y,x+Math.cos(angle)*reach,y+Math.sin(angle)*reach,RuinedOutpostGame.WISP_CONTACT_RADIUS/2,
-                        AIM_START,charge,locked);
-            }
-        }
-        Guardian guardian=game.guardian();
-        if(game.campaignMode()&&guardian.auraRadius()>0)
-            tells.aura((guardian.x()-cameraX)/2.,(guardian.y()-cameraY)/2.,guardian.auraRadius()/2);
-        boolean warning=guardian.state()==Guardian.State.TELEGRAPH;
-        if(game.bossActive()&&(warning||guardian.state()==Guardian.State.SLAM)) {
-            double charge=warning?guardian.stateSeconds()/guardian.telegraphDuration():1;
-            double hit=warning?0:Math.max(.05,1-guardian.stateSeconds()/guardian.activeDuration());
-            double x=(guardian.targetX()-cameraX)/2.,y=(guardian.targetY()-cameraY)/2.;
-            switch(guardian.attack()) {
-                case FISSURE -> {
-                    var lane=guardian.fissureBounds();
-                    if(lane!=null) {
-                        boolean across=lane.width()>lane.height();
-                        tells.box((lane.centerX()-cameraX)/2.,(lane.centerY()-cameraY)/2.,across?0:Math.PI/2,
-                                Math.max(lane.width(),lane.height())/2,Math.min(lane.width(),lane.height())/4,
-                                charge,hit,true,true,reducedEffects);
-                    }
-                }
-                case CHARGE -> {
-                    double bx=(guardian.x()-cameraX)/2.,by=(guardian.y()-cameraY)/2.,reach=Guardian.CHARGE_SPEED*Guardian.CHARGE_DURATION/2;
-                    double radius=Guardian.CHARGE_RADIUS/2;
-                    if(warning)tells.capsule(bx,by,bx+guardian.directionX()*reach,by+guardian.directionY()*reach,radius,charge,true);
-                    else tells.disc(bx,by,radius,1,hit,reducedEffects);
-                }
-                case SHOCKWAVE -> {
-                    double band=Guardian.WAVE_HALF_WIDTH,reach=(guardian.slamRadius()+band)/2;
-                    if(warning)tells.wave(x,y,(Guardian.WAVE_START+band)/2,reach,charge,reducedEffects);
-                    else tells.band(x,y,(guardian.waveRadius()-band)/2,(guardian.waveRadius()+band)/2,reach,hit,reducedEffects);
-                }
-                default -> tells.disc(x,y,guardian.slamRadius()/2,charge,hit,reducedEffects);
+                double reach=Math.min(AIM_START+SPOKE,(scout.stationaryMelee()?scout.meleeReach():scout.lungeReach())/2);
+                tells.aim(x,y,x+Math.cos(angle)*reach,y+Math.sin(angle)*reach,AIM_START,charge,locked);
             }
         }
         tells.drawTo(canvas,2);
@@ -2180,10 +2139,10 @@ public final class B2BJ extends JPanel {
     }
 
     private static BufferedImage[] loadEnvironmentTiles() {
-        var approved=loadImage("assets/tilesets/ruined_outpost/outpost_ground_reviewed.png");
+        var approved=loadImage("assets/tilesets/legacy/ruined_outpost/outpost_ground_reviewed.png");
         if(approved!=null)return outdoorTiles(renderTiles(approved));
         // ponytail: retain the stable blockout until a replacement passes in-scene art review.
-        var source=renderTiles(loadImage("assets/tilesets/ruined_outpost/ruined_outpost_wang.png"));
+        var source=renderTiles(loadImage("assets/tilesets/legacy/ruined_outpost/ruined_outpost_wang.png"));
         if(source==null)return null;
         var tiles=new BufferedImage[16];
         for(int mask=0;mask<16;mask++) {

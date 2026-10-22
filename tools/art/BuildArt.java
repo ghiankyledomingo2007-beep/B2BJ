@@ -36,8 +36,8 @@ public final class BuildArt {
             Tiles16.sheet(set).save("assets/tilesets/" + area + "/" + area + "_tileset.png");
         }
         try {
-            java.nio.file.Files.createDirectories(java.nio.file.Path.of("assets/source/outpost"));
-            java.nio.file.Files.writeString(java.nio.file.Path.of("assets/source/outpost/outpost_night.gpl"), Pal.gpl());
+            java.nio.file.Files.createDirectories(java.nio.file.Path.of("assets/source/shared"));
+            java.nio.file.Files.writeString(java.nio.file.Path.of("assets/source/shared/outpost_night.gpl"), Pal.gpl());
         } catch (java.io.IOException e) { throw new IllegalStateException(e); }
     }
 

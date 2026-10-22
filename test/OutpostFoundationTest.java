@@ -30,7 +30,7 @@ public final class OutpostFoundationTest {
         assert image.getRGB(32,32)==Color.MAGENTA.getRGB() : "boundary must consume authored bank art";
         assert image.getRGB(640,500)==0 : "boundary art must not cover the open floor";
         field.set(panel,null);g=image.createGraphics();draw.invoke(panel,g,0,0);g.dispose();
-        var bank=B2BJ.loadImage("assets/tilesets/ruined_outpost/earth_banks.png");
+        var bank=B2BJ.loadImage("assets/tilesets/legacy/ruined_outpost/earth_banks.png");
         // Candidate art failed visual review; missing art intentionally keeps the stable fallback.
         if(bank!=null)assert bank.getWidth()==128&&bank.getHeight()==128 : "native bank atlas dimensions";
         for(var item:map.dressing()) {

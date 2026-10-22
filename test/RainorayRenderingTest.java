@@ -15,7 +15,7 @@ public final class RainorayRenderingTest {
         assert transform.frame()==8 : "transformation must use sixteen morph poses";
         transform.update(TransformationAnimation.DURATION/2);
         assert !transform.active();
-        nativeTelegraphsKeepPhysicsExtent();
+        nativeGlintsKeepPixelScale();
         humanSkillInputAndEffectsStaySeparate();
         combatInterruptsMorphReplacement();
         engulfBodyCoversCurrentCorpseAndReturns();
@@ -24,12 +24,12 @@ public final class RainorayRenderingTest {
         wardenMapMarkerNeverUsesPlayerPortrait();
         System.out.println("RainorayRenderingTest passed");
     }
-    private static void nativeTelegraphsKeepPhysicsExtent() {
-        var tells=new Telegraphs(320,320);tells.begin();tells.disc(160,160,92,0,0,false);
+    private static void nativeGlintsKeepPixelScale() {
+        var tells=new Telegraphs(320,320);tells.begin();tells.aim(160,160,195,160,9,.5,true);
         var output=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
         var g=output.createGraphics();tells.drawTo(g,2);g.dispose();
-        assert output.getRGB(136,320)!=0&&output.getRGB(505,320)!=0 : "inclusive 184px radius must match physics";
-        assert output.getRGB(135,320)==0&&output.getRGB(506,320)==0;
+        assert output.getRGB(360,320)!=0 : "compact direction glint must draw";
+        assert output.getRGB(320,320)==0&&output.getRGB(400,320)==0 : "glint stays near its source";
         for(int y=0;y<640;y+=2)for(int x=0;x<640;x+=2)assert output.getRGB(x,y)==output.getRGB(x+1,y+1)
                 : "telegraphs are drawn natively before the 2x upscale";
     }

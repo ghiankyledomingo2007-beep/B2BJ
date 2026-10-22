@@ -3,14 +3,7 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.Field;
 import java.util.List;
 
-/**
- * Every attack warning against the hit test it describes, for every boss profile (calm and enraged),
- * every boss attack (warning and live), and every enemy archetype (aiming, locked, striking), at an odd
- * camera and fractional positions. No painted pixel ever lies more than 2 native pixels (4 world px) from
- * real damage. Boss attacks and standing blows outline their whole damage area: every edge pixel has a
- * painted pixel within 2 native pixels. Projectile cues mark only the initial heading near their caster;
- * rush warnings still trace their full path. Both must follow the actual direction of damage.
- */
+/** Boss overlays stay absent; compact enemy cues follow their real attack heading at odd camera offsets. */
 public final class TelegraphHitTableTest {
     interface Zone { boolean at(double wx, double wy); }
     static final int CAM_X = 301, CAM_Y = 217, W = 640, H = 360, SLACK = 2;
@@ -19,7 +12,7 @@ public final class TelegraphHitTableTest {
     public static void main(String[] args) throws Exception {
         bosses();
         enemies();
-        System.out.println("TelegraphHitTableTest passed: " + cases + " warnings matched to their hit tests");
+        System.out.println("TelegraphHitTableTest passed: " + cases + " boss-overlay and enemy-heading cases");
     }
 
     private static void bosses() throws Exception {
@@ -39,20 +32,7 @@ public final class TelegraphHitTableTest {
                     set(g, "targetX", tx); set(g, "targetY", ty); set(g, "chargeX", dx); set(g, "chargeY", dy);
                     set(g, "fissureHorizontal", enraged);
                     var game = new RuinedOutpostGame(new RuinedOutpostMap(9), new Player(640, 360), List.of(), g);
-                    Zone zone;
-                    if (!warning && attack == Guardian.Attack.SHOCKWAVE) {
-                        // a live wave also shows its reach: everything it will still sweep before it fades
-                        double from = g.waveRadius() - Guardian.WAVE_HALF_WIDTH, to = g.slamRadius() + Guardian.WAVE_HALF_WIDTH;
-                        zone = (x, y) -> { double d = Math.hypot(x - tx, y - ty); return g.hits(x, y) || d >= from && d <= to; };
-                    } else if (!warning) zone = g::hits;
-                    else zone = switch (attack) {
-                        case CHARGE -> (x, y) -> segment(x, y, gx, gy, gx + dx * Guardian.CHARGE_SPEED * Guardian.CHARGE_DURATION,
-                                gy + dy * Guardian.CHARGE_SPEED * Guardian.CHARGE_DURATION) <= Guardian.CHARGE_RADIUS;
-                        case SHOCKWAVE -> (x, y) -> Math.hypot(x - tx, y - ty) <= g.slamRadius() + Guardian.WAVE_HALF_WIDTH;
-                        case FISSURE -> (x, y) -> { var r = g.fissureBounds(); return Math.abs(x - r.centerX()) <= r.width() / 2 && Math.abs(y - r.centerY()) <= r.height() / 2; };
-                        default -> (x, y) -> Math.hypot(x - tx, y - ty) <= g.slamRadius();
-                    };
-                    check(profile + (enraged ? " enraged " : " ") + attack + (warning ? " warning" : " live t=" + t), game, zone);
+                    checkEmpty(profile + " " + attack + (warning ? " warning" : " live"), game);
                 }
             }
     }
@@ -95,7 +75,7 @@ public final class TelegraphHitTableTest {
                 };
             } else zone = (x, y) -> segment(x, y, bx, by, bx + ix * b.lungeReach(), by + iy * b.lungeReach()) <= RuinedOutpostGame.WISP_CONTACT_RADIUS;
             String name = kind + (phase == 0 ? " aiming" : phase == 1 ? " locked" : " striking");
-            if (b.stationaryMelee()) { check(name, game, zone); continue; }
+            if (phase == 2) { checkEmpty(name, game); continue; }
             // The paths cues must follow, in world pixels from the body's centre.
             double from = B2BJ.AIM_START * 2 + 4;
             java.util.List<double[]> paths = new java.util.ArrayList<>();
@@ -106,7 +86,8 @@ public final class TelegraphHitTableTest {
                     double d = angle + (radial ? s * Math.PI / 4 : (s - 1) * .20);
                     paths.add(new double[]{Math.cos(d), Math.sin(d), reach});
                 }
-            } else paths.add(new double[]{ix, iy, b.lungeReach()});
+            } else paths.add(new double[]{ix, iy, Math.min((B2BJ.AIM_START+B2BJ.SPOKE)*2,
+                    b.stationaryMelee()?b.meleeReach():b.lungeReach())});
             checkLines(name, game, zone, bx, by, from, paths);
         }
     }
@@ -132,6 +113,7 @@ public final class TelegraphHitTableTest {
         for (int y = 0; y < H; y++) for (int x = 0; x < W; x++) {
             if (!painted[y][x]) continue;
             count++;
+            assert Math.hypot(CAM_X+x*2-bx,CAM_Y+y*2-by)<=76 : name+": long attack lines must stay gone";
             boolean safe = true;
             for (int dy = -SLACK; dy <= SLACK && safe; dy++) for (int dx = -SLACK; dx <= SLACK && safe; dx++)
                 if (zone.at(CAM_X + (x + dx) * 2 + 1, CAM_Y + (y + dy) * 2 + 1)) safe = false;
@@ -146,21 +128,9 @@ public final class TelegraphHitTableTest {
         cases++;
     }
 
-    /** Renders the game's warnings and compares them, native pixel by native pixel, with the damage zone. */
-    private static void check(String name, RuinedOutpostGame game, Zone zone) throws Exception {
-        boolean[][] painted = render(game), hit = new boolean[H][W];
-        int paintedCount = 0;
-        for (int y = 0; y < H; y++) for (int x = 0; x < W; x++) {
-            hit[y][x] = zone.at(CAM_X + x * 2 + 1, CAM_Y + y * 2 + 1);
-            if (painted[y][x]) paintedCount++;
-        }
-        assert paintedCount > 0 : name + ": nothing drawn";
-        for (int y = 0; y < H; y++) for (int x = 0; x < W; x++) {
-            if (painted[y][x]) assert near(hit, x, y) : name + ": marks safe ground at native " + x + "," + y;
-            boolean edge = hit[y][x] && x > 0 && y > 0 && x < W - 1 && y < H - 1
-                    && (!hit[y][x - 1] || !hit[y][x + 1] || !hit[y - 1][x] || !hit[y + 1][x]);
-            if (edge) assert near(painted, x, y) : name + ": damage edge left unmarked at native " + x + "," + y;
-        }
+    private static void checkEmpty(String name, RuinedOutpostGame game) throws Exception {
+        var painted=render(game);
+        for(var row:painted)for(boolean pixel:row)assert !pixel : name+": unexpected attack overlay";
         cases++;
     }
 
