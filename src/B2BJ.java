@@ -245,7 +245,11 @@ public final class B2BJ extends JPanel {
                     return;
                 }
                 if(game.dialogue()!=null) {
-                    if(event.getButton()==MouseEvent.BUTTON1) {clearGameplayInput();game.advanceDialogue();}
+                    if(event.getButton()==MouseEvent.BUTTON1) {
+                        clearGameplayInput();
+                        if(DialogueRenderer.skipHit(event.getX(),event.getY(),WIDTH,HEIGHT))game.skipDialogue();
+                        else game.advanceDialogue();
+                    }
                     return;
                 }
                 if (game.story().phase() == OutpostStory.Phase.PROLOGUE) {

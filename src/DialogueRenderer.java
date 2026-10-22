@@ -5,13 +5,22 @@ import java.awt.image.BufferedImage;
 public final class DialogueRenderer {
     private static final BufferedImage MARA_SHEET=B2BJ.loadImage("assets/characters/npcs/mara_sheet.png");
     private static final BufferedImage MARA=cell(MARA_SHEET,0,0,MARA_SHEET==null?0:MARA_SHEET.getHeight(),64);
-    private static final BufferedImage MARA_BODY=cell(MARA_SHEET,MARA_SHEET==null?0:MARA_SHEET.getHeight(),0,
-            MARA_SHEET==null?0:MARA_SHEET.getHeight(),64);
-    private static final BufferedImage BLOB=B2BJ.loadImage("assets/ui/blob.png");
-    private static final BufferedImage BLADE=cell(B2BJ.loadImage("assets/characters/blade/rainoray_idle.png"),20,0,40,64);
+    private static final BufferedImage MARA_BODY=fit("assets/characters/npcs/mara_idle.png",80);
+    private static final BufferedImage BLOB=fit("assets/characters/slime/rainoray_portrait.png",64);
+    private static final BufferedImage BLADE=cell(B2BJ.loadImage("assets/characters/blade/rainoray_idle.png"),20,0,40,40);
     private static final BufferedImage WARDEN=cell(B2BJ.loadImage("assets/characters/guardian/warden_motion.png"),0,0,64,64);
 
     private DialogueRenderer() { }
+
+    private static BufferedImage fit(String path,int target) {
+        var source=B2BJ.loadImage(path);
+        if(source==null)return null;
+        double scale=(double)target/Math.max(source.getWidth(),source.getHeight());
+        int width=(int)Math.round(source.getWidth()*scale),height=(int)Math.round(source.getHeight()*scale);
+        var image=new BufferedImage(target,target,BufferedImage.TYPE_INT_ARGB);
+        var g=image.createGraphics();Ui.crisp(g);
+        g.drawImage(source,(target-width)/2,(target-height)/2,width,height,null);g.dispose();return image;
+    }
 
     private static BufferedImage cell(BufferedImage source,int x,int y,int size,int target) {
         if(source==null||size<=0||x+size>source.getWidth()||y+size>source.getHeight())return null;
@@ -33,21 +42,25 @@ public final class DialogueRenderer {
             case WARDEN -> WARDEN;
             case RAINORAY -> game.player().bladeForm()?BLADE:BLOB;
         };
-        if(portrait!=null)g.drawImage(portrait,92,y+36,128,128,null);
+        int size=portrait==BLADE?120:128;
+        if(portrait!=null)g.drawImage(portrait,156-size/2,y+100-size/2,size,size,null);
         String speaker=line.speaker()==OutpostDialogue.Speaker.WARDEN?"OUTPOST WARDEN":line.speaker().name();
         Ui.text(g,speaker,264,y+42,2,line.speaker()==OutpostDialogue.Speaker.MARA?Ui.GOLD:Ui.CYAN);
-        Ui.textRight(g,scene.title(),width-204,y+42,1,Ui.MUTED);
-        Ui.textRight(g,(game.dialogueIndex()+1)+" / "+scene.lines().size(),width-80,y+42,2,Ui.MUTED);
+        Ui.textRight(g,"Skip",width-80,y+42,2,Ui.MUTED);
         Ui.wrapped(g,line.text(),264,y+82,width-352,2,30,3,Ui.TEXT);
-        Ui.text(g,"ENTER / CLICK  "+(game.dialogueIndex()+1==scene.lines().size()?"CLOSE":"CONTINUE"),264,y+184,2,Ui.MUTED);
-        Ui.textRight(g,"X  SKIP",width-80,y+184,2,Ui.GOLD);
+        g.setColor(Ui.GOLD);
+        for(int step=0;step<4;step++)g.fillRect(width-88+step*2,y+172+step*2,2,14-step*4);
+    }
+
+    static boolean skipHit(int x,int y,int width,int height) {
+        return new java.awt.Rectangle(width-152,height-226,88,44).contains(x,y);
     }
 
     public static void drawMara(Graphics2D g,RuinedOutpostGame game,int cameraX,int cameraY) {
         if(MARA_BODY==null)return;
         var hub=game.campaignArea().hub();
-        int x=(int)hub.x()-112-cameraX,y=(int)hub.y()+64-cameraY;
-        g.drawImage(MARA_BODY,x-64,y-120,128,128,null);
-        if(game.nearCampaignHub()&&!game.blocked())Ui.outlinedCentered(g,"MARA",x,y-126,1,Ui.GOLD);
+        int x=(int)Math.round((hub.x()-112)/2)*2-cameraX,y=(int)Math.round((hub.y()+64)/2)*2-cameraY;
+        g.drawImage(MARA_BODY,x-80,y-148,160,160,null);
+        if(game.nearCampaignHub()&&!game.blocked())Ui.outlinedCentered(g,"MARA",x,y-144,1,Ui.GOLD);
     }
 }

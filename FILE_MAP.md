@@ -54,7 +54,8 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 ## Assets and tools
 
 - `assets/characters/`, `assets/effects/`, `assets/ui/`, `assets/audio/`: packaged actor art, effects, interface and sound.
-- `assets/characters/npcs/mara_sheet.png`: Mara's portrait and standing sprite in two square cells.
+- `assets/characters/npcs/mara_sheet.png`, `mara_idle.png`: Mara's portrait source and current standing sprite.
+- `assets/characters/slime/rainoray_portrait.png`: the current slime's dialogue portrait.
 - `assets/props/outpost/`, `assets/props/forest/`: regional scenery.
 - `assets/tilesets/outpost/`, `assets/tilesets/forest/`: current regional ground art; [tile guide](assets/tilesets/README.md).
 - `assets/source/outpost/`, `assets/source/forest/`, `assets/source/shared/`: editable art grouped by region, excluded from JAR packaging.

@@ -315,9 +315,7 @@ public final class RuinedOutpostGame {
         if(dialogue==null||paused)return false;
         campaignUnlocks.add(dialogue.key());
         if(dialogue==OutpostDialogue.CAMP_LATE)campaignUnlocks.add(OutpostDialogue.CAMP.key());
-        boolean opening=dialogue==OutpostDialogue.WAKE;
         dialogue=null;dialogueIndex=0;
-        if(opening)notice("FIND MARA AT CAPTAIN CAMP");
         saveProgress();return true;
     }
     public int biome() { return biome; }

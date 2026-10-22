@@ -10,6 +10,7 @@ generators, no credits, deterministic: the same code and map always give the sam
 ```bash
 tools/art/build-art.sh            # everything (about 3 s)
 tools/art/build-art.sh ground     # only the floor, after changing the map layout
+tools/art/build-art.sh campfire   # only the flat-color eight-frame camp flame
 tools/art/export-sources.sh       # missing editable projects, grouped by region; existing projects kept
 ./build.sh                        # then the normal build and tests
 ```

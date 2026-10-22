@@ -8,6 +8,7 @@ public final class BuildArt {
         String what = args.length > 0 && !args[0].startsWith("--") ? args[0] : "all";
         long t = System.nanoTime();
         if (what.equals("all") || what.equals("props")) props();
+        if (what.equals("campfire")) campfire();
         if (what.equals("all") || what.equals("ground")) ground();
         if (what.equals("all") || what.equals("forest")) forest();
         if (what.equals("all") || what.equals("ui")) ui();
@@ -20,9 +21,9 @@ public final class BuildArt {
         Canvas.strip(Props.supplies(0), Props.supplies(1), Props.supplies(2), Props.supplies(3)).save("assets/props/outpost/supplies.png");
         Decals.sheet().save("assets/tilesets/outpost/outpost_decals.png");
         for (var kind : SetPieces.Kind.values()) Structures.sheet(kind).save(kind.sheet());
-        Canvas[] camp = new Canvas[8], brazier = new Canvas[8];
-        for (int f = 0; f < 8; f++) { camp[f] = Kit.fire(30, 40, f, 8, 5, 77); brazier[f] = Kit.fire(22, 30, f, 8, 4, 91); }
-        Canvas.strip(camp).save("assets/effects/fire_camp.png");
+        campfire();
+        Canvas[] brazier = new Canvas[8];
+        for (int f = 0; f < 8; f++) brazier[f] = Kit.fire(22, 30, f, 8, 4, 91);
         Canvas.strip(brazier).save("assets/effects/fire_brazier.png");
         WardenArt.build();
         BossArt.briarheart().save("assets/characters/guardian/briarheart_motion.png");
@@ -46,6 +47,12 @@ public final class BuildArt {
         LogoArt.logo().save("assets/ui/title/logo.png");
         TitleArt.build();
         UiArt.splash().save("assets/ui/splash.png");
+    }
+
+    static void campfire() {
+        Canvas[] frames=new Canvas[8];
+        for(int f=0;f<frames.length;f++)frames[f]=Kit.campfire(f);
+        Canvas.strip(frames).save("assets/effects/fire_camp.png");
     }
 
     static void forest() {

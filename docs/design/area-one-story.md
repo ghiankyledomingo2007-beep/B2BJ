@@ -26,7 +26,7 @@ If he returns to camp first, Mara offers him a dry scarf. He is not sure he can 
 
 ## In-game delivery
 
-Dialogue is one readable line at a time, with the current speaker's portrait. Lines appear immediately; there is no forced typing delay. Enter, E or left click advances, X skips, and Escape opens the pause menu. Combat, movement, projectiles, cooldowns and Ichor drain stop while the panel is open.
+Dialogue is one readable line at a time, with the current speaker's portrait. Lines appear immediately; there is no forced typing delay. The panel has a small next arrow and a clickable Skip label. Enter, E or left click advances, X skips, and Escape opens the pause menu; shortcuts stay in Controls instead of a large dialogue footer. Combat, movement, projectiles, cooldowns and Ichor drain stop while the panel is open.
 
 | Moment | Trigger | Purpose |
 | --- | --- | --- |
@@ -48,8 +48,8 @@ Exact shipped lines live in [OutpostDialogue.java](../../src/OutpostDialogue.jav
 
 ## Art and persistence
 
-- Mara's portrait and standing sprite share [one transparent sheet](../../assets/characters/npcs/mara_sheet.png). [Generation record](../art-review/area-one-story/mara-art.md).
-- Rainoray's human portrait comes from the current masked sprite, with the single red nose dot. Blob and Warden portraits reuse their existing art.
+- Mara's portrait uses the left half of [the original sheet](../../assets/characters/npcs/mara_sheet.png); her [standing sprite](../../assets/characters/npcs/mara_idle.png) matches the player's world scale. [Art and generation records](../art-review/area-one-story/polish-art.md).
+- Rainoray's human portrait comes from the current masked sprite. His [slime portrait](../../assets/characters/slime/rainoray_portrait.png) matches the current star-marked body. The Warden portrait uses its existing art.
 - Story completion uses the existing version-one save's `unlocks` set. Existing health upgrades, shards, checkpoints and cleared bosses are preserved. Continue does not force the new opening onto an older save.
 - Test/admin sessions retain their existing protection against overwriting normal saves.
 - Portraits are static. No voice acting or animated facial expressions are included.

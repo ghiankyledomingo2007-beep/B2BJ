@@ -101,6 +101,24 @@ final class Kit {
     static void rope(Canvas c, int x0, int y0, int x1, int y1, int colour) { c.line(x0, y0, x1, y1, colour); }
 
     // ------------------------------------------------------------------ fire
+    /** Flat colour clusters keep the camp flame readable at the world's native pixel scale. */
+    static Canvas campfire(int frame) {
+        Canvas c=new Canvas(30,40);
+        int f=Math.floorMod(frame,8);
+        int lean=new int[]{-1,-1,0,1,2,1,0,-1}[f];
+        int rise=new int[]{0,1,2,1,0,-1,-2,-1}[f];
+        poly(c,Pal.FIRE[1],3,37,3,31,6,27,5,21-rise,10,26,12,19,11+lean,11,
+                16+lean,6+rise,17+lean,15,21,21,22,27,25,22+rise,25,30,27,34,26,38);
+        poly(c,Pal.FIRE[2],5,36,6,30,10,33,9,27,13,22,15+lean,13+rise,
+                19,23,21,31,23,28,25,34,24,37);
+        poly(c,Pal.FIRE[3],8,36,8,32,12,27,13,30,16+lean,22+rise,18,28,20,32,22,35,21,37);
+        poly(c,Pal.FIRE[4],11,37,11,33,14+lean,27+rise,16,32,18,30,20,36,19,38);
+        poly(c,Pal.FIRE[5],13,37,13,34,15,31+rise,17,34,18,37);
+        if(f<3)c.rect(22,9-f*3,2,2,Pal.FIRE[3]);
+        if(f>=4&&f<7)c.rect(7,12-(f-4)*3,2,2,Pal.FIRE[4]);
+        return c;
+    }
+
     /**
      * One frame of a looping fire, `frames` frames per loop. Tongues sway and breathe out of phase;
      * the core burns white-yellow, the rim red; embers rise and wink out above.

@@ -41,12 +41,13 @@ final class OutpostLights {
         for (var light : SetPieces.lights(game.biome())) {
             index++;
             if (arenaCold && light.fire() && Math.hypot(light.x() - gatehouse.x(), light.y() - gatehouse.y()) < 470) continue;
-            double sx = light.x() - cx, sy = light.y() - cy, r = light.radius();
+            boolean campfire=light.colour()==0xffa040;
+            double sx = light.x() - cx, sy = light.y() - cy, r = light.radius()*(campfire?.72:1);
             if (sx < -r || sy < -r || sx > 1280 + r || sy > 720 + r) continue;
             // fires breathe between three sizes; lamps and Ichor hold steady
             int step = light.fire() && !reduced ? Math.floorMod((frame / 5 + index * 7) * 2654435761L >>> 7, 3) : 1;
             int radius = (int) Math.round(r / 2 * (.96 + step * .04));
-            disc(g, glow(radius, light.colour(), light.fire() ? 64 : 52), sx, sy, radius);
+            disc(g, glow(radius, light.colour(), campfire?36:light.fire()?64:52), sx, sy, radius);
         }
         var player = game.player();
         if (player.alive()) disc(g, glow(46, 0x2cc6c8, 34), player.x() - cx, player.y() - cy, 46);

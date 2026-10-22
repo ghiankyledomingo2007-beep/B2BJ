@@ -18,6 +18,11 @@ public final class OutpostDialogueTest {
         }
         var art=B2BJ.loadImage("assets/characters/npcs/mara_sheet.png");
         assert art!=null&&art.getWidth()==art.getHeight()*2&&art.getColorModel().hasAlpha();
+        for(String path:new String[]{"assets/characters/npcs/mara_idle.png","assets/characters/slime/rainoray_portrait.png"}) {
+            var sprite=B2BJ.loadImage(path);
+            assert sprite!=null&&sprite.getColorModel().hasAlpha();
+            assert Math.abs(sprite.getWidth()-sprite.getHeight())<sprite.getHeight()*.1;
+        }
         SwingUtilities.invokeAndWait(()->{
             try { inputAndRendering(args.length==0?null:Path.of(args[0])); }
             catch(Exception e) { throw new AssertionError(e); }
@@ -113,6 +118,8 @@ public final class OutpostDialogueTest {
         var rendered=paint(panel);
         assert panel.getAccessibleContext().getAccessibleDescription().contains("Easy.");
         if(output!=null) {Files.createDirectories(output);javax.imageio.ImageIO.write(rendered,"png",output.resolve("mara-conversation.png").toFile());}
+        game.advanceDialogue();
+        if(output!=null)javax.imageio.ImageIO.write(paint(panel),"png",output.resolve("slime-conversation.png").toFile());
         while(game.dialogueIndex()<game.dialogue().lines().size()-1)game.advanceDialogue();
         click(panel);assert game.dialogue()==null&&game.projectiles().isEmpty();
         panel.step(.1);assert game.projectiles().isEmpty() : "closing click must not fire";
@@ -121,16 +128,23 @@ public final class OutpostDialogueTest {
         var human=paint(panel);
         if(output!=null)javax.imageio.ImageIO.write(human,"png",output.resolve("rainoray-conversation.png").toFile());
         game.skipDialogue();
+        for(int i=0;i<120;i++)panel.step(.05);
+        if(output!=null)javax.imageio.ImageIO.write(paint(panel),"png",output.resolve("camp-human-scale.png").toFile());
         game.player().relocate(game.guardian().x()+300,game.guardian().y());game.update(.01,0,0);
         assert game.dialogue()==OutpostDialogue.WARDEN;
         if(output!=null)javax.imageio.ImageIO.write(paint(panel),"png",output.resolve("warden-conversation.png").toFile());
+        click(panel,1190,516);
+        assert game.dialogue()==null&&game.projectiles().isEmpty() : "the quiet Skip target must skip, not attack";
     }
 
     private static void finish(RuinedOutpostGame game) {while(game.dialogue()!=null)assert game.advanceDialogue();}
     private static void press(B2BJ panel,String key) {panel.getActionMap().get(key+"Pressed").actionPerformed(new ActionEvent(panel,0,key));}
     private static void release(B2BJ panel,String key) {panel.getActionMap().get(key+"Released").actionPerformed(new ActionEvent(panel,0,key));}
     private static void click(B2BJ panel) {
-        var click=new MouseEvent(panel,MouseEvent.MOUSE_PRESSED,0,0,600,600,1,false,MouseEvent.BUTTON1);
+        click(panel,600,600);
+    }
+    private static void click(B2BJ panel,int x,int y) {
+        var click=new MouseEvent(panel,MouseEvent.MOUSE_PRESSED,0,0,x,y,1,false,MouseEvent.BUTTON1);
         for(var listener:panel.getMouseListeners())listener.mousePressed(click);
     }
     private static BufferedImage paint(B2BJ panel) {
