@@ -9,10 +9,12 @@ public final class CombatAuditTest {
     private static void expiredSummonsDoNotAccumulateOrShiftAuthoredRewards() {
         var game = RuinedOutpostGame.campaign();
         game.begin();
+        game.skipDialogue();
         List<Wisp> authored = List.copyOf(game.scouts());
         game.player().relocate(game.guardian().x() + 300, game.guardian().y());
         assert !game.map().isBlocked(game.player().x(), game.player().y() + Player.COLLISION_Y_OFFSET,
                 Player.COLLISION_RADIUS);
+        game.update(.01,0,0);game.skipDialogue();
         for (int cycle = 0; cycle < 3; cycle++) {
             Wisp summoned = null;
             for (int tick = 0; tick < 1_000 && summoned == null; tick++) {

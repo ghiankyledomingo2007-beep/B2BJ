@@ -31,6 +31,8 @@ public final class VisibleMenuTest {
             panel.step(.01);
             assert shown(panel, "New Journey").isVisible() && !menu.isVisible();
             press(panel, "begin");
+            assert game.dialogue()==OutpostDialogue.WAKE;
+            game.skipDialogue();
             assert !game.blocked();
             press(panel, "right"); panel.step(.1);
             menu.doClick();

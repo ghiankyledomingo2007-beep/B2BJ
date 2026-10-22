@@ -244,6 +244,10 @@ public final class B2BJ extends JPanel {
                 if (event.getButton() != MouseEvent.BUTTON1 && event.getButton() != MouseEvent.BUTTON3) {
                     return;
                 }
+                if(game.dialogue()!=null) {
+                    if(event.getButton()==MouseEvent.BUTTON1) {clearGameplayInput();game.advanceDialogue();}
+                    return;
+                }
                 if (game.story().phase() == OutpostStory.Phase.PROLOGUE) {
                     if(!titleArt())game.begin();   // with the title art, its buttons start the game, not stray clicks
                 } else if (!game.blocked()) {
@@ -374,6 +378,11 @@ public final class B2BJ extends JPanel {
 
     /** Title menu shows on the title screen while the game menu is closed; the corner Menu button does not. */
     private void syncTitle() {
+        var scene=game.dialogue();
+        String spoken=scene==null?null:scene.lines().get(game.dialogueIndex()).speaker()+": "
+                +scene.lines().get(game.dialogueIndex()).text()+" Enter or E: continue. X: skip. Escape: pause.";
+        if(!java.util.Objects.equals(spoken,getAccessibleContext().getAccessibleDescription()))
+            getAccessibleContext().setAccessibleDescription(spoken);
         if(titleMenu==null)return;
         boolean title=titleArt()&&game.story().phase()==OutpostStory.Phase.PROLOGUE;
         boolean show=title&&!menuShown();
@@ -411,7 +420,7 @@ public final class B2BJ extends JPanel {
         previousFrame = now;
 
         if(game.campaignMode())GameAudio.setMusicState(game.biome(),game.player().bladeForm(),!game.blocked());
-        if (game.paused()||!game.campaignMode()||game.blocked()) { GameAudio.stopLoops(); repaint(); return; }
+        if (game.paused()||!game.campaignMode()||(!loading.active()&&game.blocked())) { GameAudio.stopLoops(); repaint(); return; }
         step(seconds);
     }
 
@@ -421,10 +430,11 @@ public final class B2BJ extends JPanel {
         if (loading.active() && Double.isFinite(seconds) && seconds > 0) {
             loadingClock += seconds;
             loading.update(seconds);
-            if (loading.covering()) return;                         // the world waits behind the screen
+            if (loading.covering()) {repaint();return;}             // the world waits behind the screen
         }
         watchRegion();
         if (!Double.isFinite(seconds) || seconds <= 0 || game.paused() || menuShown()) return;
+        if(game.dialogue()!=null) {clearGameplayInput();repaint();return;}
         areaCard(seconds);
         weatherTime+=seconds;
         int horizontal = horizontal();
@@ -432,6 +442,7 @@ public final class B2BJ extends JPanel {
         int[] aim=aimDirection();
         if (attackHeld&&!game.player().bladeForm()) attack();
         game.update(seconds, horizontal, vertical);
+        if(game.dialogue()!=null) {clearGameplayInput();repaint();return;}
 
         int animationX = game.blocked() ? 0 : horizontal;
         int animationY = game.blocked() ? 0 : vertical;
@@ -783,11 +794,14 @@ public final class B2BJ extends JPanel {
         canvas.translate(-shakeX, -shakeY);
         drawScreenEffects(canvas);
         if(game.campaignMode()) {
-            drawPlayerHud(canvas);
-            CampaignRenderer.drawHud(canvas,game,WIDTH,HEIGHT);
-            CampaignRenderer.drawAreaCard(canvas,cardBiome,cardTime,WIDTH,reducedEffects);
-            wardenFx.drawTitle(canvas,WIDTH,HEIGHT);
-            if(mapShown&&!game.story().blocksGameplay())CampaignRenderer.drawMap(canvas,game,WIDTH,HEIGHT);
+            if(game.dialogue()==null) {
+                drawPlayerHud(canvas);
+                CampaignRenderer.drawHud(canvas,game,WIDTH,HEIGHT);
+                CampaignRenderer.drawAreaCard(canvas,cardBiome,cardTime,WIDTH,reducedEffects);
+                wardenFx.drawTitle(canvas,WIDTH,HEIGHT);
+                if(mapShown&&!game.story().blocksGameplay())CampaignRenderer.drawMap(canvas,game,WIDTH,HEIGHT);
+            }
+            DialogueRenderer.draw(canvas,game,WIDTH,HEIGHT);
             CampaignRenderer.drawOverlay(canvas,game,WIDTH,HEIGHT,menuShown());
             CampaignRenderer.drawDebugStatus(canvas,game);
             loading.draw(canvas,loadingClock,slimeIdleSheet,transformInSheet,transformOutSheet,reducedEffects);
@@ -854,6 +868,8 @@ public final class B2BJ extends JPanel {
         }
         if(!game.campaignMode())queueDoors(draws,canvas,cameraX,cameraY);
         Player player=game.player();
+        if(game.campaignMode()&&game.biome()==0)draws.add(new DepthDraw(game.campaignArea().hub().y()+64,
+                ()->DialogueRenderer.drawMara(canvas,game,cameraX,cameraY)));
         for(Wisp scout:game.scouts()) if(scout.visible())
             draws.add(new DepthDraw(scout.y()+WispAnimation.RENDER_SIZE/2,
                     ()->{
@@ -2172,7 +2188,8 @@ public final class B2BJ extends JPanel {
         bind(KeyEvent.VK_DOWN,"downArrow",value->{});
         bind(KeyEvent.VK_SPACE,"dash",value->{if(value) dash();});
         bind(KeyEvent.VK_Q,"transform",value->{if(value) transform();});
-        bind(KeyEvent.VK_ENTER,"begin",value->{if(value) game.begin();});
+        bind(KeyEvent.VK_ENTER,"begin",value->{if(value)game.begin();});
+        bind(KeyEvent.VK_X,"skipDialogue",value->{});
         bind(KeyEvent.VK_E,"interact",value->{
             if(!value)return;
             int before=game.biome();
@@ -2238,6 +2255,12 @@ public final class B2BJ extends JPanel {
         return (held(KeyEvent.VK_S,KeyEvent.VK_DOWN)?1:0)-(held(KeyEvent.VK_W,KeyEvent.VK_UP)?1:0);
     }
     private void clearInput() { pressedKeys.clear();attackHeld=false;mapShown=false;game.cancelBladeInput(); }
+
+    private void clearGameplayInput() {
+        // Preserve dialogue-key latches so OS key repeat cannot skip the whole conversation.
+        pressedKeys.removeIf(key->key!=KeyEvent.VK_ENTER&&key!=KeyEvent.VK_E&&key!=KeyEvent.VK_X&&key!=KeyEvent.VK_ESCAPE);
+        attackHeld=false;mapShown=false;game.cancelBladeInput();
+    }
 
     private void dash() {
         int horizontal = horizontal();
@@ -2348,8 +2371,11 @@ public final class B2BJ extends JPanel {
         for (int modifiers : RELEASE_MODIFIERS)
             inputs.put(KeyStroke.getKeyStroke(keyCode, modifiers, true), name + "Released");
         actions.put(name+"Pressed",action(()->{
-            if(loading.covering()) { loading.skip(); return; }      // any key hurries the screen along
-            if(!menuShown()&&titleShown()&&titleKey(keyCode))return;
+            if(loading.covering()) {if(pressedKeys.add(keyCode))loading.skip();return;}
+            if(!menuShown()&&titleShown()) {
+                if(pressedKeys.contains(keyCode))return;
+                if(titleKey(keyCode)) {pressedKeys.add(keyCode);return;}
+            }
             if(menuShown()) {
                 if(keyCode==KeyEvent.VK_ESCAPE&&pressedKeys.add(keyCode)) {
                     closeMenu();pressedKeys.add(keyCode);
@@ -2359,7 +2385,17 @@ public final class B2BJ extends JPanel {
                 if(keyCode!=KeyEvent.VK_T&&keyCode!=KeyEvent.VK_M&&keyCode!=KeyEvent.VK_V
                         &&keyCode!=KeyEvent.VK_O&&keyCode!=KeyEvent.VK_F1)return;
             }
-            if(pressedKeys.add(keyCode)) keyState.set(true);
+            if(pressedKeys.add(keyCode)) {
+                if(game.dialogue()!=null&&keyCode!=KeyEvent.VK_ESCAPE&&keyCode!=KeyEvent.VK_O
+                        &&keyCode!=KeyEvent.VK_F1&&keyCode!=KeyEvent.VK_M&&keyCode!=KeyEvent.VK_V&&keyCode!=KeyEvent.VK_T) {
+                    clearGameplayInput();
+                    if(keyCode==KeyEvent.VK_X)game.skipDialogue();
+                    else if(keyCode==KeyEvent.VK_ENTER||keyCode==KeyEvent.VK_E)game.advanceDialogue();
+                    return;
+                }
+                keyState.set(true);
+                if(game.dialogue()!=null)clearGameplayInput();
+            }
         }));
         actions.put(name+"Released",action(()->{
             pressedKeys.remove(keyCode);if(!menuShown())keyState.set(false);

@@ -12,6 +12,8 @@ public final class CampaignDesktopTest {
             var canvas=image.createGraphics();panel.paint(canvas);
             assert image.getRGB(640,360)!=0;
             panel.getActionMap().get("beginPressed").actionPerformed(new ActionEvent(panel,0,""));
+            assert game.dialogue()==OutpostDialogue.WAKE;
+            game.skipDialogue();
             assert !game.blocked();
             assert game.map().worldWidth()>5000;
             game.player().relocate(game.campaignArea().hub().x(),game.campaignArea().hub().y());

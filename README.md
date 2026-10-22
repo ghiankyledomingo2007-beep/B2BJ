@@ -64,6 +64,7 @@ also used by the build, tests and art tools; the file map groups them by respons
 - WASD/arrows move. The mouse aims. Left click attacks; hold left click to charge in Blade form.
 - Right click uses Tide Wave in Blob form or Ichor Crescent in Blade form. F uses Riposte.
 - Space dashes. Q transforms at 100 Ichor. E interacts with discoveries, remains and gates.
+- E at Captain Camp talks to Mara. Enter, E or left click advances dialogue; X skips it. Combat and Ichor drain pause while you read.
 - H at camp heals, saves and sets the checkpoint. 1–4 buy camp upgrades.
 - Esc pauses; losing focus also pauses. T while paused saves and returns to the title.
 - Hold Tab for the regional map. M toggles audio; V reduces effects; O opens audio/effects options.

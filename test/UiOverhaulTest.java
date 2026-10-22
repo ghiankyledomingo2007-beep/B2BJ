@@ -91,6 +91,7 @@ public final class UiOverhaulTest {
             panel.setSize(1280, 720);
             panel.doLayout();
             panel.getActionMap().get("beginPressed").actionPerformed(new ActionEvent(panel, 0, "begin"));
+            game.skipDialogue();
             for (int i = 0; i < 60; i++) panel.step(1 / 60.0);
             var during = band(panel);
             for (int i = 0; i < 60 * 4; i++) panel.step(1 / 60.0);

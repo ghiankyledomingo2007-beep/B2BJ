@@ -137,6 +137,8 @@ public final class RuinedOutpostGame {
     private java.nio.file.Path savePath;
     private CampaignSave.Progress savedProgress;
     private String campaignNotice="";
+    private OutpostDialogue dialogue;
+    private int dialogueIndex;
     private double noticeTime;
     private void notice(String text) { campaignNotice=text;noticeTime=8; }
     private final Set<Integer> clearedBosses=new java.util.HashSet<>();
@@ -165,6 +167,7 @@ public final class RuinedOutpostGame {
     }
 
     private void enterBiome(int destination,int arrival) {
+        dialogue=null;dialogueIndex=0;
         biome=destination;map=RuinedOutpostMap.campaign(biome);
         campaignCheckpoint=arrival==1?1:0;
         scouts=new ArrayList<>();campaignEnemies.clear();
@@ -244,19 +247,33 @@ public final class RuinedOutpostGame {
 
     public boolean returnToTitle() {
         if(!campaignMode||!paused||!player.alive()||story.blocksGameplay())return false;
-        saveProgress();cancelAbsorption();story=new OutpostStory();paused=false;
+        saveProgress();cancelAbsorption();dialogue=null;story=new OutpostStory();paused=false;
         campaignNotice="";noticeTime=0;return true;
     }
 
     private boolean campaignInteract() {
         if(blocked())return false;
+        if(biome==0&&nearCampaignHub()) {
+            if(!dialogueSeen(OutpostDialogue.CAMP))openDialogue(bossDefeated?OutpostDialogue.CAMP_LATE:OutpostDialogue.CAMP);
+            else if(campaignUnlocks.contains("landmark_0_9")&&!dialogueSeen(OutpostDialogue.REPORT))openDialogue(OutpostDialogue.REPORT);
+            else openDialogue(bossDefeated?OutpostDialogue.CAMP_AFTER:OutpostDialogue.CAMP_WAIT);
+            return true;
+        }
         for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120)) {
-            String key="landmark_"+biome+"_"+campaignArea().landmarks().indexOf(landmark);
+            int index=campaignArea().landmarks().indexOf(landmark);
+            String key="landmark_"+biome+"_"+index;
             if(campaignUnlocks.add(key))grantShards(1);
-            notice(landmark.name()+" / "+landmark.lore());saveProgress();return true;
+            if(biome==0&&index>=9&&index<=11)openDialogue(switch(index) {
+                case 9 -> OutpostDialogue.SIGNAL;
+                case 10 -> OutpostDialogue.INFIRMARY;
+                default -> OutpostDialogue.SUPPLIES;
+            });
+            else notice(landmark.name()+" / "+landmark.lore());
+            saveProgress();return true;
         }
         if(near(campaignArea().exit().x(),campaignArea().exit().y(),140)) {
             if(!bossDefeated) {notice("DEFEAT "+guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" TO OPEN THIS ROUTE");return false;}
+            if(biome==0&&!dialogueSeen(OutpostDialogue.GATE)) {openDialogue(OutpostDialogue.GATE);return true;}
             if(biome+1<CampaignWorld.AREA_COUNT) {
                 // the open gate leads on into the next region
                 cancelAbsorption();enterBiome(biome+1,0);notice(campaignArea().name());saveProgress();return true;
@@ -273,6 +290,36 @@ public final class RuinedOutpostGame {
     }
 
     public boolean campaignMode() { return campaignMode; }
+    public OutpostDialogue dialogue() { return dialogue; }
+    public int dialogueIndex() { return dialogueIndex; }
+    public boolean dialogueSeen(OutpostDialogue scene) { return campaignUnlocks.contains(scene.key()); }
+    public String campaignObjective() {
+        if(biome==0&&guardian.state()==Guardian.State.DORMANT&&!dialogueSeen(OutpostDialogue.CAMP)&&!dialogueSeen(OutpostDialogue.WARDEN))
+            return "Find Mara at Captain Camp";
+        return guardian.alive()?"Defeat the "+guardian.bossName()
+                :biome==0?"Cross the Eastern Gate":"Descend the Rooted Stair";
+    }
+
+    private void openDialogue(OutpostDialogue scene) {
+        cancelAbsorption();cancelBladeInput();
+        dialogue=scene;dialogueIndex=0;
+    }
+
+    public boolean advanceDialogue() {
+        if(dialogue==null||paused)return false;
+        if(++dialogueIndex>=dialogue.lines().size())skipDialogue();
+        return true;
+    }
+
+    public boolean skipDialogue() {
+        if(dialogue==null||paused)return false;
+        campaignUnlocks.add(dialogue.key());
+        if(dialogue==OutpostDialogue.CAMP_LATE)campaignUnlocks.add(OutpostDialogue.CAMP.key());
+        boolean opening=dialogue==OutpostDialogue.WAKE;
+        dialogue=null;dialogueIndex=0;
+        if(opening)notice("FIND MARA AT CAPTAIN CAMP");
+        saveProgress();return true;
+    }
     public int biome() { return biome; }
     public CampaignWorld.Area campaignArea() { return CampaignWorld.area(biome); }
     public CampaignEnemy campaignEnemy(Wisp body) { return campaignEnemies.get(body); }
@@ -364,11 +411,11 @@ public final class RuinedOutpostGame {
                 notice("C CONTINUE / N CONFIRM NEW GAME (REPLACES SAVE)");return;
             }
         }
-        story.begin();if(campaignMode)saveProgress();
+        story.begin();if(campaignMode) {openDialogue(OutpostDialogue.WAKE);saveProgress();}
     }
     public void newCampaign() {
         if(!campaignMode||story.phase()!=OutpostStory.Phase.PROLOGUE)return;
-        resetCampaign();saveBlocked=false;story.begin();notice("FIND MARA AT THE FIELD CAMP");saveProgress();
+        resetCampaign();saveBlocked=false;story.begin();openDialogue(OutpostDialogue.WAKE);saveProgress();
     }
     public void restart() {
         if(campaignMode) {
@@ -512,6 +559,7 @@ public final class RuinedOutpostGame {
         }
         if(campaignMode&&!bossDefeated&&guardian.state()==Guardian.State.DORMANT
                 &&near(guardian.x(),guardian.y(),600)) {
+            if(biome==0&&!dialogueSeen(OutpostDialogue.WARDEN)) {openDialogue(OutpostDialogue.WARDEN);return;}
             map.setGuardianPresent(true);guardian.activate(player.x(),player.y());
             emit(EventType.GUARDIAN_AWAKENED,guardian.x(),guardian.y());
         }
@@ -1078,7 +1126,7 @@ public final class RuinedOutpostGame {
     public String interactionPrompt() {
         if (blocked()) return "";
         if(campaignMode) {
-            if(nearCampaignHub())return "E TALK / H REST + SAVE / 1-4 UPGRADES";
+            if(nearCampaignHub())return (biome==0?"E TALK TO MARA / ":"")+"H REST + SAVE / 1-4 UPGRADES";
             for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120))return "E EXAMINE "+landmark.name();
             if(near(campaignArea().exit().x(),campaignArea().exit().y(),140))return !bossDefeated?"DEFEAT "+guardian.bossName()
                     :biome+1<CampaignWorld.AREA_COUNT?"E ENTER THE "+CampaignWorld.area(biome+1).name():"E DESCEND THE STAIR";
@@ -1098,6 +1146,7 @@ public final class RuinedOutpostGame {
         return "";
     }
     public boolean interact() {
+        if(dialogue!=null)return advanceDialogue();
         if(campaignMode&&campaignInteract())return true;
         if (blocked()) return false;
         if (!campaignMode&&map.room()==10&&!infirmaryUsed&&near(map.restX(),map.restY(),120)) {
@@ -1175,7 +1224,7 @@ public final class RuinedOutpostGame {
         corpses.remove(absorptionTarget);cancelAbsorption();
         emit(EventType.ABSORBED,player.x(),player.y());
     }
-    public boolean blocked() { return paused||story.blocksGameplay(); }
+    public boolean blocked() { return paused||story.blocksGameplay()||dialogue!=null; }
     public boolean paused() { return paused; }
     public void togglePause() { if(!story.blocksGameplay()) {paused=!paused;if(paused)cancelBladeInput();} }
     public void pause() { if(!story.blocksGameplay()) {paused=true;cancelBladeInput();} }

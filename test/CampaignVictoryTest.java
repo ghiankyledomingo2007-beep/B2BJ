@@ -11,13 +11,23 @@ public final class CampaignVictoryTest {
         Path save = Files.createTempDirectory("b2bj-victory-").resolve("campaign.properties");
         RuinedOutpostGame game = RuinedOutpostGame.campaign(save);
         game.begin();
+        game.skipDialogue();
         var exit = game.campaignArea().exit();
         game.player().relocate(exit.x(), exit.y());
         assert !game.interact() || game.biome() == 0 : "the gate stays shut while the Warden lives";
 
         defeatBoss(game);
+        var hub=game.campaignArea().hub();
+        game.player().relocate(hub.x(),hub.y());
+        assert game.interact()&&game.dialogue()==OutpostDialogue.CAMP_LATE : "first meeting after victory acknowledges it";
+        game.skipDialogue();assert game.dialogueSeen(OutpostDialogue.CAMP);
+        assert game.interact()&&game.dialogue()==OutpostDialogue.CAMP_AFTER;
+        game.skipDialogue();game.player().relocate(exit.x(),exit.y());
         game.drainEvents();
         assert game.interact() : "the gate opens once the Warden is dead";
+        assert game.dialogue()==OutpostDialogue.GATE;
+        game.skipDialogue();
+        assert game.interact();
         assert game.biome() == 1 : "the open gate leads into the Corrupted Forest";
         assert game.story().phase() != OutpostStory.Phase.COMPLETE : "the campaign goes on past the Outpost";
         assert game.drainEvents().stream().noneMatch(e -> e.type() == RuinedOutpostGame.EventType.VICTORY);

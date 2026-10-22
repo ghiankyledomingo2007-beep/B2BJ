@@ -6,6 +6,7 @@ public final class AttackSlotsTest {
         var save = Files.createTempDirectory("b2bj-slots-").resolve("campaign.properties");
         var game = RuinedOutpostGame.campaign(save);
         game.begin();
+        game.skipDialogue();
         game.setDebugGodMode(true);
         var boss = game.guardian();
         boss.activate(game.player().x(), game.player().y());
@@ -15,6 +16,8 @@ public final class AttackSlotsTest {
         defeat.invoke(game, false);
         var exit = game.campaignArea().exit();
         game.player().relocate(exit.x(), exit.y());
+        assert game.interact()&&game.dialogue()==OutpostDialogue.GATE;
+        game.skipDialogue();
         assert game.interact() && game.biome() == 1 : "into the forest";
         var clearing = game.campaignArea().landmarks().get(2);           // the Imp Clearing: four enemies round one spot
         game.player().relocate(clearing.x(), clearing.y());

@@ -5,6 +5,7 @@ For the current implementation, start with the [project README](../README.md) an
 
 ## Current work and school files
 
+- [Area One story and portrait conversations](design/area-one-story.md)
 - [Attack feel design](design/attack-feel.md)
 - [Art generation and editing guide](../tools/art/README.md)
 - [UI design brief](research/ui-brief.md)

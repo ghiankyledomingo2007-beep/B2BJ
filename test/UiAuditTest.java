@@ -124,6 +124,7 @@ public final class UiAuditTest {
         B2BJ panel = new B2BJ(false, RuinedOutpostGame.campaign());
         panel.setSize(1280, 720);
         press(panel, "begin");
+        panel.game().skipDialogue();
         return panel;
     }
 

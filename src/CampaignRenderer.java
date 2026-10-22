@@ -566,8 +566,7 @@ public final class CampaignRenderer {
     /** Top-right: chapter and region, the current goal, shards. No box: a soft dark plate and shadowed type. */
     private static void tracker(Graphics2D g, RuinedOutpostGame game, int width) {
         int right = width - 16;
-        String goal = game.guardian().alive() ? "Defeat the " + game.guardian().bossName()
-                : game.biome() == 0 ? "Cross the Eastern Gate" : "Descend the Rooted Stair";
+        String goal = game.campaignObjective();
         var lines = Ui.wrap(goal, 300, 2);
         int plateH = 64 + lines.size() * 22 + 30;
         Ui.fade(g, width - 420, 60, 420, plateH, 0, 190);
@@ -813,8 +812,7 @@ public final class CampaignRenderer {
         }
         y += 8;
         Ui.text(g, "GOAL", cx, y + 16, 2, Ui.MUTED);
-        String goal = game.guardian().alive() ? "Defeat the " + game.guardian().bossName()
-                : game.biome() == 0 ? "Cross the Eastern Gate" : "Descend the Rooted Stair";
+        String goal = game.campaignObjective();
         y = Ui.wrapped(g, goal, cx, y + 42, cw, 2, 22, 3, Ui.TEXT) + 10;
         Ui.text(g, "KEY", cx, y + 16, 2, Ui.MUTED);
         y += 30;

@@ -7,6 +7,7 @@ public final class PackagedAssetLoadingTest {
         OutpostArtTest.main(new String[0]);     // floor, layout stamp, prop and set piece sheets, from the classpath only
         ForestArtTest.main(new String[0]);      // the forest floor, its stamp, tileset and every forest sheet, from the jar too
         WardenFxTest.main(new String[0]);       // cleaned spike sheets and natural boss cues work from packaged assets
+        OutpostDialogueTest.main(new String[0]);
         System.out.println("PackagedAssetLoadingTest passed");
     }
 
@@ -26,6 +27,7 @@ public final class PackagedAssetLoadingTest {
                 "assets/characters/wisp/wisp_attack.png",
                 "assets/characters/slime/slime_effects.png",
                 "assets/characters/slime/slime_idle.png",
+                "assets/characters/npcs/mara_sheet.png",
                 "assets/ui/pixel_font.png",
                 "assets/ui/kit.png",
                 "assets/ui/splash.png",

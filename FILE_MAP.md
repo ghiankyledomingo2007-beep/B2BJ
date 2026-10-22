@@ -9,7 +9,8 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 - `src/RuinedOutpostGame.java`: live game state, combat integration, encounters and checkpoints.
 - `src/CampaignWorld.java`: both regions, landmarks, routes, enemy placement and the forest channel.
 - `src/RuinedOutpostMap.java`: terrain, obstacles, region collision and map queries.
-- `src/OutpostStory.java`: story text, discoveries, boss progression and completion.
+- `src/OutpostStory.java`: title, legacy room progression, death and completion phases.
+- `src/OutpostDialogue.java`: Area One's authored conversations and discovery text.
 - `src/CampaignSave.java`: atomic save/load at `~/.b2bj/campaign.properties`.
 
 ## Player and combat
@@ -40,6 +41,7 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 - `src/LoadingScreen.java`, `src/Splash.java`: loading and startup display.
 - `src/CampaignMenu.java`, `src/CampaignOptions.java`: pause menu and settings.
 - `src/DebugPanel.java`: campaign testing controls.
+- `src/DialogueRenderer.java`: portrait conversation panel and Mara's camp sprite.
 
 ## School demonstration
 
@@ -52,6 +54,7 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 ## Assets and tools
 
 - `assets/characters/`, `assets/effects/`, `assets/ui/`, `assets/audio/`: packaged actor art, effects, interface and sound.
+- `assets/characters/npcs/mara_sheet.png`: Mara's portrait and standing sprite in two square cells.
 - `assets/props/outpost/`, `assets/props/forest/`: regional scenery.
 - `assets/tilesets/outpost/`, `assets/tilesets/forest/`: current regional ground art; [tile guide](assets/tilesets/README.md).
 - `assets/source/outpost/`, `assets/source/forest/`, `assets/source/shared/`: editable art grouped by region, excluded from JAR packaging.
