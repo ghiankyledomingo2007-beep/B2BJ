@@ -39,3 +39,21 @@ Re-rendering from Blender does not merge hand-painted pixel changes.
 Check an installed export with `/usr/bin/python3 tools/art/check-rainoray-project.py`.
 For a new import, the same Lua script's default `create` mode reads runtime PNGs
 and refuses to overwrite an existing native project.
+
+## Cluster cleanup
+
+The current Character pixels went through one cluster pass on 2026-10-23; **Before
+polish** holds the frames from just before it. The pass flattens leftover 3D-render
+tones, merges stray specks into their material, keeps mask markings flat black,
+thins comb-like back-hair strands and rounds the back-view crown. Alpha, the red
+dot, gold, hilt and effects are untouched. Hand-paint further fixes in the editor;
+do not run the pass again on art that already had it. To repeat it on a fresh
+render, clean the exported body sheets and re-import them:
+
+```sh
+/usr/bin/python3 tools/art/clean-rainoray-pixels.py build/rainoray-pixel-export build/rainoray-clean
+```
+
+Copy the four `*_trail.png` sheets next to the cleaned sheets, then use the Lua
+`create` mode with `project=`, `sheets=` (that folder) and `before=` (the
+uncleaned sheets) on a new project path.
