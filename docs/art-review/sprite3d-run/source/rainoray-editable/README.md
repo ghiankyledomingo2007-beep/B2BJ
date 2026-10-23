@@ -32,10 +32,12 @@ From the repository root, run `blender -b --python-exit-code 1 --python tools/sp
 To render the edited file without installing sprites:
 
 ```sh
-blender -b --python tools/sprite3d/animate.py -- docs/art-review/sprite3d-run/source/rainoray-editable/Rainoray-Body-and-Separate-Sword.blend /tmp/rainoray-preview --action idle --frames 8
+blender -b --python tools/sprite3d/animate.py -- docs/art-review/sprite3d-run/source/rainoray-editable/Rainoray-Body-and-Separate-Sword.blend /tmp/rainoray-preview --armed --action idle --frames 8
 ```
 
-The ordinary `build_sheets.py` still uses its original cached puppet. Do not use `--install` until the new art has been reviewed; it replaces live sheets and does not merge teammates' pixel edits.
+As of 2026-10-23, `build_sheets.py` renders this editable file directly, showing the sword only in memory. It no longer rebuilds the old GLB or uses the old puppet cache. Default output is `build/rainoray-sprites`. Render first, review, then use `--install`; installation replaces live sheets and does not merge teammates' pixel edits.
+
+The renderer adds a tiny flat red decal over the existing mask dot so it stays visible at native resolution, then snaps it to the character palette. The editable model and packed mask texture remain untouched. See the [human-form polish review](../../../rainoray-human-polish/README.md) for current stance, movement and contact effects.
 
 
 ## 2026-10-22 — Side-run sword carry

@@ -17,6 +17,7 @@ public final class RainorayRenderingTest {
         assert !transform.active();
         nativeGlintsKeepPixelScale();
         humanSkillInputAndEffectsStaySeparate();
+        bladeAuraKeepsFaceClearAndRespectsReducedEffects();
         combatInterruptsMorphReplacement();
         engulfBodyCoversCurrentCorpseAndReturns();
         missingActionArtNeverMakesHumanInvisible();
@@ -44,6 +45,23 @@ public final class RainorayRenderingTest {
         panel.getActionMap().get("effectsPressed").actionPerformed(null);
         assert player.ichor()==energy : "V toggles effects without spending skill energy";
         GameAudio.setMuted(false);
+    }
+    private static void bladeAuraKeepsFaceClearAndRespectsReducedEffects() throws Exception {
+        var panel=new B2BJ(false);var player=panel.game().player();player.relocate(300,300);
+        var draw=B2BJ.class.getDeclaredMethod("drawBladeAura",java.awt.Graphics2D.class,int.class,int.class);
+        draw.setAccessible(true);
+        player.collectIchor(100);assert player.transform();
+        for(boolean reduced:new boolean[]{false,true}) {
+            var field=B2BJ.class.getDeclaredField("reducedEffects");field.setAccessible(true);field.set(panel,reduced);
+            var image=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
+            var ink=image.createGraphics();draw.invoke(panel,ink,0,0);ink.dispose();
+            int visible=0;
+            for(int y=0;y<640;y++)for(int x=0;x<640;x++)if((image.getRGB(x,y)>>>24)>0) {
+                visible++;
+                assert x<284||x>316||y<220||y>272 : "ambient aura must not obscure the mask";
+            }
+            assert reduced?visible==0:visible>0 : "reduced effects disables the ambient human aura";
+        }
     }
     private static void combatInterruptsMorphReplacement() throws Exception {
         GameAudio.setMuted(true);

@@ -1,61 +1,69 @@
-"""Blade trails: the swoosh a fast cut leaves behind the sword. Runs inside Blender (animate.py --trail).
+"""Short contact crescents, photographed at native resolution with the body as an occluder.
 
-The trail is a SEPARATE layer the game draws over the character sprite, so it can be restyled or switched
-off without touching him. It is not drawn: the puppet knows where the blade is at every instant, so the
-path the blade sweeps between sheet frames is sampled, skinned into a ribbon from part-way up the blade to
-its tip, and photographed by the same camera as the sprite. It therefore sits exactly on the sword in every
-facing, flattens correctly under the 3/4 camera (a level cut is a squashed ellipse, an overhead cut a full
-arc), and the body hides the part that passes behind him: he is photographed with it, in pure black, and
-build_sheets.py turns black back into transparency.
-
-Only fast movement leaves a trail, and it ages over a few frames: white at the blade, then pale blue, then
-deep blue, narrowing toward the tip as it fades.
+Each cut has one fixed plane. Wrist corrections and recovery motion must not pull the effect into
+loops around the character. Geometry is generated offline; the game still draws one sprite layer.
 """
+import math
 import os
 
 import bpy
+from mathutils import Vector
 
-SUBSTEPS = 8             # blade samples between two sheet frames; the wind-up-to-contact swing is one frame
-MIN_SPEED = 0.30         # world units of tip travel per sheet frame (~11 px); slower moves leave nothing
-ROOT = 0.30              # a fresh trail starts this far up the blade...
-ROOT_AGED = 0.94         # ...and an old one has narrowed to this: a crescent, fat at the blade, a point at its tail
-TAPER = 0.7              # < 1 narrows quickly at first, so even a one-frame swing reads as a crescent, not a band
-# (oldest age in sheet frames, colour) - sRGB, the three tones build_sheets.py snaps the photo to
-BANDS = [(0.4, (236, 250, 255)), (1.0, (120, 200, 255)), (1.9, (40, 110, 230))]
+from puppet import CX, CY, body
+
+# Tilt, centre height, radius, starting angle, ending angle, first/last contact frame.
+# Angles sweep around the character's forward axis; the overhead uses a vertical plane.
+CUTS = {
+    "slash0": (1.1, -0.03, 1.2, -105, 100, 3, 5),
+    "slash2": (-1.1, -0.03, 1.2, 105, -100, 3, 5),
+    "slash3": (None, -0.02, 1.08, 110, -65, 3, 5),
+    "cleave": (0.05, -0.25, 1.25, -110, 130, 3, 5),
+    "dashslash": (-0.12, -0.40, 1.18, 105, -105, 3, 5),
+    "spincleave": (0.0, -0.28, 1.25, -105, 465, 3, 8.5),
+    "cast": (0.3, -0.15, 1.12, -100, 100, 0, 3),
+    "counter": (-0.4, -0.15, 1.12, 100, -100, 0, 3),
+}
+BANDS = [(0.3, (236, 250, 255)), (0.75, (120, 200, 255)), (1.35, (40, 110, 230))]
 BODY = (0.0, 0.0, 0.0, 1.0)
 
 
 def linear(srgb):
-    """Blender's object colours are scene-linear; the render comes out in sRGB."""
     return tuple(((c / 255 + 0.055) / 1.055) ** 2.4 if c > 10 else c / 255 / 12.92 for c in srgb) + (1.0,)
 
 
-def sample(p, pose, frames):
-    """-> [(time in sheet frames, blade hilt end, blade tip)] over the whole action."""
-    out = []
-    for k in range((frames - 1) * SUBSTEPS + 1):
-        pose(p, k / SUBSTEPS)
-        out.append((k / SUBSTEPS, p.head("blade"), p.tail("blade")))
-    return out
-
-
-def ribbons(samples, frame, window, root=ROOT):
-    """-> one quad list per colour band for this sheet frame. Only blade travel inside `window`
-    (first, last sheet frame of the strike) counts: a fast wind-up is not a cut."""
-    span = BANDS[-1][0]
+def ribbons(action, frame, facing="east"):
+    """Three flat colour bands; no effect before contact or during recovery."""
     quads = [[] for _ in BANDS]
-
-    def start(age):                          # how far up the blade the ribbon begins at this age
-        return root + (ROOT_AGED - root) * min(max(age, 0.0) / span, 1.0) ** TAPER
-
-    for (t0, hilt0, tip0), (t1, hilt1, tip1) in zip(samples, samples[1:]):
-        age = frame - t1
-        if t1 > frame + 1e-6 or age >= span or (tip1 - tip0).length * SUBSTEPS < MIN_SPEED:
+    if action == "slash1":
+        if 4 <= frame <= 6:
+            # A thrust gets a straight narrow streak, never a circular slash.
+            centre = Vector((CX, CY, -0.28))
+            width = 0.09 * (7 - frame) / 3
+            bias = 0.45 if facing == "north" else 0
+            quads[frame - 4].append(tuple(centre + body(r + bias * f, f, z) for r, f, z in
+                ((0, 0.35, 0), (-width, 1.15, -0.12), (0, 1.65, -0.18), (width, 1.15, -0.12))))
+        return quads
+    tilt, height, radius, start, end, first, last = CUTS[action]
+    if frame <= first or frame >= last + BANDS[-1][0]:
+        return quads
+    centre = Vector((CX, CY - 0.12, height))
+    across = body(0.4, 0, 1).normalized() if tilt is None else body(1, 0, tilt).normalized()
+    forward = body(0, 1, 0)
+    # Fixed angular spacing gives clean arcs even when the pose changes sharply between frames.
+    steps = math.ceil(abs(end - start) / 4)
+    for i in range(steps):
+        t0, t1 = first + (last - first) * i / steps, first + (last - first) * (i + 1) / steps
+        if t1 > frame or frame - t1 >= BANDS[-1][0]:
             continue
-        if t0 < window[0] - 1e-6 or t1 > window[1] + 1e-6:
-            continue
-        band = next(i for i, (oldest, _) in enumerate(BANDS) if age < oldest)
-        quads[band].append((hilt0.lerp(tip0, start(frame - t0)), tip0, tip1, hilt1.lerp(tip1, start(age))))
+        vertices = []
+        for t, inset in ((t0, True), (t0, False), (t1, False), (t1, True)):
+            age = max(0, frame - t)
+            width = 0.34 * max(0, 1 - age / BANDS[-1][0]) ** 0.7
+            angle = math.radians(start + (end - start) * (t - first) / (last - first))
+            direction = across * math.sin(angle) + forward * math.cos(angle)
+            vertices.append(centre + direction * (radius - width if inset else radius))
+        band = next(b for b, (oldest, _) in enumerate(BANDS) if frame - t1 < oldest)
+        quads[band].append(tuple(vertices))
     return quads
 
 
@@ -69,8 +77,7 @@ def build(quads, colour, name):
     return ob
 
 
-def render(scene, p, body_meshes, snaps, samples, shots, facing, window, root=ROOT):
-    """Photograph every sheet frame's trail, with the posed body in black as an occluder."""
+def render(scene, p, body_meshes, snaps, shots, facing, action):
     shading = scene.display.shading
     shading.color_type = "OBJECT"
     for mesh in body_meshes:
@@ -78,7 +85,7 @@ def render(scene, p, body_meshes, snaps, samples, shots, facing, window, root=RO
     for i, snap in enumerate(snaps):
         p.restore(snap)
         made = [build(quads, colour, f"trail{b}") for b, (quads, (_, colour)) in
-                enumerate(zip(ribbons(samples, i, window, root), BANDS)) if quads]
+                enumerate(zip(ribbons(action, i, facing), BANDS)) if quads]
         scene.render.filepath = os.path.join(shots, f"trail_{facing}_{i:02d}.png")
         bpy.ops.render.render(write_still=True)
         for ob in made:

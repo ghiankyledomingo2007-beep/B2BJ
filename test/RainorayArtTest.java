@@ -5,6 +5,13 @@ public final class RainorayArtTest {
             crescentCoreMatchesDamageDiameter();
         } catch(Exception error) { throw new AssertionError("Render fixture failed",error); }
         if(args.length>0&&args[0].equals("--runtime-only"))return;
+        var idle=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png");
+        for(int frame=0;frame<8;frame++) {
+            int dot=0;
+            for(int y=8;y<32;y++)for(int x=frame*80+24;x<frame*80+56;x++)
+                if(idle.getRGB(x,y)==0xffe03040)dot++;
+            assert dot>=1&&dot<=3 : "front-facing mask keeps one small red mark throughout its idle";
+        }
         for(String action:new String[]{"idle","guard","hurt","charge","hold"})
             CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,8,4,8);
         // Moves that travel get cells twice the body canvas (the body stays in the middle 80 px).

@@ -1,4 +1,4 @@
-"""One command: static Rainoray GLB -> rigged puppet -> every game-format blade sheet it can act out.
+"""Render the current editable Rainoray model into every game-format blade sheet.
 
   python3 tools/sprite3d/build_sheets.py [--out DIR] [--install] [sheet ...]
 
@@ -7,7 +7,7 @@ transform
 --install copies the results into assets/ (blade sheets to characters/blade, the morph to effects).
 Each is written as rainoray_<sheet>.png in the layout src/B2BJ.java reads: 80x80 cells, one row per
 facing in BladeAnimation.directionRow() order (south, east, north, west); the slash sheet stacks the
-four combo moves, 16 rows. All four facings are real photographs: a mirrored west would make him
+four combo moves plus dash slash, 20 rows. All four facings are real photographs: a mirrored west would make him
 left-handed and send his cuts against the game's slash arc.
 A review GIF per sheet and a clipping/repeat report come with it. No services, a minute or so.
 """
@@ -26,9 +26,10 @@ from post_pixel import outline, palette_from, snap
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
-SOURCE = REPO / "docs/art-review/sprite3d-run/rainoray-sprint.glb"
+SOURCE = REPO / "docs/art-review/sprite3d-run/source/rainoray-editable/Rainoray-Body-and-Separate-Sword.blend"
 PALETTE = sorted((REPO / "docs/art-review/human-motion-manual").glob("canonical-*.png"))
-DEFAULT_OUT = REPO / "docs/art-review/sprite3d-run/sheets"
+DEFAULT_OUT = REPO / "build/rainoray-sprites"
+MASK_RED = (224, 48, 64)       # Keep the approved single red dot distinct from skin and trim.
 SLIME_MORPH = REPO / "docs/art-review/sprite3d-run/source"      # the slime's own reviewed morph drawings
 BLADE_ASSETS, EFFECT_ASSETS = REPO / "assets/characters/blade", REPO / "assets/effects"
 TRANSFORM = "transform"                                         # composited from the idle sheet, not photographed
@@ -68,17 +69,6 @@ def blender(*args):
                           capture_output=True, text=True)
     if done.returncode != 0 or "Traceback" in done.stdout + done.stderr:
         raise SystemExit(f"blender failed: {' '.join(map(str, args))}\n{done.stdout[-2000:]}\n{done.stderr[-2000:]}")
-
-
-def ensure_puppet(out):
-    """The rig is built once and reused until the model or the rig code changes."""
-    blend = out / "puppet.blend"
-    newest = max(SOURCE.stat().st_mtime, (HERE / "puppet.py").stat().st_mtime)
-    if blend.exists() and blend.stat().st_mtime >= newest:
-        return blend
-    blend.unlink(missing_ok=True)
-    blender(blend, out, "--action", "idle", "--frames", 1, "--views", "south", "--source", SOURCE)
-    return blend
 
 
 def wide_cell(shot, notes, where):
@@ -259,11 +249,12 @@ def main():
     photographed = [s for s in a.sheets if s != TRANSFORM]
     if TRANSFORM in a.sheets and "idle" not in photographed and not (out / "rainoray_idle.png").exists():
         photographed.append("idle")                           # the morph is cut from the idle sheet
-    puppet = ensure_puppet(out)
+    if not SOURCE.is_file():
+        raise SystemExit(f"Current editable source is missing: {SOURCE}")
     jobs = [(action, frames, ["--trail"] if s in TRAILED else []) for s in photographed for action, frames in SHEETS[s]]
     with ThreadPoolExecutor(max_workers=4) as pool:          # Blender does the work; threads just wait
-        list(pool.map(lambda j: blender(puppet, out, "--action", j[0], "--frames", j[1], *j[2]), jobs))
-    palette, cache = palette_from(PALETTE), {}
+        list(pool.map(lambda j: blender(SOURCE, out, "--armed", "--action", j[0], "--frames", j[1], *j[2]), jobs))
+    palette, cache = [*palette_from(PALETTE), MASK_RED], {}
     for name in photographed:
         assemble(out, name, palette, cache)
     if TRANSFORM in a.sheets:

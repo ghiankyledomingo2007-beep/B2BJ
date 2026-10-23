@@ -221,19 +221,10 @@ def spin_cleave(g):
 TRACKS = {"slash0": draw_cut, "slash1": thrust, "slash2": diagonal, "slash3": overhead, "cleave": cleave,
           "charge": charge, "hold": hold, "dashslash": dash_slash, "spincleave": spin_cleave}
 
-# swings that leave a blade trail -> (first, last) sheet frame of the strike. Frame 3 is the end of the
-# wind-up and frame 4 is contact, so the cut itself is the travel from 3 onward.
-# A third value narrows the ribbon to the last part of the blade: a thrust sweeps almost no area, so a
-# full-width ribbon is a flag at his hip; near the tip it is the streak a lunge should leave.
-# The window closes before the recovery: coming home is quick too, and must not leave a swoosh.
-TRAILS = {"slash0": (3, 7), "slash1": (3, 6, 0.75), "slash2": (3, 7), "slash3": (3, 7), "cleave": (3, 7),
-          "dashslash": (3, 7), "spincleave": (3, 9)}
-
-
 def poses(action, n, view):
     return posers(TRACKS, action, n, view)
 
 
 def motion(action, n, view):
-    """pose(p, frame) at any fractional frame: what trail.py samples between the sheet frames."""
+    """pose(p, frame) at any fractional frame for structured motion inspection."""
     return poser(TRACKS, action, n, view)

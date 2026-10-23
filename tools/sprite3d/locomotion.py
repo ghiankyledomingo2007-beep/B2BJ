@@ -9,10 +9,12 @@ import math
 
 from mathutils import Vector
 
-from puppet import X_AXIS, Y_AXIS, Z_AXIS, mix
+from puppet import X_AXIS, Y_AXIS, Z_AXIS, body, mix
 
 # action -> default frame count. Must match src/BladeAnimation.java.
 FRAMES = {"run": 8, "idle": 8, "start": 4, "stop": 4, "turn": 4}
+STANCE = {".L": (-0.045, -0.055, 0), ".R": (0.045, 0.075, 0)}
+READY_SINK = -0.04
 
 
 def pose(p, t, amp, breath, view):
@@ -20,7 +22,9 @@ def pose(p, t, amp, breath, view):
     a, b = 2 * math.pi * t, 2 * math.pi * breath
     twist = view["twist"]          # pelvis/shoulder twist reads as a goofy wobble from the front or back
     p.begin()
-    p.move("hips", Vector((0, 0, mix(0.022 * math.sin(b), 0.075 * math.cos(2 * a) - 0.035, amp))))
+    ankles = {side: p.head("foot" + side) for side in STANCE}
+    foot_direction = p.direction("foot.L")
+    p.move("hips", Vector((0, 0, mix(READY_SINK + 0.012 * math.sin(b), 0.075 * math.cos(2 * a) - 0.035, amp))))
     p.turn("hips", X_AXIS, mix(2, 24, amp))                                  # committed forward lean
     p.turn("hips", Y_AXIS, mix(1.6 * math.cos(b), 7 * math.sin(a) * twist, amp))
     p.turn("hips", Z_AXIS, amp * 15 * math.sin(a) * twist)                   # pelvis follows the leading leg
@@ -38,23 +42,31 @@ def pose(p, t, amp, breath, view):
         p.turn("thigh" + side, X_AXIS, amp * (-30 - 68 * s))                 # knee to the chest, leg far behind
         p.turn("shin" + side, X_AXIS, amp * (8 + 122 * fold))
         p.turn("foot" + side, X_AXIS, amp * (-12 + 30 * fold))
+        if amp < 1:
+            # Feet settle into a staggered guard without changing the reviewed full-speed stride.
+            target = p.head("foot" + side).lerp(ankles[side] + body(*STANCE[side]), 1 - amp)
+            direction = p.direction("foot" + side).lerp(foot_direction, 1 - amp)
+            p.ik("thigh" + side, "shin" + side, target, body(-0.2 if side == ".L" else 0.2, 1, 0))
+            p.point("foot" + side, direction)
 
     # free arm: hangs when standing, pumps opposite its own leg when running
     s = math.sin(a + math.pi)
     p.turn("upperarm.L", Y_AXIS, 38)                                         # out of the A-pose, beside the ribs
     p.turn("upperarm.L", X_AXIS, amp * (-72 * s + 5))
-    p.turn("forearm.L", X_AXIS, mix(-12 + 4 * math.sin(b + 0.7), -95 - 15 * s, amp))
+    p.turn("forearm.L", X_AXIS, mix(-24 + 3 * math.sin(b + 0.7), -95 - 15 * s, amp))
 
     # sword arm: low guard when standing; locked back with the blade trailing when running
     carry = view.get("carry_direction")
     p.turn("upperarm.R", Y_AXIS, mix(-30, view["arm_in"], amp))
     p.turn("upperarm.R", X_AXIS, amp * (view["arm_back"] + (1 if carry else 4) * math.sin(2 * a)))
-    p.turn("forearm.R", X_AXIS, mix(-8 + 5 * math.sin(b + 2.0), 10, amp))    # the guard drifts as he breathes
+    p.turn("forearm.R", X_AXIS, mix(-18 + 2 * math.sin(b + 2.0), 10, amp))
     if carry:
         if amp > 0:
             # Front/back carry stays beside the right leg instead of pointing into the camera.
             direction = p.direction("blade")
             target = direction.lerp(Vector(carry).normalized(), math.sqrt(amp)).normalized()
+            target.z += 0.5 * math.sin(math.pi * amp)  # Lift through the lower start/stop poses.
+            target.normalize()
             rotation = direction.rotation_difference(target)
             p.turn("hand.R", rotation.axis, math.degrees(rotation.angle))
     else:

@@ -2,6 +2,7 @@
 Requires the original local puppet cache and the editable .blend. Writes renders only in a temporary folder.
 """
 import bpy,sys,tempfile,math
+from mathutils import Vector
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 work=tempfile.TemporaryDirectory(prefix='rainoray-check-');TMP=Path(work.name)
@@ -16,9 +17,38 @@ assert not any(g.group==blade and g.weight>0 for v in body.data.vertices for g i
 blade=sword.vertex_groups['blade'].index
 assert all(any(g.group==blade and abs(g.weight-1)<1e-6 for g in v.groups) for v in sword.data.vertices)
 assert all(o.parent==arm for o in [body,sword,bpy.data.objects['RainorayMask']])
-import locomotion,puppet
+import locomotion,puppet,channels,trail
 poser=puppet.Poser(arm)
-for facing in ('east','west'):
+for facing,view in animate.VIEWS.items():
+ contacts={side:[] for side in locomotion.STANCE}
+ for frame in locomotion.frames('idle',8):
+  locomotion.pose(poser,*frame,view)
+  for side in contacts:contacts[side].append(poser.head('foot'+side))
+ for side,points in contacts.items():
+  assert max((a-b).length for a in points for b in points)<.5*puppet.REST_HEIGHT/68,(facing,side,'idle feet move over half a native pixel')
+ guard=channels.measure_guard(poser,view)
+ before={side:poser.head('foot'+side) for side in contacts}
+ channels.apply(poser,guard,view)
+ assert all((poser.head('foot'+side)-before[side]).length<1e-5 for side in contacts),(facing,'combat loses ready stance')
+for action,profile in trail.CUTS.items():
+ first,last=profile[-2:]
+ assert not any(trail.ribbons(action,first)),(action,'windup leaves an arc')
+ assert any(trail.ribbons(action,first+1)),(action,'missing contact arc')
+ assert not any(trail.ribbons(action,last+2)),(action,'arc follows recovery')
+ for frame in range(12):
+  for band in trail.ribbons(action,frame):
+   for quad in band:
+    # A constant outer radius cannot fold into a wrist-following loop.
+    centre=Vector((puppet.CX,puppet.CY-.12,profile[1]))
+    assert all(abs((quad[i]-centre).length-profile[2])<1e-5 for i in (1,2))
+assert not any(trail.ribbons('slash1',3)) and any(trail.ribbons('slash1',4))
+assert not any(trail.ribbons('slash1',7))
+mask=bpy.data.objects['RainorayMask'];mask.hide_render=True
+animate.pixel_mask_dot(bpy.context.scene,arm)
+assert bpy.context.scene.objects.get('RainorayMaskDot') is None,'hidden mask must not leave a floating dot'
+mask.hide_render=False;animate.pixel_mask_dot(bpy.context.scene,arm)
+assert bpy.data.objects['RainorayMaskDot'].parent==arm
+for facing in ('south','east','north','west'):
  view=animate.VIEWS[facing]
  for action in ('run','start','stop','turn'):
   directions=[];relative_tips=[];tips=[];feet=[]
@@ -65,4 +95,4 @@ for name,source in [('separate',TMP/'armed.blend'),('hidden',editable),('origina
  if name!='hidden':assert all(tuple(o.color)==(0.,0.,0.,1.) for o in meshes),name
  assert bool(list((TMP/name).glob('*/trail_*.png')))==(name!='hidden'),name
 work.cleanup()
-print('PASS: stable side carry, clear transitions, unchanged idle/combat; original/split trails and hidden sword')
+print('PASS: planted guard, combat continuity, clean contact arcs, stable carry; original/split trails and hidden sword')

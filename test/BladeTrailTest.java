@@ -23,9 +23,11 @@ public final class BladeTrailTest {
     private static void strike(String name,int columns,int rows) {
         var image=sheet(name,columns,rows);
         for(int row=0;row<rows;row++) {
-            for(int frame=0;frame<3;frame++)assert pixels(image,frame,row)==0 : name+" row "+row+": a wind-up is not a cut";
+            for(int frame=0;frame<=3;frame++)assert pixels(image,frame,row)==0 : name+" row "+row+": a wind-up is not a cut";
             for(int frame=11;frame<columns;frame++)assert pixels(image,frame,row)==0 : name+" row "+row+": the trail is gone before he is home";
             assert anyTrail(image,4,6,row) : name+" row "+row+": the strike leaves a trail";
+            if(name.equals("slash")||row<4)for(int frame=7;frame<columns;frame++)
+                assert pixels(image,frame,row)==0 : name+": ordinary cuts must fade before the recovery swing";
         }
     }
 

@@ -9,6 +9,7 @@ Frames land in out_dir/frames-<action>-<facing>/<facing>_NN.png; build_sheets.py
 With --trail, swings also get trail_<facing>_NN.png: the blade's swoosh as a separate layer (trail.py).
 """
 import argparse
+import math
 import os
 import sys
 
@@ -61,21 +62,40 @@ def parse_args():
                         "can see (and slide back in) a blade that reaches past the cell, and so a trail "
                         "has room around him")
     p.add_argument("--trail", action="store_true", help="also photograph the blade trail of a swing")
+    p.add_argument("--armed", action="store_true", help="show the separate sword in memory; never save over the editable source")
     return p.parse_args(argv)
 
 
 def frame_posers(action, n, view):
-    """-> (one poser per frame, whether the feet are planted on the rest floor,
-           pose(p, fractional frame) if this action leaves a blade trail)."""
+    """-> (one poser per frame, feet planted on the rest floor, contact effect present)."""
     if action in locomotion.FRAMES:
-        return locomotion.poses(action, n or locomotion.FRAMES[action], view), False, None
+        return locomotion.poses(action, n or locomotion.FRAMES[action], view), False, False
     for module in (attacks, reactions):
         if action in module.FRAMES:
             n = n or module.FRAMES[action]
-            motion = (module.motion(action, n, view), module.TRAILS[action]) if action in module.TRAILS else None
-            return module.poses(action, n, view), channels.PLANTED, motion
+            return module.poses(action, n, view), channels.PLANTED, action in trail.CUTS or action == "slash1"
     known = sorted({**locomotion.FRAMES, **attacks.FRAMES, **reactions.FRAMES})
     raise SystemExit(f"unknown action {action}; known: {known}")
+
+
+def pixel_mask_dot(scene, arm):
+    """A flat decal keeps the existing red dot from falling between native pixels; no raised nose."""
+    mask = scene.objects.get("RainorayMask")
+    if mask is None or mask.hide_render or scene.objects.get("RainorayMaskDot") is not None:
+        return
+    # shortcut: anchored to the current mask surface; recompute from UVs if the mask is reshaped.
+    mesh = bpy.data.meshes.new("MaskDot")
+    vertices = [(puppet.CX + 0.027 * math.cos(i * math.tau / 8), 0.017,
+                 0.469 + 0.027 * math.sin(i * math.tau / 8)) for i in range(8)]
+    mesh.from_pydata(vertices, [], [tuple(range(8))])
+    dot = bpy.data.objects.new("RainorayMaskDot", mesh)
+    scene.collection.objects.link(dot)
+    material = bpy.data.materials.new("MaskRed")
+    material.diffuse_color = trail.linear((224, 48, 64))
+    mesh.materials.append(material)
+    dot.parent = arm
+    dot.vertex_groups.new(name="head").add(list(range(8)), 1, "REPLACE")
+    dot.modifiers.new("Armature", "ARMATURE").object = arm
 
 
 def main():
@@ -87,13 +107,17 @@ def main():
     bpy.ops.wm.open_mainfile(filepath=a.puppet)
     scene = bpy.context.scene
     arm = next(o for o in scene.objects if o.type == "ARMATURE")
-    body_meshes = [o for o in scene.objects if o.type == "MESH" and not o.hide_render]
+    pixel_mask_dot(scene, arm)
     sword = scene.objects.get("RainoraySword")
+    if a.armed and sword is not None:
+        sword.hide_render = False
+        sword.hide_set(False)
+    body_meshes = [o for o in scene.objects if o.type == "MESH" and not o.hide_render]
     p = puppet.Poser(arm)
     render_frames.setup_render(scene, a.cell, a.canvas)
 
     for facing in a.views.split(","):
-        posers, planted, motion = frame_posers(a.action, a.frames, VIEWS[facing])
+        posers, planted, has_trail = frame_posers(a.action, a.frames, VIEWS[facing])
         p.begin()
         rest_floor = p.lowest_foot()
         snaps, floor = [], 1e9
@@ -111,10 +135,8 @@ def main():
             p.restore(snap)
             scene.render.filepath = os.path.join(shots, f"{facing}_{i:02d}.png")
             bpy.ops.render.render(write_still=True)
-        if a.trail and motion and (sword is None or not sword.hide_render):
-            pose, (first, last, *root) = motion
-            trail.render(scene, p, body_meshes, snaps, trail.sample(p, pose, len(snaps)), shots, facing,
-                         (first, last), *root)
+        if a.trail and has_trail and (sword is None or not sword.hide_render):
+            trail.render(scene, p, body_meshes, snaps, shots, facing, a.action)
         print(f"ANIMATE ok action={a.action} facing={facing} frames={len(snaps)} floor={floor:.3f}")
 
 

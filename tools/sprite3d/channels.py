@@ -52,10 +52,10 @@ def measure_guard(p, view):
         return (*rel(reach.normalized()), reach.length / arm_length(p, side))
 
     return {
-        "root": (0.0, 0.0), "hip": (0.0, 0.0, 0.0), "lean": 2.0, "roll": 0.0, "yaw": 0.0, "coil": 0.0,
+        "root": (0.0, 0.0), "hip": (0.0, 0.0, locomotion.READY_SINK), "lean": 2.0, "roll": 1.6, "yaw": 0.0, "coil": 0.0,
         "turn": 0.0,
         "spine": 1.0, "neck": -2.0, "look": 0.0, "hair": 2.0, "hair_tip": 0.0, "hair_sway": 0.0,
-        "footL": (0.0, 0.0, 0.0), "footR": (0.0, 0.0, 0.0), "toeL": 0.0, "toeR": 0.0,
+        "footL": locomotion.STANCE[".L"], "footR": locomotion.STANCE[".R"], "toeL": 0.0, "toeR": 0.0,
         "armR": arm_of(".R"), "elbowR": rel(p.head("forearm.R") - p.head("upperarm.R")),
         "armL": arm_of(".L"), "elbowL": rel(p.head("forearm.L") - p.head("upperarm.L")),
         "blade": rel(p.direction("blade")),

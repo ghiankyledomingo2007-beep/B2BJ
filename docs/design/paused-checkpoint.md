@@ -2,6 +2,8 @@
 
 Owner requested a pause and GitHub backup before sleeping. Do not resume feature work until asked.
 
+**Resumed 2026-10-23:** the owner requested work on Rainoray's human form. The contact arcs and Blade aura review below are now completed in [the human-form polish pass](../art-review/rainoray-human-polish/README.md). This file preserves the original checkpoint; its pending list describes the earlier state.
+
 Later on 2026-10-22, the owner requested recovery after an old art pack replaced 11 sprites.
 The pre-repair state was separately backed up online as `0d6f3ff`. Recovery restores those
 files from this original overnight checkpoint (`dee64ef`) and blocks legacy three-facing

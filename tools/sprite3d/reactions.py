@@ -125,10 +125,6 @@ def counter(g):
 TRACKS = {"dash": dash, "cast": cast, "guard": parry, "hurt": hurt, "counter": counter}
 
 
-# the crescent leaves at t=0 and the counter answers at once, so both trail from the first frame
-TRAILS = {"cast": (0, 4), "counter": (0, 4)}
-
-
 def poses(action, n, view):
     return posers(TRACKS, action, n, view)
 
