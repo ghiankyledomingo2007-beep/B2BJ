@@ -128,7 +128,6 @@ public final class B2BJ extends JPanel {
     private final BufferedImage guardianChargeSheet=loadImage("assets/characters/guardian/guardian_charge.png");
     private final BufferedImage guardianWaveSheet=loadImage("assets/characters/guardian/guardian_wave.png");
     private final BufferedImage pixelFont = loadImage("assets/ui/pixel_font.png");
-    private final BufferedImage vitalityIcon=loadImage("assets/ui/vitality.png");
     private final BufferedImage blobIcon=loadImage("assets/ui/blob.png");
     private final BufferedImage bladeIcon=loadImage("assets/ui/blade.png");
     private final BufferedImage slashIcon=loadImage("assets/ui/slash.png");

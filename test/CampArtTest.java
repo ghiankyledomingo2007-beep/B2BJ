@@ -18,6 +18,20 @@ public final class CampArtTest {
             frames.add(Arrays.hashCode(pixels));
         }
         assert colours.size()<=6&&frames.size()>=6 : "flat palette, real animated silhouettes";
+        for(String[] asset:new String[][]{{"characters/npcs/mara_idle", "80", "80", "15"},
+                {"characters/npcs/mara_portrait", "64", "64", "15"},
+                {"characters/slime/rainoray_portrait", "64", "64", "12"},
+                {"props/outpost/set_tent", "128", "100", "16"}}) {
+            var sprite=B2BJ.loadImage("assets/"+asset[0]+".png");
+            assert sprite!=null&&sprite.getWidth()==Integer.parseInt(asset[1])&&sprite.getHeight()==Integer.parseInt(asset[2]);
+            var palette=new HashSet<Integer>();
+            for(int y=0;y<sprite.getHeight();y++)for(int x=0;x<sprite.getWidth();x++) {
+                int pixel=sprite.getRGB(x,y),alpha=pixel>>>24;
+                assert alpha==0||alpha==255 : "soft sprite edge: "+asset[0];
+                if(alpha!=0)palette.add(pixel);
+            }
+            assert palette.size()>4&&palette.size()<=Integer.parseInt(asset[3]) : "native pixel palette: "+asset[0];
+        }
         var field=DialogueRenderer.class.getDeclaredField("MARA_BODY");field.setAccessible(true);
         var mara=(BufferedImage)field.get(null);
         var hero=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png").getSubimage(0,0,80,80);

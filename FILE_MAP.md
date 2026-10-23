@@ -54,12 +54,14 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 ## Assets and tools
 
 - `assets/characters/`, `assets/effects/`, `assets/ui/`, `assets/audio/`: packaged actor art, effects, interface and sound.
-- `assets/characters/npcs/mara_sheet.png`, `mara_idle.png`: Mara's portrait source and current standing sprite.
+- `assets/characters/npcs/mara_portrait.png`, `mara_idle.png`: Mara's native-size portrait and standing sprite.
 - `assets/characters/slime/rainoray_portrait.png`: the current slime's dialogue portrait.
 - `assets/props/outpost/`, `assets/props/forest/`: regional scenery.
 - `assets/tilesets/outpost/`, `assets/tilesets/forest/`: current regional ground art; [tile guide](assets/tilesets/README.md).
-- `assets/source/outpost/`, `assets/source/forest/`, `assets/source/shared/`: editable art grouped by region, excluded from JAR packaging.
-- `assets/environment/ruined_outpost/`, `assets/tilesets/legacy/ruined_outpost/`: legacy room-mode art.
+- `assets/source/outpost/`, `assets/source/forest/`, `assets/source/shared/`: editable art grouped by region, excluded from JAR packaging. `source/characters/` keeps generated portrait masters.
+- `assets/tilesets/legacy/ruined_outpost/`: active legacy room-mode terrain.
+- `archive/assets/2026-10-23/`: unused sprites, concepts and duplicate supplies art, preserved with a path/hash manifest and excluded from the game.
+- [Asset audit](docs/art-review/asset-cleanup/README.md): current inventory, pixel checks, archive reasons and camp capture.
 - [Art pipeline](tools/art/README.md): generation, editable exports and retouch safeguards.
 - `tools/sprite3d/`: human sprite generation and packing pipeline.
 - `tools/audio/`: sound generation and import helpers.

@@ -17,6 +17,7 @@ def main():
         "assets/effects/briar_spike.png": "forest",
         "assets/effects/warden_spike.png": "outpost",
         "assets/effects/fire_camp.png": "shared",
+        "assets/props/outpost/set_supplies.png": "outpost",
     }
     with tempfile.TemporaryDirectory(prefix="b2bj-source-export-") as folder:
         root = Path(folder)
@@ -32,7 +33,7 @@ def main():
         palette.parent.mkdir(parents=True)
         palette.write_text("test palette")
         kept = root / "assets/source/outpost/outpost_tileset.pixie-dust"
-        kept.parent.mkdir(parents=True)
+        kept.parent.mkdir(parents=True, exist_ok=True)
         kept.write_text("teammate layers")
         editor = root / "editor"
         editor.write_text("#!/usr/bin/env python3\nfrom pathlib import Path\nimport sys\n"
@@ -43,6 +44,7 @@ def main():
         for _ in range(2):
             subprocess.run(["bash", str(script)], cwd=root, env=env, check=True, capture_output=True)
             assert kept.read_text() == "teammate layers"
+            assert not (root / "assets/source/outpost/supplies.pixie-dust").exists()
             for source, area in cases.items():
                 name = Path(source).stem + ".pixie-dust"
                 target = root / "assets/source" / area / name

@@ -3,24 +3,13 @@ import java.awt.image.BufferedImage;
 
 /** Cached pixel portraits and the same window frame used by the rest of the game. */
 public final class DialogueRenderer {
-    private static final BufferedImage MARA_SHEET=B2BJ.loadImage("assets/characters/npcs/mara_sheet.png");
-    private static final BufferedImage MARA=cell(MARA_SHEET,0,0,MARA_SHEET==null?0:MARA_SHEET.getHeight(),64);
-    private static final BufferedImage MARA_BODY=fit("assets/characters/npcs/mara_idle.png",80);
-    private static final BufferedImage BLOB=fit("assets/characters/slime/rainoray_portrait.png",64);
+    private static final BufferedImage MARA=B2BJ.loadImage("assets/characters/npcs/mara_portrait.png");
+    private static final BufferedImage MARA_BODY=B2BJ.loadImage("assets/characters/npcs/mara_idle.png");
+    private static final BufferedImage BLOB=B2BJ.loadImage("assets/characters/slime/rainoray_portrait.png");
     private static final BufferedImage BLADE=cell(B2BJ.loadImage("assets/characters/blade/rainoray_idle.png"),20,0,40,40);
     private static final BufferedImage WARDEN=cell(B2BJ.loadImage("assets/characters/guardian/warden_motion.png"),0,0,64,64);
 
     private DialogueRenderer() { }
-
-    private static BufferedImage fit(String path,int target) {
-        var source=B2BJ.loadImage(path);
-        if(source==null)return null;
-        double scale=(double)target/Math.max(source.getWidth(),source.getHeight());
-        int width=(int)Math.round(source.getWidth()*scale),height=(int)Math.round(source.getHeight()*scale);
-        var image=new BufferedImage(target,target,BufferedImage.TYPE_INT_ARGB);
-        var g=image.createGraphics();Ui.crisp(g);
-        g.drawImage(source,(target-width)/2,(target-height)/2,width,height,null);g.dispose();return image;
-    }
 
     private static BufferedImage cell(BufferedImage source,int x,int y,int size,int target) {
         if(source==null||size<=0||x+size>source.getWidth()||y+size>source.getHeight())return null;

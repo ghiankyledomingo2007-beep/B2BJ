@@ -1,0 +1,23 @@
+old_path	archive_path	sha256	reason
+assets/characters/blade/blade_cut.png	archive/assets/2026-10-23/characters/blade/blade_cut.png	83eb7aba5d54a0b8e8bc5cffb582e6eeb14b832825472f1459853801d2e9a5b9	retired; no runtime consumer
+assets/characters/blade/blade_dash.png	archive/assets/2026-10-23/characters/blade/blade_dash.png	e10b247ace63acb344814084692ebfda50e4741b01836d731f8fdc5eef71f8f6	retired; no runtime consumer
+assets/characters/blade/blade_run.png	archive/assets/2026-10-23/characters/blade/blade_run.png	f6e63ba1d336ab0fddc323aed09ae125a050581ccb790a6fc490033bd7c494f5	retired; no runtime consumer
+assets/characters/blade/blade_side.png	archive/assets/2026-10-23/characters/blade/blade_side.png	14a731692e6bacadbb0b49938e3c806cb3ee42b2d0587c698f8dd4e15efca92b	retired; no runtime consumer
+assets/characters/blade/blade_slash.png	archive/assets/2026-10-23/characters/blade/blade_slash.png	eadefe82e0b90e15f8a151f3bcf65cdff47a15195e06a2d636d83df5e9a7c517	retired; no runtime consumer
+assets/characters/slime/slime_absorb.png	archive/assets/2026-10-23/characters/slime/slime_absorb.png	0c9f30135c3589ed3e5c508ff3bce1081dce27e0201d39bba71906ebe4f0fc89	retired; no runtime consumer
+assets/characters/slime/slime_effects.png	archive/assets/2026-10-23/characters/slime/slime_effects.png	79482c3cbe745261a0a441f5b78a2f3cef5d8d14f0198127880d84626e199489	retired; no runtime consumer
+assets/concepts/blob_to_blade_weapon_concept_sheet.png	archive/assets/2026-10-23/concepts/blob_to_blade_weapon_concept_sheet.png	18d7f0f0e8e8cb6bb1a650d53ced12d131cd653da91434c4d8cbeb52383ebc66	unused concept reference
+assets/concepts/ruined_outpost_props_concept_sheet.png	archive/assets/2026-10-23/concepts/ruined_outpost_props_concept_sheet.png	0acd54053be798aee8edff26fcdad07cebd350b0727b11b3e32788d17861127e	unused concept reference
+assets/effects/absorb_link.png	archive/assets/2026-10-23/effects/absorb_link.png	436f12b2580dd05738944759390083fa1692cbc86d30bcb58b6cf04a66d64dfd	retired; no runtime consumer
+assets/effects/blade_hit.png	archive/assets/2026-10-23/effects/blade_hit.png	04c06e81b1c1a03f08cd9abd8cd92a0f6852f9752711e3ff8e671c9404ab07a8	retired; no runtime consumer
+assets/effects/blob_hit.png	archive/assets/2026-10-23/effects/blob_hit.png	c32589efbe17721ec65ddf92b41339861f1a9db584e3e5710f6bd5345e84a43f	retired; no runtime consumer
+assets/environment/ruined_outpost/altar_mask.png	archive/assets/2026-10-23/environment/ruined_outpost/altar_mask.png	aa08bed00dea3b032eb0055d6da0bb6067a96ab29450499c0f299202baba4a4f	retired; no runtime consumer
+assets/environment/ruined_outpost/gate.png	archive/assets/2026-10-23/environment/ruined_outpost/gate.png	825a2e39b3c1eac93e6f148c46d0fab790959477b73a9ca3d74fda807e1e8645	retired; no runtime consumer
+assets/environment/ruined_outpost/ichor_pool.png	archive/assets/2026-10-23/environment/ruined_outpost/ichor_pool.png	3c72b78e0ca840dd77b4baa87aef689860fc73aabac494ff7357d21ba89e052b	retired; no runtime consumer
+assets/environment/ruined_outpost/ooze.png	archive/assets/2026-10-23/environment/ruined_outpost/ooze.png	850ccf989845a5da4a594e2bb324f93c3d1d416195264f9ef745cbd00a127afd	retired; no runtime consumer
+assets/environment/ruined_outpost/torch.png	archive/assets/2026-10-23/environment/ruined_outpost/torch.png	eeaa272002350ada37a0246ec95b88d26fa941e2fae9137bfd5038daefce98a0	retired; no runtime consumer
+assets/props/outpost/supplies.png	archive/assets/2026-10-23/props/outpost/supplies.png	64917699adbd4c3171c28f24076e6fec706b5a44cbd2e00afb7e3af30c966ba3	duplicate supplies sheet/source
+assets/props/ruined_outpost/ruined_stone_pillar.png	archive/assets/2026-10-23/props/ruined_outpost/ruined_stone_pillar.png	8cdb1fb674520966d126193138b9a9522196f9b8414ec8ee9d70688ed1f9ea8f	retired; no runtime consumer
+assets/source/outpost/supplies.pixie-dust	archive/assets/2026-10-23/source/outpost/supplies.pixie-dust	93d78e4cc87c4d0683910b61883c2b17693591caccca672a53f4ca78225ea848	duplicate supplies sheet/source
+assets/ui/ui_icons.png	archive/assets/2026-10-23/ui/ui_icons.png	fd5eb3a14aad75b098ee3d56e426dfd825df8b73a50b76b6c14ae3aca6abb35b	retired; no runtime consumer
+assets/ui/vitality.png	archive/assets/2026-10-23/ui/vitality.png	555b705d03ada73d6312f9e93cda54b73fc99e5f4d95d19438a32925c8c17e58	retired; no runtime consumer

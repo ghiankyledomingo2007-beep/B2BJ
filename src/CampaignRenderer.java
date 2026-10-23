@@ -13,9 +13,9 @@ public final class CampaignRenderer {
     private static final java.awt.image.BufferedImage FOREST_GROUND = opaque(B2BJ.loadImage("assets/tilesets/forest/forest_ground.png"));
     private static final java.awt.image.BufferedImage RUIN_WALL = B2BJ.loadImage("assets/props/outpost/ruin_wall.png");
     private static final java.awt.image.BufferedImage STAKE_WALL = B2BJ.loadImage("assets/props/outpost/stake_wall.png");
-    private static final java.awt.image.BufferedImage SUPPLIES = B2BJ.loadImage("assets/props/outpost/supplies.png");
     private static final java.util.Map<SetPieces.Kind, java.awt.image.BufferedImage> SET_PIECES = new java.util.EnumMap<>(SetPieces.Kind.class);
     static { for (var kind : SetPieces.Kind.values()) { var sheet = B2BJ.loadImage(kind.sheet()); if (sheet != null) SET_PIECES.put(kind, sheet); } }
+    private static final java.awt.image.BufferedImage SUPPLIES = SET_PIECES.get(SetPieces.Kind.SUPPLIES);
     private static final java.awt.image.BufferedImage FIRE_CAMP = B2BJ.loadImage("assets/effects/fire_camp.png");
     private static final java.awt.image.BufferedImage FIRE_BRAZIER = B2BJ.loadImage("assets/effects/fire_brazier.png");
     /** The baked floor replaces the placeholder blocks only when every prop and set piece drawn over it loads too. */

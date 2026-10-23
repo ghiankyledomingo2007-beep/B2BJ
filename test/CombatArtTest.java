@@ -11,7 +11,6 @@ public final class CombatArtTest {
         check("assets/characters/wisp/remnant_walk.png",48,48,4,3,3);
         check("assets/characters/wisp/remnant_attack.png",48,48,8,3,8);
         check("assets/characters/slime/slime_cast.png",48,48,8,3,8);
-        check("assets/characters/blade/blade_side.png",64,80,8,2,8);
         for(int combo=0;combo<3;combo++) {
             double windup=RuinedOutpostGame.strikeWindup(combo);
             assert B2BJ.sideAttackFrame(windup-0.001,combo)<3;

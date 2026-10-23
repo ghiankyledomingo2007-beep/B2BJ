@@ -16,8 +16,8 @@ public final class OutpostDialogueTest {
             assert lines.size()<=3 : "dialogue would be clipped: "+line.text();
             assert lines.stream().allMatch(text->Ui.width(text,2)<=1280-352);
         }
-        var art=B2BJ.loadImage("assets/characters/npcs/mara_sheet.png");
-        assert art!=null&&art.getWidth()==art.getHeight()*2&&art.getColorModel().hasAlpha();
+        var art=B2BJ.loadImage("assets/characters/npcs/mara_portrait.png");
+        assert art!=null&&art.getWidth()==64&&art.getHeight()==64&&art.getColorModel().hasAlpha();
         for(String path:new String[]{"assets/characters/npcs/mara_idle.png","assets/characters/slime/rainoray_portrait.png"}) {
             var sprite=B2BJ.loadImage(path);
             assert sprite!=null&&sprite.getColorModel().hasAlpha();

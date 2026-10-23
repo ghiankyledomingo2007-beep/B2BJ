@@ -8,6 +8,7 @@ Blade form by gathering Ichor. The current campaign includes **Ruined Outpost** 
 ## Start here
 
 - [File map](FILE_MAP.md): where the game systems, tests and art tools live.
+- [Asset guide](assets/README.md): runtime art, editable sources and preserved unused art.
 - [Tilesets by area](assets/tilesets/README.md): Outpost, Forest and legacy room art.
 - [Documentation index](docs/README.md): current guides and historical records.
 - [School files](School/START-HERE.md): GDD, progress reports, handouts and lab submissions.
@@ -48,6 +49,7 @@ campaign saves. See the [Lab 6 guide](docs/testing/lab6/README.md).
 | `src/` | Game code and the separate lab panel |
 | `test/` | Java assertion-based tests |
 | `assets/` | Runtime art/audio and editable art sources |
+| `archive/assets/` | Retired and duplicate art, preserved outside the game |
 | `tools/` | Art generation, sprite packing, previews and audio tools |
 | `docs/` | Design, testing, art reviews and historical notes |
 | `build/` | Generated runnable JAR |

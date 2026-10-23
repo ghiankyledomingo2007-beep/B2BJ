@@ -1,6 +1,6 @@
 # Mara — art record
 
-Created 2026-10-23 with the built-in imagegen tool. The original generated transparent PNG is copied unchanged to `assets/characters/npcs/mara_sheet.png`. The left square remains the portrait, sampled to 64 × 64 and drawn at 2×. User review rejected the original right-hand standing sprite; [the polish record](polish-art.md) documents its replacement. No image generation runs during play.
+Created 2026-10-23 with the built-in imagegen tool. The original generated transparent PNG is preserved unchanged at `assets/source/characters/mara_sheet.generated.png`, outside the packaged game. The left square supplies `assets/characters/npcs/mara_portrait.png`, imported offline to 64 × 64 with fifteen colors and hard transparency, then drawn at 2×. User review rejected the original right-hand standing sprite; [the polish record](polish-art.md) documents its replacement. No image generation runs during play.
 
 Existing Rainoray and Warden assets were reused for their portraits.
 

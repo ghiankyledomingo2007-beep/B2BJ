@@ -1,9 +1,11 @@
 # Outpost art pipeline
 
-Every Ruined Outpost environment pixel — the floor, the walls and palisades, the landmark set
-pieces, the fires and the Warden's effects — is drawn by the Java code in this folder from one
-night palette (`Pal.java`, exported as `assets/source/shared/outpost_night.gpl`). No image
-generators, no credits, deterministic: the same code and map always give the same pixels.
+Most environment art is drawn by the Java code in this folder using the night palette
+(`Pal.java`, exported as `assets/source/shared/outpost_night.gpl`). The camp tent and
+dialogue sprites are imported from preserved generated masters by `ImportedArt.java`,
+which applies native dimensions, locked palettes and hard transparency. Generation
+records live in `docs/art-review/asset-cleanup/` and `docs/art-review/area-one-story/`.
+Rebuilding from the same code, map and source images produces the same pixels.
 
 ## Rebuild
 
@@ -11,6 +13,8 @@ generators, no credits, deterministic: the same code and map always give the sam
 tools/art/build-art.sh            # everything (about 3 s)
 tools/art/build-art.sh ground     # only the floor, after changing the map layout
 tools/art/build-art.sh campfire   # only the flat-color eight-frame camp flame
+tools/art/build-art.sh tent       # only the 128 × 100 camp tent
+tools/art/build-art.sh portraits  # native Mara and slime dialogue art
 tools/art/export-sources.sh       # missing editable projects, grouped by region; existing projects kept
 ./build.sh                        # then the normal build and tests
 ```
@@ -36,6 +40,7 @@ editable layers, using a temporary folder and a mock editor.
 | `Decals.java` | tufts, reeds, glowing mushrooms, stones and the fallen expedition's kit (`outpost_decals.png`) |
 | `Props.java` | ruined walls, log palisades, supplies for the map's obstacle clusters (same footprints as before) |
 | `Structures.java`, `Buildings.java` | landmark set pieces, placed by `src/SetPieces.java` |
+| `ImportedArt.java` | native tent and dialogue PNGs from generated masters under `assets/source/` |
 | `Kit.java` | stone, plank, shingle, cylinder and fire builders |
 | `WardenArt.java` | `assets/effects/warden_*.png`: cracks, debris, dust, sweep, spikes, flames, beams, motes |
 | `Tiles16.java` | `outpost_tileset.png`, `forest_tileset.png`: 16 px fills with variants + Wang corner sets (three versions of every edge tile) |
@@ -44,6 +49,10 @@ editable layers, using a temporary folder and a mock editor.
 | `BossArt.java` | `assets/characters/guardian/briarheart_motion.png`: Briarheart, 96 px cells drawn at 2x, rows in Guardian.Animation order |
 | `WardenArt.briar` | `assets/effects/briar_*.png`: the Warden's effect sheets recoloured for Briarheart (cyan becomes violet in the dark steps, gold in the bright) |
 | `ForestArt.java` | forest set pieces (oaks, pines, withered trees, bushes, logs, boulders, the boat, white cloth, the hollow tree, the Moonwell, the orchard, brambles, roots, the stair, rift stones, the lean-to), placed by `src/SetPieces.java` |
+
+Supplies have one runtime sheet, `assets/props/outpost/set_supplies.png`, used by
+both obstacle clusters and landmarks. The duplicate `supplies.png` and its editable
+project are preserved in `archive/assets/2026-10-23/`; exporters no longer recreate them.
 
 ## Tileset layout (`outpost_tileset.png`, 16 px cells, 16 columns)
 

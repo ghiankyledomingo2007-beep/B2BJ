@@ -9,6 +9,7 @@ public final class PackagedAssetLoadingTest {
         WardenFxTest.main(new String[0]);       // cleaned spike sheets and natural boss cues work from packaged assets
         OutpostDialogueTest.main(new String[0]);
         CampArtTest.main(new String[0]);
+        AssetArchiveTest.runtimeOnly();
         System.out.println("PackagedAssetLoadingTest passed");
     }
 
@@ -19,16 +20,11 @@ public final class PackagedAssetLoadingTest {
         assert Ui.fontsLoaded() : "the pixel fonts must load from the packaged classpath";
         assert image.getWidth() > 0 : "packaged slime asset must have pixels";
         for(String path:new String[]{
-                "assets/characters/blade/blade_run.png",
-                "assets/characters/blade/blade_dash.png",
-                "assets/characters/blade/blade_slash.png",
-                "assets/characters/blade/blade_cut.png",
                 "assets/characters/guardian/guardian_actions.png",
                 "assets/characters/wisp/wisp_walk.png",
                 "assets/characters/wisp/wisp_attack.png",
-                "assets/characters/slime/slime_effects.png",
                 "assets/characters/slime/slime_idle.png",
-                "assets/characters/npcs/mara_sheet.png",
+                "assets/characters/npcs/mara_portrait.png",
                 "assets/characters/npcs/mara_idle.png",
                 "assets/characters/slime/rainoray_portrait.png",
                 "assets/ui/pixel_font.png",
@@ -44,7 +40,6 @@ public final class PackagedAssetLoadingTest {
                 "assets/ui/title/logo.png",
                 "assets/ui/hud_frame.png",
                 "assets/ui/skill_frame.png",
-                "assets/ui/vitality.png",
                 "assets/ui/blob.png",
                 "assets/ui/blade.png",
                 "assets/ui/slash.png",
@@ -53,15 +48,11 @@ public final class PackagedAssetLoadingTest {
                 "assets/ui/consume.png",
                 "assets/ui/camp.png",
                 "assets/ui/heal.png",
-                "assets/characters/slime/slime_absorb.png",
                 "assets/effects/corpse_idle.png",
                 "assets/effects/corpse_consume.png",
-                "assets/effects/absorb_link.png",
                 "assets/effects/heal_motes.png",
                 "assets/tilesets/legacy/ruined_outpost/ruined_outpost_wang.png",
                 "assets/tilesets/outpost/outpost_tileset.png",
-                "assets/effects/blade_hit.png",
-                "assets/effects/blob_hit.png",
                 "assets/effects/water_slash.png",
                 "assets/effects/tide_wave.png",
                 "assets/effects/water_splash.png",

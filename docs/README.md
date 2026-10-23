@@ -15,6 +15,7 @@ For the current implementation, start with the [project README](../README.md) an
 
 ## Overhaul captures
 
+- [Asset cleanup and camp tent](art-review/asset-cleanup/README.md), with a searchable file inventory
 - [Outpost environment](art-review/outpost-revamp/)
 - [Corrupted Forest](art-review/corrupted-forest/)
 - [Attack warnings](art-review/telegraph-overhaul/)

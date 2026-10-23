@@ -48,7 +48,7 @@ Exact shipped lines live in [OutpostDialogue.java](../../src/OutpostDialogue.jav
 
 ## Art and persistence
 
-- Mara's portrait uses the left half of [the original sheet](../../assets/characters/npcs/mara_sheet.png); her [standing sprite](../../assets/characters/npcs/mara_idle.png) matches the player's world scale. [Art and generation records](../art-review/area-one-story/polish-art.md).
+- Mara's [native 64 × 64 portrait](../../assets/characters/npcs/mara_portrait.png) is imported from the left half of the preserved source sheet; her [80 × 80 standing sprite](../../assets/characters/npcs/mara_idle.png) matches the player's world scale. [Art and generation records](../art-review/area-one-story/polish-art.md).
 - Rainoray's human portrait comes from the current masked sprite. His [slime portrait](../../assets/characters/slime/rainoray_portrait.png) matches the current star-marked body. The Warden portrait uses its existing art.
 - Story completion uses the existing version-one save's `unlocks` set. Existing health upgrades, shards, checkpoints and cleared bosses are preserved. Continue does not force the new opening onto an older save.
 - Test/admin sessions retain their existing protection against overwriting normal saves.

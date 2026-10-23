@@ -8,23 +8,9 @@ public final class CharacterAssetQualityTest {
 
     public static void main(String[] args) {
         slimeSheetHasCleanTransparency();
-        slimeEffectsMatchTheirFrameGrid();
-        bladeSheetsMatchTheirFrameGrid();
         wispSheetsMatchTheirFrameGridAndPalette();
-        ruinedOutpostAssetsMatchTheirRuntimeGrids();
-        reviewedBladeImpactHasDistinctTransparentFrames();
         reviewedSlimeIdleKeepsItsFloor();
         guardianWindupRaisesArmsBeforeImpact();
-        BufferedImage blobHit=requireImage("assets/effects/blob_hit.png",288,32);
-        Set<Integer> hitFrames=new HashSet<>();int previous=1024;
-        for(int i=0;i<9;i++) {
-            BufferedImage frame=blobHit.getSubimage(i*32,0,32,32);
-            int visible=1024-transparentPixels(frame);
-            assert visible>0 && visible<=previous : "Blob hit must dissipate without background growth";
-            assert opaqueColors(frame)<=12 : "Blob hit palette drift";
-            hitFrames.add(Arrays.hashCode(frame.getRGB(0,0,32,32,null,0,32)));previous=visible;
-        }
-        assert hitFrames.size()==9;
         System.out.println("CharacterAssetQualityTest passed");
     }
 
@@ -59,60 +45,6 @@ public final class CharacterAssetQualityTest {
         assert raised>first+30 : "Warden telegraph must visibly raise its arms before damage: "+first+" / "+raised;
     }
 
-    private static void reviewedBladeImpactHasDistinctTransparentFrames() {
-        BufferedImage sheet=requireImage("assets/effects/blade_hit.png",96,32);
-        Set<Integer> hashes=new HashSet<>();
-        int firstVisible=0,lastVisible=0;
-        for(int frame=0;frame<3;frame++) {
-            int[] pixels=sheet.getRGB(frame*32,0,32,32,null,0,32);
-            hashes.add(Arrays.hashCode(pixels));
-            long transparent=Arrays.stream(pixels).filter(pixel->(pixel>>>24)==0).count();
-            assert transparent>512 : "impact must not have an opaque background";
-            if(frame==0)firstVisible=(int)(1024-transparent);
-            if(frame==2)lastVisible=(int)(1024-transparent);
-        }
-        assert hashes.size()==3 : "impact must not repeat one static frame";
-        assert lastVisible<firstVisible : "impact must dissipate";
-    }
-
-    private static void bladeSheetsMatchTheirFrameGrid() {
-        requireImage("assets/characters/blade/blade_run.png", 192, 192);
-        requireImage("assets/characters/blade/blade_dash.png", 144, 192);
-        requireImage("assets/characters/blade/blade_slash.png",144,192);
-        BufferedImage attack=requireImage("assets/characters/blade/blade_cut.png",512,160);
-        BufferedImage run=requireImage("assets/characters/blade/blade_run.png",192,192);
-        for(int row=0;row<2;row++) {
-            Set<Integer> poses=new HashSet<>();
-            for(int y=0;y<64;y++)for(int x=0;x<48;x++) {
-                assert attack.getRGB(x+8,row*80+y+8)==run.getRGB(x,row*128+y)
-                        : "attack start must retain the exact native body and correct facing";
-            }
-            for(int i=0;i<8;i++) {
-                BufferedImage frame=attack.getSubimage(i*64,row*80,64,80);
-                poses.add(Arrays.hashCode(frame.getRGB(0,0,64,80,null,0,64)));
-                assert opaqueColors(frame)<=32 : "attack palette drift";
-                assert transparentPixels(frame)>3500 : "attack must not contain giant opaque effects";
-                for(int y=0;y<80;y++)for(int x=0;x<64;x++) {
-                    if(x<2||x>=62||y<2||y>=72)
-                        assert (frame.getRGB(x,y)>>>24)==0 : "weapon clipping or ground drift";
-                }
-                boolean grounded=false;
-                for(int x=0;x<64;x++)grounded|=(frame.getRGB(x,71)>>>24)>0;
-                assert grounded : "attack boots must retain the shared ground line";
-            }
-            assert poses.size()>=6 : "attack needs distinct motion, not repeated placeholders";
-        }
-    }
-
-    private static void slimeEffectsMatchTheirFrameGrid() {
-        BufferedImage sheet = requireImage(
-                "assets/characters/slime/slime_effects.png", 384, 192);
-
-        assert opaqueColors(sheet) <= MAX_PALETTE_COLORS
-                : "Slime effects must use the locked project palette";
-        assert transparentPixels(sheet) > 0 : "Slime effects must preserve transparency";
-    }
-
     private static void wispSheetsMatchTheirFrameGridAndPalette() {
         for (String path : new String[] {
                 "assets/characters/wisp/wisp_walk.png",
@@ -141,23 +73,6 @@ public final class CharacterAssetQualityTest {
             hashes.add(Arrays.hashCode(pixels));
         }
         return hashes.size();
-    }
-
-    private static void ruinedOutpostAssetsMatchTheirRuntimeGrids() {
-        String[][] assets = {
-                {"assets/characters/guardian/guardian_actions.png", "256", "192"},
-                {"assets/environment/ruined_outpost/gate.png", "128", "80"},
-                {"assets/environment/ruined_outpost/torch.png", "72", "32"},
-                {"assets/environment/ruined_outpost/altar_mask.png", "48", "64"},
-                {"assets/environment/ruined_outpost/ichor_pool.png", "48", "32"},
-                {"assets/environment/ruined_outpost/ooze.png", "48", "24"},
-                {"assets/ui/ui_icons.png", "35", "7"}
-        };
-        for (String[] asset : assets) {
-            BufferedImage image = requireImage(asset[0],
-                    Integer.parseInt(asset[1]), Integer.parseInt(asset[2]));
-            assert transparentPixels(image) > 0 : asset[0] + " must preserve transparency";
-        }
     }
 
     private static BufferedImage requireImage(String path, int width, int height) {

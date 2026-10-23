@@ -46,45 +46,7 @@ final class Structures {
     }
 
     // ------------------------------------------------------------------ captain's camp
-    static Canvas tent() {
-        var k = SetPieces.Kind.TENT;
-        Canvas c = canvas(k, 4);
-        int g = k.anchorY - 1, ax = k.anchorX;
-        int l = ax - 46, r = ax + 46, apexY = g - 62, back = 26;
-        Kit.poly(c, Pal.CANVAS[4], l, g, ax, apexY, ax, apexY - back, l, g - back);
-        Kit.poly(c, Pal.CANVAS[2], r, g, ax, apexY, ax, apexY - back, r, g - back);
-        for (int f = 1; f <= 6; f++) {          // folds run down each slope
-            int fx = ax - f * 7;
-            int yTop = apexY - back + (int) Math.round((ax - fx) * 62.0 / 46), yBot = yTop + back;
-            c.line(fx, yTop, fx, Math.min(yBot, g - (int) Math.round((ax - fx) * 0.0)), Pal.CANVAS[3]);
-            c.line(fx - 1, yTop + 1, fx - 1, Math.min(yBot, g), Pal.CANVAS[5]);
-            int rx = ax + f * 7;
-            c.line(rx, yTop, rx, Math.min(yBot, g), Pal.CANVAS[1]);
-        }
-        for (int y = apexY - back; y <= apexY; y++) { c.set(ax, y, Pal.CANVAS[5]); c.set(ax + 1, y, Pal.CANVAS[3]); }
-        // front gable with seams converging on the pole, an open flap and the dark inside
-        Kit.poly(c, Pal.CANVAS[3], l, g, ax, apexY, r, g);
-        for (int s = -3; s <= 3; s++) if (s != 0) c.line(ax + s * 12, g, ax + s * 2, apexY + 10, Math.abs(s) == 3 ? Pal.CANVAS[2] : Pal.CANVAS[2]);
-        Kit.poly(c, Pal.INK, ax - 15, g, ax, apexY + 24, ax + 15, g);
-        Kit.poly(c, Pal.CANVAS[0], ax - 12, g, ax, apexY + 30, ax + 8, g);
-        Kit.poly(c, Pal.CANVAS[5], ax, apexY + 24, ax + 15, g, ax + 25, g - 12);
-        Kit.poly(c, Pal.CANVAS[4], ax + 15, g, ax + 25, g - 12, ax + 22, g - 1);
-        c.line(ax, apexY + 24, ax + 25, g - 12, Pal.CANVAS[4]);
-        c.set(ax + 24, g - 12, Pal.DRY[2]); c.set(ax + 25, g - 11, Pal.DRY[2]);          // tie-back cord
-        // patches and stitches
-        c.rect(l + 14, g - 20, 8, 6, Pal.CANVAS[2]); for (int x = l + 14; x < l + 22; x += 2) { c.set(x, g - 20, Pal.CANVAS[1]); c.set(x + 1, g - 15, Pal.CANVAS[1]); }
-        c.rect(r - 24, g - 36, 7, 5, Pal.CANVAS[1]);
-        for (int y = g - 4; y <= g; y++) for (int x = l; x <= r; x++) if (c.opaque(x, y) && Noise.rnd(x, y, 731) < (y - g + 5) / 7.0) c.set(x, y, Pal.shift(c.get(x, y), -1));
-        // pole tip, pennant, guy ropes, stakes
-        for (int y = apexY - 9; y < apexY; y++) { c.set(ax, y, Pal.WOOD[4]); c.set(ax + 1, y, Pal.WOOD[2]); }
-        Kit.poly(c, Pal.CRIMSON[3], ax + 2, apexY - 9, ax + 14, apexY - 7, ax + 2, apexY - 4);
-        c.line(ax + 2, apexY - 9, ax + 13, apexY - 7, Pal.CRIMSON[4]);
-        c.line(l + 2, g - 8, l - 14, g + 2, Pal.DRY[2]); c.line(r - 2, g - 8, r + 14, g + 2, Pal.DRY[1]);
-        c.line(ax - 30, g - 46, l - 16, g - 30, Pal.DRY[2]);
-        for (int[] st : new int[][]{{l - 15, g}, {r + 14, g}}) { c.vline(st[0], st[1] - 1, st[1] + 3, Pal.WOOD[3]); c.set(st[0] + 1, st[1] + 1, Pal.WOOD[1]); }
-        c.selectiveOutline();
-        return c;
-    }
+    static Canvas tent() { return ImportedArt.tent(); }
 
     static Canvas campfire() {
         var k = SetPieces.Kind.CAMPFIRE;

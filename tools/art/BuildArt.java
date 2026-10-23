@@ -9,6 +9,8 @@ public final class BuildArt {
         long t = System.nanoTime();
         if (what.equals("all") || what.equals("props")) props();
         if (what.equals("campfire")) campfire();
+        if (what.equals("tent")) Structures.tent().save(SetPieces.Kind.TENT.sheet());
+        if (what.equals("all") || what.equals("portraits")) ImportedArt.portraits();
         if (what.equals("all") || what.equals("ground")) ground();
         if (what.equals("all") || what.equals("forest")) forest();
         if (what.equals("all") || what.equals("ui")) ui();
@@ -18,7 +20,6 @@ public final class BuildArt {
     static void props() {
         Canvas.strip(Props.wall(0), Props.wall(1), Props.wall(2)).save("assets/props/outpost/ruin_wall.png");
         Canvas.strip(Props.palisade(0), Props.palisade(1), Props.palisade(2)).save("assets/props/outpost/stake_wall.png");
-        Canvas.strip(Props.supplies(0), Props.supplies(1), Props.supplies(2), Props.supplies(3)).save("assets/props/outpost/supplies.png");
         Decals.sheet().save("assets/tilesets/outpost/outpost_decals.png");
         for (var kind : SetPieces.Kind.values()) Structures.sheet(kind).save(kind.sheet());
         campfire();

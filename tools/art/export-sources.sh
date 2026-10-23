@@ -7,7 +7,7 @@ cd "$(dirname "$0")/../.."
 editor="${PIXIE_DUST:-$HOME/.local/bin/pixie-dust}"
 palette=assets/source/shared/outpost_night.gpl
 count=0
-for png in assets/props/outpost/ruin_wall.png assets/props/outpost/stake_wall.png assets/props/outpost/supplies.png \
+for png in assets/props/outpost/ruin_wall.png assets/props/outpost/stake_wall.png \
            assets/props/outpost/set_*.png assets/props/forest/set_*.png assets/tilesets/outpost/outpost_*.png \
            assets/tilesets/forest/forest_tileset.png assets/effects/fire_*.png assets/effects/warden_*.png \
            assets/effects/briar_*.png assets/characters/forest/*.png assets/characters/guardian/briarheart_motion.png; do

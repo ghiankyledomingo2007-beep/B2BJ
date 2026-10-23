@@ -21,7 +21,7 @@ public final class OutpostArtTest {
             assert sheet != null : "missing set piece sheet " + kind;
             assert sheet.getWidth() % kind.width == 0 && sheet.getHeight() >= kind.anchorY : "bad cells in " + kind;
         }
-        for (String[] prop : new String[][]{{"ruin_wall", "96"}, {"stake_wall", "96"}, {"supplies", "56"}}) {
+        for (String[] prop : new String[][]{{"ruin_wall", "96"}, {"stake_wall", "96"}, {"set_supplies", "56"}}) {
             BufferedImage sheet = B2BJ.loadImage("assets/props/outpost/" + prop[0] + ".png");
             assert sheet != null && sheet.getWidth() % Integer.parseInt(prop[1]) == 0 : "bad prop sheet " + prop[0];
         }
