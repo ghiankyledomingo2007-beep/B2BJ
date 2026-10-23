@@ -1,0 +1,118 @@
+{
+  "body_alpha_unchanged": true,
+  "max_red_pixels_per_frame": 1,
+  "effect_sheets_unchanged": true,
+  "roundtrip_export_pixel_identical": 18,
+  "sheets": {
+    "run": {
+      "size": [
+        640,
+        320
+      ],
+      "pixels_changed": 5308
+    },
+    "idle": {
+      "size": [
+        640,
+        320
+      ],
+      "pixels_changed": 5778
+    },
+    "start": {
+      "size": [
+        320,
+        320
+      ],
+      "pixels_changed": 2620
+    },
+    "stop": {
+      "size": [
+        320,
+        320
+      ],
+      "pixels_changed": 2593
+    },
+    "turn": {
+      "size": [
+        320,
+        320
+      ],
+      "pixels_changed": 2620
+    },
+    "slash": {
+      "size": [
+        1920,
+        3200
+      ],
+      "pixels_changed": 46761
+    },
+    "cleave": {
+      "size": [
+        1920,
+        1280
+      ],
+      "pixels_changed": 18531
+    },
+    "charge": {
+      "size": [
+        640,
+        320
+      ],
+      "pixels_changed": 5662
+    },
+    "hold": {
+      "size": [
+        640,
+        320
+      ],
+      "pixels_changed": 5723
+    },
+    "dash": {
+      "size": [
+        1280,
+        640
+      ],
+      "pixels_changed": 5450
+    },
+    "cast": {
+      "size": [
+        1280,
+        640
+      ],
+      "pixels_changed": 5936
+    },
+    "guard": {
+      "size": [
+        640,
+        320
+      ],
+      "pixels_changed": 5723
+    },
+    "hurt": {
+      "size": [
+        640,
+        320
+      ],
+      "pixels_changed": 5937
+    },
+    "counter": {
+      "size": [
+        1280,
+        640
+      ],
+      "pixels_changed": 6077
+    }
+  },
+  "java_test_programs": 85,
+  "packaged_pngs_verified": 182,
+  "inventory_hashes_verified": 384,
+  "editor_frames": 672,
+  "editor_tags": 76,
+  "editor_layers": [
+    "Character",
+    "Effects",
+    "Before polish"
+  ],
+  "baseline_commit": "709fc8edf38738b291cbf853f9ea09c39f232665",
+  "project_sha256": "59ddde0f8165e806ece3e6672d8e3bbce946f34c6141bfc3889d75bae9a12007"
+}

@@ -3,7 +3,8 @@
 - `outpost/`: Outpost tiles, scenery, Warden effects and generated tent/dummy masters.
 - `forest/`: Forest tiles, scenery, enemies and Briarheart effects.
 - `shared/`: shared palette and camp/brazier fire.
-- `characters/`: unchanged generated masters for Mara and Rainoray's slime portrait.
+- `characters/`: generated masters for Mara and Rainoray's slime portrait, plus
+  [Rainoray's editable animation timeline](characters/rainoray/README.md).
 
 Runtime PNGs stay in `assets/tilesets/`, `assets/props/`, `assets/characters/`
 and `assets/effects/`. These editable projects are not packed into the game.

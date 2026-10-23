@@ -22,7 +22,7 @@ import shutil
 from PIL import Image
 
 import transform_fx
-from post_pixel import outline, palette_from, snap
+from post_pixel import outline, palette_from, snap, polish_body
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
@@ -137,7 +137,7 @@ def strip(out, action, facing, frames, palette, cache, notes, trails, wide):
         shot = Image.open(shots / f"{facing}_{i:02d}.png").convert("RGBA")
         where = f"{action} {facing} f{i}"
         cut, window = wide_cell(shot, notes, where) if wide else fit_cell(shot, notes, where, facing)
-        cells.append(outline(snap(cut, palette, cache)))
+        cells.append(outline(polish_body(snap(cut, palette, cache))))
         if trails:
             swooshes.append(trail_cell(Image.open(shots / f"trail_{facing}_{i:02d}.png").convert("RGBA"), window))
     return cells, swooshes

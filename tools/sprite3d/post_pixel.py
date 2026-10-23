@@ -14,6 +14,38 @@ OUTLINE = (12, 16, 40, 255)
 PREVIEW_SCALE = 4
 PREVIEW_BG = (70, 70, 70, 255)
 
+# Merge near-duplicate material shades; keep the existing hair, skin, gold and coat ramps.
+RAINORAY_TONES = {
+    **{c: OUTLINE[:3] for c in ((4, 4, 7), (7, 6, 6), (8, 8, 14), (10, 11, 12), (16, 16, 24), (27, 26, 34))},
+    (41, 46, 102): (44, 51, 113), (53, 62, 130): (55, 66, 144),
+    (194, 210, 226): (197, 214, 232), (181, 198, 236): (197, 214, 232),
+    (206, 214, 226): (218, 224, 233), (206, 216, 212): (218, 224, 233),
+    (244, 243, 233): (241, 243, 244), (241, 236, 231): (241, 243, 244),
+    **{c: (80, 98, 112) for c in ((87, 109, 123), (84, 104, 119), (89, 103, 115), (73, 85, 99), (83, 84, 97))},
+}
+
+
+def polish_body(im):
+    """Light palette cleanup, with one red pixel per visible mask mark. Alpha and geometry stay intact."""
+    out = im.copy()
+    px = out.load()
+    red = []
+    for y in range(out.height):
+        for x in range(out.width):
+            r, g, b, a = px[x, y]
+            if not a:
+                continue
+            px[x, y] = (*RAINORAY_TONES.get((r, g, b), (r, g, b)), a)
+            if (r, g, b) == (224, 48, 64):
+                red.append((x, y))
+    if len(red) > 1:
+        cx, cy = (sum(p[i] for p in red) / len(red) for i in (0, 1))
+        keep = min(red, key=lambda p: (p[0] - cx) ** 2 + (p[1] - cy) ** 2)
+        for x, y in red:
+            if (x, y) != keep:
+                px[x, y] = (241, 243, 244, px[x, y][3])
+    return out
+
 
 def palette_from(paths, min_pixels=3):
     counts = {}

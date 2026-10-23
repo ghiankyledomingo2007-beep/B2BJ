@@ -40,7 +40,7 @@ The [campaign enemy sample](campaign-enemies.png) uses their real 92/88-pixel ce
 No animation was declared unused based only on a literal filename search; dynamic
 action slots, region names, source exporters and packaging were checked too.
 
-After the follow-up polish, the current inventory contains 360 asset/source/guide
+After the follow-up polish, the current inventory contains 362 asset/source/guide
 files and the 22 archived files. There are 182 packaged PNGs, all with binary alpha,
 and five generated source PNGs
 excluded from packaging. Binary alpha checks for softened edges; it does not measure

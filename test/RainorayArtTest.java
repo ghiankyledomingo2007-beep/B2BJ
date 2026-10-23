@@ -10,7 +10,7 @@ public final class RainorayArtTest {
             int dot=0;
             for(int y=8;y<32;y++)for(int x=frame*80+24;x<frame*80+56;x++)
                 if(idle.getRGB(x,y)==0xffe03040)dot++;
-            assert dot>=1&&dot<=3 : "front-facing mask keeps one small red mark throughout its idle";
+            assert dot==1 : "front-facing mask keeps one red pixel throughout its idle";
         }
         for(String action:new String[]{"idle","guard","hurt","charge","hold"})
             CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,8,4,8);
