@@ -187,7 +187,9 @@ final class Buildings {
     }
 
     // ------------------------------------------------------------------ east gate
-    static Canvas eastGate(boolean open) {
+    static Canvas eastGate(int frame) {
+        double opening=Math.max(0,Math.min(7,frame))/7.0;
+        boolean open=frame>0;
         var k = SetPieces.Kind.EAST_GATE;
         Canvas c = new Canvas(k.width, k.anchorY + 4);
         int g = k.anchorY - 1, cx = k.anchorX;
@@ -232,29 +234,30 @@ final class Buildings {
         }
         c.rect(cx - 5, archTop - 9, 10, 11, Pal.STONE[6]); c.rect(cx - 3, archTop - 6, 6, 5, Pal.CYAN[1]);
         c.set(cx, archTop - 4, Pal.CYAN[open ? 1 : 4]);
-        for (int y = archTop; y <= g; y++) for (int x = cx - archW; x <= cx + archW; x++) {
-            double r = y < spring ? Math.hypot(x + .5 - cx, y + .5 - spring) : Math.abs(x + .5 - cx);
-            if (r > archW) continue;
-            if (!open) {                                   // sealed oak doors, iron bands, studs
-                int plank = Math.floorMod(x - cx, 7);
-                int colour = plank == 0 ? Pal.WOOD[1] : plank == 1 ? Pal.WOOD[4] : plank == 6 ? Pal.WOOD[2] : Pal.WOOD[3];
-                if (x == cx || x == cx - 1) colour = Pal.WOOD[0];
-                int band = g - y;
-                boolean iron = band >= 10 && band <= 12 || band >= 36 && band <= 38 || band >= 62 && band <= 64;
-                if (iron) colour = band % 13 == 10 || band == 36 || band == 62 ? Pal.IRON[4] : x < cx ? Pal.IRON[3] : Pal.IRON[2];
-                if (iron && Math.floorMod(x - cx, 8) == 4) colour = Pal.IRON[5];
-                c.set(x, y, colour);
-            } else {                                       // swung open: golden light spills down the road beyond
-                double fromAxis = Math.abs(x + .5 - cx) / archW, up = (g - y) / 84.0;
-                double light = 1 - fromAxis * .75 - up * .45 + (Noise.bayer(x, y) - .5) * .22;
-                int colour = light > .8 ? Pal.GOLD[5] : light > .62 ? Pal.GOLD[4] : light > .44 ? Pal.GOLD[3] : light > .26 ? Pal.GOLD[2] : Pal.GOLD[1];
-                if (y > g - 14 && Math.abs(x - cx) < 12 + (g - y) / 2) colour = (g - y + x) % 4 == 0 ? Pal.MUD[5] : Pal.MUD[4];
-                if (Math.abs(x - cx) >= archW - 7) colour = Math.abs(x - cx) >= archW - 2 ? Pal.WOOD[1] : x < cx ? Pal.WOOD[3] : Pal.WOOD[2];
-                c.set(x, y, colour);
+        int doorWidth=(int)Math.round(archW*(1-opening*.88));
+        int lift=(int)Math.round(Math.max(0,(opening-.15)/.85)*80);
+        for(int y=archTop;y<=g;y++)for(int x=cx-archW;x<=cx+archW;x++) {
+            double r=y<spring?Math.hypot(x+.5-cx,y+.5-spring):Math.abs(x+.5-cx);
+            if(r>archW)continue;
+            int depth=g-y,side=Math.abs(x-cx);
+            int colour=Pal.INK;
+            if(depth<40&&side<24-depth/2) {
+                colour=depth<12?Pal.MUD[3]:Pal.MUD[2];
+                if(depth==12||depth==26)colour=Pal.MUD[1];
             }
+            if(side>archW-doorWidth) {
+                int plank=(int)((archW-side)*archW/Math.max(1,doorWidth))%7;
+                colour=plank==0?Pal.WOOD[0]:plank==1?Pal.WOOD[4]:plank==6?Pal.WOOD[1]:Pal.WOOD[2];
+                int band=g-y;
+                if(band>=10&&band<=12||band>=36&&band<=38||band>=62&&band<=64)
+                    colour=band%2==0?Pal.IRON[3]:Pal.IRON[1];
+            }
+            // The portcullis lifts after the doors separate, leaving a dark passage and road.
+            int bottom=g-lift;
+            if(y<=bottom&&Math.floorMod(x-cx,7)<2)colour=Math.floorMod(x-cx,7)==0?Pal.IRON[4]:Pal.IRON[1];
+            if(y<bottom-3&&Math.floorMod(y+lift-archTop,17)<2)colour=Pal.IRON[2];
+            c.set(x,y,colour);
         }
-        if (open) for (int x = cx - archW + 3; x <= cx + archW - 3; x += 5)     // the raised portcullis' teeth
-            for (int y = archTop + 2; y < archTop + 10 + (Math.abs(x - cx) < 10 ? 4 : 0); y++) { c.set(x, y, Pal.IRON[2]); c.set(x + 1, y, Pal.IRON[1]); }
         if (!open) {                                       // the Warden's ward: a diamond eye across the seam
             int sy = g - 44;
             for (int y = -11; y <= 11; y++) for (int x = -14; x <= 14; x++) {

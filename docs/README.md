@@ -15,6 +15,7 @@ For the current implementation, start with the [project README](../README.md) an
 
 ## Overhaul captures
 
+- [Warden reveal, combat effects and animated gate](art-review/outpost-polish/README.md)
 - [Asset cleanup and camp tent](art-review/asset-cleanup/README.md), with a searchable file inventory
 - [Outpost environment](art-review/outpost-revamp/)
 - [Corrupted Forest](art-review/corrupted-forest/)

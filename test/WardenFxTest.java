@@ -7,6 +7,7 @@ import java.util.Arrays;
 public final class WardenFxTest {
     public static void main(String[] args) throws Exception {
         spikeArtHasNoBars();
+        sweepsUseSolidClusters();
         groundAttacksKeepNaturalWindups();
         waveSpikesFollowTheDamageCircle();
         BufferedImage atlas = B2BJ.loadImage("assets/characters/guardian/warden_motion.png");
@@ -76,6 +77,27 @@ public final class WardenFxTest {
             int height=0;
             for(int y=0;y<27;y++)if((sheet.getRGB(2*20+10,y)>>>24)>0)height++;
             assert height>10 : "spikes retain their rising stone silhouette";
+        }
+    }
+
+    private static void sweepsUseSolidClusters() {
+        for(String prefix:new String[]{"warden","briar"}) {
+            var sheet=B2BJ.loadImage("assets/effects/"+prefix+"_sweep.png");
+            assert sheet!=null&&sheet.getWidth()==184*4&&sheet.getHeight()==112;
+            var frames=new java.util.HashSet<Integer>();
+            for(int frame=0;frame<4;frame++) {
+                int visible=0;
+                for(int y=0;y<112;y+=2)for(int x=0;x<184;x+=2) {
+                    int p=sheet.getRGB(frame*184+x,y);
+                    assert (p>>>24)==0||(p>>>24)==255;
+                    for(int dy=0;dy<2;dy++)for(int dx=0;dx<2;dx++)
+                        assert sheet.getRGB(frame*184+x+dx,y+dy)==p : "sweep must not regress to noisy dither";
+                    if(p!=0)visible++;
+                }
+                assert visible>200&&visible<1500;
+                frames.add(Arrays.hashCode(sheet.getRGB(frame*184,0,184,112,null,0,184)));
+            }
+            assert frames.size()==4 : "cleave needs a complete turn";
         }
     }
 

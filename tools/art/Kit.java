@@ -119,40 +119,21 @@ final class Kit {
         return c;
     }
 
-    /**
-     * One frame of a looping fire, `frames` frames per loop. Tongues sway and breathe out of phase;
-     * the core burns white-yellow, the rim red; embers rise and wink out above.
-     */
-    static Canvas fire(int w, int h, int frame, int frames, int tongues, int seed) {
-        Canvas c = new Canvas(w, h);
-        double t = frame * Math.PI * 2 / frames;
-        int base = h - 2;
-        for (int k = 0; k < tongues; k++) {
-            double bx = w / 2.0 + (k - (tongues - 1) / 2.0) * (w * .55 / Math.max(1, tongues - 1)) * (tongues > 1 ? 1 : 0);
-            double phase = Noise.rnd(k, seed, 1) * 6.28, phase2 = Noise.rnd(k, seed, 2) * 6.28;
-            double centre = 1 - Math.abs(k - (tongues - 1) / 2.0) / Math.max(1, tongues / 2.0);
-            double height = (h - 6) * (.45 + .35 * centre) * (.82 + .18 * Math.sin(phase + t));
-            double width = w * (.13 + .09 * centre);
-            double sway = 1.6 * Math.sin(phase2 + t * (k % 2 == 0 ? 1 : 2));
-            for (int y = 0; y < height; y++) {
-                double v = y / height;
-                double half = width * Math.pow(1 - v, .75) + .5;
-                double xc = bx + sway * Math.pow(v, 1.4);
-                for (int x = (int) (xc - half); x <= (int) (xc + half); x++) {
-                    double heat = (1 - Math.abs(x + .5 - xc) / half) * (1 - .62 * v) * (.75 + .25 * centre);
-                    int colour = heat > .62 ? Pal.FIRE[5] : heat > .44 ? Pal.FIRE[4] : heat > .27 ? Pal.FIRE[3] : heat > .1 ? Pal.FIRE[2] : Pal.FIRE[1];
-                    int py = base - y;
-                    int old = c.get(x, py);
-                    if ((old >>> 24) == 0 || Pal.index(colour) > Pal.index(old)) c.set(x, py, colour);
-                }
-            }
-        }
-        for (int e = 0; e < 4; e++) {      // embers ride up through the loop
-            double life = ((frame + e * frames / 4.0) % frames) / frames;
-            int ex = (int) Math.round(w / 2.0 + (Noise.rnd(e, seed, 3) - .5) * w * .6 + Math.sin(life * 6 + e) * 1.5);
-            int ey = (int) Math.round(base - (h * .45) - life * h * .5);
-            if (life < .85) c.set(ex, ey, life < .4 ? Pal.FIRE[4] : Pal.FIRE[3]);
-        }
-        return c;
+    /** Broad flat tongues, a curling tip and detached embers; no heat-map dithering. */
+    static Canvas fire(int w,int h,int frame) {
+        int f=Math.floorMod(frame,8),lean=new int[]{-1,-1,0,1,2,1,0,-1}[f];
+        int rise=new int[]{0,1,2,1,0,-1,-2,-1}[f];
+        Canvas source=new Canvas(14,24);
+        poly(source,Pal.FIRE[1],2,22,1,17,3,12,4,16,6,11,6+lean,5+rise,
+                9+lean,8+rise,9,13,12,15,13,20,11,23,4,23);
+        poly(source,Pal.FIRE[2],3,21,3,17,5,14,6,17,8+lean,9+rise,9,15,11,18,11,22);
+        poly(source,Pal.FIRE[3],4,22,4,19,6,16,7,18,9,14+rise,10,19,10,22);
+        poly(source,Pal.FIRE[4],5,22,5,20,7,17+rise,8,20,9,22);
+        source.rect(6,21,2,2,Pal.FIRE[5]);
+        if(f<3)source.rect(10,5-f*2,2,2,Pal.FIRE[3]);
+        if(f>=4&&f<7)source.rect(3,7-(f-4)*2,2,2,Pal.FIRE[4]);
+        Canvas result=new Canvas(w,h);
+        for(int y=0;y<h;y++)for(int x=0;x<w;x++)result.set(x,y,source.get(x*14/w,y*24/h));
+        return result;
     }
 }

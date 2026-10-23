@@ -10,6 +10,7 @@ remain intact.
 - [PNG metrics](pixel-metrics.tsv): dimensions, colors and partial-alpha counts.
 - [Archived files and restoration notes](../../../archive/assets/2026-10-23/README.md).
 - [Tent source and prompt](tent-art.md); [dialogue art records](../area-one-story/polish-art.md).
+- [Follow-up scenery, boss effects and animated gate](../outpost-polish/README.md).
 
 ## Changes
 
@@ -39,8 +40,9 @@ The [campaign enemy sample](campaign-enemies.png) uses their real 92/88-pixel ce
 No animation was declared unused based only on a literal filename search; dynamic
 action slots, region names, source exporters and packaging were checked too.
 
-The current inventory contains 359 asset/source/guide files and the 22 archived files.
-There are 182 packaged PNGs, all with binary alpha, and four generated source PNGs
+After the follow-up polish, the current inventory contains 360 asset/source/guide
+files and the 22 archived files. There are 182 packaged PNGs, all with binary alpha,
+and five generated source PNGs
 excluded from packaging. Binary alpha checks for softened edges; it does not measure
 artistic quality. Simple flat scenery was reviewed but not all redrawn. The current
 camp capture shows the tent, flame and character scale together.
@@ -54,7 +56,8 @@ This pass adds no game dependencies. Existing imported sound attribution remains
 
 ## Verification
 
-- Java 17 lint/compile, all **84 test programs**, and packaged asset checks passed.
+- Initial cleanup passed all 84 test programs. The follow-up Java 17 lint/compile,
+  all **85 test programs**, and packaged asset checks passed.
 - `AssetArchiveTest` verifies all 22 preserved hashes, missing former runtime paths
   and exclusion from the package. `PackagedAssetLoadingTest` checks archive/source exclusion.
 - `CampArtTest` checks tent/portrait dimensions, palette limits, binary alpha,
@@ -62,7 +65,7 @@ This pass adds no game dependencies. Existing imported sound attribution remains
 - `ExportSourcesTest.py` passed routing, existing-layer preservation, repeated export
   and canonical supplies checks. Native asset imports preserve manual PNG edits.
 - Every current runtime PNG matches its packaged bytes; the JAR contains no source
-  or archive folders. Final JAR size: 11,167,599 bytes.
+  or archive folders. Follow-up JAR size: 11,189,015 bytes.
 - All report asset/evidence links resolve locally. Headless Chrome checks passed
   all three inventory filters with no browser errors. The camp capture uses a
   temporary game session with no campaign save path.

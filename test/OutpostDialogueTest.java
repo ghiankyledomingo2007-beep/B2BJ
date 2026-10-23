@@ -83,7 +83,7 @@ public final class OutpostDialogueTest {
         assert game.dialogue()==OutpostDialogue.WARDEN&&game.guardian().state()==Guardian.State.DORMANT;
         game.update(.5,0,0);
         assert game.guardian().state()==Guardian.State.DORMANT : "boss waits for the conversation";
-        game.skipDialogue();game.update(.01,0,0);
+        game.skipDialogue();game.update(.5,0,0);game.update(.1,0,0);game.update(.01,0,0);
         assert game.bossActive()&&game.dialogue()==null;
         assert game.debugWarp(0,false)&&game.dialogue()==null;
         game.player().relocate(game.guardian().x()+300,game.guardian().y());game.update(.01,0,0);
@@ -132,6 +132,7 @@ public final class OutpostDialogueTest {
         if(output!=null)javax.imageio.ImageIO.write(paint(panel),"png",output.resolve("camp-human-scale.png").toFile());
         game.player().relocate(game.guardian().x()+300,game.guardian().y());game.update(.01,0,0);
         assert game.dialogue()==OutpostDialogue.WARDEN;
+        for(int i=0;i<28;i++)panel.step(.05);
         if(output!=null)javax.imageio.ImageIO.write(paint(panel),"png",output.resolve("warden-conversation.png").toFile());
         click(panel,1190,516);
         assert game.dialogue()==null&&game.projectiles().isEmpty() : "the quiet Skip target must skip, not attack";

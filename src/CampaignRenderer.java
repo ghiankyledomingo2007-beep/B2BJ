@@ -172,7 +172,7 @@ public final class CampaignRenderer {
         int cell = switch (kind) {
             case BANNER -> (int) ((frame + phase) * 8 / 60 % cells);
             case LAMP -> ((frame + phase) / 7 * 1103515245L >>> 16 & 7) < 2 ? 1 : 0;
-            case EAST_GATE -> game.guardian().alive() ? 0 : Math.min(1, cells - 1);
+            case EAST_GATE -> Math.min(cells-1,(int)(game.gateOpening()*cells));
             default -> Math.min(p.variant(), cells - 1);
         };
         int left = (int) Math.round(p.x()) - cx - kind.anchorX * 2;

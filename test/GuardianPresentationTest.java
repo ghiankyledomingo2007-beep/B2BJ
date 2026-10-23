@@ -70,13 +70,15 @@ public final class GuardianPresentationTest {
     }
     private static void assertAtlasBody(Guardian guardian,BufferedImage image) {
         int expected=color(guardian.animation().ordinal(),guardian.animationFrame());
+        int size=Guardian.RENDER_SIZE,left=320-size/2;
+        int top=300+Guardian.GROUND_Y_OFFSET-Guardian.SPRITE_FOOT_ROW*4;
         assert image.getRGB(320,260)==expected : "selected boss atlas pose must be visible: "+guardian.animation()+" / "+guardian.animationFrame();
         int count=0;
         for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++)if(image.getRGB(x,y)==expected) {
-            assert x>=224&&x<=415&&y>=180&&y<=371 : "boss ground anchor must stay fixed";
+            assert x>=left&&x<left+size&&y>=top&&y<top+size : "boss ground anchor must stay fixed";
             count++;
         }
-        assert count==192*192 : "every atlas pose, including death, keeps its full native3x destination";
+        assert count==size*size : "every atlas pose, including death, keeps its full native4x destination";
     }
     private static boolean empty(BufferedImage image) {
         for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++)if((image.getRGB(x,y)>>>24)!=0)return false;

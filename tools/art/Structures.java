@@ -16,7 +16,7 @@ final class Structures {
             case SIGNPOST -> signpost();
             case BANNER -> { Canvas[] f = new Canvas[6]; for (int i = 0; i < 6; i++) f[i] = banner(i, 6); yield Canvas.strip(f); }
             case RACK -> Canvas.strip(rack(0), rack(1));
-            case DUMMY -> Canvas.strip(dummy(0), dummy(1));
+            case DUMMY -> ImportedArt.dummy();
             case GATE_POST -> Canvas.strip(gatePost(false), gatePost(true));
             case BARRACKS -> Buildings.barracks();
             case WATCHTOWER -> Buildings.watchtower();
@@ -24,7 +24,11 @@ final class Structures {
             case STATUE -> Buildings.statue();
             case BRAZIER -> brazier();
             case COLUMN -> Canvas.strip(column(0), column(1), column(2));
-            case EAST_GATE -> Canvas.strip(Buildings.eastGate(false), Buildings.eastGate(true));
+            case EAST_GATE -> {
+                Canvas[] frames=new Canvas[8];
+                for(int f=0;f<frames.length;f++)frames[f]=Buildings.eastGate(f);
+                yield Canvas.strip(frames);
+            }
             case SIGNAL_TOWER -> Buildings.signalTower();
             case INFIRMARY -> Buildings.infirmary();
             case SUPPLIES -> Canvas.strip(Props.supplies(0), Props.supplies(1), Props.supplies(2), Props.supplies(3));
@@ -248,33 +252,6 @@ final class Structures {
             }
         }
         if (v == 1) { c.blit(Decals.SHIELD.art(), x0 + 44, g - Decals.SHIELD.art().h + 1); c.blit(Decals.HELMET.art(), x0 - 4, g - 46); }
-        c.selectiveOutline();
-        return c;
-    }
-
-    static Canvas dummy(int v) {
-        var k = SetPieces.Kind.DUMMY;
-        Canvas c = canvas(k, 3);
-        int g = k.anchorY - 1, cx = k.anchorX;
-        post(c, cx - 2, 18, g, 4);
-        for (int y = 28; y < 31; y++) for (int x = cx - 15; x <= cx + 15; x++) c.set(x, y, y == 28 ? Pal.WOOD[5] : y == 30 ? Pal.WOOD[1] : Pal.WOOD[3]);
-        for (int y = 24; y < 52; y++) for (int x = cx - 10; x <= cx + 10; x++) {     // straw body bound with rope
-            double u = (x + .5 - cx) / 10.5, vv = (y - 38) / 14.0;
-            if (u * u + vv * vv * .6 > 1) continue;
-            int colour = u < -.45 ? Pal.DRY[3] : u < .25 ? Pal.DRY[2] : Pal.DRY[1];
-            if ((y * 3 + x) % 5 == 0) colour = Pal.shift(colour, u < 0 ? 1 : -1);
-            if (y == 33 || y == 34 || y == 45) colour = y == 33 ? Pal.WOOD[3] : Pal.WOOD[2];
-            c.set(x, y, colour);
-        }
-        c.ellipse(cx, 15, 7.5, 7, Pal.CANVAS[3]);                                     // sack head, stitched face
-        c.ellipse(cx - 2, 13, 3.5, 3, Pal.CANVAS[4]);
-        c.set(cx - 3, 15, Pal.INK); c.set(cx + 2, 15, Pal.INK);
-        for (int x = cx - 3; x <= cx + 3; x++) c.set(x, 19, x % 2 == 0 ? Pal.CANVAS[1] : Pal.CANVAS[2]);
-        c.set(cx, 8, Pal.DRY[3]); c.set(cx + 1, 7, Pal.DRY[2]); c.set(cx - 2, 8, Pal.DRY[3]);  // straw poking out
-        if (v == 1) for (int[] a : new int[][]{{cx + 5, 36}, {cx - 6, 42}, {cx + 1, 47}}) {
-            c.set(a[0], a[1], Pal.WOOD[4]); c.set(a[0] + 1, a[1] - 1, Pal.WOOD[3]); c.set(a[0] + 2, a[1] - 2, Pal.BONE[3]); c.set(a[0] + 3, a[1] - 2, Pal.BONE[2]);
-        }
-        for (int s = 0; s < 5; s++) c.set(cx - 8 + s * 4, g - (s % 2), Pal.DRY[2]);
         c.selectiveOutline();
         return c;
     }

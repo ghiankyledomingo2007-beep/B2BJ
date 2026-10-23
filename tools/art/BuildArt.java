@@ -9,6 +9,10 @@ public final class BuildArt {
         long t = System.nanoTime();
         if (what.equals("all") || what.equals("props")) props();
         if (what.equals("campfire")) campfire();
+        if (what.equals("brazier")) brazier();
+        if (what.equals("warden")) WardenArt.combat();
+        if (what.equals("dummy")) ImportedArt.dummy().save(SetPieces.Kind.DUMMY.sheet());
+        if (what.equals("gate")) Structures.sheet(SetPieces.Kind.EAST_GATE).save(SetPieces.Kind.EAST_GATE.sheet());
         if (what.equals("tent")) Structures.tent().save(SetPieces.Kind.TENT.sheet());
         if (what.equals("all") || what.equals("portraits")) ImportedArt.portraits();
         if (what.equals("all") || what.equals("ground")) ground();
@@ -23,9 +27,7 @@ public final class BuildArt {
         Decals.sheet().save("assets/tilesets/outpost/outpost_decals.png");
         for (var kind : SetPieces.Kind.values()) Structures.sheet(kind).save(kind.sheet());
         campfire();
-        Canvas[] brazier = new Canvas[8];
-        for (int f = 0; f < 8; f++) brazier[f] = Kit.fire(22, 30, f, 8, 4, 91);
-        Canvas.strip(brazier).save("assets/effects/fire_brazier.png");
+        brazier();
         WardenArt.build();
         BossArt.briarheart().save("assets/characters/guardian/briarheart_motion.png");
         for (String[] c : new String[][]{{"imp", "rift_imp"}, {"wolf", "thorn_wolf"}, {"shaman", "mire_shaman"}}) {
@@ -54,6 +56,12 @@ public final class BuildArt {
         Canvas[] frames=new Canvas[8];
         for(int f=0;f<frames.length;f++)frames[f]=Kit.campfire(f);
         Canvas.strip(frames).save("assets/effects/fire_camp.png");
+    }
+
+    static void brazier() {
+        Canvas[] frames=new Canvas[8];
+        for(int f=0;f<frames.length;f++)frames[f]=Kit.fire(22,30,f);
+        Canvas.strip(frames).save("assets/effects/fire_brazier.png");
     }
 
     static void forest() {

@@ -139,6 +139,7 @@ public final class RuinedOutpostGame {
     private String campaignNotice="";
     private OutpostDialogue dialogue;
     private int dialogueIndex;
+    private double wardenRevealTime,wardenReturnTime,wardenReturnWeight,gateTime;
     private double noticeTime;
     private void notice(String text) { campaignNotice=text;noticeTime=8; }
     private final Set<Integer> clearedBosses=new java.util.HashSet<>();
@@ -168,6 +169,7 @@ public final class RuinedOutpostGame {
 
     private void enterBiome(int destination,int arrival) {
         dialogue=null;dialogueIndex=0;
+        wardenRevealTime=wardenReturnTime=wardenReturnWeight=0;
         biome=destination;map=RuinedOutpostMap.campaign(biome);
         campaignCheckpoint=arrival==1?1:0;
         scouts=new ArrayList<>();campaignEnemies.clear();
@@ -181,6 +183,7 @@ public final class RuinedOutpostGame {
         }
         guardian=new Guardian(map.guardianX(),map.guardianY(),Guardian.Profile.values()[biome]);
         bossDefeated=clearedBosses.contains(biome);
+        gateTime=bossDefeated?1.4:0;
         if(bossDefeated) {
             guardian.activate(map.spawnX(),map.spawnY());guardian.hurt(guardian.maxHealth());
             map.clearGuardian();map.openGate();
@@ -247,7 +250,7 @@ public final class RuinedOutpostGame {
 
     public boolean returnToTitle() {
         if(!campaignMode||!paused||!player.alive()||story.blocksGameplay())return false;
-        saveProgress();cancelAbsorption();dialogue=null;story=new OutpostStory();paused=false;
+        saveProgress();cancelAbsorption();dialogue=null;wardenReturnTime=0;story=new OutpostStory();paused=false;
         campaignNotice="";noticeTime=0;return true;
     }
 
@@ -292,6 +295,13 @@ public final class RuinedOutpostGame {
     public boolean campaignMode() { return campaignMode; }
     public OutpostDialogue dialogue() { return dialogue; }
     public int dialogueIndex() { return dialogueIndex; }
+    public boolean cutsceneActive() { return dialogue==OutpostDialogue.WARDEN||wardenReturnTime>0; }
+    public boolean dialogueReady() { return dialogue!=OutpostDialogue.WARDEN||wardenRevealTime>=1.35; }
+    public double storyCameraWeight() {
+        double t=dialogue==OutpostDialogue.WARDEN?Math.min(1,wardenRevealTime/1.1):wardenReturnTime/.6;
+        return t*t*(3-2*t)*(dialogue==OutpostDialogue.WARDEN?1:wardenReturnWeight);
+    }
+    public double gateOpening() { return map.gateOpen()?Math.min(1,gateTime/1.4):0; }
     public boolean dialogueSeen(OutpostDialogue scene) { return campaignUnlocks.contains(scene.key()); }
     public String campaignObjective() {
         if(biome==0&&guardian.state()==Guardian.State.DORMANT&&!dialogueSeen(OutpostDialogue.CAMP)&&!dialogueSeen(OutpostDialogue.WARDEN))
@@ -303,16 +313,24 @@ public final class RuinedOutpostGame {
     private void openDialogue(OutpostDialogue scene) {
         cancelAbsorption();cancelBladeInput();
         dialogue=scene;dialogueIndex=0;
+        if(scene==OutpostDialogue.WARDEN) {
+            wardenRevealTime=0;
+            // Arrival movement and queued casts must not resume after the camera returns.
+            player.relocate(player.x(),player.y());attackDelay=waterWindup=0;waterCast=false;
+        }
     }
 
     public boolean advanceDialogue() {
-        if(dialogue==null||paused)return false;
+        if(dialogue==null||paused||!dialogueReady())return false;
         if(++dialogueIndex>=dialogue.lines().size())skipDialogue();
         return true;
     }
 
     public boolean skipDialogue() {
         if(dialogue==null||paused)return false;
+        if(dialogue==OutpostDialogue.WARDEN) {
+            wardenReturnWeight=storyCameraWeight();wardenReturnTime=wardenReturnWeight>0?.6:0;
+        }
         campaignUnlocks.add(dialogue.key());
         if(dialogue==OutpostDialogue.CAMP_LATE)campaignUnlocks.add(OutpostDialogue.CAMP.key());
         dialogue=null;dialogueIndex=0;
@@ -508,7 +526,17 @@ public final class RuinedOutpostGame {
         events.add(new Event(EventType.ROOM_ENTERED,x,y));
     }
     public void update(double seconds, int horizontal, int vertical) {
-        if (!Double.isFinite(seconds) || seconds <= 0 || blocked()) return;
+        if (!Double.isFinite(seconds) || seconds <= 0 || paused||story.blocksGameplay()) return;
+        double elapsed=Math.min(seconds,.5);
+        if(map.gateOpen()&&(gateTime>0||!campaignMode||biome!=0
+                ||near(campaignArea().exit().x(),campaignArea().exit().y(),320)))gateTime=Math.min(1.4,gateTime+elapsed);
+        if(cutsceneActive()) {
+            if(dialogue==OutpostDialogue.WARDEN)wardenRevealTime+=elapsed;
+            else wardenReturnTime=Math.max(0,wardenReturnTime-elapsed);
+            if(guardian.state()==Guardian.State.DORMANT)guardian.update(elapsed,player.x(),player.y());
+            return;
+        }
+        if(blocked())return;
         if(horizontal!=0||vertical!=0)cancelAbsorption();
         // Fixed maximum physics step prevents fast dashes skipping enemies or thin walls.
         for (double remaining=Math.min(seconds,0.5); remaining>0.000001; ) {
@@ -557,9 +585,14 @@ public final class RuinedOutpostGame {
         }
         if(campaignMode&&!bossDefeated&&guardian.state()==Guardian.State.DORMANT
                 &&near(guardian.x(),guardian.y(),600)) {
-            if(biome==0&&!dialogueSeen(OutpostDialogue.WARDEN)) {openDialogue(OutpostDialogue.WARDEN);return;}
-            map.setGuardianPresent(true);guardian.activate(player.x(),player.y());
-            emit(EventType.GUARDIAN_AWAKENED,guardian.x(),guardian.y());
+            if(biome==0&&!dialogueSeen(OutpostDialogue.WARDEN)) {
+                if(near(guardian.x(),guardian.y(),520)&&map.clearLine(player.x(),player.y(),guardian.x(),guardian.y())) {
+                    openDialogue(OutpostDialogue.WARDEN);return;
+                }
+            } else {
+                map.setGuardianPresent(true);guardian.activate(player.x(),player.y());
+                emit(EventType.GUARDIAN_AWAKENED,guardian.x(),guardian.y());
+            }
         }
         // Attack slots: at most two enemies wind up or strike at once; the rest circle until one frees
         // (docs/design/attack-feel.md). Campaign only, so the legacy rooms keep their tuned pressure.
@@ -934,6 +967,7 @@ public final class RuinedOutpostGame {
         hitStop=0.06;
         if (!guardian.alive()) {
                 bossDefeated=true;
+                gateTime=0;
                 if(campaignMode) {
                     if(clearedBosses.add(biome))grantShards(4+biome*2);
                     notice(guardian.bossName().toUpperCase(java.util.Locale.ROOT)+" DEFEATED / ROUTE OPEN");
@@ -1222,7 +1256,7 @@ public final class RuinedOutpostGame {
         corpses.remove(absorptionTarget);cancelAbsorption();
         emit(EventType.ABSORBED,player.x(),player.y());
     }
-    public boolean blocked() { return paused||story.blocksGameplay()||dialogue!=null; }
+    public boolean blocked() { return paused||story.blocksGameplay()||dialogue!=null||wardenReturnTime>0; }
     public boolean paused() { return paused; }
     public void togglePause() { if(!story.blocksGameplay()) {paused=!paused;if(paused)cancelBladeInput();} }
     public void pause() { if(!story.blocksGameplay()) {paused=true;cancelBladeInput();} }

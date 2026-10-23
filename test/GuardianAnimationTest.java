@@ -3,7 +3,7 @@ public final class GuardianAnimationTest {
         dormantIdleLoopsWithoutActivating();
         stateSequenceUsesSeparateEightFrameRows();
         specialAttacksKeepTheirOwnDurations();
-        assert Guardian.CELL_SIZE==64&&Guardian.RENDER_SIZE==192&&Guardian.SPRITE_FOOT_ROW==56;
+        assert Guardian.CELL_SIZE==64&&Guardian.RENDER_SIZE==256&&Guardian.SPRITE_FOOT_ROW==56;
         assert Guardian.MAX_HEALTH==1200&&Guardian.SLAM_DAMAGE==35&&Guardian.SLAM_RADIUS==112;
         System.out.println("GuardianAnimationTest passed");
     }

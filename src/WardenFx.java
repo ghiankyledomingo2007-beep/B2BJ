@@ -22,7 +22,7 @@ final class WardenFx {
         static final Theme BRIARHEART = new Theme("briar", "BRIARHEART", "ROOT OF THE DESCENT", 0xffdd80, 96, false);
     }
     private final Theme theme;
-    private final int cell, foot;
+    private final int cell, foot, renderSize;
     private final BufferedImage DEBRIS, DUST, CRACK, SWEEP, FLAME, SPIKE, BEAM, MOTE;
     private static final int LIMIT = 260;
 
@@ -50,6 +50,7 @@ final class WardenFx {
     WardenFx(BufferedImage motionAtlas, Theme theme) {
         this.theme = theme;
         cell = theme.cell();
+        renderSize=cell==96?192:Guardian.RENDER_SIZE;
         foot = cell * Guardian.SPRITE_FOOT_ROW / Guardian.CELL_SIZE;   // the foot row scales with the cell
         String base = "assets/effects/" + theme.prefix() + "_";
         DEBRIS = B2BJ.loadImage(base + "debris.png"); DUST = B2BJ.loadImage(base + "dust.png");
@@ -244,10 +245,10 @@ final class WardenFx {
             cell(g, CRACK, 80, f, c[0], c[1] + 30, cx, cy, 40, 20);
         }
         if (fallen && !guardian.visible() && atlas != null) {
-            int size = Guardian.RENDER_SIZE;
+            int size = renderSize;
             int x = (int) Math.round(fallenX) - cx - size / 2;
             int floorY = (int) Math.round(fallenY) - cy + Guardian.GROUND_Y_OFFSET
-                    + (cell - foot) * Guardian.RENDER_SIZE / cell;
+                    + (cell - foot) * renderSize / cell;
             int sx = 7 * cell, sy = Guardian.Animation.DEATH.ordinal() * cell;
             g.drawImage(atlas, x, floorY - size, x + size, floorY, sx, sy, sx + cell, sy + cell, null);
         }
@@ -279,13 +280,13 @@ final class WardenFx {
     /** Enrage flames, the hit flash (plain blink when effects are reduced) and the enrage flash, on the Warden's pose. */
     private void body(Graphics2D g, Guardian guardian, int cx, int cy, long frame, boolean reduced) {
         if (guardian.alive() && guardian.state() != Guardian.State.DORMANT && guardian.enraged() && FLAME != null) {
-            int[][] spots = {{10, 26}, {54, 26}, {32, 10}, {19, 16}, {45, 16}};     // shoulders, crown and back spikes, in atlas pixels
-            int left = (int) Math.round(guardian.x()) - cx - Guardian.RENDER_SIZE / 2;
+            int[][] spots = {{13, 32}, {51, 32}};
+            int left = (int) Math.round(guardian.x()) - cx - renderSize / 2;
             int top = topOf(guardian, cy);
             for (int i = 0; i < spots.length; i++) {
                 int f = (int) ((frame / 4 + i * 3) % 8);
-                int fx = left + spots[i][0] * 3, fy = top + spots[i][1] * 3;
-                g.drawImage(FLAME, fx - 14, fy - 44, fx + 14, fy + 4, f * 14, 0, f * 14 + 14, 24, null);
+                int fx=left+spots[i][0]*renderSize/64,fy=top+spots[i][1]*renderSize/64;
+                g.drawImage(FLAME,fx-14,fy-36,fx+14,fy+12,f*14,0,f*14+14,24,null);
             }
         }
         if (reduced || white == null) return;
@@ -293,10 +294,10 @@ final class WardenFx {
         if (enrageAge >= 0 && enrageAge < .3) frameOf(g, ((int) (enrageAge * 30)) % 2 == 0 ? white : cyan, guardian, cx, cy, .85f);
     }
 
-    /** Above the actors: the sweep smear, motes and the death beams. */
+    /** Above the actors: one complete cleave, motes and the death beams. */
     void drawAbove(Graphics2D g, Guardian guardian, int cx, int cy, long frame) {
         if (sweepAge >= 0 && SWEEP != null && guardian.visible())
-            cell(g, SWEEP, 184, (int) (sweepAge / .06) % 4, guardian.x(), guardian.y() + 30, cx, cy, 92, 58);
+            cell(g, SWEEP, 184, Math.min(3,(int)(sweepAge/.105)), guardian.x(), guardian.y() + 30, cx, cy, 92, 58);
         for (var b : bits) if (b.age >= 0) switch (b.kind) {
             case MOTE_CYAN, MOTE_GOLD, FIRE_MOTE -> {
                 if (MOTE == null) break;
@@ -321,9 +322,9 @@ final class WardenFx {
         if (cyan == null) return;
         var faded = (Graphics2D) g.create();
         faded.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) Math.max(0, .42 * (1 - b.age / b.life))));
-        int size = Guardian.RENDER_SIZE, x = (int) Math.round(b.x) - cx - size / 2;
+        int size = renderSize, x = (int) Math.round(b.x) - cx - size / 2;
         int floorY = (int) Math.round(b.y) - cy + Guardian.GROUND_Y_OFFSET
-                + (cell - foot) * Guardian.RENDER_SIZE / cell;
+                + (cell - foot) * renderSize / cell;
         int sx = b.ghostFrame * cell, sy = b.ghostRow * cell;
         faded.drawImage(cyan, x, floorY - size, x + size, floorY, sx, sy, sx + cell, sy + cell, null);
         faded.dispose();
@@ -331,8 +332,8 @@ final class WardenFx {
 
     private int topOf(Guardian guardian, int cy) {
         int floorY = (int) Math.round(guardian.y()) - cy + Guardian.GROUND_Y_OFFSET
-                + (cell - foot) * Guardian.RENDER_SIZE / cell;
-        return floorY - Guardian.RENDER_SIZE;
+                + (cell - foot) * renderSize / cell;
+        return floorY - renderSize;
     }
 
     /** The Warden's current atlas pose drawn from a silhouette sheet, in the same place drawGuardian puts it. */
@@ -340,7 +341,7 @@ final class WardenFx {
         if (alpha <= 0) return;
         var layer = (Graphics2D) g.create();
         if (alpha < 1) layer.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
-        int size = Guardian.RENDER_SIZE, x = (int) Math.round(guardian.x()) - cx - size / 2, y = topOf(guardian, cy);
+        int size = renderSize, x = (int) Math.round(guardian.x()) - cx - size / 2, y = topOf(guardian, cy);
         int sx = guardian.animationFrame() * cell, sy = guardian.animation().ordinal() * cell;
         layer.drawImage(sheet, x, y, x + size, y + size, sx, sy, sx + cell, sy + cell, null);
         layer.dispose();

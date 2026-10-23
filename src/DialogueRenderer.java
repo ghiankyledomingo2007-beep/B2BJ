@@ -20,10 +20,10 @@ public final class DialogueRenderer {
 
     public static void draw(Graphics2D g,RuinedOutpostGame game,int width,int height) {
         var scene=game.dialogue();
-        if(scene==null)return;
+        if(scene==null||!game.dialogueReady())return;
         var line=scene.lines().get(game.dialogueIndex());
         int y=height-240;
-        Ui.veil(g,width,height,80);
+        Ui.veil(g,width,height,scene==OutpostDialogue.WARDEN?28:80);
         Ui.window(g,48,y,width-96,208);
         Ui.nine(g,Ui.Piece.PANEL,76,y+20,160,160);
         var portrait=switch(line.speaker()) {

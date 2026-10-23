@@ -12,7 +12,7 @@ public final class Guardian {
     public enum Attack { TARGET, SWEEP, CHARGE, SHOCKWAVE, FISSURE }
     /** Row order in warden_motion.png: eight native 64px frames per row. */
     public enum Animation { IDLE, APPROACH, WINDUP, STRIKE, RECOVER, CHARGE, DEATH }
-    public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*3, MAX_HEALTH=1200, SLAM_DAMAGE=35;
+    public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*4, MAX_HEALTH=1200, SLAM_DAMAGE=35;
     public static final int GROUND_Y_OFFSET=48, SPRITE_FOOT_ROW=56;
     public static final double SLAM_RADIUS=112, TELEGRAPH_DURATION=0.9, SLAM_DURATION=0.18;
     public static final double RECOVER_DURATION=1.5, DEATH_DURATION=0.5;

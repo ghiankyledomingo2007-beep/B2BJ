@@ -1,6 +1,6 @@
 # Editable art
 
-- `outpost/`: Outpost tiles, scenery, Warden effects and the generated tent master.
+- `outpost/`: Outpost tiles, scenery, Warden effects and generated tent/dummy masters.
 - `forest/`: Forest tiles, scenery, enemies and Briarheart effects.
 - `shared/`: shared palette and camp/brazier fire.
 - `characters/`: unchanged generated masters for Mara and Rainoray's slime portrait.
@@ -10,9 +10,12 @@ and `assets/effects/`. These editable projects are not packed into the game.
 
 `tools/art/build-art.sh portraits` imports native 64 × 64 portraits and Mara's
 80 × 80 body from the character masters. `tools/art/build-art.sh tent` imports the
-128 × 100 tent with a sixteen-color palette. Both use hard transparency and keep
+128 × 100 tent with a sixteen-color palette. `tools/art/build-art.sh dummy` prepares
+the two 36 × 72 training-dummy variants, aligned to the existing ground anchor.
+These importers use hard transparency and keep
 hand-edited runtime PNGs unless `--force` is explicitly supplied. See the
-[tent record](../../docs/art-review/asset-cleanup/tent-art.md) and
+[tent record](../../docs/art-review/asset-cleanup/tent-art.md),
+[dummy record](../../docs/art-review/outpost-polish/dummy-art.md) and
 [portrait record](../../docs/art-review/area-one-story/polish-art.md).
 
 `tools/art/export-sources.sh` creates missing editable projects in the right group.

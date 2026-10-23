@@ -1,10 +1,11 @@
 # Outpost art pipeline
 
 Most environment art is drawn by the Java code in this folder using the night palette
-(`Pal.java`, exported as `assets/source/shared/outpost_night.gpl`). The camp tent and
+(`Pal.java`, exported as `assets/source/shared/outpost_night.gpl`). The camp tent, training dummy and
 dialogue sprites are imported from preserved generated masters by `ImportedArt.java`,
 which applies native dimensions, locked palettes and hard transparency. Generation
-records live in `docs/art-review/asset-cleanup/` and `docs/art-review/area-one-story/`.
+records live in `docs/art-review/asset-cleanup/`, `docs/art-review/area-one-story/`
+and `docs/art-review/outpost-polish/`.
 Rebuilding from the same code, map and source images produces the same pixels.
 
 ## Rebuild
@@ -13,7 +14,11 @@ Rebuilding from the same code, map and source images produces the same pixels.
 tools/art/build-art.sh            # everything (about 3 s)
 tools/art/build-art.sh ground     # only the floor, after changing the map layout
 tools/art/build-art.sh campfire   # only the flat-color eight-frame camp flame
+tools/art/build-art.sh brazier    # shared tower and brazier fire
+tools/art/build-art.sh warden     # solid boss sweeps and compact phase-two flames
 tools/art/build-art.sh tent       # only the 128 × 100 camp tent
+tools/art/build-art.sh dummy      # two native 36 × 72 training-dummy variants
+tools/art/build-art.sh gate       # eight opening poses for the East Gate
 tools/art/build-art.sh portraits  # native Mara and slime dialogue art
 tools/art/export-sources.sh       # missing editable projects, grouped by region; existing projects kept
 ./build.sh                        # then the normal build and tests
@@ -40,7 +45,7 @@ editable layers, using a temporary folder and a mock editor.
 | `Decals.java` | tufts, reeds, glowing mushrooms, stones and the fallen expedition's kit (`outpost_decals.png`) |
 | `Props.java` | ruined walls, log palisades, supplies for the map's obstacle clusters (same footprints as before) |
 | `Structures.java`, `Buildings.java` | landmark set pieces, placed by `src/SetPieces.java` |
-| `ImportedArt.java` | native tent and dialogue PNGs from generated masters under `assets/source/` |
+| `ImportedArt.java` | native tent, dummy and dialogue PNGs from generated masters under `assets/source/` |
 | `Kit.java` | stone, plank, shingle, cylinder and fire builders |
 | `WardenArt.java` | `assets/effects/warden_*.png`: cracks, debris, dust, sweep, spikes, flames, beams, motes |
 | `Tiles16.java` | `outpost_tileset.png`, `forest_tileset.png`: 16 px fills with variants + Wang corner sets (three versions of every edge tile) |

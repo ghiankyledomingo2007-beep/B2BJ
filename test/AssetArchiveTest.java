@@ -23,6 +23,7 @@ public final class AssetArchiveTest {
         for(String path:new String[]{"assets/characters/blade/blade_run.png","assets/characters/slime/slime_absorb.png",
                 "assets/effects/blob_hit.png","assets/props/outpost/supplies.png",
                 "assets/source/characters/mara_idle.generated.png","assets/source/outpost/tent.generated.png",
+                "assets/source/outpost/dummy.generated.png",
                 "archive/assets/2026-10-23/manifest.tsv"})
             assert B2BJ.class.getResource("/"+path)==null : "source/archive asset packaged: "+path;
     }

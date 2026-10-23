@@ -18,7 +18,7 @@ Mara tried to follow the evacuation into the forest. Roots had closed the trail.
 
 Rainoray can hurry straight to the gate. If he searches the outpost, he finds the people still present in small decisions: one bed left made for a returning patient; weapon crates abandoned so blankets could fit on the carts; a dispatch with names marked missing instead of dead. His own name has been crossed out and written back in. Mara admits that she thought she saw him fall. She could not be certain enough to leave the mark there.
 
-At the gatehouse, Rainoray tries to reason with the Warden. It repeats the evacuation order, then announces that no survivors are permitted through. There is no captain left to correct it. Rainoray has to break the thing that is keeping everyone safe on paper.
+At the gatehouse, Rainoray tries to reason with the Warden. It is still waiting for the last stretcher. When he gives his name, it finds his death in the evacuation records and refuses to recognize the person standing in front of it. There is no captain left to correct it. Rainoray has to break the thing that is keeping everyone safe on paper.
 
 Beyond the broken chain, stretcher tracks disappear into the trees. Only Mara's footprints return. Rainoray cannot know whether the wounded are still alive. He chooses to follow them anyway.
 
@@ -27,6 +27,13 @@ If he returns to camp first, Mara offers him a dry scarf. He is not sure he can 
 ## In-game delivery
 
 Dialogue is one readable line at a time, with the current speaker's portrait. Lines appear immediately; there is no forced typing delay. The panel has a small next arrow and a clickable Skip label. Enter, E or left click advances, X skips, and Escape opens the pause menu; shortcuts stay in Controls instead of a large dialogue footer. Combat, movement, projectiles, cooldowns and Ichor drain stop while the panel is open.
+
+The Warden's first encounter starts only from an unobstructed approach within 520 world pixels.
+A 1.1-second camera pan frames the Warden and gate; dialogue starts after a short settling beat.
+The Warden breathes and ambient flames continue moving while combat stays frozen. Finishing or
+skipping the conversation returns the camera over 0.6 seconds before combat resumes. Pause
+freezes the entire sequence. After victory, the East Gate opens over 1.4 seconds when approached;
+cleared gates loaded from a save stay open. [Visual review](../art-review/outpost-polish/README.md).
 
 | Moment | Trigger | Purpose |
 | --- | --- | --- |

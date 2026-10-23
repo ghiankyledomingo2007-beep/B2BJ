@@ -382,7 +382,7 @@ public final class B2BJ extends JPanel {
     /** Title menu shows on the title screen while the game menu is closed; the corner Menu button does not. */
     private void syncTitle() {
         var scene=game.dialogue();
-        String spoken=scene==null?null:scene.lines().get(game.dialogueIndex()).speaker()+": "
+        String spoken=scene==null?null:!game.dialogueReady()?"The camera reveals the Outpost Warden. X: skip. Escape: pause.":scene.lines().get(game.dialogueIndex()).speaker()+": "
                 +scene.lines().get(game.dialogueIndex()).text()+" Enter or E: continue. X: skip. Escape: pause.";
         if(!java.util.Objects.equals(spoken,getAccessibleContext().getAccessibleDescription()))
             getAccessibleContext().setAccessibleDescription(spoken);
@@ -423,7 +423,7 @@ public final class B2BJ extends JPanel {
         previousFrame = now;
 
         if(game.campaignMode())GameAudio.setMusicState(game.biome(),game.player().bladeForm(),!game.blocked());
-        if (game.paused()||!game.campaignMode()||(!loading.active()&&game.blocked())) { GameAudio.stopLoops(); repaint(); return; }
+        if (game.paused()||!game.campaignMode()||(!loading.active()&&game.blocked()&&game.dialogue()==null&&!game.cutsceneActive())) { GameAudio.stopLoops(); repaint(); return; }
         step(seconds);
     }
 
@@ -437,7 +437,12 @@ public final class B2BJ extends JPanel {
         }
         watchRegion();
         if (!Double.isFinite(seconds) || seconds <= 0 || game.paused() || menuShown()) return;
-        if(game.dialogue()!=null) {clearGameplayInput();repaint();return;}
+        if(game.dialogue()!=null||game.cutsceneActive()) {
+            clearGameplayInput();game.update(seconds,0,0);
+            slimeAnimation.update(0,0,false,seconds);
+            bladeAnimation.update(0,0,false,seconds);
+            frameCounter++;weatherTime+=seconds;repaint();return;
+        }
         areaCard(seconds);
         weatherTime+=seconds;
         int horizontal = horizontal();
@@ -788,16 +793,15 @@ public final class B2BJ extends JPanel {
         }
         Player player = game.player();
         RuinedOutpostMap map = game.map();
-        int cameraX = cameraPosition(player.x(), WIDTH, map.worldWidth());
-        int cameraY = cameraPosition(player.y(), HEIGHT, map.worldHeight());
-        int shakeX = reducedEffects?0:feedback.shakeX(frameCounter)/2*2;
-        int shakeY = reducedEffects?0:feedback.shakeY(frameCounter)/2*2;
+        int cameraX=worldCameraX(),cameraY=worldCameraY();
+        int shakeX = reducedEffects||game.cutsceneActive()?0:feedback.shakeX(frameCounter)/2*2;
+        int shakeY = reducedEffects||game.cutsceneActive()?0:feedback.shakeY(frameCounter)/2*2;
         canvas.translate(shakeX, shakeY);
         drawWorld(canvas, cameraX, cameraY);
         canvas.translate(-shakeX, -shakeY);
         drawScreenEffects(canvas);
         if(game.campaignMode()) {
-            if(game.dialogue()==null) {
+            if(game.dialogue()==null&&!game.cutsceneActive()) {
                 drawPlayerHud(canvas);
                 CampaignRenderer.drawHud(canvas,game,WIDTH,HEIGHT);
                 CampaignRenderer.drawAreaCard(canvas,cardBiome,cardTime,WIDTH,reducedEffects);
@@ -814,6 +818,16 @@ public final class B2BJ extends JPanel {
             if(mapShown&&!game.story().blocksGameplay())drawMap(canvas,true);
         }
         canvas.dispose();
+    }
+
+    int worldCameraX() {
+        double weight=game.storyCameraWeight();
+        double target=game.campaignMode()?game.guardian().x()+(game.campaignArea().exit().x()-game.guardian().x())*.25:game.player().x();
+        return cameraPosition(game.player().x()+(target-game.player().x())*weight,WIDTH,game.map().worldWidth());
+    }
+    int worldCameraY() {
+        double weight=game.storyCameraWeight(),target=game.guardian().y()-55;
+        return cameraPosition(game.player().y()+(target-game.player().y())*weight,HEIGHT,game.map().worldHeight());
     }
 
     /** box: the screen area a wall or set piece paints, so Rainoray can show through it. */
@@ -1271,18 +1285,19 @@ public final class B2BJ extends JPanel {
         if (!guardian.visible() || (guardian.alive() && !guardian.flashVisible())) {
             return;
         }
-        // Briarheart's atlas uses 96 px cells drawn at 2x; the Warden's, 64 px at 3x. Both fill the same box.
+        // Keep native integer scales: Briarheart at 2x, the larger Warden at 4x.
         BufferedImage motionSheet=game.campaignMode()&&game.biome()==1&&briarheartSheet!=null?briarheartSheet:wardenMotionSheet;
         int cell=motionSheet==briarheartSheet?96:Guardian.CELL_SIZE,foot=cell*Guardian.SPRITE_FOOT_ROW/Guardian.CELL_SIZE;
+        int renderSize=motionSheet==briarheartSheet?192:Guardian.RENDER_SIZE;
         boolean motion=motionSheet!=null&&motionSheet.getWidth()>=8*cell&&motionSheet.getHeight()>=7*cell;
-        int size = motion||guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null?Guardian.RENDER_SIZE
-                :(int) Math.round(Guardian.RENDER_SIZE * guardian.renderScale());
+        int size = motion||guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null?renderSize
+                :(int) Math.round(renderSize * guardian.renderScale());
         if (size <= 0) {
             return;
         }
         int x = (int) Math.round(guardian.x()) - cameraX - size / 2;
         int floorY = (int) Math.round(guardian.y()) - cameraY
-                + Guardian.GROUND_Y_OFFSET+(cell-foot)*Guardian.RENDER_SIZE/cell;
+                + Guardian.GROUND_Y_OFFSET+(cell-foot)*renderSize/cell;
         int y = floorY - size;
         BufferedImage actionSheet=switch(guardian.attack()) {
             case CHARGE -> guardianChargeSheet; case SWEEP -> guardianSweepSheet;

@@ -7,24 +7,21 @@ final class WardenArt {
 
     static void build() {
         debris().save("assets/effects/warden_debris.png");
-        Canvas[] dust = new Canvas[6], crack = new Canvas[4], sweep = new Canvas[4], flame = new Canvas[8],
+        Canvas[] dust = new Canvas[6], crack = new Canvas[4],
                 spike = new Canvas[6], beam = new Canvas[4], mote = new Canvas[8];
         for (int f = 0; f < 6; f++) dust[f] = dust(f);
         for (int f = 0; f < 4; f++) crack[f] = crack(f);
-        for (int f = 0; f < 4; f++) sweep[f] = sweep(f);
-        for (int f = 0; f < 8; f++) flame[f] = flame(f, 8);
         for (int f = 0; f < 6; f++) spike[f] = spike(f);
         for (int f = 0; f < 4; f++) beam[f] = beam(f);
         for (int f = 0; f < 8; f++) mote[f] = mote(f % 4, f < 4 ? Pal.CYAN : Pal.GOLD);
         Canvas.strip(dust).save("assets/effects/warden_dust.png");
         Canvas.strip(crack).save("assets/effects/warden_crack.png");
-        Canvas.strip(sweep).save("assets/effects/warden_sweep.png");
-        Canvas.strip(flame).save("assets/effects/warden_flame.png");
+        combat();
         Canvas.strip(spike).save("assets/effects/warden_spike.png");
         Canvas.strip(beam).save("assets/effects/warden_beam.png");
         Canvas.strip(mote).save("assets/effects/warden_mote.png");
         // Briarheart's copies: the Warden's cyan fire becomes gold light through violet rot
-        for (String n : new String[]{"debris", "dust", "crack", "sweep", "flame", "spike", "beam", "mote"})
+        for (String n : new String[]{"debris", "dust", "crack", "spike", "beam", "mote"})
             briar(Canvas.load("assets/effects/warden_" + n + ".png")).save("assets/effects/briar_" + n + ".png");
         briar(Canvas.load("assets/effects/warden_impact.png")).save("assets/effects/briar_impact.png");
     }
@@ -105,29 +102,39 @@ final class WardenArt {
         return c;
     }
 
-    /** The spin cleave: a 240-degree smear of cyan light whirling round the Warden. */
+    static void combat() {
+        Canvas[] sweep=new Canvas[4],flame=new Canvas[8];
+        for(int f=0;f<sweep.length;f++)sweep[f]=sweep(f);
+        for(int f=0;f<flame.length;f++)flame[f]=flame(f);
+        Canvas.strip(sweep).save("assets/effects/warden_sweep.png");
+        Canvas.strip(flame).save("assets/effects/warden_flame.png");
+        for(String name:new String[]{"sweep","flame"})
+            briar(Canvas.load("assets/effects/warden_"+name+".png")).save("assets/effects/briar_"+name+".png");
+    }
+
+    /** A tapered cleave in solid two-pixel clusters, with a bright cutting edge. */
     static Canvas sweep(int f) {
         Canvas c = new Canvas(184, 112);
         double cx = 92, cy = 58, rx = 84, ry = 50;
         double head = f * Math.PI / 2;
-        for (int y = 0; y < c.h; y++) for (int x = 0; x < c.w; x++) {
-            double dx = (x + .5 - cx) / rx, dy = (y + .5 - cy) / ry, r = Math.hypot(dx, dy);
-            if (r < .78 || r > 1.04) continue;
-            double a = Math.atan2(dy, dx);
-            double behind = Math.floorMod((long) Math.round((head - a) * 1000), (long) Math.round(Math.PI * 2000)) / 1000.0;
-            if (behind > Math.PI * 4 / 3) continue;
-            double fade = 1 - behind / (Math.PI * 4 / 3);
-            double band = 1 - Math.abs(r - .92) / .13;
-            double v = fade * band + (Noise.bayer(x, y) - .5) * .3;
-            if (v < .12) continue;
-            c.set(x, y, v > .78 ? Pal.CYAN[5] : v > .55 ? Pal.CYAN[4] : v > .32 ? Pal.CYAN[3] : Pal.CYAN[2]);
+        for (int y = 0; y < c.h; y+=2) for (int x = 0; x < c.w; x+=2) {
+            double dx=(x+1-cx)/rx,dy=(y+1-cy)/ry,r=Math.hypot(dx,dy);
+            double behind=(head-Math.atan2(dy,dx)+Math.PI*4)%(Math.PI*2);
+            double length=Math.PI*1.28;
+            if(behind>length)continue;
+            double tail=1-behind/length,inner=.98-(.025+.22*tail);
+            if(r<inner||r>.99)continue;
+            double band=(r-inner)/(.99-inner);
+            int colour=band>.84?Pal.CYAN[2]:band>.59&&tail>.35?Pal.CYAN[5]
+                    :band>.27?Pal.CYAN[4]:Pal.CYAN[3];
+            c.rect(x,y,2,2,colour);
         }
         return c;
     }
 
     /** A looping cyan flame wisp. */
-    static Canvas flame(int f, int frames) {
-        Canvas fire = Kit.fire(14, 24, f, frames, 2, 931);
+    static Canvas flame(int f) {
+        Canvas fire = Kit.fire(14, 24, f);
         Canvas c = new Canvas(14, 24);
         int[] map = {Pal.CYAN[1], Pal.CYAN[2], Pal.CYAN[3], Pal.CYAN[4], Pal.CYAN[5], Pal.CYAN[5]};
         for (int y = 0; y < 24; y++) for (int x = 0; x < 14; x++) {

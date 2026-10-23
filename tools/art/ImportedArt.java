@@ -27,6 +27,25 @@ final class ImportedArt {
         return fit(Canvas.load("assets/source/outpost/tent.generated.png").image(),128,100,colours);
     }
 
+    static Canvas dummy() {
+        var source=Canvas.load("assets/source/outpost/dummy.generated.png").image();
+        int[] colours={0x191719,0x30251d,0x493523,0x654831,0x835b39,0xa67a49,0xc69a5a,0xe4b96e,
+                0xf1d292,0x514735,0x6e6147,0x8b7b56,0xaa956a,0xc7b182,0xe4cba1,0xf2dfb5};
+        Canvas[] frames=new Canvas[2];
+        for(int f=0;f<2;f++) {
+            int cell=source.getWidth()/2,left=cell,top=source.getHeight(),right=-1,bottom=-1;
+            for(int y=0;y<source.getHeight();y++)for(int x=0;x<cell;x++)if(source.getRGB(f*cell+x,y)>>>24>=128) {
+                left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);
+            }
+            if(right<left)throw new IllegalStateException("empty dummy source cell "+f);
+            var body=fit(source.getSubimage(f*cell+left,top,right-left+1,bottom-top+1),32,64,colours);
+            int foot=0;
+            for(int y=0;y<body.h;y++)for(int x=0;x<body.w;x++)if(body.opaque(x,y))foot=y;
+            frames[f]=new Canvas(36,72);frames[f].blit(body,2,69-foot);
+        }
+        return Canvas.strip(frames);
+    }
+
     private static Canvas fit(BufferedImage source,int targetWidth,int targetHeight,int[] palette) {
         double scale=Math.min((double)targetWidth/source.getWidth(),(double)targetHeight/source.getHeight());
         int width=(int)Math.round(source.getWidth()*scale),height=(int)Math.round(source.getHeight()*scale);
