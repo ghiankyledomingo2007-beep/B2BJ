@@ -22,27 +22,32 @@ public final class DialogueRenderer {
         var scene=game.dialogue();
         if(scene==null||!game.dialogueReady())return;
         var line=scene.lines().get(game.dialogueIndex());
-        int y=height-240;
+        int y=height-188,right=width-128;
         Ui.veil(g,width,height,scene==OutpostDialogue.WARDEN?28:80);
-        Ui.window(g,48,y,width-96,208);
-        Ui.nine(g,Ui.Piece.PANEL,76,y+20,160,160);
+        Ui.window(g,128,y,width-256,160);
+        Ui.nine(g,Ui.Piece.PANEL,144,y+12,136,136);
         var portrait=switch(line.speaker()) {
             case MARA -> MARA;
             case WARDEN -> WARDEN;
             case RAINORAY -> game.player().bladeForm()?BLADE:BLOB;
         };
         int size=portrait==BLADE?120:128;
-        if(portrait!=null)g.drawImage(portrait,156-size/2,y+100-size/2,size,size,null);
+        if(portrait!=null)g.drawImage(portrait,212-size/2,y+80-size/2,size,size,null);
         String speaker=line.speaker()==OutpostDialogue.Speaker.WARDEN?"OUTPOST WARDEN":line.speaker().name();
-        Ui.text(g,speaker,264,y+42,2,line.speaker()==OutpostDialogue.Speaker.MARA?Ui.GOLD:Ui.CYAN);
-        Ui.textRight(g,"Skip",width-80,y+42,2,Ui.MUTED);
-        Ui.wrapped(g,line.text(),264,y+82,width-352,2,30,3,Ui.TEXT);
+        boolean warm=line.speaker()==OutpostDialogue.Speaker.MARA;
+        Ui.drawTitle(g,speaker,304,y+16,2,warm?Ui.GOLD_RAMP:Ui.CYAN_RAMP);
+        Ui.textRight(g,"Skip",right-32,y+34,2,Ui.MUTED);
+        g.setColor(Ui.DIM);g.fillRect(304,y+50,width-480,2);
+        g.setColor(warm?Ui.GOLD:Ui.TEAL);g.fillRect(304,y+50,48,2);
+        var lines=Ui.wrap(line.text(),width-480,3);
+        int baseline=y+94+(2-lines.size())*12;
+        for(String text:lines) {Ui.text(g,text,304,baseline,3,Ui.TEXT);baseline+=36;}
         g.setColor(Ui.GOLD);
-        for(int step=0;step<4;step++)g.fillRect(width-88+step*2,y+172+step*2,2,14-step*4);
+        for(int step=0;step<4;step++)g.fillRect(right-32+step*2,y+130+step*2,2,14-step*4);
     }
 
     static boolean skipHit(int x,int y,int width,int height) {
-        return new java.awt.Rectangle(width-152,height-226,88,44).contains(x,y);
+        return new java.awt.Rectangle(width-224,height-180,80,40).contains(x,y);
     }
 
     public static void drawMara(Graphics2D g,RuinedOutpostGame game,int cameraX,int cameraY) {

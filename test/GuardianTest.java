@@ -3,7 +3,7 @@ public final class GuardianTest {
         Guardian g=new Guardian(300,200);
         assert !g.hurt(1);
         g.activate(120,140);
-        g.update(Guardian.TELEGRAPH_DURATION,999,999);
+        g.update(g.telegraphDuration(),999,999);
         assert g.state()==Guardian.State.SLAM;
         assert g.targetX()==120&&g.targetY()==140 : "slam must not follow until impact";
         assert g.impactNumber()==1;

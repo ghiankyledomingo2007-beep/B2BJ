@@ -125,6 +125,13 @@ public final class Guardian {
     public double waveRadius() {return WAVE_START+(slamRadius()-WAVE_START)*Math.min(1,stateTime/activeDuration());}
     public double activeDuration() {return attack==Attack.FISSURE?0.32:attack==Attack.CHARGE?CHARGE_DURATION:attack==Attack.SHOCKWAVE?0.75:SLAM_DURATION;}
     public double telegraphDuration() {
+        if(profile==Profile.OUTPOST_WARDEN)return switch(attack) {
+            case TARGET -> 1.05;
+            case SWEEP -> 1.0;
+            case CHARGE -> 1.2;
+            case SHOCKWAVE -> 1.3;
+            case FISSURE -> 1.4;
+        };
         if(attack==Attack.FISSURE)return 1.1;
         return profile==Profile.BRIARHEART?1.05:profile==Profile.OATHKEEPER?.8:TELEGRAPH_DURATION;
     }
@@ -162,7 +169,7 @@ public final class Guardian {
         return switch(state) {
             case DORMANT -> Animation.IDLE;
             case APPROACH -> Animation.APPROACH;
-            case TELEGRAPH -> Animation.WINDUP;
+            case TELEGRAPH -> profile==Profile.OUTPOST_WARDEN&&attack==Attack.FISSURE?Animation.RECOVER:Animation.WINDUP;
             case SLAM -> attack==Attack.CHARGE?Animation.CHARGE:Animation.STRIKE;
             case RECOVER,HURT -> Animation.RECOVER;
             case DEAD -> Animation.DEATH;
@@ -171,6 +178,11 @@ public final class Guardian {
     public int animationFrame() {
         if(state==State.DORMANT)return (int)(idleAnimationTime*6)%8;
         if(state==State.APPROACH)return (int)(stateTime*8)%8;
+        if(profile==Profile.OUTPOST_WARDEN&&attack==Attack.FISSURE) {
+            // Reverse the rising recovery poses into a planted crouch before the ground splits.
+            if(state==State.TELEGRAPH)return 7-Math.min(7,(int)(stateTime*8/(telegraphDuration()*.75)));
+            if(state==State.SLAM)return 7;
+        }
         double duration=switch(state) {
             case TELEGRAPH -> telegraphDuration();
             case SLAM -> activeDuration();
@@ -179,6 +191,16 @@ public final class Guardian {
             default -> throw new IllegalStateException("Looping animation already handled");
         };
         return Math.min(7,(int)(stateTime*8/duration));
+    }
+    /** Authored attack strips: four preparation poses, two strikes, two recovery poses. */
+    public int actionFrame() {
+        if(profile!=Profile.OUTPOST_WARDEN||(attack!=Attack.SWEEP&&attack!=Attack.CHARGE&&attack!=Attack.SHOCKWAVE))return -1;
+        return switch(state) {
+            case TELEGRAPH -> Math.min(3,(int)(stateTime*4/(telegraphDuration()*.72)));
+            case SLAM -> 4+Math.min(1,(int)(stateTime*2/activeDuration()));
+            case RECOVER,HURT -> 6+Math.min(1,(int)(stateTime*2/recoverDuration()));
+            default -> -1;
+        };
     }
     public int row(){return state==State.SLAM?1:state==State.RECOVER||state==State.HURT||state==State.DEAD?2:0;}
     public int frame(){

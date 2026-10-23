@@ -26,7 +26,7 @@ If he returns to camp first, Mara offers him a dry scarf. He is not sure he can 
 
 ## In-game delivery
 
-Dialogue is one readable line at a time, with the current speaker's portrait. Lines appear immediately; there is no forced typing delay. The panel has a small next arrow and a clickable Skip label. Enter, E or left click advances, X skips, and Escape opens the pause menu; shortcuts stay in Controls instead of a large dialogue footer. Combat, movement, projectiles, cooldowns and Ichor drain stop while the panel is open.
+Dialogue shows one spoken line at a time, with the current speaker's portrait. Lines appear immediately; there is no forced typing delay. The compact 160-pixel-high panel uses a bold display-font speaker name, a small colored rule and larger 3× pixel body text, wrapping to at most two rows. The ornate frame, small next arrow and clickable Skip label remain. Enter, E or left click advances, X skips, and Escape opens the pause menu; shortcuts stay in Controls instead of a large dialogue footer. Combat, movement, projectiles, cooldowns and Ichor drain stop while the panel is open.
 
 The Warden's first encounter starts only from an unobstructed approach within 520 world pixels.
 A 1.1-second camera pan frames the Warden and gate; dialogue starts after a short settling beat.

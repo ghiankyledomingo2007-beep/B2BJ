@@ -12,9 +12,9 @@ public final class OutpostDialogueTest {
         storyAndPersistence();
         bossIntroduction();
         for(var scene:OutpostDialogue.values())for(var line:scene.lines()) {
-            var lines=Ui.wrap(line.text(),1280-352,2);
-            assert lines.size()<=3 : "dialogue would be clipped: "+line.text();
-            assert lines.stream().allMatch(text->Ui.width(text,2)<=1280-352);
+            var lines=Ui.wrap(line.text(),1280-480,3);
+            assert lines.size()<=2 : "dialogue would be clipped: "+line.text();
+            assert lines.stream().allMatch(text->Ui.width(text,3)<=1280-480);
         }
         var art=B2BJ.loadImage("assets/characters/npcs/mara_portrait.png");
         assert art!=null&&art.getWidth()==64&&art.getHeight()==64&&art.getColorModel().hasAlpha();
@@ -134,7 +134,8 @@ public final class OutpostDialogueTest {
         assert game.dialogue()==OutpostDialogue.WARDEN;
         for(int i=0;i<28;i++)panel.step(.05);
         if(output!=null)javax.imageio.ImageIO.write(paint(panel),"png",output.resolve("warden-conversation.png").toFile());
-        click(panel,1190,516);
+        assert !DialogueRenderer.skipHit(1190,516,1280,720) : "old empty margin is no longer the Skip button";
+        click(panel,1100,562);
         assert game.dialogue()==null&&game.projectiles().isEmpty() : "the quiet Skip target must skip, not attack";
     }
 

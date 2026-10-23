@@ -11,7 +11,7 @@ screenshots of the dummy, watchtower fire, Warden encounter, sweep, enraged form
 - The Warden uses exact 4× pixels, increasing its canvas from 192 to 256 pixels.
   Flashes, afterimages and fallen remains share that size and foot anchor. Briarheart
   stays at its native 96 × 96 art drawn at 2×. Boss damage, health and attack ranges
-  are unchanged.
+  are unchanged; the follow-up below lengthens the Warden's preparation time.
 - The sweep uses a tapered solid cleave with a bright edge and coarse pixel clusters.
   Its four poses play once per attack instead of repeatedly circling with a dithered tail.
 - The first encounter waits for a clear approach, pans to frame the Warden and gate,
@@ -36,6 +36,33 @@ set boss states for inspection; they are not evidence of a complete manual boss 
   [opening](gate-opening.png), [open](gate-open.png).
 - [Phase-two flames](warden-enraged.png) and [sweep](warden-sweep.png).
 - [Training dummy](dummy.png) and [watchtower fire](tower.png).
+- [Compact dialogue with Mara](dialogue-mara.png) and [Rainoray](dialogue-rainoray.png).
+- [Five attack preparations in motion](warden-attack-tells.mp4), in the table's order.
+
+## Dialogue and attack readability follow-up
+
+The owner found the dialogue panel too empty and the text too thin. The panel is now
+1024 × 160 at the standard game resolution, with a 136-pixel portrait frame, bold
+display-font speaker names and 3× body text. All current spoken lines fit within two
+rows. The ornate frame and small Skip/next controls remain; no instruction footer.
+
+The shared motion atlas previously took precedence over the existing attack strips.
+Sweep, charge and shockwave now use their authored preparation, strike and recovery
+poses. The last preparation pose holds before release. Fissure reverses the recovery
+poses into a crouch with hands planted, then holds it during the eruption. Hit flashes
+and charge afterimages use the same selected pose and facing as the body.
+
+| Attack | Preparation | Time before damage |
+| --- | --- | --- |
+| Targeted slam | Both fists raised; dust gathers at the committed impact spot | 1.05 s |
+| Sweep | Side-on arm preparation; energy gathers at that hand | 1.00 s |
+| Charge | Braced forward pose; visor energy and dust kicked behind its committed heading | 1.20 s |
+| Shockwave | Both hands glow low; rubble stirs around the feet | 1.30 s |
+| Fissure | Planted crouch; dust follows the committed crack lane | 1.40 s |
+
+The previous Warden preparation was 0.9 s for most attacks and 1.1 s for fissure.
+Targets and headings remain fixed throughout preparation; no damage is dealt then.
+Attack damage, active durations, recovery and the other bosses' timings are unchanged.
 
 ## Verification
 
@@ -44,6 +71,11 @@ Java 17 lint/compile, all 85 test programs and packaged asset checks passed.
 camera return, gate proximity and loading an already-open gate. Art tests check
 frame sizes, distinct poses, hard alpha, flame palettes and solid sweep clusters.
 Existing combat, story, save compatibility and Lab 6 checks also pass.
+
+The follow-up tests all five preparation poses and timings, committed targets,
+exact body/flash silhouettes in both facings, dialogue wrapping and the relocated
+Skip target. The clips use scripted states through the real renderer, not a manual
+fight or a performance benchmark.
 
 The build includes all 182 runtime PNGs byte-for-byte and excludes generated masters
 and archived assets. Seven editable exports match their runtime sheets. No game

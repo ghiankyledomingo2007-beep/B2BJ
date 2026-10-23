@@ -7,6 +7,7 @@ public final class GuardianPresentationTest {
     public static void main(String[] args) throws Exception {
         deathIgnoresHitBlinkAndEndsCleanly();
         atlasSelectsEveryStateAndFrame();
+        attacksHaveTimeAndDistinctPoses();
         System.out.println("GuardianPresentationTest passed");
     }
     private static void deathIgnoresHitBlinkAndEndsCleanly() throws Exception {
@@ -60,6 +61,12 @@ public final class GuardianPresentationTest {
         }
         ink.dispose();
         Field sheet=B2BJ.class.getDeclaredField("wardenMotionSheet");sheet.setAccessible(true);sheet.set(panel,atlas);
+        int row=7;
+        for(String name:new String[]{"guardianSweepSheet","guardianChargeSheet","guardianWaveSheet"}) {
+            var action=new BufferedImage(512,64,BufferedImage.TYPE_INT_ARGB);var g=action.createGraphics();
+            for(int frame=0;frame<8;frame++) {g.setColor(new java.awt.Color(color(row,frame),true));g.fillRect(frame*64,0,64,64);}
+            g.dispose();sheet=B2BJ.class.getDeclaredField(name);sheet.setAccessible(true);sheet.set(panel,action);row++;
+        }
         return panel;
     }
     private static BufferedImage draw(B2BJ panel,Guardian guardian) throws Exception {
@@ -69,7 +76,12 @@ public final class GuardianPresentationTest {
         ink.dispose();return image;
     }
     private static void assertAtlasBody(Guardian guardian,BufferedImage image) {
-        int expected=color(guardian.animation().ordinal(),guardian.animationFrame());
+        int row=guardian.animation().ordinal(),frame=guardian.animationFrame();
+        if(guardian.actionFrame()>=0) {
+            row=switch(guardian.attack()){case SWEEP->7;case CHARGE->8;case SHOCKWAVE->9;default->throw new AssertionError();};
+            frame=guardian.actionFrame();
+        }
+        int expected=color(row,frame);
         int size=Guardian.RENDER_SIZE,left=320-size/2;
         int top=300+Guardian.GROUND_Y_OFFSET-Guardian.SPRITE_FOOT_ROW*4;
         assert image.getRGB(320,260)==expected : "selected boss atlas pose must be visible: "+guardian.animation()+" / "+guardian.animationFrame();
@@ -83,6 +95,30 @@ public final class GuardianPresentationTest {
     private static boolean empty(BufferedImage image) {
         for(int y=0;y<image.getHeight();y++)for(int x=0;x<image.getWidth();x++)if((image.getRGB(x,y)>>>24)!=0)return false;
         return true;
+    }
+    private static void attacksHaveTimeAndDistinctPoses() throws Exception {
+        var poses=new java.util.HashSet<Integer>();
+        for(var attack:Guardian.Attack.values()) {
+            Guardian guardian=new Guardian(900,500);guardian.activate(400,500);
+            set(guardian,"attack",attack);set(guardian,"chargeX",-1.0);
+            var panel=panel(guardian);double duration=guardian.telegraphDuration();
+            assert duration>=1&&duration<=1.4 : "every attack needs a readable preparation";
+            double tx=guardian.targetX(),ty=guardian.targetY(),dx=guardian.directionX();
+            guardian.update(duration*.7,1400,100);
+            assert guardian.state()==Guardian.State.TELEGRAPH&&!guardian.hits(tx,ty);
+            assert guardian.targetX()==tx&&guardian.targetY()==ty&&guardian.directionX()==dx : "no late retargeting";
+            var rendered=draw(panel,guardian);assertAtlasBody(guardian,rendered);
+            poses.add(rendered.getRGB(320,260));
+            guardian.update(duration*.3,1400,100);
+            assert guardian.state()==Guardian.State.SLAM&&guardian.impactNumber()==1;
+            assertAtlasBody(guardian,draw(panel,guardian));
+        }
+        assert poses.size()==5 : "five attacks must not silently share the same preparation pose";
+        var briar=new Guardian(0,0,Guardian.Profile.BRIARHEART);briar.activate(100,0);
+        assert briar.telegraphDuration()==1.05&&briar.actionFrame()==-1 : "other boss art and timing stay separate";
+    }
+    private static void set(Object object,String name,Object value) throws Exception {
+        var field=object.getClass().getDeclaredField(name);field.setAccessible(true);field.set(object,value);
     }
     private static int color(int row,int frame) {return 0xff000067|(32+row*24)<<16|(32+frame*24)<<8;}
 }

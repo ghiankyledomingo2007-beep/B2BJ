@@ -1303,7 +1303,11 @@ public final class B2BJ extends JPanel {
             case CHARGE -> guardianChargeSheet; case SWEEP -> guardianSweepSheet;
             case SHOCKWAVE -> guardianWaveSheet; default -> null;
         };
-        if(motion) {
+        if(motionSheet==wardenMotionSheet&&actionSheet!=null&&guardian.actionFrame()>=0) {
+            int frame=guardian.actionFrame();
+            boolean flip=guardian.attack()!=Guardian.Attack.SHOCKWAVE&&guardian.directionX()<0;
+            canvas.drawImage(actionSheet,flip?x+size:x,y,flip?x:x+size,y+size,frame*64,0,frame*64+64,64,null);
+        } else if(motion) {
             int sourceX=guardian.animationFrame()*cell;
             int sourceY=guardian.animation().ordinal()*cell;
             canvas.drawImage(motionSheet,x,y,x+size,y+size,sourceX,sourceY,

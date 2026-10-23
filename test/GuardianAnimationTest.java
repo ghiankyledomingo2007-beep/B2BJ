@@ -21,7 +21,7 @@ public final class GuardianAnimationTest {
     }
     private static void stateSequenceUsesSeparateEightFrameRows() {
         Guardian guardian=new Guardian(300,200);guardian.activate(120,140);
-        oneShot(guardian,Guardian.Animation.WINDUP,.9,999,999);
+        oneShot(guardian,Guardian.Animation.WINDUP,1.05,999,999);
         assert guardian.targetX()==120&&guardian.targetY()==140 : "animation cannot retarget a committed warning";
         assert guardian.impactNumber()==1&&guardian.hits(120,140);
         oneShot(guardian,Guardian.Animation.STRIKE,.18,999,999);
@@ -45,11 +45,18 @@ public final class GuardianAnimationTest {
         assert Math.abs(guardian.x()-x-620*.55)<.001 : "charge animation must not change displacement";
         guardian.hurt(guardian.maxHealth()/2);
         oneShot(guardian,Guardian.Animation.RECOVER,1.25,guardian.x()+600,400);
-        seek(guardian,Guardian.Animation.WINDUP,Guardian.Attack.FISSURE);
+        seek(guardian,Guardian.Animation.RECOVER,Guardian.Attack.FISSURE);
+        assert guardian.state()==Guardian.State.TELEGRAPH : "fissure prepares by planting its hands";
         var lane=guardian.fissureBounds();
-        oneShot(guardian,Guardian.Animation.WINDUP,1.1,100,100);
+        int seen=0,previous=7;
+        while(guardian.state()==Guardian.State.TELEGRAPH) {
+            int frame=guardian.animationFrame();
+            assert frame<=previous : "fissure lowers into a crouch, not the slam's overhead raise";
+            seen|=1<<frame;previous=frame;guardian.update(.005,100,100);
+        }
+        assert seen==255&&guardian.animationFrame()==7;
         assert lane.equals(guardian.fissureBounds());
-        oneShot(guardian,Guardian.Animation.STRIKE,.32,100,100);
+        guardian.update(.32,100,100);assert guardian.state()==Guardian.State.RECOVER;
         seek(guardian,Guardian.Animation.STRIKE,Guardian.Attack.SHOCKWAVE);
         oneShot(guardian,Guardian.Animation.STRIKE,.75,guardian.x()+600,400);
     }

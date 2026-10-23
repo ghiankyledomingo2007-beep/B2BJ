@@ -108,7 +108,8 @@ public final class RainoraySkillsTest {
         var map=new RuinedOutpostMap(9);
         var bossGame=game(map,map.spawnX(),map.spawnY());blade(bossGame);
         bossGame.guardian().activate(bossGame.player().x(),bossGame.player().y());
-        advance(bossGame,.72);assert bossGame.riposte();advance(bossGame,.25);
+        advance(bossGame,bossGame.guardian().telegraphDuration()-.18);
+        assert bossGame.riposte();advance(bossGame,.25);
         assert bossGame.guardian().impactNumber()==1;
         assert bossGame.player().healthValue()==100&&!bossGame.guarding()
                 : "real Guardian slam must pass through the same one-shot guard";

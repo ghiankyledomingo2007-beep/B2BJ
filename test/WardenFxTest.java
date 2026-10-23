@@ -10,6 +10,7 @@ public final class WardenFxTest {
         sweepsUseSolidClusters();
         groundAttacksKeepNaturalWindups();
         waveSpikesFollowTheDamageCircle();
+        flashesFollowAttackPoses();
         BufferedImage atlas = B2BJ.loadImage("assets/characters/guardian/warden_motion.png");
         var view = new BufferedImage(640, 480, BufferedImage.TYPE_INT_ARGB);
         int[] pixels = ((DataBufferInt) view.getRaster().getDataBuffer()).getData();
@@ -103,7 +104,7 @@ public final class WardenFxTest {
 
     private static void groundAttacksKeepNaturalWindups() throws Exception {
         for(var theme:new WardenFx.Theme[]{WardenFx.Theme.WARDEN,WardenFx.Theme.BRIARHEART})
-            for(var attack:new Guardian.Attack[]{Guardian.Attack.TARGET,Guardian.Attack.FISSURE}) {
+            for(var attack:new Guardian.Attack[]{Guardian.Attack.TARGET,Guardian.Attack.FISSURE,Guardian.Attack.CHARGE,Guardian.Attack.SHOCKWAVE}) {
                 var boss=new Guardian(320,300);boss.activate(400,300);
                 set(boss,"state",Guardian.State.TELEGRAPH);set(boss,"attack",attack);
                 set(boss,"targetX",400.);set(boss,"targetY",300.);set(boss,"stateTime",.4);
@@ -140,6 +141,28 @@ public final class WardenFxTest {
             count++;
         }
         assert count>=8;
+    }
+
+    private static void flashesFollowAttackPoses() throws Exception {
+        var game=RuinedOutpostGame.campaign();var boss=game.guardian();
+        boss.activate(boss.x()-180,boss.y()+80);
+        var panel=new B2BJ(false,game);
+        var fx=new WardenFx(B2BJ.loadImage("assets/characters/guardian/warden_motion.png"));
+        var white=WardenFx.class.getDeclaredField("white");white.setAccessible(true);
+        var draw=B2BJ.class.getDeclaredMethod("drawGuardian",java.awt.Graphics2D.class,int.class,int.class);draw.setAccessible(true);
+        var flash=WardenFx.class.getDeclaredMethod("frameOf",java.awt.Graphics2D.class,BufferedImage.class,Guardian.class,int.class,int.class,float.class);
+        flash.setAccessible(true);
+        for(var attack:Guardian.Attack.values())for(int direction:new int[]{-1,1}) {
+            set(boss,"attack",attack);set(boss,"chargeX",(double)direction);set(boss,"stateTime",boss.telegraphDuration()*.8);
+            var body=new BufferedImage(640,480,BufferedImage.TYPE_INT_ARGB);
+            var tint=new BufferedImage(640,480,BufferedImage.TYPE_INT_ARGB);
+            int cx=(int)boss.x()-320,cy=(int)boss.y()-300;
+            var g=body.createGraphics();draw.invoke(panel,g,cx,cy);g.dispose();
+            g=tint.createGraphics();flash.invoke(fx,g,white.get(fx),boss,cx,cy,1f);g.dispose();
+            for(int y=124;y<380;y++)for(int x=192;x<448;x++)
+                assert (body.getRGB(x,y)>>>24)==(tint.getRGB(x,y)>>>24)
+                        : "flash must match the visible "+attack+" pose and facing";
+        }
     }
 
     private static void set(Object target,String name,Object value) throws Exception {

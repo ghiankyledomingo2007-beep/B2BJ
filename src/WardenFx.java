@@ -30,10 +30,13 @@ final class WardenFx {
     private static final class Bit {
         final Kind kind; double x, y, z, vx, vy, vz, age; final double life; final int variant;
         int ghostRow, ghostFrame;
+        Guardian.Attack ghostAttack;
+        boolean ghostFlip;
         Bit(Kind kind, double x, double y, double life, int variant) { this.kind = kind; this.x = x; this.y = y; this.life = life; this.variant = variant; }
     }
 
     private final BufferedImage atlas, white, cyan;
+    private final java.util.Map<Guardian.Attack,BufferedImage[]> actionTints=new java.util.EnumMap<>(Guardian.Attack.class);
     private final List<Bit> bits = new ArrayList<>();
     private final List<double[]> cracks = new ArrayList<>();          // x, y, age
     private Guardian.State last = Guardian.State.DORMANT;
@@ -62,6 +65,12 @@ final class WardenFx {
                 : SILHOUETTES.computeIfAbsent(motionAtlas, a -> new BufferedImage[]{silhouette(a, 0xfff6ff), silhouette(a, theme.glow())});
         white = tints == null ? null : tints[0];
         cyan = tints == null ? null : tints[1];
+        if(theme==Theme.WARDEN)for(var attack:new Guardian.Attack[]{Guardian.Attack.SWEEP,Guardian.Attack.CHARGE,Guardian.Attack.SHOCKWAVE}) {
+            String name=attack==Guardian.Attack.SHOCKWAVE?"wave":attack.name().toLowerCase(java.util.Locale.ROOT);
+            var source=B2BJ.loadImage("assets/characters/guardian/guardian_"+name+".png");
+            if(source!=null)actionTints.put(attack,SILHOUETTES.computeIfAbsent(source,
+                    a->new BufferedImage[]{silhouette(a,0xfff6ff),silhouette(a,theme.glow())}));
+        }
     }
 
     private static BufferedImage silhouette(BufferedImage source, int rgb) {
@@ -167,11 +176,18 @@ final class WardenFx {
         if (enrageAge >= 0) { enrageAge += dt; if (enrageAge > 1.2) enrageAge = -1; }
         if (deathAge >= 0) deathAge += dt;
         var state = g.state();
-        if (state == Guardian.State.TELEGRAPH && g.alive()) {               // power gathering into the visor
+        if (state == Guardian.State.TELEGRAPH && g.alive()) {
+            double focusX=g.x(),focusY=g.y()-70;
+            if(theme==Theme.WARDEN)switch(g.attack()) {
+                case TARGET -> focusY=g.y()-144;
+                case SWEEP -> {focusX+=g.directionX()<0?64:-64;focusY=g.y()-66;}
+                case CHARGE -> {focusX+=g.directionX()*28;focusY=g.y()-112+g.directionY()*16;}
+                case SHOCKWAVE,FISSURE -> focusY=g.y()+24;
+            }
             double rate = 34 * dt;
             while (rnd() < rate--) {
                 double a = rnd() * Math.PI * 2, r = 70 + rnd() * 50;
-                var m = add(Kind.MOTE_CYAN, g.x() + Math.cos(a) * r, g.y() - 70 + Math.sin(a) * r * .6, .42, (int) (rnd() * 4));
+                var m = add(Kind.MOTE_CYAN, focusX + Math.cos(a) * r, focusY + Math.sin(a) * r * .6, .42, (int) (rnd() * 4));
                 m.vx = -Math.cos(a) * r / .42; m.vy = -Math.sin(a) * r * .6 / .42;
             }
         }
@@ -181,6 +197,10 @@ final class WardenFx {
                 ghostClock = .05;
                 var ghost = add(Kind.GHOST, g.x(), g.y(), .26, 0);
                 ghost.ghostRow = g.animation().ordinal(); ghost.ghostFrame = g.animationFrame();
+                if(g.actionFrame()>=0&&actionTints.containsKey(g.attack())) {
+                    ghost.ghostAttack=g.attack();ghost.ghostRow=0;ghost.ghostFrame=g.actionFrame();
+                    ghost.ghostFlip=g.directionX()<0;
+                }
                 dust(g.x() + (rnd() - .5) * 40, g.y() + 44, -g.directionX() * 70, -g.directionY() * 30);
             }
         }
@@ -231,6 +251,14 @@ final class WardenFx {
             if (guardian.attack() == Guardian.Attack.TARGET)
                 for (int side = -1; side <= 1; side++)
                     cell(g, DUST, 28, f, guardian.targetX() + side * 40, guardian.targetY() + (side == 0 ? 40 : 10), cx, cy, 14, 18);
+            if(guardian.attack()==Guardian.Attack.CHARGE)
+                for(int step=1;step<=3;step++)cell(g,DUST,28,f,
+                        guardian.x()-guardian.directionX()*step*30,guardian.y()+36-guardian.directionY()*step*30,cx,cy,14,18);
+            if(guardian.attack()==Guardian.Attack.SHOCKWAVE&&SPIKE!=null)
+                for(int i=0;i<8;i++) {
+                    double a=i*Math.PI/4;
+                    cell(g,SPIKE,20,0,guardian.x()+Math.cos(a)*104,guardian.y()+Math.sin(a)*72,cx,cy,10,28);
+                }
             var lane = guardian.fissureBounds();
             if (lane != null) {
                 boolean across = lane.width() > lane.height();
@@ -326,7 +354,8 @@ final class WardenFx {
         int floorY = (int) Math.round(b.y) - cy + Guardian.GROUND_Y_OFFSET
                 + (cell - foot) * renderSize / cell;
         int sx = b.ghostFrame * cell, sy = b.ghostRow * cell;
-        faded.drawImage(cyan, x, floorY - size, x + size, floorY, sx, sy, sx + cell, sy + cell, null);
+        var sheet=b.ghostAttack==null?cyan:actionTints.get(b.ghostAttack)[1];
+        faded.drawImage(sheet,b.ghostFlip?x+size:x,floorY-size,b.ghostFlip?x:x+size,floorY,sx,sy,sx+cell,sy+cell,null);
         faded.dispose();
     }
 
@@ -343,7 +372,10 @@ final class WardenFx {
         if (alpha < 1) layer.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
         int size = renderSize, x = (int) Math.round(guardian.x()) - cx - size / 2, y = topOf(guardian, cy);
         int sx = guardian.animationFrame() * cell, sy = guardian.animation().ordinal() * cell;
-        layer.drawImage(sheet, x, y, x + size, y + size, sx, sy, sx + cell, sy + cell, null);
+        boolean action=guardian.actionFrame()>=0&&actionTints.containsKey(guardian.attack());
+        if(action) {sheet=actionTints.get(guardian.attack())[sheet==white?0:1];sx=guardian.actionFrame()*cell;sy=0;}
+        boolean flip=action&&guardian.attack()!=Guardian.Attack.SHOCKWAVE&&guardian.directionX()<0;
+        layer.drawImage(sheet,flip?x+size:x,y,flip?x:x+size,y+size,sx,sy,sx+cell,sy+cell,null);
         layer.dispose();
     }
 

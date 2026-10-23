@@ -65,7 +65,7 @@ This pass adds no game dependencies. Existing imported sound attribution remains
 - `ExportSourcesTest.py` passed routing, existing-layer preservation, repeated export
   and canonical supplies checks. Native asset imports preserve manual PNG edits.
 - Every current runtime PNG matches its packaged bytes; the JAR contains no source
-  or archive folders. Follow-up JAR size: 11,189,015 bytes.
+  or archive folders.
 - All report asset/evidence links resolve locally. Headless Chrome checks passed
   all three inventory filters with no browser errors. The camp capture uses a
   temporary game session with no campaign save path.

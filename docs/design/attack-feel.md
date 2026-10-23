@@ -51,3 +51,18 @@ Sources are cited inline. "(synth)" marks a 60 fps synthesis to be tuned by play
 - Follow-up dodge tuning: cooldown 0.32s in both forms (was 0.40s). Slime bursts 144 world pixels at 900px/s for 0.16s, with a watery takeoff and short ground ripples. Blade quicksteps 120 world pixels at 1000px/s for 0.12s, with up to six blue pose snapshots fading over 0.14s. Both retain collision sweeps and have a vulnerable interval before the next dash.
 - Combo-preserving dodges, dash slash and Slime back-dash counters use the actual form's dash duration. Slime body-slam damage and Blade's attack-only dash slash rules remain. In-flight speed is fixed at dash acceptance, including a mid-dash transformation. Slime animation now faces the dash heading even when no movement key is held.
 - Reduced Effects disables Blade echoes and keeps only Slime's initial ripple. Echoes use the existing dash sprite as a cached blue silhouette; ripples reuse water_wake.png, with no new asset generation or dependencies.
+
+## 2026-10-23 — Warden preparation and attack silhouettes
+
+The Warden's shared motion sheet was overriding its authored sweep, charge and
+shockwave strips. Those strips now take precedence during their attacks, including
+matching hit flashes and charge afterimages. Fissure lowers into a planted crouch;
+the targeted slam keeps the two-fist overhead raise. The last preparation pose holds
+before release. Dust and energy gather at the relevant hand, visor, impact spot or
+ground lane. Shockwave preparation stirs rubble near the feet.
+
+Preparation is now 1.05 s for targeted slam, 1.00 s for sweep, 1.20 s for charge,
+1.30 s for shockwave and 1.40 s for fissure. No damage during preparation; targets and
+headings stay committed. Active/recovery durations, damage and other bosses' timings
+are unchanged. This tuning gives the owner more time to recognize the next move;
+full encounter balance still needs manual play. [Captures and clip](../art-review/outpost-polish/README.md).
