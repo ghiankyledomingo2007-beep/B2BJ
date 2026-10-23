@@ -119,7 +119,7 @@ public final class CampaignMenu extends JPanel {
             {"W A S D", "Move  (arrow keys too)"}, {"LMB", "Attack  ·  blade: click combo, hold to charge"},
             {"RMB", "Tide Wave  ·  blade: Ichor Crescent"}, {"SPACE", "Dash"}, {"Q", "Transform into the blade"},
             {"F", "Riposte"}, {"E", "Interact  ·  talk  ·  absorb"}, {"H", "Rest and save at camp"},
-            {"1 2 3 4", "Buy camp upgrades"}, {"TAB", "Hold for the region map"}, {"ESC", "Pause menu"},
+            {"U", "Open camp services"}, {"1 2 3 4", "Buy upgrades while camp is open"}, {"TAB", "Hold for the region map"}, {"ESC", "Pause menu"},
             {"ENTER", "Next dialogue line (E / click too)"}, {"X", "Skip conversation"},
             {"M", "Mute"}, {"V", "Reduce flashes and shake"}};
 

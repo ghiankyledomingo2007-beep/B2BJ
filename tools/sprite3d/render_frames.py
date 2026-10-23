@@ -17,7 +17,8 @@ from mathutils import Vector
 
 # Screen-right must equal the direction the character travels for east, and so on.
 # glTF characters face -Y after import; azimuth is the camera's angle around Z.
-AZIMUTH = {"east": 180.0, "south": 270.0, "west": 0.0, "north": 90.0}
+AZIMUTH = {"east": 180.0, "south": 270.0, "west": 0.0, "north": 90.0,
+           "southeast": 225.0, "northeast": 135.0, "northwest": 45.0, "southwest": 315.0}
 
 
 def parse_args():

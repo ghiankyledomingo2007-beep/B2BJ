@@ -7,11 +7,11 @@ public final class BladeTrailTest {
 
     public static void main(String[] args) {
         assert CELL==BladeAnimation.CELL_WIDTH*2 : "a trail cell is twice the body cell, centred on it";
-        strike("slash",12,20);
-        strike("cleave",12,8);
+        strike("slash",12,40);
+        strike("cleave",12,16);
         for(String name:new String[]{"cast","counter"}) {
-            var image=sheet(name,8,4);
-            for(int row=0;row<4;row++) {
+            var image=sheet(name,8,8);
+            for(int row=0;row<8;row++) {
                 assert pixels(image,7,row)==0 : name+": the flick has faded by the last frame";
                 assert anyTrail(image,0,3,row) : name+" happens at once, so it trails from the first frames";
             }
@@ -26,7 +26,7 @@ public final class BladeTrailTest {
             for(int frame=0;frame<=3;frame++)assert pixels(image,frame,row)==0 : name+" row "+row+": a wind-up is not a cut";
             for(int frame=11;frame<columns;frame++)assert pixels(image,frame,row)==0 : name+" row "+row+": the trail is gone before he is home";
             assert anyTrail(image,4,6,row) : name+" row "+row+": the strike leaves a trail";
-            if(name.equals("slash")||row<4)for(int frame=7;frame<columns;frame++)
+            if(name.equals("slash")||row<8)for(int frame=7;frame<columns;frame++)
                 assert pixels(image,frame,row)==0 : name+": ordinary cuts must fade before the recovery swing";
         }
     }

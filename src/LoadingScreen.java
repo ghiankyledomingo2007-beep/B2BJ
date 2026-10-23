@@ -158,8 +158,8 @@ final class LoadingScreen {
         Ui.crisp(g);
         g.setColor(new Color(0x070a14));
         g.fillRect(0, 0, wide, H);
-        var sky = B2BJ.loadImage("assets/ui/title/sky.png");
-        var land = B2BJ.loadImage(which == 0 ? "assets/ui/title/far.png" : "assets/ui/title/mid.png");
+        var sky = B2BJ.loadImage("assets/ui/loading/sky.png");
+        var land = B2BJ.loadImage(which == 0 ? "assets/ui/loading/outpost.png" : "assets/ui/loading/forest.png");
         if (sky != null) { g.drawImage(sky, 0, 0, W, H, null); g.drawImage(sky, W, 0, W, H, null); }
         if (land != null) g.drawImage(land, 32, which == 0 ? 56 : 24, W, H, null);
         Ui.veil(g, wide, H, 105);

@@ -22,7 +22,7 @@ public final class Player {
     public static final double HURT_INVULNERABILITY = 0.65;
     public static final double MAX_ICHOR = 100.0;
     public static final double BLADE_DURATION = 12.0;
-    public static final double BLADE_SPEED_MULTIPLIER = 0.8;
+    public static final double BLADE_SPEED_MULTIPLIER = 1.15;
     public static final int SLIME_DAMAGE = 18;
     public static final int BLADE_DAMAGE = 24;
     public static final int MAX_HEALTH = 100;

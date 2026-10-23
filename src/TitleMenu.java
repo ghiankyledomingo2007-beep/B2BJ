@@ -16,15 +16,15 @@ final class TitleMenu extends JPanel {
     private final Timer cancel;
 
     TitleMenu(java.util.function.BooleanSupplier saved, Runnable resumeAction, Runnable start, Runnable settingsAction, Runnable quitAction) {
-        super(new GridLayout(4, 1, 0, 10));
+        super(new GridLayout(4, 1, 0, 4));
         this.saved = saved;
         this.start = start;
         setOpaque(false);
         getAccessibleContext().setAccessibleName("Title menu");
-        resume = PixelSwing.button("Continue", 'C', Ui.Icon.PLAY, resumeAction, true);
-        fresh = PixelSwing.button(NEW, 'N', Ui.Icon.NEW, this::freshPressed, true);
-        settings = PixelSwing.button("Settings", 'S', Ui.Icon.GEAR, settingsAction, true);
-        quit = PixelSwing.button("Quit", 'Q', Ui.Icon.DOOR, quitAction, true);
+        resume = PixelSwing.textButton("Continue", 'C', resumeAction);
+        fresh = PixelSwing.textButton(NEW, 'N', this::freshPressed);
+        settings = PixelSwing.textButton("Settings", 'S', settingsAction);
+        quit = PixelSwing.textButton("Quit", 'Q', quitAction);
         for (var b : new JButton[]{resume, fresh, settings, quit}) add(b);
         cancel = new Timer(4000, event -> fresh.setText(NEW));
         cancel.setRepeats(false);

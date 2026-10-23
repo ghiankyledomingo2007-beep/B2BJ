@@ -29,7 +29,7 @@ Alt+F4 closes that window.
 
 In IntelliJ, run `B2BJ.main()` or `run-game.sh`. The `tools/pack-*.sh` scripts are
 historical art exporters, not game launchers. Legacy three-facing Rainoray exports
-are blocked from overwriting the current four-facing game assets.
+are blocked from overwriting the current eight-facing game assets.
 
 ### Laboratory 6
 

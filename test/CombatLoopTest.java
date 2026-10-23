@@ -3,7 +3,7 @@ public final class CombatLoopTest {
 
     public static void main(String[] args) {
         ichorUnlocksTimedBladeForm();
-        bladeMovesAtEightyPercentSlimeSpeed();
+        bladeRunsFasterWithoutDiagonalBoost();
         attacksRespectCooldownAndFormDamage();
         damageUsesInvulnerabilityAndCanKill();
         System.out.println("CombatLoopTest passed");
@@ -29,7 +29,7 @@ public final class CombatLoopTest {
         assertClose(0, player.ichor());
     }
 
-    private static void bladeMovesAtEightyPercentSlimeSpeed() {
+    private static void bladeRunsFasterWithoutDiagonalBoost() {
         RuinedOutpostMap map = new RuinedOutpostMap();
         Player slime = new Player(500, 500);
         Player blade = new Player(500, 500);
@@ -40,8 +40,12 @@ public final class CombatLoopTest {
         blade.move(1, 0, 0.1, map);
 
         assertClose(Player.SPEED * 0.1, slime.x() - 500);
-        assertClose(Player.SPEED * Player.BLADE_SPEED_MULTIPLIER * 0.1,
-                blade.x() - 500);
+        assertClose(29.9, blade.x() - 500);
+        Player diagonal = new Player(500, 500);
+        diagonal.collectIchor(Player.MAX_ICHOR);
+        diagonal.transform();
+        diagonal.move(1, 1, 0.1, map);
+        assertClose(blade.x() - 500, Math.hypot(diagonal.x() - 500, diagonal.y() - 500));
     }
 
     private static void attacksRespectCooldownAndFormDamage() {

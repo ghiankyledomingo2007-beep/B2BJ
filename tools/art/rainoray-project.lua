@@ -2,7 +2,7 @@
 local root = app.params.root or "."
 local project = app.params.project or (root .. "/assets/source/characters/rainoray/Rainoray-Human.pixie-dust")
 local mode = app.params.mode or "create"
-local directions = {"south", "east", "north", "west"}
+local directions = {"south", "east", "north", "west", "southeast", "northeast", "northwest", "southwest"}
 -- sheet, tag, block, cell, frames, total milliseconds, contact milliseconds (if any).
 -- Timings follow BladeAnimation, Player and RuinedOutpostGame; round boundaries, not every frame.
 local actions = {
@@ -18,7 +18,7 @@ local actions = {
   {"cleave", "spin_cleave", 1, 160, 12, 700, 180},
   {"charge", "charge", 0, 80, 8, 350}, {"hold", "hold", 0, 80, 8, 1000},
   {"dash", "dash", 0, 160, 8, 120}, {"cast", "cast", 0, 160, 8, 350},
-  {"guard", "guard", 0, 80, 8, 300}, {"hurt", "hurt", 0, 80, 8, 320},
+  {"guard", "guard", 0, 160, 8, 300}, {"hurt", "hurt", 0, 160, 8, 320},
   {"counter", "counter", 0, 160, 8, 320},
 }
 local trails = {slash=true, cleave=true, cast=true, counter=true}
@@ -50,7 +50,7 @@ if mode == "create" then
     local sheet = Image{fromFile=sheetPath(a[1], false)}
     local old = app.params.before and Image{fromFile=app.params.before .. "/rainoray_" .. a[1] .. ".png"} or sheet
     local trail = trails[a[1]] and Image{fromFile=sheetPath(a[1], true)} or nil
-    assert(sheet.width == a[4]*a[5] and sheet.height >= (a[3]+1)*4*a[4], "Unexpected sheet layout")
+    assert(sheet.width == a[4]*a[5] and sheet.height >= (a[3]+1)*#directions*a[4], "Unexpected sheet layout")
     assert(old.width == sheet.width and old.height == sheet.height, "Before layer layout differs")
     for row, direction in ipairs(directions) do
       local first = frame+1
@@ -58,12 +58,12 @@ if mode == "create" then
         frame = frame+1
         if frame > 1 then sprite:newEmptyFrame(frame) end
         sprite.frames[frame].duration = duration(a, i)
-        local crop = Rectangle((i-1)*a[4], (a[3]*4+row-1)*a[4], a[4], a[4])
+        local crop = Rectangle((i-1)*a[4], (a[3]*#directions+row-1)*a[4], a[4], a[4])
         local offset = Point((160-a[4])/2, (160-a[4])/2)
         sprite:newCel(body, frame, Image(sheet, crop), offset)
         sprite:newCel(before, frame, Image(old, crop), offset)
         if trail then
-          local cel = Image(trail, Rectangle((i-1)*160, (a[3]*4+row-1)*160, 160, 160))
+          local cel = Image(trail, Rectangle((i-1)*160, (a[3]*#directions+row-1)*160, 160, 160))
           if not cel:isEmpty() then sprite:newCel(fx, frame, cel, Point(0, 0)) end
         end
       end
@@ -74,21 +74,21 @@ if mode == "create" then
   for _, clip in ipairs(clips) do
     local tag = sprite:newTag(clip[1], clip[2])
     tag.name = clip[3]
-    tag.color = Color{r=58+clip[4]*24, g=150, b=190}
+    tag.color = Color{r=42+clip[4]*24, g=150, b=190}
     assert(tag.toFrame.frameNumber-tag.fromFrame.frameNumber+1 == clip[2]-clip[1]+1)
   end
   before.isVisible = false; before.isEditable = false
-  assert(frame == 672 and #sprite.tags == 76 and #sprite.layers == 3)
+  assert(frame == 1344 and #sprite.tags == 152 and #sprite.layers == 3)
   app.layer = body; app.frame = sprite.frames[1]
   app.fs.makeAllDirectories(app.fs.filePath(project))
   sprite:saveAs(project)
   assert(app.fs.isFile(project), "Editor could not save the native project")
   sprite:close()
-  print("Created 672 frames, 76 action/direction tags, Character + Effects + hidden Before polish")
+  print("Created 1344 frames, 152 action/direction tags, Character + Effects + hidden Before polish")
 elseif mode == "export" then
   local out = assert(app.params.out, "Specify a fresh export directory")
   local sprite = Sprite{fromFile=project}
-  assert(sprite.width == 160 and sprite.height == 160 and #sprite.frames == 672 and #sprite.tags == 76,
+  assert(sprite.width == 160 and sprite.height == 160 and #sprite.frames == 1344 and #sprite.tags == 152,
          "Keep the canvas, frame count and action tags unchanged for the game")
   local layers, tags, sheets, effects = {}, {}, {}, {}
   for _, layer in ipairs(sprite.layers) do layers[layer.name] = layer end
@@ -99,10 +99,10 @@ elseif mode == "export" then
     tags[tag.name] = tag
   end
   for _, a in ipairs(actions) do
-    local height = (a[3]+1)*4*a[4]
+    local height = (a[3]+1)*#directions*a[4]
     if not sheets[a[1]] or sheets[a[1]].height < height then
       sheets[a[1]] = Image(a[5]*a[4], height, ColorMode.RGB)
-      if trails[a[1]] then effects[a[1]] = Image(a[5]*160, (a[3]+1)*4*160, ColorMode.RGB) end
+      if trails[a[1]] then effects[a[1]] = Image(a[5]*160, (a[3]+1)*#directions*160, ColorMode.RGB) end
     end
   end
   local function render(layer, frame)
@@ -127,9 +127,9 @@ elseif mode == "export" then
         local restored = Image(160, 160, ColorMode.RGB)
         restored:drawImage(body, Point(offset, offset))
         assert(restored:isEqual(full), "Character paint outside the game cell in " .. tag.name)
-        sheets[a[1]]:drawImage(body, Point((i-1)*a[4], (a[3]*4+row-1)*a[4]))
+        sheets[a[1]]:drawImage(body, Point((i-1)*a[4], (a[3]*#directions+row-1)*a[4]))
         local fx = render(layers.Effects, frame)
-        if effects[a[1]] then effects[a[1]]:drawImage(fx, Point((i-1)*160, (a[3]*4+row-1)*160))
+        if effects[a[1]] then effects[a[1]]:drawImage(fx, Point((i-1)*160, (a[3]*#directions+row-1)*160))
         else assert(fx:isEmpty(), "This game action has no separate effect sheet: " .. tag.name) end
       end
     end

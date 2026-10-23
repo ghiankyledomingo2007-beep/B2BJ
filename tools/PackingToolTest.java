@@ -36,16 +36,16 @@ public final class PackingToolTest {
                 "assets/characters/blade/rainoray_slash.png","assets/effects/transform_in.png","assets/effects/transform_out.png"}) {
             var target=dir.resolve(name);Files.createDirectories(target.getParent());Files.copy(input,target);
             byte[] before=Files.readAllBytes(target);
-            for(int rows:new int[]{3,9}) {
+            for(int rows:new int[]{3,4,9,20}) {
                 String[] args=new String[5+8*rows];java.util.Arrays.fill(args,input.toString());
                 args[0]="80";args[1]="80";args[2]="8";args[3]="-1";args[4]=target.toString();
                 try {PackFrames.main(args);throw new AssertionError("legacy human grid must be rejected: "+name);}
-                catch(IllegalArgumentException expected) {assert expected.getMessage().contains("four facing rows");}
+                catch(IllegalArgumentException expected) {assert expected.getMessage().contains("eight facing rows");}
                 assert java.util.Arrays.equals(before,Files.readAllBytes(target)) : "rejected legacy pack overwrote current art";
             }
         }
         for(String name:new String[]{"assets/characters/blade/rainoray_idle.png","archive/rainoray_idle.png"}) {
-            int rows=name.startsWith("assets/")?4:3;
+            int rows=name.startsWith("assets/")?8:3;
             var target=dir.resolve(name);Files.createDirectories(target.getParent());
             String[] args=new String[5+8*rows];java.util.Arrays.fill(args,input.toString());
             args[0]="80";args[1]="80";args[2]="8";args[3]="-1";args[4]=target.toString();

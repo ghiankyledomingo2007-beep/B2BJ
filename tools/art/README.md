@@ -40,7 +40,7 @@ editable layers, using a temporary folder and a mock editor.
 
 | File | Output |
 |---|---|
-| `GroundBake.java` | `assets/tilesets/outpost/outpost_ground.png`: grass, meadow, dirt, puddles, rutted roads along the real routes, a floor per landmark (flagstone, cobble, gravel, camp dirt, flooded ditch, the Warden's carved arena), decals, cast shadows, fire-lit ground |
+| `GroundBake.java` | `assets/tilesets/outpost/outpost_ground.png`: grass, meadow, dirt, puddles, rutted roads along the real routes, a floor per landmark (flagstone, cobble, gravel, camp dirt, flooded ditch, the Warden's carved arena), decals and ambient shadows; firelight is rendered by `OutpostLights` |
 | `Canopy.java` | the forest pressing on the boundary banks |
 | `Decals.java` | tufts, reeds, glowing mushrooms, stones and the fallen expedition's kit (`outpost_decals.png`) |
 | `Props.java` | ruined walls, log palisades, supplies for the map's obstacle clusters (same footprints as before) |
@@ -92,11 +92,14 @@ Scale: a person is about 64 native pixels tall; the game draws everything at 2x.
   pressed, disabled), key caps, check boxes, slider parts, boss-bar parts and emblems, the sword cursor,
   trims and 24 icons. Rectangles come from `Ui.Piece` / `Ui.Icon` in `src/Ui.java`, so the game slices exactly
   what is drawn. The icons are character maps in `UiIcons.java` (one letter per palette colour).
-- `LogoArt.java` -> `assets/ui/title/logo.png`: BLOB in dripping goo, TO in gold, BLADE in steel on a sword.
-- `TitleArt.java` -> `assets/ui/title/{sky,clouds,moon,far,mist,mid,fore}.png`: the title scene in layers
-  (640x360 art pixels). The game scrolls clouds and mist, twinkles stars and animates motes, fireflies, the
-  sword's glow and Rainoray in `src/TitleScreen.java`. The loading screen reuses the sky and the outpost or
-  forest silhouettes.
+- `TitleArt.java` imports `assets/source/ui/title/ruined-gate-master.png` into the 640×360 runtime
+  `assets/ui/title/ruined-gate.png`, respecting the generated-art manifest's manual-edit guard.
+  `TitleScreen.java` adds the live wordmark and a few rain streaks. The former title layers remain
+  in `assets/source/ui/title/previous-title/`; the three still used for loading have dedicated paths
+  under `assets/ui/loading/`.
+- DejaVu Serif and Sans provide smooth menu text and boss names alongside the pixel HUD fonts.
+  Their redistribution license is in `assets/ui/fonts/DejaVu-LICENSE.txt`.
+- `LogoArt.java` still supplies the boot splash logo; it no longer generates a runtime title logo.
 - `UiArt.splash()` -> `assets/ui/splash.png`: the boot splash, already doubled to 640x360 screen pixels because
   the JVM shows it unscaled (`tools/manifest.txt` names it in the jar). `src/Splash.java` fills its load bar.
 

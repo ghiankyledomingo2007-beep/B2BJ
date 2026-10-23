@@ -17,6 +17,10 @@ public final class PlayerMovementTest {
         p=new Player(contactX-82,approachY);
         p.move(1,0,1,map);
         assert p.x()<=contactX && p.x()>contactX-8 : "feet should meet barricade without a large gap";
+        p=new Player(contactX-82,approachY);
+        p.collectIchor(Player.MAX_ICHOR);p.transform();
+        p.move(1,0,1,map);
+        assert p.x()<=contactX && p.x()>contactX-8 : "faster human run must stop at barricades";
         p=new Player(contactX-112,approachY);
         assert p.dash(1,0);
         assert p.invulnerable() && !p.hurt(1) : "dash must evade damage";

@@ -26,6 +26,7 @@ public final class UiOverhaulTest {
 
     /** Fonts, atlas and title art load; every kit rectangle lies inside the atlas and has pixels in it. */
     private static void kitIsWhole() {
+        assert Ui.heading(30).getFamily().equals("DejaVu Serif")&&Ui.body(18).getFamily().equals("DejaVu Sans") : "menu typefaces must load from the package";
         assert Ui.fontsLoaded() : "pixel fonts must load from assets/ui/fonts";
         assert Ui.sans(2).getSize() == 20 && Ui.display(3).getSize() == 30;
         var kit = Ui.KIT;
@@ -38,7 +39,7 @@ public final class UiOverhaulTest {
         }
         for (var icon : Ui.Icon.values())
             assert painted(kit, icon.x(), icon.y(), Ui.Icon.CELL, Ui.Icon.CELL) : icon + " icon is empty";
-        assert TitleScreen.available() : "title art (sky, far, fore, logo) must load";
+        assert TitleScreen.available() : "ruined gate title art must load";
         assert B2BJ.loadImage("assets/ui/splash.png") != null;
         // the title helper never rebuilds a cached title, and its outline frames the glyphs
         var a = Ui.title("PAUSED", Ui.GOLD_RAMP);
@@ -61,6 +62,13 @@ public final class UiOverhaulTest {
             panel.setSize(1280, 720);
             panel.doLayout();
             panel.step(.01);
+            var clock=B2BJ.class.getDeclaredField("titleTime");clock.setAccessible(true);
+            double beforeTick=clock.getDouble(panel);
+            var previous=B2BJ.class.getDeclaredField("previousFrame");previous.setAccessible(true);
+            previous.setLong(panel,System.nanoTime()-20_000_000L);
+            var tick=B2BJ.class.getDeclaredMethod("tick");tick.setAccessible(true);tick.invoke(panel);
+            assert clock.getDouble(panel)>beforeTick&&game.story().phase()==OutpostStory.Phase.PROLOGUE
+                    : "title animation advances while gameplay waits";
             assert !shown(panel, "Continue").isEnabled() : "nothing to continue on a first run";
             shown(panel, "New Journey").doClick();
             assert game.story().phase() != OutpostStory.Phase.PROLOGUE : "New Journey starts a first run at once";

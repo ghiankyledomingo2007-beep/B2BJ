@@ -206,7 +206,8 @@ final class UiArt {
     static Canvas splash() {
         int w = 320, h = 180;
         Canvas c = new Canvas(w, h);
-        int[] ramp = TitleArt.SKY;
+        int[] ramp = {Pal.c(0x04060c),Pal.c(0x060912),Pal.c(0x080c19),Pal.c(0x0b1121),Pal.c(0x0f172c),
+                Pal.c(0x141f39),Pal.c(0x1a2848),Pal.c(0x213258),Pal.c(0x293d66)};
         for (int y = 0; y < h; y++) for (int x = 0; x < w; x++) {
             double d = Math.hypot((x - w / 2.0) / w, (y - h * .42) / h);
             double at = 3.2 - d * 5.5;

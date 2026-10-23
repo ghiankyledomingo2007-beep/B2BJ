@@ -4,7 +4,7 @@ Open **Rainoray-Human.pixie-dust** in Pixie Dust (the installed Aseprite fork).
 This is the editable timeline. The PNG files in `assets/characters/blade/` are
 packed game sheets and open as one image.
 
-There are 672 frames and 76 tags: 19 actions in south, east, north and west facings.
+There are 1,344 frames and 152 tags: 19 actions in south, east, north, west, southeast, northeast, northwest and southwest facings.
 Select a tag and press Enter to play or pause. Tab shows the timeline; F6 toggles
 cel thumbnails. Edit **Character** for the body/sword, or **Effects** for the
 contact arcs. **Before polish** is a hidden, locked comparison layer.
@@ -42,8 +42,7 @@ and refuses to overwrite an existing native project.
 
 ## Cluster cleanup
 
-The current Character pixels went through one cluster pass on 2026-10-23; **Before
-polish** holds the frames from just before it. The pass flattens leftover 3D-render
+The four cardinal Character views went through one cluster pass on 2026-10-23. The new diagonal views use the same pass. The current **Before polish** layer is a snapshot at the eight-way import; the earlier comparison layer remains in [the archived four-way project](archive/Rainoray-Human-four-way.pixie-dust). The pass flattens leftover 3D-render
 tones, merges stray specks into their material, keeps mask markings flat black,
 thins comb-like back-hair strands and rounds the back-view crown. Alpha, the red
 dot, gold, hilt and effects are untouched. Hand-paint further fixes in the editor;
@@ -57,3 +56,15 @@ render, clean the exported body sheets and re-import them:
 Copy the four `*_trail.png` sheets next to the cleaned sheets, then use the Lua
 `create` mode with `project=`, `sheets=` (that folder) and `before=` (the
 uncleaned sheets) on a new project path.
+
+## Eight-way update — 2026-10-23
+
+Four new camera views come from the same editable 20-bone model. Original cardinal
+body pixels were retained for all 672 frames. Guard and hurt now use a 160×160 cell
+with transparent padding so diagonal sword tips cannot clip; the character scale and
+foot anchor did not change. The four trail sheets and two transformation sheets also
+have eight direction rows.
+
+Use the updated exporter: attack blocks contain eight rows, not four. An old exporter
+will place attack poses in the wrong rows. The old native project is preserved under
+`archive/`; it is excluded from the game package. [Review and checks](../../../../docs/art-review/rainoray-eight-way/README.md).

@@ -60,6 +60,14 @@ final class Ui {
 
     static final BufferedImage KIT = B2BJ.loadImage("assets/ui/kit.png");
     static final Font SANS = font("assets/ui/fonts/b2bj-sans.ttf"), DISPLAY = font("assets/ui/fonts/b2bj-display.ttf");
+    private static final Font HEADING = font("assets/ui/fonts/DejaVuSerif.ttf"), BODY = font("assets/ui/fonts/DejaVuSans.ttf");
+    static Font heading(float size) { return HEADING.deriveFont(size); }
+    static Font body(float size) { return BODY.deriveFont(size); }
+    static void prose(Graphics2D g, String text, int x, int y, Font font, Color color) {
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g.setFont(font); g.setColor(color); g.drawString(text,x,y);
+    }
+
     private static final Font[] SANS_AT = new Font[7], DISPLAY_AT = new Font[7];
 
     private static Font font(String path) {

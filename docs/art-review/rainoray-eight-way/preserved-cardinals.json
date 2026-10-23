@@ -1,0 +1,114 @@
+[
+  {
+    "sheet": "run",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      640,
+      640
+    ]
+  },
+  {
+    "sheet": "idle",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      640,
+      640
+    ]
+  },
+  {
+    "sheet": "start",
+    "cardinal_frames_preserved": 16,
+    "new_size": [
+      320,
+      640
+    ]
+  },
+  {
+    "sheet": "stop",
+    "cardinal_frames_preserved": 16,
+    "new_size": [
+      320,
+      640
+    ]
+  },
+  {
+    "sheet": "turn",
+    "cardinal_frames_preserved": 16,
+    "new_size": [
+      320,
+      640
+    ]
+  },
+  {
+    "sheet": "slash",
+    "cardinal_frames_preserved": 240,
+    "new_size": [
+      1920,
+      6400
+    ]
+  },
+  {
+    "sheet": "cleave",
+    "cardinal_frames_preserved": 96,
+    "new_size": [
+      1920,
+      2560
+    ]
+  },
+  {
+    "sheet": "charge",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      640,
+      640
+    ]
+  },
+  {
+    "sheet": "hold",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      640,
+      640
+    ]
+  },
+  {
+    "sheet": "dash",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      1280,
+      1280
+    ]
+  },
+  {
+    "sheet": "cast",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      1280,
+      1280
+    ]
+  },
+  {
+    "sheet": "guard",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      1280,
+      1280
+    ]
+  },
+  {
+    "sheet": "hurt",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      1280,
+      1280
+    ]
+  },
+  {
+    "sheet": "counter",
+    "cardinal_frames_preserved": 32,
+    "new_size": [
+      1280,
+      1280
+    ]
+  }
+]

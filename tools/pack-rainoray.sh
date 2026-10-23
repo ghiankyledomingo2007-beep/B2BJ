@@ -50,6 +50,5 @@ for row in south east north; do
   done
 done
 java -cp "$pack_dir" -Db2bj.maxFloorShift=16 PackFrames 80 80 16 72 assets/effects/transform_out.png "${morph_frames[@]}"
-pack_rows assets/effects/aim_reticle.png 8 -1 32 reticle-animated
 pack_rows assets/effects/riposte_counter.png 8 -1 80 counter-polish
 pack_rows assets/effects/riposte_guard.png 8 -1 80 guard-polish

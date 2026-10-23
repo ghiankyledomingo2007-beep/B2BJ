@@ -40,10 +40,9 @@ The [campaign enemy sample](campaign-enemies.png) uses their real 92/88-pixel ce
 No animation was declared unused based only on a literal filename search; dynamic
 action slots, region names, source exporters and packaging were checked too.
 
-After the follow-up polish, the current inventory contains 362 asset/source/guide
-files and the 22 archived files. There are 182 packaged PNGs, all with binary alpha,
-and five generated source PNGs
-excluded from packaging. Binary alpha checks for softened edges; it does not measure
+After the interface and eight-way follow-up, the current inventory contains 372 asset/source/guide
+files and the 22 dated archive files. There are 177 packaged PNGs, all with binary alpha,
+and 15 authoring PNGs excluded from packaging (masters and preserved prior art). Binary alpha checks for softened edges; it does not measure
 artistic quality. Simple flat scenery was reviewed but not all redrawn. The current
 camp capture shows the tent, flame and character scale together.
 
@@ -74,3 +73,15 @@ This pass adds no game dependencies. Existing imported sound attribution remains
 
 Full uninterrupted manual campaign playthrough and FPS profiling remain unchecked.
 Representative animation frames were reviewed; every frame was not watched manually.
+
+## Interface and eight-way follow-up
+
+The title now uses the ruined-gate master, with prior layers preserved under
+`assets/source/ui/title/previous-title/`. Three loading layers remain in dedicated runtime
+paths. The former cursor ring is retained as an authoring reference. Rainoray's new
+native file and preserved four-way file are outside the JAR. See
+[the eight-way/interface review](../rainoray-eight-way/README.md).
+
+The refreshed inventory includes DejaVu fonts and their license, all eight-way sheets
+and the native editing archive. The previous camp capture above documents the scenery
+pass; the new interface captures are in the follow-up review.

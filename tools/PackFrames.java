@@ -19,9 +19,9 @@ public final class PackFrames {
                 &&output.getFileName().toString().startsWith("rainoray_");
         boolean morph=output.endsWith(Path.of("assets","effects","transform_in.png"))
                 ||output.endsWith(Path.of("assets","effects","transform_out.png"));
-        // Current human sheets have four real facings; archived three-facing packs must not overwrite them.
-        if((human||morph)&&(count%columns!=0||(count/columns)%4!=0))
-            throw new IllegalArgumentException("Current Rainoray assets require blocks of four facing rows. "
+        // Old three- and four-facing packs must not erase the new diagonal views.
+        if((human||morph)&&(count%columns!=0||(count/columns)%8!=0))
+            throw new IllegalArgumentException("Current Rainoray assets require blocks of eight facing rows. "
                     +"This is a legacy art pack, not the game launcher. Run ./run-game.sh; export old art outside assets/.");
         var sheet=new BufferedImage(w*columns,h*((count+columns-1)/columns),BufferedImage.TYPE_INT_ARGB);
         var g=sheet.createGraphics();

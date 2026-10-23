@@ -27,7 +27,7 @@ KEEP = {RED, HILT_RED, GOLD, GOLD_LIGHT}
 HILT = {GOLD, GOLD_LIGHT, HILT_RED}
 MATERIALS = [(BLUE, DARK, CREASE), (HAIR, SHADE, WHITE, STRAND), (SKIN,)]
 SHEETS = {"idle": 80, "run": 80, "start": 80, "stop": 80, "turn": 80, "charge": 80, "hold": 80,
-          "guard": 80, "hurt": 80, "slash": 160, "cleave": 160, "dash": 160, "cast": 160, "counter": 160}
+          "guard": 160, "hurt": 160, "slash": 160, "cleave": 160, "dash": 160, "cast": 160, "counter": 160}
 NORTH = 2                                    # facing rows: south, east, north, west
 N4 = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 N8 = N4 + [(-1, -1), (1, -1), (-1, 1), (1, 1)]
@@ -209,7 +209,7 @@ def clean_sheet(image, cell):
             px = [[pixels[left + x, top + y][:3] if pixels[left + x, top + y][3] else None
                    for x in range(cell)] for y in range(cell)]
             if any(c is not None for row in px for c in row):
-                result = clean(px, top // cell % 4)
+                result = clean(px, top // cell % 8)
                 for y in range(cell):
                     for x in range(cell):
                         if result[y][x] != px[y][x]:
@@ -258,7 +258,7 @@ def main():
     total = 0
     for (name, cell), target in zip(SHEETS.items(), targets):
         image = Image.open(source / target.name).convert("RGBA")
-        assert image.width % cell == 0 and image.height % (cell * 4) == 0, f"unexpected layout: {target.name}"
+        assert image.width % cell == 0 and image.height % (cell * 8) == 0, f"unexpected layout: {target.name}"
         result = clean_sheet(image, cell)
         assert result.getchannel("A").tobytes() == image.getchannel("A").tobytes(), "silhouette changed"
         changed = sum(a != b for a, b in zip(image.get_flattened_data(), result.get_flattened_data()))

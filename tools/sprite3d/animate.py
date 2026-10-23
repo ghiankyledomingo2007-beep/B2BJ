@@ -43,6 +43,14 @@ VIEWS = {
     "west": {**SIDE, "face_turn": 46.0},
 }
 
+# Three-quarter views blend the neighbouring carry poses; cameras do the actual rotation.
+for name, a, b in [("southeast", "south", "east"), ("northeast", "east", "north"),
+                   ("northwest", "north", "west"), ("southwest", "west", "south")]:
+    VIEWS[name] = {}
+    for key in VIEWS[a].keys() | VIEWS[b].keys():
+        left, right = VIEWS[a].get(key, (0, 0, 0)), VIEWS[b].get(key, (0, 0, 0))
+        VIEWS[name][key] = tuple((x+y)/2 for x, y in zip(left, right)) if isinstance(left, tuple) else (left+right)/2
+
 
 def parse_args():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []

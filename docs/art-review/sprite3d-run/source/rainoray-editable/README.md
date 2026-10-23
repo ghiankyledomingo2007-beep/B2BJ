@@ -53,3 +53,11 @@ Front/back carry was corrected first. Both side runs now use a steady trailing/d
 - Twenty reviewed PNGs (14 body sheets, four trails, two transforms) now live under assets/characters/blade and assets/effects. No .blend mesh/rig edits in this carry fix. Original PNGs backed up outside the repository before installation.
 
 Measured comparison and installed-asset checksums: [side-carry-review.json](side-carry-review.json), [installed-assets.json](installed-assets.json).
+
+## 2026-10-23 — Eight-way runtime
+
+Four diagonal cameras were added without editing this model. Runtime sheet row order
+is S, E, N, W, SE, NE, NW, SW. `build_sheets.py --preserve-cardinals` reuses the current
+polished cardinal frames and renders only diagonal views. All 19 actions, four trail
+sheets and transformations are covered. The native project has 1,344 frames / 152 tags.
+See [the eight-way review](../../../rainoray-eight-way/README.md).

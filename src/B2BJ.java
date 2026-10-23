@@ -48,6 +48,8 @@ public final class B2BJ extends JPanel {
     private final JButton menuButton = new PixelSwing.Button("Menu", Ui.Icon.MENU);
     private CampaignMenu menu;
     private TitleMenu titleMenu;
+    private CampMenu campMenu;
+    private javax.swing.JButton campButton;
     private final TitleScreen titleScreen = new TitleScreen();
     private double titleTime;
     private int cardBiome = -1;
@@ -71,7 +73,7 @@ public final class B2BJ extends JPanel {
     private final BufferedImage transformInSheet=loadImage("assets/effects/transform_in.png");
     private final BufferedImage transformOutSheet=loadImage("assets/effects/transform_out.png");
     private final BufferedImage engulfSheet=loadImage("assets/characters/slime/slime_engulf.png");
-    private final BufferedImage aimReticle=loadImage("assets/effects/aim_reticle.png");
+    private final CombatUi combatUi=new CombatUi();
     private final BufferedImage crescentSheet=loadImage("assets/effects/ichor_crescent.png");
     private final BufferedImage riposteSheet=loadImage("assets/effects/riposte_guard.png");
     private final BufferedImage counterSheet=loadImage("assets/effects/riposte_counter.png");
@@ -233,13 +235,20 @@ public final class B2BJ extends JPanel {
                     });
             titleMenu.setVisible(false);
             add(titleMenu);
+            campMenu=new CampMenu(game,this::closeCamp,()->{closeCamp();game.interact();});
+            campMenu.setVisible(false);add(campMenu);
+            campButton=PixelSwing.button("Camp",'U',Ui.Icon.CAMP,this::openCamp,true);
+            campButton.setToolTipText("U: open camp services");
+            campButton.setVisible(false);add(campButton);
+            setComponentZOrder(campMenu,0);
+
         }
         bindKeys();
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent event) {
                 if(loading.covering()) { loading.skip(); return; }
-                if(menuShown())return;
+                if(menuShown()||campShown())return;
                 if (event.getButton() != MouseEvent.BUTTON1 && event.getButton() != MouseEvent.BUTTON3) {
                     return;
                 }
@@ -274,7 +283,7 @@ public final class B2BJ extends JPanel {
         });
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override public void mouseMoved(MouseEvent event) {
-                if(menuShown())return;
+                if(menuShown()||campShown())return;
                 mouseX=event.getX(); mouseY=event.getY(); mouseAimed=true;
                 // Only fresh mouse input changes idle facing; a parked cursor must not undo movement.
                 if(game.player().bladeForm()&&!game.blocked()&&horizontal()==0&&vertical()==0
@@ -286,7 +295,12 @@ public final class B2BJ extends JPanel {
         });
         addFocusListener(new FocusAdapter() {
             @Override public void focusLost(FocusEvent event) {
-                clearInput(); game.pause(); repaint();
+                if(event.getOppositeComponent()==null||!SwingUtilities.isDescendingFrom(event.getOppositeComponent(),B2BJ.this)) {
+                    clearInput();
+                    if(campShown())closeCamp();
+                    game.pause();
+                }
+                repaint();
             }
         });
         if (startTimer) {
@@ -322,7 +336,11 @@ public final class B2BJ extends JPanel {
         super.doLayout();
         if(menu==null)return;
         menuButton.setBounds(Math.max(8,getWidth()-140),16,124,40);
-        if(titleMenu!=null) { titleMenu.setBounds(56,300,330,206); titleMenu.doLayout(); }
+        if(titleMenu!=null) { titleMenu.setBounds(68,374,310,208); titleMenu.doLayout(); }
+        if(campMenu!=null) {
+            campButton.setBounds(20,getHeight()-72,190,48);
+            campMenu.setBounds((getWidth()-580)/2,(getHeight()-510)/2,580,510);campMenu.doLayout();
+        }
         int width=Math.min(menu.getPreferredSize().width,Math.max(1,getWidth()-32));
         int height=Math.min(menu.getPreferredSize().height,Math.max(1,getHeight()-32));
         menu.setBounds((getWidth()-width)/2,(getHeight()-height)/2,width,height);
@@ -330,6 +348,16 @@ public final class B2BJ extends JPanel {
     }
 
     private boolean menuShown() { return menu!=null&&menu.isVisible(); }
+
+    private boolean campShown() {return campMenu!=null&&campMenu.isVisible();}
+    private void openCamp() {
+        if(campMenu==null||game.blocked()||menuShown()||loading.active()||!game.nearCampaignHub())return;
+        clearInput();GameAudio.stopLoops();campMenu.refresh();campMenu.setVisible(true);
+        campButton.setVisible(false);doLayout();campMenu.focusFirst();repaint();
+    }
+    private void closeCamp() {
+        clearInput();if(campMenu!=null)campMenu.setVisible(false);requestFocusInWindow();repaint();
+    }
 
     /** The current frame as an image: what the loading goo floods over. */
     private BufferedImage snapshot() {
@@ -381,11 +409,18 @@ public final class B2BJ extends JPanel {
 
     /** Title menu shows on the title screen while the game menu is closed; the corner Menu button does not. */
     private void syncTitle() {
+        var desiredCursor=!game.blocked()&&!campShown()&&!menuShown()?CombatUi.cursor():java.awt.Cursor.getDefaultCursor();
+        if(getCursor()!=desiredCursor)setCursor(desiredCursor);
         var scene=game.dialogue();
         String spoken=scene==null?null:!game.dialogueReady()?"The camera reveals the Outpost Warden. X: skip. Escape: pause.":scene.lines().get(game.dialogueIndex()).speaker()+": "
                 +scene.lines().get(game.dialogueIndex()).text()+" Enter or E: continue. X: skip. Escape: pause.";
         if(!java.util.Objects.equals(spoken,getAccessibleContext().getAccessibleDescription()))
             getAccessibleContext().setAccessibleDescription(spoken);
+        if(campMenu!=null) {
+            boolean camp=game.nearCampaignHub()&&!game.blocked()&&!loading.active()&&!menuShown();
+            if(campShown()&&!camp){campMenu.setVisible(false);clearInput();requestFocusInWindow();}
+            campButton.setVisible(camp&&!campShown());
+        }
         if(titleMenu==null)return;
         boolean title=titleArt()&&game.story().phase()==OutpostStory.Phase.PROLOGUE;
         boolean show=title&&!menuShown();
@@ -398,6 +433,7 @@ public final class B2BJ extends JPanel {
         if(show)titleMenu.refresh();
     }
     private void openMenu() {
+        if(campShown())closeCamp();
         clearInput();game.pause();
         GameAudio.setMusicState(game.biome(),game.player().bladeForm(),false);
         GameAudio.play(GameAudio.Cue.UI_OPEN);
@@ -422,7 +458,10 @@ public final class B2BJ extends JPanel {
         double seconds = Math.min((now - previousFrame) / 1_000_000_000.0, 0.05);
         previousFrame = now;
 
-        if(game.campaignMode())GameAudio.setMusicState(game.biome(),game.player().bladeForm(),!game.blocked());
+        if(game.campaignMode())GameAudio.setMusicState(game.biome(),game.player().bladeForm(),!game.blocked()&&!campShown());
+        if(game.campaignMode()&&game.story().phase()==OutpostStory.Phase.PROLOGUE) {
+            titleTime+=seconds;syncTitle();repaint();return;
+        }
         if (game.paused()||!game.campaignMode()||(!loading.active()&&game.blocked()&&game.dialogue()==null&&!game.cutsceneActive())) { GameAudio.stopLoops(); repaint(); return; }
         step(seconds);
     }
@@ -437,6 +476,7 @@ public final class B2BJ extends JPanel {
         }
         watchRegion();
         if (!Double.isFinite(seconds) || seconds <= 0 || game.paused() || menuShown()) return;
+        if(campShown()) {repaint();return;}
         if(game.dialogue()!=null||game.cutsceneActive()) {
             clearGameplayInput();game.update(seconds,0,0);
             slimeAnimation.update(0,0,false,seconds);
@@ -811,6 +851,7 @@ public final class B2BJ extends JPanel {
             DialogueRenderer.draw(canvas,game,WIDTH,HEIGHT);
             CampaignRenderer.drawOverlay(canvas,game,WIDTH,HEIGHT,menuShown());
             CampaignRenderer.drawDebugStatus(canvas,game);
+            if(campShown())Ui.veil(canvas,WIDTH,HEIGHT,130);
             loading.draw(canvas,loadingClock,slimeIdleSheet,transformInSheet,transformOutSheet,reducedEffects);
         } else {
             drawHud(canvas);drawBanner(canvas);drawStoryOverlay(canvas);
@@ -839,6 +880,7 @@ public final class B2BJ extends JPanel {
         boolean outpostArt=CampaignRenderer.bakedGround(game);
         if(game.campaignMode()) {
             CampaignRenderer.drawGround(canvas,game,cameraX,cameraY,WIDTH,HEIGHT);
+            if(outpostArt)OutpostLights.drawGround(canvas,game,cameraX,cameraY,frameCounter,reducedEffects);
             CampaignRenderer.drawScenery(canvas,game,cameraX,cameraY,WIDTH,HEIGHT);
         } else {
             drawTerrain(canvas, cameraX, cameraY);
@@ -943,11 +985,43 @@ public final class B2BJ extends JPanel {
         if(outpostArt)OutpostLights.draw(canvas,game,cameraX,cameraY,frameCounter,reducedEffects);
         if(!game.campaignMode()||game.biome()==0)drawWeather(canvas,cameraX,cameraY,false);
         drawDamageNumbers(canvas,cameraX,cameraY);
-        if(mouseAimed&&!game.blocked()&&aimReticle!=null) {
-            int frame=(int)(frameCounter/6)%(aimReticle.getWidth()/32);
-            int x=Math.round(mouseX/2f)*2,y=Math.round(mouseY/2f)*2;
-            canvas.drawImage(aimReticle,x-32,y-32,x+32,y+32,frame*32,0,frame*32+32,32,null);
+        if(!game.blocked()&&!menuShown()&&!campShown()) {
+            Wisp target=hoveredEnemy(cameraX,cameraY);
+            for(var enemy:game.scouts()) {
+                int bx=(int)enemy.x()-cameraX,by=enemyBarY(enemy)-cameraY;
+                combatUi.health(canvas,enemy,bx,by,enemy==target,weatherTime,reducedEffects);
+                var campaignEnemy=game.campaignEnemy(enemy);
+                if(enemy.alive()&&(enemy.aggro()||enemy==target)&&campaignEnemy!=null&&campaignEnemy.shielded()) {
+                    canvas.setColor(Ui.GOLD);canvas.fillPolygon(new int[]{bx-45,bx-35,bx-35,bx-40,bx-45},
+                            new int[]{by,by,by+8,by+13,by+8},5);
+                    canvas.setColor(Ui.INK);canvas.fillRect(bx-42,by+2,4,6);
+                }
+            }
+            if(horizontal()!=0||vertical()!=0||mouseAimed||game.bladeAttacking()) {
+                int[] aim=game.bladeAttacking()?new int[]{game.bladeAimX(),game.bladeAimY()}:aimDirection();
+                CombatUi.direction(canvas,(int)player.x()-cameraX,(int)player.y()-cameraY+24,aim[0],aim[1]);
+            }
         }
+    }
+
+    private int enemyBarY(Wisp body) {
+        var enemy=game.campaignEnemy(body);
+        if(enemy!=null&&!kindSheets.containsKey(enemy.kind())) {
+            if(enemy.kind()==CampaignEnemy.Kind.FALLEN_KNIGHT)return (int)body.y()-122;
+            if(enemy.kind()==CampaignEnemy.Kind.OUTPOST_GUARD)return (int)body.y()-106;
+        }
+        return (int)(body.y()-WispAnimation.RENDER_SIZE*body.renderScale()/2)-12;
+    }
+    private Wisp hoveredEnemy(int cameraX,int cameraY) {
+        if(!mouseAimed)return null;
+        double wx=mouseX+cameraX,wy=mouseY+cameraY,best=Double.MAX_VALUE;
+        Wisp target=null;
+        for(var enemy:game.scouts()) {
+            if(!enemy.alive()||!enemy.visible()||Math.abs(wx-enemy.x())>42||wy<enemyBarY(enemy)+12||wy>enemy.y()+42)continue;
+            double distance=Math.hypot(wx-enemy.x(),wy-enemy.y()+24);
+            if(distance<best){best=distance;target=enemy;}
+        }
+        return target;
     }
 
     private void drawPlayer(Graphics2D canvas, int cameraX, int cameraY) {
@@ -1077,17 +1151,20 @@ public final class B2BJ extends JPanel {
         BufferedImage sheet=rainoraySheets.get(bladeAnimation.action());
         boolean slash=bladeAnimation.action()==BladeAnimation.Action.SLASH;
         // A sheet may carry cells wider than the 80 px body canvas: the body stays in the middle 80 px and
-        // the margin is room to lunge, leap and swing. Four facing rows per block of a modern sheet.
+        // the margin is room to lunge, leap and swing. Eight facing rows per block of a modern sheet.
         if(sheet!=null)cellWidth=cellHeight=bladeCell(sheet,bladeAnimation.action());
-        boolean modern=sheet!=null&&sheet.getHeight()%(cellHeight*4)==0;
+        int facings=sheet==null?0:bladeFacings(sheet,bladeAnimation.action());
+        boolean modern=facings>=4;
         int frame=bladeAnimation.frame();
-        int sourceRow=modern?bladeAnimation.directionRow():bladeAnimation.row();
+        int sourceRow=facings==8?bladeAnimation.directionRow():modern?bladeAnimation.cardinalRow():bladeAnimation.row();
         if(slash||bladeAnimation.action()==BladeAnimation.Action.CLEAVE) {
             frame=modern?bladeAttackFrame(game.bladeElapsed(),game.bladeMove()):sideAttackFrame(bladeAnimation.elapsed(),Math.min(2,game.combo()));
-            sourceRow+=modern?Math.min(bladeBlock(game.bladeMove()),sheet.getHeight()/(cellHeight*4)-1)*4:slash?Math.min(2,game.combo())*3:0;
+            sourceRow+=modern?Math.min(bladeBlock(game.bladeMove()),sheet.getHeight()/(cellHeight*facings)-1)*facings:slash?Math.min(2,game.combo())*3:0;
         }
         if(sheet==null) {
-            sheet=rainoraySheets.get(BladeAnimation.Action.IDLE);frame=0;modern=sheet!=null&&sheet.getHeight()==320;sourceRow=modern?bladeAnimation.directionRow():bladeAnimation.row();
+            sheet=rainoraySheets.get(BladeAnimation.Action.IDLE);frame=0;
+            facings=sheet==null?0:bladeFacings(sheet,BladeAnimation.Action.IDLE);modern=facings>=4;
+            sourceRow=facings==8?bladeAnimation.directionRow():modern?bladeAnimation.cardinalRow():bladeAnimation.row();
             if(sheet==null) {
                 // Error-only silhouette: a damaged installation must not hide the player.
                 canvas.setColor(INK);canvas.fillRect(x+52,y+32,56,112);
@@ -1123,7 +1200,7 @@ public final class B2BJ extends JPanel {
         if(sheet==null)return;
         int frame=bladeAnimation.frame(),row=bladeAnimation.directionRow();
         if(bladeAnimation.action()==BladeAnimation.Action.SLASH||bladeAnimation.action()==BladeAnimation.Action.CLEAVE) {
-            frame=bladeAttackFrame(game.bladeElapsed(),game.bladeMove());row+=bladeBlock(game.bladeMove())*4;
+            frame=bladeAttackFrame(game.bladeElapsed(),game.bladeMove());row+=bladeBlock(game.bladeMove())*BladeAnimation.FACING_COUNT;
         }
         if(frame>=sheet.getWidth()/TRAIL_CELL||row>=sheet.getHeight()/TRAIL_CELL)return;
         Player player=game.player();
@@ -1141,11 +1218,16 @@ public final class B2BJ extends JPanel {
     static BladeAnimation.Action bladeAction(int move) {
         return RuinedOutpostGame.strikeKind(move)==4?BladeAnimation.Action.CLEAVE:BladeAnimation.Action.SLASH;
     }
-    /** ...and which block of four facing rows inside it: combo moves 0-3 then the dash slash; cleave then the spin. */
+    /** ...and which block of eight facing rows inside it: combo moves 0-3 then the dash slash; cleave then the spin. */
     static int bladeBlock(int move) {
         return move==RuinedOutpostGame.DASH_SLASH?4:move==RuinedOutpostGame.SPIN_CLEAVE?1:move<4?move:0;
     }
-    /** A blade sheet's cell size: its width over the action's frames per row (80, or wider with margin). */
+    /** Cardinal and eight-way sheets keep the same action blocks. */
+    static int bladeFacings(BufferedImage sheet,BladeAnimation.Action action) {
+        int blocks=action==BladeAnimation.Action.SLASH?5:action==BladeAnimation.Action.CLEAVE?2:1;
+        return sheet.getHeight()/bladeCell(sheet,action)/blocks;
+    }
+    /** Cell width includes any transparent room for the weapon. */
     static int bladeCell(BufferedImage sheet,BladeAnimation.Action action) {
         return Math.max(BladeAnimation.CELL_WIDTH,sheet.getWidth()/BladeAnimation.columns(action));
     }
@@ -1192,8 +1274,8 @@ public final class B2BJ extends JPanel {
         int y = (int)Math.round(player.y())-cameraY+48-BladeAnimation.FOOT_ROW*2;
         int sourceX = transformationAnimation.frame()
                 * TransformationAnimation.CELL_SIZE;
-        int sourceY=Math.min(sheet.getHeight()==320?bladeAnimation.directionRow():bladeAnimation.row(),sheet.getHeight()/80-1)*80;
-        boolean flip=sheet.getHeight()!=320&&bladeAnimation.flipHorizontal();
+        int sourceY=Math.min(sheet.getHeight()>=640?bladeAnimation.directionRow():sheet.getHeight()==320?bladeAnimation.cardinalRow():bladeAnimation.row(),sheet.getHeight()/80-1)*80;
+        boolean flip=sheet.getHeight()<320&&bladeAnimation.flipHorizontal();
         canvas.drawImage(sheet, flip?x+160:x, y,
                 flip?x:x+160,
                 y + TransformationAnimation.RENDER_SIZE,
@@ -1266,18 +1348,7 @@ public final class B2BJ extends JPanel {
                     sourceX + WispAnimation.CELL_SIZE,
                     sourceY + WispAnimation.CELL_SIZE, null);
         }
-        if (scout.alive()) {
-            if(scout.role()==Wisp.Role.GUARD) {
-                canvas.setColor(new Color(222,181,112));
-                canvas.fillRect((int)scout.x()-cameraX-5,y-22,10,5);
-            }
-            if(scout.role()==Wisp.Role.SPITTER) {
-                canvas.setColor(new Color(199,143,236));
-                for(int mark=-1;mark<=1;mark++)canvas.fillRect((int)scout.x()-cameraX+mark*8-2,y-22,4,4);
-            }
-            drawHealthBar(canvas, (int) Math.round(scout.x()) - cameraX,
-                    y - 9, 52, scout.health(), scout.maxHealth(), PURPLE);
-        }
+
     }
 
     private void drawGuardian(Graphics2D canvas, int cameraX, int cameraY) {
@@ -1819,8 +1890,7 @@ public final class B2BJ extends JPanel {
                 canvas.setColor(i<game.comboStep()?TEAL:new Color(62,77,90));
                 canvas.fillRect(first+8+i*15,594,11,4);
             }
-            pixelCentered(canvas,game.bladePreparing()?(game.chargeProgress()>=1?"CHARGED / RELEASE":"CHARGING"):
-                    "CLICK COMBO / HOLD CHARGE",640,578,1,TEAL);
+            if(game.bladePreparing())pixelCentered(canvas,game.chargeProgress()>=1?"CHARGED":"CHARGING",640,578,1,TEAL);
         }
         if(p.bladeForm())skill(canvas,first+336,riposteIcon,"F",1-game.riposteCooldown()/RuinedOutpostGame.RIPOSTE_COOLDOWN,
                 p.ichor()>RuinedOutpostGame.BLADE_SKILL_COST);
@@ -2236,6 +2306,7 @@ public final class B2BJ extends JPanel {
                 game.newCampaign();resetVisualState();
             }
         });
+        bind(KeyEvent.VK_U,"camp",value->{if(value){openCamp();pressedKeys.add(KeyEvent.VK_U);}});
         bind(KeyEvent.VK_H,"saveCamp",value->{if(value)game.saveCheckpoint();});
         bind(KeyEvent.VK_T,"title",value->{if(value&&game.returnToTitle()){resetVisualState();if(menuShown())closeMenu();}});
         bind(KeyEvent.VK_O,"options",value->{
@@ -2257,7 +2328,7 @@ public final class B2BJ extends JPanel {
             String track=tracks[i];
             bind(KeyEvent.VK_1+i,"upgrade"+i,value->{
                 if(!value)return;
-                game.buyUpgrade(track);
+                if(campShown())game.buyUpgrade(track);
             });
         }
         bind(KeyEvent.VK_R,"restart",value->{
@@ -2394,6 +2465,15 @@ public final class B2BJ extends JPanel {
             inputs.put(KeyStroke.getKeyStroke(keyCode, modifiers, true), name + "Released");
         actions.put(name+"Pressed",action(()->{
             if(loading.covering()) {if(pressedKeys.add(keyCode))loading.skip();return;}
+            if(campShown()) {
+                if(!pressedKeys.add(keyCode))return;
+                if(keyCode==KeyEvent.VK_ESCAPE||keyCode==KeyEvent.VK_U) {closeCamp();pressedKeys.add(keyCode);}
+                else if(keyCode>=KeyEvent.VK_1&&keyCode<=KeyEvent.VK_4)campMenu.buy(keyCode-KeyEvent.VK_1);
+                else if(keyCode==KeyEvent.VK_H){campMenu.rest();pressedKeys.add(keyCode);}
+                else if(keyCode==KeyEvent.VK_E&&game.biome()==0){closeCamp();game.interact();pressedKeys.add(keyCode);}
+                else walk(campMenu,keyCode,true);
+                return;
+            }
             if(!menuShown()&&titleShown()) {
                 if(pressedKeys.contains(keyCode))return;
                 if(titleKey(keyCode)) {pressedKeys.add(keyCode);return;}
@@ -2415,6 +2495,8 @@ public final class B2BJ extends JPanel {
                     else if(keyCode==KeyEvent.VK_ENTER||keyCode==KeyEvent.VK_E)game.advanceDialogue();
                     return;
                 }
+                if(keyCode==KeyEvent.VK_W||keyCode==KeyEvent.VK_A||keyCode==KeyEvent.VK_S||keyCode==KeyEvent.VK_D
+                        ||keyCode==KeyEvent.VK_UP||keyCode==KeyEvent.VK_LEFT||keyCode==KeyEvent.VK_DOWN||keyCode==KeyEvent.VK_RIGHT)mouseAimed=false;
                 keyState.set(true);
                 if(game.dialogue()!=null)clearGameplayInput();
             }

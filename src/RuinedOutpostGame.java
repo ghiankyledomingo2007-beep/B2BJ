@@ -1158,7 +1158,7 @@ public final class RuinedOutpostGame {
     public String interactionPrompt() {
         if (blocked()) return "";
         if(campaignMode) {
-            if(nearCampaignHub())return (biome==0?"E TALK TO MARA / ":"")+"H REST + SAVE / 1-4 UPGRADES";
+            if(nearCampaignHub())return (biome==0?"E TALK TO MARA / ":"")+"H REST + SAVE / U CAMP";
             for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120))return "E EXAMINE "+landmark.name();
             if(near(campaignArea().exit().x(),campaignArea().exit().y(),140))return !bossDefeated?"DEFEAT "+guardian.bossName()
                     :biome+1<CampaignWorld.AREA_COUNT?"E ENTER THE "+CampaignWorld.area(biome+1).name():"E DESCEND THE STAIR";

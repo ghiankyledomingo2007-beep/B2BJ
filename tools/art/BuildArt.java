@@ -47,7 +47,6 @@ public final class BuildArt {
 
     static void ui() {
         UiArt.kit().save("assets/ui/kit.png");
-        LogoArt.logo().save("assets/ui/title/logo.png");
         TitleArt.build();
         UiArt.splash().save("assets/ui/splash.png");
     }

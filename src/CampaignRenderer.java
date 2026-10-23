@@ -411,10 +411,7 @@ public final class CampaignRenderer {
         g.fillRect(4, -32, 4, 4);
         }
         g.dispose();
-        if (body.alive() && (body.aggro() || body.health() < body.maxHealth())) {
-            bar(canvas, x - 24, y - (sheet!=null?(knight?144:128):92), 48, 4, body.health() / (double) body.maxHealth(), DANGER);
-            if (enemy.shielded()) Ui.outlinedCentered(canvas, "SHIELD", x, y - (sheet!=null?150:98), 2, Ui.GOLD);
-        }
+
     }
 
     /** Collapse and edible remains are one sprite, so absorption cannot leave a second body behind. */
@@ -507,7 +504,7 @@ public final class CampaignRenderer {
         boolean danger = game.bossActive() || game.scouts().stream().anyMatch(enemy -> enemy.alive() && enemy.aggro()
                 && Math.hypot(enemy.x() - p.x(), enemy.y() - p.y()) < 700);
         if (!game.campaignNotice().isEmpty() && !danger) toast(g, game.campaignNotice(), width / 2, 108);
-        if (game.nearCampaignHub()) campCard(g, game, 16, height - 16 - 214);
+
     }
 
     // ------------------------------------------------------------------ boss bar
@@ -530,8 +527,9 @@ public final class CampaignRenderer {
         else if (now > ghostHoldUntil) ghost = Math.max(health, ghost - dt * .6);
 
         int w = 560, x0 = width / 2 - w / 2, y0 = 40;
-        Ui.drawTitleCentered(g, boss.bossName().toUpperCase(java.util.Locale.ROOT), width / 2, 8, 2,
-                boss.enraged() ? Ui.BLOOD_RAMP : Ui.GOLD_RAMP);
+        var font=Ui.heading(26);
+        int titleWidth=g.getFontMetrics(font).stringWidth(boss.bossName());
+        Ui.prose(g,boss.bossName(),(width-titleWidth)/2,30,font,boss.enraged()?Ui.DANGER:Ui.TEXT);
         int left = Ui.Piece.BOSS_LEFT.w * Ui.S, right = Ui.Piece.BOSS_RIGHT.w * Ui.S;
         for (int x = x0 + left; x < x0 + w - right; x += Ui.Piece.BOSS_MID.w * Ui.S) {
             int tile = Math.min(Ui.Piece.BOSS_MID.w * Ui.S, x0 + w - right - x);
@@ -615,44 +613,6 @@ public final class CampaignRenderer {
         int x = center - w / 2 / Ui.S * Ui.S;
         Ui.nine(g, Ui.Piece.PANEL, x, y, w, h);
         for (int i = 0; i < lines.size(); i++) Ui.textCentered(g, lines.get(i), center, y + 30 + i * 22, 2, Ui.TEXT);
-    }
-
-    private static final String[] TRACKS = {"vitality", "capacity", "efficiency", "edge"};
-    private static final String[][] TRACK_TEXT = {{"Vitality", "+20 HP"}, {"Capacity", "+10% ichor"},
-            {"Efficiency", "slower drain"}, {"Edge", "stronger finisher"}};
-
-    /** Camp upgrades: one row per track with its key, level pips and price. */
-    private static void campCard(Graphics2D g, RuinedOutpostGame game, int x, int y) {
-        int w = 470, h = 214;
-        Ui.nine(g, Ui.Piece.CARD, x, y, w, h);
-        Ui.drawTitle(g, "FIELD CAMP", x + 20, y + 14, 2, Ui.GOLD_RAMP);
-        int hx = x + w - 20;
-        hx -= Ui.width("Rest + save", 2);
-        Ui.text(g, "Rest + save", hx, y + 34, 2, Ui.MUTED);
-        hx -= Ui.keycap(g, "H", hx - 34, y + 16) + 12;
-        hx -= Ui.width("Talk", 2);
-        Ui.text(g, "Talk", hx, y + 34, 2, Ui.MUTED);
-        Ui.keycap(g, "E", hx - 34, y + 16);
-        for (int i = 0; i < TRACKS.length; i++) {
-            int ry = y + 56 + i * 38;
-            int level = game.upgradeLevel(TRACKS[i]), max = i == 3 ? 1 : 3;
-            boolean affordable = level < max && game.shards() >= game.upgradeCost(TRACKS[i]);
-            Ui.keycap(g, Integer.toString(i + 1), x + 20, ry);
-            Ui.text(g, TRACK_TEXT[i][0], x + 60, ry + 19, 2, affordable ? Ui.TEXT : Ui.MUTED);
-            Ui.text(g, TRACK_TEXT[i][1], x + 186, ry + 19, 2, Ui.DIM);
-            for (int k = 0; k < max; k++) {
-                g.setColor(Ui.INK);
-                g.fillRect(x + 336 + k * 14, ry + 8, 10, 10);
-                g.setColor(k < level ? Ui.TEAL : new Color(0x252037));
-                g.fillRect(x + 338 + k * 14, ry + 10, 6, 6);
-            }
-            if (level >= max) Ui.textRight(g, "MAX", x + w - 20, ry + 19, 2, Ui.CYAN);
-            else {
-                String cost = Integer.toString(game.upgradeCost(TRACKS[i]));
-                Ui.textRight(g, cost, x + w - 20, ry + 19, 2, affordable ? Ui.GOLD : Ui.DIM);
-                Ui.icon(g, Ui.Icon.SHARD, x + w - 20 - Ui.width(cost, 2) - 28, ry + 2);
-            }
-        }
     }
 
     public static void drawDebugStatus(Graphics2D g, RuinedOutpostGame game) {
@@ -856,22 +816,14 @@ public final class CampaignRenderer {
         card.dispose();
     }
 
-    /** Over the animated title art: the tagline, any notice, control hints, and the veil under an open menu. */
+    /** Save notices and the veil under an open title menu. */
     public static void drawTitleExtras(Graphics2D g, RuinedOutpostGame game, int width, int height, boolean menuOpen) {
         Ui.crisp(g);
-        Ui.text(g, "ABSORB  \u00b7  TRANSFORM  \u00b7  CONQUER", 58, 276, 2, Ui.GOLD);
         if (!game.campaignNotice().isEmpty()) {
             var lines = Ui.wrap(game.campaignNotice(), 330, 2);
-            Ui.nine(g, Ui.Piece.PANEL, 56, 524, 344, 24 + Math.min(3, lines.size()) * 22);
-            for (int i = 0; i < lines.size() && i < 3; i++) Ui.text(g, lines.get(i), 74, 552 + i * 22, 2, Ui.GOLD_LIGHT);
+            Ui.nine(g, Ui.Piece.PANEL, 68, 604, 344, 24 + Math.min(3, lines.size()) * 22);
+            for (int i = 0; i < lines.size() && i < 3; i++) Ui.text(g, lines.get(i), 86, 632 + i * 22, 2, Ui.GOLD_LIGHT);
         }
-        int x = 58, y = height - 44;
-        x += Ui.keycap(g, "\u2191", x, y) + 4;
-        x += Ui.keycap(g, "\u2193", x, y) + 10;
-        Ui.text(g, "Select", x, y + 19, 2, Ui.MUTED);
-        x += Ui.width("Select", 2) + 24;
-        x += Ui.keycap(g, "ENTER", x, y) + 10;
-        Ui.text(g, "Confirm", x, y + 19, 2, Ui.MUTED);
         if (menuOpen) Ui.veil(g, width, height, 150);
     }
 

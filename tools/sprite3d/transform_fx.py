@@ -120,10 +120,11 @@ def build(idle_sheet, slime_in, slime_out, out_dir):
     sheet_out = Image.new("RGBA", (CELL * FRAMES, CELL * rows), (0, 0, 0, 0))
     for row in range(rows):
         human = cell(idle, row, 0)
-        ramp = teal_ramp([cell(old_in, row, i) for i in range(KEPT_IN)])
+        slime_row = (0, 1, 2, 3, 0, 2, 2, 0)[row]
+        ramp = teal_ramp([cell(old_in, slime_row, i) for i in range(KEPT_IN)])
         full = glass(human, ramp, 1.0)
 
-        frames = [cell(old_in, row, i) for i in range(KEPT_IN)]
+        frames = [cell(old_in, slime_row, i) for i in range(KEPT_IN)]
         frames += [goo(full, ramp, w, t, d) for w, t, d in RISE]
         frames += [sparkle(glass(human, ramp, k), ramp, row * 31, i) for i, k in enumerate(CLEAR)]
         frames[-1] = human                                   # the morph ends ON idle frame 0
@@ -132,7 +133,7 @@ def build(idle_sheet, slime_in, slime_out, out_dir):
 
         frames = [sparkle(glass(human, ramp, k), ramp, row * 17, 6 - i) for i, k in enumerate(FORM)]
         frames += [full] + [goo(full, ramp, w, t, d) for w, t, d in SINK]
-        frames += [cell(old_out, row, i) for i in range(KEPT_OUT, FRAMES)]
+        frames += [cell(old_out, slime_row, i) for i in range(KEPT_OUT, FRAMES)]
         for i, f in enumerate(frames):
             sheet_out.alpha_composite(f, (i * CELL, row * CELL))
     out_dir = Path(out_dir)

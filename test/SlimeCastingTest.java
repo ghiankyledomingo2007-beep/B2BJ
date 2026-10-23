@@ -37,7 +37,7 @@ public final class SlimeCastingTest {
         x=game.player().x();game.update(.1,1,0);close(game.player().x()-x,26);
 
         game=fixture();assert game.attack(1,0);game.player().collectIchor(100);assert game.transform();
-        game.update(.1,1,0);close(game.player().x()-500,26*.8);
+        game.update(.1,1,0);close(game.player().x()-500,26*Player.BLADE_SPEED_MULTIPLIER);
         assert game.projectiles().isEmpty() : "transform cancels the pending cast";
         for(boolean refill:new boolean[]{false,true}) {
             var player=new Player(500,400);assert player.startAttack();

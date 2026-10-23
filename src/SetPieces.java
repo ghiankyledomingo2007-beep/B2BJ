@@ -48,8 +48,8 @@ public final class SetPieces {
         }
     }
 
-    /** A fire or glow on a piece, relative to its anchor in world pixels; size is the light radius. */
-    public record Light(double x, double y, double radius, int colour, boolean fire) { }
+    /** Source on the sprite and its projection onto the floor, in world pixels. */
+    public record Light(double x, double y, double groundY, double radius, int colour, boolean fire) { }
 
     private static final List<Piece> PIECES = build();
     private static final List<Piece> FOREST = Forest.build();
@@ -93,15 +93,15 @@ public final class SetPieces {
     private static List<Light> buildLights(List<Piece> pieces) {
         var list = new ArrayList<Light>();
         for (var p : pieces) switch (p.kind()) {
-            case CAMPFIRE -> list.add(new Light(p.x(), p.y() - 50, 300, 0xffa040, true));
-            case BRAZIER -> list.add(new Light(p.x(), p.y() - 84, 220, 0xff9a3c, true));
-            case WATCHTOWER -> list.add(new Light(p.x() + 4, p.y() - 400, 260, 0xff9a3c, true));
-            case LAMP -> list.add(new Light(p.x() + 36, p.y() - 126, 170, 0xffc45e, false));
-            case STANDARD -> list.add(new Light(p.x() + 104, p.y() - 10, 190, 0xeeb840, false));
-            case MOONWELL -> list.add(new Light(p.x(), p.y() - 40, 260, 0x9fe8ff, false));
-            case RIFT_STONE -> list.add(new Light(p.x(), p.y() - 120, 150, 0xab68cf, false));
-            case BRIAR_ROOT -> list.add(new Light(p.x(), p.y() - 30, 170, 0xeeb840, false));
-            case STAIR -> list.add(new Light(p.x(), p.y() - 90, 240, 0xffdd80, false));
+            case CAMPFIRE -> list.add(new Light(p.x(), p.y() - 50, p.y(), 300, 0xffa040, true));
+            case BRAZIER -> list.add(new Light(p.x(), p.y() - 84, p.y(), 220, 0xff9a3c, true));
+            case WATCHTOWER -> list.add(new Light(p.x() + 4, p.y() - 400, p.y(), 260, 0xff9a3c, true));
+            case LAMP -> list.add(new Light(p.x() + 36, p.y() - 126, p.y(), 170, 0xffc45e, false));
+            case STANDARD -> list.add(new Light(p.x() + 104, p.y() - 10, p.y(), 190, 0xeeb840, false));
+            case MOONWELL -> list.add(new Light(p.x(), p.y() - 40, p.y(), 260, 0x9fe8ff, false));
+            case RIFT_STONE -> list.add(new Light(p.x(), p.y() - 120, p.y(), 150, 0xab68cf, false));
+            case BRIAR_ROOT -> list.add(new Light(p.x(), p.y() - 30, p.y(), 170, 0xeeb840, false));
+            case STAIR -> list.add(new Light(p.x(), p.y() - 90, p.y(), 240, 0xffdd80, false));
             default -> { }
         }
         return List.copyOf(list);

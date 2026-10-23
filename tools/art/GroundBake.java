@@ -338,27 +338,6 @@ final class GroundBake {
         }
         var camp = area.landmarks().get(1);
         stamp(Decals.BEDROLL, (int) Math.round((camp.x() + 132) / 2), (int) Math.round((camp.y() - 80) / 2), false);
-        for (var p : SetPieces.pieces(0)) switch (p.kind()) {
-            case CAMPFIRE -> lightPool(p.x(), p.y() - 16, 92, Pal.FIRE[3]);
-            case BRAZIER -> { if (!SetPieces.arenaBrazier(p)) lightPool(p.x(), p.y() - 8, 64, Pal.FIRE[3]); }
-            case LAMP -> lightPool(p.x() + 36, p.y() - 4, 46, Pal.FIRE[4]);
-            case STANDARD -> lightPool(p.x() + 104, p.y() - 10, 60, Pal.GOLD[3]);
-            case WATCHTOWER -> lightPool(p.x(), p.y() + 10, 44, Pal.FIRE[3]);
-            default -> { }
-        }
-    }
-
-    /** Firelight on the ground, in palette colours: two dithered bands warming toward the source. */
-    private void lightPool(double wx, double wy, int radius, int light) {
-        int cx = (int) Math.round(wx / 2), cy = (int) Math.round(wy / 2);
-        for (int y = cy - radius; y <= cy + radius; y++) for (int x = cx - radius; x <= cx + radius; x++) {
-            if (x < 0 || y < 0 || x >= W || y >= H || label[y * W + x] == CANOPY) continue;
-            double d = Math.hypot(x - cx, (y - cy) * 1.4) / radius;
-            if (d >= 1) continue;
-            double s = 1 - d + (Noise.bayer(x, y) - .5) * .22;
-            if (s > .62) out[y * W + x] = Pal.lit(out[y * W + x], light, .42);
-            else if (s > .3) out[y * W + x] = Pal.lit(out[y * W + x], light, .24);
-        }
     }
 
     private void castShadow(RuinedOutpostMap.Obstacle o, int length) {

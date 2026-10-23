@@ -13,6 +13,7 @@ public final class BladeAnimation {
     public static final int RENDER_HEIGHT = CELL_HEIGHT * 2;
 
     public static final int RUN_FRAMES = 8;
+    public static final int FACING_COUNT = 8;
 
     /** Frames per row of an action's sheet. A sheet's cell size is its width divided by this. */
     public static int columns(Action action) {
@@ -77,7 +78,12 @@ public final class BladeAnimation {
 
     public void pose(Action next,double elapsed,double total) {action=next;time=elapsed;duration=total;}
     public boolean canAim() {return duration==0||action==Action.STOP||action==Action.TURN;}
-    public int directionRow() {return Math.abs(facingX)>Math.abs(facingY)?facingX<0?3:1:facingY<0?2:0;}
+    public int directionRow() {return directionRow(facingX,facingY);}
+    public static int directionRow(int x,int y) {
+        int sector=Math.floorMod((int)Math.floor(Math.atan2(y,x)/(Math.PI/4)+.5),8);
+        return switch(sector) {case 0->1;case 1->4;case 2->0;case 3->7;case 4->3;case 5->6;case 6->2;default->5;};
+    }
+    public int cardinalRow() {return Math.abs(facingX)>Math.abs(facingY)?facingX<0?3:1:facingY<0?2:0;}
     public void face(int x,int y) { if(x!=0||y!=0){facingX=x; facingY=y;} }
 
     public Action action() {

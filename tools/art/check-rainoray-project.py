@@ -43,10 +43,10 @@ with tempfile.TemporaryDirectory(prefix="rainoray-timeline-") as temporary:
     subprocess.run([editor, "--batch", "--list-tags", "--list-layers", str(project),
                     "--format", "json-array", "--data", str(metadata)], check=True, capture_output=True)
     data = json.loads(metadata.read_text())
-    assert len(data["frames"]) == 672 and len(data["meta"]["frameTags"]) == 76
+    assert len(data["frames"]) == 1344 and len(data["meta"]["frameTags"]) == 152
     tags = {tag["name"]: tag for tag in data["meta"]["frameTags"]}
     for name, total in {"run_south": 500, "dash_west": 120, "draw_cut_east": 300,
-                        "spin_cleave_north": 700, "cast_south": 350}.items():
+                        "spin_cleave_north": 700, "cast_south": 350, "run_northeast": 500, "draw_cut_southwest": 300}.items():
         tag = tags[name]
         durations = [f["duration"] for f in data["frames"][tag["from"]:tag["to"]+1]]
         assert sum(durations) == total, (name, durations)
@@ -54,4 +54,4 @@ with tempfile.TemporaryDirectory(prefix="rainoray-timeline-") as temporary:
             assert sum(durations[:4]) == 90, "contact starts after the windup"
 
 assert hashlib.sha256(project.read_bytes()).hexdigest() == original, "export must preserve the native project"
-print("PASS: 672 frames, 76 clips, game timings, 18 lossless sheets and overwrite protection")
+print("PASS: 1344 frames, 152 clips, game timings, 18 lossless sheets and overwrite protection")

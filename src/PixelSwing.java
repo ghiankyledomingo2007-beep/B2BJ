@@ -37,6 +37,7 @@ final class PixelSwing {
     static final class Button extends JButton {
         private static final long serialVersionUID = 1L;
         private final Ui.Icon icon;
+        private boolean quiet;
 
         Button(String text, Ui.Icon icon) {
             super(text);
@@ -62,6 +63,16 @@ final class PixelSwing {
         @Override protected void paintComponent(Graphics graphics) {
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
+            if (quiet) {
+                boolean down = getModel().isArmed() && getModel().isPressed();
+                if (hot()) {
+                    Ui.fade(g,0,0,getWidth(),getHeight(),90,0);
+                    g.setColor(Ui.GOLD_LIGHT); g.fillRect(0,9,2,getHeight()-18);
+                }
+                Ui.prose(g,getText(),20+(down?2:0),getHeight()/2+7,Ui.body(21),
+                        !isEnabled()?Ui.DIM:hot()?Ui.GOLD_LIGHT:Ui.TEXT);
+                g.dispose(); return;
+            }
             ButtonModel m = getModel();
             boolean down = m.isArmed() && m.isPressed();
             Ui.Piece frame = !isEnabled() ? Ui.Piece.BUTTON_OFF : down ? Ui.Piece.BUTTON_DOWN
@@ -95,6 +106,15 @@ final class PixelSwing {
         var button = new Button(text, icon);
         button.setMnemonic(mnemonic);
         button.setEnabled(enabled);
+        button.addActionListener(event -> action.run());
+        return button;
+    }
+
+    static JButton textButton(String text, char mnemonic, Runnable action) {
+        var button = new Button(text,null);
+        button.quiet = true;
+        button.setFont(Ui.body(21));
+        button.setMnemonic(mnemonic);
         button.addActionListener(event -> action.run());
         return button;
     }

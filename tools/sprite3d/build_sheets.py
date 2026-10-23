@@ -4,10 +4,11 @@
 
 Sheets (default: all): run idle start stop turn slash cleave charge hold dash cast guard hurt counter
 transform
+--preserve-cardinals renders only the diagonals and keeps all existing cardinal pixels.
 --install copies the results into assets/ (blade sheets to characters/blade, the morph to effects).
 Each is written as rainoray_<sheet>.png in the layout src/B2BJ.java reads: 80x80 cells, one row per
-facing in BladeAnimation.directionRow() order (south, east, north, west); the slash sheet stacks the
-four combo moves plus dash slash, 20 rows. All four facings are real photographs: a mirrored west would make him
+facing in BladeAnimation.directionRow() order (S, E, N, W, SE, NE, NW, SW); the slash sheet stacks the
+four combo moves plus dash slash, 40 rows. All eight facings are real photographs: a mirrored west would make him
 left-handed and send his cuts against the game's slash arc.
 A review GIF per sheet and a clipping/repeat report come with it. No services, a minute or so.
 """
@@ -44,10 +45,10 @@ TRAILED = {"slash", "cleave", "cast", "counter"}
 # same foot row; the margin is room to lunge, leap and swing. In an 80 px cell arm + blade alone are 42 px,
 # so every reach forced the whole body to slide back, which is exactly what made him look planted.
 # B2BJ.bladeCell() reads the size off the sheet, so a sheet can be widened or narrowed here alone.
-WIDE = {"slash", "cleave", "cast", "counter", "dash"}
+WIDE = {"slash", "cleave", "cast", "counter", "dash", "guard", "hurt"}
 MARGIN = 2             # sprite pixels stay this far inside the cell, leaving room for the 1 px outline
 DEPTH_SLIDE = 8        # front/back facings may shift this many px up or down: that is him moving in depth
-ROWS = ["south", "east", "north", "west"]      # BladeAnimation.directionRow() order, all photographed
+ROWS = ["south", "east", "north", "west", "southeast", "northeast", "northwest", "southwest"]      # BladeAnimation.directionRow() order, all photographed
 # sheet -> [(puppet action, frames)], stacked top to bottom; frame counts must match the game code
 SHEETS = {
     "run": [("run", 8)], "idle": [("idle", 8)], "start": [("start", 4)], "stop": [("stop", 4)],
@@ -177,14 +178,35 @@ def pack(rows, size):
     return sheet
 
 
-def assemble(out, name, palette, cache):
+def assemble(out, name, palette, cache, preserve_cardinals=False):
     rows, swoosh_rows, notes = [], [], []
     size = TRAIL_CELL if name in WIDE else CELL
-    for action, frames in SHEETS[name]:
-        for facing in ROWS:
+    if preserve_cardinals:
+        import runpy
+        clean = runpy.run_path(str(REPO / "tools/art/clean-rainoray-pixels.py"))["clean_sheet"]
+        original = Image.open(BLADE_ASSETS / f"rainoray_{name}.png").convert("RGBA")
+        original_trail = Image.open(EFFECT_ASSETS / f"rainoray_{name}_trail.png").convert("RGBA") if name in TRAILED else None
+        old_size = original.width // SHEETS[name][0][1]
+        old_rows = original.height // old_size // len(SHEETS[name])
+        assert old_rows in (4, 8), "unexpected source facing count"
+    for block, (action, frames) in enumerate(SHEETS[name]):
+        for r, facing in enumerate(ROWS):
+            if preserve_cardinals and r < 4:
+                top = (block * old_rows + r) * old_size
+                kept = []
+                for i in range(frames):
+                    cel=Image.new("RGBA",(size,size))
+                    cel.alpha_composite(original.crop((i*old_size,top,(i+1)*old_size,top+old_size)),
+                                        ((size-old_size)//2,(size-old_size)//2))
+                    kept.append(cel)
+                rows.append(kept)
+                top = (block * old_rows + r) * TRAIL_CELL
+                swoosh_rows.append([original_trail.crop((i*TRAIL_CELL, top, (i+1)*TRAIL_CELL, top+TRAIL_CELL))
+                                   for i in range(frames)] if original_trail else [])
+                continue
             cells, swooshes = strip(out, action, facing, frames, palette, cache, notes, name in TRAILED,
                                     name in WIDE)
-            rows.append(cells)
+            rows.append([clean(c, size) for c in cells] if preserve_cardinals else cells)
             swoosh_rows.append(swooshes)
     pack(rows, size).save(out / f"rainoray_{name}.png")
     if name in TRAILED:
@@ -202,7 +224,7 @@ def assemble(out, name, palette, cache):
         drawn = sum(1 for r in swoosh_rows for c in r if c.getbbox())
         notes.append(f"{name} trail: {drawn} of {sum(len(r) for r in swoosh_rows)} cells carry a trail")
 
-    quad = []                                 # the four facings side by side; moves play one after another
+    quad = []                                 # the eight facings side by side; moves play one after another
     for block in range(0, len(rows), len(ROWS)):
         for i in range(len(rows[block])):
             f = Image.new("RGBA", (size * len(ROWS), size), (0, 0, 0, 0))
@@ -238,6 +260,7 @@ def install(out, sheets):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    ap.add_argument("--preserve-cardinals", action="store_true", help="render only new diagonals; retain polished runtime cardinal pixels")
     ap.add_argument("--install", action="store_true", help="copy the built sheets into assets/")
     ap.add_argument("sheets", nargs="*", default=[*SHEETS, TRANSFORM])
     a = ap.parse_args()
@@ -252,11 +275,12 @@ def main():
     if not SOURCE.is_file():
         raise SystemExit(f"Current editable source is missing: {SOURCE}")
     jobs = [(action, frames, ["--trail"] if s in TRAILED else []) for s in photographed for action, frames in SHEETS[s]]
-    with ThreadPoolExecutor(max_workers=4) as pool:          # Blender does the work; threads just wait
-        list(pool.map(lambda j: blender(SOURCE, out, "--armed", "--action", j[0], "--frames", j[1], *j[2]), jobs))
+    views = ",".join(ROWS[4:] if a.preserve_cardinals else ROWS)
+    with ThreadPoolExecutor(max_workers=2) as pool:          # Blender does the work; threads just wait
+        list(pool.map(lambda j: blender(SOURCE, out, "--armed", "--action", j[0], "--frames", j[1], "--views", views, *j[2]), jobs))
     palette, cache = [*palette_from(PALETTE), MASK_RED], {}
     for name in photographed:
-        assemble(out, name, palette, cache)
+        assemble(out, name, palette, cache, a.preserve_cardinals)
     if TRANSFORM in a.sheets:
         transform(out)
     if a.install:

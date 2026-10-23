@@ -35,7 +35,6 @@ final class ForestBake {
         decals();
         fordStones();
         shade();
-        lights();
         new Canopy(W, H, canopy, out).paint();
         Canvas c = new Canvas(W, H);
         System.arraycopy(out, 0, c.px, 0, out.length);
@@ -240,25 +239,6 @@ final class ForestBake {
                     if (Noise.bayer(x, y) < 1 - fade) out[y * W + x] = Pal.shift(out[y * W + x], -1);
                 }
             }
-        }
-    }
-
-    void lights() {
-        for (var l : SetPieces.lights(1)) {
-            if (l.colour() == 0xeeb840 || l.colour() == 0xffdd80) continue;   // gold on violet blight bakes to brown: roots carry their own glow
-            int colour = l.fire() ? Pal.FIRE[3] : l.colour() == 0x9fe8ff ? Pal.CYAN[4] : l.colour() == 0xab68cf ? Pal.VIOLET[4] : Pal.GOLD[3];
-            pool(l.x(), l.y() + 30, (int) (l.radius() / 3.2), colour);
-        }
-    }
-    private void pool(double wx, double wy, int radius, int light) {
-        int cx = (int) Math.round(wx / 2), cy = (int) Math.round(wy / 2);
-        for (int y = cy - radius; y <= cy + radius; y++) for (int x = cx - radius; x <= cx + radius; x++) {
-            if (x < 0 || y < 0 || x >= W || y >= H || canopy[y * W + x]) continue;
-            double d = Math.hypot(x - cx, (y - cy) * 1.4) / radius;
-            if (d >= 1) continue;
-            double s = 1 - d + (Noise.bayer(x, y) - .5) * .22;
-            if (s > .62) out[y * W + x] = Pal.lit(out[y * W + x], light, .42);
-            else if (s > .3) out[y * W + x] = Pal.lit(out[y * W + x], light, .24);
         }
     }
 
