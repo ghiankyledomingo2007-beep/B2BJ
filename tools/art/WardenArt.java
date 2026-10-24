@@ -112,13 +112,13 @@ final class WardenArt {
             briar(Canvas.load("assets/effects/warden_"+name+".png")).save("assets/effects/briar_"+name+".png");
     }
 
-    /** A tapered cleave in solid two-pixel clusters, with a bright cutting edge. */
+    /** A tapered cleave sampled per native pixel (drawn at 2x like the world), with a bright cutting edge. */
     static Canvas sweep(int f) {
         Canvas c = new Canvas(184, 112);
         double cx = 92, cy = 58, rx = 84, ry = 50;
         double head = f * Math.PI / 2;
-        for (int y = 0; y < c.h; y+=2) for (int x = 0; x < c.w; x+=2) {
-            double dx=(x+1-cx)/rx,dy=(y+1-cy)/ry,r=Math.hypot(dx,dy);
+        for (int y = 0; y < c.h; y++) for (int x = 0; x < c.w; x++) {
+            double dx=(x+.5-cx)/rx,dy=(y+.5-cy)/ry,r=Math.hypot(dx,dy);
             double behind=(head-Math.atan2(dy,dx)+Math.PI*4)%(Math.PI*2);
             double length=Math.PI*1.28;
             if(behind>length)continue;
@@ -127,7 +127,7 @@ final class WardenArt {
             double band=(r-inner)/(.99-inner);
             int colour=band>.84?Pal.CYAN[2]:band>.59&&tail>.35?Pal.CYAN[5]
                     :band>.27?Pal.CYAN[4]:Pal.CYAN[3];
-            c.rect(x,y,2,2,colour);
+            c.set(x,y,colour);
         }
         return c;
     }
@@ -189,7 +189,8 @@ final class WardenArt {
         for (int y = 0; y < c.h; y++) for (int x = 0; x < c.w; x++) {
             double d = Math.abs(x + .5 - 14) / width;
             double top = y / 140.0;
-            double v = (1 - d) * (.35 + .65 * top) + (Noise.bayer(x, y) - .5) * .35;
+            // Hard bands with a little column noise; no ordered dither (it read as a checkerboard).
+            double v = (1 - d) * (.35 + .65 * top) + (Noise.rnd(x, y / 6, 4721) - .5) * .12;
             if (v < .1 || d > 1.6) continue;
             c.set(x, y, v > .72 ? Pal.CYAN[5] : v > .5 ? Pal.CYAN[4] : v > .3 ? Pal.CYAN[3] : Pal.CYAN[2]);
         }

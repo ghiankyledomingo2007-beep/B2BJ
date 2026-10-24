@@ -6,8 +6,18 @@ public final class DialogueRenderer {
     private static final BufferedImage MARA=B2BJ.loadImage("assets/characters/npcs/mara_portrait.png");
     private static final BufferedImage MARA_BODY=B2BJ.loadImage("assets/characters/npcs/mara_idle.png");
     private static final BufferedImage BLOB=B2BJ.loadImage("assets/characters/slime/rainoray_portrait.png");
-    private static final BufferedImage BLADE=cell(B2BJ.loadImage("assets/characters/blade/rainoray_idle.png"),20,0,40,40);
-    private static final BufferedImage WARDEN=cell(B2BJ.loadImage("assets/characters/guardian/warden_motion.png"),0,0,64,64);
+    // Every portrait is native art drawn at the game's 2x: 64 native pixels fill the 128 frame.
+    private static final BufferedImage BLADE=cell(B2BJ.loadImage("assets/characters/blade/rainoray_idle.png"),8,0,64,64);
+    private static final BufferedImage WARDEN=cell(B2BJ.loadImage("assets/characters/guardian/warden_motion.png"),32,4,64,64);
+    private static final BufferedImage SURVIVORS=B2BJ.loadImage("assets/props/outpost/field_survivor.png");
+    /** Each survivor's seated pose (row 1 of the 48 x 40 sheet), unscaled, standing on the frame's floor. */
+    private static final BufferedImage[] SURVIVOR_FACES={face(FieldObjects.SPRITE_COLUMN[0]),face(FieldObjects.SPRITE_COLUMN[1]),face(FieldObjects.SPRITE_COLUMN[2])};
+    private static BufferedImage face(int column) {
+        if(SURVIVORS==null||SURVIVORS.getWidth()<(column+1)*48||SURVIVORS.getHeight()<80)return null;
+        var image=new BufferedImage(64,64,BufferedImage.TYPE_INT_ARGB);
+        var g=image.createGraphics();g.drawImage(SURVIVORS,8,20,56,60,column*48,40,column*48+48,80,null);g.dispose();
+        return image;
+    }
 
     private DialogueRenderer() { }
 
@@ -30,11 +40,14 @@ public final class DialogueRenderer {
             case MARA -> MARA;
             case WARDEN -> WARDEN;
             case RAINORAY -> game.player().bladeForm()?BLADE:BLOB;
+            case TOBIN -> SURVIVOR_FACES[0];
+            case ILSE -> SURVIVOR_FACES[1];
+            case VENN -> SURVIVOR_FACES[2];
         };
-        int size=portrait==BLADE?120:128;
+        int size=128;
         if(portrait!=null)g.drawImage(portrait,212-size/2,y+80-size/2,size,size,null);
         String speaker=line.speaker()==OutpostDialogue.Speaker.WARDEN?"OUTPOST WARDEN":line.speaker().name();
-        boolean warm=line.speaker()==OutpostDialogue.Speaker.MARA;
+        boolean warm=line.speaker()!=OutpostDialogue.Speaker.RAINORAY&&line.speaker()!=OutpostDialogue.Speaker.WARDEN;
         Ui.drawTitle(g,speaker,304,y+16,2,warm?Ui.GOLD_RAMP:Ui.CYAN_RAMP);
         Ui.textRight(g,"Skip",right-32,y+34,2,Ui.MUTED);
         g.setColor(Ui.DIM);g.fillRect(304,y+50,width-480,2);

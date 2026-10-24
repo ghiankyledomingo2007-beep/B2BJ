@@ -66,3 +66,24 @@ Preparation is now 1.05 s for targeted slam, 1.00 s for sweep, 1.20 s for charge
 headings stay committed. Active/recovery durations, damage and other bosses' timings
 are unchanged. This tuning gives the owner more time to recognize the next move;
 full encounter balance still needs manual play. [Captures and clip](../art-review/outpost-polish/README.md).
+
+## 2026-10-23 — Blade combo retimed for weight
+
+Owner found Blade swings "too fast". The 12 authored poses played at ~40 fps, so the four-pose draw
+lasted 90 ms and the contact pose 26 ms (skipped entirely at 30 fps capture). Retimed, no new art:
+
+| Move | Wind-up (contact) | Total | Was |
+|---|---|---|---|
+| 1 draw cut | 0.13 s | 0.40 s | 0.09 / 0.30 |
+| 2 thrust | 0.14 s | 0.42 s | 0.10 / 0.34 |
+| 3 rising cut | 0.17 s | 0.48 s | 0.14 / 0.40 |
+| 4 finisher | 0.24 s | 0.70 s | 0.20 / 0.54 |
+| dash slash | 0.10 s | 0.42 s | 0.08 / 0.36 |
+
+Charged cleave (0.18/0.58) and spin (0.18/0.70) unchanged. Poses are no longer evenly spaced
+(`B2BJ.bladeAttackFrame`): the coiled last draw pose holds, the contact pose and follow-through end hold
+~1.5x, the smear passes quickly, the return to guard eases out. Contact frame and damage still share one
+clock. Existing hit-stop (0.05 s light, 0.10 s finisher/cleave, 0.085 s kill) is unchanged and now lands on
+a contact pose that is already held. Input buffer (0.12 s), chain window (move end + 0.5 s), dash rules and
+press-time credit unchanged. BladeCombatTest fails if a cut drops below 0.10 s draw / 0.40 s total, a pose
+flashes for under 1.2 frames, contact holds under three frames, or the finisher stops being the heaviest.

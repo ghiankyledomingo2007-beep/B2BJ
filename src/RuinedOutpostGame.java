@@ -145,6 +145,9 @@ public final class RuinedOutpostGame {
     private final Set<Integer> clearedBosses=new java.util.HashSet<>();
     private final Set<String> campaignUnlocks=new java.util.HashSet<>();
     private final java.util.Map<String,Integer> upgrades=new java.util.HashMap<>();
+    /** What rides inside the slime, and carriables put down away from their authored spot this visit. */
+    private FieldObjects.Spot carried;
+    private final java.util.Map<String,CampaignWorld.Point> dropped=new java.util.HashMap<>();
     private final java.util.Map<Wisp,CampaignEnemy> campaignEnemies=new IdentityHashMap<>();
 
     public static RuinedOutpostGame campaign() { return campaign(null); }
@@ -171,7 +174,8 @@ public final class RuinedOutpostGame {
         dialogue=null;dialogueIndex=0;
         wardenRevealTime=wardenReturnTime=wardenReturnWeight=0;
         biome=destination;map=RuinedOutpostMap.campaign(biome);
-        campaignCheckpoint=arrival==1?1:0;
+        campaignCheckpoint=arrival==1||restIndex(arrival)>=0?arrival:0;
+        carried=null;dropped.clear();syncFieldGates();
         scouts=new ArrayList<>();campaignEnemies.clear();
         drops.clear();corpses.clear();cancelAbsorption();events.clear();
         lungeHits.clear();dashHits.clear();bossAdds.clear();projectiles.clear();crescents.clear();hostileProjectiles.clear();
@@ -189,6 +193,7 @@ public final class RuinedOutpostGame {
             map.clearGuardian();map.openGate();
         }
         var point=arrival==1?campaignArea().hub():arrival==2?campaignArea().exit():campaignArea().spawn();
+        if(restIndex(arrival)>=0) {var rest=FieldObjects.rests(biome).get(restIndex(arrival));point=new CampaignWorld.Point(rest.x(),rest.y()+72);}
         player.relocate(point.x(),point.y());
         if(arrival==2)player.relocate(point.x()-160,point.y());
         emit(EventType.ROOM_ENTERED,player.x(),player.y());
@@ -223,13 +228,15 @@ public final class RuinedOutpostGame {
     }
 
     public boolean saveCheckpoint() {
-        if(!campaignMode||blocked()||!nearCampaignHub())return false;
+        int rest=nearCampaignHub()?-1:nearLitRest();
+        if(!campaignMode||blocked()||(!nearCampaignHub()&&rest<0))return false;
         if(scouts.stream().anyMatch(w->w.alive()&&near(w.x(),w.y(),400))
                 ||(bossActive()&&near(guardian.x(),guardian.y(),600))) {
-            notice("CAMP IS NOT SAFE YET");deny();return false;
+            notice(rest<0?"CAMP IS NOT SAFE YET":"NOT SAFE TO REST YET");deny();return false;
         }
-        campaignCheckpoint=1;player.heal();emit(EventType.CHECKPOINT,player.x(),player.y());
-        notice(debugSession?"RESTED AT CAMP / TEST SESSION NOT SAVED":"RESTED AT CAMP / CHECKPOINT SAVED");
+        campaignCheckpoint=rest<0?1:FieldObjects.REST_CHECKPOINT+rest;player.heal();emit(EventType.CHECKPOINT,player.x(),player.y());
+        String where=rest<0?"RESTED AT CAMP":"RESTED AT THE BRAZIER";
+        notice(debugSession?where+" / TEST SESSION NOT SAVED":where+" / CHECKPOINT SAVED");
         saveProgress();return true;
     }
 
@@ -256,9 +263,14 @@ public final class RuinedOutpostGame {
 
     private boolean campaignInteract() {
         if(blocked())return false;
+        if(fieldInteract())return true;
         if(biome==0&&nearCampaignHub()) {
             if(!dialogueSeen(OutpostDialogue.CAMP))openDialogue(bossDefeated?OutpostDialogue.CAMP_LATE:OutpostDialogue.CAMP);
             else if(campaignUnlocks.contains("landmark_0_9")&&!dialogueSeen(OutpostDialogue.REPORT))openDialogue(OutpostDialogue.REPORT);
+            else if(rescued()==FieldObjects.SURVIVORS.length&&!dialogueSeen(OutpostDialogue.CAMP_HOME)) {
+                openDialogue(OutpostDialogue.CAMP_HOME);grantShards(4);saveProgress();
+            }
+            else if(rescued()>0&&!dialogueSeen(OutpostDialogue.CAMP_RESCUED))openDialogue(OutpostDialogue.CAMP_RESCUED);
             else openDialogue(bossDefeated?OutpostDialogue.CAMP_AFTER:OutpostDialogue.CAMP_WAIT);
             return true;
         }
@@ -344,6 +356,8 @@ public final class RuinedOutpostGame {
     public int upgradeLevel(String key) { return upgrades.getOrDefault(key,0); }
     public String campaignNotice() { return campaignNotice; }
     public boolean saveAvailable() { return savedProgress!=null; }
+    public boolean saveNeedsConfirmation() { return savedProgress!=null||saveBlocked; }
+    public String savedAreaName() { return savedProgress==null?"":CampaignWorld.area(savedProgress.biome()).name(); }
     public int campaignCheckpoint() { return campaignCheckpoint; }
     public boolean biomeUnlocked(int id) { return id>=0&&id<CampaignWorld.AREA_COUNT&&id==0; }
 
@@ -537,6 +551,7 @@ public final class RuinedOutpostGame {
             return;
         }
         if(blocked())return;
+        if(carried!=null&&player.bladeForm())dropCarried();
         if(horizontal!=0||vertical!=0)cancelAbsorption();
         // Fixed maximum physics step prevents fast dashes skipping enemies or thin walls.
         for (double remaining=Math.min(seconds,0.5); remaining>0.000001; ) {
@@ -797,8 +812,13 @@ public final class RuinedOutpostGame {
         emit(EventType.ATTACK,player.x(),player.y());
         return true;
     }
-    static double strikeWindup(int move) { return switch(move) {case 1->.10;case 2->.14;case 3->.20;case 4,SPIN_CLEAVE->.18;case DASH_SLASH->.08;default->.09;}; }
-    static double strikeDuration(int move) { return switch(move) {case 1->.34;case 2->.40;case 3->.54;case 4->.58;case DASH_SLASH->.36;case SPIN_CLEAVE->.70;default->.30;}; }
+    /*
+     * Weighted, not frantic (2026-10-23): the old 0.30-0.54 s moves played 12 poses at ~40 fps, so the
+     * four-pose draw lasted 90 ms and nothing read. Light cuts now sit at 0.40-0.48 s with a 0.13-0.17 s
+     * draw (Hades / Dead Cells range); the finisher is the longest move. BladeCombatTest guards the floor.
+     */
+    static double strikeWindup(int move) { return switch(move) {case 1->.14;case 2->.17;case 3->.24;case 4,SPIN_CLEAVE->.18;case DASH_SLASH->.10;default->.13;}; }
+    static double strikeDuration(int move) { return switch(move) {case 1->.42;case 2->.48;case 3->.70;case 4->.58;case DASH_SLASH->.42;case SPIN_CLEAVE->.70;default->.40;}; }
     /** Every cut is made with a step: world pixels he advances during the wind-up, landing on contact. */
     static double strikeStep(int move) { return switch(move) {case 1->30;case 3->20;case 4,SPIN_CLEAVE->26;case DASH_SLASH->40;default->16;}; }
     /**
@@ -954,6 +974,7 @@ public final class RuinedOutpostGame {
             }
         }
         if(bossHit&&(kind!=1||bossFirst)&&hurtGuardian(strikeDamage,false))afterGuardianHit(false);
+        fieldStrike();
     }
     private boolean bladeHits(double x,double y) {
         double length=Math.max(1,Math.hypot(aimX,aimY)),dx=x-player.x(),dy=y-player.y();
@@ -1136,7 +1157,14 @@ public final class RuinedOutpostGame {
         }
     }
     public boolean transform() {
-        if(blocked()||!player.transform()) return false;
+        if(blocked())return false;
+        double feet=player.y()+Player.COLLISION_Y_OFFSET;
+        // Only a slime-only gap traps a Blade; anywhere else keeps the old rules.
+        if(!player.bladeForm()&&map.isBlocked(player.x(),feet,Player.COLLISION_RADIUS,false)
+                &&!map.isBlocked(player.x(),feet,Player.COLLISION_RADIUS,true)) {
+            notice("NO ROOM TO CHANGE HERE");deny();return false;
+        }
+        if(!player.transform()) return false;
         cancelAbsorption();
         cancelBladeInput();
         comboTime=counterWindow=0;
@@ -1158,6 +1186,8 @@ public final class RuinedOutpostGame {
     public String interactionPrompt() {
         if (blocked()) return "";
         if(campaignMode) {
+            String field=fieldPrompt();
+            if(!field.isEmpty())return field;
             if(nearCampaignHub())return (biome==0?"E TALK TO MARA / ":"")+"H REST + SAVE / U CAMP";
             for(var landmark:campaignArea().landmarks())if(landmark.optional()&&near(landmark.x(),landmark.y(),120))return "E EXAMINE "+landmark.name();
             if(near(campaignArea().exit().x(),campaignArea().exit().y(),140))return !bossDefeated?"DEFEAT "+guardian.bossName()
@@ -1177,6 +1207,140 @@ public final class RuinedOutpostGame {
         }
         return "";
     }
+    // ------------------------------------------------------------------ field objects (FieldObjects)
+
+    private boolean fieldDone(String id) { return campaignUnlocks.contains("field_"+id); }
+    private void markField(String id) { campaignUnlocks.add("field_"+id); }
+    public boolean fieldDone(FieldObjects.Spot spot) { return fieldDone(spot.id()); }
+    public boolean restLit(int index) { return campaignMode&&fieldDone("rest_"+index); }
+    public FieldObjects.Spot carried() { return carried; }
+    public int rescued() { int n=0; for(int i=0;i<FieldObjects.SURVIVORS.length;i++)if(fieldDone("survivor_"+i))n++; return n; }
+    public int tinsDelivered() { int n=0; for(var s:FieldObjects.all(0))if(s.kind()==FieldObjects.Kind.TIN&&fieldDone(s))n++; return n; }
+
+    private static int restIndex(int checkpoint) {
+        return checkpoint>=FieldObjects.REST_CHECKPOINT&&checkpoint<FieldObjects.REST_CHECKPOINT+FieldObjects.rests(0).size()
+                ?checkpoint-FieldObjects.REST_CHECKPOINT:-1;
+    }
+
+    /** Where a carriable lies now, or null while it rides in the slime or is used up. */
+    public CampaignWorld.Point fieldPosition(FieldObjects.Spot spot) {
+        if(!campaignMode||spot==carried||fieldDone(spot))return null;
+        return dropped.getOrDefault(spot.id(),new CampaignWorld.Point(spot.x(),spot.y()));
+    }
+
+    /** Thorns stop everyone until cut; a crawl fence's gap stops all but the slime. */
+    private void syncFieldGates() {
+        var solid=new ArrayList<RuinedOutpostMap.Obstacle>();var slimeOnly=new ArrayList<RuinedOutpostMap.Obstacle>();
+        if(campaignMode)for(var spot:FieldObjects.all(biome)) {
+            if(spot.kind()!=FieldObjects.Kind.CRAWL&&spot.kind()!=FieldObjects.Kind.BRAMBLE)continue;
+            if(spot.kind()==FieldObjects.Kind.BRAMBLE&&fieldDone(spot))continue;
+            solid.addAll(FieldObjects.gateParts(spot,false));slimeOnly.addAll(FieldObjects.gateParts(spot,true));
+        }
+        map.setFieldGates(solid,slimeOnly);
+    }
+
+    private int nearLitRest() {
+        var rests=FieldObjects.rests(biome);
+        for(int i=0;i<rests.size();i++)if(restLit(i)&&near(rests.get(i).x(),rests.get(i).y(),150))return i;
+        return -1;
+    }
+
+    private FieldObjects.Spot nearbyField(FieldObjects.Kind kind,double reach) {
+        if(!campaignMode)return null;
+        for(var spot:FieldObjects.all(biome)) {
+            if(spot.kind()!=kind)continue;
+            var at=FieldObjects.carriable(kind)?fieldPosition(spot):fieldDone(spot)?null:new CampaignWorld.Point(spot.x(),spot.y());
+            if(at!=null&&near(at.x(),at.y(),reach))return spot;
+        }
+        return null;
+    }
+
+    private void dropCarried() {
+        if(carried==null)return;
+        dropped.put(carried.id(),new CampaignWorld.Point(player.x(),player.y()+40));
+        notice(carried.name()+" SLIPS OUT");carried=null;
+    }
+
+    /** E near the field objects: deliver, rescue, unlock, swallow or put down. False when none applies. */
+    private boolean fieldInteract() {
+        if(!campaignMode)return false;
+        boolean slime=!player.bladeForm();
+        if(carried!=null&&carried.kind()==FieldObjects.Kind.TIN&&biome==0&&nearCampaignHub()) {
+            markField(carried.id());carried=null;grantShards(1);emit(EventType.PICKUP,player.x(),player.y());
+            notice("SUPPLY TIN DELIVERED / "+tinsDelivered()+" OF "+FieldObjects.count(0,FieldObjects.Kind.TIN));
+            saveProgress();return true;
+        }
+        var survivor=nearbyField(FieldObjects.Kind.SURVIVOR,110);
+        if(survivor!=null) {
+            markField(survivor.id());grantShards(2);emit(EventType.UPGRADE,player.x(),player.y());
+            openDialogue(OutpostDialogue.survivor(survivor.variant()));saveProgress();return true;
+        }
+        var cache=nearbyField(FieldObjects.Kind.CACHE,110);
+        if(cache!=null) {
+            if(carried==null||carried.kind()!=FieldObjects.Kind.KEY) {notice("LOCKED / ITS KEY IS SOMEWHERE IN THE OUTPOST");deny();return true;}
+            markField(carried.id());markField(cache.id());carried=null;grantShards(3);emit(EventType.UPGRADE,player.x(),player.y());
+            openDialogue(OutpostDialogue.LEDGER);saveProgress();return true;
+        }
+        for(var kind:new FieldObjects.Kind[]{FieldObjects.Kind.KEY,FieldObjects.Kind.TIN}) {
+            var item=nearbyField(kind,90);
+            if(item==null)continue;
+            if(!slime) {notice("NO POCKETS IN THIS FORM / THE SLIME COULD CARRY IT");deny();return true;}
+            if(carried!=null)break;
+            carried=item;dropped.remove(item.id());emit(EventType.PICKUP,player.x(),player.y());
+            notice(item.name()+" SWALLOWED / CARRY IT INSIDE");return true;
+        }
+        if(carried!=null&&nearbyCorpse()==null&&!nearCampaignHub()) {dropCarried();return true;}
+        return false;
+    }
+
+    /** A Blade strike that reaches thorns cuts them; one that reaches a cold brazier strikes it alight. */
+    private void fieldStrike() {
+        if(!campaignMode||!player.bladeForm())return;
+        for(var spot:FieldObjects.all(biome)) {
+            if(spot.kind()!=FieldObjects.Kind.BRAMBLE||fieldDone(spot)||!fieldHit(spot.x(),spot.y()-12,40))continue;
+            markField(spot.id());syncFieldGates();events.add(new Event(EventType.ENEMY_HIT,spot.x(),spot.y()-20,false));
+            hitStop=.06;notice("THE THORNS FALL / "+spot.name()+" IS OPEN");saveProgress();
+        }
+        var rests=FieldObjects.rests(biome);
+        for(int i=0;i<rests.size();i++) {
+            if(restLit(i)||!fieldHit(rests.get(i).x(),rests.get(i).y()-30,30))continue;
+            markField("rest_"+i);emit(EventType.CHECKPOINT,rests.get(i).x(),rests.get(i).y());
+            notice("BRAZIER LIT / H TO REST HERE");saveProgress();
+        }
+    }
+    /** The strike's reach, ignoring the target's own footprint (a brazier or a wall is solid). */
+    private boolean fieldHit(double x,double y,double size) {
+        double length=Math.max(1,Math.hypot(aimX,aimY)),dx=x-player.x(),dy=y-player.y();
+        double forward=(dx*aimX+dy*aimY)/length,side=Math.abs(dx*aimY-dy*aimX)/length;
+        return forward>=-size&&forward<=strikeRange+size&&side<=strikeRange*.65+size;
+    }
+
+    /** Hints and actions for the field objects in reach; empty when none. */
+    private String fieldPrompt() {
+        boolean slime=!player.bladeForm();
+        if(carried!=null&&carried.kind()==FieldObjects.Kind.TIN&&biome==0&&nearCampaignHub())return "E HAND OVER THE SUPPLY TIN";
+        var survivor=nearbyField(FieldObjects.Kind.SURVIVOR,110);
+        if(survivor!=null)return "E TALK TO "+survivor.name();
+        var cache=nearbyField(FieldObjects.Kind.CACHE,110);
+        if(cache!=null)return carried!=null&&carried.kind()==FieldObjects.Kind.KEY?"E UNLOCK THE CACHE":"LOCKED CACHE / FIND ITS KEY";
+        for(var kind:new FieldObjects.Kind[]{FieldObjects.Kind.KEY,FieldObjects.Kind.TIN}) {
+            var item=nearbyField(kind,90);
+            if(item==null)continue;
+            if(!slime)return item.name()+" / ONLY THE SLIME CAN CARRY IT";
+            if(carried==null)return "E SWALLOW THE "+item.name();
+        }
+        for(var spot:FieldObjects.all(biome)) {
+            if(!near(spot.x(),spot.y(),170))continue;
+            if(spot.kind()==FieldObjects.Kind.CRAWL&&!slime)return "TOO LOW TO PASS / THE SLIME COULD SQUEEZE UNDER";
+            if(spot.kind()==FieldObjects.Kind.BRAMBLE&&!fieldDone(spot))return slime?"THORNS / THE BLADE COULD CUT THROUGH":"STRIKE TO CUT THE THORNS";
+        }
+        var rests=FieldObjects.rests(biome);
+        for(int i=0;i<rests.size();i++)if(near(rests.get(i).x(),rests.get(i).y(),150))
+            return restLit(i)?"H REST + SAVE":slime?"COLD BRAZIER / THE BLADE COULD LIGHT IT":"STRIKE TO LIGHT THE BRAZIER";
+        if(carried!=null&&nearbyCorpse()==null&&!nearCampaignHub())return "CARRYING THE "+carried.name()+" / E PUT IT DOWN";
+        return "";
+    }
+
     public boolean interact() {
         if(dialogue!=null)return advanceDialogue();
         if(campaignMode&&campaignInteract())return true;

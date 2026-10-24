@@ -54,6 +54,9 @@ public final class GameAudio {
         UPGRADE(0.36, 520, 1040, 0.16, false, null, false),
         UI_OPEN(0.10, 600, 900, 0.12, false, null, false),
         UI_CLOSE(0.10, 900, 600, 0.12, false, null, false),
+        UI_MOVE(0.06, 660, 740, 0.07, false, null, false),
+        UI_CONFIRM(0.16, 440, 660, 0.10, false, null, false),
+        JOURNEY_START(0.90, 294, 587, 0.18, false, null, false),
         TIDE_DISSIPATE(0.30, 260, 120, 0.12, true),
         RESPAWN(0.50, 330, 660, 0.18, false, null, false);
 
@@ -96,6 +99,7 @@ public final class GameAudio {
     public enum Loop {
         CHARGE("charge_loop", 0.0), HEARTBEAT("heartbeat", 0.6), AMBIENCE("ambience_rain", 0.0),
         BOSS_MUSIC("boss_music", 0.0, true, BOSS_MUSIC_LEVEL),
+        TITLE_MUSIC("title_music", 0.0, true, 1.8),
         // the slime eating a remain: plays once, and can be stopped if the eat is cut short
         EATING("eating", 0.0, false, 1.0, true);
 
@@ -171,12 +175,14 @@ public final class GameAudio {
         int at;                                           // byte offset into pcm; past the end while in the gap
         boolean stopping;                                 // fading out after stopLoop, removed when silent
         double fade = 1;
+        int fadeIn;
 
         Voice(byte[] pcm, int wait, Loop loop, int gap) {
             this.pcm = pcm;
             this.wait = wait;
             this.loop = loop;
             this.gap = gap;
+            fadeIn = loop == Loop.TITLE_MUSIC ? SAMPLE_RATE : 0;
         }
 
         /** The next sample at unit gain, advancing; 0 in the wait or the gap. */
@@ -189,8 +195,9 @@ public final class GameAudio {
             }
             int value = (short) ((pcm[at] & 0xff) | pcm[at + 1] << 8);
             at += 2;
+            if(fadeIn>0)value=(int)(value*(1-fadeIn--/(double)SAMPLE_RATE));
             if (stopping) {
-                fade = Math.max(0, fade - 1.0 / STOP_FADE);
+                fade = Math.max(0, fade - 1.0 / (loop==Loop.TITLE_MUSIC?SAMPLE_RATE:STOP_FADE));
                 return (int) (value * fade);
             }
             return value;

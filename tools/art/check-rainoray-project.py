@@ -45,13 +45,16 @@ with tempfile.TemporaryDirectory(prefix="rainoray-timeline-") as temporary:
     data = json.loads(metadata.read_text())
     assert len(data["frames"]) == 1344 and len(data["meta"]["frameTags"]) == 152
     tags = {tag["name"]: tag for tag in data["meta"]["frameTags"]}
-    for name, total in {"run_south": 500, "dash_west": 120, "draw_cut_east": 300,
-                        "spin_cleave_north": 700, "cast_south": 350, "run_northeast": 500, "draw_cut_southwest": 300}.items():
+    for name, total in {"run_south": 500, "dash_west": 120, "draw_cut_east": 400,
+                        "spin_cleave_north": 700, "cast_south": 350, "run_northeast": 500,
+                        "draw_cut_southwest": 400, "thrust_south": 420, "diagonal_cut_north": 480,
+                        "overhead_cut_south": 700, "dash_slash_west": 420}.items():
         tag = tags[name]
         durations = [f["duration"] for f in data["frames"][tag["from"]:tag["to"]+1]]
         assert sum(durations) == total, (name, durations)
         if name == "draw_cut_east":
-            assert sum(durations[:4]) == 90, "contact starts after the windup"
+            assert sum(durations[:4]) == 130, "contact starts after the current windup"
+            assert durations[4] == 51 and durations[4] > durations[5], "hold the contact pose as the game does"
 
 assert hashlib.sha256(project.read_bytes()).hexdigest() == original, "export must preserve the native project"
 print("PASS: 1344 frames, 152 clips, game timings, 18 lossless sheets and overwrite protection")

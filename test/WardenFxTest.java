@@ -87,15 +87,20 @@ public final class WardenFxTest {
             assert sheet!=null&&sheet.getWidth()==184*4&&sheet.getHeight()==112;
             var frames=new java.util.HashSet<Integer>();
             for(int frame=0;frame<4;frame++) {
-                int visible=0;
-                for(int y=0;y<112;y+=2)for(int x=0;x<184;x+=2) {
+                // Native-resolution pixels (drawn at 2x like the world), in solid clusters: lone pixels that
+                // differ from all four neighbours would be the noisy dither this sweep once had.
+                int visible=0,lone=0;
+                for(int y=1;y<111;y++)for(int x=1;x<183;x++) {
                     int p=sheet.getRGB(frame*184+x,y);
                     assert (p>>>24)==0||(p>>>24)==255;
-                    for(int dy=0;dy<2;dy++)for(int dx=0;dx<2;dx++)
-                        assert sheet.getRGB(frame*184+x+dx,y+dy)==p : "sweep must not regress to noisy dither";
-                    if(p!=0)visible++;
+                    if(p==0)continue;
+                    visible++;
+                    int same=0;
+                    for(int[] d:new int[][]{{1,0},{-1,0},{0,1},{0,-1}})if(sheet.getRGB(frame*184+x+d[0],y+d[1])==p)same++;
+                    if(same==0)lone++;
                 }
-                assert visible>200&&visible<1500;
+                assert visible>800&&visible<6000 : "sweep coverage "+visible;
+                assert lone*100<visible*3 : "sweep must not regress to noisy dither ("+lone+" lone pixels)";
                 frames.add(Arrays.hashCode(sheet.getRGB(frame*184,0,184,112,null,0,184)));
             }
             assert frames.size()==4 : "cleave needs a complete turn";

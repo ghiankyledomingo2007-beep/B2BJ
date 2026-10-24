@@ -181,7 +181,9 @@ public final class CampaignRenderer {
         switch (kind) {
             case CAMPFIRE -> fire(g, FIRE_CAMP, 30, p.x(), p.y() - 16, cx, cy, frame + phase);
             case BRAZIER -> {
-                boolean cold = SetPieces.arenaBrazier(p) && game.guardian().alive() && game.guardian().state() == Guardian.State.DORMANT;
+                int rest = game.biome() == 0 ? SetPieces.restBrazier(p) : -1;
+                boolean cold = SetPieces.arenaBrazier(p) && game.guardian().alive() && game.guardian().state() == Guardian.State.DORMANT
+                        || rest >= 0 && !game.restLit(rest);
                 if (!cold) fire(g, FIRE_BRAZIER, 22, p.x(), p.y() - 60, cx, cy, frame + phase);
             }
             case WATCHTOWER -> fire(g, FIRE_BRAZIER, 22, p.x() + 4, p.y() - 376, cx, cy, frame + phase);
@@ -260,7 +262,7 @@ public final class CampaignRenderer {
         });
     }
     /** Copies native cell (sx, sy, w, h) of a sheet to (left, top) at 2x. */
-    private static void cell2x(Graphics2D g, java.awt.image.BufferedImage sheet, int left, int top, int sx, int sy, int w, int h) {
+    static void cell2x(Graphics2D g, java.awt.image.BufferedImage sheet, int left, int top, int sx, int sy, int w, int h) {
         var big = doubled(sheet);
         g.drawImage(big, left, top, left + w * 2, top + h * 2, sx * 2, sy * 2, (sx + w) * 2, (sy + h) * 2, null);
     }
@@ -527,9 +529,7 @@ public final class CampaignRenderer {
         else if (now > ghostHoldUntil) ghost = Math.max(health, ghost - dt * .6);
 
         int w = 560, x0 = width / 2 - w / 2, y0 = 40;
-        var font=Ui.heading(26);
-        int titleWidth=g.getFontMetrics(font).stringWidth(boss.bossName());
-        Ui.prose(g,boss.bossName(),(width-titleWidth)/2,30,font,boss.enraged()?Ui.DANGER:Ui.TEXT);
+        Ui.drawTitleCentered(g,boss.bossName(),width/2,10,2,boss.enraged()?Ui.BLOOD_RAMP:Ui.BONE_RAMP);
         int left = Ui.Piece.BOSS_LEFT.w * Ui.S, right = Ui.Piece.BOSS_RIGHT.w * Ui.S;
         for (int x = x0 + left; x < x0 + w - right; x += Ui.Piece.BOSS_MID.w * Ui.S) {
             int tile = Math.min(Ui.Piece.BOSS_MID.w * Ui.S, x0 + w - right - x);
@@ -699,6 +699,10 @@ public final class CampaignRenderer {
             int px = snap(mx + point.x() * sx), py = snap(my + point.y() * sy);
             mark(g, px, py, dot, new Color(0x7b8da4));
         }
+        // Lit rest braziers glow like the camp; cold ones are not shown until found.
+        var rests = FieldObjects.rests(game.biome());
+        for (int i = 0; i < rests.size(); i++) if (game.restLit(i))
+            mark(g, snap(mx + rests.get(i).x() * sx), snap(my + rests.get(i).y() * sy), dot, new Color(0xf08a32));
         int hx = snap(mx + area.hub().x() * sx), hy = snap(my + area.hub().y() * sy);
         mark(g, hx, hy, dot + 1, new Color(0xf08a32));
         int bx = snap(mx + area.boss().x() * sx), by = snap(my + area.boss().y() * sy);

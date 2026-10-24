@@ -4,7 +4,7 @@ Open **Rainoray-Body-and-Separate-Sword.blend** in Blender 4.5 or newer.
 
 - **RainorayBody**: the full character, skinned to the existing 20-bone **RainorayRig**.
 - **RainoraySword**: separate weapon mesh. Hidden initially so the whole body can be inspected. Expand RainorayRig in the Outliner; enable the sword's eye and camera icons to show it in the viewport and renders.
-- **RainorayMask**: removable simplified face surface, weighted to the head. White face, black curves and smile, one flat red dot. Hide it to compare with the original face underneath. `mask-simple.png` is the packed texture source.
+- **RainorayMask**: removable ivory face surface, weighted to the head. Its paired black hooks, cheek curves, jaw line and red dot are integrated geometry with flat materials; hiding the mask also hides its markings. The approved reference is `mask-reference-20261024.png`; `mask-simple.png` remains an earlier design source.
 
 The rig includes torso, head, hair, both arms, hands, legs and feet. It does **not** have individual finger bones or facial controls. The blade bone remains under hand.R but is hidden in the viewport; unhide it for weapon posing. Body vertices no longer follow the blade bone; the sword is fully weighted to it.
 
@@ -37,7 +37,7 @@ blender -b --python tools/sprite3d/animate.py -- docs/art-review/sprite3d-run/so
 
 As of 2026-10-23, `build_sheets.py` renders this editable file directly, showing the sword only in memory. It no longer rebuilds the old GLB or uses the old puppet cache. Default output is `build/rainoray-sprites`. Render first, review, then use `--install`; installation replaces live sheets and does not merge teammates' pixel edits.
 
-The renderer adds a tiny flat red decal over the existing mask dot so it stays visible at native resolution, then snaps it to the character palette. The editable model and packed mask texture remain untouched. See the [human-form polish review](../../../rainoray-human-polish/README.md) for current stance, movement and contact effects.
+The renderer adds a tiny red decal for legacy masks. The current model carries its own integrated dot and disables that extra decal. Its `appearance_frame_height` keeps the revised head proportions and the longest side thrust inside their existing cells. See the [human-form polish review](../../../rainoray-human-polish/README.md) for stance, movement and contact effects.
 
 
 ## 2026-10-22 — Side-run sword carry
@@ -61,3 +61,22 @@ is S, E, N, W, SE, NE, NW, SW. `build_sheets.py --preserve-cardinals` reuses the
 polished cardinal frames and renders only diagonal views. All 19 actions, four trail
 sheets and transformations are covered. The native project has 1,344 frames / 152 tags.
 See [the eight-way review](../../../rainoray-eight-way/README.md).
+
+## 2026-10-24 — Compact head and readable mask
+
+The upper head is shorter, the mask has connected dark markings and a single red
+dot, and the boots use two broad tones. All 20 bones, body weights, foot geometry
+and procedural action poses are retained. The eight-way runtime and native editor
+timeline were rebuilt together. The integrated mask is a single removable object.
+
+`tools/sprite3d/refit_appearance.py` records this one-time conversion: it requires
+an original input model and a fresh output path, checks the rig and feet, and
+refuses to apply the refit twice. The original model is backed up outside the
+repository at `~/tmp/rainoray-refit-20261024/before/`. Do not run `rebuild.py` over
+this revised file. [Current review](../../../rainoray-refit/README.md).
+
+The follow-up `tools/sprite3d/polish_appearance.py` replaces the forehead crest with
+the approved curved pattern and repaints the coat in broad navy panels, a dark
+opening, muted edge trim and a small clasp. It preserves all body vertices,
+weights, bones and action poses. It also requires a fresh output and refuses a
+second application. All eight directions and the native timeline were rebuilt.

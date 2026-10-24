@@ -11,6 +11,24 @@ public final class BladeCombatTest {
             assert B2BJ.bladeAttackFrame(contact,move)==4 : "contact art and damage share one clock";
             assert B2BJ.bladeAttackFrame(RuinedOutpostGame.strikeDuration(move),move)==11;
         }
+        // The owner found the old 0.30 s cuts frantic. Each cut must keep a readable draw, a contact pose that
+        // holds, and room to recover; the finisher is the heaviest of the chain.
+        for(int move:new int[]{0,1,2,3,RuinedOutpostGame.DASH_SLASH}) {
+            double windup=RuinedOutpostGame.strikeWindup(move),duration=RuinedOutpostGame.strikeDuration(move);
+            assert windup>=.10&&duration>=.40 : "move "+move+" became frantic: "+windup+"/"+duration;
+            assert duration>=2.5*windup : "move "+move+" needs follow-through and recovery after contact";
+            double held=0,shortest=1;int last=-1;double since=0;
+            for(double t=0;t<duration;t+=.001) {
+                int frame=B2BJ.bladeAttackFrame(t,move);
+                if(frame==4)held+=.001;
+                if(frame!=last){if(last>=0)shortest=Math.min(shortest,since);last=frame;since=0;}
+                since+=.001;
+            }
+            assert held>=.045 : "move "+move+" contact pose must hold at least three 60 Hz frames";
+            assert shortest>=.02 : "move "+move+" flashes a pose for under 1.2 frames ("+shortest+" s)";
+        }
+        for(int move=0;move<3;move++)assert RuinedOutpostGame.strikeDuration(3)>RuinedOutpostGame.strikeDuration(move)+.15
+                &&RuinedOutpostGame.strikeWindup(3)>RuinedOutpostGame.strikeWindup(move) : "the finisher is the weightiest cut";
         var game=fixture();
         for(int step=0;step<4;step++) {
             click(game,1,0);assert game.bladeMove()==step : "one click advances one move";
@@ -20,7 +38,7 @@ public final class BladeCombatTest {
         click(game,1,0);assert game.bladeMove()==0 : "finisher starts fresh next click";
         advance(game,1);click(game,1,0);assert game.bladeMove()==0 : "timeout resets chain";
 
-        game=fixture();click(game,1,0);advance(game,.21);
+        game=fixture();click(game,1,0);advance(game,RuinedOutpostGame.strikeDuration(0)-.09);
         click(game,0,-1);click(game,-1,0);advance(game,.12);
         assert game.bladeMove()==1 : "single late click buffers, extra clicks never skip moves";
         assert game.bladeAimY()==-1 : "buffer keeps intentional direction";
@@ -48,7 +66,7 @@ public final class BladeCombatTest {
         assert !game.charging()&&!game.bladeAttacking() : "pause discards release";
         game.primaryPress(1,0);advance(game,.3);assert game.dash(0,1);game.primaryRelease(1,0);
         assert !game.charging()&&!game.bladeAttacking() : "dash cancels charge";
-        game=fixture();click(game,1,0);advance(game,.12);assert game.dash(0,1);
+        game=fixture();click(game,1,0);advance(game,RuinedOutpostGame.strikeWindup(0)+.02);assert game.dash(0,1);
         advance(game,.18);click(game,1,0);assert game.bladeMove()==1 : "one recovery dodge preserves chain";
         assert !game.dash(1,0) : "cannot cancel contact into free damage";
         advance(game,.6);assert game.dash(0,1);advance(game,.18);click(game,1,0);
@@ -138,7 +156,7 @@ public final class BladeCombatTest {
         // Resolve the thrust with two targets in one lane; the farther one must remain untouched.
         var combo=RuinedOutpostGame.class.getDeclaredField("combo");combo.setAccessible(true);combo.setInt(game,0);
         var timer=RuinedOutpostGame.class.getDeclaredField("comboTime");timer.setAccessible(true);timer.setDouble(game,.5);
-        click(game,1,0);advance(game,.14);
+        click(game,1,0);advance(game,RuinedOutpostGame.strikeWindup(1)+.02);
         assert a.health()==76&&b.health()==100 : "thrust strikes one nearest target";
         int health=a.health();advance(game,.1);assert a.health()==health : "animation never repeats damage";
         game=fixture();game.player().setGodMode(false);click(game,1,0);

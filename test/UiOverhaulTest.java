@@ -16,12 +16,63 @@ public final class UiOverhaulTest {
         SwingUtilities.invokeAndWait(() -> {
             try {
                 titleMenuGuardsTheSave();
+                titleShortcutsAndSavedArea();
+                titlePreservesAnUnreadableSaveUntilConfirmed();
                 areaCardFloatsThenLeaves();
             } catch (Exception failure) {
                 throw new AssertionError(failure);
             }
         });
         System.out.println("UiOverhaulTest passed");
+    }
+
+    private static void titleShortcutsAndSavedArea() throws Exception {
+        Path save=Files.createTempFile("b2bj-title-area-",".properties");
+        try {
+            CampaignSave.save(save,new CampaignSave.Progress(1,0,java.util.Set.of(0),java.util.Set.of(),java.util.Map.of()));
+            byte[] original=Files.readAllBytes(save);
+            var game=RuinedOutpostGame.campaign(save);
+            var panel=new B2BJ(false,game);
+            panel.setSize(1280,720);panel.doLayout();panel.step(.01);
+            assert game.biome()==0&&game.savedAreaName().equals("CORRUPTED FOREST")
+                    : "Continue describes the saved area, not the title's initial world";
+            var resume=(PixelSwing.Button)shown(panel,"Continue");
+            assert resume.getAccessibleContext().getAccessibleDescription().equals(game.savedAreaName());
+            assert GameAudio.loopRunning(GameAudio.Loop.TITLE_MUSIC);
+            panel.step(2);
+            shown(panel,"Settings").doClick(0);panel.step(.01);
+            assert GameAudio.loopRunning(GameAudio.Loop.TITLE_MUSIC) : "settings keep the title theme playing";
+            panel.getActionMap().get("pausePressed").actionPerformed(new ActionEvent(panel,0,"Escape"));
+            panel.getActionMap().get("pauseReleased").actionPerformed(new ActionEvent(panel,0,"Escape"));
+            panel.step(.01);
+            assert resume.titleTime>2 : "closing Settings must not replay the title entrance";
+            panel.getActionMap().get("newCampaignPressed").actionPerformed(new ActionEvent(panel,0,"N"));
+            assert game.story().phase()==OutpostStory.Phase.PROLOGUE&&shown(panel,TitleMenu.CONFIRM).isEnabled();
+            assert java.util.Arrays.equals(original,Files.readAllBytes(save)) : "N cannot bypass save confirmation";
+            assert GameAudio.loopRunning(GameAudio.Loop.TITLE_MUSIC) : "a confirmation is not a journey start";
+            panel.getActionMap().get("newCampaignReleased").actionPerformed(new ActionEvent(panel,0,"N"));
+            panel.getActionMap().get("continuePressed").actionPerformed(new ActionEvent(panel,0,"C"));
+            assert game.biome()==1&&game.story().phase()!=OutpostStory.Phase.PROLOGUE;
+            assert !GameAudio.loopRunning(GameAudio.Loop.TITLE_MUSIC) : "entering the world fades the title music";
+            assert java.util.Arrays.equals(original,Files.readAllBytes(save)) : "Continue preserves the checkpoint";
+            panel.step(2);game.pause();assert game.returnToTitle();panel.step(.01);
+            assert resume.titleTime<.1 : "returning from gameplay replays the entrance";
+        } finally {Files.deleteIfExists(save);GameAudio.stopLoops();}
+    }
+
+    private static void titlePreservesAnUnreadableSaveUntilConfirmed() throws Exception {
+        Path save=Files.createTempFile("b2bj-title-unreadable-",".properties");
+        try {
+            Files.writeString(save,"an interrupted save");
+            var game=RuinedOutpostGame.campaign(save);
+            var panel=new B2BJ(false,game);panel.setSize(1280,720);panel.doLayout();panel.step(.01);
+            assert !shown(panel,"Continue").isEnabled();
+            shown(panel,TitleMenu.NEW).doClick(0);
+            assert Files.readString(save).equals("an interrupted save") : "a corrupt save also needs confirmation";
+            shown(panel,TitleMenu.CONFIRM).doClick(0);
+            assert game.story().phase()!=OutpostStory.Phase.PROLOGUE&&CampaignSave.load(save).isPresent()
+                    : "explicit confirmation must allow recovery into a new journey";
+        } finally {Files.deleteIfExists(save);GameAudio.stopLoops();}
     }
 
     /** Fonts, atlas and title art load; every kit rectangle lies inside the atlas and has pixels in it. */

@@ -5,9 +5,10 @@ public final class CombatArtTest {
     public static void main(String[] args) {
         transparentTailValidation();
         check("assets/characters/guardian/guardian_walk.png",64,64,8,1,8);
-        check("assets/characters/guardian/guardian_death.png",64,64,12,1,12);
+        // The Warden's strips are 128 px cells so its 256 px body draws at the game's 2x.
+        check("assets/characters/guardian/guardian_death.png",128,128,12,1,12);
         for(String action:new String[]{"sweep","charge","wave"})
-            check("assets/characters/guardian/guardian_"+action+".png",64,64,8,1,8);
+            check("assets/characters/guardian/guardian_"+action+".png",128,128,8,1,8);
         check("assets/characters/wisp/remnant_walk.png",48,48,4,3,3);
         check("assets/characters/wisp/remnant_attack.png",48,48,8,3,8);
         check("assets/characters/slime/slime_cast.png",48,48,8,3,8);

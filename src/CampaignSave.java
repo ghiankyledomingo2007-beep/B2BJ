@@ -24,7 +24,9 @@ public final class CampaignSave {
     public record Progress(int biome, int checkpoint, Set<Integer> clearedBosses,
             Set<String> unlocks, Map<String, Integer> upgrades, int shards) {
         public Progress {
-            if (biome < 0 || biome >= CampaignWorld.AREA_COUNT || checkpoint < 0 || checkpoint > 1)
+            boolean rest = checkpoint >= FieldObjects.REST_CHECKPOINT
+                    && checkpoint < FieldObjects.REST_CHECKPOINT + FieldObjects.rests(Math.max(0, biome)).size();
+            if (biome < 0 || biome >= CampaignWorld.AREA_COUNT || checkpoint < 0 || (checkpoint > 1 && !rest))
                 throw new IllegalArgumentException("Invalid biome or checkpoint");
             if (shards < 0 || shards > 100_000) throw new IllegalArgumentException("Invalid shard count");
             clearedBosses = Set.copyOf(clearedBosses);

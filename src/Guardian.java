@@ -10,7 +10,7 @@ public final class Guardian {
     }
     public enum State { DORMANT, APPROACH, TELEGRAPH, SLAM, RECOVER, HURT, DEAD }
     public enum Attack { TARGET, SWEEP, CHARGE, SHOCKWAVE, FISSURE }
-    /** Row order in warden_motion.png: eight native 64px frames per row. */
+    /** Row order in warden_motion.png: eight 128 px frames per row (drawn at 2x). */
     public enum Animation { IDLE, APPROACH, WINDUP, STRIKE, RECOVER, CHARGE, DEATH }
     public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*4, MAX_HEALTH=1200, SLAM_DAMAGE=35;
     public static final int GROUND_Y_OFFSET=48, SPRITE_FOOT_ROW=56;

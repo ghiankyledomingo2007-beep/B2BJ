@@ -38,6 +38,12 @@ final class PixelSwing {
         private static final long serialVersionUID = 1L;
         private final Ui.Icon icon;
         private boolean quiet;
+        private int textScale = 2;
+        boolean titleSelected;
+        String subtitle = "";
+        int titleChoice;
+        double titleTime, titleFocus;
+        boolean reducedTitleMotion;
 
         Button(String text, Ui.Icon icon) {
             super(text);
@@ -64,13 +70,18 @@ final class PixelSwing {
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
             if (quiet) {
+                double reveal=TitleScreen.entrance(titleTime,.78+titleChoice*.13,.5,reducedTitleMotion);
+                g.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)reveal));
+                g.translate((int)(-22*(1-reveal)+6*titleFocus),0);
                 boolean down = getModel().isArmed() && getModel().isPressed();
-                if (hot()) {
-                    Ui.fade(g,0,0,getWidth(),getHeight(),90,0);
-                    g.setColor(Ui.GOLD_LIGHT); g.fillRect(0,9,2,getHeight()-18);
+                boolean selected = isEnabled() && titleSelected;
+                int baseline = subtitle.isEmpty() ? getHeight()/2 + (textScale==3?10:7) : 32;
+                if (selected) {
+                    TitlePointer.draw(g,baseline,titleTime,reducedTitleMotion);
                 }
-                Ui.prose(g,getText(),20+(down?2:0),getHeight()/2+7,Ui.body(21),
-                        !isEnabled()?Ui.DIM:hot()?Ui.GOLD_LIGHT:Ui.TEXT);
+                Ui.text(g,getText(),44+(down?2:0),baseline,textScale,
+                        !isEnabled()?Ui.DIM:selected?Ui.GOLD_LIGHT:textScale==3?Ui.TEXT:Ui.MUTED);
+                if(!subtitle.isEmpty())Ui.text(g,subtitle,44,58,2,isEnabled()?Ui.MUTED:Ui.DIM);
                 g.dispose(); return;
             }
             ButtonModel m = getModel();
@@ -110,10 +121,11 @@ final class PixelSwing {
         return button;
     }
 
-    static JButton textButton(String text, char mnemonic, Runnable action) {
+    static Button textButton(String text, char mnemonic, int scale, Runnable action) {
         var button = new Button(text,null);
         button.quiet = true;
-        button.setFont(Ui.body(21));
+        button.textScale = scale;
+        button.setFont(Ui.sans(scale));
         button.setMnemonic(mnemonic);
         button.addActionListener(event -> action.run());
         return button;

@@ -49,9 +49,9 @@ public final class B2BJ extends JPanel {
     private CampaignMenu menu;
     private TitleMenu titleMenu;
     private CampMenu campMenu;
-    private javax.swing.JButton campButton;
     private final TitleScreen titleScreen = new TitleScreen();
     private double titleTime;
+    private boolean titleActive;
     private int cardBiome = -1;
     private double cardTime = 99;
     private OutpostStory.Phase lastPhase;
@@ -220,13 +220,13 @@ public final class B2BJ extends JPanel {
             menuButton.getAccessibleContext().setAccessibleName("Game menu");
             menuButton.addActionListener(event->{if(menuShown())closeMenu();else openMenu();});
             add(menu);add(menuButton);
-            titleMenu = new TitleMenu(game::saveAvailable,
-                    () -> { var from=snapshot(); if(game.continueCampaign()) { resetVisualState(); startLoading(from,LoadingScreen.Kind.ENTER); } },
+            titleMenu = new TitleMenu(game,
+                    () -> { var from=snapshot(); if(game.continueCampaign()) { resetVisualState(); enterJourney(from); } },
                     () -> {
                         var from=snapshot();
-                        if(game.saveAvailable())game.newCampaign(); else game.begin();
+                        game.newCampaign();
                         resetVisualState();
-                        if(game.story().phase()!=OutpostStory.Phase.PROLOGUE)startLoading(from,LoadingScreen.Kind.ENTER);
+                        if(game.story().phase()!=OutpostStory.Phase.PROLOGUE)enterJourney(from);
                     },
                     () -> { openMenu(); menu.settings(); },
                     () -> {
@@ -237,9 +237,6 @@ public final class B2BJ extends JPanel {
             add(titleMenu);
             campMenu=new CampMenu(game,this::closeCamp,()->{closeCamp();game.interact();});
             campMenu.setVisible(false);add(campMenu);
-            campButton=PixelSwing.button("Camp",'U',Ui.Icon.CAMP,this::openCamp,true);
-            campButton.setToolTipText("U: open camp services");
-            campButton.setVisible(false);add(campButton);
             setComponentZOrder(campMenu,0);
 
         }
@@ -336,9 +333,8 @@ public final class B2BJ extends JPanel {
         super.doLayout();
         if(menu==null)return;
         menuButton.setBounds(Math.max(8,getWidth()-140),16,124,40);
-        if(titleMenu!=null) { titleMenu.setBounds(68,374,310,208); titleMenu.doLayout(); }
+        if(titleMenu!=null) { titleMenu.setBounds(68,386,420,250); titleMenu.doLayout(); }
         if(campMenu!=null) {
-            campButton.setBounds(20,getHeight()-72,190,48);
             campMenu.setBounds((getWidth()-580)/2,(getHeight()-510)/2,580,510);campMenu.doLayout();
         }
         int width=Math.min(menu.getPreferredSize().width,Math.max(1,getWidth()-32));
@@ -353,7 +349,7 @@ public final class B2BJ extends JPanel {
     private void openCamp() {
         if(campMenu==null||game.blocked()||menuShown()||loading.active()||!game.nearCampaignHub())return;
         clearInput();GameAudio.stopLoops();campMenu.refresh();campMenu.setVisible(true);
-        campButton.setVisible(false);doLayout();campMenu.focusFirst();repaint();
+        doLayout();campMenu.focusFirst();repaint();
     }
     private void closeCamp() {
         clearInput();if(campMenu!=null)campMenu.setVisible(false);requestFocusInWindow();repaint();
@@ -407,6 +403,12 @@ public final class B2BJ extends JPanel {
     private boolean titleArt() { return game.campaignMode()&&TitleScreen.available(); }
     private boolean titleShown() { return titleMenu!=null&&titleMenu.isVisible(); }
 
+    private void enterJourney(BufferedImage from) {
+        GameAudio.stopLoop(GameAudio.Loop.TITLE_MUSIC);
+        GameAudio.play(GameAudio.Cue.JOURNEY_START);
+        startLoading(from,LoadingScreen.Kind.ENTER);
+    }
+
     /** Title menu shows on the title screen while the game menu is closed; the corner Menu button does not. */
     private void syncTitle() {
         var desiredCursor=!game.blocked()&&!campShown()&&!menuShown()?CombatUi.cursor():java.awt.Cursor.getDefaultCursor();
@@ -419,18 +421,23 @@ public final class B2BJ extends JPanel {
         if(campMenu!=null) {
             boolean camp=game.nearCampaignHub()&&!game.blocked()&&!loading.active()&&!menuShown();
             if(campShown()&&!camp){campMenu.setVisible(false);clearInput();requestFocusInWindow();}
-            campButton.setVisible(camp&&!campShown());
         }
         if(titleMenu==null)return;
         boolean title=titleArt()&&game.story().phase()==OutpostStory.Phase.PROLOGUE;
+        if(title&&!titleActive) {titleTime=0;titleScreen.enter();}
+        titleActive=title;
+        if(title)GameAudio.startLoop(GameAudio.Loop.TITLE_MUSIC,1);
+        else GameAudio.stopLoop(GameAudio.Loop.TITLE_MUSIC);
         boolean show=title&&!menuShown();
         if(titleMenu.isVisible()!=show) {
             titleMenu.setVisible(show);
-            if(show) { titleMenu.refresh(); titleMenu.focusDefault(); titleTime=0; }
+            if(show) { titleMenu.refresh(); titleMenu.focusDefault(); }
         }
         boolean corner=!title&&!loading.active();
         if(menuButton.isVisible()!=corner)menuButton.setVisible(corner);
         if(show)titleMenu.refresh();
+        titleMenu.animate(titleTime,reducedEffects);
+        titleScreen.select(titleMenu.selectedChoice());
     }
     private void openMenu() {
         if(campShown())closeCamp();
@@ -929,6 +936,7 @@ public final class B2BJ extends JPanel {
         Player player=game.player();
         if(game.campaignMode()&&game.biome()==0)draws.add(new DepthDraw(game.campaignArea().hub().y()+64,
                 ()->DialogueRenderer.drawMara(canvas,game,cameraX,cameraY)));
+        FieldRenderer.queue(canvas,game,cameraX,cameraY,frameCounter,(ground,paint)->draws.add(new DepthDraw(ground,paint)));
         for(Wisp scout:game.scouts()) if(scout.visible())
             draws.add(new DepthDraw(scout.y()+WispAnimation.RENDER_SIZE/2,
                     ()->{
@@ -986,6 +994,7 @@ public final class B2BJ extends JPanel {
         if(!game.campaignMode()||game.biome()==0)drawWeather(canvas,cameraX,cameraY,false);
         drawDamageNumbers(canvas,cameraX,cameraY);
         if(!game.blocked()&&!menuShown()&&!campShown()) {
+            if(game.nearCampaignHub())campPrompts(canvas,cameraX,cameraY);
             Wisp target=hoveredEnemy(cameraX,cameraY);
             for(var enemy:game.scouts()) {
                 int bx=(int)enemy.x()-cameraX,by=enemyBarY(enemy)-cameraY;
@@ -1002,6 +1011,26 @@ public final class B2BJ extends JPanel {
                 CombatUi.direction(canvas,(int)player.x()-cameraX,(int)player.y()-cameraY+24,aim[0],aim[1]);
             }
         }
+    }
+
+    private SetPieces.Piece campfire;
+    private int campfireArea=-1;
+
+    /** "U Camp" over the campfire and "E Talk" over Mara, the way the world names what can be used. */
+    private void campPrompts(Graphics2D canvas,int cameraX,int cameraY) {
+        var hub=game.campaignArea().hub();
+        if(campfireArea!=game.biome()) {
+            campfireArea=game.biome();
+            campfire=SetPieces.pieces(game.biome()).stream().filter(p->p.kind()==SetPieces.Kind.CAMPFIRE)
+                    .min(java.util.Comparator.comparingDouble(p->Math.hypot(p.x()-hub.x(),p.y()-hub.y()))).orElse(null);
+        }
+        int bob=reducedEffects?0:(int)Math.round(Math.sin(weatherTime*3))*2;
+        double fx=campfire!=null?campfire.x():hub.x(),fy=campfire!=null?campfire.y():hub.y();
+        Ui.worldPrompt(canvas,"U","Camp",(int)Math.round(fx)-cameraX,(int)Math.round(fy)-cameraY-86+bob);
+        var carried=game.carried();
+        String maraVerb=carried!=null&&carried.kind()==FieldObjects.Kind.TIN?"Hand over tin":"Talk";
+        if(game.biome()==0)Ui.worldPrompt(canvas,"E",maraVerb,(int)Math.round((hub.x()-112)/2)*2-cameraX,
+                (int)Math.round((hub.y()+64)/2)*2-cameraY-156+bob);
     }
 
     private int enemyBarY(Wisp body) {
@@ -1131,6 +1160,7 @@ public final class B2BJ extends JPanel {
                     sourceX, sourceY,
                     sourceX + cell,
                     sourceY + cell, null);
+            FieldRenderer.carried(canvas,game,cameraX,cameraY,frameCounter);
             return;
         } else {
             canvas.setColor(TEAL);
@@ -1232,10 +1262,20 @@ public final class B2BJ extends JPanel {
         return Math.max(BladeAnimation.CELL_WIDTH,sheet.getWidth()/BladeAnimation.columns(action));
     }
 
+    /**
+     * Relative screen time of the authored poses. Draw: the coiled last pose (3) holds. After contact: the
+     * contact pose (4) and the follow-through end (7) hold, the smear (5) passes, the return to guard (9-11) eases.
+     */
+    private static final double[] DRAW_POSES={.8,.9,1,1.3},CUT_POSES={1.5,.8,1,1.5,1,.8,.7,.7};
     static int bladeAttackFrame(double elapsed,int move) {
         double contact=RuinedOutpostGame.strikeWindup(move),duration=RuinedOutpostGame.strikeDuration(move);
-        return elapsed<contact?Math.max(0,Math.min(3,(int)(elapsed/contact*4)))
-                :4+Math.min(7,(int)((elapsed-contact)/(duration-contact)*8));
+        return elapsed<contact?posedFrame(elapsed/contact,DRAW_POSES):4+posedFrame((elapsed-contact)/(duration-contact),CUT_POSES);
+    }
+    private static int posedFrame(double progress,double[] weights) {
+        double total=0;for(double w:weights)total+=w;
+        double at=Math.max(0,progress)*total;
+        for(int i=0;i<weights.length;i++)if((at-=weights[i])<0)return i;
+        return weights.length-1;
     }
 
     /**
@@ -1356,9 +1396,9 @@ public final class B2BJ extends JPanel {
         if (!guardian.visible() || (guardian.alive() && !guardian.flashVisible())) {
             return;
         }
-        // Keep native integer scales: Briarheart at 2x, the larger Warden at 4x.
+        // Both bosses at the game's 2x: Briarheart's 96 px cells, the Warden's 128 px cells.
         BufferedImage motionSheet=game.campaignMode()&&game.biome()==1&&briarheartSheet!=null?briarheartSheet:wardenMotionSheet;
-        int cell=motionSheet==briarheartSheet?96:Guardian.CELL_SIZE,foot=cell*Guardian.SPRITE_FOOT_ROW/Guardian.CELL_SIZE;
+        int cell=motionSheet!=null?motionSheet.getWidth()/8:Guardian.CELL_SIZE,foot=cell*Guardian.SPRITE_FOOT_ROW/Guardian.CELL_SIZE;
         int renderSize=motionSheet==briarheartSheet?192:Guardian.RENDER_SIZE;
         boolean motion=motionSheet!=null&&motionSheet.getWidth()>=8*cell&&motionSheet.getHeight()>=7*cell;
         int size = motion||guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null?renderSize
@@ -1377,7 +1417,8 @@ public final class B2BJ extends JPanel {
         if(motionSheet==wardenMotionSheet&&actionSheet!=null&&guardian.actionFrame()>=0) {
             int frame=guardian.actionFrame();
             boolean flip=guardian.attack()!=Guardian.Attack.SHOCKWAVE&&guardian.directionX()<0;
-            canvas.drawImage(actionSheet,flip?x+size:x,y,flip?x:x+size,y+size,frame*64,0,frame*64+64,64,null);
+            int ac=actionSheet.getHeight();   // one row of square cells, 64 or 128 px
+            canvas.drawImage(actionSheet,flip?x+size:x,y,flip?x:x+size,y+size,frame*ac,0,frame*ac+ac,ac,null);
         } else if(motion) {
             int sourceX=guardian.animationFrame()*cell;
             int sourceY=guardian.animation().ordinal()*cell;
@@ -1385,7 +1426,7 @@ public final class B2BJ extends JPanel {
                     sourceX+cell,sourceY+cell,null);
         } else if(guardian.state()==Guardian.State.DEAD&&guardianDeathSheet!=null) {
             int frame=Math.min(11,(int)(guardian.stateSeconds()/Guardian.DEATH_DURATION*12));
-            canvas.drawImage(guardianDeathSheet,x,y,x+size,y+size,frame*64,0,frame*64+64,64,null);
+            int dc=guardianDeathSheet.getHeight();canvas.drawImage(guardianDeathSheet,x,y,x+size,y+size,frame*dc,0,frame*dc+dc,dc,null);
         } else if(guardian.state()==Guardian.State.APPROACH&&guardianWalkSheet!=null) {
             int frame=(int)(guardian.stateSeconds()*8)%8;
             canvas.drawImage(guardianWalkSheet,x,y,x+size,y+size,frame*64,0,frame*64+64,64,null);
@@ -1396,7 +1437,8 @@ public final class B2BJ extends JPanel {
                 default -> 6+Math.min(1,(int)(guardian.stateSeconds()/Guardian.RECOVER_DURATION*2));
             };
             boolean flip=guardian.attack()==Guardian.Attack.SWEEP&&guardian.directionX()<0;
-            canvas.drawImage(actionSheet,flip?x+size:x,y,flip?x:x+size,y+size,frame*64,0,frame*64+64,64,null);
+            int ac=actionSheet.getHeight();   // one row of square cells, 64 or 128 px
+            canvas.drawImage(actionSheet,flip?x+size:x,y,flip?x:x+size,y+size,frame*ac,0,frame*ac+ac,ac,null);
         } else if (guardianSheet == null) {
             canvas.setColor(new Color(73, 81, 97));
             canvas.fillRect(x + size / 5, y + size / 6,
@@ -2432,8 +2474,8 @@ public final class B2BJ extends JPanel {
     /** Arrow keys / W S walk the menu's controls; Enter presses the focused one. True when used. */
     private boolean menuKey(int keyCode) { return walk(menu,keyCode,true); }
 
-    /** The same on the title menu; Enter with nothing focused falls through to the classic start key. */
-    private boolean titleKey(int keyCode) { return walk(titleMenu,keyCode,false); }
+    /** Title shortcuts share the buttons' confirmation and sounds. */
+    private boolean titleKey(int keyCode) { return titleMenu.press(keyCode)||walk(titleMenu,keyCode,true); }
 
     private static boolean walk(java.awt.Container root,int keyCode,boolean enterAlways) {
         var controls=PixelSwing.controls(root).stream().filter(c->c.isEnabled()&&c.isShowing()).toList();

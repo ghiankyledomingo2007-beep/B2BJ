@@ -264,13 +264,14 @@ public final class Player {
             RuinedOutpostMap map) {
         double nextX = clamp(x + directionX * distance,
                 RADIUS, map.worldWidth() - RADIUS);
-        if (!map.isBlocked(nextX, y + COLLISION_Y_OFFSET, COLLISION_RADIUS)) {
+        boolean slime = !bladeForm();
+        if (!map.isBlocked(nextX, y + COLLISION_Y_OFFSET, COLLISION_RADIUS, slime)) {
             x = nextX;
         }
 
         double nextY = clamp(y + directionY * distance,
                 RADIUS, map.worldHeight() - RADIUS);
-        if (!map.isBlocked(x, nextY + COLLISION_Y_OFFSET, COLLISION_RADIUS)) {
+        if (!map.isBlocked(x, nextY + COLLISION_Y_OFFSET, COLLISION_RADIUS, slime)) {
             y = nextY;
         }
     }

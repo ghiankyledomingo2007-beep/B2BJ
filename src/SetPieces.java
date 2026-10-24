@@ -77,6 +77,14 @@ public final class SetPieces {
         return List.copyOf(list);
     }
 
+    /** Index of the rest brazier this piece is (FieldObjects.rests), or -1. */
+    public static int restBrazier(Piece p) {
+        if (p.kind() != Kind.BRAZIER) return -1;
+        var rests = FieldObjects.rests(0);
+        for (int i = 0; i < rests.size(); i++) if (rests.get(i).x() == p.x() && rests.get(i).y() == p.y()) return i;
+        return -1;
+    }
+
     /** The four braziers round the Warden's floor: cold until it wakes. */
     public static boolean arenaBrazier(Piece p) {
         var gatehouse = CampaignWorld.area(0).landmarks().get(8);
@@ -164,6 +172,8 @@ public final class SetPieces {
         }
         var exit = CampaignWorld.area(0).exit();
         list.add(new Piece(Kind.EAST_GATE, exit.x(), exit.y(), 0));
+        // Rest braziers (FieldObjects): cold until the Blade strikes them alight.
+        for (var rest : FieldObjects.rests(0)) list.add(new Piece(Kind.BRAZIER, rest.x(), rest.y(), 0));
         return List.copyOf(list);
     }
 

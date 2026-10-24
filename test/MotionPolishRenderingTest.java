@@ -55,8 +55,8 @@ public final class MotionPolishRenderingTest {
                 CombatArtTest.check("assets/effects/"+name+".png",cell,cell,8,1,8,true);
             }
             var boss=B2BJ.loadImage("assets/characters/guardian/warden_motion.png");
-            assert boss!=null&&boss.getWidth()==512&&boss.getHeight()==448 : "seven boss action rows";
-            CombatArtTest.check("assets/characters/guardian/warden_motion.png",64,64,8,7,8);
+            assert boss!=null&&boss.getWidth()==1024&&boss.getHeight()==896 : "seven boss action rows at 128 px, drawn at 2x";
+            CombatArtTest.check("assets/characters/guardian/warden_motion.png",128,128,8,7,8);
             B2BJ panel=new B2BJ(false);panel.game().begin();panel.game().player().relocate(400,300);
             var events=B2BJ.class.getDeclaredMethod("handleEvents",List.class);events.setAccessible(true);
             var draw=B2BJ.class.getDeclaredMethod("drawImpacts",Graphics2D.class,int.class,int.class);draw.setAccessible(true);

@@ -21,24 +21,5 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Compile
-        run: |
-          mkdir -p build/classes build/tests
-          javac --release 17 -Xlint:all -d build/classes src/*.java
-          javac --release 17 -Xlint:all -cp build/classes -d build/tests test/*.java
-          mkdir -p build/classes/assets
-          for asset_dir in characters tilesets ui effects; do
-            cp -R "assets/$asset_dir" build/classes/assets/
-          done
-          mkdir -p build/classes/assets/props
-          cp -R assets/props/outpost build/classes/assets/props/
-
-      - name: Test
-        run: |
-          for test_file in test/*Test.java; do
-            test_name="${test_file##*/}"
-            java -Djava.awt.headless=true -ea -cp "build/classes:build/tests" "${test_name%.java}" || exit 1
-          done
-          repo_dir="$PWD"
-          cd /tmp
-          java -Djava.awt.headless=true -ea -cp "$repo_dir/build/classes:$repo_dir/build/tests" PackagedAssetLoadingTest
+      - name: Build and test the complete game
+        run: bash build.sh

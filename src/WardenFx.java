@@ -18,7 +18,7 @@ final class WardenFx {
      * rage burns, its motion atlas's cell size, and whether the Outpost's arena braziers answer it.
      */
     record Theme(String prefix, String name, String title, int glow, int cell, boolean braziers) {
-        static final Theme WARDEN = new Theme("warden", "OUTPOST WARDEN", "KEEPER OF THE EAST GATE", 0x7aeee6, 64, true);
+        static final Theme WARDEN = new Theme("warden", "OUTPOST WARDEN", "KEEPER OF THE EAST GATE", 0x7aeee6, 128, true);
         static final Theme BRIARHEART = new Theme("briar", "BRIARHEART", "ROOT OF THE DESCENT", 0xffdd80, 96, false);
     }
     private final Theme theme;
@@ -52,7 +52,7 @@ final class WardenFx {
 
     WardenFx(BufferedImage motionAtlas, Theme theme) {
         this.theme = theme;
-        cell = theme.cell();
+        cell = motionAtlas != null && motionAtlas.getWidth() >= 8 ? motionAtlas.getWidth() / 8 : theme.cell();
         renderSize=cell==96?192:Guardian.RENDER_SIZE;
         foot = cell * Guardian.SPRITE_FOOT_ROW / Guardian.CELL_SIZE;   // the foot row scales with the cell
         String base = "assets/effects/" + theme.prefix() + "_";
@@ -337,10 +337,14 @@ final class WardenFx {
             case BEAM -> {
                 if (BEAM == null) break;
                 double grow = Math.min(1, b.age / .35), fade = b.age > b.life - .4 ? (b.life - b.age) / .4 : 1;
-                int h = (int) (280 * grow), w = (int) (56 * Math.max(.2, fade));
+                // Rises by revealing rows and fades by alpha, always at exactly 2x: stretching it mixed pixel sizes.
+                int rows = Math.max(1, (int) (140 * grow)), w = 56, h = rows * 2;
                 int sx = (int) Math.round(b.x) - cx - w / 2, sy = (int) Math.round(b.y) - cy - h;
                 int f = (int) (frame / 3 % 4);
-                g.drawImage(BEAM, sx, sy, sx + w, sy + h, f * 28, 0, f * 28 + 28, 140, null);
+                var beam = (java.awt.Graphics2D) g.create();
+                beam.setComposite(java.awt.AlphaComposite.SrcOver.derive((float) Math.max(0, Math.min(1, fade))));
+                beam.drawImage(BEAM, sx, sy, sx + w, sy + h, f * 28, 140 - rows, f * 28 + 28, 140, null);
+                beam.dispose();
             }
             default -> { }
         }

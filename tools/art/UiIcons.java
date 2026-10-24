@@ -109,6 +109,9 @@ final class UiIcons {
             { // SWORD
                 "..........kk", ".........kJk", "........kJjk", ".......kJjk.", "......kJjk..", ".....kJjk...",
                 ".k..kJjk....", ".kykJjk.....", "..kyjk......", ".kRkyk......", "kRk..k......", "kk.........."},
+            { // HOURGLASS: slower Ichor drain
+                ".kkkkkkkkkk.", ".kWXXXXXXWk.", "..kwwwwwwk..", "..kwYYYYwk..", "...kwYYwk...", "....kwYk....",
+                "....kYwk....", "...kwwYwk...", "..kwwYYYwk..", "..kYYYYYYk..", ".kWXXXXXXWk.", ".kkkkkkkkkk."},
         };
     }
 

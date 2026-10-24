@@ -336,46 +336,158 @@ final class Buildings {
     }
 
     // ------------------------------------------------------------------ field infirmary
+    /** Open-fronted hospital tent: sagging patched canvas on four poles, a lantern-lit ward of rumpled cots. */
     static Canvas infirmary() {
         var k = SetPieces.Kind.INFIRMARY;
         Canvas c = new Canvas(k.width, k.anchorY + 4);
         int g = k.anchorY - 1, x0 = k.anchorX - 82, w = 164, front = g - 72, back = front - 28;
-        c.rect(x0 + 2, back + 2, w - 4, g - back - 2, Pal.CANVAS[0]);                       // shadowed interior
-        for (int y = back + 2; y < g; y++) for (int x = x0 + 2; x < x0 + w - 2; x++) if (Noise.bayer(x, y) < (y - back) / 140.0) c.set(x, y, Pal.MUD[1]);
-        for (int cot = 0; cot < 3; cot++) {
-            int bx = x0 + 12 + cot * 52;
-            c.rect(bx, g - 20, 40, 9, Pal.CANVAS[4]); c.hline(bx, bx + 39, g - 20, Pal.CANVAS[5]);
-            c.rect(bx + 14, g - 19, 26, 8, cot == 1 ? Pal.CANVAS[3] : Pal.CRIMSON[3]);
-            c.hline(bx + 14, bx + 39, g - 19, cot == 1 ? Pal.CANVAS[4] : Pal.CRIMSON[4]);
-            for (int x = bx + 16; x < bx + 40; x += 6) c.set(x, g - 15, cot == 1 ? Pal.CANVAS[2] : Pal.CRIMSON[2]);
-            c.rect(bx + 2, g - 19, 9, 5, Pal.CANVAS[5]); c.hline(bx + 2, bx + 10, g - 15, Pal.CANVAS[3]);
-            c.hline(bx, bx + 39, g - 11, Pal.WOOD[3]); c.hline(bx, bx + 39, g - 10, Pal.WOOD[1]);
-            for (int lx : new int[]{bx, bx + 38}) { c.vline(lx, g - 11, g - 3, Pal.WOOD[3]); c.vline(lx + 1, g - 11, g - 3, Pal.WOOD[1]); }
+        int[] poles = {x0 - 4, x0 + 52, x0 + 108, x0 + w};
+        int[] eave = new int[c.w];                                                              // front edge sags between poles
+        for (int x = 0; x < c.w; x++) {
+            int p = 0; while (p < 2 && x > poles[p + 1]) p++;
+            double t = Math.max(0, Math.min(1, (x - poles[p]) / (double) (poles[p + 1] - poles[p])));
+            eave[x] = front + (int) Math.round(4 * Math.sin(Math.PI * t));
         }
-        Kit.poly(c, Pal.CANVAS[3], x0 - 7, front, x0 + 6, back, x0 + w - 6, back, x0 + w + 7, front);   // canvas roof
-        for (int x = x0 - 6; x < x0 + w + 6; x++) {
-            if (Math.floorMod(x - x0, 20) < 10) c.line(x, front, x + 6, back + 1, Pal.CANVAS[4]);
-            c.set(x, back + 1, Pal.CANVAS[5]);
+        // ward interior: back wall, trampled floor
+        int top = front + 6;
+        c.rect(x0 + 2, top, w - 4, g - top, Pal.CANVAS[1]);
+        for (int x = x0 + 9; x < x0 + w - 4; x += 17) {                                         // hanging folds of the back wall
+            c.vline(x, top, g - 27, Pal.CANVAS[0]); c.vline(x + 1, top + 3, g - 27, Pal.CANVAS[2]);
         }
-        for (int x = x0 - 7; x < x0 + w + 7; x++) {                                             // scalloped valance
-            int m = Math.floorMod(x - x0, 16), drop = 7 + (m < 8 ? m / 2 : (15 - m) / 2);
-            for (int y = front; y < front + drop; y++) c.set(x, y, y == front ? Pal.CANVAS[5] : y == front + drop - 1 ? Pal.CANVAS[1] : Math.floorMod(x - x0, 32) < 16 ? Pal.CANVAS[4] : Pal.CRIMSON[3]);
+        c.rect(x0 + 2, g - 26, w - 4, 26, Pal.MUD[1]);
+        c.hline(x0 + 2, x0 + w - 3, g - 26, Pal.CANVAS[0]);
+        for (int y = g - 25; y < g; y++) for (int x = x0 + 3; x < x0 + w - 3; x++) {          // straw and boot-churned mud
+            double r = Noise.rnd(x, y, 41);
+            if (r < .018) { c.set(x, y, Pal.DRY[2]); if (r < .007) c.set(x + 1, y, Pal.DRY[3]); }
+            else if (Noise.fbm(x, y * 2, 9, 2, 43) > .64) c.set(x, y, Pal.MUD[2]);
         }
-        for (int px : new int[]{x0 - 4, x0 + 52, x0 + 108, x0 + w}) Structures.post(c, px, front + 6, g, 5);
-        for (int y = 0; y < 30; y++) for (int x = 0; x < 10; x++)                             // the expedition's pale sash as a sign
-            c.set(x0 + 76 + x, front + 10 + y, x <= 1 ? Pal.CANVAS[5] : y % 9 == 4 ? Pal.CRIMSON[3] : Pal.CANVAS[4]);
+        String[] blanket = {"crimson", "folded", "stone"};
+        for (int bay = 0; bay < 3; bay++) cot(c, poles[bay] + 9, g - 7, blanket[bay]);
+        for (int i = 0; i < 4; i++) {                                                           // dressings drying on a line in the first bay
+            int bx = poles[0] + 12 + i * 9, len = 7 + (i * 5) % 4;
+            c.vline(bx, top + 9, top + 9 + len, Pal.BONE[2]); c.vline(bx + 1, top + 9, top + 8 + len, Pal.BONE[1]);
+        }
+        c.line(poles[0] + 6, top + 8, poles[1] - 4, top + 10, Pal.DRY[1]);
+        Canvas basin = Decals.ascii(
+                ".NNNNNN.",
+                "NddddddN",
+                ".mmmmmm.",
+                "..nnnn..");
+        c.blit(basin, poles[2] - 4, g - 6);
+        // warm lantern light, stepped up through each ramp so the ward reads lit from within
+        int lx = poles[1] + 28, ly = top + 9;
+        for (int y = top; y < g; y++) for (int x = x0 + 2; x < x0 + w - 2; x++) {
+            double d = Math.hypot((x - lx) * .8, (y - ly) * 1.1);
+            int step = d < 12 ? 2 : d < 32 ? 1 : 0;
+            if (step > 0 && c.opaque(x, y)) c.set(x, y, Pal.shift(c.get(x, y), step));
+        }
+        c.vline(lx, top - 2, ly - 4, Pal.IRON[2]);
+        Canvas lantern = Decals.ascii(
+                ".nn.",
+                "nJJn",
+                "JIIJ",
+                "JIIJ",
+                "nJJn");
+        c.blit(lantern, lx - 1, ly - 3);
+        // the roof: canvas panels pulled taut at the poles, sagging and creased between them
+        for (int y = back; y <= front + 4; y++) {
+            double t = Math.min(1, (y + .5 - back) / (front - back));
+            int left = (int) Math.round(x0 + 6 - 13 * t), right = (int) Math.round(x0 + w - 6 + 13 * t);
+            for (int x = left; x < right; x++) {
+                if (y > eave[x]) continue;
+                int p = 0; while (p < 2 && x > poles[p + 1]) p++;
+                double u = (x - poles[p]) / (double) (poles[p + 1] - poles[p]);
+                int colour = u < .28 ? Pal.CANVAS[4] : u > .8 ? Pal.CANVAS[2] : Pal.CANVAS[3];
+                if (Noise.fbm(x, y * 1.6, 14, 3, 7) > .66) colour = Pal.shift(colour, -1);    // rain stains in hard blotches
+                if (y >= eave[x] - 2) colour = Pal.shift(colour, -1);
+                if (y == back) colour = Pal.WOOD[2]; else if (y == back + 1) colour = Pal.WOOD[4];
+                c.set(x, y, colour);
+            }
+        }
+        for (int p = 0; p < 3; p++) {                                                           // tension creases from the sag to the ridge
+            int mid = (poles[p] + poles[p + 1]) / 2, span = poles[p + 1] - poles[p];
+            for (int side : new int[]{-1, 1}) {
+                int tx = mid + side * span / 6, ty = back + (front - back) / 2;
+                c.line(mid + side * 2, eave[mid] - 3, tx, ty, Pal.CANVAS[2]);
+                c.line(mid + side * 2 + 1, eave[mid] - 4, tx + 1, ty + 4, Pal.CANVAS[4]);
+            }
+            c.line(poles[p + 1] - 1, back + 2, poles[p + 1] - 1, front, Pal.CANVAS[2]);       // the pole's ridge under the canvas
+            c.line(poles[p + 1], back + 2, poles[p + 1], front - 1, Pal.CANVAS[5]);
+        }
+        patch(c, x0 + 22, back + 7, 14, 9, Pal.DRY[3]);
+        patch(c, x0 + 118, back + 12, 11, 8, Pal.CANVAS[2]);
+        for (int i = 0; i < 6; i++) { int tx = x0 + 96 + i, ty = back + 6 + i / 2; c.set(tx, ty, Pal.INK); c.set(tx, ty + 1, Pal.CANVAS[0]); }   // a slit tear
+        for (int x = x0 - 6; x < x0 + w + 6; x++)                                               // mould creeping up from the eave
+            if (Noise.fbm(x, 0, 6, 2, 19) > .58) for (int y = eave[x] - 1 - (int) (Noise.rnd(x, 3, 19) * 3); y < eave[x]; y++) c.tint(x, y, Pal.GRASS[1]);
+        c.hline(x0 + 4, x0 + w - 5, back, Pal.WOOD[2]);
+        c.set(x0 + 3, back, Pal.WOOD[3]); c.set(x0 + w - 4, back, Pal.WOOD[3]);
+        // hem: a crimson band, frayed along the bottom
+        for (int x = x0 - 7; x < x0 + w + 7; x++) {
+            int y0 = eave[Math.max(0, Math.min(c.w - 1, x))] + 1;
+            c.set(x, y0, Pal.CANVAS[4]); c.set(x, y0 + 1, Pal.CRIMSON[3]); c.set(x, y0 + 2, Pal.CRIMSON[2]);
+            int fray = 1 + (Noise.hash(x, 0, 23) & 3) / 2;
+            for (int y = y0 + 3; y < y0 + 3 + fray; y++) c.set(x, y, Pal.CANVAS[2]);
+            if ((Noise.hash(x, 1, 23) & 31) == 0) for (int y = y0 + 3; y < y0 + 8; y++) c.set(x, y, Pal.CANVAS[2]);
+        }
+        for (int px : poles) Structures.post(c, px, front + 6, g, 5);
+        flap(c, poles[0] + 5, eave[poles[0] + 5] + 4, g, 1);
+        flap(c, poles[3] - 1, eave[poles[3] - 1] + 4, g, -1);
+        // guy ropes to pegs, supplies outside
+        c.line(x0 - 6, front + 1, x0 - 18, g + 1, Pal.DRY[2]); c.line(x0 + w + 6, front + 1, x0 + w + 16, g - 1, Pal.DRY[2]);
+        c.rect(x0 - 19, g - 1, 2, 4, Pal.WOOD[3]); c.rect(x0 + w + 15, g - 3, 2, 4, Pal.WOOD[3]);
         Canvas crate = Decals.ascii(
+                "..OOPp..OOP.",
+                ".OOOPPpOOOPp",
                 "vvvvvvvvvvvv",
                 "cbbbbbbbbbbx",
-                "cvOOOOOOOOvx",
-                "cvOOOUUOOOvx",
-                "cvOOUUUUOOvx",
-                "cvOOOUUOOOvx",
+                "cvccccccccvx",
+                "cGGGGGGGGGGx",
+                "cvccccccccvx",
                 "xxxxxxxxxxxz");
-        c.blit(crate, x0 + w + 8, g - crate.h + 1);
-        c.line(x0 - 6, front + 1, x0 - 20, g + 2, Pal.DRY[2]); c.line(x0 + w + 6, front + 1, x0 + w + 20, g - 9, Pal.DRY[1]);
+        c.blit(crate, x0 + w + 6, g - crate.h + 1);
         c.blit(Decals.TUFT_C.art(), x0 - 26, g - Decals.TUFT_C.art().h + 3);
         c.selectiveOutline();
         return c;
+    }
+
+    /** Wooden cot with a straw pillow and a blanket left the way its last patient left it. */
+    private static void cot(Canvas c, int x, int floor, String blanket) {
+        int top = floor - 12;
+        for (int lx : new int[]{x + 1, x + 36}) { c.vline(lx, top + 6, floor, Pal.WOOD[3]); c.vline(lx + 1, top + 6, floor, Pal.WOOD[1]); }
+        c.hline(x, x + 38, top + 6, Pal.WOOD[4]); c.hline(x, x + 38, top + 7, Pal.WOOD[2]);
+        c.rect(x + 1, top + 2, 37, 4, Pal.CANVAS[3]); c.hline(x + 1, x + 37, top + 2, Pal.CANVAS[4]);
+        c.rect(x + 2, top, 9, 4, Pal.BONE[2]); c.hline(x + 3, x + 9, top, Pal.BONE[3]); c.hline(x + 2, x + 10, top + 3, Pal.BONE[1]);
+        int[] ramp = blanket.equals("crimson") ? Pal.CRIMSON : blanket.equals("stone") ? Pal.STONE : Pal.CANVAS;
+        if (blanket.equals("folded")) {                                                          // squared away at the foot, never slept in
+            c.rect(x + 26, top - 1, 11, 5, ramp[4]); c.hline(x + 26, x + 36, top - 1, ramp[5]); c.hline(x + 26, x + 36, top + 2, ramp[2]);
+            return;
+        }
+        for (int bx = x + 12; bx <= x + 37; bx++) {                                             // thrown back, lumped where someone lay
+            double ph = ramp == Pal.STONE ? 2 : 0; int lift = (int) Math.round(1.8 + 1.3 * Math.sin((bx - x) * .3 + ph) + .7 * Math.sin((bx - x) * .85 + ph));
+            for (int y = top + 1 - lift; y <= top + 6; y++)
+                c.set(bx, y, y == top + 1 - lift ? ramp[4] : y == top + 6 ? ramp[1] : (bx - x) % 7 == 3 ? ramp[2] : ramp[3]);
+        }
+        c.vline(x + 37, top + 6, top + 9, ramp[2]);                                             // a corner trailing over the frame
+    }
+
+    /** A sewn-on square of other cloth, its stitches showing. */
+    private static void patch(Canvas c, int x, int y, int w, int h, int colour) {
+        for (int py = y; py < y + h; py++) for (int px = x; px < x + w; px++) if (c.opaque(px, py)) c.set(px, py, colour);
+        for (int px = x; px < x + w; px += 3) { c.tint(px, y, Pal.CANVAS[0]); c.tint(px + 1, y + h - 1, Pal.CANVAS[0]); }
+        for (int py = y + 1; py < y + h; py += 3) { c.tint(x, py, Pal.CANVAS[0]); c.tint(x + w - 1, py, Pal.CANVAS[0]); }
+        c.hline(x + 1, x + w - 2, y + 1, Pal.shift(colour, 1));
+    }
+
+    /** Front flap rolled up against a pole and tied off, its tail hanging. */
+    private static void flap(Canvas c, int x, int y, int floor, int dir) {
+        for (int i = 0; i < 26; i++) {
+            int width = Math.max(2, 9 - i / 3);
+            for (int j = 0; j < width; j++) {
+                int col = j == 0 ? Pal.CANVAS[2] : j == width - 1 ? Pal.CANVAS[5] : (i + j) % 6 == 0 ? Pal.CANVAS[2] : Pal.CANVAS[4];
+                c.set(x + dir * j, y + i, col);
+            }
+        }
+        c.hline(x - 1, x + dir * 4, y + 26, Pal.DRY[3]); c.hline(x - 1, x + dir * 4, y + 27, Pal.DRY[1]);
+        for (int i = 28; i < 40 && y + i < floor - 4; i++) { c.set(x + dir * (1 + i % 3 / 2), y + i, Pal.CANVAS[4]); c.set(x + dir * (2 + i % 3 / 2), y + i, Pal.CANVAS[2]); }
     }
 }

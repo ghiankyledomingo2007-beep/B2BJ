@@ -11,13 +11,16 @@ public final class BuildArt {
         if (what.equals("campfire")) campfire();
         if (what.equals("brazier")) brazier();
         if (what.equals("warden")) WardenArt.combat();
+        if (what.equals("warden-hires")) { WardenHiRes.build().save(WardenHiRes.OUT); WardenHiRes.strips(); }
         if (what.equals("dummy")) ImportedArt.dummy().save(SetPieces.Kind.DUMMY.sheet());
         if (what.equals("gate")) Structures.sheet(SetPieces.Kind.EAST_GATE).save(SetPieces.Kind.EAST_GATE.sheet());
         if (what.equals("tent")) Structures.tent().save(SetPieces.Kind.TENT.sheet());
+        if (what.equals("infirmary")) Structures.sheet(SetPieces.Kind.INFIRMARY).save(SetPieces.Kind.INFIRMARY.sheet());
         if (what.equals("all") || what.equals("portraits")) ImportedArt.portraits();
         if (what.equals("all") || what.equals("ground")) ground();
         if (what.equals("all") || what.equals("forest")) forest();
         if (what.equals("all") || what.equals("ui")) ui();
+        if (what.equals("all") || what.equals("field")) field();
         System.out.printf("art built (%s) in %.1fs%n", what, (System.nanoTime() - t) / 1e9);
     }
 
@@ -49,6 +52,21 @@ public final class BuildArt {
         UiArt.kit().save("assets/ui/kit.png");
         TitleArt.build();
         UiArt.splash().save("assets/ui/splash.png");
+    }
+
+    /** Field-camp rescue props (FieldArt); the side palisade must stack under itself before it is saved. */
+    static void field() {
+        FieldArt.verifySideSeams();
+        String dir = "assets/props/outpost/";
+        FieldArt.side().save(dir + "field_palisade_side.png");
+        FieldArt.crawl().save(dir + "field_crawl.png");
+        Canvas.strip(FieldArt.lowFence(0), FieldArt.lowFence(1), FieldArt.lowFence(2)).save(dir + "field_fence_low.png");
+        FieldArt.crawl(true).save(dir + "field_crawl_low.png");
+        Canvas.strip(FieldArt.key(0), FieldArt.key(1), FieldArt.key(2), FieldArt.key(3)).save(dir + "field_key.png");
+        FieldArt.tin().save(dir + "field_tin.png");
+        Canvas.strip(FieldArt.chest(false), FieldArt.chest(true)).save(dir + "field_chest.png");
+        FieldArt.survivors().save(dir + "field_survivor.png");
+        Canvas.strip(FieldArt.bedroll(0), FieldArt.bedroll(1)).save(dir + "field_bedroll.png");
     }
 
     static void campfire() {

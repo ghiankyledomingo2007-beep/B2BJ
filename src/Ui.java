@@ -52,7 +52,7 @@ final class Ui {
     /** 12x12 icons in one row of kit.png starting at y = 128 (and a second row at 140). */
     enum Icon {
         SHARD, OBJECTIVE, SKULL, CAMP, GATE, MEMORY, CACHE, PLAYER, MENU, GEAR, SOUND, EYE, FLASK, MAP, KEYS, DOOR,
-        BACK, PLAY, NEW, HEART, CROWN, STAIR, TIP, SWORD;
+        BACK, PLAY, NEW, HEART, CROWN, STAIR, TIP, SWORD, HOURGLASS;
         static final int CELL = 12, Y = 128, PER_ROW = 16;
         int x() { return ordinal() % PER_ROW * CELL; }
         int y() { return Y + ordinal() / PER_ROW * CELL; }
@@ -311,10 +311,22 @@ final class Ui {
 
     // ------------------------------------------------------------------ widgets
 
-    /** A key cap with its legend; returns its width. (x, y) is the top-left; height is 26. */
+    /**
+     * A key and a word floating over something in the world, like "U Camp" above the fire: no panel,
+     * outlined so it reads on any ground. (center, bottom) is the middle of its base line.
+     */
+    static void worldPrompt(Graphics2D g, String key, String label, int center, int bottom) {
+        int kw = keycapWidth(key), w = kw + 8 + width(label, 2);
+        int x = (center - w / 2) / S * S;
+        keycap(g, key, x, bottom - 28);
+        outlined(g, label, x + kw + 8, bottom - 9, 2, GOLD_LIGHT);
+    }
+
+    static int keycapWidth(String key) { return Math.max(26, width(key, 2) + 14) / S * S; }
+
+    /** A key cap with its legend; returns its width. (x, y) is the top-left; height is 28. */
     static int keycap(Graphics2D g, String key, int x, int y) {
-        int w = Math.max(26, width(key, 2) + 14);
-        w = w / S * S;
+        int w = keycapWidth(key);
         nine(g, Piece.KEYCAP, x, y, w, 28);
         crisp(g);
         g.setFont(sans(2));

@@ -3,7 +3,7 @@ set -eu
 cd "$(dirname "$0")"
 build_dir="$(mktemp -d /tmp/b2bj-build.XXXXXX)"
 mkdir -p "$build_dir/classes/assets" "$build_dir/tests" build
-javac --release 17 -Xlint:all -d "$build_dir/classes" src/*.java
+javac --release 17 -encoding UTF-8 -Xlint:all -d "$build_dir/classes" src/*.java
 for asset_dir in characters tilesets ui effects audio; do
     if [ -d "assets/$asset_dir" ]; then
         cp -R "assets/$asset_dir" "$build_dir/classes/assets/"
@@ -11,7 +11,7 @@ for asset_dir in characters tilesets ui effects audio; do
 done
 mkdir -p "$build_dir/classes/assets/props"
 cp -R assets/props/outpost assets/props/forest "$build_dir/classes/assets/props/"
-javac --release 17 -Xlint:all -cp "$build_dir/classes" -d "$build_dir/tests" test/*.java
+javac --release 17 -encoding UTF-8 -Xlint:all -cp "$build_dir/classes" -d "$build_dir/tests" test/*.java
 for test_file in test/*Test.java; do
     test_name="${test_file##*/}"
     java -ea -Djava.awt.headless=true -cp "$build_dir/classes:$build_dir/tests" "${test_name%.java}"

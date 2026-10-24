@@ -73,6 +73,9 @@ public final class RuinedOutpostMap {
     private final List<Door> doors = new ArrayList<>();
     private final List<Dressing> dressing = new ArrayList<>();
     private final List<Obstacle> dressingObstacles = new ArrayList<>();
+    /** Fenced yards (FieldObjects): fences always block; gate parts change as the player opens them. */
+    private final List<Obstacle> fieldWalls = new ArrayList<>();
+    private List<Obstacle> fieldGates = List.of(), slimeGates = List.of();
     private final int[][] bankMasks;
     private final java.awt.geom.Area bankShape=new java.awt.geom.Area();
     private boolean gateOpen;
@@ -140,6 +143,7 @@ public final class RuinedOutpostMap {
         liveGuardianX=guardianX();liveGuardianY=guardianY();
         barriers.addAll(area.obstacles());
         barriers.addAll(SetPieces.footprints(area.id()));
+        fieldWalls.addAll(FieldObjects.walls(area.id()));
         buildBanks();
     }
     public static RuinedOutpostMap campaign(int biome) { return new RuinedOutpostMap(CampaignWorld.area(biome)); }
@@ -225,7 +229,19 @@ public final class RuinedOutpostMap {
         return (campaign()||room == 9) && gateOpen && Math.hypot(x-gateX(), y-gateY()) < 100;
     }
     public boolean isBlocked(double x, double y, double radius) {
-        return touchesGuardian(x,y,radius) || waterBlocked(x,y,radius);
+        return isBlocked(x,y,radius,false);
+    }
+    /** As {@link #isBlocked(double,double,double)}, but a slime fits through the low gaps the others cannot. */
+    public boolean isBlocked(double x, double y, double radius, boolean slime) {
+        if (touchesGuardian(x,y,radius) || waterBlocked(x,y,radius)) return true;
+        for (Obstacle o : fieldWalls) if (intersects(x,y,radius,o)) return true;
+        for (Obstacle o : fieldGates) if (intersects(x,y,radius,o)) return true;
+        if (!slime) for (Obstacle o : slimeGates) if (intersects(x,y,radius,o)) return true;
+        return false;
+    }
+    /** Gate parts that block everyone, and those only the slime can pass. */
+    public void setFieldGates(List<Obstacle> solid, List<Obstacle> slimeOnly) {
+        fieldGates = List.copyOf(solid); slimeGates = List.copyOf(slimeOnly);
     }
     public boolean touchesGuardian(double x,double y,double radius) {
         return guardianPresent && intersects(x,y,radius,

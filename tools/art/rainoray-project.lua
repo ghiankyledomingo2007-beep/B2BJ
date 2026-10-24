@@ -9,11 +9,11 @@ local actions = {
   {"idle", "idle", 0, 80, 8, 1333}, {"run", "run", 0, 80, 8, 500},
   {"start", "start", 0, 80, 4, 120}, {"stop", "stop", 0, 80, 4, 120},
   {"turn", "turn", 0, 80, 4, 120},
-  {"slash", "draw_cut", 0, 160, 12, 300, 90},
-  {"slash", "thrust", 1, 160, 12, 340, 100},
-  {"slash", "diagonal_cut", 2, 160, 12, 400, 140},
-  {"slash", "overhead_cut", 3, 160, 12, 540, 200},
-  {"slash", "dash_slash", 4, 160, 12, 360, 80},
+  {"slash", "draw_cut", 0, 160, 12, 400, 130},
+  {"slash", "thrust", 1, 160, 12, 420, 140},
+  {"slash", "diagonal_cut", 2, 160, 12, 480, 170},
+  {"slash", "overhead_cut", 3, 160, 12, 700, 240},
+  {"slash", "dash_slash", 4, 160, 12, 420, 100},
   {"cleave", "cleave", 0, 160, 12, 580, 180},
   {"cleave", "spin_cleave", 1, 160, 12, 700, 180},
   {"charge", "charge", 0, 80, 8, 350}, {"hold", "hold", 0, 80, 8, 1000},
@@ -25,8 +25,15 @@ local trails = {slash=true, cleave=true, cast=true, counter=true}
 local function duration(a, i)
   local count, total = a[5], a[6]
   if a[7] then
-    if i <= 4 then count, total = 4, a[7]
-    else i, count, total = i-4, count-4, total-a[7] end
+    local weights
+    if i <= 4 then total, weights = a[7], {.8, .9, 1, 1.3}
+    else i, total, weights = i-4, total-a[7], {1.5, .8, 1, 1.5, 1, .8, .7, .7} end
+    local sum, before = 0, 0
+    for frame, weight in ipairs(weights) do
+      sum = sum + weight
+      if frame < i then before = before + weight end
+    end
+    return (math.floor(total*(before+weights[i])/sum+0.5)-math.floor(total*before/sum+0.5))/1000
   end
   return (math.floor(total*i/count+0.5)-math.floor(total*(i-1)/count+0.5))/1000
 end

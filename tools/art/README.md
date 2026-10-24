@@ -20,6 +20,9 @@ tools/art/build-art.sh tent       # only the 128 × 100 camp tent
 tools/art/build-art.sh dummy      # two native 36 × 72 training-dummy variants
 tools/art/build-art.sh gate       # eight opening poses for the East Gate
 tools/art/build-art.sh portraits  # native Mara and slime dialogue art
+tools/art/build-art.sh field      # field-camp rescue props (fails if the side palisade does not stack)
+tools/art/build-art.sh infirmary  # only the field infirmary set piece
+tools/art/build-art.sh warden-hires  # 128 px Warden atlas from the preserved 64 px original
 tools/art/export-sources.sh       # missing editable projects, grouped by region; existing projects kept
 ./build.sh                        # then the normal build and tests
 ```
@@ -51,9 +54,11 @@ editable layers, using a temporary folder and a mock editor.
 | `Tiles16.java` | `outpost_tileset.png`, `forest_tileset.png`: 16 px fills with variants + Wang corner sets (three versions of every edge tile) |
 | `ForestBake.java` | `assets/tilesets/forest/forest_ground.png`: the Corrupted Forest floor, built tile by tile from the forest tileset, then decals, tree shade, light pools and the canopy |
 | `Creatures.java` | `assets/characters/forest/`: Rift Imp, Thorn Wolf, Mire Shaman in the remnants' sheet format (48 px cells; walk 4 frames, attack 8; front, side, back) |
+| `WardenHiRes.java` | `assets/characters/guardian/warden_motion.png` at 128 px cells (foot row 112, drawn at 2x) from the untouched 64 px original in `assets/source/characters/warden_motion_64.png`: similarity-EPX, 1 px outline, sparks and cracks thinned to 1 px lines; only the source's own colours. Also the fight's strips `guardian_charge/sweep/wave/death.png` (128 px cells, one row) from `assets/source/characters/guardian_*_64.png` |
 | `BossArt.java` | `assets/characters/guardian/briarheart_motion.png`: Briarheart, 96 px cells drawn at 2x, rows in Guardian.Animation order |
 | `WardenArt.briar` | `assets/effects/briar_*.png`: the Warden's effect sheets recoloured for Briarheart (cyan becomes violet in the dark steps, gold in the bright) |
 | `ForestArt.java` | forest set pieces (oaks, pines, withered trees, bushes, logs, boulders, the boat, white cloth, the hollow tree, the Moonwell, the orchard, brambles, roots, the stair, rift stones, the lean-to), placed by `src/SetPieces.java` |
+| `FieldArt.java` | field-camp rescue props in `assets/props/outpost/field_*.png`: north-south palisade (`field_palisade_side`, 3 stackable 16x64 cells, seam-checked by `verifySideSeams`), crawl gap (`field_crawl`, one 96x112 stake_wall cell), knee-high front runs that let the camera see into a yard (`field_fence_low`, 3 x 96x56, and `field_crawl_low`, 96x56; ground row 51), brass key (4 frames 12x12, frame 0 no glint), medicine tin (14x12), locked/open cache (2 frames 32x28), survivors (3 people x hurt/camp rows, 48x40 cells, hand-pixelled character maps) and bedrolls (2 x 40x16) |
 
 Supplies have one runtime sheet, `assets/props/outpost/set_supplies.png`, used by
 both obstacle clusters and landmarks. The duplicate `supplies.png` and its editable

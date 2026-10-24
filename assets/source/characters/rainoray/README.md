@@ -15,6 +15,19 @@ bounds. Merge extra paint layers into Character or Effects before exporting.
 The sword is baked into the Character pixels; its separate 3D object remains in
 the [editable Blender source](../../../../docs/art-review/sprite3d-run/source/rainoray-editable/).
 
+## Character refit — 2026-10-24
+
+The current timeline contains the compact head, curved porcelain-mask markings,
+broad navy coat panels and quieter boot shading across all 1,344 frames.
+**Before polish** now holds the preceding compact-head
+eight-way runtime art. The original native project and model are backed up under
+`~/tmp/rainoray-refit-20261024/before/` and remain in Git history.
+The mask-and-coat pass has a separate backup at `~/tmp/rainoray-mask-coat-20261024/before/`.
+
+Attack timings now match the game's slower cuts, including the longer contact
+poses. No gameplay timing or movement values changed in this art pass.
+[Review, source and validation](../../../../docs/art-review/rainoray-refit/README.md).
+
 ## Export edited frames
 
 Save the native project first. Run from the B2BJ root:
@@ -42,7 +55,7 @@ and refuses to overwrite an existing native project.
 
 ## Cluster cleanup
 
-The four cardinal Character views went through one cluster pass on 2026-10-23. The new diagonal views use the same pass. The current **Before polish** layer is a snapshot at the eight-way import; the earlier comparison layer remains in [the archived four-way project](archive/Rainoray-Human-four-way.pixie-dust). The pass flattens leftover 3D-render
+The four cardinal Character views went through one cluster pass on 2026-10-23. The new diagonal views use the same pass. The earlier comparison layer remains in [the archived four-way project](archive/Rainoray-Human-four-way.pixie-dust). The pass flattens leftover 3D-render
 tones, merges stray specks into their material, keeps mask markings flat black,
 thins comb-like back-hair strands and rounds the back-view crown. Alpha, the red
 dot, gold, hilt and effects are untouched. Hand-paint further fixes in the editor;

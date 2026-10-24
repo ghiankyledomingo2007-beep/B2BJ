@@ -89,7 +89,7 @@ def frame_posers(action, n, view):
 def pixel_mask_dot(scene, arm):
     """A flat decal keeps the existing red dot from falling between native pixels; no raised nose."""
     mask = scene.objects.get("RainorayMask")
-    if mask is None or mask.hide_render or scene.objects.get("RainorayMaskDot") is not None:
+    if mask is None or mask.hide_render or mask.get("native_markings") or scene.objects.get("RainorayMaskDot") is not None:
         return
     # shortcut: anchored to the current mask surface; recompute from UVs if the mask is reshaped.
     mesh = bpy.data.meshes.new("MaskDot")
@@ -135,7 +135,7 @@ def main():
             floor = min(floor, p.lowest_foot())
         if planted:                               # IK feet stand on the idle's floor; a heel raise must not move it
             floor = rest_floor
-        render_frames.place_camera(scene, facing, puppet.REST_HEIGHT, floor - puppet.SOLE,
+        render_frames.place_camera(scene, facing, arm.get("appearance_frame_height", puppet.REST_HEIGHT), floor - puppet.SOLE,
                                    (puppet.CX, puppet.CY), a.cell, a.height_px, a.foot_px, a.elevation, a.canvas)
         shots = os.path.join(a.out_dir, f"frames-{a.action}-{facing}")
         os.makedirs(shots, exist_ok=True)

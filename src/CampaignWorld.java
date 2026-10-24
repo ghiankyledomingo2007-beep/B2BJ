@@ -37,6 +37,14 @@ public final class CampaignWorld {
     /** Landmark index pairs joined by a road; the baked ground draws its tracks along these. */
     static int[][] routes() { return java.util.Arrays.stream(ROUTES).map(int[]::clone).toArray(int[][]::new); }
 
+    /** Rubble stays off the fenced yards (FieldObjects) and the open ground in front of their gates. */
+    private static boolean clearOfYards(double x, double y) {
+        for (var yard : FieldObjects.yards(0))
+            if (Math.abs(x - yard.x()) < FieldObjects.Yard.HALF_WIDTH + 140
+                    && y > yard.northY() - 140 && y < yard.southY() + 300) return false;
+        return true;
+    }
+
     private static Area create() {
         var landmarks = new ArrayList<Landmark>();
         for (int i = 0; i < LANDMARK_NAMES.length; i++) landmarks.add(new Landmark(
@@ -62,7 +70,7 @@ public final class CampaignWorld {
             double x = cluster[0] + (i % 3 - 1) * 160, y = cluster[1] + (i / 3 - .5) * 176;
             var prop = i % 3 == 0 ? RuinedOutpostMap.Prop.WALL
                     : i % 3 == 1 ? RuinedOutpostMap.Prop.PALISADE : RuinedOutpostMap.Prop.BARREL;
-            if (!nearRoutes(x, y, landmarks, 208) && clearOfLandmarks(x, y, landmarks, 400))
+            if (!nearRoutes(x, y, landmarks, 208) && clearOfLandmarks(x, y, landmarks, 400) && clearOfYards(x, y))
                 obstacles.add(new RuinedOutpostMap.Obstacle(x, y, prop.footprintWidth * 2, prop.footprintDepth * 2, prop));
         }
         Point spawn = point(landmarks.get(0)), hub = point(landmarks.get(1)), boss = point(landmarks.get(8));

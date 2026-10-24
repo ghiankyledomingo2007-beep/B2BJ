@@ -5,6 +5,30 @@ Blade form by gathering Ichor. The current campaign includes **Ruined Outpost** 
 **Corrupted Forest**, with the Outpost Warden and Briarheart. Each region is a
 6144×4096 map with twelve landmarks, optional discoveries and a safe camp.
 
+## Group playtest — 2026-10-24
+
+The current game is on **`main`**. This update includes the animated title menu and
+music, eight-direction Rainoray animations with the revised porcelain mask and navy
+coat, clearer Warden art, camp services, survivors, supply tins and form-specific paths.
+
+For a fresh copy, clone this repository or use **Code → Download ZIP**, then extract
+the whole folder. To update an existing clean checkout of `main`:
+
+```sh
+git pull --ff-only origin main
+```
+
+Open the **B2BJ root folder** in IntelliJ IDEA or VS Code with Java support. Select
+a **JDK 17 or newer**, use `src/` as the source folder, and run **`B2BJ.main()`** in
+[`src/B2BJ.java`](src/B2BJ.java). Set the run configuration's working directory to
+the B2BJ root so it can find `assets/`. No Maven, Gradle, Blender or art generation
+is needed to play; the runtime assets are included.
+
+Start **New Journey**, try both forms, rest/save at camp, and check **Continue**
+after restarting. Send Ghian the area, steps and a screenshot or clip for anything
+that breaks or feels unclear. Leave F1 cheats off when checking normal progression;
+using one disables saves for that session. Each player keeps their own local save.
+
 ## Start here
 
 - [File map](FILE_MAP.md): where the game systems, tests and art tools live.
@@ -67,7 +91,7 @@ also used by the build, tests and art tools; the file map groups them by respons
 - Right click uses Tide Wave in Blob form or Ichor Crescent in Blade form. F uses Riposte.
 - Space dashes. Q transforms at 100 Ichor. E interacts with discoveries, remains and gates.
 - E at Captain Camp talks to Mara. Enter, E or left click advances dialogue; X skips it. Combat and Ichor drain pause while you read.
-- H at camp heals, saves and sets the checkpoint. 1–4 buy camp upgrades.
+- H at camp heals, saves and sets the checkpoint. U opens camp services; 1–4 select upgrades there.
 - Esc pauses; losing focus also pauses. T while paused saves and returns to the title.
 - Hold Tab for the regional map. M toggles audio; V reduces effects; O opens audio/effects options.
 - Menu or Alt+G opens the in-game menu. F1 opens testing controls during a campaign.

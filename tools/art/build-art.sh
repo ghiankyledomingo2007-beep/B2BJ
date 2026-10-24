@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Rebuilds the generated Outpost art (ground bake, props, decals) into assets/.
-# Usage: tools/art/build-art.sh [all|ground|forest|props|campfire|brazier|warden|tent|dummy|gate|portraits|ui] [--force]
+# Usage: tools/art/build-art.sh [all|ground|forest|props|campfire|brazier|warden|tent|dummy|gate|portraits|ui|field|infirmary|warden-hires] [--force]
 # A generated PNG that was edited by hand is kept (see tools/art/generated.sha); --force regenerates it.
 set -eu
 cd "$(dirname "$0")/../.."

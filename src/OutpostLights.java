@@ -112,6 +112,11 @@ final class OutpostLights {
     }
 
     private static boolean active(SetPieces.Light light, RuinedOutpostGame game) {
+        if (game.biome()==0) {
+            var rests=FieldObjects.rests(0);
+            for (int i=0;i<rests.size();i++)
+                if (light.x()==rests.get(i).x() && light.groundY()==rests.get(i).y() && !game.restLit(i)) return false;
+        }
         var boss=game.guardian();
         var gatehouse=game.campaignArea().landmarks().get(8);
         return !(game.biome()==0 && boss.alive() && boss.state()==Guardian.State.DORMANT && light.fire()

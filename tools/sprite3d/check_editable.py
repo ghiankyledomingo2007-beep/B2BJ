@@ -47,7 +47,13 @@ mask=bpy.data.objects['RainorayMask'];mask.hide_render=True
 animate.pixel_mask_dot(bpy.context.scene,arm)
 assert bpy.context.scene.objects.get('RainorayMaskDot') is None,'hidden mask must not leave a floating dot'
 mask.hide_render=False;animate.pixel_mask_dot(bpy.context.scene,arm)
-assert bpy.data.objects['RainorayMaskDot'].parent==arm
+if mask.get('native_markings'):
+ assert bpy.context.scene.objects.get('RainorayMaskDot') is None,'integrated mask must not receive a second legacy dot'
+ assert all(any(g.group==mask.vertex_groups['head'].index and abs(g.weight-1)<1e-6 for g in v.groups) for v in mask.data.vertices)
+ assert abs(arm['appearance_rest_height']-(max(v.co.z for v in body.data.vertices)-min(v.co.z for v in body.data.vertices)))<1e-6
+ assert arm['appearance_rest_height']<=arm['appearance_frame_height']<=puppet.REST_HEIGHT
+else:
+ assert bpy.data.objects['RainorayMaskDot'].parent==arm
 for facing in ('south','east','north','west'):
  view=animate.VIEWS[facing]
  for action in ('run','start','stop','turn'):

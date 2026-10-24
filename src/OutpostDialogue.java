@@ -60,9 +60,47 @@ public enum OutpostDialogue {
             r("It's open. I'm going after the stretcher tracks."),
             m("I tried. The roots have swallowed the road. There's a dry scarf by the fire; take it before you go."),
             r("I'm not sure it would stay on."),
-            m("Then I'll keep it dry."));
+            m("Then I'll keep it dry.")),
+    SURVIVOR_TOBIN("BEHIND THE FENCE",
+            t("Who's there? If you're a rift thing, I'm mostly bandages. Poor eating."),
+            r("Rainoray. Quartermaster. Mostly water, these days."),
+            t("The quartermaster? We carried your crates out and left your name on the list."),
+            t("The fence came down behind me. I couldn't climb it, and nothing friendly fits under."),
+            r("Mara's lamp is still lit at Captain Camp. Can you make it that far?"),
+            t("For a lamp? I'll crawl. Thank you.")),
+    SURVIVOR_ILSE("INSIDE THE THORNS",
+            i("Stay back. I've got one good arm and I'm not afraid to use it."),
+            r("Rainoray. Quartermaster. I cut the thorns, not you."),
+            i("Ilse. Signals. I hid in here when the brambles came up. They grew faster than I could cut."),
+            i("That chest is the quartermaster's cache. Locked tight, and the key went with the storehouse."),
+            r("Then it's still my job. Go to Mara's lamp at Captain Camp."),
+            i("If anyone can find one small key in this mess, it's the man who counted every nail.")),
+    SURVIVOR_VENN("THE CULVERT",
+            v("Took them long enough to send someone. I pictured someone taller."),
+            r("Nobody sent me. I'm afraid I'm just late."),
+            v("Venn. Sergeant, once. I told the stretcher crew to go on without me."),
+            v("Then the culvert silted up and I spent a week talking to the rain."),
+            r("Mara is keeping a fire at Captain Camp. She has room for you."),
+            v("Mara. Good. Then I'll go and be shouted at properly.")),
+    LEDGER("THE QUARTERMASTER'S CACHE",
+            r("The cache opens. Bandages, a little coin, and my ledger."),
+            r("Every crate, every blanket, every name that signed for them."),
+            r("Tobin, Ilse, Venn. All signed the same morning. I'll see that the count comes out right.")),
+    CAMP_RESCUED("SOMEONE CAME BACK",
+            m("Someone walked into my camp tonight and asked for you by name."),
+            r("I found them behind a fence I couldn't have climbed even with legs."),
+            m("Then keep looking. The dispatch listed more people than the Warden let through.")),
+    CAMP_HOME("THREE BEDS",
+            m("Tobin, Ilse and Venn. Three beds that aren't empty anymore."),
+            r("The count finally adds up. Better than I'd hoped."),
+            m("Ilse found the last of the good tea. Take the coin we were saving with it. You've earned both."));
 
-    public enum Speaker { RAINORAY, MARA, WARDEN }
+    /** The scene for the survivor in FieldObjects.SURVIVORS order. */
+    static OutpostDialogue survivor(int index) {
+        return switch (index) { case 0 -> SURVIVOR_TOBIN; case 1 -> SURVIVOR_ILSE; default -> SURVIVOR_VENN; };
+    }
+
+    public enum Speaker { RAINORAY, MARA, WARDEN, TOBIN, ILSE, VENN }
     public record Line(Speaker speaker, String text) { }
     private final String title;
     private final List<Line> lines;
@@ -74,4 +112,7 @@ public enum OutpostDialogue {
     private static Line r(String text) { return new Line(Speaker.RAINORAY,text); }
     private static Line m(String text) { return new Line(Speaker.MARA,text); }
     private static Line w(String text) { return new Line(Speaker.WARDEN,text); }
+    private static Line t(String text) { return new Line(Speaker.TOBIN,text); }
+    private static Line i(String text) { return new Line(Speaker.ILSE,text); }
+    private static Line v(String text) { return new Line(Speaker.VENN,text); }
 }

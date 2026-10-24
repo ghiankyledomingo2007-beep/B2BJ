@@ -14,6 +14,7 @@ public final class GameAudioTest {
         loopsRunUntilStopped();
         mixerSumsVoicesOnTime();
         onceLoopsEndAndLoopsSurviveABusyMix();
+        titleThemeFollowsMusicVolumeAndFades();
         System.out.println("GameAudioTest passed");
     }
 
@@ -265,6 +266,34 @@ public final class GameAudioTest {
     private static boolean silent(byte[] samples) {
         for (byte value : samples) if (value != 0) return false;
         return true;
+    }
+
+    private static void titleThemeFollowsMusicVolumeAndFades() {
+        GameAudio.stopLoops();
+        int[] sum=new int[256];
+        for(int i=0;i<500;i++) {Arrays.fill(sum,0);GameAudio.mixVoices(sum);}
+        byte[] theme=GameAudio.samples("title_music")[0];
+        assert theme.length==48*22_050*2 : "the title needs a complete musical phrase";
+        assert Math.abs(sample(theme,0)-sample(theme,theme.length-2))<512 : "the loop seam must not click";
+        try {
+            GameAudio.setMusicVolume(0);
+            GameAudio.startLoop(GameAudio.Loop.TITLE_MUSIC,1);
+            assert !GameAudio.loopRunning(GameAudio.Loop.TITLE_MUSIC);
+            GameAudio.setMusicVolume(.25);GameAudio.setSfxVolume(0);
+            GameAudio.startLoop(GameAudio.Loop.TITLE_MUSIC,1);
+            for(int i=0;i<100;i++) {Arrays.fill(sum,0);GameAudio.mixVoices(sum);}
+            assert Arrays.stream(sum).anyMatch(v->v!=0) : "muting effects leaves title music audible";
+            GameAudio.setMusicVolume(0);
+            Arrays.fill(sum,0);GameAudio.mixVoices(sum);
+            assert Arrays.stream(sum).allMatch(v->v==0) : "the music slider acts on a running theme";
+            GameAudio.setMusicVolume(.25);GameAudio.stopLoop(GameAudio.Loop.TITLE_MUSIC);
+            Arrays.fill(sum,0);GameAudio.mixVoices(sum);
+            assert Arrays.stream(sum).anyMatch(v->v!=0) : "entering fades music instead of cutting it off";
+            for(int i=0;i<100;i++) {Arrays.fill(sum,0);GameAudio.mixVoices(sum);}
+            assert Arrays.stream(sum).allMatch(v->v==0) : "the title theme finishes fading";
+        } finally {
+            GameAudio.stopLoops();GameAudio.setSfxVolume(1);GameAudio.setMusicVolume(.25);
+        }
     }
 
     private static Object invoke(String name, Class<?>[] signature, Object... values) {

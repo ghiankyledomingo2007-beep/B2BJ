@@ -1,0 +1,23 @@
+{
+  "assets/characters/blade/rainoray_cast.png": "cdf84e31ad295df6129c09bf6c805a6d84fb64557182e5be0b2b366b8e6b5cc5",
+  "assets/effects/rainoray_cast_trail.png": "f972a6fd69768ff39c44533015ab441947bd6a10944a7b69b6855afe0099f05d",
+  "assets/characters/blade/rainoray_charge.png": "e4f966b365fc111250016558c16a8200b1bd3b6426ee9ea9ba3e17e2faa7c79d",
+  "assets/characters/blade/rainoray_cleave.png": "4f4804227b2e5d22484eb43428c4f9c46a3d9efb298e879d7b6a81aec5c54bfc",
+  "assets/effects/rainoray_cleave_trail.png": "609caaab1965d3e3dcb78797aa37a0f4a1fe20c00fd9a0043c3fcdf2e74b3fd5",
+  "assets/characters/blade/rainoray_counter.png": "b13a46559e5e4c97b7a68e2319f09cdc0c9f2b5b89f64740ad31085d9bcc22cb",
+  "assets/effects/rainoray_counter_trail.png": "214082b229a78ca6b6a7e8bfb57615ac2eb42c8fff14e285b230834dff50f608",
+  "assets/characters/blade/rainoray_dash.png": "4e9c5ac2454eeecacd30d1c35ea3bbacb53efcb9d30a4e24e84e965811adb11b",
+  "assets/characters/blade/rainoray_guard.png": "d471fd4a1b3ef21ccc57d1ff3bdcb19826ba68cda98fa8ff40cfcdd9a8eac7a1",
+  "assets/characters/blade/rainoray_hold.png": "14fafd1d459796d1f33cc8a843fb9e90b4cffb041dcbdfedc8103f4f9441e423",
+  "assets/characters/blade/rainoray_hurt.png": "9615183669d791c4d46bf85fef8e4c294c90ac4cc0555958fb9319555c0647fc",
+  "assets/characters/blade/rainoray_idle.png": "7c020f79c0b6f51854276f2f61ed89c1fee9deff66ed2b9e00a7a73a91142929",
+  "assets/characters/blade/rainoray_run.png": "a58824f2d1b2d01e8dac6b3ead35546003ebe14454deb51c8c74caa5e7cb21ad",
+  "assets/characters/blade/rainoray_slash.png": "aeb177cd71c727e09218eed568b817431d22481ecaa96e0dab0dce0c7f40bd1b",
+  "assets/effects/rainoray_slash_trail.png": "fe6d83ec2c32dfee25e627456c168a0799d968abd8c43e22d278f7af91267052",
+  "assets/characters/blade/rainoray_start.png": "507e4a14d9f3c45f9a97634dfa80204de51c9f3e011d77bd4afb15c88c42215a",
+  "assets/characters/blade/rainoray_stop.png": "dbf1342db96d65cdc433b65544629d9dc1dd55f56e201a8955c9409fcef0cfdf",
+  "assets/characters/blade/rainoray_turn.png": "507e4a14d9f3c45f9a97634dfa80204de51c9f3e011d77bd4afb15c88c42215a",
+  "assets/effects/transform_in.png": "6ce0670c818e83331dcc531c5a0b2d5aa53f8fed6ad5f0b644b980dbc211cf33",
+  "assets/effects/transform_out.png": "b32bd934225e7cc3862f611f182f49b4e627540b10d95ce11c1fc830ecf0290c",
+  "assets/source/characters/rainoray/Rainoray-Human.pixie-dust": "38148b2dff1319d9a3214a74e8be79835832072340a704fd3348635acb441345"
+}
