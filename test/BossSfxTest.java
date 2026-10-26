@@ -9,7 +9,8 @@ public final class BossSfxTest {
     private static final int RATE = 22_050;
     static final GameAudio.Cue[] BOSS = {
             GameAudio.Cue.WARDEN_WINDUP, GameAudio.Cue.WARDEN_SWEEP, GameAudio.Cue.WARDEN_RUSH, GameAudio.Cue.WARDEN_FRACTURE,
-            GameAudio.Cue.BRIAR_WINDUP, GameAudio.Cue.BRIAR_ROOTS, GameAudio.Cue.BRIAR_SEEDS, GameAudio.Cue.BRIAR_CAGE};
+            GameAudio.Cue.BRIAR_WINDUP, GameAudio.Cue.BRIAR_ROOTS, GameAudio.Cue.BRIAR_SEEDS, GameAudio.Cue.BRIAR_CAGE,
+            GameAudio.Cue.WARDEN_STRAIN, GameAudio.Cue.WARDEN_SLAM};
 
     public static void main(String[] args) throws Exception {
         filesAreNativeMixerFormat();
@@ -17,7 +18,7 @@ public final class BossSfxTest {
         audibleBesideTheCombatSounds();
         everyAttackHasItsOwnSound();
         runtimePlaysTheRecordingThroughTheSliders();
-        System.out.println("BossSfxTest passed: 8 boss cues x 2 takes, native format, clean edges, levels beside slash and slam, sliders and mute");
+        System.out.println("BossSfxTest passed: 10 boss cues x 2 takes, native format, clean edges, levels beside slash and slam, sliders and mute");
     }
 
     private static void filesAreNativeMixerFormat() throws Exception {
@@ -39,7 +40,7 @@ public final class BossSfxTest {
             byte[][] takes = GameAudio.samples(cue);
             assert takes.length == 2 : cue + " needs exactly two takes";
             assert !Arrays.equals(takes[0], takes[1]) : cue + " takes must differ";
-            double longest = cue == GameAudio.Cue.WARDEN_FRACTURE ? .85 : .70;   // only the falling rubble runs long
+            double longest = cue == GameAudio.Cue.WARDEN_FRACTURE || cue == GameAudio.Cue.WARDEN_SLAM ? .85 : .70;
             for (byte[] take : takes) {
                 double seconds = take.length / 2.0 / RATE;
                 assert seconds >= .25 && seconds <= longest : cue + " lasts " + seconds + " s";

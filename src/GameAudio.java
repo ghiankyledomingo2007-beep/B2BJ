@@ -79,7 +79,9 @@ public final class GameAudio {
         BRIAR_WINDUP(0.60, 90, 140, 0.18, true),
         BRIAR_ROOTS(0.58, 240, 70, 0.26, true),
         BRIAR_SEEDS(0.40, 900, 420, 0.20, true),
-        BRIAR_CAGE(0.68, 300, 110, 0.26, true);
+        BRIAR_CAGE(0.68, 300, 110, 0.26, true),
+        WARDEN_STRAIN(0.58, 82, 135, 0.20, true),
+        WARDEN_SLAM(0.78, 102, 41, 0.30, true);
 
         private final double duration;
         private final double startFrequency;

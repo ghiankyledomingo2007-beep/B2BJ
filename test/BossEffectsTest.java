@@ -17,6 +17,7 @@ public final class BossEffectsTest {
     public static void main(String[] args) throws Exception {
         GameAudio.setMuted(true);
         cuesFollowTheAttack();
+        strainFollowsThePhaseChange();
         oneWindupPerCommittedAttack(Guardian.Profile.OUTPOST_WARDEN);
         oneWindupPerCommittedAttack(Guardian.Profile.BRIARHEART);
         deadAttacksLandNothing();
@@ -38,7 +39,7 @@ public final class BossEffectsTest {
                 case SWEEP -> GameAudio.Cue.WARDEN_SWEEP;
                 case CHARGE -> GameAudio.Cue.WARDEN_RUSH;
                 case FISSURE -> GameAudio.Cue.WARDEN_FRACTURE;
-                case TARGET, SHOCKWAVE -> GameAudio.Cue.GUARDIAN_SLAM;
+                case TARGET, SHOCKWAVE -> GameAudio.Cue.WARDEN_SLAM;
             };
             assert BossFx.releaseCue(boss) == expected : attack + " lands with " + expected;
             assert BossFx.windupCue(boss) == GameAudio.Cue.WARDEN_WINDUP;
@@ -61,6 +62,30 @@ public final class BossEffectsTest {
             for (int i = 0; i < 300; i++) { boss.update(FRAME, 700, 560); assert fx.update(FRAME, boss, false) == null; fx.release(boss, false); }
             assert fx.particles() == 0 : profile + " keeps its own presentation";
         }
+    }
+
+    private static void strainFollowsThePhaseChange() {
+        var boss = new Guardian(900, 500);
+        var fx = new BossFx();
+        boss.activate(700, 560);
+        boss.hurt(boss.maxHealth() / 2 + 1);
+        assert !boss.enraged() : "low HP finishes the current attack before the phase change";
+        int calm = 0, strained = 0, heardFor = -1;
+        for (int i = 0; i < 60 * 20; i++) {
+            boss.update(FRAME, 700, 560);
+            var cue = fx.update(FRAME, boss, false);
+            if (cue == null) continue;
+            assert heardFor != boss.impactNumber() : "phase change must not double the windup";
+            heardFor = boss.impactNumber();
+            if (boss.enraged()) {
+                assert cue == GameAudio.Cue.WARDEN_STRAIN : "phase two uses the strained breath";
+                strained++;
+            } else {
+                assert cue == GameAudio.Cue.WARDEN_WINDUP : "no premature strained breath";
+                calm++;
+            }
+        }
+        assert calm == 1 && strained >= 2 : "test must cross the real phase transition";
     }
 
     private static void oneWindupPerCommittedAttack(Guardian.Profile profile) {
@@ -230,15 +255,17 @@ public final class BossEffectsTest {
             var panel = wardenFight();
             var game = panel.game();
             var boss = game.guardian();
-            for (var attack : Guardian.Attack.values()) {
+            for (boolean enraged : new boolean[]{false, true}) for (var attack : Guardian.Attack.values()) {
                 game.player().relocate(boss.x() - 480, boss.y() + 100);       // outside every forced attack, inside earshot
                 poise(game, attack, BossFx.WINDUP_LEAD + .05, false);
+                set(boss, "phaseTwo", enraged);
                 drain();
                 for (int i = 0; i < 200 && boss.state() == Guardian.State.TELEGRAPH; i++) { set(game, "addTimer", 0.0); panel.step(.02); }
                 panel.step(.02);
                 var voices = oneShots();
                 assert voices.size() == 2 : attack + " is heard as one windup and one release, got " + voices.size();
-                assert voices.stream().filter(v -> heardAs(v, GameAudio.Cue.WARDEN_WINDUP)).count() == 1 : attack + " windup";
+                var windup = BossFx.windupCue(boss);
+                assert voices.stream().filter(v -> heardAs(v, windup)).count() == 1 : attack + " windup";
                 var release = BossFx.releaseCue(boss);
                 assert voices.stream().filter(v -> heardAs(v, release)).count() == 1 : attack + " lands with " + release;
                 if (release != GameAudio.Cue.GUARDIAN_SLAM)
@@ -247,6 +274,7 @@ public final class BossEffectsTest {
                 assert oneShots().size() == 2 : attack + " plays nothing per frame afterwards";
             }
             // A blow out of earshot, or while muted, reaches no mixer; a boss killed after its windup releases nothing.
+            set(boss, "phaseTwo", false);
             var handle = B2BJ.class.getDeclaredMethod("handleEvents", List.class);
             handle.setAccessible(true);
             poise(game, Guardian.Attack.SWEEP, .3, false);
@@ -265,7 +293,7 @@ public final class BossEffectsTest {
             boss.hurt(boss.health());
             for (int i = 0; i < 60; i++) panel.step(.02);
             assert oneShots().stream().filter(v -> heardAs(v, GameAudio.Cue.WARDEN_WINDUP)).count() == 1
-                    && oneShots().stream().noneMatch(v -> heardAs(v, GameAudio.Cue.GUARDIAN_SLAM)) : "a boss killed mid-tell plays no release";
+                    && oneShots().stream().noneMatch(v -> heardAs(v, GameAudio.Cue.WARDEN_SLAM)) : "a boss killed mid-tell plays no release";
             assert ((BossFx) read(panel, "bossAttackFx")).particles() == 0;
 
             var forest = briarFight();

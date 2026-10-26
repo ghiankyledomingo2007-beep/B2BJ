@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Outpost Warden and Briarheart attack sounds, synthesized from scratch: no samples, services or keys.
 
-    python3 tools/audio/generate_boss_sfx.py           # write the 16 takes below into assets/audio
+    python3 tools/audio/generate_boss_sfx.py           # write the 20 takes below into assets/audio
     python3 tools/audio/generate_boss_sfx.py --check   # re-render in memory, exit 1 if a file differs
 
 Warden      warden_windup    armour plates grinding as the blade comes up, mail shifting, a held breath
             warden_sweep     a heavy blade dragging the air round, its edge ringing, grit thrown off
             warden_rush      plated bulk breaking into a run: clanking strides, rushing air, a gravel skid
             warden_fracture  the blade point driven in, stone splitting away down a line, rubble settling
-            (the overhead TARGET slam and SHOCKWAVE keep guardian_slam from generate_combat_sfx.py)
+            warden_slam      the existing stone impact with a short armored exertion
+            warden_strain    phase-two windup: uneven breath and a rougher held grunt
 Briarheart  briar_windup     living wood creaking under strain, a deep breath drawn through bark, leaves
             briar_roots      soil heaving, root fibres tearing up through it, dirt falling back
             briar_seeds      a dry pod cracking open, seeds scattering and ticking down
@@ -19,7 +20,7 @@ of the blow; the release plays once, on the attack's GUARDIAN_SLAM event, hit or
 
 Reuses generate_forest_sfx's and generate_combat_sfx's building blocks and finish(): 22050 Hz mono
 PCM16, high-passed (no DC), peak-normalised below full scale, faded edges. Seeded, so a rerun writes
-identical bytes. Only the 16 files named in FAMILIES are written; no other asset is touched.
+identical bytes. Only the 20 files named in FAMILIES are written; no other asset is touched.
 """
 import math
 import random
@@ -30,7 +31,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from generate_forest_sfx import (OUT, RATE, bands, biquad, bump, count, env, finish, grains, mix, mul,  # noqa: E402
                                  noise, stick_slip, swell, thump, voice, wav_bytes)
-from generate_combat_sfx import churn, crack, glint, knock, whoosh  # noqa: E402
+from generate_combat_sfx import churn, crack, glint, guardian_slam, knock, whoosh  # noqa: E402
+from warden_voice_fx import treatment  # noqa: E402
 
 
 def add(x, y, gain=1.0):
@@ -44,7 +46,19 @@ PLATES = ([(380, 18, 1.0), (1020, 22, 0.7), (2150, 24, 0.4), (3300, 26, 0.18)],
 STONE = ([(620, 4, 1.0), (1280, 5, 0.8), (2250, 5, 0.45)], [(570, 4, 1.0), (1190, 5, 0.8), (2100, 5, 0.45)])
 
 
-def warden_windup(rng, v):
+def warden_effort(rng, v, strained=False):
+    """A short nonverbal exertion, using the spoken Warden's quiet armor/room treatment."""
+    d = (0.25, 0.23)[v]
+    n = count(d)
+    folds = voice(rng, d, lambda t: (92, 81)[v] * (1.12 - .3 * t / d),
+                  jitter=.12 if strained else .055, sub=.3 if strained else .12, breath=.6)
+    throat = bands(folds, [(340, 2.5, 1), (760, 3, .65), (1550, 3.5, .25)])
+    air = biquad(noise(rng, d), "band", 950, .65)
+    dry = mul(mix(n, (throat, 1), (air, .28 if strained else .16)), bump(n, .01, d - .01))
+    return treatment(dry)
+
+
+def warden_windup(rng, v, strained=False):
     d = (0.60, 0.56)[v]
     n, top = count(d), d - 0.10
     tense = lambda t: min(1.0, t / top)
@@ -52,10 +66,13 @@ def warden_windup(rng, v):
     strain = mul(bands(stick_slip(rng, d, lambda t: 28 + 150 * tense(t) ** 1.5, 0.02, top + 0.03), PLATES[v]), build)
     mail = mul(biquad(grains(rng, d, lambda t: 30 + 260 * tense(t), 0.0012), "band", (2400, 2200)[v], 2.0), build)
     weight = mul(biquad(noise(rng, d), "low", 180), build)
-    effort = mul(bands(voice(rng, d, lambda t: (68, 62)[v] * (1 + 0.25 * tense(t)), jitter=0.05, sub=0.35, breath=0.5),
-                       [(260, 3, 1.0), (620, 4, 0.7), (1150, 5, 0.3)]), swell(n, top, 0.04, 2.4))
+    inhale = mul(bands(noise(rng, d), [(330, 1.5, 1), (1000, 1.5, .5)]), bump(n, .015, .30))
+    if strained:
+        inhale = [s * (.72 + .28 * math.sin(2 * math.pi * 9 * i / RATE)) for i, s in enumerate(inhale)]
+    effort = warden_effort(rng, v, strained)
     scrape = mul(biquad(noise(rng, d), "band", lambda t: 900 + 1700 * tense(t) ** 2, 6), bump(n, top - 0.22, top + 0.04))
-    return mix(n, (strain, 1.0), (mail, 0.35), (weight, 0.5), (effort, 0.45), (scrape, 0.3))
+    return mix(n, (strain, 1.0), (mail, 0.35), (weight, 0.5), (inhale, .48 if strained else .28),
+               (effort, .70 if strained else .20, .06), (scrape, 0.3))
 
 
 def warden_sweep(rng, v):
@@ -68,7 +85,8 @@ def warden_sweep(rng, v):
     edge = glint(n, peak - 0.01, [((1350, 1480)[v], 0.09, 1.0), ((2110, 2290)[v], 0.06, 0.55), ((3240, 3420)[v], 0.04, 0.25)])
     mass = mul(biquad(noise(rng, d), "low", 220), bump(n, peak - 0.09, peak + 0.16))
     grit = biquad(grains(rng, d, lambda t: 0 if t < peak else 900 * math.exp(-(t - peak) / 0.08), 0.002), "band", 1300, 0.9)
-    return mix(n, (air, 1.0), (drag, 0.45), (edge, 0.22), (mass, 0.55), (grit, 0.35))
+    return mix(n, (air, 1.0), (drag, 0.45), (edge, 0.22), (mass, 0.55), (grit, 0.35),
+               (warden_effort(rng, v), .65))
 
 
 def warden_rush(rng, v):
@@ -83,11 +101,11 @@ def warden_rush(rng, v):
     rattle = biquad(grains(rng, d, lambda t: 60 + 900 * hit(t), 0.0012), "band", (2300, 2100)[v], 1.8)
     air = churn(rng, mul(biquad(noise(rng, d), "band", lambda t: 320 + 800 * math.sin(math.pi * min(1.0, t / (d * 0.9))), 0.7),
                          swell(n, (0.30, 0.28)[v], 0.09, 1.4)), 20)
-    effort = mul(bands(noise(rng, d), [(300, 3, 1.0), (700, 4, 0.6), (1300, 5, 0.25)]), env(n, 0.01, 0.05))
+    effort = warden_effort(rng, v)
     end = steps[-1] + 0.03
     skid = mul(biquad(grains(rng, d, lambda t: 1600 if t > end else 0, 0.002), "band",
                       lambda t: 1500 - 800 * min(1.0, max(0.0, t - end) / 0.12), 1.0), bump(n, end, d - 0.01))
-    return mix(n, (strides, 0.8), (plates, 0.45), (rattle, 0.3), (air, 1.0), (effort, 0.35), (skid, 0.4))
+    return mix(n, (strides, 0.8), (plates, 0.45), (rattle, 0.3), (air, 1.0), (effort, 0.65), (skid, 0.4))
 
 
 def warden_fracture(rng, v):
@@ -106,7 +124,13 @@ def warden_fracture(rng, v):
     for k in range((6, 5)[v]):
         pebbles = add(pebbles, knock(n, 0.15 + 0.38 * rng.random(), [(1400 + 1800 * rng.random(), 12, 1.0)]), 0.8 ** k)
     dust = mul(biquad(noise(rng, d), "band", 800, 0.6), env(n, 0.03, 0.15, start=0.05))
-    return mix(n, (stab, 0.5), (body, 0.8), (split, 1.0), (rip, 0.5), (rubble, 0.5), (pebbles, 0.3), (dust, 0.25))
+    return mix(n, (stab, 0.5), (body, 0.8), (split, 1.0), (rip, 0.5), (rubble, 0.5), (pebbles, 0.3), (dust, 0.25),
+               (warden_effort(rng, v), .65))
+
+
+def warden_slam(rng, v):
+    impact = guardian_slam(rng, v)
+    return mix(len(impact), (impact, 1), (warden_effort(rng, v), .50))
 
 
 # ---------------------------------------------------------------- Briarheart
@@ -199,6 +223,8 @@ FAMILIES = {
     "briar_roots": (briar_roots, 0.78),
     "briar_seeds": (briar_seeds, 0.74),
     "briar_cage": (briar_cage, 0.78),
+    "warden_strain": (lambda rng, v: warden_windup(rng, v, strained=True), 0.68),
+    "warden_slam": (warden_slam, 0.78),
 }
 
 

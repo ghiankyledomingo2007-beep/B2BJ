@@ -61,13 +61,13 @@ final class BossFx {
 
     static GameAudio.Cue windupCue(Guardian g) {
         return switch (g.profile()) {
-            case OUTPOST_WARDEN -> GameAudio.Cue.WARDEN_WINDUP;
+            case OUTPOST_WARDEN -> g.enraged() ? GameAudio.Cue.WARDEN_STRAIN : GameAudio.Cue.WARDEN_WINDUP;
             case BRIARHEART -> GameAudio.Cue.BRIAR_WINDUP;
             default -> null;
         };
     }
 
-    /** The one sound an attack lands with, hit or miss; the overhead slam and shockwave keep the redesigned slam. */
+    /** The one sound an attack lands with, hit or miss; the Warden's effort is inside each recording. */
     static GameAudio.Cue releaseCue(Guardian g) {
         if (g.profile() == Guardian.Profile.BRIARHEART) return switch (g.forestAttack()) {
             case ROOT_WEAVE -> GameAudio.Cue.BRIAR_ROOTS;
@@ -79,7 +79,7 @@ final class BossFx {
             case SWEEP -> GameAudio.Cue.WARDEN_SWEEP;
             case CHARGE -> GameAudio.Cue.WARDEN_RUSH;
             case FISSURE -> GameAudio.Cue.WARDEN_FRACTURE;
-            case TARGET, SHOCKWAVE -> GameAudio.Cue.GUARDIAN_SLAM;
+            case TARGET, SHOCKWAVE -> GameAudio.Cue.WARDEN_SLAM;
         };
     }
 
