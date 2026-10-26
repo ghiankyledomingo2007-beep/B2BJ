@@ -10,7 +10,7 @@ java -cp build/B2BJ.jar tools/audio/ExportDialogue.java
 
 Each TSV row names the WAV, internal speaker, scene and exact subtitle. Final cast settings, source request metadata, hashes and levels are in `docs/art-review/voice-auditions/runtime-voices.json`. Use mono PCM16 at 22,050 Hz. Dialogue targets -18 LUFS / -4 dBTP; short combat efforts are separately peak limited. Source recordings and API credentials do not ship in the JAR.
 
-Rainoray and Raphael retain their approved voice profiles. Kaijin uses an older, seasoned Bill performance; Eren uses youthful Jessica; Souei uses reserved Eric; the Warden uses gravelly Callum without pitch distortion. Shuna and Rigurd retain their existing cast. Raphael alone has the approved quiet chime/echo treatment. See `../CREDITS.md` for provenance.
+Rainoray and Raphael retain their approved voice profiles. Kaijin uses an older, seasoned Bill performance; Eren uses youthful Jessica; Souei uses reserved Eric; the Warden uses gravelly Callum with a faint armor resonance and short room echo, without pitch distortion. Shuna and Rigurd retain their existing cast. Raphael alone has the approved quiet chime/echo treatment. See `../CREDITS.md` for provenance.
 
 NPC speech advances with player input and pauses with the game. Exploration exchanges follow each full recording plus a short reply gap. Ordinary combat does not interrupt an ongoing exchange; choosing NPC dialogue, skipping, leaving or death still ends speech. New casual exchanges wait for safe exploration or a settled fight. Fresh lines have priority, with a three-minute per-pair repeat gap during the session. Saved heard flags no longer permanently exhaust the companion bank. Completed exchanges are saved; interrupted exchanges are not marked completed.
 

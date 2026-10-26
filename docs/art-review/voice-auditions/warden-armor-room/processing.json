@@ -1,0 +1,200 @@
+[
+  {
+    "file": "warden_01.wav",
+    "source": "assets/source/audio/companion-cast-2026-10-26/warden_01.mp3",
+    "source_sha256": "40ca6af51e73e35b810767f690709a22535938b487fac1ac46a2e8b372d831d9",
+    "sha256": "c95528ae4ecab5fd133d6c1c8dd2537d46bfeea241a98294f916db6b6bd71eec",
+    "seconds": 3.6966,
+    "peak_dbfs": -4.0,
+    "armor_rms_ratio": 0.085,
+    "room_reflections": [
+      [
+        0.032,
+        0.08
+      ],
+      [
+        0.061,
+        0.06
+      ],
+      [
+        0.107,
+        0.045
+      ],
+      [
+        0.157,
+        0.028
+      ],
+      [
+        0.223,
+        0.015
+      ]
+    ],
+    "tail_seconds": 0.26,
+    "pitch_shift": 0
+  },
+  {
+    "file": "warden_03.wav",
+    "source": "assets/source/audio/companion-cast-2026-10-26/warden_03.mp3",
+    "source_sha256": "4e1cded5976330d7f823240e9f81eb038824c3d8f4b2787451e948bc22483843",
+    "sha256": "4eb77159161630dde564c9115b2b0cbd7b2af8141c8b13d02f8517741e8f979a",
+    "seconds": 2.8606,
+    "peak_dbfs": -4.02,
+    "armor_rms_ratio": 0.085,
+    "room_reflections": [
+      [
+        0.032,
+        0.08
+      ],
+      [
+        0.061,
+        0.06
+      ],
+      [
+        0.107,
+        0.045
+      ],
+      [
+        0.157,
+        0.028
+      ],
+      [
+        0.223,
+        0.015
+      ]
+    ],
+    "tail_seconds": 0.26,
+    "pitch_shift": 0
+  },
+  {
+    "file": "bark_warden_voice_stand.wav",
+    "source": "assets/source/audio/companion-cast-2026-10-26/bark_warden_voice_stand.mp3",
+    "source_sha256": "c145bcfac6ac920cc8408e8e4315428f7acb6f15cd25b1a8ea295742ffc05348",
+    "sha256": "9ad961be4899d4ad68cccd525c0f571acd178def50dfd9a9865c42de1f4a3088",
+    "seconds": 1.3746,
+    "peak_dbfs": -4.28,
+    "armor_rms_ratio": 0.085,
+    "room_reflections": [
+      [
+        0.032,
+        0.08
+      ],
+      [
+        0.061,
+        0.06
+      ],
+      [
+        0.107,
+        0.045
+      ],
+      [
+        0.157,
+        0.028
+      ],
+      [
+        0.223,
+        0.015
+      ]
+    ],
+    "tail_seconds": 0.26,
+    "pitch_shift": 0
+  },
+  {
+    "file": "bark_warden_voice_line.wav",
+    "source": "assets/source/audio/companion-cast-2026-10-26/bark_warden_voice_line.mp3",
+    "source_sha256": "b3b9d99341c918a7b9a93e064ad919898680cfcf54d967598a778a614088e93c",
+    "sha256": "fc6c56ac2f545e1b15fe6b28206048b4cd2a543770ee860eb18f89ed2d15bbaf",
+    "seconds": 1.421,
+    "peak_dbfs": -4.05,
+    "armor_rms_ratio": 0.085,
+    "room_reflections": [
+      [
+        0.032,
+        0.08
+      ],
+      [
+        0.061,
+        0.06
+      ],
+      [
+        0.107,
+        0.045
+      ],
+      [
+        0.157,
+        0.028
+      ],
+      [
+        0.223,
+        0.015
+      ]
+    ],
+    "tail_seconds": 0.26,
+    "pitch_shift": 0
+  },
+  {
+    "file": "bark_warden_voice_gate.wav",
+    "source": "assets/source/audio/companion-cast-2026-10-26/bark_warden_voice_gate.mp3",
+    "source_sha256": "b27b32779ff2f7e82d657f9a0a526c7a77091fc08c743195971361cff78a751a",
+    "sha256": "0c1024ee245865e0d6cc1c42b87be6c0b8b0754504d4f0856e054c8345a0c943",
+    "seconds": 1.839,
+    "peak_dbfs": -4.13,
+    "armor_rms_ratio": 0.085,
+    "room_reflections": [
+      [
+        0.032,
+        0.08
+      ],
+      [
+        0.061,
+        0.06
+      ],
+      [
+        0.107,
+        0.045
+      ],
+      [
+        0.157,
+        0.028
+      ],
+      [
+        0.223,
+        0.015
+      ]
+    ],
+    "tail_seconds": 0.26,
+    "pitch_shift": 0
+  },
+  {
+    "file": "bark_warden_voice_order.wav",
+    "source": "assets/source/audio/companion-cast-2026-10-26/bark_warden_voice_order.mp3",
+    "source_sha256": "4cf848ba37a0d66dc92e16b9e6602de13a9cfd7919200641d39a93542ef04dc9",
+    "sha256": "4c9479c13911f56f83ef7f51924688df730af69254e82c5c9bacbf3d5f3b6b66",
+    "seconds": 2.2105,
+    "peak_dbfs": -4.01,
+    "armor_rms_ratio": 0.045,
+    "room_reflections": [
+      [
+        0.032,
+        0.08
+      ],
+      [
+        0.061,
+        0.06
+      ],
+      [
+        0.107,
+        0.045
+      ],
+      [
+        0.157,
+        0.028
+      ],
+      [
+        0.223,
+        0.015
+      ]
+    ],
+    "tail_seconds": 0.26,
+    "pitch_shift": 0
+  }
+]

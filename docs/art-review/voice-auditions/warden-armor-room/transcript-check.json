@@ -1,0 +1,38 @@
+[
+  {
+    "file": "warden_01.wav",
+    "expected": "CONTAMINATED LIFEFORM. PASSAGE DENIED.",
+    "recognized": "Contaminated life form. Passage denied. ",
+    "match": 0.667
+  },
+  {
+    "file": "warden_03.wav",
+    "expected": "THE ROAD IS SEALED FOR THEIR PROTECTION.",
+    "recognized": "The road is sealed for their protection. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_warden_voice_stand.wav",
+    "expected": "Stand down.",
+    "recognized": "Stand down. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_warden_voice_line.wav",
+    "expected": "Hold the line.",
+    "recognized": "Hold the line. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_warden_voice_gate.wav",
+    "expected": "The gate stays shut.",
+    "recognized": "The gate stays shut. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_warden_voice_order.wav",
+    "expected": "I was ordered to protect them.",
+    "recognized": "I was ordered to protect them",
+    "match": 1.0
+  }
+]
