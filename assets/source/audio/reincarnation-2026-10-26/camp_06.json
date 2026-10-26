@@ -1,0 +1,27 @@
+{
+  "file": "camp_06.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAMP AT CAMP",
+  "text": "Rainoray. That's the part I'm sure about.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "H0TH2a5gmu3d91QYOEdG",
+  "context_request_ids": [
+    "0ty5mSnUwWN54nbSk63x",
+    "hK8crYBQg2TI8O0LyiT0",
+    "5VTbQ2TXqtBa6Wvd6wBK"
+  ],
+  "generated_at": 1793011337.7630506,
+  "format": "mp3_44100_192",
+  "seconds": 2.926,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "fffff9fc27cf5a20d4b840fccb151a2a155379391333dac13a0758e3e4bc023f"
+}

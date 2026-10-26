@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_fight_listen.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FOREST_FIGHT_LISTEN",
+  "text": "Wait. Listen before we move.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "j4SLRdXzbF9cReDaOK8W",
+  "context_request_ids": [
+    "Z8B2maDBUhvLj1LpnU07",
+    "BD2W79vQ80umJPu5UiIr",
+    "NBwuwSoM9bBQgSMhhGhD"
+  ],
+  "generated_at": 1793024799.2163575,
+  "format": "mp3_44100_192",
+  "seconds": 3.086,
+  "peak_dbfs": -4.2,
+  "tempo": 1,
+  "sha256": "a28425ac6d2ce1a5fe0a4c8bf98d7ccabc088deb4757fd9b401fe9cb4a53373a"
+}

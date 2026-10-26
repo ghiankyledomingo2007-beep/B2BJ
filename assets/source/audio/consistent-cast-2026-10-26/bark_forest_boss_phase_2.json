@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_boss_phase_2.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I see them. Keep talking.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "gNPoccDPkI1QuNbObgwl",
+  "context_request_ids": [
+    "ntJMHr68ggw2UlivqxLq",
+    "Z6ZoqwMDMKpUjfWE21ui",
+    "Y2qiYxi9MLGCaw8pAJBE"
+  ],
+  "generated_at": 1792949118.9175618,
+  "format": "mp3_44100_192",
+  "seconds": 1.858,
+  "peak_dbfs": -4.12,
+  "tempo": 1,
+  "sha256": "489d0ca7ddb4d4d58cfaebf094ba3d4efcf022b3bb222bf7a42b96217cbaf38c"
+}

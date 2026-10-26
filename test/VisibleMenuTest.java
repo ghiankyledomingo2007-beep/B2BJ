@@ -37,6 +37,9 @@ public final class VisibleMenuTest {
             press(panel, "right"); panel.step(.1);
             menu.doClick();
             assert game.paused() && !game.debugSession();
+            button(panel, "Close").doClick();
+            assert !game.paused() && menu.isVisible() : "internal Close must resume and restore the corner menu";
+            menu.doClick();
             assert button(panel, "Admin / Testing").isEnabled();
             button(panel, "Settings").doClick();
             assert children(panel).stream().anyMatch(c -> c instanceof javax.swing.JSlider)

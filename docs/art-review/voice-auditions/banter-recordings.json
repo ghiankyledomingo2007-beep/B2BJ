@@ -1,0 +1,1146 @@
+{
+  "date": "2026-10-25",
+  "processing": "Approved polish-settings.json: clean Rainoray, ethereal Sage, -19 LUFS / -3 dBTP; runtime 22050 Hz mono PCM16",
+  "lines": [
+    {
+      "file": "bark_fight_ledger.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "That was not on the supply list.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "YhbpYIZP3ot0hpnrf1KO",
+      "format": "mp3_44100_192",
+      "seconds": 1.672,
+      "peak_dbfs": -5.64,
+      "sha256": "777dbbe864108e708bd53163d844fa3fd7643bb0c1a2e5ccb36c3dbf4dddeebd"
+    },
+    {
+      "file": "bark_fight_ledger_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "I have started a separate list.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "w6itSh1bIdttMmX21Apk",
+      "format": "mp3_44100_192",
+      "seconds": 2.807,
+      "peak_dbfs": -4.75,
+      "sha256": "acc4aec71615f589de1a16b052a8d01c981dc5fdcd7fb48923b950d1d6f66318"
+    },
+    {
+      "file": "bark_fight_listen.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Let's listen before we move.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "4k2JZo6DEoRpvI916g2y",
+      "format": "mp3_44100_192",
+      "seconds": 1.486,
+      "peak_dbfs": -5.96,
+      "sha256": "93e0b38b4d2a403463655635ecef0216f3ca41c476298f50a4cc8d52cea317ec"
+    },
+    {
+      "file": "bark_fight_listen_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Agreed. The road carries sound.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "PdGCqr6bAMoox7cHwQMG",
+      "format": "mp3_44100_192",
+      "seconds": 2.807,
+      "peak_dbfs": -6.1,
+      "sha256": "828e823f090b6f5607f3b34c6a9c329becdc9cc188d4c424dddbbe0c36af2ff3"
+    },
+    {
+      "file": "bark_fight_road.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "This road used to mean safe passage.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "xpPN75HPVnDvzCXhsswB",
+      "format": "mp3_44100_192",
+      "seconds": 1.997,
+      "peak_dbfs": -7.51,
+      "sha256": "17741b693e02cbc15e78a7f1a0adace327cc00009584d12520fe3dd6ff6caa92"
+    },
+    {
+      "file": "bark_fight_road_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "It can again. That is why we continue.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "3rwFGsHaPohHZeXhqfQn",
+      "format": "mp3_44100_192",
+      "seconds": 2.807,
+      "peak_dbfs": -3.33,
+      "sha256": "c51ca501efdcce23c8e8a92e863917605d425c560e674e2a31a4437b93d1b5dc"
+    },
+    {
+      "file": "bark_fight_counting.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I preferred counting things.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "Pv1R33JXdIJIxumOKO0a",
+      "format": "mp3_44100_192",
+      "seconds": 1.486,
+      "peak_dbfs": -5.11,
+      "sha256": "cbec2926e9bbf651b35e3a33b02eda7b4bda2b8b03e10cd85755e7962b89e0f2"
+    },
+    {
+      "file": "bark_fight_counting_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "You still count who gets home.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "Cckl1LvX4MThYtwvX0CY",
+      "format": "mp3_44100_192",
+      "seconds": 2.389,
+      "peak_dbfs": -5.2,
+      "sha256": "cd8d13c615aa7f264f3ebeca0adbddcebba1329e9fc249784841f4bffcf9642d"
+    },
+    {
+      "file": "bark_fight_job.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Do I get a quieter job after this?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "v2xNIKQqzcFTUo9LHE9J",
+      "format": "mp3_44100_192",
+      "seconds": 1.904,
+      "peak_dbfs": -7.02,
+      "sha256": "dda2eb44341f2dd1ae1ae55682780d9fcf67f739709cc5d278ea94ec72ffacb7"
+    },
+    {
+      "file": "bark_fight_job_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "You have not finished this one.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "i0DXHarw26vT6InifZne",
+      "format": "mp3_44100_192",
+      "seconds": 2.436,
+      "peak_dbfs": -7.23,
+      "sha256": "450e7b01f615786abac9e627770262bf6885405337f8146498f0af1b45a0719d"
+    },
+    {
+      "file": "bark_fight_order.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Someone taught them to hold this road.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "Uju2SjU9aaJbeZqtiqby",
+      "format": "mp3_44100_192",
+      "seconds": 1.997,
+      "peak_dbfs": -5.48,
+      "sha256": "336f571ed498b52b3aec61c499b16189a12388943ab0603c6550b24312ca8810"
+    },
+    {
+      "file": "bark_fight_order_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "The order survived its purpose.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "UQ8XcIlodgnoH1UpBUF7",
+      "format": "mp3_44100_192",
+      "seconds": 2.529,
+      "peak_dbfs": -6.7,
+      "sha256": "37bc5ffafcc44ccbdb4176d17f9600d276d581d6d3f0f60ae34a52d565ff96d9"
+    },
+    {
+      "file": "bark_fight_watch.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "One moment. I'll check behind us.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "7irWIccAzQzPBNz5NyD8",
+      "format": "mp3_44100_192",
+      "seconds": 1.718,
+      "peak_dbfs": -7.74,
+      "sha256": "afa34de88c3271b14fc18561aaceab2bbf8ba35f67fc52b79ed7a03e07c090a4"
+    },
+    {
+      "file": "bark_fight_watch_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "A sensible habit. Keep it.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "mVGNtyQNOk8mwJMehj5W",
+      "format": "mp3_44100_192",
+      "seconds": 2.297,
+      "peak_dbfs": -4.79,
+      "sha256": "2d8a80126d7f94d20b4caae2324be3665a0012ba8ef5d7b9f585e8c7d8bbae11"
+    },
+    {
+      "file": "bark_fight_shaking.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Funny. I didn't stop shaking.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "Hm0ZPavzDhigt31thf4d",
+      "format": "mp3_44100_192",
+      "seconds": 1.579,
+      "peak_dbfs": -6.21,
+      "sha256": "193359d488bdca22c9555ea39c0dd8a471e55daa6d9952e751d309f58d713467"
+    },
+    {
+      "file": "bark_fight_shaking_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "You moved anyway.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "FIIlZoH3WXKWVFjis8JW",
+      "format": "mp3_44100_192",
+      "seconds": 1.971,
+      "peak_dbfs": -7.72,
+      "sha256": "58d699750293a109e9f311202e4e28e851a7b9092029fd6e7e9cb9144551f8fb"
+    },
+    {
+      "file": "bark_fight_reason.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I don't want to get used to that.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "INDJqZE6B5llCLvhTcHr",
+      "format": "mp3_44100_192",
+      "seconds": 1.486,
+      "peak_dbfs": -3.17,
+      "sha256": "c599d49b9aaeb5b2b6cf01e1ee69c43956a3461757023f5fca3d4243942236de"
+    },
+    {
+      "file": "bark_fight_reason_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Then remember why you are here.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "RbaBKf7aBSdISPIbeNnV",
+      "format": "mp3_44100_192",
+      "seconds": 2.482,
+      "peak_dbfs": -5.28,
+      "sha256": "a1e96985119e9efed521aa50d96e9c612ba539976ff22261bfbf35c39b1d2d07"
+    },
+    {
+      "file": "bark_fight_forward.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Forward, then. One problem at a time.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "9pT7M1Qj4Cs4MX7aTXp9",
+      "format": "mp3_44100_192",
+      "seconds": 2.136,
+      "peak_dbfs": -4.98,
+      "sha256": "2c118918c30671554825685c7826008a9deca5874385831e9a3eefcfb9d71238"
+    },
+    {
+      "file": "bark_fight_forward_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "One step is enough for now.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "1D0VS6hRfNEVpW1WexSM",
+      "format": "mp3_44100_192",
+      "seconds": 2.204,
+      "peak_dbfs": -6.32,
+      "sha256": "b52adad9580701c3129dd8fe6b998af06a3022ca5099336f0db01cc204d9df0f"
+    },
+    {
+      "file": "bark_fight_numbers.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Are you keeping count too?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "p2hE0MAzY8w07rlZSdGU",
+      "format": "mp3_44100_192",
+      "seconds": 1.533,
+      "peak_dbfs": -8.95,
+      "sha256": "0561c0780b0973f5bb85aea88291ede2bac41827361f96b72292b9b6023d78af"
+    },
+    {
+      "file": "bark_fight_numbers_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Only of the decisions that matter.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "06e7oZTUGe5Wndv19Zm2",
+      "format": "mp3_44100_192",
+      "seconds": 2.714,
+      "peak_dbfs": -4.06,
+      "sha256": "b1f879658a62f54513501542735d2506221d27597e44678d5714f3c09996a7f4"
+    },
+    {
+      "file": "bark_fight_moment.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Give me a moment before we go.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "U62kDFOoeC6AgxiP3v7F",
+      "format": "mp3_44100_192",
+      "seconds": 1.579,
+      "peak_dbfs": -7.06,
+      "sha256": "687090f5c7af06c2ad5322ade46dec5c6dcdc586a5eafc00663faf10577f707c"
+    },
+    {
+      "file": "bark_fight_moment_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Take it. Rushing is not recovery.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "JeEeAZ5qMbnKNcyXFiat",
+      "format": "mp3_44100_192",
+      "seconds": 2.761,
+      "peak_dbfs": -4.14,
+      "sha256": "067d057ef167a183a10b0c2dca4ffcdc913cbe64b52304a341914239fff9483b"
+    },
+    {
+      "file": "bark_hurt_shelter.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "That was closer than I'd planned.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "og6dtuQIHMUpWQTP1lBP",
+      "format": "mp3_44100_192",
+      "seconds": 1.579,
+      "peak_dbfs": -6.9,
+      "sha256": "41bd1832f168d77bb288019124e67ac4d9209232a2455566242051796d41d83e"
+    },
+    {
+      "file": "bark_hurt_shelter_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Find shelter before another fight.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "8tbL9uyhAMmRJvi4HdBP",
+      "format": "mp3_44100_192",
+      "seconds": 2.714,
+      "peak_dbfs": -3.02,
+      "sha256": "1da8519a70c1842991db65730dd75c7faf55c7c9b2358fcb49438e5a6e4c60fb"
+    },
+    {
+      "file": "bark_hurt_distance.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "All right. A little less bravery.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "8qPJLTGForxNgZjHJ4ha",
+      "format": "mp3_44100_192",
+      "seconds": 1.811,
+      "peak_dbfs": -6.43,
+      "sha256": "85b84d6278865b41a08e81d011b68cb49c8a173f6df53ffd44a34d9b1e5626d1"
+    },
+    {
+      "file": "bark_hurt_distance_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "A little more distance would help.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "DJjKSscjyStoA1lujdHR",
+      "format": "mp3_44100_192",
+      "seconds": 2.575,
+      "peak_dbfs": -3.05,
+      "sha256": "d1993f676a043227aff0f9857ff677657b74e6694e1b10bc92161b450cd616dc"
+    },
+    {
+      "file": "bark_hurt_camp.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I could use that campfire now.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "JS1LgJAsdFNIlkfpMfAR",
+      "format": "mp3_44100_192",
+      "seconds": 1.672,
+      "peak_dbfs": -3.03,
+      "sha256": "eef1c2676e9fcf15ffea5dcd8252686dd324685626c142f79b1d864633024d6c"
+    },
+    {
+      "file": "bark_hurt_camp_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "A retreat can still be progress.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "oo7a0I6pAOfJHbKd64gn",
+      "format": "mp3_44100_192",
+      "seconds": 2.714,
+      "peak_dbfs": -4.86,
+      "sha256": "c3306b2c2edc134a2996b171489e929c06d7192a632f19035d8e3a03db8c2f56"
+    },
+    {
+      "file": "bark_hurt_deliberate.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Tell me that looked deliberate.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "ocYufZUWNrCnDJjDokLC",
+      "format": "mp3_44100_192",
+      "seconds": 1.672,
+      "peak_dbfs": -6.2,
+      "sha256": "bbfef357780f157b83aed70c32e5a579a5bf80ffd1bcbdfbc10f61e18b72119c"
+    },
+    {
+      "file": "bark_hurt_deliberate_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "I would prefer to be accurate.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "8RAhRtDUV3SwjLpQx3TE",
+      "format": "mp3_44100_192",
+      "seconds": 2.343,
+      "peak_dbfs": -3.27,
+      "sha256": "14d210bfaf4e6c683016054b3ab9f2a61dc939249aa4ccdb34b7acf46dc2d47f"
+    },
+    {
+      "file": "bark_walk_routes.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I used to know every turn here.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "4rGfgRYcUUaHh8bUFvaN",
+      "format": "mp3_44100_192",
+      "seconds": 1.625,
+      "peak_dbfs": -7.34,
+      "sha256": "3aedfbe7a26cc4fd95fe56a2696dd47fabc017037c036fa16ee7cc1ff03253ee"
+    },
+    {
+      "file": "bark_walk_routes_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Then we can learn what has changed.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "LUcoLUckmfHMReeM64lm",
+      "format": "mp3_44100_192",
+      "seconds": 2.436,
+      "peak_dbfs": -8.9,
+      "sha256": "cc35de3cdcb571288720137ad9ae1ac12fd16819d6c9759c09a530fe2ecb782d"
+    },
+    {
+      "file": "bark_walk_bag.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I keep reaching for a bag I lost.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "CewH4EzNsudmBzgIStzX",
+      "format": "mp3_44100_192",
+      "seconds": 1.904,
+      "peak_dbfs": -4.86,
+      "sha256": "c5000f415f3d745b22412a752dff88ab20753f66984a7f8e9c4c1097b89c23e1"
+    },
+    {
+      "file": "bark_walk_bag_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Old habits are slow to catch up.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "asSVnGKRiktaywoRA3D5",
+      "format": "mp3_44100_192",
+      "seconds": 2.668,
+      "peak_dbfs": -4.67,
+      "sha256": "eb71a775f37472e47cb8ab2cb858d1e74cdd091ca96e1e0d9eef67864adb7759"
+    },
+    {
+      "file": "bark_walk_questions.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Do my questions ever tire you?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "WLqD1nwLTuLWkljB3nFc",
+      "format": "mp3_44100_192",
+      "seconds": 1.533,
+      "peak_dbfs": -4.1,
+      "sha256": "3aced588e068e603df2101870292accddd70601a341157a1a473d68d52d00e96"
+    },
+    {
+      "file": "bark_walk_questions_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Not yet. You may continue.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "au0PpHZ3B454lglokfJI",
+      "format": "mp3_44100_192",
+      "seconds": 2.343,
+      "peak_dbfs": -5.57,
+      "sha256": "76376a55664ecb0db9523472253bc4edc0983496ddab726d3efb31c5860fb8fb"
+    },
+    {
+      "file": "bark_walk_thoughts.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "You can talk without being asked.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "vKGNwmtOFvYUj28lUugg",
+      "format": "mp3_44100_192",
+      "seconds": 1.858,
+      "peak_dbfs": -7.56,
+      "sha256": "fe15a0e6a28dc1c5822f8a11ad734ea5476b918843a2d13ec708e4f6f7e9ba14"
+    },
+    {
+      "file": "bark_walk_thoughts_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "I was leaving room for your thoughts.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "7d9zdDkBCpvHXexWyy2p",
+      "format": "mp3_44100_192",
+      "seconds": 2.575,
+      "peak_dbfs": -8.61,
+      "sha256": "30b3f084bb4e905b4bfc182db8329d7bdf9c9aa3e287b4f2fc2e6e4343ad369b"
+    },
+    {
+      "file": "bark_walk_quiet.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Was it always this quiet here?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "BRPJIN2UcnwMDeI4vWzy",
+      "format": "mp3_44100_192",
+      "seconds": 1.765,
+      "peak_dbfs": -7.1,
+      "sha256": "37d69471eda0bc01140495865d756710731e6c3c11091357745ebe8f69a5f4f3"
+    },
+    {
+      "file": "bark_walk_quiet_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "You remember people. That is different.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "afzEhGxrx05v7k6vVauY",
+      "format": "mp3_44100_192",
+      "seconds": 2.9,
+      "peak_dbfs": -3.34,
+      "sha256": "73e6a478392b2431a53b3d7466bdce7ae3c46825301fcf45fef5896f10fdebd9"
+    },
+    {
+      "file": "bark_walk_waiting.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Who is still waiting out there?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "pKeQYgOY0m13YpDRPGOl",
+      "format": "mp3_44100_192",
+      "seconds": 1.625,
+      "peak_dbfs": -7.91,
+      "sha256": "e0ed56bc62436b887d220f756c357f78ae96aaab49dbfed37e1cf0ff3ba056e3"
+    },
+    {
+      "file": "bark_walk_waiting_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Someone may be asking that about you.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "OXpoZNkW7Kul1JD2iQpq",
+      "format": "mp3_44100_192",
+      "seconds": 2.854,
+      "peak_dbfs": -5.06,
+      "sha256": "8b058b7ec65033ddceefe8a02fd9929dfb99cc8486e17af5fd1068760bd25079"
+    },
+    {
+      "file": "bark_walk_name.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Sage. That name suits you.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "iPIO5auqOYBn9gnhWhbx",
+      "format": "mp3_44100_192",
+      "seconds": 1.579,
+      "peak_dbfs": -4.93,
+      "sha256": "51b81ece3bad92d6d5e2f213781d23df416af014dd69cc394221bd98f95ee7af"
+    },
+    {
+      "file": "bark_walk_name_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "It is sufficient. I will answer to it.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "twTPuvMtFHjPKStgXNnw",
+      "format": "mp3_44100_192",
+      "seconds": 2.807,
+      "peak_dbfs": -7.08,
+      "sha256": "c6eae18d7ad1d4174739673a3882599854b94dbe3dc5cf615effc2ddfaaf5843"
+    },
+    {
+      "file": "bark_walk_map.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "A map never shows how a place feels.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "utcsoUvG4qi48zwtQXtR",
+      "format": "mp3_44100_192",
+      "seconds": 2.368,
+      "peak_dbfs": -7.01,
+      "sha256": "cc92de9c0ab7ae5451b0e27181133acbcbc743c1e0869aa2f86addc85e62e480"
+    },
+    {
+      "file": "bark_walk_map_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Someone must carry that part.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "SUEJ6qLtk9TaS9Vpmnzl",
+      "format": "mp3_44100_192",
+      "seconds": 2.297,
+      "peak_dbfs": -5.72,
+      "sha256": "2b8fac643b3a7b11a6f361e2f8a396234991600c2adb9d36a1f2c521bb650186"
+    },
+    {
+      "file": "bark_walk_calm.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "If I sound calm, don't be fooled.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "wwMuKgkhLh9W0LyuFhDy",
+      "format": "mp3_44100_192",
+      "seconds": 1.95,
+      "peak_dbfs": -10.05,
+      "sha256": "2267e17defb79e212ecf550bc44409ee403fba4bc6f4befbcb1278284bb45d95"
+    },
+    {
+      "file": "bark_walk_calm_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "I hear more than your tone.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "KDLJsPSsVd82RWybb61v",
+      "format": "mp3_44100_192",
+      "seconds": 2.343,
+      "peak_dbfs": -5.22,
+      "sha256": "50cd15cb518468dda4c80bad4fb3e9b5d9fc9a9af36b92e3c90e72a1714a31b0"
+    },
+    {
+      "file": "bark_walk_nails.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I used to worry about missing nails.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "TnbE7JXxo6LVYBIqQbbx",
+      "format": "mp3_44100_192",
+      "seconds": 1.765,
+      "peak_dbfs": -4.0,
+      "sha256": "e946c5a623a7d358700bee3e13fb2224da45445b67dcb63c10facb22cef68112"
+    },
+    {
+      "file": "bark_walk_nails_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "You noticed what others overlooked.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "z3bgeQmuXwsJqeuwE7mS",
+      "format": "mp3_44100_192",
+      "seconds": 2.714,
+      "peak_dbfs": -7.07,
+      "sha256": "af1f3394a3151f41ce484a90ec495e7cf8130128c7b1bdd6b2c61af65dfa3502"
+    },
+    {
+      "file": "bark_camp_lamp.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "She really is keeping that lamp lit.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "298L1PVg3NiXZOnE41G2",
+      "format": "mp3_44100_192",
+      "seconds": 1.858,
+      "peak_dbfs": -6.89,
+      "sha256": "aaddd91fbb517d11a12bdfce1e6855b4b6124087f9f2468869fbfbc9e6248ecf"
+    },
+    {
+      "file": "bark_camp_lamp_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "She is making a place to return to.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "ydGaqpD3l0KqQ50ubGY2",
+      "format": "mp3_44100_192",
+      "seconds": 2.854,
+      "peak_dbfs": -6.29,
+      "sha256": "476796177edcbb7323b8382707f62962277957c80c7651bfaa280ef0a05fc4dc"
+    },
+    {
+      "file": "bark_camp_person.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "She spoke to me like I was a person.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "IexMErBYqM10ujAx4eZD",
+      "format": "mp3_44100_192",
+      "seconds": 2.09,
+      "peak_dbfs": -5.81,
+      "sha256": "196c0bb3ab1f9739e6300aa33f0892bce9801a621445a2aaf5b585a8120c4c52"
+    },
+    {
+      "file": "bark_camp_person_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "You still are.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "Kh2BiUgTojJCCKG7VPei",
+      "format": "mp3_44100_192",
+      "seconds": 1.832,
+      "peak_dbfs": -9.23,
+      "sha256": "adca29a92552746ba25541f4c89dd75b0dd87e726ec53ed9f5c52b162e954004"
+    },
+    {
+      "file": "bark_camp_talk.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I didn't expect to miss ordinary talk.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "i85I1iajD7Z9yXj2EZIO",
+      "format": "mp3_44100_192",
+      "seconds": 2.136,
+      "peak_dbfs": -5.22,
+      "sha256": "ffee5a99e09a0710f780741da0ec4ef5350c288f0a7bdc73b3bbb863173e0007"
+    },
+    {
+      "file": "bark_camp_talk_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "You do not have to stop having it.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "UYJfeEjrOC444RXnz2co",
+      "format": "mp3_44100_192",
+      "seconds": 2.761,
+      "peak_dbfs": -4.63,
+      "sha256": "ce48213891bdc37d3765563450bc2764fd652e2f604567b1b2da70f9eda00c93"
+    },
+    {
+      "file": "bark_camp_promise.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I wish I could promise her more.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "XUvCiPy8U0XHmossYf2j",
+      "format": "mp3_44100_192",
+      "seconds": 1.765,
+      "peak_dbfs": -5.13,
+      "sha256": "25d1ba190d09e9aca1eebe4abe75276712c30d4afd82cf29dd2d2cfff9049fbd"
+    },
+    {
+      "file": "bark_camp_promise_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Return when you can. Start with that.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "I4dHaa9QDeh6sIyzVsep",
+      "format": "mp3_44100_192",
+      "seconds": 3.179,
+      "peak_dbfs": -5.28,
+      "sha256": "7d98c55fdaf500e464c4034e1eedfdf312f5a214ff6b3bd9fb4a5b548fc4a8fa"
+    }
+  ]
+}

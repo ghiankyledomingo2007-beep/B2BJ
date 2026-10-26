@@ -15,7 +15,7 @@ import java.util.Map;
  * assets/ui/kit.png (drawn by tools/art/UiArt.java); one art pixel is {@link #S} screen pixels, the
  * same scale as the world, so menus and HUD share one pixel grid. Coordinates here are screen pixels.
  */
-final class Ui {
+final class     Ui {
     private Ui() { }
 
     /** Screen pixels per art pixel. */

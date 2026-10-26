@@ -1,0 +1,19 @@
+{
+  "file": "effort_heavy_2.wav",
+  "speaker": "RAINORAY",
+  "text": "Hup!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "generated_at": 1792967496.2221365,
+  "request_id": "a2SqssBrY6lSivMJrZJe",
+  "seconds": 0.2126,
+  "peak_dbfs": -7.54,
+  "sha256": "56ea060aa774a21b3a6ebba95f855a18d4f901f8dbe880257f4f2654517e1b5f"
+}

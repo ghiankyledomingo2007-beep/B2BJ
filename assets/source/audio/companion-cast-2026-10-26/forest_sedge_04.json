@@ -1,0 +1,28 @@
+{
+  "file": "forest_sedge_04.wav",
+  "speaker": "SEDGE",
+  "scene": "THE STRANDED CROSSING",
+  "text": "Souei. I marked a path back, but the roots keep closing it.",
+  "spoken_text": "",
+  "voice_id": "cjVigY5qzO86Huf0OWal",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.68,
+    "similarity_boost": 0.75,
+    "style": 0.05,
+    "use_speaker_boost": true,
+    "speed": 0.96
+  },
+  "seed": 84722,
+  "request_id": "Bg56cRVl6jIKeRmVySyO",
+  "context_request_ids": [
+    "FVlRE2DH2xXwCRphB68K",
+    "su4QAg948gW7ElUcAqoM"
+  ],
+  "generated_at": 1793024801.4369981,
+  "format": "mp3_44100_192",
+  "seconds": 4.133,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "343860c74a8b5402a6ee26acf156f9f307ab35ebb7a52089129b1b17ead4547f"
+}

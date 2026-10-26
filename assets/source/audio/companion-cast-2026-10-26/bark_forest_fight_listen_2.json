@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_fight_listen_2.wav",
+  "speaker": "RAINORAY",
+  "scene": "FOREST_FIGHT_LISTEN",
+  "text": "Right. Quiet doesn't always mean safe.",
+  "spoken_text": "",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "RLxO9gVySgzAklKlrxKa",
+  "context_request_ids": [
+    "dU8TIhHibVGvxF7UkuyT",
+    "bviiSigU9BTQmf8rtvsY",
+    "q8Ge9KhpxZ0MQB7Qh5nb"
+  ],
+  "generated_at": 1793024793.9913285,
+  "format": "mp3_44100_192",
+  "seconds": 2.601,
+  "peak_dbfs": -4.34,
+  "tempo": 1,
+  "sha256": "e99a45af61ff1308a351696f7b0ae158e0b9a8cf9456ccdf01094217788e8ce3"
+}

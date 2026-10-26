@@ -1,0 +1,27 @@
+{
+  "file": "forest_moonwell_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "UNDER THE SURFACE",
+  "text": "Its roots are cut. The water here no longer feeds the heart.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "MdyHgacubwNBkxRpyC8q",
+  "context_request_ids": [
+    "WL8Bipv3IuyCF3tQlBqR",
+    "gbFJLGpnAeFw5mZpzEdF",
+    "EfgluTavTNez3TXniPWe"
+  ],
+  "generated_at": 1792948993.8591995,
+  "format": "mp3_44100_192",
+  "seconds": 4.34,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "e45d1095e83c0177ab5a4ff7c3b04de6fa9c3bb23b402a200d2408ced90c5397"
+}

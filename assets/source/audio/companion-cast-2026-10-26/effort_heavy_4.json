@@ -1,0 +1,19 @@
+{
+  "file": "effort_heavy_4.wav",
+  "speaker": "RAINORAY",
+  "text": "Hah!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84727,
+  "generated_at": 1793024820.320432,
+  "request_id": "75APXDEvljAOW5zIhbEZ",
+  "seconds": 0.2193,
+  "peak_dbfs": -7.54,
+  "sha256": "2ef035807be63660b45f6fd97111c3ee926b203854597f4199c14c7f2b2934fa"
+}

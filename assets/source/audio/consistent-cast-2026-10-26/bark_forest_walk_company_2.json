@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_company_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "I was listening to the trees.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "u0qiIyYCsRAx2XFNFadG",
+  "context_request_ids": [
+    "rvQaXiBHGBpuDBlaqvUh",
+    "7QeXvoPbjH7mOGzLTInu",
+    "6hmZp4Z0NTKFBFsNy9qN"
+  ],
+  "generated_at": 1792949023.9214506,
+  "format": "mp3_44100_192",
+  "seconds": 2.529,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "6a5d2aaffbee846b2313a4746b977700a65c49fc66c1bd35aee1db80df284cf3"
+}

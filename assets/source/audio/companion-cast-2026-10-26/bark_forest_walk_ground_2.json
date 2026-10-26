@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_walk_ground_2.wav",
+  "speaker": "RAINORAY",
+  "scene": "FOREST_WALK_GROUND",
+  "text": "Thanks. I'm tired of sinking.",
+  "spoken_text": "",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "bviiSigU9BTQmf8rtvsY",
+  "context_request_ids": [
+    "xGwAIGXhPKD5GIIbmJac",
+    "Y8XDFIAy4fZSdsiz7iiq",
+    "dU8TIhHibVGvxF7UkuyT"
+  ],
+  "generated_at": 1793024792.1777644,
+  "format": "mp3_44100_192",
+  "seconds": 2.136,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "77c71189fdea2d4f316b2e77e296fbaa756fd87c562cf3c95f039c9077702936"
+}

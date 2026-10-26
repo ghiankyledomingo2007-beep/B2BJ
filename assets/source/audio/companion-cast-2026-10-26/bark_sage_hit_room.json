@@ -1,0 +1,28 @@
+{
+  "file": "bark_sage_hit_room.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "SAGE_HIT_ROOM",
+  "text": "Easy. Give yourself a little room.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "f19YMa7QMvVHonkiYKJu",
+  "context_request_ids": [
+    "j4SLRdXzbF9cReDaOK8W",
+    "MHh4NYLpXobJtONCJUDi",
+    "NH6BqnGcnEA8eOAo7vdG"
+  ],
+  "generated_at": 1793024802.9881847,
+  "format": "mp3_44100_192",
+  "seconds": 3.132,
+  "peak_dbfs": -4.2,
+  "tempo": 1,
+  "sha256": "a2f814a932a21cdc93c1eefd3c476b6f33dcc4ffba1769ea6db9ba6663e39139"
+}

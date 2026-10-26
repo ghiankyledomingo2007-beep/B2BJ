@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_wait_01.wav",
+  "speaker": "SEDGE",
+  "scene": "SEDGE",
+  "text": "White cloth through the grove, then east across the dry ford. The stair is beyond the thorn clearing.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "of7LvjJ0dHL6vPBTikJI",
+  "context_request_ids": [
+    "uUzWKw2qcSAnHE6I9LNx",
+    "6hE5bZoCQp2JPuVm07oi",
+    "Bn5QE1E7xeYDycvc5FyP"
+  ],
+  "generated_at": 1792949000.3279243,
+  "format": "mp3_44100_192",
+  "seconds": 8.916,
+  "peak_dbfs": -3.97,
+  "tempo": 1,
+  "sha256": "39f1e9f74fe14d652f59e9f491d433a1966afad46b3c6fe71b313ca495e42232"
+}

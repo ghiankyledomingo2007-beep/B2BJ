@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_cage_warning.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "One side is open. Go through it.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "sr1Cb4I1Iqr1tM8ASqGU",
+  "context_request_ids": [
+    "jJDD7lE2oom38cdmAGia",
+    "EXTlYwevX5sb7Ut63Lrm",
+    "TXrUUl1atwiDq0o0RaKX"
+  ],
+  "generated_at": 1792967473.8761091,
+  "format": "mp3_44100_192",
+  "seconds": 2.803,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "d7cb85173d0b55622e044edca64229e768581054d4f195cd84aaa97a70afe31a"
+}

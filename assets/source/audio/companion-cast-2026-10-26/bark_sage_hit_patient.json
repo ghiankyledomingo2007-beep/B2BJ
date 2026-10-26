@@ -1,0 +1,28 @@
+{
+  "file": "bark_sage_hit_patient.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "SAGE_HIT_PATIENT",
+  "text": "Don't rush the next move.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "hM7CsXo8LTr0UAigAPbQ",
+  "context_request_ids": [
+    "lrU5zWFy60CbvgSB2yrY",
+    "YwBZ9eP9YI5JihrYTeX7",
+    "yCgxIc70Nmn3VbCdnQQI"
+  ],
+  "generated_at": 1793024808.020153,
+  "format": "mp3_44100_192",
+  "seconds": 2.389,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "6d6f3bee3bc34f5f7c4ef13efab6e204beb3bc2f559dbbd28da05a8aea9169dd"
+}

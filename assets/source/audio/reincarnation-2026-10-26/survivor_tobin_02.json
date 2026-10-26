@@ -1,0 +1,27 @@
+{
+  "file": "survivor_tobin_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "BEHIND THE FENCE",
+  "text": "Rainoray. Mostly water, these days.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "k7XoSqmpEnmLO2YrKcTI",
+  "context_request_ids": [
+    "SbXlYVOXsMldSNSO0enb",
+    "B0RHZOVyXljMfrrjl9lJ",
+    "8CoZYuoRFSR25AGLF6Qj"
+  ],
+  "generated_at": 1793011354.3666508,
+  "format": "mp3_44100_192",
+  "seconds": 2.554,
+  "peak_dbfs": -4.07,
+  "tempo": 1,
+  "sha256": "479624527c366f907c2534483a263978ec6a47276f88ae35e5041401d5ecf9f5"
+}

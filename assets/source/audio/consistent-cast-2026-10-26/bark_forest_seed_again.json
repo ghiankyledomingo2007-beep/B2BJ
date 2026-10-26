@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_seed_again.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Move away. Those seeds will burst.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "TXrUUl1atwiDq0o0RaKX",
+  "context_request_ids": [
+    "eoldc4PuQMekZlzeMlgp",
+    "jJDD7lE2oom38cdmAGia",
+    "EXTlYwevX5sb7Ut63Lrm"
+  ],
+  "generated_at": 1792967472.5191011,
+  "format": "mp3_44100_192",
+  "seconds": 3.035,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "5a6192c66509e80f3a541ca59cde913c490d7e33cb818033d5bffe9161739345"
+}

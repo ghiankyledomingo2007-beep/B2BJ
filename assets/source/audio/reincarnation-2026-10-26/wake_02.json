@@ -1,0 +1,25 @@
+{
+  "file": "wake_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE MORE CHANCE",
+  "text": "Did they get out?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "9O4LMXKZXmJSQjyPuSjE",
+  "context_request_ids": [
+    "2tDLTA05m7IcMTbkWDXI"
+  ],
+  "generated_at": 1793011329.3274748,
+  "format": "mp3_44100_192",
+  "seconds": 0.836,
+  "peak_dbfs": -4.52,
+  "tempo": 1,
+  "sha256": "e9881bedc1837802342ca2ca73c9b03b62ceebbe98fa4800deabc5991ccbeb03"
+}

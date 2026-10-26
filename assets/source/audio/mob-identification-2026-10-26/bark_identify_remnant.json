@@ -1,0 +1,23 @@
+{
+  "file": "bark_identify_remnant.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "A remnant. It still knows how to fight.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "kQQO1cRFXZXThQAfw3L4",
+  "context_request_ids": [],
+  "generated_at": 1792970741.1048708,
+  "format": "mp3_44100_192",
+  "seconds": 3.04,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "2ea5fb290fb54c40e3739223bc5524c5e38978d3f7602ebe4b53e2c6a375bb4f"
+}

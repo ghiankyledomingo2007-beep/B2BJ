@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_boss_close_call.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Get clear. Let yourself recover.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "QfMsMSkAiOytfCnSjDmk",
+  "context_request_ids": [
+    "Kh2s2kNbhiKWk3OLUczZ",
+    "lOnpaPi3C2UkDoNhbW58",
+    "DmTLP2ZSd5wZxyJj5WVT"
+  ],
+  "generated_at": 1792967465.9520624,
+  "format": "mp3_44100_192",
+  "seconds": 2.993,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "271508b1f7df6495ebba82af6bb10eceafe6e3d41d2838c37cad56f8af026b5b"
+}

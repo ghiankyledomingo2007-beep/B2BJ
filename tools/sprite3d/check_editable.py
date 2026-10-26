@@ -21,9 +21,13 @@ import locomotion,puppet,channels,trail
 poser=puppet.Poser(arm)
 for facing,view in animate.VIEWS.items():
  contacts={side:[] for side in locomotion.STANCE}
+ hair_tips=[]
  for frame in locomotion.frames('idle',8):
   locomotion.pose(poser,*frame,view)
   for side in contacts:contacts[side].append(poser.head('foot'+side))
+  hair_tips.append(arm.pose.bones['head'].matrix.inverted()@poser.tail('hair_tip'))
+ if facing=='south' and bpy.data.objects['RainorayMask'].get('simple_markings'):
+  assert .1<max(p.x for p in hair_tips)-min(p.x for p in hair_tips)<.25,'hair must sway visibly without whipping'
  for side,points in contacts.items():
   assert max((a-b).length for a in points for b in points)<.5*puppet.REST_HEIGHT/68,(facing,side,'idle feet move over half a native pixel')
  guard=channels.measure_guard(poser,view)

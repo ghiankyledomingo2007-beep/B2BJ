@@ -1,0 +1,35 @@
+{
+  "method": "Scribe word timestamps in the combined final-runtime recording; approximate spoken-word ending, excludes echo/chime tail. Frame scheduling can add up to50ms.",
+  "lines": [
+    {
+      "file": "bark_sage_target.wav",
+      "speech_end_seconds": 0.755,
+      "telegraph_seconds": 1.05,
+      "finishes_before_impact": true
+    },
+    {
+      "file": "bark_sage_sweep.wav",
+      "speech_end_seconds": 0.706,
+      "telegraph_seconds": 1,
+      "finishes_before_impact": true
+    },
+    {
+      "file": "bark_sage_charge.wav",
+      "speech_end_seconds": 0.583,
+      "telegraph_seconds": 1.2,
+      "finishes_before_impact": true
+    },
+    {
+      "file": "bark_sage_shockwave.wav",
+      "speech_end_seconds": 0.653,
+      "telegraph_seconds": 1.3,
+      "finishes_before_impact": true
+    },
+    {
+      "file": "bark_sage_fissure.wav",
+      "speech_end_seconds": 0.823,
+      "telegraph_seconds": 1.4,
+      "finishes_before_impact": true
+    }
+  ]
+}

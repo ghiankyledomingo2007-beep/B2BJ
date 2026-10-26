@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_camp_boat.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "He could have left when the river went.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "Z6ZoqwMDMKpUjfWE21ui",
+  "context_request_ids": [
+    "KSfGhjsTqrcgkCSaD2XZ",
+    "8pz29BMX64bmmcMuW0le",
+    "ntJMHr68ggw2UlivqxLq"
+  ],
+  "generated_at": 1792949117.1640198,
+  "format": "mp3_44100_192",
+  "seconds": 2.043,
+  "peak_dbfs": -4.57,
+  "tempo": 1,
+  "sha256": "9d2bea4a12dcfdc6af507f43c1b78c760019102c8ec5f20c41716cb7c9d615f8"
+}

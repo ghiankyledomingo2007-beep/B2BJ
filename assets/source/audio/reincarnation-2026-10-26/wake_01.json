@@ -1,0 +1,23 @@
+{
+  "file": "wake_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE MORE CHANCE",
+  "text": "Stay with me. I've almost got it open.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "2tDLTA05m7IcMTbkWDXI",
+  "context_request_ids": [],
+  "generated_at": 1793011328.4603908,
+  "format": "mp3_44100_192",
+  "seconds": 2.043,
+  "peak_dbfs": -4.27,
+  "tempo": 1,
+  "sha256": "d1eb06d6e2b650b81c3c39dfa7654da04e96fba7531101d95d855ff3c1dd83b4"
+}

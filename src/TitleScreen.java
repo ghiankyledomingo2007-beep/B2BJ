@@ -24,6 +24,23 @@ final class TitleScreen {
     }
 
     void draw(Graphics2D g,int width,int height,double seconds,BufferedImage slimeIdle,boolean reduced) {
+        drawBackdrop(g,width,height,seconds,reduced);
+        g=(Graphics2D)g.create();double scale=menuScale(width,height);g.scale(scale,scale);
+        word(g,BLOB,76,80,seconds,0,reduced,-28);
+        double link=entrance(seconds,.28,.6,reduced);
+        var connector=(Graphics2D)g.create();
+        connector.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)link));
+        Ui.text(connector,"TO",80,225,3,Ui.GOLD);
+        connector.setColor(new Color(153,127,83,150));connector.fillRect(140,214,(int)(240*link),2);connector.dispose();
+        word(g,BLADE,74,240,seconds,.35,reduced,32);
+        g.setColor(Ui.TEAL);g.fillRect(80,366,(int)(50*entrance(seconds,1.05,.4,reduced)),2);
+        g.dispose();
+    }
+
+    static double menuScale(int width,int height) { return Math.min(width/1280.,height/720.); }
+
+    /** Shared scene without the title logo or menu, also used when entering the outpost. */
+    void drawBackdrop(Graphics2D g,int width,int height,double seconds,boolean reduced) {
         Ui.crisp(g);
         double blend=reduced||previous<0?1:1-Math.exp(-Math.min(.1,Math.max(0,seconds-previous))*8);
         for(int i=0;i<mood.length;i++)mood[i]+=((i==selected?1:0)-mood[i])*blend;
@@ -33,7 +50,7 @@ final class TitleScreen {
             layer.drawImage(ART,0,0,null);scene(layer,640,360,seconds,reduced);layer.dispose();
             g.drawImage(sceneBuffer,0,0,width,height,null);
         }
-        Ui.fade(g,0,0,620,height,120,0);
+        Ui.fade(g,0,0,(int)(620*menuScale(width,height)),height,120,0);
         if(!reduced) {
             g.setColor(new Color(151,190,204,(int)(55*(1-.65*mood[2]))));
             for(int i=0;i<22;i++) {
@@ -41,14 +58,7 @@ final class TitleScreen {
                 g.fillRect(x/2*2,y/2*2,2,6+(i%3)*2);
             }
         }
-        word(g,BLOB,76,80,seconds,0,reduced,-28);
-        double link=entrance(seconds,.28,.6,reduced);
-        var connector=(Graphics2D)g.create();
-        connector.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)link));
-        Ui.text(connector,"TO",80,225,3,Ui.GOLD);
-        connector.setColor(new Color(153,127,83,150));connector.fillRect(140,214,(int)(240*link),2);connector.dispose();
-        word(g,BLADE,74,240,seconds,.35,reduced,32);
-        g.setColor(Ui.TEAL);g.fillRect(80,366,(int)(50*entrance(seconds,1.05,.4,reduced)),2);
+
     }
 
     private static BufferedImage[] word(String value,int[] ramp) {

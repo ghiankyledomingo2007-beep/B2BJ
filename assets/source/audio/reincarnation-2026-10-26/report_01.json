@@ -1,0 +1,27 @@
+{
+  "file": "report_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "STILL MISSING",
+  "text": "I found the dispatch. The Warden was told to seal the road against Ichor.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "SuyHkWZ3UL1ayrN8RakO",
+  "context_request_ids": [
+    "qwH9XTc6S8dmFo90mPfX",
+    "McBfancZdn7FdSIwpevD",
+    "8jfjFBNb0NkFkOTD8xL1"
+  ],
+  "generated_at": 1793011348.9587743,
+  "format": "mp3_44100_192",
+  "seconds": 4.133,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "c9764c186f6bdd7f672f9b96904b28da800ff9469fe5922a3e3aaad610026924"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "bark_camp_lamp.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "She really is keeping that lamp lit.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "A69redtxzCwgrMEt7g81",
+  "context_request_ids": [
+    "nt1d7o4BvwPwfnKEcNIE",
+    "dpVA3hMhBABrvHoA5j3O",
+    "1XoQHROwTlWqUVn74mmh"
+  ],
+  "generated_at": 1792949089.6963646,
+  "format": "mp3_44100_192",
+  "seconds": 1.95,
+  "peak_dbfs": -4.51,
+  "tempo": 1,
+  "sha256": "461ce05093810f4de1dda678d28aa0d2b5ff72cc1a6b14aac92390f889c10596"
+}

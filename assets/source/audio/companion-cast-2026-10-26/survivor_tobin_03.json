@@ -1,0 +1,27 @@
+{
+  "file": "survivor_tobin_03.wav",
+  "speaker": "TOBIN",
+  "scene": "BEHIND THE FENCE",
+  "text": "Kaijin. I worked on the gate relay. That sound means the Warden's still running a broken order.",
+  "spoken_text": "",
+  "voice_id": "pqHfZKP75CvOlQylNhV4",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.75,
+    "style": 0.1,
+    "use_speaker_boost": true,
+    "speed": 0.93
+  },
+  "seed": 84722,
+  "request_id": "NCkP1Rl8RzxE9Q0qB5F8",
+  "context_request_ids": [
+    "tvnwxA33P3BbO2fO9TN5"
+  ],
+  "generated_at": 1793024793.1759577,
+  "format": "mp3_44100_192",
+  "seconds": 6.78,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "67044d0fbfda6359dd1368f9985f6664ae2d741be175523895e1a429b9e6c162"
+}

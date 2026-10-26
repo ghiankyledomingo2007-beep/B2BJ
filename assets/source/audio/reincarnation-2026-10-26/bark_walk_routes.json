@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_routes.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I don't know which way is safe.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "EAy6hdtyfvClJmjwDCA6",
+  "context_request_ids": [
+    "fcjoFTfnD0wUbkbDZJ4L",
+    "mXT2dbAVeHVtqZXN6UZY",
+    "Vuw2r3iSN95J8mgUduEA"
+  ],
+  "generated_at": 1793011371.242192,
+  "format": "mp3_44100_192",
+  "seconds": 1.811,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "e33d688c5cc60dcf14b5014e85d8605fa6ff6ae27b5fc28734accf3a790dfb2f"
+}

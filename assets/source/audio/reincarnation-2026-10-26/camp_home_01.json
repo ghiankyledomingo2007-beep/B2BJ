@@ -1,0 +1,27 @@
+{
+  "file": "camp_home_01.wav",
+  "speaker": "MARA",
+  "scene": "THREE BEDS",
+  "text": "Kaijin, Eren and Rigurd. Three beds that aren't empty anymore.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "FNGY5yUfADLZaiRnVp9o",
+  "context_request_ids": [
+    "fnrcWhKO6xFwFhW7afO5",
+    "5GtCXq2PP0wn4z2IQcza",
+    "xkIAvMOSiVCKTsKEOq8T"
+  ],
+  "generated_at": 1793011341.1162932,
+  "format": "mp3_44100_192",
+  "seconds": 4.69,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "c8e0f2f3da9d416a8000971960399a6ca469a1cd83c6bc4ad442eaf5b6ff2dd9"
+}

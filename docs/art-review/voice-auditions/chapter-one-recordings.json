@@ -1,0 +1,1777 @@
+{
+  "date": "2026-10-25",
+  "processing": "Clean Rainoray and NPCs; Sage uses approved polish-settings.json; Warden pitch 0.90 with short metallic echo. Master -19 LUFS / -3 dBTP; runtime 22050 Hz mono PCM16",
+  "lines": [
+    {
+      "file": "wake_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST WATCH",
+      "text": "Rain. Cold stone. I was in the supply room a moment ago.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "7SDKvhhgoIguxI8Hn1Uh",
+      "format": "mp3_44100_192",
+      "seconds": 3.297,
+      "peak_dbfs": -4.43,
+      "sha256": "9f454fca80ad98b935de6dbb8f28c6102776d79cac75cdb1245bf919c3c766ec",
+      "replaced_request_id": "C2WdaUutKUSSLtmdDbuB",
+      "revision_reason": "User reported buzzy intro take"
+    },
+    {
+      "file": "wake_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST WATCH",
+      "text": "One more count before dawn. That's what I kept telling myself.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "INS9YgTNkL4sTTPgdmB6",
+      "format": "mp3_44100_192",
+      "seconds": 3.297,
+      "peak_dbfs": -3.48,
+      "sha256": "cd804fe03683b86a7128da36c9c25c792241ded3a285fd5d05cd1186ceec52f5"
+    },
+    {
+      "file": "wake_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST WATCH",
+      "text": "No hands. No boots. I seem to have kept the exhaustion.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "71Z6Y2qRiX4gBCVbG5tI",
+      "format": "mp3_44100_192",
+      "seconds": 2.833,
+      "peak_dbfs": -8.49,
+      "sha256": "512a2df31c84dc5efb2ed71c9279b5b1c8f57df930a627aea932e2cd7f104b70"
+    },
+    {
+      "file": "wake_04.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST WATCH",
+      "text": "There's a lamp beyond the ditch. Please let someone be holding it.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "PTwgf1QtrOvMVuUPbppE",
+      "format": "mp3_44100_192",
+      "seconds": 3.39,
+      "peak_dbfs": -3.09,
+      "sha256": "0eb6d14c73b3feb7de3ecd4003a9b2180fc08689a669e1626373a7cf60f5d0f7"
+    },
+    {
+      "file": "camp_01.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Easy. The last thing that crawled out of that ditch tried to eat my boots.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "9p0eIHtn1xQEmol3HkmI",
+      "format": "mp3_44100_192",
+      "seconds": 4.272,
+      "peak_dbfs": -7.29,
+      "sha256": "23d7ac963ee1e4d326a0239eac686dd65d684953111d8e7fe8f5d1aae2218739"
+    },
+    {
+      "file": "camp_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAMP AT CAMP",
+      "text": "I'll try to be a better guest. I'm Rainoray. Quartermaster.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "taHo9HUST81xKKHn5tuq",
+      "format": "mp3_44100_192",
+      "seconds": 3.111,
+      "peak_dbfs": -4.4,
+      "sha256": "96bcb315d6a18fe5555705f78e73c61a6a6e5115e4b07e7326153238945b53ee"
+    },
+    {
+      "file": "camp_03.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Rainoray? Your supplies reached us. You never did.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "7IMdsnHRDiydvLlWH8RB",
+      "format": "mp3_44100_192",
+      "seconds": 3.204,
+      "peak_dbfs": -7.22,
+      "sha256": "791f2c96c7a1384dd9a47d697e4e92a2497f277f438f406b070f055f2e8f820b"
+    },
+    {
+      "file": "camp_04.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAMP AT CAMP",
+      "text": "I'm having some trouble accounting for myself. Where is everyone?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "MpPwUrtb9edSP3uphnk2",
+      "format": "mp3_44100_192",
+      "seconds": 3.669,
+      "peak_dbfs": -7.69,
+      "sha256": "e54235298d66caf1aaf41403b33180c284e548209528b30e90ce218c85424367"
+    },
+    {
+      "file": "camp_05.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "We sent the wounded east. Then the rift struck the gatehouse. The Warden turned on the road it was guarding.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "GHL1phZO3a21UXcE68PN",
+      "format": "mp3_44100_192",
+      "seconds": 6.13,
+      "peak_dbfs": -5.71,
+      "sha256": "9b95d496feec35b3e2e3d96953a287f30c4412f49b2fc00e4dd37015b1424477"
+    },
+    {
+      "file": "camp_06.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAMP AT CAMP",
+      "text": "And you stayed?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "8OaUdLoPCVR189aZc8Tg",
+      "format": "mp3_44100_192",
+      "seconds": 1.161,
+      "peak_dbfs": -9.38,
+      "sha256": "82391871fc69484b4ef2ca310937c5de3c563944456ab5c480be3ab72d11bd95"
+    },
+    {
+      "file": "camp_07.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Someone has to be here if they come back. I'm Mara.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "HaM88YadSlEW45yzjP2h",
+      "format": "mp3_44100_192",
+      "seconds": 3.019,
+      "peak_dbfs": -8.5,
+      "sha256": "4e200efd23db43787929ff990f414d6515fff70bf65247d5ff58a23f4418a8ae"
+    },
+    {
+      "file": "camp_08.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Follow the torn banners east to Muster Ground. The road runs on through Inner Court to the gate.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "VeJ6Bj7UXGWQbxccbcgn",
+      "format": "mp3_44100_192",
+      "seconds": 5.759,
+      "peak_dbfs": -7.34,
+      "sha256": "93d93f76d9b7476b9822dd917a43818ad8fbb2bf74115e203f9c97f923838bbb"
+    },
+    {
+      "file": "camp_09.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Someone called from the storehouse south of that road. You might fit under its fence.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "D5KNI1NUsr183k1IDZhF",
+      "format": "mp3_44100_192",
+      "seconds": 4.505,
+      "peak_dbfs": -5.95,
+      "sha256": "26a2188c63cce0403977da360e3bf65127c975cc86d1d6052f01fc2abb1f0060"
+    },
+    {
+      "file": "camp_10.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "The dead still draw back before they strike. Step aside, then answer.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "XDjtpPFHslqad4uf8MlW",
+      "format": "mp3_44100_192",
+      "seconds": 4.04,
+      "peak_dbfs": -5.92,
+      "sha256": "acea8427299fa00c48eaf8dd33c5672a22d8ca62bd8770aa82d2e48984eb9896"
+    },
+    {
+      "file": "camp_wait_01.wav",
+      "speaker": "MARA",
+      "scene": "MARA",
+      "text": "East past the banners, then north at Inner Court. The signal tower lies north of camp if you need bearings.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "vuiG9hXmsM7xISEwtuLr",
+      "format": "mp3_44100_192",
+      "seconds": 6.316,
+      "peak_dbfs": -7.83,
+      "sha256": "597b2da8d8db4e3e7ac059c062c0e1b2de4866398c80bc37223fde9aafb6f71d"
+    },
+    {
+      "file": "camp_wait_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "MARA",
+      "text": "East, then north. I used to mark those supply routes myself.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "KVEJCIAGIhL2exJYHELO",
+      "format": "mp3_44100_192",
+      "seconds": 3.437,
+      "peak_dbfs": -4.82,
+      "sha256": "6a7fd2fe0e7f06d8ddc64c15eb42dbc069e5d8b0c70297155b03f073d65cabfa"
+    },
+    {
+      "file": "camp_wait_03.wav",
+      "speaker": "MARA",
+      "scene": "MARA",
+      "text": "Rest to steady your Ichor. Leave supplies here or at a lit brazier; we'll gather them.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "DdG80qKkTQTpHbbIOl02",
+      "format": "mp3_44100_192",
+      "seconds": 4.969,
+      "peak_dbfs": -5.6,
+      "sha256": "23b7f4bfc60341d65155699462df5ce4ad722202bc17d81ea9ce7f1b6e863788"
+    },
+    {
+      "file": "camp_late_01.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "The gate's quiet. Was that your doing?",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "pr1lRflckqqSoJTeLLjd",
+      "format": "mp3_44100_192",
+      "seconds": 2.276,
+      "peak_dbfs": -8.43,
+      "sha256": "dae3b7dfb50cb166215a5c7c3fd6789f841ca6f47485064db94b2c0c71bf2f19"
+    },
+    {
+      "file": "camp_late_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Rainoray. Quartermaster. I was looking for a way out.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "UYxowhyo38a3atIm9m6Q",
+      "format": "mp3_44100_192",
+      "seconds": 2.833,
+      "peak_dbfs": -5.57,
+      "sha256": "add58f53e548b01fa1c0174ae4cbd896e7f4556f44998153712947c4c31001d1"
+    },
+    {
+      "file": "camp_late_03.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "You're the name on our supply slips? I'm Mara. I kept a bed for you.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "4qKsfeYAK0uhqpn39noq",
+      "format": "mp3_44100_192",
+      "seconds": 3.855,
+      "peak_dbfs": -7.03,
+      "sha256": "347c1458a51bddb3d0ecaae246bd7c0091de0dc9473c8b5446cc238eddd420cc"
+    },
+    {
+      "file": "camp_late_04.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "We sent the wounded east before the Warden turned. I tried to follow, but the roots had closed the forest road.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "UlBOgEfl356agMbg3upC",
+      "format": "mp3_44100_192",
+      "seconds": 6.223,
+      "peak_dbfs": -7.01,
+      "sha256": "34dc3c7395d84d3a47bf528d9ae6ce285e696e86a7ca96887ca48d0d6c3a9d0f"
+    },
+    {
+      "file": "camp_late_05.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Then that's where I'll look next.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "4N42yJ25WmDu4xNvqeEl",
+      "format": "mp3_44100_192",
+      "seconds": 1.393,
+      "peak_dbfs": -6.27,
+      "sha256": "153e8c197b02f6051f488ed7137cf75d352e57bdd7d9f0274de411cb955b9575"
+    },
+    {
+      "file": "camp_late_06.wav",
+      "speaker": "MARA",
+      "scene": "THE LAMP AT CAMP",
+      "text": "Come back if you find them. Come back if you don't, too.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "TLsjym7JsGNkpeyniekf",
+      "format": "mp3_44100_192",
+      "seconds": 3.111,
+      "peak_dbfs": -6.99,
+      "sha256": "afae72bb9df790c7a903e14006931effbe38f9eb30027c4f1c338ef39e20118e"
+    },
+    {
+      "file": "signal_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE MISSING NAMES",
+      "text": "A dispatch, folded under the bell rope. 'Hold the east road until the last stretcher passes.'",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "HIFDXnTGvucpddfF8V9i",
+      "format": "mp3_44100_192",
+      "seconds": 5.619,
+      "peak_dbfs": -4.66,
+      "sha256": "cb639af3aa189a7b3c974977c2fbaa5bfd9a0dc36ba215eccef6d42c45524c76"
+    },
+    {
+      "file": "signal_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE MISSING NAMES",
+      "text": "No death count. Just names marked missing. Mine is here, too.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "FZTdAW5fYy5mE4Y3VLUB",
+      "format": "mp3_44100_192",
+      "seconds": 3.019,
+      "peak_dbfs": -8.41,
+      "sha256": "3e9fa069e0ab1dc16198b693c6042a4b0b058d93987cc31612ba0d0f679ec030"
+    },
+    {
+      "file": "signal_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE MISSING NAMES",
+      "text": "Someone crossed it out, then wrote it back in. Mara should see this.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "EMEGsjIzTWAsbAjpXS1v",
+      "format": "mp3_44100_192",
+      "seconds": 4.319,
+      "peak_dbfs": -5.63,
+      "sha256": "7a457c33f230e764138f37cd444fffdc44e82068283ce42d1f6b74100ab3ae9a"
+    },
+    {
+      "file": "signal_03_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE MISSING NAMES",
+      "text": "Someone crossed it out, then wrote it back in. Someone wasn't sure.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "qBDfsvU8NrgvI1M5eYqk",
+      "format": "mp3_44100_192",
+      "seconds": 3.576,
+      "peak_dbfs": -4.26,
+      "sha256": "afeac142c0b613906495056e59835da820915405aa14312306f7df7e686feec6"
+    },
+    {
+      "file": "infirmary_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "ONE EMPTY BED",
+      "text": "Every bed was stripped for bandages. Except this one.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "dRYKEQSMgIo6KX4wmOLd",
+      "format": "mp3_44100_192",
+      "seconds": 3.019,
+      "peak_dbfs": -4.83,
+      "sha256": "00a8eaa5f488c8038cf63d69cbbc4ffb668fbd0f4bed1fa676963e3dd2427fb3"
+    },
+    {
+      "file": "infirmary_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "ONE EMPTY BED",
+      "text": "A note on the blanket: 'For whoever comes back.'",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "RPZtRu7gBh8AcXyBrwbW",
+      "format": "mp3_44100_192",
+      "seconds": 2.554,
+      "peak_dbfs": -5.21,
+      "sha256": "77cbea487bc841768d341a439dca7f78aed7ee100242820ce6143b372c92a404"
+    },
+    {
+      "file": "infirmary_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "ONE EMPTY BED",
+      "text": "There's a dry dressing underneath. I'll leave it where she can find it.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "PVVERKOgC2yKO1Ly96ov",
+      "format": "mp3_44100_192",
+      "seconds": 3.808,
+      "peak_dbfs": -3.07,
+      "sha256": "3e2479ec495956612797a551c22cbe9377ddc3f220a8569d73120043af51a5cb"
+    },
+    {
+      "file": "supplies_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST DELIVERY",
+      "text": "My seal. These are the crates I stayed to count.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "6BJA17DEWG0lQ1Osy2Bq",
+      "format": "mp3_44100_192",
+      "seconds": 2.972,
+      "peak_dbfs": -6.32,
+      "sha256": "7d732d1d89d7f67338cf1f864f029e4c76237f350c8e74d01e9dd625f7b2c0c0"
+    },
+    {
+      "file": "supplies_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST DELIVERY",
+      "text": "'Blankets on top. Leave the weapons if the cart is too heavy.' My handwriting, too.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "kzytuJaP2aMx1UH9qZVA",
+      "format": "mp3_44100_192",
+      "seconds": 4.969,
+      "peak_dbfs": -3.37,
+      "sha256": "59d6da5c6be56668f3ae5ad240662d1ccb086c66a69e3e2883d3e7bed5d172d0"
+    },
+    {
+      "file": "supplies_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST DELIVERY",
+      "text": "The blankets are gone. Good. At least that part worked.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "QJntHfvrUl0L0JK8v0dd",
+      "format": "mp3_44100_192",
+      "seconds": 3.483,
+      "peak_dbfs": -3.25,
+      "sha256": "d473957e09613da139ea3257f2d2691dd8d9eb84a4ef4a4365fe8142d2c8213a"
+    },
+    {
+      "file": "report_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "STILL MISSING",
+      "text": "I found the evacuation list. You crossed out my name.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "CylydJTPGRLsxlPSRcBm",
+      "format": "mp3_44100_192",
+      "seconds": 3.437,
+      "peak_dbfs": -3.91,
+      "sha256": "b602a8e01df77d9ba54c15bbd7640106fc0b74ecd854a535b3deb7087804859e"
+    },
+    {
+      "file": "report_02.wav",
+      "speaker": "MARA",
+      "scene": "STILL MISSING",
+      "text": "I thought I'd seen you fall. Then I thought of how far away I was.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "9g8sUMqi6k2YyZkhvdU1",
+      "format": "mp3_44100_192",
+      "seconds": 3.947,
+      "peak_dbfs": -8.76,
+      "sha256": "331034c368a4b0fdcae26705933b22a53269ea13bfe2e32366f60d6983438051"
+    },
+    {
+      "file": "report_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "STILL MISSING",
+      "text": "So you wrote it back in.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "utVKn8WnIzET8k898aT5",
+      "format": "mp3_44100_192",
+      "seconds": 1.254,
+      "peak_dbfs": -8.25,
+      "sha256": "85bf5f2449321910f621d2824a4f6eb965c2201ab6d9dff9e988ba261e8a9679"
+    },
+    {
+      "file": "report_04.wav",
+      "speaker": "MARA",
+      "scene": "STILL MISSING",
+      "text": "Yes. I'm glad I did.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "nHuDqKrvi4WT0zqyKO66",
+      "format": "mp3_44100_192",
+      "seconds": 1.486,
+      "peak_dbfs": -7.79,
+      "sha256": "68d2da8508ae61605fb03cebea0416eb18305d83773f347955e6332cee00a884"
+    },
+    {
+      "file": "warden_01.wav",
+      "speaker": "WARDEN",
+      "scene": "THE LAST ORDER",
+      "text": "HALT. THE LAST STRETCHER HAS NOT PASSED.",
+      "voice_id": "nPczCjzI2devNBz1zQrb",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.65,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "3LsbQ5WRW4XsmucOeLEo",
+      "format": "mp3_44100_192",
+      "seconds": 2.33,
+      "peak_dbfs": -3.05,
+      "sha256": "e0b3caebc3030a65f011421298cb3501697a6f3aa85799612184b8b468397530"
+    },
+    {
+      "file": "warden_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST ORDER",
+      "text": "They're gone. Mara's the only one left. Open the gate.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "7cnnrC6hHdHl78wphGPe",
+      "format": "mp3_44100_192",
+      "seconds": 3.019,
+      "peak_dbfs": -5.79,
+      "sha256": "1d14a8c32838b499332d15b516d5e25bf4a845a28f879c7ef851adcfc769dbff"
+    },
+    {
+      "file": "warden_02_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST ORDER",
+      "text": "There's no stretcher on this road. Let me through. Someone may still need help.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "JRs0ezZHmTKQ1teOWZvp",
+      "format": "mp3_44100_192",
+      "seconds": 4.365,
+      "peak_dbfs": -5.08,
+      "sha256": "770bbf6fef5d6461d0c3db38ce1260f5af4f6687b637f6ef064d0cdac50450ad"
+    },
+    {
+      "file": "warden_02_rescued.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST ORDER",
+      "text": "People are still coming back. You're blocking their way. Open the gate.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "PPGYacmh00NCmnRXWwSw",
+      "format": "mp3_44100_192",
+      "seconds": 4.04,
+      "peak_dbfs": -6.74,
+      "sha256": "951214c9635ddd936529256ce4dd2bbbff23e1eea327709253d4dde3e5f13266"
+    },
+    {
+      "file": "warden_03.wav",
+      "speaker": "WARDEN",
+      "scene": "THE LAST ORDER",
+      "text": "ICHOR DETECTED. YOU ARE NOT ON THE EVACUATION LIST.",
+      "voice_id": "nPczCjzI2devNBz1zQrb",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.65,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "GGYsBe8fT4MKL76SrBNc",
+      "format": "mp3_44100_192",
+      "seconds": 3.3,
+      "peak_dbfs": -5.64,
+      "sha256": "7c24c7a88aab6c896632f74a59fcbacbdf2698cd0414dd4e04e769766435df20"
+    },
+    {
+      "file": "warden_04.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST ORDER",
+      "text": "Rainoray. Quartermaster. You watched me bring those supplies in.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "oqoqm5as24XksDtOF0qo",
+      "format": "mp3_44100_192",
+      "seconds": 3.251,
+      "peak_dbfs": -3.97,
+      "sha256": "afbe96e87a5fb2722e8c6238a94b9d50c0ec14e0c7edd57778ad0f0a560b6e4c"
+    },
+    {
+      "file": "warden_05.wav",
+      "speaker": "WARDEN",
+      "scene": "THE LAST ORDER",
+      "text": "QUARTERMASTER: DECEASED. HOLD THE ROAD.",
+      "voice_id": "nPczCjzI2devNBz1zQrb",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.65,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "uT8U7g5FejE7jprUQpYl",
+      "format": "mp3_44100_192",
+      "seconds": 2.371,
+      "peak_dbfs": -6.45,
+      "sha256": "52a67096d92ad3388ad27ececff2c70c75bdb684b7478504dd8db5e1175461bc"
+    },
+    {
+      "file": "warden_06.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST ORDER",
+      "text": "Then you'll have to stop me twice.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "3lahte9geg9KGYaq29Qx",
+      "format": "mp3_44100_192",
+      "seconds": 1.858,
+      "peak_dbfs": -7.37,
+      "sha256": "1e0ae5a75564192780f09038d95fea4aac18ffdb72be6b456aa9102c426530a7"
+    },
+    {
+      "file": "gate_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE ROAD OPENS",
+      "text": "The chain is broken. Stretcher tracks run through the gate and into the trees.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "mNhnlUXXHILwxKVk4QO2",
+      "format": "mp3_44100_192",
+      "seconds": 4.319,
+      "peak_dbfs": -5.78,
+      "sha256": "d34048f9c7815b0d5e8e05baf0e3b91b82318a82ec8b22e65eff5e4c10b1ba8e"
+    },
+    {
+      "file": "gate_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE ROAD OPENS",
+      "text": "Only one set of footprints comes back. Mara's.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "lLQnGDiFIMVOFKFpB711",
+      "format": "mp3_44100_192",
+      "seconds": 2.694,
+      "peak_dbfs": -5.68,
+      "sha256": "3e41835c525a5903c3b778cb481615f94e9bd560b7e615cec88557e415473557"
+    },
+    {
+      "file": "gate_02_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE ROAD OPENS",
+      "text": "Only one set of footprints comes back toward camp.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "ZFKkpfUWKhf2BdP9ILSY",
+      "format": "mp3_44100_192",
+      "seconds": 2.833,
+      "peak_dbfs": -3.93,
+      "sha256": "0cd6f4b0feb19dfc2d3968e589e284daeb2c392ef0602203d5428a72a1135e01"
+    },
+    {
+      "file": "gate_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE ROAD OPENS",
+      "text": "The others got this far. I can follow them.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "Us9c9diy4DJthoOaaxcm",
+      "format": "mp3_44100_192",
+      "seconds": 2.183,
+      "peak_dbfs": -5.34,
+      "sha256": "b98aabc2ec079502345b454e0d77900782d33b7bdf3475308400e1c84bef1916"
+    },
+    {
+      "file": "camp_after_01.wav",
+      "speaker": "MARA",
+      "scene": "A PLACE TO RETURN TO",
+      "text": "The gate's quiet.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "4XywqLYRlkI7WdergHbH",
+      "format": "mp3_44100_192",
+      "seconds": 1.115,
+      "peak_dbfs": -5.12,
+      "sha256": "c131735ff169ebb05e63bf6993eedec52b3efe5ddd2f4ad8d08ca6432a06fbfc"
+    },
+    {
+      "file": "camp_after_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "A PLACE TO RETURN TO",
+      "text": "It's open. I'm going after the stretcher tracks.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "iBmH59AUkDmjA7VlVKoW",
+      "format": "mp3_44100_192",
+      "seconds": 2.786,
+      "peak_dbfs": -4.15,
+      "sha256": "6455b3c1c68e1176a448c9b3f66dafd0f4f18b64347d9526914f4317df16a494"
+    },
+    {
+      "file": "camp_after_03.wav",
+      "speaker": "MARA",
+      "scene": "A PLACE TO RETURN TO",
+      "text": "I tried. The roots have swallowed the road. There's a dry scarf by the fire; take it before you go.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "i7Ddcn5E6ajA7w4QZr4M",
+      "format": "mp3_44100_192",
+      "seconds": 5.526,
+      "peak_dbfs": -6.56,
+      "sha256": "23220fc21a8a9d51eea536174bf06dc97aced710e88ffca9366aa78548717115"
+    },
+    {
+      "file": "camp_after_04.wav",
+      "speaker": "RAINORAY",
+      "scene": "A PLACE TO RETURN TO",
+      "text": "I'm not sure it would stay on.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "zLk04ABZDlwVYORLhKd1",
+      "format": "mp3_44100_192",
+      "seconds": 1.625,
+      "peak_dbfs": -8.54,
+      "sha256": "0de7736b61bff21fab8da855767d452ccb0682292874c20ee6e3b699e11f4c55"
+    },
+    {
+      "file": "camp_after_05.wav",
+      "speaker": "MARA",
+      "scene": "A PLACE TO RETURN TO",
+      "text": "Then I'll keep it dry.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "RU7kbmIR3i77EddoE8Xr",
+      "format": "mp3_44100_192",
+      "seconds": 1.3,
+      "peak_dbfs": -7.97,
+      "sha256": "c0f55cec45f421d2fd3f41d56b9e8d9a70182b269cbe40c260caaec608af834c"
+    },
+    {
+      "file": "survivor_tobin_01.wav",
+      "speaker": "TOBIN",
+      "scene": "BEHIND THE FENCE",
+      "text": "Who's there? If you're a rift thing, I'm mostly bandages. Poor eating.",
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "hJjeXlRYbDhBo3EsSD68",
+      "format": "mp3_44100_192",
+      "seconds": 5.062,
+      "peak_dbfs": -3.71,
+      "sha256": "12fa187cc8ff854cc8b3589b2080d2b1eadd8fc69a8f90d54e1688d4775a3d81"
+    },
+    {
+      "file": "survivor_tobin_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "BEHIND THE FENCE",
+      "text": "Rainoray. Quartermaster. Mostly water, these days.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "UKIpC4GGqFpbfPDHaQmd",
+      "format": "mp3_44100_192",
+      "seconds": 2.972,
+      "peak_dbfs": -3.12,
+      "sha256": "31e778fcb868abd84f977adbaf132afa3a1af05dfe5165f28b7f6497ff2cb20e"
+    },
+    {
+      "file": "survivor_tobin_03.wav",
+      "speaker": "TOBIN",
+      "scene": "BEHIND THE FENCE",
+      "text": "The quartermaster? We carried your crates out and left your name on the list.",
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "r70WBSlrCdhtcr53uU5d",
+      "format": "mp3_44100_192",
+      "seconds": 4.087,
+      "peak_dbfs": -3.0,
+      "sha256": "7224e9daeb86f80259023fcacd8559f2c5e221601ec884733068df0339a65eaf"
+    },
+    {
+      "file": "survivor_tobin_04.wav",
+      "speaker": "TOBIN",
+      "scene": "BEHIND THE FENCE",
+      "text": "The fence came down behind me. I couldn't climb it, and nothing friendly fits under.",
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "kgNBnJYCz8LOhrqqcpOB",
+      "format": "mp3_44100_192",
+      "seconds": 4.83,
+      "peak_dbfs": -3.03,
+      "sha256": "4da2184cfb1b4b37d9c319c6865ad8afede87989e8efc890c787e6a1d80c6ebd"
+    },
+    {
+      "file": "survivor_tobin_05.wav",
+      "speaker": "RAINORAY",
+      "scene": "BEHIND THE FENCE",
+      "text": "Mara's lamp is still lit at Captain Camp. Can you make it that far?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "9RWYZPXs2x1ek6YXX3fH",
+      "format": "mp3_44100_192",
+      "seconds": 3.762,
+      "peak_dbfs": -5.6,
+      "sha256": "c63fa613a9ced2f65422d20fa40fff51f2cc90191eeeeed4feaa9e6348f98bec"
+    },
+    {
+      "file": "survivor_tobin_05_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "BEHIND THE FENCE",
+      "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "32L9SoLmhb6VHYiZXOI0",
+      "format": "mp3_44100_192",
+      "seconds": 4.644,
+      "peak_dbfs": -3.89,
+      "sha256": "b39a0193ccf3079ea676cd395fdfacb5082e7393397e87ae47ed8dd2bc1072da"
+    },
+    {
+      "file": "survivor_tobin_06.wav",
+      "speaker": "TOBIN",
+      "scene": "BEHIND THE FENCE",
+      "text": "For a lamp? I'll crawl. Thank you.",
+      "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "VCh7Ypsn7sVBHRO9kkmi",
+      "format": "mp3_44100_192",
+      "seconds": 2.322,
+      "peak_dbfs": -5.23,
+      "sha256": "34fd1829d34dd1e09c58a6443107c1ea36606c04dbda0d6301c824f8b3c9d181"
+    },
+    {
+      "file": "survivor_ilse_01.wav",
+      "speaker": "ILSE",
+      "scene": "INSIDE THE THORNS",
+      "text": "Stay back. I've got one good arm and I'm not afraid to use it.",
+      "voice_id": "pFZP5JQG7iQjIQuC4Bku",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "HWbGkJNDrotLpi5ls0yO",
+      "format": "mp3_44100_192",
+      "seconds": 3.437,
+      "peak_dbfs": -4.02,
+      "sha256": "dd869357d484bd867d569b1a6b6ac5f2280f51cc423a6190b8bc813052171116"
+    },
+    {
+      "file": "survivor_ilse_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "INSIDE THE THORNS",
+      "text": "Rainoray. Quartermaster. I cut the thorns, not you.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "zd1blNszdl59A9e6LjhM",
+      "format": "mp3_44100_192",
+      "seconds": 2.879,
+      "peak_dbfs": -6.07,
+      "sha256": "2165c4ad2995f9e6ec71a03972d6581a35311d2222d25f01317b0e1d689fa691"
+    },
+    {
+      "file": "survivor_ilse_03.wav",
+      "speaker": "ILSE",
+      "scene": "INSIDE THE THORNS",
+      "text": "Ilse. Signals. I hid in here when the brambles came up. They grew faster than I could cut.",
+      "voice_id": "pFZP5JQG7iQjIQuC4Bku",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "1VfYkrU0r00jeyxVfYum",
+      "format": "mp3_44100_192",
+      "seconds": 5.526,
+      "peak_dbfs": -3.45,
+      "sha256": "309d94b2b9cbb8099c5c684bf602c20a03a0270507e0c45396f969fe65fc1973"
+    },
+    {
+      "file": "survivor_ilse_04.wav",
+      "speaker": "ILSE",
+      "scene": "INSIDE THE THORNS",
+      "text": "That chest is the quartermaster's cache. Locked tight, and the key went with the storehouse.",
+      "voice_id": "pFZP5JQG7iQjIQuC4Bku",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "0UHFKR9c0JwdUENjOsdh",
+      "format": "mp3_44100_192",
+      "seconds": 5.666,
+      "peak_dbfs": -3.17,
+      "sha256": "a3318a2fdc6bdd795b1bfd0a9fb3efe282017aabe2f3f051fb4c31552be5b10d"
+    },
+    {
+      "file": "survivor_ilse_05.wav",
+      "speaker": "RAINORAY",
+      "scene": "INSIDE THE THORNS",
+      "text": "Then it's still my job. Go to Mara's lamp at Captain Camp.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "7tRF9LgZbvGPBWrGKvwJ",
+      "format": "mp3_44100_192",
+      "seconds": 3.065,
+      "peak_dbfs": -7.23,
+      "sha256": "8339b0f9bdb23a2074ebfe8f0059511d8e7960c37033b90267a0a87ab18abc67"
+    },
+    {
+      "file": "survivor_ilse_05_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "INSIDE THE THORNS",
+      "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "LsbDWXiZQq0QMsWKTJnA",
+      "format": "mp3_44100_192",
+      "seconds": 3.994,
+      "peak_dbfs": -4.04,
+      "sha256": "78066ee67201fa78b470ea2c14775280fa8c4e2ff3715e38417447bd1374a2d8"
+    },
+    {
+      "file": "survivor_ilse_06.wav",
+      "speaker": "ILSE",
+      "scene": "INSIDE THE THORNS",
+      "text": "If anyone can find one small key in this mess, it's the man who counted every nail.",
+      "voice_id": "pFZP5JQG7iQjIQuC4Bku",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "CaINX1TMY9ThrRCEzoOR",
+      "format": "mp3_44100_192",
+      "seconds": 4.458,
+      "peak_dbfs": -6.53,
+      "sha256": "788c7a588f4413b0b9b518091ae533786d49eff1099654568622a25f3eca3d9b"
+    },
+    {
+      "file": "survivor_venn_01.wav",
+      "speaker": "VENN",
+      "scene": "THE CULVERT",
+      "text": "Took them long enough to send someone. I pictured someone taller.",
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "b0STm4CGomlf0aQhLUwt",
+      "format": "mp3_44100_192",
+      "seconds": 3.576,
+      "peak_dbfs": -3.28,
+      "sha256": "26b78d8660e5c7766497e873f177a054a902b513741a19b598ea453e19a5ee82"
+    },
+    {
+      "file": "survivor_venn_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE CULVERT",
+      "text": "Nobody sent me. I'm afraid I'm just late.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "G7V1ieJYGjXmzCYZQxl5",
+      "format": "mp3_44100_192",
+      "seconds": 2.136,
+      "peak_dbfs": -6.92,
+      "sha256": "a8e41b73d955581f99bda21b52c2c64810e63bb062e2afb826da623313c933c8"
+    },
+    {
+      "file": "survivor_venn_03.wav",
+      "speaker": "VENN",
+      "scene": "THE CULVERT",
+      "text": "Venn. Sergeant, once. I told the stretcher crew to go on without me.",
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "1Mm3IDvQ0yDVYvezHVZv",
+      "format": "mp3_44100_192",
+      "seconds": 4.69,
+      "peak_dbfs": -3.01,
+      "sha256": "0e56e45c8125350e4020ff28c03bd39321bc25de3447828658d2ed94915fdc68"
+    },
+    {
+      "file": "survivor_venn_04.wav",
+      "speaker": "VENN",
+      "scene": "THE CULVERT",
+      "text": "Then the culvert silted up and I spent a week talking to the rain.",
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "ygiDyrjTPbiqGNuKJ8qb",
+      "format": "mp3_44100_192",
+      "seconds": 3.994,
+      "peak_dbfs": -3.04,
+      "sha256": "14d78d5f023826acebc8a38800cce0b700de2ed0ef19e4b07c755747a0fbff74"
+    },
+    {
+      "file": "survivor_venn_05.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE CULVERT",
+      "text": "Mara is keeping a fire at Captain Camp. She has room for you.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "hgTqwuZyfCLvQqUxmMme",
+      "format": "mp3_44100_192",
+      "seconds": 3.762,
+      "peak_dbfs": -3.0,
+      "sha256": "055cb8950cb96d164deb0e12961b8fda67f35c40fd0f9ab76c1dd63ce69c8f85"
+    },
+    {
+      "file": "survivor_venn_05_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE CULVERT",
+      "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "84AVPYK75DWLexUF8ALG",
+      "format": "mp3_44100_192",
+      "seconds": 4.644,
+      "peak_dbfs": -6.48,
+      "sha256": "bed21bdb351a9bff110ed836b26ed5f4900c5ef1612d331d6b5c789155fb03a0"
+    },
+    {
+      "file": "survivor_venn_06.wav",
+      "speaker": "VENN",
+      "scene": "THE CULVERT",
+      "text": "Mara. Good. Then I'll go and be shouted at properly.",
+      "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "jJWec6vlVmiZONqFbnwL",
+      "format": "mp3_44100_192",
+      "seconds": 3.251,
+      "peak_dbfs": -3.81,
+      "sha256": "3fc5f5e8a7ddec0b760a5dc9030b1f1e2110993fd1ca7aa1418f04771ff43620"
+    },
+    {
+      "file": "ledger_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE QUARTERMASTER'S CACHE",
+      "text": "The cache opens. Bandages, a little coin, and my ledger.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "2UCrB7AIRR4N25EEkvyZ",
+      "format": "mp3_44100_192",
+      "seconds": 3.855,
+      "peak_dbfs": -3.0,
+      "sha256": "79a761e2e38b852ac39fa17fbb655985752985ce410ce8db966ef676403d0a87"
+    },
+    {
+      "file": "ledger_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE QUARTERMASTER'S CACHE",
+      "text": "Every crate, every blanket, every name that signed for them.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "jSxX5HwpMz7taHVXKmAz",
+      "format": "mp3_44100_192",
+      "seconds": 3.019,
+      "peak_dbfs": -5.2,
+      "sha256": "2ac3bb8640e1e9a3ed34901a7296083041a5d4775019178b4e2f6d77c20c49cf"
+    },
+    {
+      "file": "ledger_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE QUARTERMASTER'S CACHE",
+      "text": "Tobin, Ilse, Venn. All signed the same morning. I'll see that the count comes out right.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "lyY8qHR9x5cSKETCmswt",
+      "format": "mp3_44100_192",
+      "seconds": 5.851,
+      "peak_dbfs": -3.59,
+      "sha256": "c61776fff4597771f80f16312f8221b80551ff8b31391f2e81b4335c1479ae3e"
+    },
+    {
+      "file": "camp_rescued_01.wav",
+      "speaker": "MARA",
+      "scene": "SOMEONE CAME BACK",
+      "text": "Someone walked into my camp tonight and asked for you by name.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "FZGWzhHQNss6prGY7QHt",
+      "format": "mp3_44100_192",
+      "seconds": 3.158,
+      "peak_dbfs": -6.81,
+      "sha256": "5b9a7e8e88a16573df1e5218c37f770eaa8d0e7f05266ed94bde09a65926977a"
+    },
+    {
+      "file": "camp_rescued_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "SOMEONE CAME BACK",
+      "text": "They were still out there, waiting. I couldn't leave them.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "VaAesaUonO6m4bPulfQs",
+      "format": "mp3_44100_192",
+      "seconds": 2.647,
+      "peak_dbfs": -3.73,
+      "sha256": "f1c81ccc6f5998f70837854885a001be4bb112c63d0ff4d4bed2904f4bf8876c"
+    },
+    {
+      "file": "camp_rescued_03.wav",
+      "speaker": "MARA",
+      "scene": "SOMEONE CAME BACK",
+      "text": "Then keep looking. The dispatch listed more people than the Warden let through.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "4ZAuoZhfJHzJzR4CpBP7",
+      "format": "mp3_44100_192",
+      "seconds": 4.598,
+      "peak_dbfs": -7.37,
+      "sha256": "eaf4a776d428d3fadaccc32f9b7b951b2f42b6e317588f280754dfa448d2c449"
+    },
+    {
+      "file": "camp_home_01.wav",
+      "speaker": "MARA",
+      "scene": "THREE BEDS",
+      "text": "Tobin, Ilse and Venn. Three beds that aren't empty anymore.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "D1uzLAexoIQhFtCm0TOB",
+      "format": "mp3_44100_192",
+      "seconds": 3.947,
+      "peak_dbfs": -7.82,
+      "sha256": "3b00e385c9539a8bd04d4b20b78928524409fee10fc2658a30cd8163a6acafbe"
+    },
+    {
+      "file": "camp_home_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THREE BEDS",
+      "text": "The count finally adds up. Better than I'd hoped.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "3J3GdZCkCPeZpPLCjFPl",
+      "format": "mp3_44100_192",
+      "seconds": 2.926,
+      "peak_dbfs": -6.85,
+      "sha256": "9b04ba4d896e57a692cbf4ee049abbd866281147a223e2aab7b03291239354d9"
+    },
+    {
+      "file": "camp_home_03.wav",
+      "speaker": "MARA",
+      "scene": "THREE BEDS",
+      "text": "Ilse found the last of the good tea. Take the coin we were saving with it. You've earned both.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "QN1WOFhVxyhu3vCVbx25",
+      "format": "mp3_44100_192",
+      "seconds": 5.898,
+      "peak_dbfs": -8.38,
+      "sha256": "fd9885787c98f12126c7264dee0115140755a7a4cff28971bbd5b58c89b5da8a"
+    },
+    {
+      "file": "bark_leaving_camp.wav",
+      "speaker": "MARA",
+      "scene": "EXPLORATION",
+      "text": "Keep to the road. I'll keep the lamp lit.",
+      "voice_id": "EXAVITQu4vr4xnSDxMaL",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      },
+      "request_id": "gPNLClgtBIdhfOYKHpY9",
+      "format": "mp3_44100_192",
+      "seconds": 2.276,
+      "peak_dbfs": -6.95,
+      "sha256": "a58c6eb68bcdd0749e3bd56827fbb98f57c690b3ee40a65c2d30cfc0d816a900"
+    },
+    {
+      "file": "bark_after_rescue.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "One name off the missing list. Keep looking.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "8kkQvXbva5tDCDJfXqiZ",
+      "format": "mp3_44100_192",
+      "seconds": 2.993,
+      "peak_dbfs": -3.33,
+      "sha256": "f9457cd09254c3d3b44d0d689694ca32e57d88b4cf2c7082d4c2c9b0969612ab",
+      "replaced_request_id": "ePUrxsDByljbM8HPQHYf",
+      "revision_reason": "User reassigned post-rescue line to Sage"
+    },
+    {
+      "file": "bark_warden_start.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Watch its windup. Then move.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "d01t2j0cP3YuH2VbRUld",
+      "format": "mp3_44100_192",
+      "seconds": 2.297,
+      "peak_dbfs": -5.52,
+      "sha256": "ae735653bacda5825d2cd5431a7cfdf7a55dd7e8f95a42f07523f233af980291"
+    },
+    {
+      "file": "bark_warden_start_2.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I only need one opening.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "yeKx96ljYlLJHtiQBpDH",
+      "format": "mp3_44100_192",
+      "seconds": 1.393,
+      "peak_dbfs": -5.7,
+      "sha256": "92fed5aac4c06ae12d6bf1e27cf593591214ed5f2b2e76e9b17679e982fd08d7"
+    },
+    {
+      "file": "bark_warden_phase.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "More power. Less control.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "IwKQlVKrBhC0qSwktR2Z",
+      "format": "mp3_44100_192",
+      "seconds": 2.25,
+      "peak_dbfs": -4.73,
+      "sha256": "3002b9c0b949150672e6a7c2c5c58b830a635f061b4f9833fe97ba14a08961df"
+    },
+    {
+      "file": "bark_warden_phase_2.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Good. I'll use that.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "0OhpO2qEYvrmKsdH6fW8",
+      "format": "mp3_44100_192",
+      "seconds": 1.207,
+      "peak_dbfs": -6.2,
+      "sha256": "23dd6e4e9d42a3ad5ee63b3e9cfe5f6b4fe9dc355fb345e1a93987efab8a6687"
+    },
+    {
+      "file": "bark_warden_close_call.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Fall back. You need room.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "D7lOhRCjQ8vKHz8lovfd",
+      "format": "mp3_44100_192",
+      "seconds": 2.064,
+      "peak_dbfs": -3.01,
+      "sha256": "e6903437f461d87106406eed864f137181c58e4a6e1c5996ca60df32fb55a1a0"
+    },
+    {
+      "file": "bark_warden_victory.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "The road's open.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "oH91EUDu90OehnMy5zbT",
+      "format": "mp3_44100_192",
+      "seconds": 0.929,
+      "peak_dbfs": -7.8,
+      "sha256": "7ba60f7559e90245fa721ee1dc3a4d70cec5040c44d28b623fa9ff867fe07d48"
+    },
+    {
+      "file": "bark_warden_victory_2.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "And you are still here.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "4mi85wVRRjlFvfEBRyCv",
+      "format": "mp3_44100_192",
+      "seconds": 2.064,
+      "peak_dbfs": -3.07,
+      "sha256": "6ffb77471fe5c1acefcc54068929108a9ddb712e666bde0654295f215949c7c0"
+    }
+  ]
+}

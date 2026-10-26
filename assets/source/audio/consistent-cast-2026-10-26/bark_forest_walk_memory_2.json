@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_memory_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "It was. The roots are still growing.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "kh69WrDcMxUOGp2i6xg4",
+  "context_request_ids": [
+    "AllmXOhxQX8XGIql539a",
+    "szKcAPGXLoSL6ZqPIJ6u",
+    "pGZhbaRQqu5emSfbC8yO"
+  ],
+  "generated_at": 1792949029.2318478,
+  "format": "mp3_44100_192",
+  "seconds": 3.272,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "f4a7f0ff0323bb5f05df55d8db84f84f12f578b99f2e551c71a2c95392264b53"
+}

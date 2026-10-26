@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_08.wav",
+  "speaker": "SEDGE",
+  "scene": "THE STRANDED CROSSING",
+  "text": "I'll guard their crossing. You reach the tree. Watch the ground; it reaches farther than its branches.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "3u7vMpUBIOGC2nQBgNlS",
+  "context_request_ids": [
+    "r4i8bWiHavmZ4KeOomLS",
+    "KfVJWQpz3JfFY0MrJpqM",
+    "VvTO9JZNGdUL1NtkE6YD"
+  ],
+  "generated_at": 1793011363.4201217,
+  "format": "mp3_44100_192",
+  "seconds": 7.57,
+  "peak_dbfs": -3.97,
+  "tempo": 1,
+  "sha256": "a4eec8a56cab39afe396138e79a0f5158667e5fe1aeac6e0678577b1a9f7cc32"
+}

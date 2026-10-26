@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_late_03.wav",
+  "speaker": "SEDGE",
+  "scene": "AN OPEN WAY",
+  "text": "Under the old stair. I'm Souei. I've been guarding their route back. We can move them now.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "eTDskhhkNDG6tjwQLix1",
+  "context_request_ids": [
+    "VvTO9JZNGdUL1NtkE6YD",
+    "3u7vMpUBIOGC2nQBgNlS",
+    "OWIAEr5uX3TByGCqaEdY"
+  ],
+  "generated_at": 1793011367.5293214,
+  "format": "mp3_44100_192",
+  "seconds": 6.409,
+  "peak_dbfs": -3.94,
+  "tempo": 1,
+  "sha256": "c250794c783684b5cbab3a473f243d7d0bb9a6a7a0bccbfde66df144b7b31939"
+}

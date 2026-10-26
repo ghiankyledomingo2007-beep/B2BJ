@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-25",
+  "processing": "Clean Rainoray and NPCs; Sage uses approved polish-settings.json; Warden pitch 0.90 with short metallic echo. Master -19 LUFS / -3 dBTP; runtime 22050 Hz mono PCM16",
+  "lines": [
+    {
+      "file": "infirmary_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "ONE EMPTY BED",
+      "text": "A note on the blanket: 'For whoever comes back.'",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.5,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "G9ieVcbVUeXRlvrzWhWS",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 2.276,
+      "peak_dbfs": -5.86,
+      "sha256": "e210f06ea056d32f91844834dd67650c263fd9b6dfb105b305a3c9b5adb4b5fc"
+    }
+  ]
+}

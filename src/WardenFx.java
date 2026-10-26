@@ -102,6 +102,15 @@ final class WardenFx {
     }
 
     void slam(Guardian g, double x, double y) {
+        if(g.profile()==Guardian.Profile.BRIARHEART) {
+            for(var root:g.forestRoots()) {
+                boolean across=root.width()>root.height();double length=Math.max(root.width(),root.height());
+                for(double s=-length/2+20;s<length/2;s+=64)
+                    dust(root.centerX()+(across?s:0),root.centerY()+24+(across?0:s),0,-24);
+            }
+            for(var seed:g.forestSeeds())burstRing(seed.x(),seed.y()+24,12,Kind.MOTE_GOLD,100);
+            return;
+        }
         switch (g.attack()) {
             case TARGET -> impact(x, y, 12, true);
             case SHOCKWAVE -> { impact(g.x(), g.y() + 30, 8, true); waveDone = 0; }
@@ -176,15 +185,15 @@ final class WardenFx {
         if (enrageAge >= 0) { enrageAge += dt; if (enrageAge > 1.2) enrageAge = -1; }
         if (deathAge >= 0) deathAge += dt;
         var state = g.state();
-        if (state == Guardian.State.TELEGRAPH && g.alive()) {
+        if ((state == Guardian.State.TELEGRAPH||state==Guardian.State.ENRAGE) && g.alive()) {
             double focusX=g.x(),focusY=g.y()-70;
-            if(theme==Theme.WARDEN)switch(g.attack()) {
+            if(theme==Theme.WARDEN&&state!=Guardian.State.ENRAGE)switch(g.attack()) {
                 case TARGET -> focusY=g.y()-144;
                 case SWEEP -> {focusX+=g.directionX()<0?64:-64;focusY=g.y()-66;}
                 case CHARGE -> {focusX+=g.directionX()*28;focusY=g.y()-112+g.directionY()*16;}
                 case SHOCKWAVE,FISSURE -> focusY=g.y()+24;
             }
-            double rate = 34 * dt;
+            double rate = (state==Guardian.State.ENRAGE?18:34) * dt;
             while (rnd() < rate--) {
                 double a = rnd() * Math.PI * 2, r = 70 + rnd() * 50;
                 var m = add(Kind.MOTE_CYAN, focusX + Math.cos(a) * r, focusY + Math.sin(a) * r * .6, .42, (int) (rnd() * 4));
@@ -246,7 +255,14 @@ final class WardenFx {
     // ------------------------------------------------------------------ drawing
     /** Below the actors: cracks, dust, the fallen Warden's remains. */
     void drawGround(Graphics2D g, Guardian guardian, int cx, int cy) {
-        if (guardian.state() == Guardian.State.TELEGRAPH && DUST != null) {
+        if(guardian.state()==Guardian.State.ENRAGE&&DUST!=null) {
+            int f=(int)(guardian.stateSeconds()*8)%3;
+            for(int i=0;i<6;i++) {
+                double angle=i*Math.PI/3;
+                cell(g,DUST,28,f,guardian.x()+Math.cos(angle)*88,guardian.y()+30+Math.sin(angle)*46,cx,cy,14,18);
+            }
+        }
+        if (guardian.profile()!=Guardian.Profile.BRIARHEART&&guardian.state() == Guardian.State.TELEGRAPH && DUST != null) {
             int f = (int) (guardian.stateSeconds() * 10) % 3;
             if (guardian.attack() == Guardian.Attack.TARGET)
                 for (int side = -1; side <= 1; side++)
@@ -307,6 +323,10 @@ final class WardenFx {
 
     /** Enrage flames, the hit flash (plain blink when effects are reduced) and the enrage flash, on the Warden's pose. */
     private void body(Graphics2D g, Guardian guardian, int cx, int cy, long frame, boolean reduced) {
+        if(guardian.state()==Guardian.State.ENRAGE&&cyan!=null) {
+            float charge=(float)Math.min(1,guardian.stateSeconds()/Guardian.ENRAGE_DURATION);
+            frameOf(g,cyan,guardian,cx,cy,reduced?.16f:.12f+charge*.36f);
+        }
         if (guardian.alive() && guardian.state() != Guardian.State.DORMANT && guardian.enraged() && FLAME != null) {
             int[][] spots = {{13, 32}, {51, 32}};
             int left = (int) Math.round(guardian.x()) - cx - renderSize / 2;
@@ -319,7 +339,10 @@ final class WardenFx {
         }
         if (reduced || white == null) return;
         if (guardian.alive() && !guardian.flashVisible()) frameOf(g, white, guardian, cx, cy, 1f);
-        if (enrageAge >= 0 && enrageAge < .3) frameOf(g, ((int) (enrageAge * 30)) % 2 == 0 ? white : cyan, guardian, cx, cy, .85f);
+        if (enrageAge >= 0 && enrageAge < .3) {
+            if(theme==Theme.WARDEN)frameOf(g,enrageAge<.06?white:cyan,guardian,cx,cy,(float)(.85*(1-enrageAge/.3)));
+            else frameOf(g,((int)(enrageAge*30))%2==0?white:cyan,guardian,cx,cy,.85f);
+        }
     }
 
     /** Above the actors: one complete cleave, motes and the death beams. */

@@ -1,0 +1,50 @@
+{
+  "exchange-01": {
+    "text": "Was that a voice? South of the road.",
+    "voice": "rimuru",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.45,
+      "similarity_boost": 0.8,
+      "style": 0.1,
+      "use_speaker_boost": true
+    },
+    "request_id": "E6uId2rHIdOr2bHQb56p"
+  },
+  "exchange-02": {
+    "text": "Confirmed. Someone is still alive.",
+    "voice": "raphael",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.75,
+      "style": 0.0,
+      "use_speaker_boost": true
+    },
+    "request_id": "Q65B3U3SKyOeC7Qoe1KI"
+  },
+  "exchange-03": {
+    "text": "Then we're not leaving them here.",
+    "voice": "rimuru",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.45,
+      "similarity_boost": 0.8,
+      "style": 0.1,
+      "use_speaker_boost": true
+    },
+    "request_id": "rqJwAHel5Sordl8cPMrY"
+  },
+  "rainoray-wake-audition": {
+    "text": "No hands. No boots. I seem to have kept the exhaustion.",
+    "voice": "rimuru",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "stability": 0.45,
+      "similarity_boost": 0.8,
+      "style": 0.1,
+      "use_speaker_boost": true
+    },
+    "request_id": "K1Kd81uG0G0z8xgXsrEG"
+  }
+}

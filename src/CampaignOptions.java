@@ -30,6 +30,7 @@ public final class CampaignOptions {
         panel.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
         volume(panel, "Master volume", 'M', "masterVolume", GameAudio.masterVolume(), GameAudio::setMasterVolume);
         volume(panel, "Sound effects", 'S', "sfxVolume", GameAudio.sfxVolume(), GameAudio::setSfxVolume);
+        volume(panel, "Dialogue", 'D', "dialogueVolume", GameAudio.dialogueVolume(), GameAudio::setDialogueVolume);
         volume(panel, "Ambient music", 'U', "musicVolume", GameAudio.musicVolume(), GameAudio::setMusicVolume);
         JCheckBox effects = new JCheckBox("Reduce flashes, weather, shake", reducedEffects);
         effects.setMnemonic('R');
@@ -39,8 +40,7 @@ public final class CampaignOptions {
         mute.setMnemonic('A');
         mute.addActionListener(event -> GameAudio.setMuted(mute.isSelected()));
         panel.add(mute);
-        JTextArea help = new JTextArea("WASD / arrows move, Space dashes; Menu > Controls lists every key. "
-                + "Music at 0 turns ambience off. Changes apply now and last for this session.");
+        JTextArea help = new JTextArea("Changes apply immediately, for this session.");
         help.setEditable(false);
         help.setOpaque(false);
         help.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));

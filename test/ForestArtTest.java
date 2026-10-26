@@ -17,16 +17,36 @@ public final class ForestArtTest {
         BufferedImage tiles = B2BJ.loadImage("assets/tilesets/forest/forest_tileset.png");
         assert tiles != null && tiles.getWidth() == 16 * 16 && tiles.getHeight() % 16 == 0 : "the forest tileset is 16x16 tiles";
 
+        // Every authored variant must survive import; an empty animation frame must not become a variant.
+        for (var kind : new SetPieces.Kind[]{SetPieces.Kind.OAK, SetPieces.Kind.BUSH, SetPieces.Kind.LOG, SetPieces.Kind.STUMP}) {
+            var sheet = B2BJ.loadImage(kind.sheet());
+            int variants = kind == SetPieces.Kind.OAK || kind == SetPieces.Kind.BUSH ? 3 : kind == SetPieces.Kind.LOG ? 2 : 1;
+            assert sheet != null && sheet.getWidth() == variants * kind.width : kind + " sheet slicing";
+            assert kind.anchorX < kind.width && kind.anchorY < sheet.getHeight() : kind + " ground anchor";
+            for (int cell = 0; cell < variants; cell++) {
+                int solid = 0, base = 0;
+                for (int y = 0; y < sheet.getHeight(); y++) for (int x = 0; x < kind.width; x++) {
+                    int alpha = sheet.getRGB(cell * kind.width + x, y) >>> 24;
+                    assert alpha == 0 || alpha == 255 : kind + " blurred pixel edges";
+                    if (alpha != 0) { solid++; if (Math.abs(y - kind.anchorY) <= 3) base++; }
+                }
+                assert solid > 100 && base > 0 : kind + " empty variant or detached ground anchor";
+            }
+        }
+
         for (String kind : new String[]{"rift_imp", "thorn_wolf", "mire_shaman"}) {     // the forest's own enemies, remnant format
             BufferedImage walk = B2BJ.loadImage("assets/characters/forest/" + kind + "_walk.png");
             BufferedImage attack = B2BJ.loadImage("assets/characters/forest/" + kind + "_attack.png");
             assert walk != null && walk.getWidth() == 4 * 48 && walk.getHeight() == 3 * 48 : kind + " walk sheet: 4 frames x 3 facings";
             assert attack != null && attack.getWidth() == 8 * 48 && attack.getHeight() == 3 * 48 : kind + " attack sheet: 8 frames x 3 facings";
+            pixelSheet(walk,48,34);pixelSheet(attack,48,34);
         }
 
         BufferedImage briar = B2BJ.loadImage("assets/characters/guardian/briarheart_motion.png");
         assert briar != null && briar.getWidth() == 8 * 96 && briar.getHeight() == Guardian.Animation.values().length * 96
                 : "Briarheart's motion sheet: 8 frames of every Guardian animation, 96 px cells";
+        pixelSheet(briar,96,27);
+        pixelSheet(B2BJ.loadImage("assets/characters/npcs/sedge_idle.png"),80,20);
         for (String fx : new String[]{"debris", "dust", "crack", "sweep", "flame", "spike", "beam", "mote", "impact"})
             assert B2BJ.loadImage("assets/effects/briar_" + fx + ".png") != null : "missing Briarheart effect " + fx;
 
@@ -73,6 +93,21 @@ public final class ForestArtTest {
     private static void assertClear(RuinedOutpostMap.Obstacle o, double x, double y, double radius, String what) {
         double dx = Math.max(0, Math.abs(x - o.centerX()) - o.width() / 2), dy = Math.max(0, Math.abs(y - o.centerY()) - o.height() / 2);
         assert Math.hypot(dx, dy) >= radius : "forest piece at " + o.centerX() + "," + o.centerY() + " crowds the " + what;
+    }
+
+    private static void pixelSheet(BufferedImage image,int size,int paletteLimit) {
+        assert image!=null&&image.getWidth()%size==0&&image.getHeight()%size==0;
+        var colors=new java.util.HashSet<Integer>();
+        for(int cy=0;cy<image.getHeight();cy+=size)for(int cx=0;cx<image.getWidth();cx+=size) {
+            int solid=0;
+            for(int y=cy;y<cy+size;y++)for(int x=cx;x<cx+size;x++) {
+                int rgb=image.getRGB(x,y),alpha=rgb>>>24;
+                assert alpha==0||alpha==255 : "sprite has blurred edges";
+                if(alpha==255){colors.add(rgb);solid++;}
+            }
+            assert solid>40 : "empty animation cell";
+        }
+        assert colors.size()<=paletteLimit : "uncontrolled sprite palette: "+colors.size();
     }
 
     private static boolean[][] flood(RuinedOutpostMap map, double sx, double sy) {

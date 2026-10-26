@@ -1,0 +1,27 @@
+{
+  "file": "camp_late_03.wav",
+  "speaker": "MARA",
+  "scene": "THE LAMP AT CAMP",
+  "text": "I'm Shuna. You've opened a road we thought we'd lost.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "fnrcWhKO6xFwFhW7afO5",
+  "context_request_ids": [
+    "9SWFIt7dxS4IRrDistQj",
+    "2oUY9VE0JF7kljnpkpKW",
+    "3j8HDvYjnYBxMjZwmzfF"
+  ],
+  "generated_at": 1793011336.8211908,
+  "format": "mp3_44100_192",
+  "seconds": 3.111,
+  "peak_dbfs": -4.07,
+  "tempo": 1,
+  "sha256": "4e407db85ab11b6ffa03db21154005b73f77407b02b74953b6c058b763617919"
+}

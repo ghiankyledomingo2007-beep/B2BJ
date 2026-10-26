@@ -1,0 +1,27 @@
+{
+  "file": "forest_orchard_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST HARVEST",
+  "text": "Someone left the good fruit within reach. Took the bruised ones.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "3C1MbnGFDOvPcIs11tpq",
+  "context_request_ids": [
+    "3yMb1MT1RvHQmcwHmLr2",
+    "eiTwYJATPot84f2j5QKm",
+    "uNKldmQyb8PLr3ZNB56v"
+  ],
+  "generated_at": 1792949054.4263377,
+  "format": "mp3_44100_192",
+  "seconds": 3.483,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "aa51ad2516182f9321c1176e96a3cee7017606d1978281c390a6ae44509f7001"
+}

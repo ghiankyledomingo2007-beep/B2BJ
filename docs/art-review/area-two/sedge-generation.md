@@ -1,0 +1,9 @@
+# Sedge — 2026-10-26
+
+Mode: built-in image generation with Mara as a style/scale reference; no other identity copied. Transparent2172×724 source preserved at `assets/source/characters/npcs/sedge.generated.png`. Imported with the existing Java tool into a160×80 two-pose world strip and64×64 portrait under `assets/characters/npcs/`. Binary alpha and a19-color palette. Two idle poses; no facial animation.
+
+Exact prompt:
+
+```
+Use case: stylized-concept. Asset type: Sedge NPC sprite and portrait sheet for a top-down pixel-art RPG. Input image1 is Mara, a STYLE AND SCALE reference only, do not copy her identity. Transparent background. EXACT THREE evenly spaced square cells in ONE horizontal row, each with generous empty padding, no labels or borders. Sedge is an older male ferryman, weathered tan face, short greying beard, faded teal work coat over brown tunic, dark trousers, soft leather boots, a plain broad-brimmed weathered hat pushed back, small white cloth tied to one wrist. Practical and tired but kindly, no armour or weapon. Cell1 full-body standing front in slight top-down RPG angle, hands relaxed, complete feet. Cell2 same full-body man, very subtle idle shift with chin lifted and coat hem catching breeze, identical scale/ground baseline/outfit. Cell3 a front-facing head-and-shoulders portrait of exactly this man, filling more of its cell, eyes clearly readable, hat fully inside frame. Deliberate crisp 16-bit pixel-art clusters and limited muted palette matching reference: dark navy outline, desaturated teal, warm bark brown, parchment skin highlights. Full bodies are intended for80x80 native sprites, portrait64x64. Native pixel shading, readable silhouette; avoid smooth painting, antialiasing, photorealism, gradients, cinematic lights, glowing ornaments, text, props, scenery or floor shadows. Cells must not touch or spill into neighbouring cells; actual transparent alpha.
+```

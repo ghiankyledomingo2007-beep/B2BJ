@@ -35,7 +35,7 @@ final class CampMenu extends JPanel {
         talk=slot(converse);
         leave=slot(close);
         rest.getAccessibleContext().setAccessibleName("Rest and save, H");
-        talk.getAccessibleContext().setAccessibleName("Talk to Mara, E");
+        talk.getAccessibleContext().setAccessibleName("Talk to Shuna, E");
         leave.getAccessibleContext().setAccessibleName("Leave camp, U");
     }
 
@@ -94,7 +94,7 @@ final class CampMenu extends JPanel {
         for(int i=0;i<upgrades.length;i++)upgrades[i].setBounds(SIDE,ROW_Y+i*(ROW_H+ROW_GAP),getWidth()-2*SIDE,ROW_H);
         int y=getHeight()-66;
         rest.setBounds(SIDE,y,promptWidth("H","REST & SAVE"),36);
-        talk.setBounds((getWidth()-promptWidth("E","TALK TO MARA"))/2/Ui.S*Ui.S,y,promptWidth("E","TALK TO MARA"),36);
+        talk.setBounds((getWidth()-promptWidth("E","TALK TO SHUNA"))/2/Ui.S*Ui.S,y,promptWidth("E","TALK TO SHUNA"),36);
         leave.setBounds(getWidth()-SIDE-promptWidth("U","LEAVE"),y,promptWidth("U","LEAVE"),36);
     }
 
@@ -115,7 +115,7 @@ final class CampMenu extends JPanel {
         Ui.text(g,shards,sx,50,2,Ui.GOLD_LIGHT);
         for(int i=0;i<upgrades.length;i++)row(g,i);
         if(rest.isVisible())prompt(g,rest,"H","REST & SAVE");
-        if(talk.isVisible())prompt(g,talk,"E","TALK TO MARA");
+        if(talk.isVisible())prompt(g,talk,"E","TALK TO SHUNA");
         prompt(g,leave,"U","LEAVE");
         g.dispose();
     }

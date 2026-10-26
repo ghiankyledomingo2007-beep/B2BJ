@@ -1,0 +1,14 @@
+[
+  {
+    "file": "survivor_tobin_03.wav",
+    "expected": "Kaijin. I worked on the gate relay. That sound means the Warden's still running a broken order.",
+    "recognized": "Kaijin, I worked on the gate relay. That sound means the warden's still running a broken order. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_tobin_04.wav",
+    "expected": "The fence came down behind me. I couldn't climb it with this leg.",
+    "recognized": "The fence came down behind me. I couldn't climb it with this leg",
+    "match": 1.0
+  }
+]

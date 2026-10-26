@@ -21,7 +21,7 @@ public final class SetPieces {
         // Corrupted Forest
         OAK("forest", 116, 58, 158, 44, 22), PINE("forest", 76, 38, 170, 34, 20), WITHERED("forest", 92, 46, 140, 34, 18),
         BUSH("forest", 52, 26, 32, 0, 0), LOG("forest", 104, 52, 26, 176, 28), BOULDER("forest", 56, 28, 36, 88, 30),
-        STUMP("forest", 34, 17, 24, 44, 20), BOAT("forest", 172, 86, 54, 296, 58), CLOTH_POST("forest", 32, 10, 72, 14, 12),
+        STUMP("forest", 48, 24, 42, 64, 26), BOAT("forest", 172, 86, 54, 296, 58), CLOTH_POST("forest", 32, 10, 72, 14, 12),
         HOLLOW_TREE("forest", 240, 120, 270, 300, 72), MOONWELL("forest", 132, 66, 62, 216, 66),
         ORCHARD_TREE("forest", 84, 42, 104, 36, 18), BRAMBLE("forest", 80, 40, 36, 128, 30),
         ROOT_WALL("forest", 148, 74, 50, 248, 40), BRIAR_ROOT("forest", 148, 74, 54, 232, 40),

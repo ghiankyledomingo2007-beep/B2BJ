@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_identify_wolf.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Thorn Wolf. Give those jaws some room.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "u0ecjQpNuJUuAFku5lBO",
+  "context_request_ids": [
+    "V8AATkwFYucxcidhWxrG",
+    "HZIancrLhcSIOM38eS3O",
+    "VDBTDCE3aGuMgxQ2EAGb"
+  ],
+  "generated_at": 1792970748.9976852,
+  "format": "mp3_44100_192",
+  "seconds": 3.318,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "5c0ac8b685d854594949b60c40758e5261d5c44ac66ad36430c5e77b7404bad8"
+}

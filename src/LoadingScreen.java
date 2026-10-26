@@ -3,28 +3,12 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 
-/**
- * The screen between places. Slime goo floods down over the last frame with a dripping cyan rim, a stage
- * plays while the world waits (the region's silhouette, rising ichor, a turning rune ring, Rainoray
- * shifting from blob to blade and back, a pulsing row of drops, the region's name and a tip), then the goo
- * drains up and play resumes underneath. Any key skips it once it has shown itself. Pure drawing and
- * timing: the host freezes the world while {@link #covering()}.
- */
+/** A short chapter scene between places. The host freezes the world while covering(). */
 final class LoadingScreen {
     enum Kind { ENTER, REFORM }
 
     static final double IN = .45, HOLD = 2.1, MIN_HOLD = .8, OUT = .55;
     private static final int W = 1280, H = 720, S = Ui.S;
-    private static final String[] TIPS = {
-        "Hold LMB in blade form, then release for a charged cleave.",
-        "In blade form, F raises a riposte guard: time it as the blow lands.",
-        "Absorb the fallen with E to borrow their traits for a while.",
-        "A full ichor gauge lets you transform with Q. The blade fades as it drains.",
-        "Rest at a camp with H to save. Shards buy upgrades there with 1-4.",
-        "Hold TAB for the region map. The world keeps moving while you look.",
-        "Only two enemies strike at once. The rest circle, waiting for an opening.",
-        "Thin red lines show where shots will fly. Step off the line.",
-        "A guardian's bar burns orange once it enrages at half health."};
 
     private BufferedImage snapshot;
     private final BufferedImage stage = new BufferedImage(W, H, BufferedImage.TYPE_INT_RGB);
@@ -32,7 +16,8 @@ final class LoadingScreen {
     private final int[] drip = new int[W / S];
     private double t = -1, hold = HOLD;
     private Kind kind = Kind.ENTER;
-    private int biome, tip = -1;
+    private int biome;
+    private final TitleScreen outpostScene = new TitleScreen();
 
     LoadingScreen() {
         var rng = new java.util.Random(11);
@@ -55,7 +40,7 @@ final class LoadingScreen {
         this.kind = kind;
         this.biome = Math.max(0, Math.min(CampaignWorld.AREA_COUNT - 1, biome));
         this.hold = kind == Kind.REFORM ? 1.5 : HOLD;
-        this.tip = (tip + 1 + (int) (Math.random() * (TIPS.length - 1))) % TIPS.length;
+        outpostScene.enter();
         t = from == null ? IN : 0;
     }
 
@@ -83,7 +68,7 @@ final class LoadingScreen {
         Ui.crisp(g);
         double front;                                                       // goo depth in art px, before drips
         if (t < IN) {
-            if (snapshot != null) g.drawImage(snapshot, 0, 0, null);
+            if (snapshot != null) g.drawImage(snapshot, 0, 0, W, H, null);
             double p = t / IN;
             front = p * p * (H / S + 48);
         } else if (t < IN + hold) {
@@ -127,25 +112,29 @@ final class LoadingScreen {
         double c = reduced ? 0 : clock;
         var g = stage.createGraphics();
         Ui.crisp(g);
-        int drift = (int) Math.round(Math.sin(c * .22) * 22) / S * S;     // the backdrop breathes sideways
-        g.drawImage(backdrop(biome), -32 + drift, 0, null);
-        pool(g, W / 2, 420, c);
-        motes(g, c);
-        int cx = W / 2, feet = 420;
-        ring(g, cx, feet, c);
-        hero(g, cx, feet, c, slimeIdle, morphIn, morphOut);
-        String heading = kind == Kind.REFORM ? "R E F O R M I N G   A T   C A M P" : "C H A P T E R   " + Ui.roman(biome + 1);
-        Ui.textCentered(g, heading, cx, 104, 2, Ui.GOLD);
-        Ui.drawTitleCentered(g, CampaignWorld.area(biome).name(), cx, 118, 3, biome == 0 ? Ui.STEEL_RAMP : Ui.GOLD_RAMP);
-        Ui.piece(g, Ui.Piece.FLOURISH, cx - Ui.Piece.FLOURISH.w, 176);
-        drops(g, cx, 540, c);
-        String words = TIPS[Math.max(0, tip)];
-        int w = Ui.width("TIP", 2) + 16 + Ui.width(words, 2);
-        int x = cx - w / 2 / S * S;
-        Ui.text(g, "TIP", x, 628, 2, Ui.GOLD);
-        Ui.text(g, words, x + Ui.width("TIP", 2) + 16, 628, 2, Ui.TEXT);
-        if (t >= IN + MIN_HOLD && covering() && (int) (clock * 1.6) % 2 == 0)
-            Ui.textCentered(g, "Press any key", cx, 676, 2, Ui.DIM);
+        if (biome == 0 && TitleScreen.available()) {
+            outpostScene.drawBackdrop(g, W, H, c, reduced);
+        } else {
+            g.drawImage(backdrop(biome), -32, 0, null);
+            pool(g, 940, 560, c);
+            motes(g, c);
+            ring(g, 940, 560, c);
+            hero(g, 940, 560, c, slimeIdle, morphIn, morphOut);
+        }
+        Ui.fade(g, 0, 0, 680, H, 130, 0);
+        String heading = kind == Kind.REFORM ? "RETURNING TO CAMP" : "CHAPTER " + Ui.roman(biome + 1);
+        Ui.text(g, heading, 80, 238, 2, Ui.GOLD);
+        String[] name = CampaignWorld.area(biome).name().split(" ", 2);
+        Ui.drawTitle(g, name[0], 76, 262, 4, Ui.STEEL_RAMP);
+        if (name.length > 1) Ui.drawTitle(g, name[1], 76, 322, 4, Ui.STEEL_RAMP);
+        g.setColor(Ui.TEAL);
+        g.fillRect(80, 396, 48, 2);
+        Ui.text(g, kind == Kind.REFORM ? "Reforming" : "Entering", 80, 448, 2, Ui.MUTED);
+        int end = 80 + Ui.width(kind == Kind.REFORM ? "Reforming" : "Entering", 2) + 12;
+        for (int i = 0; i < 3; i++) {
+            g.setColor(reduced || (int)(c * 3) % 3 == i ? Ui.TEAL : Ui.DIM);
+            g.fillRect(end + i * 10, 442, 4, 4);
+        }
         g.dispose();
     }
 
@@ -237,20 +226,4 @@ final class LoadingScreen {
         g.drawImage(sheet, cx - 80, feet - 136, cx + 80, feet + 24, frame * 80, 0, frame * 80 + 80, 80, null);
     }
 
-    /** Nine drops; a pulse runs along them, left to right: the world is on its way. */
-    private static void drops(Graphics2D g, int cx, int y, double c) {
-        for (int i = 0; i < 9; i++) {
-            double lit = Math.sin(c * 5 - i * .7) * .5 + .5;
-            int x = cx + (i - 4) * 24;
-            Color body = lit > .75 ? new Color(0x7aeee6) : lit > .4 ? new Color(0x2cc6c8) : new Color(0x0f5560);
-            int bob = lit > .75 ? -S : 0;
-            g.setColor(Ui.INK);
-            g.fillRect(x - 3 * S, y - 2 * S + bob, 6 * S, 7 * S);
-            g.setColor(body);
-            g.fillRect(x - S, y - 2 * S + bob, 2 * S, S);
-            g.fillRect(x - 2 * S, y - S + bob, 4 * S, 4 * S);
-            g.fillRect(x - S, y + 3 * S + bob, 2 * S, S);
-            if (lit > .75) { g.setColor(new Color(0xcffff9)); g.fillRect(x - S, y + bob, S, S); }
-        }
-    }
 }

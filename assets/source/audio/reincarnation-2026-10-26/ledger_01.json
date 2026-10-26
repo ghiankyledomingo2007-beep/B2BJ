@@ -1,0 +1,27 @@
+{
+  "file": "ledger_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE EVACUATION CACHE",
+  "text": "The cache opens. Bandages, a little coin, and the evacuation ledger.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ZB0KGWj1BOZN1oqmAwsQ",
+  "context_request_ids": [
+    "6Nzv1REBXNqn5NeFD8fx",
+    "fBE8Lfwy8QDw803lvfXE",
+    "4k4xI7c0Q0A2Lbx3gOOg"
+  ],
+  "generated_at": 1793011362.1168222,
+  "format": "mp3_44100_192",
+  "seconds": 4.83,
+  "peak_dbfs": -3.95,
+  "tempo": 1,
+  "sha256": "d1195d8670273fee5c2ca6ac68ec5e38c9c2b5027b653d70b7035d26ddd1f7c1"
+}

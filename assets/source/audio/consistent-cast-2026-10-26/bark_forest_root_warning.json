@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_root_warning.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Between the roots. Leave that strip.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "eoldc4PuQMekZlzeMlgp",
+  "context_request_ids": [
+    "DmTLP2ZSd5wZxyJj5WVT",
+    "QfMsMSkAiOytfCnSjDmk",
+    "TM55LvabBxcJvp2gU5gH"
+  ],
+  "generated_at": 1792967468.585122,
+  "format": "mp3_44100_192",
+  "seconds": 3.082,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "1db8824138cb41642199923d81e2be053b9140032399aef319b9a5162947021f"
+}

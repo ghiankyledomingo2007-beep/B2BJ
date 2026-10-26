@@ -1,0 +1,26 @@
+{
+  "file": "forest_sedge_04.wav",
+  "speaker": "SEDGE",
+  "scene": "THE STRANDED FERRY",
+  "text": "They sheltered beneath the old stair. I stayed to mark a path back. Sedge, by the way.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "uUzWKw2qcSAnHE6I9LNx",
+  "context_request_ids": [
+    "5Na7StMy5cFOpw9Yk3Fa",
+    "OTuk9wiqqHCmNnDApREq"
+  ],
+  "generated_at": 1792948993.291684,
+  "format": "mp3_44100_192",
+  "seconds": 7.012,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "d702938044e6c84a30620b2493703281c9b81b8957ac051560013ecfdb82ada4"
+}

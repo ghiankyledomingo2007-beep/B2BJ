@@ -8,14 +8,17 @@ public final class Guardian {
         private final int health;
         Profile(String name,int health) { this.name=name;this.health=health; }
     }
-    public enum State { DORMANT, APPROACH, TELEGRAPH, SLAM, RECOVER, HURT, DEAD }
+    public enum State { DORMANT, APPROACH, TELEGRAPH, SLAM, RECOVER, HURT, ENRAGE, DEAD }
     public enum Attack { TARGET, SWEEP, CHARGE, SHOCKWAVE, FISSURE }
+    public enum ForestAttack { ROOT_WEAVE, SEED_BLOOM, BRAMBLE_CAGE }
+    public record Bloom(double x,double y,double radius) {}
     /** Row order in warden_motion.png: eight 128 px frames per row (drawn at 2x). */
     public enum Animation { IDLE, APPROACH, WINDUP, STRIKE, RECOVER, CHARGE, DEATH }
     public static final int CELL_SIZE=64, RENDER_SIZE=CELL_SIZE*4, MAX_HEALTH=1200, SLAM_DAMAGE=35;
     public static final int GROUND_Y_OFFSET=48, SPRITE_FOOT_ROW=56;
     public static final double SLAM_RADIUS=112, TELEGRAPH_DURATION=0.9, SLAM_DURATION=0.18;
     public static final double RECOVER_DURATION=1.5, DEATH_DURATION=0.5;
+    public static final double ENRAGE_DURATION=1.8;
     /** Shared with the attack warnings, so a balance change can never make a warning lie. */
     public static final double CHARGE_SPEED=620, CHARGE_DURATION=0.55, CHARGE_RADIUS=92, WAVE_START=32, WAVE_HALF_WIDTH=28;
     private double x,y,targetX,targetY,stateTime,hurtFlash,chargeX,chargeY;
@@ -24,6 +27,11 @@ public final class Guardian {
     private State state=State.DORMANT;
     private Attack attack=Attack.TARGET, previousAttack=Attack.TARGET;
     private boolean fissureHorizontal;
+    private boolean phaseTwo;
+    private ForestAttack forestAttack=ForestAttack.ROOT_WEAVE;
+    private java.util.List<RuinedOutpostMap.Obstacle> roots=java.util.List.of();
+    private java.util.List<Bloom> seeds=java.util.List.of();
+    private int forestGap;
     private double idleAnimationTime;
 
     public Guardian(double x,double y) { this(x,y,Profile.OUTPOST_WARDEN); }
@@ -53,10 +61,11 @@ public final class Guardian {
         switch(state) {
             case DORMANT -> idleAnimationTime=(idleAnimationTime+dt)%(8.0/6);
             case APPROACH -> {
+                if(profile==Profile.BRIARHEART) {beginAttack(px,py,map);break;}
                 double dx=px-x,dy=py-y,length=Math.hypot(dx,dy);
                 if(length>175)move(dx/length*(enraged()?185:145)*dt,dy/length*(enraged()?185:145)*dt,map,px,py);
                 stateTime+=dt;
-                if(length<=175||stateTime>=1.25)beginAttack(px,py);
+                if(length<=175||stateTime>=1.25)beginAttack(px,py,map);
             }
             case TELEGRAPH -> {
                 // Every target is committed for the entire visible tell. No late tracking.
@@ -66,21 +75,31 @@ public final class Guardian {
                 }
             }
             case SLAM -> {
-                if(attack==Attack.CHARGE)move(chargeX*CHARGE_SPEED*dt,chargeY*CHARGE_SPEED*dt,map,px,py);
+                if(profile!=Profile.BRIARHEART&&attack==Attack.CHARGE)move(chargeX*CHARGE_SPEED*dt,chargeY*CHARGE_SPEED*dt,map,px,py);
                 stateTime+=dt;
                 if(stateTime+1e-8>=activeDuration()) {state=State.RECOVER;stateTime=0;}
             }
             case RECOVER,HURT -> {
                 stateTime+=dt;
-                if(stateTime+1e-8>=recoverDuration()) {state=State.APPROACH;stateTime=0;}
+                if(stateTime+1e-8>=recoverDuration()) {
+                    state=(profile==Profile.OUTPOST_WARDEN||profile==Profile.BRIARHEART)&&!phaseTwo&&health<=maxHealth()/2?State.ENRAGE:State.APPROACH;
+                    stateTime=0;
+                }
+            }
+            case ENRAGE -> {
+                stateTime+=dt;
+                if(stateTime+1e-8>=ENRAGE_DURATION) {phaseTwo=true;beginAttack(px,py,map);}
             }
             case DEAD -> stateTime+=dt;
         }
     }
     private void beginAttack(double px,double py) {
+        beginAttack(px,py,null);
+    }
+    private void beginAttack(double px,double py,RuinedOutpostMap map) {
         double distance=Math.hypot(px-x,py-y);
         if(profile==Profile.BRIARHEART) {
-            attack=impactNumber%3==2?Attack.SHOCKWAVE:Attack.TARGET;
+            beginForestAttack(px,py,map);return;
         }
         else if(profile==Profile.OATHKEEPER) {
             attack=impactNumber%3==2?Attack.FISSURE:distance>200?Attack.CHARGE:Attack.SWEEP;
@@ -90,7 +109,7 @@ public final class Guardian {
             attack=impactNumber%3==2?Attack.FISSURE:impactNumber%3==1?Attack.TARGET:Attack.SHOCKWAVE;
             if(attack==Attack.FISSURE)fissureHorizontal=!fissureHorizontal;
         }
-        else if(enraged()&&impactNumber%4==3) {
+        else if(enraged()&&(state==State.ENRAGE||impactNumber%4==3)) {
             attack=Attack.FISSURE;fissureHorizontal=!fissureHorizontal;
         }
         else if(previousAttack!=Attack.SHOCKWAVE&&impactNumber%3==2)attack=Attack.SHOCKWAVE;
@@ -104,6 +123,58 @@ public final class Guardian {
         chargeX=(px-x)/length;chargeY=(py-y)/length;
         state=State.TELEGRAPH;stateTime=0;
     }
+    private void beginForestAttack(double px,double py,RuinedOutpostMap map) {
+        forestAttack=ForestAttack.values()[impactNumber%3];
+        targetX=px;targetY=py;
+        var lanes=new java.util.ArrayList<RuinedOutpostMap.Obstacle>();
+        var blooms=new java.util.ArrayList<Bloom>();
+        if(forestAttack==ForestAttack.BRAMBLE_CAGE) {
+            // Keep the opening on a walkable route, including when the player hugs the bank.
+            double best=Double.POSITIVE_INFINITY;boolean found=false;
+            for(int side=0;side<4;side++) {
+                double ex=px+gapX(side)*230,ey=py+gapY(side)*230;
+                if(map!=null&&!map.clearWaterLine(px,py+Player.COLLISION_Y_OFFSET,
+                        ex,ey+Player.COLLISION_Y_OFFSET,Player.COLLISION_RADIUS))continue;
+                double distance=Math.hypot(ex-x,ey-y);
+                if(distance<best) {best=distance;forestGap=side;found=true;}
+            }
+            if(!found)forestAttack=ForestAttack.ROOT_WEAVE;
+            else for(int side=0;side<4;side++)if(side!=forestGap)
+                lanes.add(new RuinedOutpostMap.Obstacle(px+gapX(side)*160,py+gapY(side)*160,
+                        side%2==0?370:50,side%2==0?50:370));
+        }
+        if(forestAttack==ForestAttack.ROOT_WEAVE) {
+            boolean horizontal=(impactNumber/3)%2==0;
+            int count=phaseTwo?4:3;
+            for(int i=0;i<count;i++) {
+                double offset=(i-(count-1)/2.)*160;
+                lanes.add(new RuinedOutpostMap.Obstacle(px+(horizontal?0:offset),py+(horizontal?offset:0),
+                        horizontal?650:70,horizontal?70:650));
+            }
+        } else if(forestAttack==ForestAttack.SEED_BLOOM) {
+            blooms.add(new Bloom(px,py,72));
+            int count=phaseTwo?4:2;
+            for(int i=0;i<count;i++) {
+                double angle=i*2*Math.PI/count+(impactNumber/3)*Math.PI/2;
+                blooms.add(new Bloom(px+Math.cos(angle)*190,py+Math.sin(angle)*190,72));
+            }
+        }
+        roots=java.util.List.copyOf(lanes);seeds=java.util.List.copyOf(blooms);
+        state=State.TELEGRAPH;stateTime=0;
+    }
+    private static int gapX(int side){return side==1?1:side==3?-1:0;}
+    private static int gapY(int side){return side==0?-1:side==2?1:0;}
+    public ForestAttack forestAttack(){return forestAttack;}
+    public int forestGap(){return forestGap;}
+    public java.util.List<RuinedOutpostMap.Obstacle> forestRoots(){
+        return profile==Profile.BRIARHEART&&(state==State.TELEGRAPH||state==State.SLAM)?roots:java.util.List.of();
+    }
+    public java.util.List<Bloom> forestSeeds(){
+        return profile==Profile.BRIARHEART&&(state==State.TELEGRAPH||state==State.SLAM)?seeds:java.util.List.of();
+    }
+    public boolean coreExposed(){
+        return state==State.RECOVER&&(profile!=Profile.BRIARHEART||impactNumber%3==0);
+    }
     private void move(double dx,double dy,RuinedOutpostMap map,double px,double py) {
         // Conservative body footprint; never phase through terrain or push player into a wall.
         double nx=x+dx,ny=y+dy;
@@ -112,6 +183,11 @@ public final class Guardian {
     }
     public boolean hits(double px,double py) {
         if(state!=State.SLAM)return false;
+        if(profile==Profile.BRIARHEART) {
+            for(var root:roots)if(Math.abs(px-root.centerX())<=root.width()/2
+                    &&Math.abs(py-root.centerY())<=root.height()/2)return true;
+            return forestAttack==ForestAttack.BRAMBLE_CAGE&&stateTime>=.9&&Math.hypot(px-targetX,py-targetY)<=130;
+        }
         if(attack==Attack.FISSURE) {
             var lane=fissureBounds();
             return Math.abs(px-lane.centerX())<=lane.width()/2
@@ -123,8 +199,12 @@ public final class Guardian {
         return distance<=slamRadius();
     }
     public double waveRadius() {return WAVE_START+(slamRadius()-WAVE_START)*Math.min(1,stateTime/activeDuration());}
-    public double activeDuration() {return attack==Attack.FISSURE?0.32:attack==Attack.CHARGE?CHARGE_DURATION:attack==Attack.SHOCKWAVE?0.75:SLAM_DURATION;}
+    public double activeDuration() {
+        if(profile==Profile.BRIARHEART)return forestAttack==ForestAttack.BRAMBLE_CAGE?1.6:forestAttack==ForestAttack.ROOT_WEAVE?.7:.24;
+        return attack==Attack.FISSURE?0.32:attack==Attack.CHARGE?CHARGE_DURATION:attack==Attack.SHOCKWAVE?0.75:SLAM_DURATION;
+    }
     public double telegraphDuration() {
+        if(profile==Profile.BRIARHEART)return forestAttack==ForestAttack.BRAMBLE_CAGE?1.85:1.65;
         if(profile==Profile.OUTPOST_WARDEN)return switch(attack) {
             case TARGET -> 1.05;
             case SWEEP -> 1.0;
@@ -136,6 +216,16 @@ public final class Guardian {
         return profile==Profile.BRIARHEART?1.05:profile==Profile.OATHKEEPER?.8:TELEGRAPH_DURATION;
     }
     public double recoverDuration() {
+        if(profile==Profile.BRIARHEART)return impactNumber%3==0?3.8:1.2;
+        if(profile==Profile.OUTPOST_WARDEN) {
+            double opening=switch(attack) {
+                case CHARGE -> 2.0;
+                case SHOCKWAVE -> 1.85;
+                case FISSURE -> 1.9;
+                default -> RECOVER_DURATION;
+            };
+            return opening-(phaseTwo?.2:0);
+        }
         return profile==Profile.ICHOR_GOLEM?(enraged()?1.8:2.1):enraged()?1.25:RECOVER_DURATION;
     }
     /** The exact committed damage rectangle, also used to render its complete warning. */
@@ -155,7 +245,7 @@ public final class Guardian {
         if(health==0){state=State.DEAD;stateTime=0;}
         return true;
     }
-    public boolean enraged(){return health<=maxHealth()/2;}
+    public boolean enraged(){return profile==Profile.OUTPOST_WARDEN||profile==Profile.BRIARHEART?phaseTwo:health<=maxHealth()/2;}
     public Profile profile(){return profile;}
     public int maxHealth(){return profile.health;}
     public String bossName(){return profile.name;}
@@ -170,14 +260,18 @@ public final class Guardian {
             case DORMANT -> Animation.IDLE;
             case APPROACH -> Animation.APPROACH;
             case TELEGRAPH -> profile==Profile.OUTPOST_WARDEN&&attack==Attack.FISSURE?Animation.RECOVER:Animation.WINDUP;
-            case SLAM -> attack==Attack.CHARGE?Animation.CHARGE:Animation.STRIKE;
-            case RECOVER,HURT -> Animation.RECOVER;
+            case SLAM -> profile==Profile.BRIARHEART&&forestAttack==ForestAttack.SEED_BLOOM||attack==Attack.CHARGE?Animation.CHARGE:Animation.STRIKE;
+            case RECOVER,HURT -> profile==Profile.BRIARHEART&&!coreExposed()?Animation.IDLE:Animation.RECOVER;
+            case ENRAGE -> Animation.WINDUP;
             case DEAD -> Animation.DEATH;
         };
     }
     public int animationFrame() {
         if(state==State.DORMANT)return (int)(idleAnimationTime*6)%8;
         if(state==State.APPROACH)return (int)(stateTime*8)%8;
+        if(state==State.ENRAGE)return Math.min(7,(int)(stateTime*8/(ENRAGE_DURATION*.72)));
+        if(profile==Profile.OUTPOST_WARDEN&&state==State.TELEGRAPH&&attack==Attack.TARGET)
+            return Math.min(7,(int)(stateTime*8/(telegraphDuration()*.72)));
         if(profile==Profile.OUTPOST_WARDEN&&attack==Attack.FISSURE) {
             // Reverse the rising recovery poses into a planted crouch before the ground splits.
             if(state==State.TELEGRAPH)return 7-Math.min(7,(int)(stateTime*8/(telegraphDuration()*.75)));
@@ -187,6 +281,7 @@ public final class Guardian {
             case TELEGRAPH -> telegraphDuration();
             case SLAM -> activeDuration();
             case RECOVER,HURT -> recoverDuration();
+            case ENRAGE -> ENRAGE_DURATION;
             case DEAD -> DEATH_DURATION;
             default -> throw new IllegalStateException("Looping animation already handled");
         };
@@ -208,6 +303,7 @@ public final class Guardian {
             case TELEGRAPH -> telegraphDuration();
             case SLAM -> activeDuration();
             case RECOVER,HURT -> recoverDuration();
+            case ENRAGE -> ENRAGE_DURATION;
             case DEAD -> DEATH_DURATION;
             default -> 1;
         };

@@ -15,12 +15,23 @@ bounds. Merge extra paint layers into Character or Effects before exporting.
 The sword is baked into the Character pixels; its separate 3D object remains in
 the [editable Blender source](../../../../docs/art-review/sprite3d-run/source/rainoray-editable/).
 
-## Character refit — 2026-10-24
+## Simple mask and moving hair — 2026-10-24
 
-The current timeline contains the compact head, curved porcelain-mask markings,
+The current character uses a small red nose mark, short eye marks and tiny cheek
+ticks. The copied mask curves and jaw line are gone. Hanging hair has broad silver
+locks, with visible sideways sway and delayed tip motion in idle and running.
+Attack follow-through, body proportions, footwork and gameplay timings are retained.
+
+All 19 actions / eight directions are updated in this timeline and the game sheets.
+**Before polish** holds the previous curved-mask art. Source and runtime backups
+are under `~/tmp/rainoray-simple-mask-hair-20261024/before/`.
+[Review and regeneration](../../../../docs/art-review/rainoray-simple-mask/README.md).
+
+## Earlier character refit — 2026-10-24
+
+The earlier refit introduced the compact head, curved porcelain-mask markings,
 broad navy coat panels and quieter boot shading across all 1,344 frames.
-**Before polish** now holds the preceding compact-head
-eight-way runtime art. The original native project and model are backed up under
+Its original native project and model are backed up under
 `~/tmp/rainoray-refit-20261024/before/` and remain in Git history.
 The mask-and-coat pass has a separate backup at `~/tmp/rainoray-mask-coat-20261024/before/`.
 

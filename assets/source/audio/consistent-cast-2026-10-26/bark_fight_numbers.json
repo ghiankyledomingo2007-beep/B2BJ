@@ -1,0 +1,27 @@
+{
+  "file": "bark_fight_numbers.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Are you keeping count too?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "hiyH2c6GWM7h0phmmaEm",
+  "context_request_ids": [
+    "XFcbUxEhBMEfb3Z90yUW",
+    "VyyGvjbl57Uzg6rJ4QGv",
+    "POR8f7VGvWhfWG0tTPWE"
+  ],
+  "generated_at": 1792949074.4622362,
+  "format": "mp3_44100_192",
+  "seconds": 1.579,
+  "peak_dbfs": -4.45,
+  "tempo": 1,
+  "sha256": "1d05e6c1efaac9489aded3e221dc8be4054e2bf40c5c5a6f7ee8e2f70e558fbc"
+}

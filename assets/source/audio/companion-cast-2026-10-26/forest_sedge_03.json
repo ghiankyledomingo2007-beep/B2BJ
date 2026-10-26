@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_03.wav",
+  "speaker": "SEDGE",
+  "scene": "THE STRANDED CROSSING",
+  "text": "I got them across before the roots took the river. The injured are sheltering beneath the old stair.",
+  "spoken_text": "",
+  "voice_id": "cjVigY5qzO86Huf0OWal",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.68,
+    "similarity_boost": 0.75,
+    "style": 0.05,
+    "use_speaker_boost": true,
+    "speed": 0.96
+  },
+  "seed": 84722,
+  "request_id": "su4QAg948gW7ElUcAqoM",
+  "context_request_ids": [
+    "FVlRE2DH2xXwCRphB68K"
+  ],
+  "generated_at": 1793024799.716775,
+  "format": "mp3_44100_192",
+  "seconds": 4.969,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "3991fdd173a320e480b209bc6ae93396d4b7a572f530362b56e947bdf2f6c369"
+}

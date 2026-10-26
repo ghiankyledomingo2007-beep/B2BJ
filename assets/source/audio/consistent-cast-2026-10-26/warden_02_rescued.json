@@ -1,0 +1,27 @@
+{
+  "file": "warden_02_rescued.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST ORDER",
+  "text": "People are still coming back. You're blocking their way. Open the gate.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "SE9ghkE8HOo6Gp6z3z9b",
+  "context_request_ids": [
+    "l6yrNKFYlmeBSdvmOH1A",
+    "Q0eqOzETOG7TjI4j6e9h",
+    "FmUEljl4L8rGkqtEKJrf"
+  ],
+  "generated_at": 1792949013.5341878,
+  "format": "mp3_44100_192",
+  "seconds": 3.762,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "f0d4b49707e1d5bbf81ce04de29ae00363220604fd423a5eea687913c277ae89"
+}

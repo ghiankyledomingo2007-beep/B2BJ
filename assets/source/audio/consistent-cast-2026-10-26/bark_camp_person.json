@@ -1,0 +1,27 @@
+{
+  "file": "bark_camp_person.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "She spoke to me like I was a person.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "PVYQmLWemYUW1FnADuhv",
+  "context_request_ids": [
+    "dpVA3hMhBABrvHoA5j3O",
+    "1XoQHROwTlWqUVn74mmh",
+    "A69redtxzCwgrMEt7g81"
+  ],
+  "generated_at": 1792949090.7212853,
+  "format": "mp3_44100_192",
+  "seconds": 1.904,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "6fbb5f310f136e58f6a45c979174598a04d9a08a4c6d0af750d5e57da730e9a5"
+}

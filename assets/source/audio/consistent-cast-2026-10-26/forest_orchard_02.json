@@ -1,0 +1,27 @@
+{
+  "file": "forest_orchard_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE LAST HARVEST",
+  "text": "For whoever followed them.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "kmgoPZfrJPW5MtQfIqtL",
+  "context_request_ids": [
+    "gbFJLGpnAeFw5mZpzEdF",
+    "EfgluTavTNez3TXniPWe",
+    "MdyHgacubwNBkxRpyC8q"
+  ],
+  "generated_at": 1792948995.2094367,
+  "format": "mp3_44100_192",
+  "seconds": 2.297,
+  "peak_dbfs": -4.05,
+  "tempo": 1,
+  "sha256": "8ce901af776352fc7848334a45cbba6bdfaaa6ff8bb0c0191649e910cce8c79c"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "supplies_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "WHAT THEY LEFT BEHIND",
+  "text": "Weapons left behind. Empty spaces where the blankets were.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "qwH9XTc6S8dmFo90mPfX",
+  "context_request_ids": [
+    "eXlnbZOjSZdBKNQzKDGv",
+    "GFBUg1oSgZqX7zh1pdbu",
+    "K0XwT9YC3uRn0HM9g4Qi"
+  ],
+  "generated_at": 1793011345.0669947,
+  "format": "mp3_44100_192",
+  "seconds": 4.226,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "7d8420c10c486d0cd10e55f8eea5ba99f549636c8c4983b2f2881a8ebbf8709d"
+}

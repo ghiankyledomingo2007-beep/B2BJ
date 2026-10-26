@@ -61,10 +61,14 @@ final class TitleMenu extends JPanel {
     }
 
     @Override public void doLayout() {
-        int y=0;
+        int y=0;double scale=getWidth()/420.;
         var buttons=new PixelSwing.Button[]{resume,fresh,settings,quit};
         int[] heights={72,66,48,48};
-        for(int i=0;i<buttons.length;i++) {buttons[i].setBounds(0,y,getWidth(),heights[i]);y+=heights[i]+4;}
+        for(int i=0;i<buttons.length;i++) {
+            buttons[i].titleScale=scale;
+            buttons[i].setBounds(0,(int)Math.round(y*scale),getWidth(),(int)Math.round(heights[i]*scale));
+            y+=heights[i]+4;
+        }
     }
 
     void focusDefault() {

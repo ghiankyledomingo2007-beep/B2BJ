@@ -5,12 +5,12 @@ import java.util.Objects;
 /** Campaign identity and combat rules around the existing terrain-aware enemy body. */
 public final class CampaignEnemy {
     public enum Kind {
-        OUTPOST_SCOUT("Outpost Remnant", Wisp.Role.SCOUT, 64, 10, 20),
+        OUTPOST_SCOUT("Outpost Remnant", Wisp.Role.REMNANT, 64, 10, 20),
         OUTPOST_GUARD("Outpost Guard", Wisp.Role.SHIELD_GUARD, 80, 10, 20),
         OUTPOST_SPITTER("Ichor Spitter", Wisp.Role.SPITTER, 72, 10, 18),
-        RIFT_IMP("Rift Imp", Wisp.Role.SCOUT, 76, 10, 20),
-        THORN_WOLF("Thorn Wolf", Wisp.Role.GUARD, 80, 15, 28),
-        MIRE_SHAMAN("Mire Shaman", Wisp.Role.SPITTER, 80, 15, 22),
+        RIFT_IMP("Rift Imp", Wisp.Role.RIFT_IMP, 76, 10, 14),
+        THORN_WOLF("Thorn Wolf", Wisp.Role.THORN_WOLF, 80, 15, 18),
+        MIRE_SHAMAN("Mire Shaman", Wisp.Role.MIRE_SHAMAN, 80, 15, 16),
         FALLEN_KNIGHT("Fallen Knight", Wisp.Role.KNIGHT, 160, 25, 32),
         CINDER_HEXER("Cinder Hexer", Wisp.Role.SPITTER, 90, 20, 24);
 
@@ -28,7 +28,7 @@ public final class CampaignEnemy {
 
     private final Kind kind;
     private final Wisp body;
-    private int consumedShot;
+    private int consumedShot,consumedHazard;
     private double approachTime;
 
     public CampaignEnemy(Kind kind, double x, double y) {
@@ -72,12 +72,12 @@ public final class CampaignEnemy {
     }
 
     public boolean hits(double x, double y) {
-        if (body.state() != Wisp.State.LUNGE || body.role() == Wisp.Role.SPITTER) return false;
+        if (body.state() != Wisp.State.LUNGE || body.ranged()) return false;
+        if(body.role()==Wisp.Role.RIFT_IMP&&!body.impSwipeActive())return false;
+        if(body.wolfLeap())return body.stateSeconds()>=body.lungeDuration()-.09&&Math.hypot(x-body.x(),y-body.y())<=72;
         double dx = x - body.x(), dy = y - body.y();
         if (!body.stationaryMelee()) return Math.hypot(dx, dy) <= RuinedOutpostGame.WISP_CONTACT_RADIUS;
-        double forward = dx * body.intentX() + dy * body.intentY();
-        double sideways = Math.abs(dx * body.intentY() - dy * body.intentX());
-        return forward >= 0 && forward <= body.meleeReach() && sideways <= body.meleeHalfWidth();
+        return body.meleeContains(x,y);
     }
 
     /** Consume after outgoing player damage: a staggered/dead caster cannot trade a pending shot. */
@@ -94,6 +94,13 @@ public final class CampaignEnemy {
             shots.add(new EnemyProjectile(body.x(), body.y(), Math.cos(direction), Math.sin(direction)));
         }
         return shots;
+    }
+
+    public List<ForestHazard> releaseHazards() {
+        if(kind!=Kind.MIRE_SHAMAN||body.shotNumber()==consumedHazard)return List.of();
+        consumedHazard=body.shotNumber();
+        if(!body.alive()||body.state()!=Wisp.State.LUNGE)return List.of();
+        return List.of(new ForestHazard(body.markedX(),body.markedY(),74,2.4));
     }
 
     public Wisp body() { return body; }

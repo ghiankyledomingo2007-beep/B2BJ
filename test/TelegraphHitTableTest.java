@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.Field;
 import java.util.List;
 
-/** Boss overlays stay absent; compact enemy cues follow their real attack heading at odd camera offsets. */
+/** Outpost body cues and forest ground warnings follow their real damage at odd camera offsets. */
 public final class TelegraphHitTableTest {
     interface Zone { boolean at(double wx, double wy); }
     static final int CAM_X = 301, CAM_Y = 217, W = 640, H = 360, SLACK = 2;
@@ -11,6 +11,7 @@ public final class TelegraphHitTableTest {
 
     public static void main(String[] args) throws Exception {
         bosses();
+        forestBoss();
         enemies();
         System.out.println("TelegraphHitTableTest passed: " + cases + " boss-overlay and enemy-heading cases");
     }
@@ -19,9 +20,14 @@ public final class TelegraphHitTableTest {
         double gx = 701.3, gy = 399.6;
         for (var profile : Guardian.Profile.values()) for (boolean enraged : new boolean[]{false, true})
             for (var attack : Guardian.Attack.values()) for (boolean warning : new boolean[]{true, false}) {
+                if(profile==Guardian.Profile.BRIARHEART)continue;
                 var g = new Guardian(gx, gy, profile);
                 g.activate(gx, gy);
-                if (enraged) g.hurt(g.health() - 1);
+                if (enraged) {
+                    g.hurt(g.health() - 1);
+                    for(int i=0;i<1000&&!g.enraged();i++)g.update(.01,gx+300,gy);
+                    assert g.enraged();
+                }
                 boolean centred = attack == Guardian.Attack.SWEEP || attack == Guardian.Attack.SHOCKWAVE;
                 double tx = centred ? gx : gx + 120.4, ty = centred ? gy : gy + 33.3, dx = Math.cos(.5), dy = Math.sin(.5);
                 double[] times = warning ? new double[]{.5} : attack == Guardian.Attack.SHOCKWAVE ? new double[]{0, .3, .6} : new double[]{0};
@@ -37,8 +43,42 @@ public final class TelegraphHitTableTest {
             }
     }
 
+    private static void forestBoss() throws Exception {
+        for(boolean phaseTwo:new boolean[]{false,true}) {
+            var boss=new Guardian(701.3,399.6,Guardian.Profile.BRIARHEART);boss.activate(650.5,380.5);
+            if(phaseTwo) {
+                boss.hurt(boss.maxHealth()/2);
+                for(int i=0;i<1800&&!boss.enraged();i++)boss.update(.01,650.5,380.5);
+                assert boss.enraged();
+            }
+            for(int move=0;move<3;move++) {
+                for(int i=0;i<1500&&boss.state()!=Guardian.State.TELEGRAPH;i++)boss.update(.01,650.5,380.5);
+                var game=new RuinedOutpostGame(new RuinedOutpostMap(9),new Player(640,360),List.of(),boss);
+                var roots=boss.forestRoots();var seeds=boss.forestSeeds();
+                Zone footprint=(x,y)-> {
+                    for(var r:roots)if(Math.abs(x-r.centerX())<=r.width()/2&&Math.abs(y-r.centerY())<=r.height()/2)return true;
+                    for(var s:seeds)if(Math.hypot(x-s.x(),y-s.y())<=s.radius())return true;
+                    return boss.forestAttack()==Guardian.ForestAttack.BRAMBLE_CAGE&&Math.hypot(x-boss.targetX(),y-boss.targetY())<=130;
+                };
+                for(boolean live:new boolean[]{false,true}) {
+                    if(live)while(boss.state()==Guardian.State.TELEGRAPH)boss.update(.01,900,700);
+                    var mask=render(game);int count=0;
+                    for(int y=0;y<H;y++)for(int x=0;x<W;x++)if(mask[y][x]) {
+                        count++;boolean covered=false;
+                        for(int dy=-SLACK;dy<=SLACK;dy++)for(int dx=-SLACK;dx<=SLACK;dx++)
+                            covered|=footprint.at(CAM_X+(x+dx)*2,CAM_Y+(y+dy)*2-Player.COLLISION_Y_OFFSET);
+                        assert covered : "forest warning spills outside committed footprint";
+                    }
+                    assert count>0||live&&boss.forestAttack()==Guardian.ForestAttack.SEED_BLOOM;
+                    cases++;
+                }
+                while(boss.state()==Guardian.State.SLAM)boss.update(.01,650.5,380.5);
+            }
+        }
+    }
+
     private static void enemies() throws Exception {
-        for (var kind : new CampaignEnemy.Kind[]{CampaignEnemy.Kind.OUTPOST_SCOUT, CampaignEnemy.Kind.THORN_WOLF, CampaignEnemy.Kind.RIFT_IMP,
+        for (var kind : new CampaignEnemy.Kind[]{CampaignEnemy.Kind.OUTPOST_SCOUT, CampaignEnemy.Kind.THORN_WOLF, CampaignEnemy.Kind.RIFT_IMP, CampaignEnemy.Kind.MIRE_SHAMAN,
                 CampaignEnemy.Kind.OUTPOST_SPITTER, CampaignEnemy.Kind.CINDER_HEXER, CampaignEnemy.Kind.OUTPOST_GUARD,
                 CampaignEnemy.Kind.FALLEN_KNIGHT}) for (int phase = 0; phase < 3; phase++) {
             double ex = 701.3, ey = 399.6, px = ex + 84.2, py = ey + 41.7;
@@ -76,6 +116,9 @@ public final class TelegraphHitTableTest {
             } else zone = (x, y) -> segment(x, y, bx, by, bx + ix * b.lungeReach(), by + iy * b.lungeReach()) <= RuinedOutpostGame.WISP_CONTACT_RADIUS;
             String name = kind + (phase == 0 ? " aiming" : phase == 1 ? " locked" : " striking");
             if (phase == 2) { checkEmpty(name, game); continue; }
+            if(kind==CampaignEnemy.Kind.RIFT_IMP||kind==CampaignEnemy.Kind.THORN_WOLF||kind==CampaignEnemy.Kind.MIRE_SHAMAN) {
+                checkEmpty(name,game);continue;
+            }
             // The paths cues must follow, in world pixels from the body's centre.
             double from = B2BJ.AIM_START * 2 + 4;
             java.util.List<double[]> paths = new java.util.ArrayList<>();
@@ -86,8 +129,12 @@ public final class TelegraphHitTableTest {
                     double d = angle + (radial ? s * Math.PI / 4 : (s - 1) * .20);
                     paths.add(new double[]{Math.cos(d), Math.sin(d), reach});
                 }
-            } else paths.add(new double[]{ix, iy, Math.min((B2BJ.AIM_START+B2BJ.SPOKE)*2,
-                    b.stationaryMelee()?b.meleeReach():b.lungeReach())});
+            } else {
+                // Outpost cue tips extend beyond their bodies, still bounded by the real hit reach.
+                double spoke=b.role()==Wisp.Role.REMNANT||b.role()==Wisp.Role.SHIELD_GUARD?36:B2BJ.SPOKE;
+                paths.add(new double[]{ix,iy,Math.min((B2BJ.AIM_START+spoke)*2,
+                        b.stationaryMelee()?b.meleeReach():b.lungeReach())});
+            }
             checkLines(name, game, zone, bx, by, from, paths);
         }
     }
@@ -109,11 +156,13 @@ public final class TelegraphHitTableTest {
     private static void checkLines(String name, RuinedOutpostGame game, Zone zone, double bx, double by, double from,
             java.util.List<double[]> paths) throws Exception {
         boolean[][] painted = render(game);
+        double cueLimit=76;
+        for(double[] path:paths)cueLimit=Math.max(cueLimit,path[2]+6);
         int count = 0;
         for (int y = 0; y < H; y++) for (int x = 0; x < W; x++) {
             if (!painted[y][x]) continue;
             count++;
-            assert Math.hypot(CAM_X+x*2-bx,CAM_Y+y*2-by)<=76 : name+": long attack lines must stay gone";
+            assert Math.hypot(CAM_X+x*2-bx,CAM_Y+y*2-by)<=cueLimit : name+": cue exceeds its compact intended reach";
             boolean safe = true;
             for (int dy = -SLACK; dy <= SLACK && safe; dy++) for (int dx = -SLACK; dx <= SLACK && safe; dx++)
                 if (zone.at(CAM_X + (x + dx) * 2 + 1, CAM_Y + (y + dy) * 2 + 1)) safe = false;

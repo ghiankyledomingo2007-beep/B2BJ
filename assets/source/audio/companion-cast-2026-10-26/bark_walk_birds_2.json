@@ -1,0 +1,24 @@
+{
+  "file": "bark_walk_birds_2.wav",
+  "speaker": "RAINORAY",
+  "scene": "WALK_BIRDS",
+  "text": "I'm listening for the birds.",
+  "spoken_text": "",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "BV5jGnfSrgnSPW4WoWoy",
+  "context_request_ids": [],
+  "generated_at": 1793024782.5038998,
+  "format": "mp3_44100_192",
+  "seconds": 1.393,
+  "peak_dbfs": -4.15,
+  "tempo": 1,
+  "sha256": "f2e57fa23ccc1d99b4cf9791830b22db977a1a550e73662f6f7f33e43c3bc81c"
+}

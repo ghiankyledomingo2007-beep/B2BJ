@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_quiet.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Was it always this quiet here?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "3Tvpamy2OEEvIJ4yayOi",
+  "context_request_ids": [
+    "t9HGa0ixDKDDV4tscOlN",
+    "piOxTXmaatUcz8LUvwhK",
+    "ClS3yEow9AiXGTxlW6iw"
+  ],
+  "generated_at": 1792949083.8744197,
+  "format": "mp3_44100_192",
+  "seconds": 2.09,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "af9aa194e53c2ae03f4b968b2e54bea08f3ac6aaab194fd5dae3281dd8c2bfdc"
+}

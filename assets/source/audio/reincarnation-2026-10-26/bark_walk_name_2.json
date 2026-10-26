@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_name_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Yes. You do not have to keep checking.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "4PWgtpm8BUgWq5IfE6Gq",
+  "context_request_ids": [
+    "AYGB3dF1RztWk3RybWR8",
+    "cCm2FLmFM69hwnjMXUes",
+    "iwaABWUBXtW97EhywCpS"
+  ],
+  "generated_at": 1793011349.9414184,
+  "format": "mp3_44100_192",
+  "seconds": 3.04,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "bec8747a746409abf75f4c0939e2ccb2cdbc2d5fb601bf652b49452dfe3e14b7"
+}

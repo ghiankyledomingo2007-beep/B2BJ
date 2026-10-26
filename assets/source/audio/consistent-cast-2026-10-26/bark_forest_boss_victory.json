@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_boss_victory.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "The roots are letting go.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "eYhfLWwEMHIdHKVOZaap",
+  "context_request_ids": [
+    "Z6ZoqwMDMKpUjfWE21ui",
+    "Y2qiYxi9MLGCaw8pAJBE",
+    "gNPoccDPkI1QuNbObgwl"
+  ],
+  "generated_at": 1792949119.6515627,
+  "format": "mp3_44100_192",
+  "seconds": 1.254,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "3799e3567c4e30f06d4cb95623b3657f5df200ce7eea0a071856b9bd4ba5eda8"
+}

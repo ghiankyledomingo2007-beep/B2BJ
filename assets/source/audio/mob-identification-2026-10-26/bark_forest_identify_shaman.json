@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_identify_shaman.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Mire Shaman. It'll curse the ground.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "EiRoXTuo5ZbmkZQbOECl",
+  "context_request_ids": [
+    "HZIancrLhcSIOM38eS3O",
+    "VDBTDCE3aGuMgxQ2EAGb",
+    "u0ecjQpNuJUuAFku5lBO"
+  ],
+  "generated_at": 1792970750.4783523,
+  "format": "mp3_44100_192",
+  "seconds": 3.179,
+  "peak_dbfs": -3.79,
+  "tempo": 1,
+  "sha256": "e4be37678253e12df50d5c6e1e1b1876b478bf529fc143c64be36dc118de3e22"
+}

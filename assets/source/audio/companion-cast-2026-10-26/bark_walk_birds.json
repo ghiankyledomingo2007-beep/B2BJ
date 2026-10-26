@@ -1,0 +1,24 @@
+{
+  "file": "bark_walk_birds.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "WALK_BIRDS",
+  "text": "You've gone quiet.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "VfJ3HsrKwwj9X2up9dRr",
+  "context_request_ids": [],
+  "generated_at": 1793024782.627531,
+  "format": "mp3_44100_192",
+  "seconds": 2.064,
+  "peak_dbfs": -4.05,
+  "tempo": 1,
+  "sha256": "7409d24533e1cf1527b1c93918339862dfe0f7143c5ab00148243ec94d595ebc"
+}

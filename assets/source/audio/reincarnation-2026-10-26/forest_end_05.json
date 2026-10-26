@@ -1,0 +1,27 @@
+{
+  "file": "forest_end_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST STRETCHER",
+  "text": "All of them?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "mXT2dbAVeHVtqZXN6UZY",
+  "context_request_ids": [
+    "0DkS6gWkbMYfKDXwuhit",
+    "2UP5cJrwb2rSQ6iq65ew",
+    "fcjoFTfnD0wUbkbDZJ4L"
+  ],
+  "generated_at": 1793011369.249099,
+  "format": "mp3_44100_192",
+  "seconds": 1.161,
+  "peak_dbfs": -4.09,
+  "tempo": 1,
+  "sha256": "26f55b45a577522dd3e3e935a3a7786adac469774147b001ef02dd43589f0c76"
+}

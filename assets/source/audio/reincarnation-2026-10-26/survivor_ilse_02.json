@@ -1,0 +1,27 @@
+{
+  "file": "survivor_ilse_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "INSIDE THE THORNS",
+  "text": "Rainoray. I cut the thorns, not you.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "WOavqShPyCz1yRAGBECr",
+  "context_request_ids": [
+    "8CoZYuoRFSR25AGLF6Qj",
+    "k7XoSqmpEnmLO2YrKcTI",
+    "moOPPShOJ046O054yAGO"
+  ],
+  "generated_at": 1793011356.7292442,
+  "format": "mp3_44100_192",
+  "seconds": 3.111,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "2c92b9d0b35dcfe279040e30591487e98ffbaade4810d9cd598de8d6eac87948"
+}

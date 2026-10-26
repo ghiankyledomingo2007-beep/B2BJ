@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_roots.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Even the roots don't want us here.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "hCpG1nUgpwDIIGtivvv3",
+  "context_request_ids": [
+    "P7xP8pPtrSfBzGC3o0O2",
+    "ELY3SaDp6G6zgODG3eI1",
+    "xiQeDNNkniSvVH1ULjqv"
+  ],
+  "generated_at": 1792949103.781859,
+  "format": "mp3_44100_192",
+  "seconds": 1.765,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "a92125995caf98e2b704232df0a37e2877c352feb6c9e08290a560eaaf2acb29"
+}

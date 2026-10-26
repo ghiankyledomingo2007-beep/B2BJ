@@ -1,0 +1,27 @@
+{
+  "file": "bark_fight_counting.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I preferred counting things.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "KaIEdGiAmkk2IciSOwWU",
+  "context_request_ids": [
+    "a4DWTwjUVHJfejm3ith9",
+    "cY9fNWXaNc8KjIeaMx5b",
+    "xpdN6PTX0yBzAUkrGPqG"
+  ],
+  "generated_at": 1792949068.0404634,
+  "format": "mp3_44100_192",
+  "seconds": 1.486,
+  "peak_dbfs": -4.13,
+  "tempo": 1,
+  "sha256": "8fbf4166c604f24c2f66a57f652edeaae9f6f28c9fa7189c3830e73caa4990a4"
+}

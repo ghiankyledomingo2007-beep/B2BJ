@@ -39,6 +39,16 @@ Sources are cited inline. "(synth)" marks a 60 fps synthesis to be tuned by play
 - Review clip: [Combat-VFX-Preview.mp4](../art-review/combat-hp-vfx/Combat-VFX-Preview.mp4). Controlled no-save game fixtures, four sections: normal, guaranteed critical, charged heavy, reduced effects. Full game renderer; not a manual playtest. Offscreen update+paint averaged 10.03 ms across 220 measured frames, excluding encoding; desktop FPS not measured.
 
 
+## 2026-10-26 — Forest readability and easier pacing
+
+Dash cooldown is now **1.20 seconds in both forms**, replacing the historical 0.32-second value below. Distance, burst speed, collision sweeps and invulnerability duration stay unchanged; walking remains 260 px/s (1.15× in Blade). The HUD uses the same cooldown value. A recovery dodge still preserves a combo, but repeated dodge requests must wait for the full cooldown.
+
+Forest enemies take one attack slot instead of two. Rift Imp/Thorn Wolf/Mire Shaman damage is 14/18/16, with longer anticipation and recovery. Imp/wolf pursuit slows to 140/155 px/s. Shaman bloom lasts 2.4 seconds; released forest hazards deal 9 damage instead of 12. Briarheart hits for 22 instead of 35, prepares for 1.65 seconds (1.85 for the cage), and has 1.2-second gaps between patterns; the 3.8-second exposed-heart opening remains.
+
+Forest melee cones, landing circles and projectile spokes are removed. Body preparation, committed facing, animated claw strokes, wolf jaws and growing mire thorns carry the cues. Briarheart's roots and seed cracks stay visible as physical effects without rectangular/circular rims or countdown rings. Live hazards keep their thorns in Reduced Effects. Existing Chapter One warning rendering is retained.
+
+Imp/wolf/shaman art is approximately 17% larger: existing 48px cells are resized once to a 56px native grid, then displayed at exactly 2×. No new palette or runtime art files. Additional planted lean emphasizes windup/contact; health bars follow the visible heads and hover bounds follow the larger bodies. Attack/collision reach is unchanged. These are initial playtest values; automated tests do not establish human difficulty or visual preference.
+
 ## 2026-10-22 — Slime cast commitment and quieter combat UI
 
 - Slime basic water, return cut, back-dash counter and body slam use 18 ATK (previously 20). Water casting recovery is 0.60 seconds (previously 0.48). Projectile travel speed/range, release windups, 32-ATK finishers and Tide are unchanged.

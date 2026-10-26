@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_boss_read.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "The roots follow a pattern. I can read it now.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "wEbge11nJEtX0yWEbP3G",
+  "context_request_ids": [
+    "Z5ruTTiqHDlxC2M5w2ob",
+    "067XQuHBp1S6c57mRQgM",
+    "ZG6aBCtxtbLRjnORsHWP"
+  ],
+  "generated_at": 1792949034.9515913,
+  "format": "mp3_44100_192",
+  "seconds": 3.38,
+  "peak_dbfs": -4.0,
+  "tempo": 1.08521,
+  "sha256": "78c73462c00ac45b17111a0930ca134646c794fb02b785430ba04a3b0af13874"
+}

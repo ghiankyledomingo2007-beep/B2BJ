@@ -1,0 +1,27 @@
+{
+  "file": "report_02.wav",
+  "speaker": "MARA",
+  "scene": "STILL MISSING",
+  "text": "After we sent the wounded through. No one could get back to them.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "5GtCXq2PP0wn4z2IQcza",
+  "context_request_ids": [
+    "2oUY9VE0JF7kljnpkpKW",
+    "3j8HDvYjnYBxMjZwmzfF",
+    "fnrcWhKO6xFwFhW7afO5"
+  ],
+  "generated_at": 1793011338.2413263,
+  "format": "mp3_44100_192",
+  "seconds": 3.715,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "940169d4cf05803d8460f1f168ba83a211345e03d23cb2700309031b3ce9d531"
+}

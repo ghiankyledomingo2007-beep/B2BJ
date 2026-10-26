@@ -1,0 +1,23 @@
+{
+  "file": "forest_sedge_01.wav",
+  "speaker": "SEDGE",
+  "scene": "THE STRANDED FERRY",
+  "text": "Watch the bank. Looks solid until you put a foot on it.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "5Na7StMy5cFOpw9Yk3Fa",
+  "context_request_ids": [],
+  "generated_at": 1792948989.1227553,
+  "format": "mp3_44100_192",
+  "seconds": 3.808,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "16e04aa4132d0d0d9c64a8b083f04278d507539b53cf13202af0268a33ec50bd"
+}

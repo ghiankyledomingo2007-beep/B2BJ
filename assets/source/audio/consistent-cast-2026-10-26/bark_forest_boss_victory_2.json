@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_boss_victory_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Listen. Someone is calling from below.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "TM55LvabBxcJvp2gU5gH",
+  "context_request_ids": [
+    "lOnpaPi3C2UkDoNhbW58",
+    "DmTLP2ZSd5wZxyJj5WVT",
+    "QfMsMSkAiOytfCnSjDmk"
+  ],
+  "generated_at": 1792967467.3006706,
+  "format": "mp3_44100_192",
+  "seconds": 3.179,
+  "peak_dbfs": -3.93,
+  "tempo": 1,
+  "sha256": "34769968b6d530bd3b59ccc67e65da26abe81d1a5c3b8d5b3616f59575fa9bea"
+}

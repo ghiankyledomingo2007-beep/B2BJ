@@ -1,0 +1,27 @@
+{
+  "file": "bark_warden_victory.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "The road's open.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "UMOAA5AIoqXPZNwDNHib",
+  "context_request_ids": [
+    "ilxiRHDzR0YvQOJHxr6L",
+    "2hSVVzdsCTD5A2bKLSQg",
+    "jq96zZhhqwMnLz3l3jLS"
+  ],
+  "generated_at": 1792949095.8620842,
+  "format": "mp3_44100_192",
+  "seconds": 1.068,
+  "peak_dbfs": -4.1,
+  "tempo": 1,
+  "sha256": "42a40e3674b10c0e1e56fe819e6629a0645a47dd0b5507a6bc7f9c448159fdf9"
+}

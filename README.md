@@ -5,6 +5,10 @@ Blade form by gathering Ichor. The current campaign includes **Ruined Outpost** 
 **Corrupted Forest**, with the Outpost Warden and Briarheart. Each region is a
 6144×4096 map with twelve landmarks, optional discoveries and a safe camp.
 
+## Local story update — 2026-10-26
+
+New Journey opens with Rainoray's reincarnation, Raphael's ability-awakening sequence and a voiced introduction to the outpost. Shuna, Kaijin, Eren, Rigurd and Souei now have matching dialogue and art. The opening advances automatically; Enter/E/click moves to the next beat, X skips and Esc pauses. Continue preserves an existing campaign. See the [current story](docs/design/area-one-story.md). This local revision has not been pushed to GitHub.
+
 ## Group playtest — 2026-10-24
 
 The current game is on **`main`**. This update includes the animated title menu and
@@ -48,7 +52,8 @@ java -jar build/B2BJ.jar
 ```
 
 `./run-game.sh` builds, checks and launches. Rebuilding does not update a game window
-that is already open. If native window decorations fail, use `./run-game.sh --borderless`.
+that is already open. Use `./run-game.sh --fullscreen` for the whole screen, or
+`./run-game.sh --borderless` if native window decorations fail.
 Alt+F4 closes that window.
 
 In IntelliJ, run `B2BJ.main()` or `run-game.sh`. The `tools/pack-*.sh` scripts are
@@ -89,8 +94,9 @@ also used by the build, tests and art tools; the file map groups them by respons
 - Enter starts a journey; C continues. N confirms replacing an existing save.
 - WASD/arrows move. The mouse aims. Left click attacks; hold left click to charge in Blade form.
 - Right click uses Tide Wave in Blob form or Ichor Crescent in Blade form. F uses Riposte.
-- Space dashes. Q transforms at 100 Ichor. E interacts with discoveries, remains and gates.
-- E at Captain Camp talks to Mara. Enter, E or left click advances dialogue; X skips it. Combat and Ichor drain pause while you read.
+- R in Blade form casts Beelzebub: stand still for 1.15 seconds to absorb nearby corpses for HP and Ichor. Ten-second cooldown; movement or damage interrupts it. See [skill rules](docs/design/beelzebub.md).
+- Space dashes with a 1.2-second cooldown. Q transforms at 100 Ichor. E interacts with discoveries, remains and gates.
+- E at Captain Camp talks to Shuna. Enter, E or left click advances dialogue; X skips it. Combat and Ichor drain pause while you read.
 - H at camp heals, saves and sets the checkpoint. U opens camp services; 1–4 select upgrades there.
 - Esc pauses; losing focus also pauses. T while paused saves and returns to the title.
 - Hold Tab for the regional map. M toggles audio; V reduces effects; O opens audio/effects options.

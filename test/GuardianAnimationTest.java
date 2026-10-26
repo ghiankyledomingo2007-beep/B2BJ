@@ -44,7 +44,9 @@ public final class GuardianAnimationTest {
         oneShot(guardian,Guardian.Animation.CHARGE,.55,x+600,400);
         assert Math.abs(guardian.x()-x-620*.55)<.001 : "charge animation must not change displacement";
         guardian.hurt(guardian.maxHealth()/2);
-        oneShot(guardian,Guardian.Animation.RECOVER,1.25,guardian.x()+600,400);
+        oneShot(guardian,Guardian.Animation.RECOVER,2.0,guardian.x()+600,400);
+        assert guardian.state()==Guardian.State.ENRAGE&&!guardian.enraged()
+                : "crossing half health preserves the full charge recovery before the transition";
         seek(guardian,Guardian.Animation.RECOVER,Guardian.Attack.FISSURE);
         assert guardian.state()==Guardian.State.TELEGRAPH : "fissure prepares by planting its hands";
         var lane=guardian.fissureBounds();

@@ -1,0 +1,27 @@
+{
+  "file": "forest_end_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST STRETCHER",
+  "text": "Easy. The path is clear. There's a refuge waiting at the outpost.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "fcjoFTfnD0wUbkbDZJ4L",
+  "context_request_ids": [
+    "C7vhg6kqQCxt5XxePz8I",
+    "0DkS6gWkbMYfKDXwuhit",
+    "2UP5cJrwb2rSQ6iq65ew"
+  ],
+  "generated_at": 1793011368.2359557,
+  "format": "mp3_44100_192",
+  "seconds": 4.598,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "d47069e3a1f2028785d484f5b29a5136e0a80d30f11ff03e82599ac5f32f0f59"
+}

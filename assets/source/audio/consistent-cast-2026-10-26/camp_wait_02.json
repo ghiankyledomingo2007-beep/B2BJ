@@ -1,0 +1,27 @@
+{
+  "file": "camp_wait_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "MARA",
+  "text": "East, then north. I used to mark those supply routes myself.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "lXooFDBPNTIOAW5OF7jf",
+  "context_request_ids": [
+    "11jXDR1LyM83Utgb0jhR",
+    "xDrgCcAezPvzz1n0p4uR",
+    "wMmm0ewJkALCQCfxKxqd"
+  ],
+  "generated_at": 1792948992.8518026,
+  "format": "mp3_44100_192",
+  "seconds": 3.669,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "571a0f95751f7db654e0058c467b601b5c57b121a5ee811b21c8276c43cee854"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_grove_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Still pointing east. He chose well.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "Dfz1tDuXH3n7m8ulk63Y",
+  "context_request_ids": [
+    "q0do3HjnJWoEZfVBPMWk",
+    "usd8xXmCZs6Hz4mxemJW",
+    "bWdMcLk2MHof1Qi2EF0u"
+  ],
+  "generated_at": 1792949004.7535975,
+  "format": "mp3_44100_192",
+  "seconds": 3.458,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "ee7ddc0633d4419af86f1ddd1ca8c5484d1f78327bfe6bcac1e0dee34357220d"
+}

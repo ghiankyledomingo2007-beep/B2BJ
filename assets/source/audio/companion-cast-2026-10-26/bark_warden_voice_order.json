@@ -1,0 +1,29 @@
+{
+  "file": "bark_warden_voice_order.wav",
+  "speaker": "WARDEN",
+  "scene": "WARDEN_VOICE_ORDER",
+  "text": "I was ordered to protect them.",
+  "spoken_text": "",
+  "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.2,
+    "use_speaker_boost": true,
+    "speed": 0.95
+  },
+  "seed": 84722,
+  "request_id": "xd0Zqq5DhACAxezaMzMr",
+  "context_request_ids": [
+    "MmMJcMy1xJW3qZ38TPKY",
+    "W1YztHtoQJ5wc1Qn7aQe",
+    "5LFqY7m3HFASpQhQi0Sh"
+  ],
+  "generated_at": 1793024786.4616003,
+  "format": "mp3_44100_192",
+  "seconds": 1.95,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "15571d0c3d836272c9cbae9924212dcb97520103d5e2f24632a34647aafd9f1a"
+}

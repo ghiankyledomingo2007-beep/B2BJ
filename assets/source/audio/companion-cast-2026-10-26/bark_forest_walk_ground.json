@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_walk_ground.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FOREST_WALK_GROUND",
+  "text": "The ground is firmer on the left.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "BD2W79vQ80umJPu5UiIr",
+  "context_request_ids": [
+    "5CQEJsncbrg9hPs1gp0i",
+    "WhAT5ykf8sdhS4SckxDW",
+    "Z8B2maDBUhvLj1LpnU07"
+  ],
+  "generated_at": 1793024796.4316032,
+  "format": "mp3_44100_192",
+  "seconds": 2.668,
+  "peak_dbfs": -4.15,
+  "tempo": 1,
+  "sha256": "fe60823ea859fc173e35b851339be84b51e23d6a1ac9bbc804b00987b90c30b1"
+}

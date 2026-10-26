@@ -1,0 +1,27 @@
+{
+  "file": "bark_warden_start_2.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I only need one opening.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "2hSVVzdsCTD5A2bKLSQg",
+  "context_request_ids": [
+    "PVYQmLWemYUW1FnADuhv",
+    "vGWWgOWV2uHY1XYTn5gZ",
+    "ilxiRHDzR0YvQOJHxr6L"
+  ],
+  "generated_at": 1792949093.7494912,
+  "format": "mp3_44100_192",
+  "seconds": 1.718,
+  "peak_dbfs": -4.09,
+  "tempo": 1,
+  "sha256": "43d7b214be46d1ffa2c0cfce60fa25069edb64f7f511140602eba41a7342370f"
+}

@@ -19,7 +19,8 @@ tools/art/build-art.sh warden     # solid boss sweeps and compact phase-two flam
 tools/art/build-art.sh tent       # only the 128 × 100 camp tent
 tools/art/build-art.sh dummy      # two native 36 × 72 training-dummy variants
 tools/art/build-art.sh gate       # eight opening poses for the East Gate
-tools/art/build-art.sh portraits  # native Mara and slime dialogue art
+tools/art/build-art.sh portraits  # current cast and slime dialogue art
+tools/art/build-art.sh reincarnation  # new cast atlas, portraits and modern road memory
 tools/art/build-art.sh field      # field-camp rescue props (fails if the side palisade does not stack)
 tools/art/build-art.sh infirmary  # only the field infirmary set piece
 tools/art/build-art.sh warden-hires  # 128 px Warden atlas from the preserved 64 px original
@@ -108,5 +109,29 @@ Scale: a person is about 64 native pixels tall; the game draws everything at 2x.
 - `UiArt.splash()` -> `assets/ui/splash.png`: the boot splash, already doubled to 640x360 screen pixels because
   the JVM shows it unscaled (`tools/manifest.txt` names it in the jar). `src/Splash.java` fills its load bar.
 
-Audio: `tools/audio/slime_sfx.py` rebuilds the slime hop and dash sounds from the CC0 slime pack credited in
-`assets/audio/CREDITS.md` (download URL in the script).
+Audio: `tools/audio/generate_combat_sfx.py` builds the current original slime attacks/dash/hurt,
+blade swings, water abilities and boss slam. `generate_forest_sfx.py` builds enemy attack sounds.
+Both use standard Python and support `--check` for deterministic verification. Earlier slime
+scripts rebuild historical versions; movement retains the credited CC0-based foley.
+Provenance and preserved originals are listed in `assets/audio/CREDITS.md`.
+
+## Groupmate forest imports
+
+`bash tools/art/build-art.sh forest-props` rebuilds only the four approved groupmate
+imports: oak, bush, log and stump. `ImportedArt.forest` preserves the authored pixels,
+matches the existing palette and fits the stump to its shared runtime metrics.
+[Source/editing guide](../../assets/source/forest/groupmate-2026-10-25/README.md).
+
+## Survivor world sprites
+
+`tools/art/build-art.sh survivors` imports the preserved Mara-style six-pose sheet through `ImportedArt.survivors()`. The `field` and `all` targets use the same import, so rebuilding props keeps the reviewed survivor art. Runtime cells are64×64 at2× world scale; sources, old art and the generation prompt are documented in `docs/art-review/survivor-world-style/README.md`.
+
+## Forest chapter characters
+
+`forest-creatures` imports the preserved generated keyposes for the Imp, Wolf and Shaman into48px walk/attack cells. `briarheart` imports the eight96px boss poses and assembles the shared animation rows, including the exposed-heart recovery row. `sedge` imports two80px idle cells and a64px portrait. Importers use nearest-neighbor fit, fixed palettes and binary alpha; existing source images and exact generation prompts are under `assets/source/characters/` and `docs/art-review/area-two/`.
+
+These are limited pose animations with native-pixel motion, not fully hand-animated frame sets. `forest-corruption` rebuilds only the withered trees, briar roots and stair. `forest` rebakes terrain from current enemy/prop placement. The four groupmate assets remain under their separate `forest-props` importer.
+
+## Current story cast
+
+[Reincarnation cast import](../../assets/source/characters/npcs/README.md) replaces the legacy named NPC art while retaining its runtime filenames. [Opening road source](../../assets/source/ui/opening/README.md) supplies the 640×360 memory image. Both use `ImportedArt.reincarnation()`; old masters remain historical.

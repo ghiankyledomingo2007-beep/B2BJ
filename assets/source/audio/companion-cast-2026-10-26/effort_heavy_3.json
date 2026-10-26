@@ -1,0 +1,19 @@
+{
+  "file": "effort_heavy_3.wav",
+  "speaker": "RAINORAY",
+  "text": "Here!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84726,
+  "generated_at": 1793024819.727271,
+  "request_id": "qkfzTDKsof45wb9YyQ7P",
+  "seconds": 0.2487,
+  "peak_dbfs": -7.54,
+  "sha256": "0c836b8b5261ad4917cdf1e4814777a34425463b1d70889203e07e2731e6f7e9"
+}

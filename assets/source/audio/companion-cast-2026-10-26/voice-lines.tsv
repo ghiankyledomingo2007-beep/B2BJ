@@ -1,0 +1,65 @@
+file	speaker	scene	text	spoken_text
+bark_walk_birds.wav	INNER_VOICE	WALK_BIRDS	You've gone quiet.	You've gone quiet.
+bark_walk_birds_2.wav	RAINORAY	WALK_BIRDS	I'm listening for the birds.	I'm listening for the birds.
+bark_walk_feet.wav	RAINORAY	WALK_FEET	How do I trip without feet?	How do I trip without feet?
+bark_walk_feet_2.wav	INNER_VOICE	WALK_FEET	You're finding new ways.	You're finding new ways.
+bark_walk_body.wav	RAINORAY	WALK_BODY	Is this body holding together?	Is this body holding together?
+bark_walk_body_2.wav	INNER_VOICE	WALK_BODY	Yes. I'd tell you if it wasn't.	Yes. I'd tell you if it wasn't.
+bark_walk_wind.wav	INNER_VOICE	WALK_WIND	There. A little less wind.	There. A little less wind.
+bark_walk_wind_2.wav	RAINORAY	WALK_WIND	You noticed I was cold?	You noticed I was cold?
+bark_fight_saw.wav	RAINORAY	FIGHT_SAW	Did you see that?	Did you see that?
+bark_fight_saw_2.wav	INNER_VOICE	FIGHT_SAW	Even the part you meant to do.	Even the part you meant to do.
+bark_fight_right.wav	INNER_VOICE	FIGHT_RIGHT	You're leaving your right side open.	You're leaving your right side open.
+bark_fight_right_2.wav	RAINORAY	FIGHT_RIGHT	Remind me before the next one.	Remind me before the next one.
+bark_fight_harmless.wav	RAINORAY	FIGHT_HARMLESS	Aren't slimes meant to be harmless?	Aren't slimes meant to be harmless?
+bark_fight_harmless_2.wav	INNER_VOICE	FIGHT_HARMLESS	You've met the local slimes.	You've met the local slimes.
+bark_camp_warm.wav	RAINORAY	CAMP_WARM	That fire almost feels warm.	That fire almost feels warm.
+bark_camp_warm_2.wav	INNER_VOICE	CAMP_WARM	Then stay a moment.	Then stay a moment.
+bark_forest_walk_sounds.wav	INNER_VOICE	FOREST_WALK_SOUNDS	You're following every sound again.	You're following every sound again.
+bark_forest_walk_sounds_2.wav	RAINORAY	FOREST_WALK_SOUNDS	One of them might be someone.	One of them might be someone.
+bark_forest_walk_lost.wav	RAINORAY	FOREST_WALK_LOST	Do you ever get lost?	Do you ever get lost?
+bark_forest_walk_lost_2.wav	INNER_VOICE	FOREST_WALK_LOST	I would call it gathering information.	I would call it gathering information.
+bark_forest_walk_calm.wav	RAINORAY	FOREST_WALK_CALM	How are you always so calm?	How are you always so calm?
+bark_forest_walk_calm_2.wav	INNER_VOICE	FOREST_WALK_CALM	One of us has to be.	One of us has to be.
+bark_forest_walk_ground.wav	INNER_VOICE	FOREST_WALK_GROUND	The ground is firmer on the left.	The ground is firmer on the left.
+bark_forest_walk_ground_2.wav	RAINORAY	FOREST_WALK_GROUND	Thanks. I'm tired of sinking.	Thanks. I'm tired of sinking.
+bark_forest_fight_credit.wav	RAINORAY	FOREST_FIGHT_CREDIT	I almost had that one.	I almost had that one.
+bark_forest_fight_credit_2.wav	INNER_VOICE	FOREST_FIGHT_CREDIT	You did have it. Give yourself that much.	You did have it. Give yourself that much.
+bark_forest_fight_listen.wav	INNER_VOICE	FOREST_FIGHT_LISTEN	Wait. Listen before we move.	Wait. Listen before we move.
+bark_forest_fight_listen_2.wav	RAINORAY	FOREST_FIGHT_LISTEN	Right. Quiet doesn't always mean safe.	Right. Quiet doesn't always mean safe.
+bark_forest_fight_sit.wav	RAINORAY	FOREST_FIGHT_SIT	Remind me never to sit down here.	Remind me never to sit down here.
+bark_forest_fight_sit_2.wav	INNER_VOICE	FOREST_FIGHT_SIT	I was about to.	I was about to.
+bark_forest_camp_return.wav	INNER_VOICE	FOREST_CAMP_RETURN	The boat is still there.	The boat is still there.
+bark_forest_camp_return_2.wav	RAINORAY	FOREST_CAMP_RETURN	Good. I like knowing we can go back.	Good. I like knowing we can go back.
+bark_sage_hit_room.wav	INNER_VOICE	SAGE_HIT_ROOM	Easy. Give yourself a little room.	Easy. Give yourself a little room.
+bark_sage_hit_hurt.wav	INNER_VOICE	SAGE_HIT_HURT	That one hurt. Step back.	That one hurt. Step back.
+bark_sage_hit_stay.wav	INNER_VOICE	SAGE_HIT_STAY	I'm here. Keep moving.	I'm here. Keep moving.
+bark_sage_hit_footing.wav	INNER_VOICE	SAGE_HIT_FOOTING	Watch your footing.	Watch your footing.
+bark_sage_hit_patient.wav	INNER_VOICE	SAGE_HIT_PATIENT	Don't rush the next move.	Don't rush the next move.
+bark_sage_hit_steady.wav	INNER_VOICE	SAGE_HIT_STEADY	You're still in this.	You're still in this.
+bark_warden_voice_stand.wav	WARDEN	WARDEN_VOICE_STAND	Stand down.	Stand down.
+bark_warden_voice_line.wav	WARDEN	WARDEN_VOICE_LINE	Hold the line.	Hold the line.
+bark_warden_voice_gate.wav	WARDEN	WARDEN_VOICE_GATE	The gate stays shut.	The gate stays shut.
+bark_warden_voice_order.wav	WARDEN	WARDEN_VOICE_ORDER	I was ordered to protect them.	I was ordered to protect them.
+warden_01.wav	WARDEN	THE LAST ORDER	CONTAMINATED LIFEFORM. PASSAGE DENIED.	Contaminated lifeform. passage denied.
+warden_03.wav	WARDEN	THE LAST ORDER	THE ROAD IS SEALED FOR THEIR PROTECTION.	The road is sealed for their protection.
+survivor_tobin_01.wav	TOBIN	BEHIND THE FENCE	Who's there? If you're a rift thing, I'm mostly bandages. Poor eating.	Who's there? If you're a rift thing, I'm mostly bandages. Poor eating.
+survivor_tobin_03.wav	TOBIN	BEHIND THE FENCE	Kaijin. I worked on the gate relay. That sound means the Warden's still running a broken order.	Kaijin. I worked on the gate relay. That sound means the Warden's still running a broken order.
+survivor_tobin_04.wav	TOBIN	BEHIND THE FENCE	The fence came down behind me. I couldn't climb it with this leg.	The fence came down behind me. I couldn't climb it with this leg.
+survivor_tobin_06.wav	TOBIN	BEHIND THE FENCE	For a lamp? I'll crawl. Thank you.	For a lamp? I'll crawl. Thank you.
+survivor_ilse_01.wav	ILSE	INSIDE THE THORNS	Stay back. I've got one good arm and I'm not afraid to use it.	Stay back. I've got one good arm and I'm not afraid to use it.
+survivor_ilse_03.wav	ILSE	INSIDE THE THORNS	Eren. I was scouting the road. Those roots moved against the wind, then closed behind me.	Eren. I was scouting the road. Those roots moved against the wind, then closed behind me.
+survivor_ilse_04.wav	ILSE	INSIDE THE THORNS	That chest holds our spare supplies. Locked tight, and the key went with the storehouse.	That chest holds our spare supplies. Locked tight, and the key went with the storehouse.
+survivor_ilse_06.wav	ILSE	INSIDE THE THORNS	Watch the roots when the wind stops. They don't stop with it.	Watch the roots when the wind stops. They don't stop with it.
+forest_sedge_01.wav	SEDGE	THE STRANDED CROSSING	Watch the bank. Looks solid until you put a foot on it.	Watch the bank. Looks solid until you put a foot on it.
+forest_sedge_03.wav	SEDGE	THE STRANDED CROSSING	I got them across before the roots took the river. The injured are sheltering beneath the old stair.	I got them across before the roots took the river. The injured are sheltering beneath the old stair.
+forest_sedge_04.wav	SEDGE	THE STRANDED CROSSING	Souei. I marked a path back, but the roots keep closing it.	Souei. I marked a path back, but the roots keep closing it.
+forest_sedge_06.wav	SEDGE	THE STRANDED CROSSING	Then they have somewhere safe to go. Follow the white cloth north, then east over the ford.	Then they have somewhere safe to go. Follow the white cloth north, then east over the ford.
+forest_sedge_08.wav	SEDGE	THE STRANDED CROSSING	I'll guard their crossing. You reach the tree. Watch the ground; it reaches farther than its branches.	I'll guard their crossing. You reach the tree. Watch the ground; it reaches farther than its branches.
+forest_sedge_wait_01.wav	SEDGE	SOUEI	White cloth through the grove, then east across the dry ford. The stair is beyond the thorn clearing.	White cloth through the grove, then east across the dry ford. The stair is beyond the thorn clearing.
+forest_sedge_wait_03.wav	SEDGE	SOUEI	The rope is ready. Clear the roots and I'll bring them through.	The rope is ready. Clear the roots and I'll bring them through.
+forest_sedge_late_01.wav	SEDGE	AN OPEN WAY	The roots went slack. I thought the whole bank was falling.	The roots went slack. I thought the whole bank was falling.
+forest_sedge_late_03.wav	SEDGE	AN OPEN WAY	Under the old stair. I'm Souei. I've been guarding their route back. We can move them now.	Under the old stair. I'm Souei. I've been guarding their route back. We can move them now.
+forest_sedge_after_01.wav	SEDGE	BRING THE ROPE	The white cloth's moving again. There hasn't been a breeze through here in days.	The white cloth's moving again. There hasn't been a breeze through here in days.
+forest_sedge_after_03.wav	SEDGE	BRING THE ROPE	I'll bring a stretcher. You see who's still down there.	I'll bring a stretcher. You see who's still down there.
+forest_end_06.wav	SEDGE	THE LAST STRETCHER	Everyone we found. They're at the camp.	Everyone we found. They're at the camp.

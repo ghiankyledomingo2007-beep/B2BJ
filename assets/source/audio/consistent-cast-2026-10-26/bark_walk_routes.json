@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_routes.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I used to know every turn here.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "bFZAP80wi9OYZdXtYUHt",
+  "context_request_ids": [
+    "riaZhvRiSk8nxVgUh3z1",
+    "Y7gqGTcp1XjwK3A6fsOK",
+    "33Bq0q3ROPa0nhRwCY66"
+  ],
+  "generated_at": 1792949080.0780973,
+  "format": "mp3_44100_192",
+  "seconds": 1.579,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "389ad3f19dcab10cfd3a9155b62f406d8bfd276fad09846a0c0e01629541f33c"
+}

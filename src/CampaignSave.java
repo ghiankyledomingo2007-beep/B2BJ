@@ -22,7 +22,8 @@ public final class CampaignSave {
     private static final int MAX_BYTES = 65_536;
 
     public record Progress(int biome, int checkpoint, Set<Integer> clearedBosses,
-            Set<String> unlocks, Map<String, Integer> upgrades, int shards) {
+            Set<String> unlocks, Map<String, Integer> upgrades, int shards,
+            String carried, Map<String, CampaignWorld.Point> dropped) {
         public Progress {
             boolean rest = checkpoint >= FieldObjects.REST_CHECKPOINT
                     && checkpoint < FieldObjects.REST_CHECKPOINT + FieldObjects.rests(Math.max(0, biome)).size();
@@ -39,6 +40,17 @@ public final class CampaignSave {
             if (biome > clearedBosses.size())
                 throw new IllegalArgumentException("Biome requires previous bosses cleared");
             unlocks = identifiers(unlocks);
+            carried = java.util.Objects.requireNonNull(carried);
+            dropped = Map.copyOf(dropped);
+            if (!carried.isEmpty()) validateItem(carried, biome, unlocks);
+            for (var entry : dropped.entrySet()) {
+                validateItem(entry.getKey(), biome, unlocks);
+                var point = entry.getValue();
+                var area = CampaignWorld.area(biome);
+                if (entry.getKey().equals(carried) || !Double.isFinite(point.x()) || !Double.isFinite(point.y())
+                        || point.x() < 0 || point.y() < 0 || point.x() >= area.width() || point.y() >= area.height())
+                    throw new IllegalArgumentException("Invalid dropped item position");
+            }
             upgrades = Map.copyOf(upgrades);
             for (var upgrade : upgrades.entrySet()) {
                 int maximum = switch (upgrade.getKey()) {
@@ -52,12 +64,23 @@ public final class CampaignSave {
         }
 
         public Progress(int biome, int checkpoint, Set<Integer> clearedBosses, Set<String> unlocks,
+                Map<String, Integer> upgrades, int shards) {
+            this(biome, checkpoint, clearedBosses, unlocks, upgrades, shards, "", Map.of());
+        }
+
+        public Progress(int biome, int checkpoint, Set<Integer> clearedBosses, Set<String> unlocks,
                 Map<String, Integer> upgrades) {
             this(biome, checkpoint, clearedBosses, unlocks, upgrades, 0);
         }
     }
 
     private CampaignSave() {}
+
+    private static void validateItem(String id, int biome, Set<String> unlocks) {
+        var item = FieldObjects.find(biome, id);
+        if (item == null || !FieldObjects.carriable(item.kind()) || unlocks.contains("field_" + id))
+            throw new IllegalArgumentException("Invalid carried or dropped item");
+    }
 
     public static Path defaultPath() {
         return Path.of(System.getProperty("user.home"), ".b2bj", "campaign.properties");
@@ -88,10 +111,17 @@ public final class CampaignSave {
                 if (pair.length != 2 || upgrades.put(pair[0], Integer.parseInt(pair[1])) != null)
                     throw new IllegalArgumentException("Invalid upgrade");
             }
+            Map<String, CampaignWorld.Point> dropped = new HashMap<>();
+            for (String item : tokens(values.getProperty("dropped", ""))) {
+                String[] parts = item.split(":", -1);
+                if (parts.length != 3 || dropped.put(parts[0], new CampaignWorld.Point(
+                        Double.parseDouble(parts[1]), Double.parseDouble(parts[2]))) != null)
+                    throw new IllegalArgumentException("Invalid dropped item");
+            }
             return Optional.of(new Progress(Integer.parseInt(required(values, "biome")),
                     Integer.parseInt(required(values, "checkpoint")), bosses,
                     tokens(required(values, "unlocks")), upgrades,
-                    Integer.parseInt(required(values, "shards"))));
+                    Integer.parseInt(required(values, "shards")), values.getProperty("carried", ""), dropped));
         } catch (IllegalArgumentException invalid) {
             throw new IOException("Invalid campaign save: " + invalid.getMessage(), invalid);
         }
@@ -104,6 +134,10 @@ public final class CampaignSave {
         values.setProperty("biome", Integer.toString(progress.biome()));
         values.setProperty("checkpoint", Integer.toString(progress.checkpoint()));
         values.setProperty("shards", Integer.toString(progress.shards()));
+        values.setProperty("carried", progress.carried());
+        values.setProperty("dropped", progress.dropped().entrySet().stream().sorted(Map.Entry.comparingByKey())
+                .map(item -> item.getKey() + ":" + item.getValue().x() + ":" + item.getValue().y())
+                .collect(Collectors.joining(",")));
         values.setProperty("clearedBosses", progress.clearedBosses().stream().sorted()
                 .map(String::valueOf).collect(Collectors.joining(",")));
         values.setProperty("unlocks", joined(progress.unlocks()));

@@ -1,0 +1,27 @@
+{
+  "file": "gate_02_stranger.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE ROAD OPENS",
+  "text": "Only one set of footprints comes back toward camp.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "qMSmeIHmOVZAfwGlHaUa",
+  "context_request_ids": [
+    "PaDU8zuua3sGlG5N4Avw",
+    "gZOTS8s4cuttPnDRLZq1",
+    "KCxZRvQdeh9LuP9q51U1"
+  ],
+  "generated_at": 1792949019.6555276,
+  "format": "mp3_44100_192",
+  "seconds": 2.694,
+  "peak_dbfs": -4.1,
+  "tempo": 1,
+  "sha256": "1b00900ffe960a0ad83a0cf29881e89d10a7d61d31b090d22e5052ae6d223d44"
+}

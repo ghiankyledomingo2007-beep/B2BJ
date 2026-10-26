@@ -1,0 +1,23 @@
+{
+  "file": "survivor_venn_03.wav",
+  "speaker": "VENN",
+  "scene": "THE CULVERT",
+  "text": "Rigurd. I stayed with the last evacuees, then told the stretcher crew to go on without me.",
+  "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "sigASA2LoSFJ5bMAwMzM",
+  "context_request_ids": [],
+  "generated_at": 1793011354.4316845,
+  "format": "mp3_44100_192",
+  "seconds": 5.573,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "39807ef4cafadb25de125d2e70729d9f792c81bb28adfaf3bc38a9d3c8d43df1"
+}

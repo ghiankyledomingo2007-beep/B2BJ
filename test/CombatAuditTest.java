@@ -23,6 +23,8 @@ public final class CombatAuditTest {
                         .filter(enemy -> !authored.contains(enemy)).findFirst().orElse(null);
             }
             assert summoned != null : "active boss must produce a real summoned enemy";
+            assert game.campaignEnemy(summoned).kind()==CampaignEnemy.Kind.OUTPOST_GUARD
+                    &&summoned.role()==Wisp.Role.SHIELD_GUARD : "Warden summons armored guards, not slime remnants";
             for (int tick = 0; tick < 200 && summoned.alive(); tick++) {
                 game.player().heal(); game.player().collectIchor(100); game.transform();
                 positionForStrike(game, summoned);

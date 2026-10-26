@@ -1,0 +1,27 @@
+{
+  "file": "camp_after_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "A PLACE TO RETURN TO",
+  "text": "It's open. I'm going after the stretcher tracks.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "4Gak9Qr2Cr5o4ubFC4lZ",
+  "context_request_ids": [
+    "KCxZRvQdeh9LuP9q51U1",
+    "qMSmeIHmOVZAfwGlHaUa",
+    "pWPR33i6gYqrkfkB4zaw"
+  ],
+  "generated_at": 1792949021.6172628,
+  "format": "mp3_44100_192",
+  "seconds": 2.833,
+  "peak_dbfs": -4.43,
+  "tempo": 1,
+  "sha256": "3776d22f05fe1c2c540ac1cac010a38f8eb9090e3c33723a910a44b606323d13"
+}

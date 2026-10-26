@@ -1,0 +1,27 @@
+{
+  "file": "camp_home_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THREE BEDS",
+  "text": "The count finally adds up. Better than I'd hoped.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "LMxiD6xKKWfrd9imHhoA",
+  "context_request_ids": [
+    "EqYyXDJ7OGwR9ilmTqRW",
+    "ChJ0VaCQSC5aTCWziwLB",
+    "nPRyB5KmI3XugTS45m7v"
+  ],
+  "generated_at": 1792949040.5031447,
+  "format": "mp3_44100_192",
+  "seconds": 2.972,
+  "peak_dbfs": -4.2,
+  "tempo": 1,
+  "sha256": "f3ee397677200194a77b577e6f0702375416576d72a8400beaccc1a59f0df739"
+}

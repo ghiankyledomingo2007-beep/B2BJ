@@ -28,8 +28,8 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 - `src/CampaignRenderer.java`: world, actors, effects, HUD and map rendering.
 - `src/SetPieces.java`: Outpost and Forest scenery, placement and footprints.
 - `src/OutpostLights.java`: world lighting and glows.
-- `src/WardenFx.java`, `src/MobFx.java`: boss and ordinary-enemy visual effects.
-- `src/Telegraphs.java`: compact enemy windup glints; boss windups and impacts use `WardenFx`.
+- `src/WardenFx.java`, `src/BossFx.java`, `src/MobFx.java`: boss sprite effects, physical boss attack effects/sound timing, and ordinary-enemy effects.
+- `src/Telegraphs.java`: compact enemy windup glints; boss windups and impacts use `WardenFx` and `BossFx`.
 - `src/SlimeAnimation.java`, `src/BladeAnimation.java`, `src/WispAnimation.java`: actor animation timing.
 - `src/TransformationAnimation.java`: slime/Blade transitions.
 - `src/WangTileset.java`: legacy terrain tile rendering used by older map paths.

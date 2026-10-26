@@ -1,0 +1,27 @@
+{
+  "file": "signal_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE MISSING NAMES",
+  "text": "A dispatch, folded under the bell rope. 'Hold the east road until the last stretcher passes.'",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "5LHDk3PUinDqF9QsIv2T",
+  "context_request_ids": [
+    "lXooFDBPNTIOAW5OF7jf",
+    "hTfRNpW0h18dgiPFGbrO",
+    "Bogrf6z4wllRrg1xeXZf"
+  ],
+  "generated_at": 1792948996.1304088,
+  "format": "mp3_44100_192",
+  "seconds": 5.248,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "553f6d1d4f5261251d151eb7cb0534eb8f3e44cdb439047f63915d5a8de46ed0"
+}

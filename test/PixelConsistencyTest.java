@@ -10,7 +10,9 @@ import java.util.Set;
 public final class PixelConsistencyTest {
     /** Known exceptions: the JVM splash is shown unscaled, so it is doubled on purpose; the loading layers are pending a redraw. */
     private static final Set<String> EXEMPT = Set.of("assets/ui/splash.png", "assets/ui/loading/outpost.png", "assets/ui/loading/sky.png",
-            "assets/ui/title/ruined-gate.png");
+            "assets/ui/title/ruined-gate.png",
+            // Approved high-resolution UI sources are sampled to binary-alpha native pixels by StoneMenuArt.
+            "assets/ui/stone-menu/frame.png", "assets/ui/stone-menu/button.png", "assets/ui/stone-menu/icons.png");
 
     public static void main(String[] args) throws Exception {
         int checked = 0;

@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_body_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "WALK_BODY",
+  "text": "Yes. I'd tell you if it wasn't.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "iciA7tgEIjX9h4Uw6CcR",
+  "context_request_ids": [
+    "VfJ3HsrKwwj9X2up9dRr",
+    "XbxHSZlOgd3oe6a4tFko"
+  ],
+  "generated_at": 1793024785.0649545,
+  "format": "mp3_44100_192",
+  "seconds": 2.993,
+  "peak_dbfs": -4.08,
+  "tempo": 1,
+  "sha256": "7c907c2d4b0d272468dc3fc4e2310240efa92832e33a3a565ab29bc93060090d"
+}

@@ -1,0 +1,19 @@
+{
+  "file": "effort_hurt_3.wav",
+  "speaker": "RAINORAY",
+  "text": "Ow!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84728,
+  "generated_at": 1793024820.908923,
+  "request_id": "6aDuchoiSrNnejO40BRi",
+  "seconds": 0.3173,
+  "peak_dbfs": -7.54,
+  "sha256": "bceff4a47f374615470ab35c6db0f5f42da808fc27b710791ba99992e3e658ce"
+}

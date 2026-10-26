@@ -11,6 +11,7 @@ public final class OutpostDialogueTest {
     public static void main(String[] args) throws Exception {
         storyAndPersistence();
         bossIntroduction();
+        survivorPortraits();
         for(var scene:OutpostDialogue.values())for(var line:scene.lines()) {
             var lines=Ui.wrap(line.text(),1280-480,3);
             assert lines.size()<=2 : "dialogue would be clipped: "+line.text();
@@ -42,12 +43,12 @@ public final class OutpostDialogueTest {
         game.pause();assert !game.advanceDialogue()&&!game.skipDialogue();
         game.togglePause();finish(game);
         assert game.dialogueSeen(OutpostDialogue.WAKE)&&!game.blocked();
-        assert game.campaignObjective().equals("Find Mara at Captain Camp");
+        assert game.campaignObjective().equals("Find Shuna at Captain Camp");
         var hub=game.campaignArea().hub();game.player().relocate(hub.x(),hub.y());
         assert game.primaryPress(1,0);
         assert game.interact()&&game.dialogue()==OutpostDialogue.CAMP&&!game.bladePreparing();
         finish(game);
-        assert game.campaignObjective().contains("Warden");
+        assert game.campaignObjective().contains("Muster Ground");
         assert game.interact()&&game.dialogue()==OutpostDialogue.CAMP_WAIT;game.skipDialogue();
         var tower=game.campaignArea().landmarks().get(9);game.player().relocate(tower.x(),tower.y());
         int shards=game.shards();
@@ -116,7 +117,7 @@ public final class OutpostDialogueTest {
         panel.step(.05);press(panel,"interact");assert game.dialogueIndex()==0 : "held E cannot open and advance";
         release(panel,"interact");
         var rendered=paint(panel);
-        assert panel.getAccessibleContext().getAccessibleDescription().contains("Easy.");
+        assert panel.getAccessibleContext().getAccessibleDescription().contains(game.dialogueLine().text());
         if(output!=null) {Files.createDirectories(output);javax.imageio.ImageIO.write(rendered,"png",output.resolve("mara-conversation.png").toFile());}
         game.advanceDialogue();
         if(output!=null)javax.imageio.ImageIO.write(paint(panel),"png",output.resolve("slime-conversation.png").toFile());
@@ -140,6 +141,19 @@ public final class OutpostDialogueTest {
     }
 
     private static void finish(RuinedOutpostGame game) {while(game.dialogue()!=null)assert game.advanceDialogue();}
+    private static void survivorPortraits() throws Exception {
+        var face=DialogueRenderer.class.getDeclaredMethod("face",int.class);face.setAccessible(true);
+        for(int column=0;column<3;column++) {
+            var image=(BufferedImage)face.invoke(null,column);
+            assert image!=null&&image.getWidth()==64&&image.getHeight()==64;
+            int upper=0,top=64,bottom=0;
+            for(int y=0;y<64;y++)for(int x=0;x<64;x++)if((image.getRGB(x,y)>>>24)>128) {
+                if(y<32)upper++;top=Math.min(top,y);bottom=Math.max(bottom,y);
+            }
+            assert upper>500&&top<8&&bottom>58 : "survivors need readable close-up portraits, not tiny seated sprites";
+        }
+        assert OutpostBark.AFTER_RESCUE.line(0).speaker()==OutpostDialogue.Speaker.INNER_VOICE;
+    }
     private static void press(B2BJ panel,String key) {panel.getActionMap().get(key+"Pressed").actionPerformed(new ActionEvent(panel,0,key));}
     private static void release(B2BJ panel,String key) {panel.getActionMap().get(key+"Released").actionPerformed(new ActionEvent(panel,0,key));}
     private static void click(B2BJ panel) {

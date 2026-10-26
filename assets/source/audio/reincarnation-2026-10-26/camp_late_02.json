@@ -1,0 +1,27 @@
+{
+  "file": "camp_late_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAMP AT CAMP",
+  "text": "Rainoray. I was looking for a way through.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "i3RWJWOtSDJQRqi87U20",
+  "context_request_ids": [
+    "5VTbQ2TXqtBa6Wvd6wBK",
+    "H0TH2a5gmu3d91QYOEdG",
+    "qD6Oo0yzadkNKo78yKT3"
+  ],
+  "generated_at": 1793011339.882738,
+  "format": "mp3_44100_192",
+  "seconds": 2.879,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "3b60e6461802b22dd3dc073aeb88114e4b515d56e1c6a142e48ddaa2d2e2ac0e"
+}

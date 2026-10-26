@@ -1,0 +1,27 @@
+{
+  "file": "forest_briarheart_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "WHAT HOLDS THE ROAD",
+  "text": "Then we make a path. Keep an eye on the ground for me.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "68Ym3oaNJGURD41TfvsX",
+  "context_request_ids": [
+    "3C1MbnGFDOvPcIs11tpq",
+    "Qj3unNEeSsYvuyJSv1vx",
+    "9zBQW0HlI28T8cp2RO3w"
+  ],
+  "generated_at": 1792949057.6207454,
+  "format": "mp3_44100_192",
+  "seconds": 3.111,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "5d65f85063e2154206ecc45925f43fad9cbf9c1f601602085e3d8bbad0d29536"
+}

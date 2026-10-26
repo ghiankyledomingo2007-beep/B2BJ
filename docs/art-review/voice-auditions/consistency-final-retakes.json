@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-25",
+  "processing": "Clean Rainoray and NPCs; Sage uses approved polish-settings.json; Warden pitch 0.90 with short metallic echo. Master -19 LUFS / -3 dBTP; runtime 22050 Hz mono PCM16",
+  "lines": [
+    {
+      "file": "infirmary_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "ONE EMPTY BED",
+      "text": "A note on the blanket: 'For whoever comes back.'",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.75,
+        "similarity_boost": 0.45,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "vf90ae63ROloaCNbiX16",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 2.786,
+      "peak_dbfs": -4.51,
+      "sha256": "00585dea3cacec1c198eb9af5e202127afb286f8fff6de55bf22d5497f538c39"
+    },
+    {
+      "file": "bark_fight_counting.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I preferred counting things.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.75,
+        "similarity_boost": 0.45,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "Ty01cYOvJ9JwziWv7w1Y",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.347,
+      "peak_dbfs": -3.13,
+      "sha256": "9031a7257a8d47ef68bf559922d0ee4103be96c5c406adc7a3346ab83fa2e994"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ public final class AbsorptionTest {
         game.togglePause();advance(game,.1);
         assert !game.player().dashing()&&close(game.player().dashCooldown(),Player.DASH_COOLDOWN-.2)
                 : "HUD must retain cooldown after dash movement ends";
-        advance(game,.2);assert game.player().dashCooldown()==0;
+        advance(game,1.01);assert game.player().dashCooldown()==0;
     }
     private static void realKillLeavesEdibleRemains() {
         var enemy=new Wisp(375,300,375,375,1);

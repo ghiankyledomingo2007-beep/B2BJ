@@ -1,0 +1,27 @@
+{
+  "file": "bark_warden_voice_line.wav",
+  "speaker": "WARDEN",
+  "scene": "WARDEN_VOICE_LINE",
+  "text": "Hold the line.",
+  "spoken_text": "",
+  "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.2,
+    "use_speaker_boost": true,
+    "speed": 0.95
+  },
+  "seed": 84722,
+  "request_id": "W1YztHtoQJ5wc1Qn7aQe",
+  "context_request_ids": [
+    "MmMJcMy1xJW3qZ38TPKY"
+  ],
+  "generated_at": 1793024783.7886252,
+  "format": "mp3_44100_192",
+  "seconds": 1.161,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "f43414c4b799d0ff126311b62794d6c23ba6dcf7334ea12846b47bb6419805f1"
+}

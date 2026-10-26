@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_hurt_wait_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Take the clear ground. I'll keep watch.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "7QeXvoPbjH7mOGzLTInu",
+  "context_request_ids": [
+    "LyvpukUIPe62uKW7Jp5F",
+    "LVgWvkZMxm59VdYlyNLW",
+    "rvQaXiBHGBpuDBlaqvUh"
+  ],
+  "generated_at": 1792949021.257558,
+  "format": "mp3_44100_192",
+  "seconds": 3.04,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "157f96db5b9d35557c013b2721b82d01fb4286f0c8f4eff433dbab7f225deed7"
+}

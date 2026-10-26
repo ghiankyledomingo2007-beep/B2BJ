@@ -8,6 +8,9 @@ public final class PackagedAssetLoadingTest {
         ForestArtTest.main(new String[0]);      // the forest floor, its stamp, tileset and every forest sheet, from the jar too
         WardenFxTest.main(new String[0]);       // cleaned spike sheets and natural boss cues work from packaged assets
         OutpostDialogueTest.main(new String[0]);
+        InnerVoiceOverlayTest.main(new String[0]);
+        OutpostBanterTest.recordings();
+        ChapterOneVoicesTest.recordings();
         CampArtTest.main(new String[0]);
         AssetArchiveTest.runtimeOnly();
         System.out.println("PackagedAssetLoadingTest passed");
@@ -29,8 +32,10 @@ public final class PackagedAssetLoadingTest {
                 "assets/characters/slime/rainoray_portrait.png",
                 "assets/ui/pixel_font.png",
                 "assets/ui/kit.png",
+                "assets/ui/stone-menu/frame.png", "assets/ui/stone-menu/button.png", "assets/ui/stone-menu/icons.png",
                 "assets/ui/splash.png",
                 "assets/ui/title/ruined-gate.png",
+                "assets/ui/opening/last-attempt.png",
                 "assets/ui/loading/sky.png",
                 "assets/ui/loading/outpost.png",
                 "assets/ui/loading/forest.png",

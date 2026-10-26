@@ -1,0 +1,26 @@
+{
+  "file": "bark_walk_feet_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "WALK_FEET",
+  "text": "You're finding new ways.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "XbxHSZlOgd3oe6a4tFko",
+  "context_request_ids": [
+    "VfJ3HsrKwwj9X2up9dRr"
+  ],
+  "generated_at": 1793024783.8041723,
+  "format": "mp3_44100_192",
+  "seconds": 2.111,
+  "peak_dbfs": -4.12,
+  "tempo": 1,
+  "sha256": "5c803b5e6e45c015fe7417f993077b7837702bff07ce362671c0ac244ba56543"
+}

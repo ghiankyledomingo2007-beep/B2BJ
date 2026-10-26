@@ -1,0 +1,25 @@
+{
+  "file": "survivor_tobin_01.wav",
+  "speaker": "TOBIN",
+  "scene": "BEHIND THE FENCE",
+  "text": "Who's there? If you're a rift thing, I'm mostly bandages. Poor eating.",
+  "spoken_text": "",
+  "voice_id": "pqHfZKP75CvOlQylNhV4",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.75,
+    "style": 0.1,
+    "use_speaker_boost": true,
+    "speed": 0.93
+  },
+  "seed": 84722,
+  "request_id": "tvnwxA33P3BbO2fO9TN5",
+  "context_request_ids": [],
+  "generated_at": 1793024791.1548371,
+  "format": "mp3_44100_192",
+  "seconds": 5.619,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "d92e251d5047dcb3e209bcadfbe4a6712e7732b07049680a139c583a8d2576d8"
+}

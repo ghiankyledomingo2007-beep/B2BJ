@@ -1,0 +1,27 @@
+{
+  "file": "wake_14.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "ONE MORE CHANCE",
+  "text": "One step at a time.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "BnND8LejvsnXlAh2e35x",
+  "context_request_ids": [
+    "WP64tGxap1Lltd3jiFAm",
+    "ZHn18RH0g91o3JnUgqpO",
+    "B60CvGBgMs9es67lkY24"
+  ],
+  "generated_at": 1793011336.822558,
+  "format": "mp3_44100_192",
+  "seconds": 2.343,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "35896d8f65f10cc1c7d342683c21cb8be049b28cc93044e713bb8d8ae82ff052"
+}

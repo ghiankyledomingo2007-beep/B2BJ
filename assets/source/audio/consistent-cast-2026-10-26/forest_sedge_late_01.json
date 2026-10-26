@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_late_01.wav",
+  "speaker": "SEDGE",
+  "scene": "AN OPEN WAY",
+  "text": "The roots went slack. I thought the whole bank was falling.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "DiqPlOm2hQeuojXbeulr",
+  "context_request_ids": [
+    "Bn5QE1E7xeYDycvc5FyP",
+    "of7LvjJ0dHL6vPBTikJI",
+    "RqEk87IXCY8X3mrGxOa2"
+  ],
+  "generated_at": 1792949004.42348,
+  "format": "mp3_44100_192",
+  "seconds": 4.226,
+  "peak_dbfs": -3.92,
+  "tempo": 1,
+  "sha256": "fc0c83b73dcd84cf51a6c35eaa8df95930573f29f052cfb495a974d2be43e909"
+}

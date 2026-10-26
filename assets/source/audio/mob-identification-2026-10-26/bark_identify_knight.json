@@ -1,0 +1,27 @@
+{
+  "file": "bark_identify_knight.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Fallen Knight. Strike after its swing.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "jv8drDBYuu3LAeqcRrrV",
+  "context_request_ids": [
+    "kQQO1cRFXZXThQAfw3L4",
+    "eI0fPow24vvtap1NkPIJ",
+    "V8AATkwFYucxcidhWxrG"
+  ],
+  "generated_at": 1792970827.5883777,
+  "format": "mp3_44100_192",
+  "seconds": 3.132,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "2dafde3fee165d086ac686ee0969efc70e0dd7e8175d3ffa7273a64b656145c3"
+}

@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_fight_credit_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FOREST_FIGHT_CREDIT",
+  "text": "You did have it. Give yourself that much.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "NBwuwSoM9bBQgSMhhGhD",
+  "context_request_ids": [
+    "WhAT5ykf8sdhS4SckxDW",
+    "Z8B2maDBUhvLj1LpnU07",
+    "BD2W79vQ80umJPu5UiIr"
+  ],
+  "generated_at": 1793024797.7894394,
+  "format": "mp3_44100_192",
+  "seconds": 3.272,
+  "peak_dbfs": -3.92,
+  "tempo": 1,
+  "sha256": "62d0baa262a13cca9c88af60dd72fb94c35ee15608be0f027b81d98b135bf670"
+}

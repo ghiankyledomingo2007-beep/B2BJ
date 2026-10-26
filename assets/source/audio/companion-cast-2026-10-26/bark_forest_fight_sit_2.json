@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_fight_sit_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FOREST_FIGHT_SIT",
+  "text": "I was about to.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "MHh4NYLpXobJtONCJUDi",
+  "context_request_ids": [
+    "BD2W79vQ80umJPu5UiIr",
+    "NBwuwSoM9bBQgSMhhGhD",
+    "j4SLRdXzbF9cReDaOK8W"
+  ],
+  "generated_at": 1793024800.5456066,
+  "format": "mp3_44100_192",
+  "seconds": 1.879,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "8f72b99a8ac6cc5e456d9fbe9265bed9d1be21ce5c522b6ea4e25df6db908032"
+}

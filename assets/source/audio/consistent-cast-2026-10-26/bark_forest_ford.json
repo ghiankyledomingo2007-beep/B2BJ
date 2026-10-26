@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_ford.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "A boat without a river. That's a new one.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "lUvjC4dS6yA2Tcvt6lue",
+  "context_request_ids": [
+    "CTkUElGWvXF2ggDYhGiD",
+    "iz06Bnblp2jGZqu4J9gr",
+    "jTl950r3RUhq2PEYuKt5"
+  ],
+  "generated_at": 1792949099.9554405,
+  "format": "mp3_44100_192",
+  "seconds": 2.322,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "e154fe22700984ce28eb52c4461252c86b64a72442ecdf530c1a523c56889d23"
+}

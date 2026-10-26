@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_breath_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "The habit is useful. Take a moment.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "9jioDiJp4glkqHgtE1q9",
+  "context_request_ids": [
+    "Ob5wm8CGr12L1BeOhWZo",
+    "7finEIxlNAIpVRDzhZg9",
+    "EcDFEsV8cz0gmuMQBM7N"
+  ],
+  "generated_at": 1792949015.815384,
+  "format": "mp3_44100_192",
+  "seconds": 3.132,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "2adae0f5390c64301d47432bd21712883afbc054cc472e9942a84d73301d5a85"
+}

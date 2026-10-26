@@ -1,0 +1,27 @@
+{
+  "file": "signal_03_stranger.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE BROKEN ORDER",
+  "text": "A list of missing people. Someone at the camp might know these names.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "K0XwT9YC3uRn0HM9g4Qi",
+  "context_request_ids": [
+    "i3RWJWOtSDJQRqi87U20",
+    "eXlnbZOjSZdBKNQzKDGv",
+    "GFBUg1oSgZqX7zh1pdbu"
+  ],
+  "generated_at": 1793011343.807228,
+  "format": "mp3_44100_192",
+  "seconds": 3.808,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "319674de3533608ba7071b44ed16efbe9841ec395e0cb0fa34b862a4da133340"
+}

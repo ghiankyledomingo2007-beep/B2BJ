@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_names.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I wish I knew who was on those stretchers.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "xaCSxlOxTgyTzjHGV3yE",
+  "context_request_ids": [
+    "Zx2eVCp0nkRwApab8MBO",
+    "oPEn8SAW34Tyh3EJxQQr",
+    "YOiuDnHevXiqtjNp8ljk"
+  ],
+  "generated_at": 1792949113.3419027,
+  "format": "mp3_44100_192",
+  "seconds": 2.461,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "1139286b4092221f7573a89adede2802d5115a16295069eca84c27e68de19a32"
+}

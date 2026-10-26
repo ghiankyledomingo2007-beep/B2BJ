@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_name.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Raphael. Are you still there?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "Fj2zvZ8EX11DAuL6Jgt0",
+  "context_request_ids": [
+    "Vuw2r3iSN95J8mgUduEA",
+    "EAy6hdtyfvClJmjwDCA6",
+    "8g4jTWJvA5MsYtcN44J4"
+  ],
+  "generated_at": 1793011373.237589,
+  "format": "mp3_44100_192",
+  "seconds": 2.183,
+  "peak_dbfs": -4.09,
+  "tempo": 1,
+  "sha256": "bceee0e3118237651609a9f5436f805154a205f86522702fa1439d7738918f78"
+}

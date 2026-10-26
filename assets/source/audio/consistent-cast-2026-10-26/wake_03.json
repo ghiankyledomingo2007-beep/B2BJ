@@ -1,0 +1,26 @@
+{
+  "file": "wake_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST WATCH",
+  "text": "No hands. No boots. I seem to have kept the exhaustion.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "3Q4GuWCGlegfKAvWoPUg",
+  "context_request_ids": [
+    "G7r7cONxNsxlK0NWjCMH",
+    "IhzN8MogsaLh6ZA4TV0N"
+  ],
+  "generated_at": 1792948877.7488923,
+  "format": "mp3_44100_192",
+  "seconds": 3.762,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "01f5973da4d1d0276ce6c80f56d6a6bb2692b0a41e11028d0fd682642e74882f"
+}

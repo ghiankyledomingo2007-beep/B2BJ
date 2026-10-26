@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE STRANDED FERRY",
+  "text": "I'm following the stretcher crew from the outpost.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "TBKiBdo5HUrvP2OxT9EK",
+  "context_request_ids": [
+    "LMxiD6xKKWfrd9imHhoA",
+    "beZuUU9QUZBbeexgJPmX",
+    "yxuXv1rGnniG3xn763aV"
+  ],
+  "generated_at": 1792949043.7659676,
+  "format": "mp3_44100_192",
+  "seconds": 2.508,
+  "peak_dbfs": -4.04,
+  "tempo": 1,
+  "sha256": "72e50e9eab8d86aee8140734b4cf660a6f39230c6d6b81d99cb954c463e97546"
+}

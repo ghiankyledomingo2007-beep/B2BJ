@@ -1,0 +1,28 @@
+{
+  "file": "bark_sage_hit_steady.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "SAGE_HIT_STEADY",
+  "text": "You're still in this.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "TIwSNJwUaJOpmlVbtXf1",
+  "context_request_ids": [
+    "YwBZ9eP9YI5JihrYTeX7",
+    "yCgxIc70Nmn3VbCdnQQI",
+    "hM7CsXo8LTr0UAigAPbQ"
+  ],
+  "generated_at": 1793024809.2276828,
+  "format": "mp3_44100_192",
+  "seconds": 2.157,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "44684972d64286475ab8fe47c8ab6800d95bb27bf6e709bc9f5435e6a665c604"
+}

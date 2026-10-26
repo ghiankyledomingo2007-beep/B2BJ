@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_walk_sounds.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FOREST_WALK_SOUNDS",
+  "text": "You're following every sound again.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "5CQEJsncbrg9hPs1gp0i",
+  "context_request_ids": [
+    "cvY6XRh2DXn5hnC3Jnw2",
+    "JSVbUa8eiZ5HnLGNmA4Q",
+    "cYHYtn2anTbzylhuhN3f"
+  ],
+  "generated_at": 1793024792.7181704,
+  "format": "mp3_44100_192",
+  "seconds": 2.947,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "3578dec6f77cdc6935b6e00e0a7e12058c46b9a79748c2bb4da0d281f005566c"
+}

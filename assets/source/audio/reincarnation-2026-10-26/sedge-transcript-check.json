@@ -1,0 +1,44 @@
+[
+  {
+    "file": "forest_sedge_03.wav",
+    "expected": "I got them across before the roots took the river. The injured are sheltering beneath the old stair.",
+    "recognized": "I got them across before the roots took the river. The injured are sheltering beneath the old stair. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_04.wav",
+    "expected": "Souei. I marked a path back, but the roots keep closing it.",
+    "recognized": "Sway. I marked a path back, but the roots keep closing it. ",
+    "match": 0.917
+  },
+  {
+    "file": "forest_sedge_06.wav",
+    "expected": "Then they have somewhere safe to go. Follow the white cloth north, then east over the ford.",
+    "recognized": "Then they have somewhere safe to go. Follow the white cloth north, then east over the ford. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_08.wav",
+    "expected": "I'll guard their crossing. You reach the tree. Watch the ground; it reaches farther than its branches.",
+    "recognized": "I'll guard their crossing. You reach the tree. Watch the ground. It reaches farther than its branches. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_wait_03.wav",
+    "expected": "The rope is ready. Clear the roots and I'll bring them through.",
+    "recognized": "The rope is ready. Clear the roots, and I'll bring them through. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_late_03.wav",
+    "expected": "Under the old stair. I'm Souei. I've been guarding their route back. We can move them now.",
+    "recognized": "Under the old stair. I'm Sway. I've been guarding their route back. We can move them now. ",
+    "match": 0.947
+  },
+  {
+    "file": "forest_end_06.wav",
+    "expected": "Everyone we found. They're at the camp.",
+    "recognized": "Everyone we found, they're at the camp.",
+    "match": 1.0
+  }
+]

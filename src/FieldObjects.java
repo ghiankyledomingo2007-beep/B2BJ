@@ -29,11 +29,12 @@ public final class FieldObjects {
     }
 
     /** People listed missing on the evacuation dispatch. Order matches the survivor sheet's columns. */
-    public static final String[] SURVIVORS = {"TOBIN", "ILSE", "VENN"};
-    /** Column of each survivor in field_survivor.png: Tobin's hurt leg, Ilse's arm sling, old Venn's blanket. */
-    public static final int[] SPRITE_COLUMN = {1, 0, 2};
+    public static final String[] SURVIVORS = {"KAIJIN", "EREN", "RIGURD"};
+    /** Stable survivor ordering: Kaijin, Eren, Rigurd. */
+    public static final int[] SPRITE_COLUMN = {0, 1, 2};
     /** A rest brazier is checkpoint REST_CHECKPOINT + its index. */
     public static final int REST_CHECKPOINT = 10;
+    public static final int GATE_REST = 3;
     /** Width of the squeeze-through gap in a crawl fence, in world pixels; the slime's body is 48 across. */
     public static final double CRAWL_GAP = 72;
 
@@ -43,7 +44,8 @@ public final class FieldObjects {
             new Yard("CULVERT YARD", 3404, 1868, Kind.CRAWL));
     /** Dormant braziers near the Muster Ground, the Barracks and the Standard Yard. */
     private static final List<CampaignWorld.Point> RESTS = List.of(
-            new CampaignWorld.Point(2764, 2758), new CampaignWorld.Point(2272, 1482), new CampaignWorld.Point(4482, 2522));
+            new CampaignWorld.Point(2764, 2758), new CampaignWorld.Point(2272, 1482), new CampaignWorld.Point(4482, 2522),
+            new CampaignWorld.Point(5280, 2320));
     private static final List<Spot> SPOTS = spots();
 
     public static List<Yard> yards(int area) { return area == 0 ? YARDS : List.of(); }

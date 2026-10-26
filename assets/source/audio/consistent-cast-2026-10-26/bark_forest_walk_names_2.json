@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_names_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "You can ask them when we get there.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "szKcAPGXLoSL6ZqPIJ6u",
+  "context_request_ids": [
+    "6hmZp4Z0NTKFBFsNy9qN",
+    "u0qiIyYCsRAx2XFNFadG",
+    "AllmXOhxQX8XGIql539a"
+  ],
+  "generated_at": 1792949026.549995,
+  "format": "mp3_44100_192",
+  "seconds": 2.575,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "291deafee43c3d622fbd5009ef5fffead27313f8e716e75c95dbb874bf30c529"
+}

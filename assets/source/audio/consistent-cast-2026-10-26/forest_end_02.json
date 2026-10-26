@@ -1,0 +1,27 @@
+{
+  "file": "forest_end_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE LAST STRETCHER",
+  "text": "More than one voice. They are coming toward us.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "yrLQPTztVHEuX9B7NDZF",
+  "context_request_ids": [
+    "kmgoPZfrJPW5MtQfIqtL",
+    "NxtHwYegFZIizBRXF1uv",
+    "RD3Z09b2OL29DJyVGn91"
+  ],
+  "generated_at": 1792948999.618347,
+  "format": "mp3_44100_192",
+  "seconds": 3.504,
+  "peak_dbfs": -3.96,
+  "tempo": 1,
+  "sha256": "75ba9ebadfbd34104fa72fe1b3815f4c442b407d4f1e0533c21dd1f63c6b1de2"
+}

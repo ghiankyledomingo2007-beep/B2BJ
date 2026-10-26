@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_cloth_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "It is easier to follow a promise you can see.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "6hmZp4Z0NTKFBFsNy9qN",
+  "context_request_ids": [
+    "LVgWvkZMxm59VdYlyNLW",
+    "rvQaXiBHGBpuDBlaqvUh",
+    "7QeXvoPbjH7mOGzLTInu"
+  ],
+  "generated_at": 1792949022.5887153,
+  "format": "mp3_44100_192",
+  "seconds": 3.458,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "98f1c100306fa0c5c6f07773384101128482e256982bdf1b939a8edcef6d5bff"
+}

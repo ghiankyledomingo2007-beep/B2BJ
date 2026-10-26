@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_camp_rope_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Waiting can be work, too.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "Z5ruTTiqHDlxC2M5w2ob",
+  "context_request_ids": [
+    "szKcAPGXLoSL6ZqPIJ6u",
+    "pGZhbaRQqu5emSfbC8yO",
+    "kh69WrDcMxUOGp2i6xg4"
+  ],
+  "generated_at": 1792949030.5420754,
+  "format": "mp3_44100_192",
+  "seconds": 2.343,
+  "peak_dbfs": -4.05,
+  "tempo": 1,
+  "sha256": "8600ca76fe736922b881e97c0c88739a65979b1c2cb373c4a7284f362bae0f18"
+}

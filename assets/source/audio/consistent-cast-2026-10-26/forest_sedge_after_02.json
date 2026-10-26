@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_after_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "BRING THE ROPE",
+  "text": "The roots have loosened. We can reach the stair.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "rqtJCOPx1nGRiNx5Vcc2",
+  "context_request_ids": [
+    "Qj3unNEeSsYvuyJSv1vx",
+    "9zBQW0HlI28T8cp2RO3w",
+    "68Ym3oaNJGURD41TfvsX"
+  ],
+  "generated_at": 1792949058.6948936,
+  "format": "mp3_44100_192",
+  "seconds": 2.694,
+  "peak_dbfs": -4.05,
+  "tempo": 1,
+  "sha256": "aee2d93d6cc456323a6e02f0746f4a8f1a1a17e467ada8dc8b5c946a36d5b30c"
+}

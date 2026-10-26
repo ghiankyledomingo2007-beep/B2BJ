@@ -1,0 +1,27 @@
+{
+  "file": "camp_09.wav",
+  "speaker": "MARA",
+  "scene": "THE LAMP AT CAMP",
+  "text": "Someone called from the storehouse south of the road. You might fit under its fence.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "2oUY9VE0JF7kljnpkpKW",
+  "context_request_ids": [
+    "ZLJ7lO61BaeBmQV84Jhp",
+    "cUrOP5NgGriu6sfX85Gz",
+    "9SWFIt7dxS4IRrDistQj"
+  ],
+  "generated_at": 1793011333.9059567,
+  "format": "mp3_44100_192",
+  "seconds": 4.365,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "098b8447a978f14f182605948ae131f8dbf3bbf2540a33b4376043935d62cf8a"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "camp_home_03.wav",
+  "speaker": "MARA",
+  "scene": "THREE BEDS",
+  "text": "Eren found the last of the good tea. Take the coin we were saving with it. You've earned both.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "FDP7KXowotjlyhYBLXar",
+  "context_request_ids": [
+    "5GtCXq2PP0wn4z2IQcza",
+    "xkIAvMOSiVCKTsKEOq8T",
+    "FNGY5yUfADLZaiRnVp9o"
+  ],
+  "generated_at": 1793011342.5402277,
+  "format": "mp3_44100_192",
+  "seconds": 5.248,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "849c8b97f7f95975bba08da956f974651e23a2c6bba19c5040a1add04b4aa9fa"
+}

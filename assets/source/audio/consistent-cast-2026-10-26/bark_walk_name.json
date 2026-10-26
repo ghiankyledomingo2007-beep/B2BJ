@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_name.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Sage. That name suits you.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "QPdDsHJqHDdyKQdk323m",
+  "context_request_ids": [
+    "ClS3yEow9AiXGTxlW6iw",
+    "3Tvpamy2OEEvIJ4yayOi",
+    "jZ84JZjEzxGQDA0TzTMf"
+  ],
+  "generated_at": 1792949085.7824817,
+  "format": "mp3_44100_192",
+  "seconds": 2.601,
+  "peak_dbfs": -4.31,
+  "tempo": 1,
+  "sha256": "65a52787d78c8462f65b0b4d1bea39a6770fecf3a3e0ecf763b0aba909810286"
+}

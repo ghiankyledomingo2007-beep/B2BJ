@@ -1,0 +1,27 @@
+{
+  "file": "survivor_tobin_05_stranger.wav",
+  "speaker": "RAINORAY",
+  "scene": "BEHIND THE FENCE",
+  "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "iKYIO67gfCbS3QlSfdPJ",
+  "context_request_ids": [
+    "yRUjdTIQvwC0mGqoKApG",
+    "fR0gEz3bZqNZFGeHy9DS",
+    "l2Q7EL7shk9jBOHMZ2LB"
+  ],
+  "generated_at": 1792949026.4698334,
+  "format": "mp3_44100_192",
+  "seconds": 4.644,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "3cf7e56bb7e8ba26f79d3315678a0326284a48155f8059082772bfa83d46a897"
+}

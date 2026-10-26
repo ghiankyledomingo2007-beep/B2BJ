@@ -1,0 +1,27 @@
+{
+  "file": "gate_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE ROAD OPENS",
+  "text": "Only one set of footprints comes back. Mara's.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "KCxZRvQdeh9LuP9q51U1",
+  "context_request_ids": [
+    "sqDqVzWewN9X5BptOxMW",
+    "PaDU8zuua3sGlG5N4Avw",
+    "gZOTS8s4cuttPnDRLZq1"
+  ],
+  "generated_at": 1792949018.4510868,
+  "format": "mp3_44100_192",
+  "seconds": 3.297,
+  "peak_dbfs": -5.68,
+  "tempo": 1,
+  "sha256": "4883ef93955073e08a095591e3a85f0b549bdedaac71dee7ba2dd8fa1c4c420e"
+}

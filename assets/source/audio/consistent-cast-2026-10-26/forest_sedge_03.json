@@ -1,0 +1,25 @@
+{
+  "file": "forest_sedge_03.wav",
+  "speaker": "SEDGE",
+  "scene": "THE STRANDED FERRY",
+  "text": "I ferried them halfway. Then the roots took the river. Left my boat sitting in mud.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "OTuk9wiqqHCmNnDApREq",
+  "context_request_ids": [
+    "5Na7StMy5cFOpw9Yk3Fa"
+  ],
+  "generated_at": 1792948991.1799903,
+  "format": "mp3_44100_192",
+  "seconds": 6.502,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "f2f7bf039c95665331f61c64c9ee69807684fbbb95683bb4ae7ea7429c6ab3be"
+}

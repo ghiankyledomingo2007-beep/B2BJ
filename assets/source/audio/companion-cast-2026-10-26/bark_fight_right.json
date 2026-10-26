@@ -1,0 +1,28 @@
+{
+  "file": "bark_fight_right.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FIGHT_RIGHT",
+  "text": "You're leaving your right side open.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "cvY6XRh2DXn5hnC3Jnw2",
+  "context_request_ids": [
+    "iciA7tgEIjX9h4Uw6CcR",
+    "P6S7f52uGVSld6wXpp7G",
+    "MYS8HS2VVYjSJUXcFhNw"
+  ],
+  "generated_at": 1793024788.850597,
+  "format": "mp3_44100_192",
+  "seconds": 2.668,
+  "peak_dbfs": -4.07,
+  "tempo": 1,
+  "sha256": "f2dca6a782d33b43fb0aaaafa519630eabb46bc7aa4e0469f332f989987cb20c"
+}

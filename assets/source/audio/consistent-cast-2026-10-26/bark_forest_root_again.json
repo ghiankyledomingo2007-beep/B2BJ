@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_root_again.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Roots coming up. Take the gap.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "jJDD7lE2oom38cdmAGia",
+  "context_request_ids": [
+    "QfMsMSkAiOytfCnSjDmk",
+    "TM55LvabBxcJvp2gU5gH",
+    "eoldc4PuQMekZlzeMlgp"
+  ],
+  "generated_at": 1792967469.8738964,
+  "format": "mp3_44100_192",
+  "seconds": 2.71,
+  "peak_dbfs": -4.04,
+  "tempo": 1,
+  "sha256": "252fb8356ab6d6ab1d18e1d2cfbde5839ab8e10f230cece0344db4ee20406054"
+}

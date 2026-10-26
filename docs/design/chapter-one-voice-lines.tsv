@@ -1,0 +1,212 @@
+file	speaker	scene	text
+wake_01.wav	RAINORAY	ONE MORE CHANCE	Stay with me. I've almost got it open.
+wake_02.wav	RAINORAY	ONE MORE CHANCE	Did they get out?
+wake_03.wav	INNER_VOICE	ONE MORE CHANCE	I cannot confirm. Your previous body has been lost.
+wake_04.wav	RAINORAY	ONE MORE CHANCE	Then... who am I talking to?
+wake_05.wav	INNER_VOICE	ONE MORE CHANCE	Raphael. Stay with my voice.
+wake_06.wav	INNER_VOICE	ONE MORE CHANCE	Reconstructing a body that can survive here.
+wake_07.wav	RAINORAY	ONE MORE CHANCE	A slime? That was your best option?
+wake_08.wav	INNER_VOICE	ONE MORE CHANCE	It was the one that survived.
+wake_09.wav	RAINORAY	ONE MORE CHANCE	I can still change back?
+wake_10.wav	INNER_VOICE	ONE MORE CHANCE	For a while. Once we have enough Ichor.
+wake_11.wav	RAINORAY	ONE MORE CHANCE	Where are my hands?
+wake_12.wav	INNER_VOICE	ONE MORE CHANCE	Try moving toward the light.
+wake_13.wav	RAINORAY	ONE MORE CHANCE	Someone's still out there.
+wake_14.wav	INNER_VOICE	ONE MORE CHANCE	One step at a time.
+wake_15.wav	RAINORAY	ONE MORE CHANCE	You'll have to talk me through the steps.
+camp_01.wav	MARA	THE LAMP AT CAMP	Stop there. There are wounded behind me.
+camp_02.wav	RAINORAY	THE LAMP AT CAMP	I heard someone calling. I wasn't coming for the food.
+camp_03.wav	INNER_VOICE	THE LAMP AT CAMP	You are looking at the food.
+camp_04.wav	RAINORAY	THE LAMP AT CAMP	I'm having a strange morning.
+camp_05.wav	MARA	THE LAMP AT CAMP	Then start with your name.
+camp_06.wav	RAINORAY	THE LAMP AT CAMP	Rainoray. That's the part I'm sure about.
+camp_07.wav	MARA	THE LAMP AT CAMP	I'm Shuna. Our people were sent east. Then the rift struck, and the Warden sealed their road.
+camp_08.wav	MARA	THE LAMP AT CAMP	I have to keep this ward standing. If it fails, the wounded have nowhere safe to rest.
+camp_09.wav	MARA	THE LAMP AT CAMP	Someone called from the storehouse south of the road. You might fit under its fence.
+camp_10.wav	MARA	THE LAMP AT CAMP	Follow the torn banners east, then north at Inner Court. Be careful. The dead still know how to fight.
+camp_wait_01.wav	MARA	SHUNA	East past the banners, then north at Inner Court. The signal tower lies north of camp if you need bearings.
+camp_wait_02.wav	RAINORAY	SHUNA	East, then north. I'll remember.
+camp_wait_03.wav	MARA	SHUNA	Rest to steady your Ichor. Leave supplies here or at a lit brazier; we'll gather them.
+camp_late_01.wav	MARA	THE LAMP AT CAMP	The gate's quiet. Was that your doing?
+camp_late_02.wav	RAINORAY	THE LAMP AT CAMP	Rainoray. I was looking for a way through.
+camp_late_03.wav	MARA	THE LAMP AT CAMP	I'm Shuna. You've opened a road we thought we'd lost.
+camp_late_04.wav	MARA	THE LAMP AT CAMP	We sent the wounded east before the Warden turned. I tried to follow, but the roots had closed the forest road.
+camp_late_05.wav	RAINORAY	THE LAMP AT CAMP	Then that's where I'll look next.
+camp_late_06.wav	MARA	THE LAMP AT CAMP	Come back if you find them. Come back if you don't, too.
+signal_01.wav	RAINORAY	THE BROKEN ORDER	A dispatch. 'Seal the road against Ichor-bearing life.' Someone added it over the evacuation order.
+signal_02.wav	INNER_VOICE	THE BROKEN ORDER	That includes your new body. The Warden will see a threat, not a traveler.
+signal_03.wav	RAINORAY	THE BROKEN ORDER	There's a list of missing people underneath. Shuna should see it.
+signal_03_stranger.wav	RAINORAY	THE BROKEN ORDER	A list of missing people. Someone at the camp might know these names.
+infirmary_01.wav	RAINORAY	ONE EMPTY BED	Every bed was stripped for bandages. Except this one.
+infirmary_02.wav	RAINORAY	ONE EMPTY BED	A note on the blanket: 'For whoever comes back.'
+infirmary_03.wav	RAINORAY	ONE EMPTY BED	There's a dry dressing underneath. I'll leave it where she can find it.
+supplies_01.wav	RAINORAY	WHAT THEY LEFT BEHIND	Weapons left behind. Empty spaces where the blankets were.
+supplies_02.wav	RAINORAY	WHAT THEY LEFT BEHIND	A note: 'Leave the heavy crates. Make room for the wounded.'
+supplies_03.wav	RAINORAY	WHAT THEY LEFT BEHIND	We packed our van like that. I hope those supplies reached someone.
+report_01.wav	RAINORAY	STILL MISSING	I found the dispatch. The Warden was told to seal the road against Ichor.
+report_02.wav	MARA	STILL MISSING	After we sent the wounded through. No one could get back to them.
+report_03.wav	RAINORAY	STILL MISSING	Kaijin, Eren, Rigurd. You left their names marked missing.
+report_04.wav	MARA	STILL MISSING	Until someone brings me an answer, that's where they'll stay.
+warden_01.wav	WARDEN	THE LAST ORDER	CONTAMINATED LIFEFORM. PASSAGE DENIED.
+warden_02.wav	RAINORAY	THE LAST ORDER	There are people on the other side.
+warden_02_stranger.wav	RAINORAY	THE LAST ORDER	There's no stretcher on this road. Let me through. Someone may still need help.
+warden_02_rescued.wav	RAINORAY	THE LAST ORDER	People are still coming back. You're blocking their way. Open the gate.
+warden_03.wav	WARDEN	THE LAST ORDER	THE ROAD IS SEALED FOR THEIR PROTECTION.
+warden_04.wav	INNER_VOICE	THE LAST ORDER	The order is damaged. It cannot distinguish a rescue from an attack.
+warden_05.wav	RAINORAY	THE LAST ORDER	Can you shut it down?
+warden_06.wav	INNER_VOICE	THE LAST ORDER	Not from here. Keep moving. I need to see how it fights.
+gate_01.wav	RAINORAY	THE ROAD OPENS	The chain is broken. Stretcher tracks run through the gate and into the trees.
+gate_02.wav	RAINORAY	THE ROAD OPENS	Only one set of footprints comes back. Shuna's.
+gate_02_stranger.wav	RAINORAY	THE ROAD OPENS	Only one set of footprints comes back toward camp.
+gate_03.wav	RAINORAY	THE ROAD OPENS	The others got this far. I can follow them.
+camp_after_01.wav	MARA	A PLACE TO RETURN TO	The gate's quiet.
+camp_after_02.wav	RAINORAY	A PLACE TO RETURN TO	It's open. I'm going after the stretcher tracks.
+camp_after_03.wav	MARA	A PLACE TO RETURN TO	I tried. The roots have swallowed the road. There's a dry scarf by the fire; take it before you go.
+camp_after_04.wav	RAINORAY	A PLACE TO RETURN TO	I'm not sure it would stay on.
+camp_after_05.wav	MARA	A PLACE TO RETURN TO	Then I'll keep it dry.
+survivor_tobin_01.wav	TOBIN	BEHIND THE FENCE	Who's there? If you're a rift thing, I'm mostly bandages. Poor eating.
+survivor_tobin_02.wav	RAINORAY	BEHIND THE FENCE	Rainoray. Mostly water, these days.
+survivor_tobin_03.wav	TOBIN	BEHIND THE FENCE	Kaijin. I worked on the gate relay. That sound means the Warden's still running a broken order.
+survivor_tobin_04.wav	TOBIN	BEHIND THE FENCE	The fence came down behind me. I couldn't climb it with this leg.
+survivor_tobin_05.wav	RAINORAY	BEHIND THE FENCE	Shuna's lamp is still lit at Captain Camp. Can you make it that far?
+survivor_tobin_05_stranger.wav	RAINORAY	BEHIND THE FENCE	There's a lamp by the captain's tent. Head there. Someone is keeping it lit.
+survivor_tobin_06.wav	TOBIN	BEHIND THE FENCE	For a lamp? I'll crawl. Thank you.
+survivor_ilse_01.wav	ILSE	INSIDE THE THORNS	Stay back. I've got one good arm and I'm not afraid to use it.
+survivor_ilse_02.wav	RAINORAY	INSIDE THE THORNS	Rainoray. I cut the thorns, not you.
+survivor_ilse_03.wav	ILSE	INSIDE THE THORNS	Eren. I was scouting the road. Those roots moved against the wind, then closed behind me.
+survivor_ilse_04.wav	ILSE	INSIDE THE THORNS	That chest holds our spare supplies. Locked tight, and the key went with the storehouse.
+survivor_ilse_05.wav	RAINORAY	INSIDE THE THORNS	I'll find it. Go to Shuna's lamp at Captain Camp.
+survivor_ilse_05_stranger.wav	RAINORAY	INSIDE THE THORNS	There's a lamp by the captain's tent. Head there. Someone is keeping it lit.
+survivor_ilse_06.wav	ILSE	INSIDE THE THORNS	Watch the roots when the wind stops. They don't stop with it.
+survivor_venn_01.wav	VENN	THE CULVERT	Took them long enough to send someone. I pictured someone taller.
+survivor_venn_02.wav	RAINORAY	THE CULVERT	Nobody sent me. I heard you were missing.
+survivor_venn_03.wav	VENN	THE CULVERT	Rigurd. I stayed with the last evacuees, then told the stretcher crew to go on without me.
+survivor_venn_04.wav	VENN	THE CULVERT	Then the culvert silted up and I spent a week talking to the rain.
+survivor_venn_05.wav	RAINORAY	THE CULVERT	Shuna is keeping a fire at Captain Camp. She has room for you.
+survivor_venn_05_stranger.wav	RAINORAY	THE CULVERT	There's a lamp by the captain's tent. Head there. Someone is keeping it lit.
+survivor_venn_06.wav	VENN	THE CULVERT	Shuna. Good. Then I'll go and be shouted at properly.
+ledger_01.wav	RAINORAY	THE EVACUATION CACHE	The cache opens. Bandages, a little coin, and the evacuation ledger.
+ledger_02.wav	INNER_VOICE	THE EVACUATION CACHE	Three names match the people missing from camp.
+ledger_03.wav	RAINORAY	THE EVACUATION CACHE	Kaijin, Eren, Rigurd. Names, not numbers. Let's find out what happened to them.
+camp_rescued_01.wav	MARA	SOMEONE CAME BACK	Someone walked into my camp tonight and asked for you by name.
+camp_rescued_02.wav	RAINORAY	SOMEONE CAME BACK	They were still out there, waiting. I couldn't leave them.
+camp_rescued_03.wav	MARA	SOMEONE CAME BACK	Then keep looking. The dispatch listed more people than the Warden let through.
+camp_home_01.wav	MARA	THREE BEDS	Kaijin, Eren and Rigurd. Three beds that aren't empty anymore.
+camp_home_02.wav	RAINORAY	THREE BEDS	The count finally adds up. Better than I'd hoped.
+camp_home_03.wav	MARA	THREE BEDS	Eren found the last of the good tea. Take the coin we were saving with it. You've earned both.
+bark_leaving_camp.wav	MARA	EXPLORATION	Keep to the road. I'll keep the lamp lit.
+bark_heard_survivor.wav	RAINORAY	EXPLORATION	Was that a voice? South of the road.
+bark_heard_survivor_2.wav	INNER_VOICE	EXPLORATION	Confirmed. Someone is still alive.
+bark_heard_survivor_3.wav	RAINORAY	EXPLORATION	Then we're not leaving them here.
+bark_after_rescue.wav	INNER_VOICE	EXPLORATION	One name off the missing list. Keep looking.
+bark_fight_ledger.wav	RAINORAY	EXPLORATION	That was not on the supply list.
+bark_fight_ledger_2.wav	INNER_VOICE	EXPLORATION	I have started a separate list.
+bark_fight_listen.wav	RAINORAY	EXPLORATION	Let's listen before we move.
+bark_fight_listen_2.wav	INNER_VOICE	EXPLORATION	Agreed. The road carries sound.
+bark_fight_road.wav	RAINORAY	EXPLORATION	This road used to mean safe passage.
+bark_fight_road_2.wav	INNER_VOICE	EXPLORATION	It can again. That is why we continue.
+bark_fight_counting.wav	RAINORAY	EXPLORATION	I preferred counting things.
+bark_fight_counting_2.wav	INNER_VOICE	EXPLORATION	You still count who gets home.
+bark_fight_job.wav	RAINORAY	EXPLORATION	Do I get a quieter job after this?
+bark_fight_job_2.wav	INNER_VOICE	EXPLORATION	You have not finished this one.
+bark_fight_order.wav	RAINORAY	EXPLORATION	Someone taught them to hold this road.
+bark_fight_order_2.wav	INNER_VOICE	EXPLORATION	The order survived its purpose.
+bark_fight_watch.wav	RAINORAY	EXPLORATION	One moment. I'll check behind us.
+bark_fight_watch_2.wav	INNER_VOICE	EXPLORATION	A sensible habit. Keep it.
+bark_fight_shaking.wav	RAINORAY	EXPLORATION	Funny. I didn't stop shaking.
+bark_fight_shaking_2.wav	INNER_VOICE	EXPLORATION	You moved anyway.
+bark_fight_reason.wav	RAINORAY	EXPLORATION	I don't want to get used to that.
+bark_fight_reason_2.wav	INNER_VOICE	EXPLORATION	Then remember why you are here.
+bark_fight_forward.wav	RAINORAY	EXPLORATION	Forward, then. One problem at a time.
+bark_fight_forward_2.wav	INNER_VOICE	EXPLORATION	One step is enough for now.
+bark_fight_numbers.wav	RAINORAY	EXPLORATION	Are you keeping count too?
+bark_fight_numbers_2.wav	INNER_VOICE	EXPLORATION	Only of the decisions that matter.
+bark_fight_moment.wav	RAINORAY	EXPLORATION	Give me a moment before we go.
+bark_fight_moment_2.wav	INNER_VOICE	EXPLORATION	Take it. Rushing is not recovery.
+bark_hurt_shelter.wav	RAINORAY	EXPLORATION	That was closer than I'd planned.
+bark_hurt_shelter_2.wav	INNER_VOICE	EXPLORATION	Find shelter before another fight.
+bark_hurt_distance.wav	RAINORAY	EXPLORATION	All right. A little less bravery.
+bark_hurt_distance_2.wav	INNER_VOICE	EXPLORATION	A little more distance would help.
+bark_hurt_camp.wav	RAINORAY	EXPLORATION	I could use that campfire now.
+bark_hurt_camp_2.wav	INNER_VOICE	EXPLORATION	A retreat can still be progress.
+bark_hurt_deliberate.wav	RAINORAY	EXPLORATION	Tell me that looked deliberate.
+bark_hurt_deliberate_2.wav	INNER_VOICE	EXPLORATION	I would prefer to be accurate.
+bark_walk_routes.wav	RAINORAY	EXPLORATION	I don't know which way is safe.
+bark_walk_routes_2.wav	INNER_VOICE	EXPLORATION	We will learn. Keep the camp behind us.
+bark_walk_bag.wav	RAINORAY	EXPLORATION	I keep reaching for a bag I lost.
+bark_walk_bag_2.wav	INNER_VOICE	EXPLORATION	Old habits are slow to catch up.
+bark_walk_questions.wav	RAINORAY	EXPLORATION	Do my questions ever tire you?
+bark_walk_questions_2.wav	INNER_VOICE	EXPLORATION	Not yet. You may continue.
+bark_walk_thoughts.wav	RAINORAY	EXPLORATION	You can talk without being asked.
+bark_walk_thoughts_2.wav	INNER_VOICE	EXPLORATION	I was leaving room for your thoughts.
+bark_walk_quiet.wav	RAINORAY	EXPLORATION	Was this a busy road once?
+bark_walk_quiet_2.wav	INNER_VOICE	EXPLORATION	The cart tracks suggest it was.
+bark_walk_waiting.wav	RAINORAY	EXPLORATION	Who is still waiting out there?
+bark_walk_waiting_2.wav	INNER_VOICE	EXPLORATION	Someone may be asking that about you.
+bark_walk_name.wav	RAINORAY	EXPLORATION	Raphael. Are you still there?
+bark_walk_name_2.wav	INNER_VOICE	EXPLORATION	Yes. You do not have to keep checking.
+bark_walk_map.wav	RAINORAY	EXPLORATION	A map never shows how a place feels.
+bark_walk_map_2.wav	INNER_VOICE	EXPLORATION	Someone must carry that part.
+bark_walk_calm.wav	RAINORAY	EXPLORATION	If I sound calm, don't be fooled.
+bark_walk_calm_2.wav	INNER_VOICE	EXPLORATION	I hear more than your tone.
+bark_walk_nails.wav	RAINORAY	EXPLORATION	I used to worry about late deliveries.
+bark_walk_nails_2.wav	INNER_VOICE	EXPLORATION	You noticed what others overlooked.
+bark_camp_lamp.wav	RAINORAY	EXPLORATION	She really is keeping that lamp lit.
+bark_camp_lamp_2.wav	INNER_VOICE	EXPLORATION	She is making a place to return to.
+bark_camp_person.wav	RAINORAY	EXPLORATION	She spoke to me like I was a person.
+bark_camp_person_2.wav	INNER_VOICE	EXPLORATION	You still are.
+bark_camp_talk.wav	RAINORAY	EXPLORATION	I didn't expect to miss ordinary talk.
+bark_camp_talk_2.wav	INNER_VOICE	EXPLORATION	You do not have to stop having it.
+bark_camp_promise.wav	RAINORAY	EXPLORATION	I wish I could promise her more.
+bark_camp_promise_2.wav	INNER_VOICE	EXPLORATION	Return when you can. Start with that.
+bark_walk_birds.wav	INNER_VOICE	EXPLORATION	You've gone quiet.
+bark_walk_birds_2.wav	RAINORAY	EXPLORATION	I'm listening for the birds.
+bark_walk_feet.wav	RAINORAY	EXPLORATION	How do I trip without feet?
+bark_walk_feet_2.wav	INNER_VOICE	EXPLORATION	You're finding new ways.
+bark_walk_body.wav	RAINORAY	EXPLORATION	Is this body holding together?
+bark_walk_body_2.wav	INNER_VOICE	EXPLORATION	Yes. I'd tell you if it wasn't.
+bark_walk_wind.wav	INNER_VOICE	EXPLORATION	There. A little less wind.
+bark_walk_wind_2.wav	RAINORAY	EXPLORATION	You noticed I was cold?
+bark_fight_saw.wav	RAINORAY	EXPLORATION	Did you see that?
+bark_fight_saw_2.wav	INNER_VOICE	EXPLORATION	Even the part you meant to do.
+bark_fight_right.wav	INNER_VOICE	EXPLORATION	You're leaving your right side open.
+bark_fight_right_2.wav	RAINORAY	EXPLORATION	Remind me before the next one.
+bark_fight_harmless.wav	RAINORAY	EXPLORATION	Aren't slimes meant to be harmless?
+bark_fight_harmless_2.wav	INNER_VOICE	EXPLORATION	You've met the local slimes.
+bark_camp_warm.wav	RAINORAY	EXPLORATION	That fire almost feels warm.
+bark_camp_warm_2.wav	INNER_VOICE	EXPLORATION	Then stay a moment.
+bark_sage_hit_room.wav	INNER_VOICE	EXPLORATION	Easy. Give yourself a little room.
+bark_sage_hit_hurt.wav	INNER_VOICE	EXPLORATION	That one hurt. Step back.
+bark_sage_hit_stay.wav	INNER_VOICE	EXPLORATION	I'm here. Keep moving.
+bark_sage_hit_footing.wav	INNER_VOICE	EXPLORATION	Watch your footing.
+bark_sage_hit_patient.wav	INNER_VOICE	EXPLORATION	Don't rush the next move.
+bark_sage_hit_steady.wav	INNER_VOICE	EXPLORATION	You're still in this.
+bark_warden_voice_stand.wav	WARDEN	EXPLORATION	Stand down.
+bark_warden_voice_line.wav	WARDEN	EXPLORATION	Hold the line.
+bark_warden_voice_gate.wav	WARDEN	EXPLORATION	The gate stays shut.
+bark_warden_voice_order.wav	WARDEN	EXPLORATION	I was ordered to protect them.
+bark_warden_start.wav	INNER_VOICE	EXPLORATION	Keep moving. I'll analyze its attacks.
+bark_warden_start_2.wav	RAINORAY	EXPLORATION	I only need one opening.
+bark_warden_read.wav	INNER_VOICE	EXPLORATION	I've got its rhythm. I'll warn you.
+bark_warden_phase.wav	INNER_VOICE	EXPLORATION	Careful. It's getting desperate now.
+bark_warden_phase_2.wav	RAINORAY	EXPLORATION	Good. I'll use that.
+bark_warden_weak.wav	INNER_VOICE	EXPLORATION	It's nearly down. Don't get careless.
+bark_warden_close_call.wav	INNER_VOICE	EXPLORATION	Fall back. You need room.
+bark_warden_victory.wav	RAINORAY	EXPLORATION	The road's open.
+bark_warden_victory_2.wav	INNER_VOICE	EXPLORATION	And you are still here.
+bark_sage_target.wav	INNER_VOICE	EXPLORATION	Move! It's coming down.
+bark_sage_target_again.wav	INNER_VOICE	EXPLORATION	Get clear of that spot.
+bark_sage_sweep.wav	INNER_VOICE	EXPLORATION	Get back. It's swinging wide.
+bark_sage_sweep_again.wav	INNER_VOICE	EXPLORATION	Too close. Back away.
+bark_sage_charge.wav	INNER_VOICE	EXPLORATION	Sidestep. It's coming straight at you.
+bark_sage_charge_again.wav	INNER_VOICE	EXPLORATION	Move sideways. Let it pass.
+bark_sage_shockwave.wav	INNER_VOICE	EXPLORATION	Back up. Here comes the wave.
+bark_sage_shockwave_again.wav	INNER_VOICE	EXPLORATION	Get some distance. Another wave.
+bark_sage_fissure.wav	INNER_VOICE	EXPLORATION	Move! The ground's breaking.
+bark_sage_fissure_again.wav	INNER_VOICE	EXPLORATION	Off that line. It's splitting.
+bark_sage_hit.wav	INNER_VOICE	EXPLORATION	That hit landed. Keep your distance.
+bark_sage_hit_again.wav	INNER_VOICE	EXPLORATION	Careful. Don't let it catch you again.
+bark_identify_remnant.wav	INNER_VOICE	EXPLORATION	A remnant. It still knows how to fight.
+bark_identify_guard.wav	INNER_VOICE	EXPLORATION	Outpost guard. Let the shield swing past.
+bark_identify_spitter.wav	INNER_VOICE	EXPLORATION	Ichor spitter. Watch where it aims.
+bark_identify_knight.wav	INNER_VOICE	EXPLORATION	Fallen Knight. Strike after its swing.

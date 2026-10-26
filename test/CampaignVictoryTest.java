@@ -29,6 +29,7 @@ public final class CampaignVictoryTest {
         game.skipDialogue();
         assert game.interact();
         assert game.biome() == 1 : "the open gate leads into the Corrupted Forest";
+        assert game.dialogue()==OutpostDialogue.FOREST_ARRIVAL;game.skipDialogue();
         assert game.story().phase() != OutpostStory.Phase.COMPLETE : "the campaign goes on past the Outpost";
         assert game.drainEvents().stream().noneMatch(e -> e.type() == RuinedOutpostGame.EventType.VICTORY);
         var forestSpawn = game.campaignArea().spawn();
@@ -42,6 +43,8 @@ public final class CampaignVictoryTest {
         defeatBoss(game);
         game.drainEvents();
         assert game.interact() : "the stair opens once Briarheart falls";
+        assert game.dialogue()==OutpostDialogue.FOREST_END;game.skipDialogue();
+        assert game.interact() : "the chapter closes after its survivor scene";
         List<RuinedOutpostGame.Event> events = game.drainEvents();
         assert events.stream().anyMatch(e -> e.type() == RuinedOutpostGame.EventType.VICTORY) : "descending is the victory";
         assert game.story().phase() == OutpostStory.Phase.COMPLETE : "the story ends";

@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_fight_credit.wav",
+  "speaker": "RAINORAY",
+  "scene": "FOREST_FIGHT_CREDIT",
+  "text": "I almost had that one.",
+  "spoken_text": "",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "q8Ge9KhpxZ0MQB7Qh5nb",
+  "context_request_ids": [
+    "Y8XDFIAy4fZSdsiz7iiq",
+    "dU8TIhHibVGvxF7UkuyT",
+    "bviiSigU9BTQmf8rtvsY"
+  ],
+  "generated_at": 1793024793.1435125,
+  "format": "mp3_44100_192",
+  "seconds": 1.393,
+  "peak_dbfs": -4.21,
+  "tempo": 1,
+  "sha256": "96d1370225622ec29a6d3d1de3f0d4d5c86b603fc67ee1b4230e59064a0d6252"
+}

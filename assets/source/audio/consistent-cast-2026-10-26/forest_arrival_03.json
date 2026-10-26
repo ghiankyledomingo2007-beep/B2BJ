@@ -1,0 +1,27 @@
+{
+  "file": "forest_arrival_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE WHITE CLOTH",
+  "text": "A route marker. Someone wanted them followed.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "yxuXv1rGnniG3xn763aV",
+  "context_request_ids": [
+    "nPRyB5KmI3XugTS45m7v",
+    "LMxiD6xKKWfrd9imHhoA",
+    "beZuUU9QUZBbeexgJPmX"
+  ],
+  "generated_at": 1792949042.7026765,
+  "format": "mp3_44100_192",
+  "seconds": 2.461,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "3df0e784338dd63aea8e788017832665ca5428a85a17cb69d78b0f309a2906a1"
+}

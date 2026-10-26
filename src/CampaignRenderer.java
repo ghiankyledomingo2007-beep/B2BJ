@@ -495,7 +495,7 @@ public final class CampaignRenderer {
         g.dispose();
     }
 
-    public static void drawHud(Graphics2D g, RuinedOutpostGame game, int width, int height) {
+    public static void drawHud(Graphics2D g, RuinedOutpostGame game, int width, int height, boolean reducedEffects) {
         Ui.crisp(g);
         Player p = game.player();
         if (game.bossActive() && game.guardian().alive()) bossBar(g, game, width);
@@ -505,8 +505,27 @@ public final class CampaignRenderer {
         if (!prompt.isEmpty() && !game.nearCampaignHub()) prompt(g, game, prompt, 16, height - 16 - 60);
         boolean danger = game.bossActive() || game.scouts().stream().anyMatch(enemy -> enemy.alive() && enemy.aggro()
                 && Math.hypot(enemy.x() - p.x(), enemy.y() - p.y()) < 700);
-        if (!game.campaignNotice().isEmpty() && !danger) toast(g, game.campaignNotice(), width / 2, 108);
+        if (!game.campaignNotice().isEmpty() && !danger) toast(g, game.campaignNotice(), width / 2, 184);
+        drawSage(g,game,width,height,reducedEffects);
+    }
 
+    /** Also painted during conversations, when the gameplay HUD is hidden. */
+    static void drawSage(Graphics2D g,RuinedOutpostGame game,int width,int height,boolean reducedEffects) {
+        Player p=game.player();
+        boolean danger=game.bossActive()||game.scouts().stream().anyMatch(enemy->enemy.alive()&&enemy.aggro()
+                &&Math.hypot(enemy.x()-p.x(),enemy.y()-p.y())<700);
+        boolean speaking=game.bark()!=null&&(!danger||game.bark().combat())&&game.dialogue()==null&&p.alive();
+        boolean sageSpeaking=speaking&&game.barkLine().speaker()==OutpostDialogue.Speaker.INNER_VOICE;
+        if(game.campaignMode()&&!game.story().blocksGameplay()&&p.alive()) {
+            var voiceCanvas=(Graphics2D)g.create();
+            if(game.bossActive()||game.bossIntroduction())voiceCanvas.translate(0,108);
+            if(sageSpeaking)InnerVoiceOverlay.draw(voiceCanvas,game.barkLine().text(),game.barkElapsed(),game.barkRemaining(),
+                    GameAudio.dialogueLevel(),width,height,reducedEffects,game.sageTime());
+            else InnerVoiceOverlay.drawPresence(voiceCanvas,game.sageTime(),GameAudio.dialogueLevel(),width,reducedEffects,
+                    game.dialogue()!=null&&game.dialogueLine().speaker()==OutpostDialogue.Speaker.INNER_VOICE);
+            voiceCanvas.dispose();
+        }
+        if(speaking&&!sageSpeaking)DialogueRenderer.drawExploration(g,game.barkLine(),game.barkElapsed(),game.barkRemaining(),width,height);
     }
 
     // ------------------------------------------------------------------ boss bar
@@ -541,7 +560,7 @@ public final class CampaignRenderer {
         g.fillRect(tx, ty, tw, th);
         int ghostW = (int) Math.round(tw * ghost) / Ui.S * Ui.S, fillW = (int) Math.round(tw * health) / Ui.S * Ui.S;
         if (ghostW > fillW) { g.setColor(new Color(0xf4dcc0)); g.fillRect(tx + fillW, ty, ghostW - fillW, th); }
-        boolean stagger = boss.state() == Guardian.State.RECOVER;
+        boolean stagger = boss.coreExposed();
         Color base = stagger ? new Color(0x2cc6c8) : boss.enraged() ? new Color(0xcc5222) : new Color(0xb8323a);
         Color light = stagger ? new Color(0xcffff9) : boss.enraged() ? new Color(0xffc45e) : new Color(0xf16458);
         Color dark = stagger ? new Color(0x178a93) : boss.enraged() ? new Color(0x8c2c16) : new Color(0x7a1c26);
@@ -557,6 +576,8 @@ public final class CampaignRenderer {
         Ui.piece(g, Ui.Piece.BOSS_LEFT, x0, y0);
         Ui.piece(g, Ui.Piece.BOSS_RIGHT, x0 + w - right, y0);
         Ui.piece(g, game.biome() == 0 ? Ui.Piece.EMBLEM_WARDEN : Ui.Piece.EMBLEM_BRIAR, x0 + 8, y0 + 8);
+        Ui.outlinedCentered(g,stagger?(game.biome()==1?"HEART EXPOSED":"CORE EXPOSED"):(game.biome()==1?"ROOTS WOVEN":"ARMOR CLOSED"),width/2,y0+62,2,
+                stagger?Ui.CYAN:Ui.MUTED);
     }
 
     // ------------------------------------------------------------------ tracker
@@ -703,10 +724,28 @@ public final class CampaignRenderer {
         var rests = FieldObjects.rests(game.biome());
         for (int i = 0; i < rests.size(); i++) if (game.restLit(i))
             mark(g, snap(mx + rests.get(i).x() * sx), snap(my + rests.get(i).y() * sy), dot, new Color(0xf08a32));
+        for(var spot:FieldObjects.all(game.biome()))if(game.survivorKnown(spot)&&!game.fieldDone(spot)) {
+            int fx=snap(mx+spot.x()*sx),fy=snap(my+spot.y()*sy);
+            diamond(g,fx,fy,large?4:3,Ui.CYAN);
+            if(large)Ui.outlinedCentered(g,"HELP",fx,fy+24,1,Ui.CYAN);
+        }
+        if(game.carried()!=null) {
+            var target=game.carried().kind()==FieldObjects.Kind.KEY?FieldObjects.find(game.biome(),"cache_0"):null;
+            if(target!=null) {
+                int fx=snap(mx+target.x()*sx),fy=snap(my+target.y()*sy);
+                diamond(g,fx,fy,large?4:3,Ui.GOLD);
+                if(large)Ui.outlinedCentered(g,"CACHE",fx,fy+24,1,Ui.GOLD);
+            }
+        }
         int hx = snap(mx + area.hub().x() * sx), hy = snap(my + area.hub().y() * sy);
         mark(g, hx, hy, dot + 1, new Color(0xf08a32));
         int bx = snap(mx + area.boss().x() * sx), by = snap(my + area.boss().y() * sy);
         diamond(g, bx, by, large ? 5 : 4, game.guardian().alive() ? Ui.DANGER : Ui.GOLD);
+        if(game.biome()==0) {
+            var goal=game.campaignObjectivePoint();
+            int gx=snap(mx+goal.x()*sx),gy=snap(my+goal.y()*sy),r=large?12:8;
+            objectiveMark(g,gx,gy,r);
+        }
         int px = snap(mx + game.player().x() * sx), py = snap(my + game.player().y() * sy);
         boolean pulse = System.currentTimeMillis() / 400 % 2 == 0;
         if (pulse) { g.setColor(new Color(0x2cc6c8)); g.drawRect(px - 7, py - 7, 13, 13); g.drawRect(px - 6, py - 6, 11, 11); }
@@ -714,6 +753,14 @@ public final class CampaignRenderer {
     }
 
     private static int snap(double v) { return (int) Math.floor(v / Ui.S) * Ui.S; }
+
+    private static void objectiveMark(Graphics2D g,int x,int y,int radius) {
+        g.setColor(Ui.TEXT);
+        g.fillRect(x-radius,y-radius,radius*2,Ui.S);
+        g.fillRect(x-radius,y+radius-Ui.S,radius*2,Ui.S);
+        g.fillRect(x-radius,y-radius,Ui.S,radius*2);
+        g.fillRect(x+radius-Ui.S,y-radius,Ui.S,radius*2);
+    }
 
     /** A square map mark `size` art pixels wide with an ink rim. */
     private static void mark(Graphics2D g, int cx, int cy, int size, Color color) {
@@ -788,6 +835,10 @@ public final class CampaignRenderer {
             Ui.text(g, (String) row[1], cx + 30, y + 16, 2, Ui.TEXT);
             y += 28;
         }
+        if(game.biome()==0) {
+            objectiveMark(g,cx+8,y+8,8);
+            Ui.text(g,"Next stop",cx+30,y+16,2,Ui.TEXT);
+        }
     }
 
     private static final String[] TAGLINES = {"Where the last knights fell", "Where the roots drink ichor"};
@@ -824,9 +875,11 @@ public final class CampaignRenderer {
     public static void drawTitleExtras(Graphics2D g, RuinedOutpostGame game, int width, int height, boolean menuOpen) {
         Ui.crisp(g);
         if (!game.campaignNotice().isEmpty()) {
+            var notice=(Graphics2D)g.create();double scale=TitleScreen.menuScale(width,height);notice.scale(scale,scale);
             var lines = Ui.wrap(game.campaignNotice(), 330, 2);
-            Ui.nine(g, Ui.Piece.PANEL, 68, 604, 344, 24 + Math.min(3, lines.size()) * 22);
-            for (int i = 0; i < lines.size() && i < 3; i++) Ui.text(g, lines.get(i), 86, 632 + i * 22, 2, Ui.GOLD_LIGHT);
+            Ui.nine(notice, Ui.Piece.PANEL, 68, 604, 344, 24 + Math.min(3, lines.size()) * 22);
+            for (int i = 0; i < lines.size() && i < 3; i++) Ui.text(notice, lines.get(i), 86, 632 + i * 22, 2, Ui.GOLD_LIGHT);
+            notice.dispose();
         }
         if (menuOpen) Ui.veil(g, width, height, 150);
     }

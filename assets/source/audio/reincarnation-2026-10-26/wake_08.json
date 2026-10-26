@@ -1,0 +1,27 @@
+{
+  "file": "wake_08.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "ONE MORE CHANCE",
+  "text": "It was the one that survived.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "WP64tGxap1Lltd3jiFAm",
+  "context_request_ids": [
+    "wgQUtzhJCgJsBEp9iKQZ",
+    "9xuzfGnlOI1RYkRFEt8w",
+    "QEilodLIViV4tcDYi7MO"
+  ],
+  "generated_at": 1793011333.0594344,
+  "format": "mp3_44100_192",
+  "seconds": 2.575,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "57183de048ab7a42103772483a131acbf66a2faab19118063fb5bd8d99def5b8"
+}

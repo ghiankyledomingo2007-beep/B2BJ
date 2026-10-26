@@ -1,0 +1,19 @@
+{
+  "file": "effort_attack_1.wav",
+  "speaker": "RAINORAY",
+  "text": "Ha!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "generated_at": 1792967493.8169565,
+  "request_id": "FdAs8SRvG1onmghnh7mv",
+  "seconds": 0.3914,
+  "peak_dbfs": -7.54,
+  "sha256": "7f5e9fbe163664f03367949d39f6e270bb44046d85afd842a909e7e85a1607e2"
+}

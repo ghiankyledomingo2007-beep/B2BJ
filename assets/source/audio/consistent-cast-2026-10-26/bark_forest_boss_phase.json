@@ -1,0 +1,25 @@
+{
+  "file": "bark_forest_boss_phase.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "It's drawing more roots in. Watch the gaps.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "lOnpaPi3C2UkDoNhbW58",
+  "context_request_ids": [
+    "Kh2s2kNbhiKWk3OLUczZ"
+  ],
+  "generated_at": 1792967463.29677,
+  "format": "mp3_44100_192",
+  "seconds": 3.318,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "4227553f000883f5b74fa320b6529f3d24c6a5b0d56727c23304809ad4fc7883"
+}

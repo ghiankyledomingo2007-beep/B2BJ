@@ -1,0 +1,27 @@
+{
+  "file": "forest_briarheart_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "WHAT HOLDS THE ROAD",
+  "text": "The entrance is behind it. I can hear movement below.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "NxtHwYegFZIizBRXF1uv",
+  "context_request_ids": [
+    "EfgluTavTNez3TXniPWe",
+    "MdyHgacubwNBkxRpyC8q",
+    "kmgoPZfrJPW5MtQfIqtL"
+  ],
+  "generated_at": 1792948996.550142,
+  "format": "mp3_44100_192",
+  "seconds": 4.015,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "c6c3ab6ceb0292a0558d74ea7d4cbd5f6025ab50953718da923a6919c6a39ee3"
+}

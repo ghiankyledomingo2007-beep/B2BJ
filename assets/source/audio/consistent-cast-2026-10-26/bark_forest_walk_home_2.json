@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_home_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Someone is waiting for you there.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "pGZhbaRQqu5emSfbC8yO",
+  "context_request_ids": [
+    "u0qiIyYCsRAx2XFNFadG",
+    "AllmXOhxQX8XGIql539a",
+    "szKcAPGXLoSL6ZqPIJ6u"
+  ],
+  "generated_at": 1792949027.9023643,
+  "format": "mp3_44100_192",
+  "seconds": 2.297,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "beaeab5c7c2763541a51249cfb58d4f058084eb265ad4d92f7a25cae66c00d5e"
+}

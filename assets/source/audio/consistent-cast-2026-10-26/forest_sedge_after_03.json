@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_after_03.wav",
+  "speaker": "SEDGE",
+  "scene": "BRING THE ROPE",
+  "text": "I'll bring a stretcher. You see who's still down there.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "C7SvoSy92IB0l8mpceum",
+  "context_request_ids": [
+    "DiqPlOm2hQeuojXbeulr",
+    "ZyBBEzEptWHo9Ntayrtf",
+    "EzXdGNTwfv5Kf5fgODD2"
+  ],
+  "generated_at": 1792949009.9780424,
+  "format": "mp3_44100_192",
+  "seconds": 3.483,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "eb5aa650a34aec0557336c7c65aac3ae63852febb5a449b545fad39d56cc154b"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "camp_rescued_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "SOMEONE CAME BACK",
+  "text": "They were still out there, waiting. I couldn't leave them.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "nPRyB5KmI3XugTS45m7v",
+  "context_request_ids": [
+    "SSwdFiYO6ffQM16RzfeG",
+    "EqYyXDJ7OGwR9ilmTqRW",
+    "ChJ0VaCQSC5aTCWziwLB"
+  ],
+  "generated_at": 1792949039.4419742,
+  "format": "mp3_44100_192",
+  "seconds": 3.065,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "e5770628119cec3a20193a02de660a5d1b1b071bb4c5c29e390e33fef6a3f9c6"
+}

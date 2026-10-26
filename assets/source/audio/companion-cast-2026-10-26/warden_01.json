@@ -1,0 +1,29 @@
+{
+  "file": "warden_01.wav",
+  "speaker": "WARDEN",
+  "scene": "THE LAST ORDER",
+  "text": "CONTAMINATED LIFEFORM. PASSAGE DENIED.",
+  "spoken_text": "Contaminated lifeform. passage denied.",
+  "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.2,
+    "use_speaker_boost": true,
+    "speed": 0.95
+  },
+  "seed": 84722,
+  "request_id": "zHoeryF7dqVUOP3vVd4V",
+  "context_request_ids": [
+    "W1YztHtoQJ5wc1Qn7aQe",
+    "5LFqY7m3HFASpQhQi0Sh",
+    "xd0Zqq5DhACAxezaMzMr"
+  ],
+  "generated_at": 1793024787.9362023,
+  "format": "mp3_44100_192",
+  "seconds": 3.437,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "33b6598725a56e33cf84768435fb843c987b5c013dbb58102accb6aba0305c5a"
+}

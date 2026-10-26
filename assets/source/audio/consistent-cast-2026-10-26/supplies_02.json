@@ -1,0 +1,27 @@
+{
+  "file": "supplies_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST DELIVERY",
+  "text": "'Blankets on top. Leave the weapons if the cart is too heavy.' My handwriting, too.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "zgZNzZqlO4IDXPh58JSq",
+  "context_request_ids": [
+    "JkIE0NAM3eNC0Da9j1Dm",
+    "tS6a5BcPPqLPMKDYTGw5",
+    "qC3lKTy7dCk5CoVqA0db"
+  ],
+  "generated_at": 1792949006.239688,
+  "format": "mp3_44100_192",
+  "seconds": 5.48,
+  "peak_dbfs": -3.89,
+  "tempo": 1,
+  "sha256": "e08a3478228fe3e35eb36ef426f3c6b31da4fc94494a35c269bb70b7de105b01"
+}

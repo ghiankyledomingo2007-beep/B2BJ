@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_ford_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "The roots have taken more than the road.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "NejwZs0X8VJzGp8UeIqD",
+  "context_request_ids": [
+    "bWdMcLk2MHof1Qi2EF0u",
+    "Dfz1tDuXH3n7m8ulk63Y",
+    "BBqWyTEBWYiECh48y42d"
+  ],
+  "generated_at": 1792949007.6295369,
+  "format": "mp3_44100_192",
+  "seconds": 2.854,
+  "peak_dbfs": -4.08,
+  "tempo": 1,
+  "sha256": "ee075e1cd11570bd0f5e8663c67e1c0de526ce71870afcf1f7f680858a8fde71"
+}

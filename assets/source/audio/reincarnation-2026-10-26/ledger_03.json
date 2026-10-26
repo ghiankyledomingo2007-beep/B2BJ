@@ -1,0 +1,27 @@
+{
+  "file": "ledger_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE EVACUATION CACHE",
+  "text": "Kaijin, Eren, Rigurd. Names, not numbers. Let's find out what happened to them.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "YJreNrjXjlWX2qrrRDAr",
+  "context_request_ids": [
+    "fBE8Lfwy8QDw803lvfXE",
+    "4k4xI7c0Q0A2Lbx3gOOg",
+    "ZB0KGWj1BOZN1oqmAwsQ"
+  ],
+  "generated_at": 1793011363.449557,
+  "format": "mp3_44100_192",
+  "seconds": 5.759,
+  "peak_dbfs": -3.95,
+  "tempo": 1,
+  "sha256": "299c14b943858d1a0f97fb9f8f10f3a988276826a275a0f9053aa4ce5b77ec62"
+}

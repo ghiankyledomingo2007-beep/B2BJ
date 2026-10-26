@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_better_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "You saw the opening before I did.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "LVgWvkZMxm59VdYlyNLW",
+  "context_request_ids": [
+    "EcDFEsV8cz0gmuMQBM7N",
+    "9jioDiJp4glkqHgtE1q9",
+    "LyvpukUIPe62uKW7Jp5F"
+  ],
+  "generated_at": 1792949018.7688859,
+  "format": "mp3_44100_192",
+  "seconds": 2.529,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "6ef0142b9bfa08f37fb8605a2e4a02046b2ad702baab945f33d9dd0cbf7e4a87"
+}

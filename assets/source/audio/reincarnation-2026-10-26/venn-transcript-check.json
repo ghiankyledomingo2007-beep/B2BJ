@@ -1,0 +1,14 @@
+[
+  {
+    "file": "survivor_venn_03.wav",
+    "expected": "Rigurd. I stayed with the last evacuees, then told the stretcher crew to go on without me.",
+    "recognized": "Regard. I stayed with the last evacuees, then told the stretcher crew to go on without me. ",
+    "match": 0.941
+  },
+  {
+    "file": "survivor_venn_06.wav",
+    "expected": "Shuna. Good. Then I'll go and be shouted at properly.",
+    "recognized": "Shuna. Good. Then I'll go and be shouted at properly",
+    "match": 1.0
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "file": "camp_08.wav",
+  "speaker": "MARA",
+  "scene": "THE LAMP AT CAMP",
+  "text": "I have to keep this ward standing. If it fails, the wounded have nowhere safe to rest.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "9SWFIt7dxS4IRrDistQj",
+  "context_request_ids": [
+    "Gij8TgVjyDFYzbHxKmDg",
+    "ZLJ7lO61BaeBmQV84Jhp",
+    "cUrOP5NgGriu6sfX85Gz"
+  ],
+  "generated_at": 1793011332.37773,
+  "format": "mp3_44100_192",
+  "seconds": 4.737,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "20625bcc1fd29aebb32604b42866c222e774409ae351ca0b77b0d5a2cddd1998"
+}

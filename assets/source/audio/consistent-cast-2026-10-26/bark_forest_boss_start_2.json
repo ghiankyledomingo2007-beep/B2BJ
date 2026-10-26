@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_boss_start_2.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Tell me when that heart opens.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "Y2qiYxi9MLGCaw8pAJBE",
+  "context_request_ids": [
+    "8pz29BMX64bmmcMuW0le",
+    "ntJMHr68ggw2UlivqxLq",
+    "Z6ZoqwMDMKpUjfWE21ui"
+  ],
+  "generated_at": 1792949118.051411,
+  "format": "mp3_44100_192",
+  "seconds": 1.95,
+  "peak_dbfs": -4.15,
+  "tempo": 1,
+  "sha256": "acaba6c86d3ee0673e22825a63173a1984ef21dbf58ea92ad867b534309cc9c4"
+}

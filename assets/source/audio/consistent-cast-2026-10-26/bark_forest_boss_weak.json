@@ -1,0 +1,26 @@
+{
+  "file": "bark_forest_boss_weak.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "The heart is fading. One more opening.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "DmTLP2ZSd5wZxyJj5WVT",
+  "context_request_ids": [
+    "Kh2s2kNbhiKWk3OLUczZ",
+    "lOnpaPi3C2UkDoNhbW58"
+  ],
+  "generated_at": 1792967464.5980167,
+  "format": "mp3_44100_192",
+  "seconds": 3.132,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "d17cb108b27777c463d08ae90b19e84cb0f4757890e0ef9d600b00949ce6e6f5"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_wait_03.wav",
+  "speaker": "SEDGE",
+  "scene": "SOUEI",
+  "text": "The rope is ready. Clear the roots and I'll bring them through.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "OWIAEr5uX3TByGCqaEdY",
+  "context_request_ids": [
+    "KfVJWQpz3JfFY0MrJpqM",
+    "VvTO9JZNGdUL1NtkE6YD",
+    "3u7vMpUBIOGC2nQBgNlS"
+  ],
+  "generated_at": 1793011365.415355,
+  "format": "mp3_44100_192",
+  "seconds": 5.062,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "072ce45d795df1b3e484928666ebb848d9d5aac722aa6005d10b88556f0e8de9"
+}

@@ -38,8 +38,9 @@ public final class OutpostStoryTest {
         story.escaped();
         assert story.phase() == OutpostStory.Phase.COMPLETE;
         assert story.blocksGameplay();
-        assert String.join(" ", story.overlayLines()).contains("CATACOMBS")
-                : "ending must point toward the next biome (the forest is played now; the catacombs come next)";
+        String ending=String.join(" ",story.overlayLines());
+        assert ending.contains("SURVIVORS")&&ending.contains("HOME")&&!ending.contains("CATACOMBS")
+                : "the two-chapter ending resolves the rescue without promising an unfinished area";
     }
 
     private static void deathCanRestartTheRun() {

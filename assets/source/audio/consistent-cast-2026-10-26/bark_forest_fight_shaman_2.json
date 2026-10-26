@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_shaman_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "At the ground beneath you. Keep moving.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "Ob5wm8CGr12L1BeOhWZo",
+  "context_request_ids": [
+    "NejwZs0X8VJzGp8UeIqD",
+    "9tlcse8JC6hmB7Dm6AXx",
+    "HCUxIe4kWWugnejoDO3N"
+  ],
+  "generated_at": 1792949011.7603614,
+  "format": "mp3_44100_192",
+  "seconds": 3.179,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "e7f80529efb6c53f5bcbd5aae3a5cf5bbc94bac1620e0b179934dbbadcb72b53"
+}

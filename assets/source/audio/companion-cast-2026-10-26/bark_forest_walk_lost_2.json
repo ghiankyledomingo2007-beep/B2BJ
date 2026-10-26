@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_walk_lost_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FOREST_WALK_LOST",
+  "text": "I would call it gathering information.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "WhAT5ykf8sdhS4SckxDW",
+  "context_request_ids": [
+    "JSVbUa8eiZ5HnLGNmA4Q",
+    "cYHYtn2anTbzylhuhN3f",
+    "5CQEJsncbrg9hPs1gp0i"
+  ],
+  "generated_at": 1793024794.0523994,
+  "format": "mp3_44100_192",
+  "seconds": 2.854,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "045585cf2c2e5e494e2d9547d034f00a01bb23cb9aec500eafc04653a9504578"
+}

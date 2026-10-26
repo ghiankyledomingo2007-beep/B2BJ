@@ -1,0 +1,27 @@
+{
+  "file": "survivor_tobin_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "BEHIND THE FENCE",
+  "text": "Mara's lamp is still lit at Captain Camp. Can you make it that far?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "l2Q7EL7shk9jBOHMZ2LB",
+  "context_request_ids": [
+    "4Gak9Qr2Cr5o4ubFC4lZ",
+    "yRUjdTIQvwC0mGqoKApG",
+    "fR0gEz3bZqNZFGeHy9DS"
+  ],
+  "generated_at": 1792949025.0454054,
+  "format": "mp3_44100_192",
+  "seconds": 4.087,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "4c1848756aed8527642663db7da91fce2127b6b023c2688126f47e7f2da36b09"
+}

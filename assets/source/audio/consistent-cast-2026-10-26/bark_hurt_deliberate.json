@@ -1,0 +1,27 @@
+{
+  "file": "bark_hurt_deliberate.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Tell me that looked deliberate.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "33Bq0q3ROPa0nhRwCY66",
+  "context_request_ids": [
+    "spQ2zNOnkezRoFMEyZjX",
+    "riaZhvRiSk8nxVgUh3z1",
+    "Y7gqGTcp1XjwK3A6fsOK"
+  ],
+  "generated_at": 1792949079.1976745,
+  "format": "mp3_44100_192",
+  "seconds": 1.486,
+  "peak_dbfs": -4.11,
+  "tempo": 1,
+  "sha256": "3f237a95388365f506199505b1712c87f5a04f134adbb6c216bdc027460bb026"
+}

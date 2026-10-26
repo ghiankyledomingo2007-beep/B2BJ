@@ -12,15 +12,25 @@ public final class BuildArt {
         if (what.equals("brazier")) brazier();
         if (what.equals("warden")) WardenArt.combat();
         if (what.equals("warden-hires")) { WardenHiRes.build().save(WardenHiRes.OUT); WardenHiRes.strips(); }
+        if (what.equals("briarheart")) ImportedArt.briarheart().save("assets/characters/guardian/briarheart_motion.png");
+        if (what.equals("forest-creatures")) ImportedArt.forestCreatures();
+        if (what.equals("sedge") || what.equals("all")) ImportedArt.sedge();
         if (what.equals("dummy")) ImportedArt.dummy().save(SetPieces.Kind.DUMMY.sheet());
         if (what.equals("gate")) Structures.sheet(SetPieces.Kind.EAST_GATE).save(SetPieces.Kind.EAST_GATE.sheet());
         if (what.equals("tent")) Structures.tent().save(SetPieces.Kind.TENT.sheet());
         if (what.equals("infirmary")) Structures.sheet(SetPieces.Kind.INFIRMARY).save(SetPieces.Kind.INFIRMARY.sheet());
         if (what.equals("all") || what.equals("portraits")) ImportedArt.portraits();
+        if (what.equals("survivors")) ImportedArt.survivors().save("assets/props/outpost/field_survivor.png");
         if (what.equals("all") || what.equals("ground")) ground();
         if (what.equals("all") || what.equals("forest")) forest();
+        if (what.equals("forest-props")) for (var kind : new SetPieces.Kind[]{
+                SetPieces.Kind.OAK, SetPieces.Kind.BUSH, SetPieces.Kind.LOG, SetPieces.Kind.STUMP})
+            ImportedArt.forest(kind).save(kind.sheet());
+        if (what.equals("forest-corruption")) for(var kind:new SetPieces.Kind[]{
+                SetPieces.Kind.WITHERED,SetPieces.Kind.BRIAR_ROOT,SetPieces.Kind.STAIR}) ForestArt.sheet(kind).save(kind.sheet());
         if (what.equals("all") || what.equals("ui")) ui();
         if (what.equals("all") || what.equals("field")) field();
+        if(java.util.Set.of("reincarnation","all","portraits","survivors","sedge","field").contains(what))ImportedArt.reincarnation();
         System.out.printf("art built (%s) in %.1fs%n", what, (System.nanoTime() - t) / 1e9);
     }
 
@@ -32,11 +42,8 @@ public final class BuildArt {
         campfire();
         brazier();
         WardenArt.build();
-        BossArt.briarheart().save("assets/characters/guardian/briarheart_motion.png");
-        for (String[] c : new String[][]{{"imp", "rift_imp"}, {"wolf", "thorn_wolf"}, {"shaman", "mire_shaman"}}) {
-            Creatures.sheet(c[0], false).save("assets/characters/forest/" + c[1] + "_walk.png");
-            Creatures.sheet(c[0], true).save("assets/characters/forest/" + c[1] + "_attack.png");
-        }
+        ImportedArt.briarheart().save("assets/characters/guardian/briarheart_motion.png");
+        ImportedArt.forestCreatures();
         for (var set : Tiles16.Set.values()) {
             Tiles16.verifySeams(set);
             String area = set.name().toLowerCase(java.util.Locale.ROOT);
@@ -65,7 +72,7 @@ public final class BuildArt {
         Canvas.strip(FieldArt.key(0), FieldArt.key(1), FieldArt.key(2), FieldArt.key(3)).save(dir + "field_key.png");
         FieldArt.tin().save(dir + "field_tin.png");
         Canvas.strip(FieldArt.chest(false), FieldArt.chest(true)).save(dir + "field_chest.png");
-        FieldArt.survivors().save(dir + "field_survivor.png");
+        ImportedArt.survivors().save(dir + "field_survivor.png");
         Canvas.strip(FieldArt.bedroll(0), FieldArt.bedroll(1)).save(dir + "field_bedroll.png");
     }
 

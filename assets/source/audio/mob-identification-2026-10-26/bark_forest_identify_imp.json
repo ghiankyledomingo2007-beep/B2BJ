@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_identify_imp.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Rift Imp. It strikes twice. Wait for both.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "VDBTDCE3aGuMgxQ2EAGb",
+  "context_request_ids": [
+    "eI0fPow24vvtap1NkPIJ",
+    "V8AATkwFYucxcidhWxrG",
+    "HZIancrLhcSIOM38eS3O"
+  ],
+  "generated_at": 1792970747.3222322,
+  "format": "mp3_44100_192",
+  "seconds": 3.922,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "0b57b4c260daf587bd004838c03c16bae69e7fbe3bb62ec1acaacf1a5518abd6"
+}

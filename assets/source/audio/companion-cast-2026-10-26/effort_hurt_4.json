@@ -1,0 +1,19 @@
+{
+  "file": "effort_hurt_4.wav",
+  "speaker": "RAINORAY",
+  "text": "That hurt!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84729,
+  "generated_at": 1793024821.5338886,
+  "request_id": "QbGMIMSkmVsFnsLgLnZP",
+  "seconds": 0.6693,
+  "peak_dbfs": -7.54,
+  "sha256": "22050acfa99f5733bc2cf5aa6907a7b974ab60bc513875d9ebcbfa5640e971de"
+}

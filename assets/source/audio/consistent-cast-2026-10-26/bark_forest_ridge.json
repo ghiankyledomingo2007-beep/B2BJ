@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_ridge.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I can see the old river from here.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "jTl950r3RUhq2PEYuKt5",
+  "context_request_ids": [
+    "UMOAA5AIoqXPZNwDNHib",
+    "CTkUElGWvXF2ggDYhGiD",
+    "iz06Bnblp2jGZqu4J9gr"
+  ],
+  "generated_at": 1792949098.9329925,
+  "format": "mp3_44100_192",
+  "seconds": 2.043,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "8d55106bfa66556c05150f15573f14da984209ac10848e452df2996dbbff0910"
+}

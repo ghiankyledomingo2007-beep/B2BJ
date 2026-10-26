@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_late_04.wav",
+  "speaker": "RAINORAY",
+  "scene": "AN OPEN WAY",
+  "text": "Then bring the rope. There's a medic waiting beyond the gate.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "fQxAdQCXWszI3D5QvB2Y",
+  "context_request_ids": [
+    "XyQcNea8zmK1P3DcZCMx",
+    "BDjipazAxiZ0sAZbBRQC",
+    "3MRVkmsUZKRyjsXevwr3"
+  ],
+  "generated_at": 1792949048.506912,
+  "format": "mp3_44100_192",
+  "seconds": 3.622,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "f1511de6d45605cb36ee9d0d240e31509b328be1c600ea2d1da49658196125f5"
+}

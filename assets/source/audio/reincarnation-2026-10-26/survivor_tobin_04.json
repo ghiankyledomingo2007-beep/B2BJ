@@ -1,0 +1,25 @@
+{
+  "file": "survivor_tobin_04.wav",
+  "speaker": "TOBIN",
+  "scene": "BEHIND THE FENCE",
+  "text": "The fence came down behind me. I couldn't climb it with this leg.",
+  "voice_id": "CwhRBWXzGAHq8TQ4Fs17",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "ahHfJY07ovdhIGDXt4dM",
+  "context_request_ids": [
+    "uvQsjxkO4NKrEJHbhCYs"
+  ],
+  "generated_at": 1793011349.1428936,
+  "format": "mp3_44100_192",
+  "seconds": 3.901,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "4fa4f43d31dff0f75fd41a857a1868a6f95378e9c39be1b919f0298dc5d28099"
+}

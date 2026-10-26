@@ -1,0 +1,27 @@
+{
+  "file": "bark_hurt_shelter.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "That was closer than I'd planned.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "spQ2zNOnkezRoFMEyZjX",
+  "context_request_ids": [
+    "POR8f7VGvWhfWG0tTPWE",
+    "hiyH2c6GWM7h0phmmaEm",
+    "nUEuEei9F4YhddlEDUlB"
+  ],
+  "generated_at": 1792949076.4028456,
+  "format": "mp3_44100_192",
+  "seconds": 1.718,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "493333247433d8482f1a8d6b04e41593cb2191e050e940f06f78cb5d99cf515b"
+}

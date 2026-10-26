@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_memory_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "They are still growing. Keep to the middle.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "VbbN2UrV7tCQu6GjltHB",
+  "context_request_ids": [
+    "cCm2FLmFM69hwnjMXUes",
+    "iwaABWUBXtW97EhywCpS",
+    "4PWgtpm8BUgWq5IfE6Gq"
+  ],
+  "generated_at": 1793011351.3156967,
+  "format": "mp3_44100_192",
+  "seconds": 3.132,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "083fe2c1458915bb44eb1ba2a764df798d6f1894235eb95b7e1524e779fd503d"
+}

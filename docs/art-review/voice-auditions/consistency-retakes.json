@@ -1,0 +1,586 @@
+{
+  "date": "2026-10-25",
+  "processing": "Clean Rainoray and NPCs; Sage uses approved polish-settings.json; Warden pitch 0.90 with short metallic echo. Master -19 LUFS / -3 dBTP; runtime 22050 Hz mono PCM16",
+  "lines": [
+    {
+      "file": "wake_04.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST WATCH",
+      "text": "There's a lamp beyond the ditch. Please let someone be holding it.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "3VfpySyUYgjwMgFMky8R",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 3.251,
+      "peak_dbfs": -3.35,
+      "sha256": "cccb9277247420238414dc614e3677066a06ad2d41a70421f9798cd1553ac357"
+    },
+    {
+      "file": "signal_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE MISSING NAMES",
+      "text": "No death count. Just names marked missing. Mine is here, too.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "0rlQrlQO3Fz7PD3wABMW",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 3.39,
+      "peak_dbfs": -4.55,
+      "sha256": "5c1317bc9dee900a8982b3662846a6c5c481fac45af627ac435f7608f7a06be4"
+    },
+    {
+      "file": "infirmary_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "ONE EMPTY BED",
+      "text": "A note on the blanket: 'For whoever comes back.'",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "4zQGvPqkOLs70ABx9UmM",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 2.74,
+      "peak_dbfs": -6.61,
+      "sha256": "9553130983a67e20594ce6d06795a943b1904665bc4cc4b34946e5221500552d"
+    },
+    {
+      "file": "infirmary_03.wav",
+      "speaker": "RAINORAY",
+      "scene": "ONE EMPTY BED",
+      "text": "There's a dry dressing underneath. I'll leave it where she can find it.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "HDPjanNbAq9ahBLcokRf",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 3.344,
+      "peak_dbfs": -3.08,
+      "sha256": "00e59d309685605ebe2a457c01d709e2207b7811fc0a7ced5601e96ce18927f3"
+    },
+    {
+      "file": "report_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "STILL MISSING",
+      "text": "I found the evacuation list. You crossed out my name.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "LMJEBUlM0hBmTZdkOTdx",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 3.158,
+      "peak_dbfs": -3.7,
+      "sha256": "857983b19ce78cff0ca1aedb86417d11807b9a44246a034677cdf9a54b23bcf6"
+    },
+    {
+      "file": "gate_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE ROAD OPENS",
+      "text": "The chain is broken. Stretcher tracks run through the gate and into the trees.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "wi9lDryoWugMdaTXYsN5",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 4.18,
+      "peak_dbfs": -4.42,
+      "sha256": "24014aa7a08517ae0e3666c0ab782d9ccbaeef6e575b70d5dace5ed7c10a18cc"
+    },
+    {
+      "file": "camp_after_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "A PLACE TO RETURN TO",
+      "text": "It's open. I'm going after the stretcher tracks.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "qiMaMFCVFQAtNyw7E6hV",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 2.554,
+      "peak_dbfs": -6.3,
+      "sha256": "0c72bfabeb31d620a774575d29250956e278c5c42ffdccd1ccd5a9c5e59fe307"
+    },
+    {
+      "file": "survivor_tobin_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "BEHIND THE FENCE",
+      "text": "Rainoray. Quartermaster. Mostly water, these days.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "SbBvIVUKxn83yaVeQZjV",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 2.926,
+      "peak_dbfs": -3.11,
+      "sha256": "2b99c3a5169b2d7cfba4e668eb31493e1d761d5c4bb1ce609ef207f2316c0a8c"
+    },
+    {
+      "file": "survivor_ilse_05_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "INSIDE THE THORNS",
+      "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "hv66VwcRNsJnjntiSn2T",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 3.994,
+      "peak_dbfs": -3.01,
+      "sha256": "d72afe08b6ac80959195af9dae062d2c67c8b5697e513d354b4eff9d4783e5ef"
+    },
+    {
+      "file": "survivor_venn_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE CULVERT",
+      "text": "Nobody sent me. I'm afraid I'm just late.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "N5SaNHmVWCQET9SePN57",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 2.229,
+      "peak_dbfs": -3.4,
+      "sha256": "bf63d343d2975696d963cbb348baf8ec15fe257893c4192c18ae5fc2e19f8861"
+    },
+    {
+      "file": "survivor_venn_05_stranger.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE CULVERT",
+      "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "5zOyo5xmss51mirhgcxN",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 4.505,
+      "peak_dbfs": -4.38,
+      "sha256": "511b2b809d9123ecf4eb80f70b9b8c4c8be3d717b6d75c81dcb9f72b7723a6c5"
+    },
+    {
+      "file": "ledger_02.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE QUARTERMASTER'S CACHE",
+      "text": "Every crate, every blanket, every name that signed for them.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "meMvvtAUrPs0dPuWqCTa",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 3.065,
+      "peak_dbfs": -6.1,
+      "sha256": "96175547ad3ea93a575391061e15ddd43e4500ecb23ed66a040c080e8a734f83"
+    },
+    {
+      "file": "bark_fight_listen.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Let's listen before we move.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "XRs91JlJ4aMJ4f3FR2mg",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.347,
+      "peak_dbfs": -4.68,
+      "sha256": "6cb4107685d9023809c7a6dbe13a52a16e215738a7edcf3c94da91fc259f50a1"
+    },
+    {
+      "file": "bark_fight_counting.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I preferred counting things.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "XZYcwtlBRsih7fVpIS4j",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.3,
+      "peak_dbfs": -3.1,
+      "sha256": "0d7264712795ddd6b0a0ec3d31b12df7c97784a20bb91247e19dd17ad7608b71"
+    },
+    {
+      "file": "bark_fight_watch.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "One moment. I'll check behind us.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "M5ImYImOCQ7RwyHXSJnm",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.765,
+      "peak_dbfs": -4.14,
+      "sha256": "496dcc9ccc7f7b3a0317992352d4ca59db27a371ea93bf3e4b939543b61467e9"
+    },
+    {
+      "file": "bark_fight_moment.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Give me a moment before we go.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "1daMvirwdjYdqEIx2XNM",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.486,
+      "peak_dbfs": -7.45,
+      "sha256": "b94ecd5ce2c2c38a033f2177315e66184d76de3d9f92e8960445942faa1116cb"
+    },
+    {
+      "file": "bark_hurt_shelter.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "That was closer than I'd planned.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "2AmOqCtHrabEa2g6PW10",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.718,
+      "peak_dbfs": -5.61,
+      "sha256": "26450cc09e58c154f6f0a9e1c218c7d9b064e4d60ae7740aebf3c0d5a7f05b35"
+    },
+    {
+      "file": "bark_walk_quiet.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "Was it always this quiet here?",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "F6AXHQpPJAcozNpRAXXC",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.486,
+      "peak_dbfs": -7.01,
+      "sha256": "db3103d4fde05cd4a5516fe55bc67d963706923cddac225c9b1cdefbd03e2611"
+    },
+    {
+      "file": "bark_walk_map.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "A map never shows how a place feels.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "VhrX9wPwzzLOS6EVLSp0",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 2.276,
+      "peak_dbfs": -5.94,
+      "sha256": "28256abbc30d3fc632a14d9157931ebca965a25d6f0c2616e534a2ea864639f9"
+    },
+    {
+      "file": "bark_walk_nails.wav",
+      "speaker": "RAINORAY",
+      "scene": "EXPLORATION",
+      "text": "I used to worry about missing nails.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "KF4MhEUuxY0KLZWIiCoJ",
+      "format": "mp3_44100_192",
+      "context_request_ids": [
+        "qs7IA9Ls7SsPO8Vb6jns",
+        "9EiBLbiRcpjpePWNaBSJ",
+        "7SDKvhhgoIguxI8Hn1Uh"
+      ],
+      "seconds": 1.95,
+      "peak_dbfs": -6.62,
+      "sha256": "130d1519cc0eec50c887670c4a0395b707758509a80f7a68d15ae85afd8a6358"
+    },
+    {
+      "file": "bark_sage_target.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Ground slam.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "IjdhreWnlH4mM303WuCd",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 1.549,
+      "peak_dbfs": -5.28,
+      "sha256": "cc178404262c6d5ec8045bf76c1c11efd54fd6c3be492fd3c50945cde36a9121"
+    },
+    {
+      "file": "bark_sage_sweep.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Wide sweep.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "5CSIKNA8LIXgyw3krWwc",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 1.503,
+      "peak_dbfs": -4.67,
+      "sha256": "d3ae2c3ca756d9df81a3ef3afd69d6edf6fee747545165495d04025a952cb56a"
+    },
+    {
+      "file": "bark_sage_charge.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Charge.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "FSgyzNrxgbmCJ36iYAwq",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 1.41,
+      "peak_dbfs": -5.96,
+      "sha256": "987cad19dbfb02e17658b7e684bce98dfb779bcac7fa51b45a3f6bd1958bc4f0"
+    },
+    {
+      "file": "bark_sage_shockwave.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Shockwave.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "TzwojJsknNdxamfYW83B",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 1.41,
+      "peak_dbfs": -6.77,
+      "sha256": "c2092780614cbd257280e1d4dc4f949496d10d272b32efd6d7860b148c3517c9"
+    },
+    {
+      "file": "bark_sage_fissure.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Rift strike.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "VnQnUiLtWdUWvNFgDlIw",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 1.642,
+      "peak_dbfs": -5.22,
+      "sha256": "be8e669cb3d5c9f63456b4924e985069ca7129fe17fdc39857e46b92f50008cc"
+    }
+  ]
+}

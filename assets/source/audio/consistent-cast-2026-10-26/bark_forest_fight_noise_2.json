@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_noise_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Quiet was unlikely. Passing through is enough.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "LyvpukUIPe62uKW7Jp5F",
+  "context_request_ids": [
+    "7finEIxlNAIpVRDzhZg9",
+    "EcDFEsV8cz0gmuMQBM7N",
+    "9jioDiJp4glkqHgtE1q9"
+  ],
+  "generated_at": 1792949017.380979,
+  "format": "mp3_44100_192",
+  "seconds": 3.643,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "ca0619231bb1df54315274344cde2568843c8ef30a33d7db6df8ca2379174252"
+}

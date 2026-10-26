@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_thoughts.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "You can talk without being asked.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ClS3yEow9AiXGTxlW6iw",
+  "context_request_ids": [
+    "bFZAP80wi9OYZdXtYUHt",
+    "t9HGa0ixDKDDV4tscOlN",
+    "piOxTXmaatUcz8LUvwhK"
+  ],
+  "generated_at": 1792949082.867611,
+  "format": "mp3_44100_192",
+  "seconds": 1.718,
+  "peak_dbfs": -4.04,
+  "tempo": 1,
+  "sha256": "e61a211f8b5b11007d302ee25bc2d90891100486b390dab3b48339195dfb1cc8"
+}

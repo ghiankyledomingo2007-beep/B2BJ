@@ -1,0 +1,28 @@
+{
+  "file": "bark_sage_hit_footing.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "SAGE_HIT_FOOTING",
+  "text": "Watch your footing.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "yCgxIc70Nmn3VbCdnQQI",
+  "context_request_ids": [
+    "f19YMa7QMvVHonkiYKJu",
+    "lrU5zWFy60CbvgSB2yrY",
+    "YwBZ9eP9YI5JihrYTeX7"
+  ],
+  "generated_at": 1793024806.8550084,
+  "format": "mp3_44100_192",
+  "seconds": 1.786,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "c977b479bee636551fcde78cd6af699aa13c649cc6f9aa4440e31e4f5d53459e"
+}

@@ -1,0 +1,26 @@
+{
+  "file": "bark_walk_feet.wav",
+  "speaker": "RAINORAY",
+  "scene": "WALK_FEET",
+  "text": "How do I trip without feet?",
+  "spoken_text": "",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "cuudy8HDIhRI0FaOdvYC",
+  "context_request_ids": [
+    "BV5jGnfSrgnSPW4WoWoy"
+  ],
+  "generated_at": 1793024783.3596296,
+  "format": "mp3_44100_192",
+  "seconds": 1.347,
+  "peak_dbfs": -4.11,
+  "tempo": 1,
+  "sha256": "878401cd9d35800ebb051e2b7f22fcf4e7d65da537926b765fb20efd96135529"
+}

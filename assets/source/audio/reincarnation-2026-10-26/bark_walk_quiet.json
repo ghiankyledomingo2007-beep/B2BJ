@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_quiet.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Was this a busy road once?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "8g4jTWJvA5MsYtcN44J4",
+  "context_request_ids": [
+    "mXT2dbAVeHVtqZXN6UZY",
+    "Vuw2r3iSN95J8mgUduEA",
+    "EAy6hdtyfvClJmjwDCA6"
+  ],
+  "generated_at": 1793011372.2982314,
+  "format": "mp3_44100_192",
+  "seconds": 1.625,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "742f0b6cde7bf440043370e17aa4352be34cdbd580e2c4ef78160516c5b2ad53"
+}

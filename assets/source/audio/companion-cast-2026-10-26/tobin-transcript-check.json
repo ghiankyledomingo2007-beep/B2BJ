@@ -1,0 +1,26 @@
+[
+  {
+    "file": "survivor_tobin_01.wav",
+    "expected": "Who's there? If you're a rift thing, I'm mostly bandages. Poor eating.",
+    "recognized": "Who's there? If you're a Rift thing, I'm mostly bandages. Poor eating. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_tobin_03.wav",
+    "expected": "Kaijin. I worked on the gate relay. That sound means the Warden's still running a broken order.",
+    "recognized": "Kai Jin. I worked on the gate relay. That sound means the warden's still running a broken order. ",
+    "match": 0.919
+  },
+  {
+    "file": "survivor_tobin_04.wav",
+    "expected": "The fence came down behind me. I couldn't climb it with this leg.",
+    "recognized": "The fence came down behind me. I couldn't climb it with this leg. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_tobin_06.wav",
+    "expected": "For a lamp? I'll crawl. Thank you.",
+    "recognized": "For a lamp? I'll crawl. Thank you.",
+    "match": 1.0
+  }
+]

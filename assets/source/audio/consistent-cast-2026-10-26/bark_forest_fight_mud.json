@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_mud.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "That was a very expensive patch of mud.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "JhnImq5v9YV90y7zjq6K",
+  "context_request_ids": [
+    "ELY3SaDp6G6zgODG3eI1",
+    "xiQeDNNkniSvVH1ULjqv",
+    "hCpG1nUgpwDIIGtivvv3"
+  ],
+  "generated_at": 1792949104.7376058,
+  "format": "mp3_44100_192",
+  "seconds": 2.368,
+  "peak_dbfs": -4.04,
+  "tempo": 1,
+  "sha256": "bd806a2a6a4b7bb69d9a2530c523477984ab9cc32314c3adbcd6a4a3986b527a"
+}

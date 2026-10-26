@@ -1,0 +1,23 @@
+{
+  "file": "forest_arrival_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE WHITE CLOTH",
+  "text": "And stopping often. There is cloth tied ahead.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "WL8Bipv3IuyCF3tQlBqR",
+  "context_request_ids": [],
+  "generated_at": 1792948989.2351792,
+  "format": "mp3_44100_192",
+  "seconds": 3.597,
+  "peak_dbfs": -3.83,
+  "tempo": 1,
+  "sha256": "019bbb20b6db29f16224c03907738461f5e166b65614d20a5191d322537fb623"
+}

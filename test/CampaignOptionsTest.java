@@ -28,7 +28,7 @@ public final class CampaignOptionsTest {
         }
         List<Component> controls = descendants(panel);
         List<JSlider> sliders = controls.stream().filter(JSlider.class::isInstance).map(JSlider.class::cast).toList();
-        assert sliders.size() == 3 : "master, sound effects and music need native volume sliders";
+        assert sliders.size() == 4 : "master, sound effects, dialogue and music need native volume sliders";
         for (JSlider slider : sliders) {
             assert slider.getMinimum() == 0 && slider.getMaximum() == 100;
             assert controls.stream().anyMatch(component -> component instanceof JLabel label && label.getLabelFor() == slider)
@@ -36,6 +36,7 @@ public final class CampaignOptionsTest {
             slider.setValue(0);
         }
         assert volume("masterVolume") == 0 && volume("sfxVolume") == 0 && volume("musicVolume") == 0;
+        assert volume("dialogueVolume") == 0;
         JCheckBox effects = controls.stream().filter(JCheckBox.class::isInstance).map(JCheckBox.class::cast).findFirst().orElseThrow();
         assert effects.isSelected() : "panel must reflect existing reduced-effects setting";
         effects.doClick();
@@ -44,8 +45,8 @@ public final class CampaignOptionsTest {
         assert reduced[0] : "checkbox must update game effects setting";
         String help = controls.stream().filter(JTextArea.class::isInstance).map(JTextArea.class::cast)
                 .map(JTextArea::getText).reduce("", (a, b) -> a + b);
-        assert help.contains("WASD") && help.contains("Space") && help.contains("session")
-                : "options must explain controls and session-only settings";
+        assert help.contains("immediately") && help.contains("session")
+                : "options must explain when changes apply and that they are session-only";
         for (JSlider slider : sliders) slider.setValue(slider.getName().equals("musicVolume") ? 25 : 100);
     }
 

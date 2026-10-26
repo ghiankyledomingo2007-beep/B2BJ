@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_grove.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "The cloth is caught up there.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "iz06Bnblp2jGZqu4J9gr",
+  "context_request_ids": [
+    "jq96zZhhqwMnLz3l3jLS",
+    "UMOAA5AIoqXPZNwDNHib",
+    "CTkUElGWvXF2ggDYhGiD"
+  ],
+  "generated_at": 1792949097.8175483,
+  "format": "mp3_44100_192",
+  "seconds": 1.858,
+  "peak_dbfs": -4.11,
+  "tempo": 1,
+  "sha256": "cec6abb2a8dce573ac6543e0f02301b92e60b18373c0e232e448c560d93b6c02"
+}

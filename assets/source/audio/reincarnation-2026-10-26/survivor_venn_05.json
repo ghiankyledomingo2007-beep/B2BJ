@@ -1,0 +1,27 @@
+{
+  "file": "survivor_venn_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE CULVERT",
+  "text": "Shuna is keeping a fire at Captain Camp. She has room for you.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "4k4xI7c0Q0A2Lbx3gOOg",
+  "context_request_ids": [
+    "WOavqShPyCz1yRAGBECr",
+    "6Nzv1REBXNqn5NeFD8fx",
+    "fBE8Lfwy8QDw803lvfXE"
+  ],
+  "generated_at": 1793011360.7097363,
+  "format": "mp3_44100_192",
+  "seconds": 4.087,
+  "peak_dbfs": -3.47,
+  "tempo": 1,
+  "sha256": "e3aee369777d9affe1a68fb87ec559bdbf14e3112ed8af6a76c5c8a9b6f51e54"
+}

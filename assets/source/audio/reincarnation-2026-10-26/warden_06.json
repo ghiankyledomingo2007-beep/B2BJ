@@ -1,0 +1,27 @@
+{
+  "file": "warden_06.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE LAST ORDER",
+  "text": "Not from here. Keep moving. I need to see how it fights.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "dpzlGWc2Zp0nIUBbeJQI",
+  "context_request_ids": [
+    "xS8oA4q8wxaJ4RHx6mw0",
+    "75QG6tVQjv4TsJGtKdam",
+    "iM2wVdY8vC8VQTc6ZMXq"
+  ],
+  "generated_at": 1793011343.0601637,
+  "format": "mp3_44100_192",
+  "seconds": 4.804,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "b7704e05c2512d1978791cc6b5b4cc8aea3bc5b356a1a0054d823be61dc77f44"
+}

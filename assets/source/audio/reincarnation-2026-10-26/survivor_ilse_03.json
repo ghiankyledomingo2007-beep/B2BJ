@@ -1,0 +1,23 @@
+{
+  "file": "survivor_ilse_03.wav",
+  "speaker": "ILSE",
+  "scene": "INSIDE THE THORNS",
+  "text": "Eren. I was scouting the road. Those roots moved against the wind, then closed behind me.",
+  "voice_id": "pFZP5JQG7iQjIQuC4Bku",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "I418R2blibfHIclkqyNp",
+  "context_request_ids": [],
+  "generated_at": 1793011351.0968924,
+  "format": "mp3_44100_192",
+  "seconds": 7.012,
+  "peak_dbfs": -3.97,
+  "tempo": 1,
+  "sha256": "7dde7cccdf214376a99730d9ffd4084b93526c326e70529c1a4bee96e5144488"
+}

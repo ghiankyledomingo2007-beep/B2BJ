@@ -1,0 +1,25 @@
+{
+  "file": "bark_identify_guard.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Outpost guard. Let the shield swing past.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "eI0fPow24vvtap1NkPIJ",
+  "context_request_ids": [
+    "kQQO1cRFXZXThQAfw3L4"
+  ],
+  "generated_at": 1792970742.628992,
+  "format": "mp3_44100_192",
+  "seconds": 3.365,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "b05bcc1b26d443ab2e2805d27e062ffbab86292693aa1fc8f7fc978f1fac7580"
+}

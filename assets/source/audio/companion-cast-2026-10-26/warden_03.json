@@ -1,0 +1,29 @@
+{
+  "file": "warden_03.wav",
+  "speaker": "WARDEN",
+  "scene": "THE LAST ORDER",
+  "text": "THE ROAD IS SEALED FOR THEIR PROTECTION.",
+  "spoken_text": "The road is sealed for their protection.",
+  "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.2,
+    "use_speaker_boost": true,
+    "speed": 0.95
+  },
+  "seed": 84722,
+  "request_id": "BDHXRDISNHB7vRUagd3e",
+  "context_request_ids": [
+    "5LFqY7m3HFASpQhQi0Sh",
+    "xd0Zqq5DhACAxezaMzMr",
+    "zHoeryF7dqVUOP3vVd4V"
+  ],
+  "generated_at": 1793024789.5418139,
+  "format": "mp3_44100_192",
+  "seconds": 2.601,
+  "peak_dbfs": -4.05,
+  "tempo": 1,
+  "sha256": "5119361bab8f85f2da1adc80830d7b7e42cd82db4a96d555d72772076c4ebf14"
+}

@@ -1,0 +1,25 @@
+{
+  "file": "survivor_venn_06.wav",
+  "speaker": "VENN",
+  "scene": "THE CULVERT",
+  "text": "Shuna. Good. Then I'll go and be shouted at properly.",
+  "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "dvE6SFIpT8Xu6DFiZwgc",
+  "context_request_ids": [
+    "sigASA2LoSFJ5bMAwMzM"
+  ],
+  "generated_at": 1793011356.0143075,
+  "format": "mp3_44100_192",
+  "seconds": 3.808,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "d65b3145e19fbf7cd0903f2616a9f994f684bf4a9890f540ed3d340f85028e2d"
+}

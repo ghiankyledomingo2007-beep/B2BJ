@@ -1,0 +1,27 @@
+{
+  "file": "bark_hurt_distance.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "All right. A little less bravery.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "riaZhvRiSk8nxVgUh3z1",
+  "context_request_ids": [
+    "hiyH2c6GWM7h0phmmaEm",
+    "nUEuEei9F4YhddlEDUlB",
+    "spQ2zNOnkezRoFMEyZjX"
+  ],
+  "generated_at": 1792949077.3781757,
+  "format": "mp3_44100_192",
+  "seconds": 2.043,
+  "peak_dbfs": -4.07,
+  "tempo": 1,
+  "sha256": "41ef16aa22b471ed6c908babd848f5ee9cbd3f668e061995ca628d8b61bfa50d"
+}

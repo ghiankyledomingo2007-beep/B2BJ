@@ -1,0 +1,28 @@
+{
+  "file": "bark_sage_hit_stay.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "SAGE_HIT_STAY",
+  "text": "I'm here. Keep moving.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "YwBZ9eP9YI5JihrYTeX7",
+  "context_request_ids": [
+    "NH6BqnGcnEA8eOAo7vdG",
+    "f19YMa7QMvVHonkiYKJu",
+    "lrU5zWFy60CbvgSB2yrY"
+  ],
+  "generated_at": 1793024805.6739862,
+  "format": "mp3_44100_192",
+  "seconds": 2.343,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "32cfb210edbf0a715fdd17caed10d97facae611a3adc3e6785d8bcada1179326"
+}

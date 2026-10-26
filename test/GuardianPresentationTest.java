@@ -115,7 +115,7 @@ public final class GuardianPresentationTest {
         }
         assert poses.size()==5 : "five attacks must not silently share the same preparation pose";
         var briar=new Guardian(0,0,Guardian.Profile.BRIARHEART);briar.activate(100,0);
-        assert briar.telegraphDuration()==1.05&&briar.actionFrame()==-1 : "other boss art and timing stay separate";
+        assert briar.telegraphDuration()==1.65&&briar.actionFrame()==-1 : "forest roots keep their longer preparation and own art";
     }
     private static void set(Object object,String name,Object value) throws Exception {
         var field=object.getClass().getDeclaredField(name);field.setAccessible(true);field.set(object,value);

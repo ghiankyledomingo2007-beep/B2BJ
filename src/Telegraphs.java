@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 
-/** Small direction glints for enemy windups, painted at native resolution and shown at 2x. */
+/** Ground warnings at native resolution, shown at 2x. */
 final class Telegraphs {
     static final int FRONT = 0xff9c80, AIM = 0xff7a5c;
 
@@ -58,6 +58,41 @@ final class Telegraphs {
         put(tipX, tipY, FRONT, spark);
         put(tipX - 1, tipY, AIM, spark / 2); put(tipX + 1, tipY, AIM, spark / 2);
         put(tipX, tipY - 1, AIM, spark / 2); put(tipX, tipY + 1, AIM, spark / 2);
+    }
+
+    /** Soil splits into branching roots; no circular rim or expanding countdown ring. */
+    void bloom(double cx,double cy,double radius,double charge,boolean active) {
+        int left=clampX(cx-radius-2),right=clampX(cx+radius+2),top=clampY(cy-radius-2),bottom=clampY(cy+radius+2);
+        for(int y=top;y<=bottom;y++)for(int x=left;x<=right;x++) {
+            double distance=Math.hypot(x-cx,y-cy);
+            if(distance>radius)continue;
+            double angle=Math.atan2(y-cy,x-cx);
+            double vein=Math.abs(Math.sin(angle*5+distance*.09))*distance;
+            boolean grown=distance<radius*(.3+.7*clamp(charge));
+            if(vein<(active?3:1.5))
+                put(x,y,active?vein<1?0xb1ba7e:0x596349:grown?0x9ba47c:0x3e4939,active?220:grown?155:85);
+            else if(((x*7+y*11)&15)<3&&distance<radius*.93)
+                put(x,y,active?0x30382f:0x423e32,active?135:75);
+        }
+    }
+
+    /** Bark veins occupy the committed lane without drawing a rectangular warning outline. */
+    void root(double cx,double cy,double w,double h,double charge,boolean active) {
+        int left=clampX(cx-w/2),right=clampX(cx+w/2),top=clampY(cy-h/2),bottom=clampY(cy+h/2);
+        boolean across=w>h;
+        for(int y=top;y<=bottom;y++)for(int x=left;x<=right;x++) {
+            double dx=Math.abs(x-cx),dy=Math.abs(y-cy);
+            if(dx>w/2||dy>h/2)continue;
+            double along=across?x-cx:y-cy,side=across?y-cy:x-cx;
+            double breadth=(across?h:w)/2;
+            double bend=Math.sin(along*.045)*breadth*.19+Math.sin(along*.12)*1.5;
+            double fork=Math.sin(along*.025+1.4)*breadth*.52;
+            double distance=Math.min(Math.abs(side-bend),Math.abs(side-bend-fork));
+            double thickness=active?3+2*Math.sin(along*.018+2):1;
+            boolean grown=Math.abs(along)/((across?w:h)/2)<.15+.85*clamp(charge);
+            if(distance<thickness)put(x,y,active?distance<1?0xb49665:side<bend?0x796349:0x30272b:grown?0xb4aaa1:0x796349,active?245:grown?85:40);
+            else if(((x*7+y*11)&15)<3)put(x,y,active?0x70553b:0x423e32,active?110:65);
+        }
     }
 
     private static double clamp(double v) { return v < 0 ? 0 : v > 1 ? 1 : v; }

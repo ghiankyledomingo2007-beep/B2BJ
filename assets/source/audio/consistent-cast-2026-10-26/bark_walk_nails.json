@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_nails.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I used to worry about missing nails.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "1XoQHROwTlWqUVn74mmh",
+  "context_request_ids": [
+    "QPdDsHJqHDdyKQdk323m",
+    "nt1d7o4BvwPwfnKEcNIE",
+    "dpVA3hMhBABrvHoA5j3O"
+  ],
+  "generated_at": 1792949088.6827686,
+  "format": "mp3_44100_192",
+  "seconds": 1.904,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "4ed343a998831ac8c64a60e7835b2f5a7b687a774cb89d59ae387a84106c3e66"
+}

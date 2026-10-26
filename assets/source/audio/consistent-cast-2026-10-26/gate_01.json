@@ -1,0 +1,27 @@
+{
+  "file": "gate_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE ROAD OPENS",
+  "text": "The chain is broken. Stretcher tracks run through the gate and into the trees.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "gZOTS8s4cuttPnDRLZq1",
+  "context_request_ids": [
+    "SE9ghkE8HOo6Gp6z3z9b",
+    "sqDqVzWewN9X5BptOxMW",
+    "PaDU8zuua3sGlG5N4Avw"
+  ],
+  "generated_at": 1792949016.9028146,
+  "format": "mp3_44100_192",
+  "seconds": 3.947,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "5b8d3144882d805b71c86fb97c4930065e10cda997d06d03529ac15ecefa1b5f"
+}

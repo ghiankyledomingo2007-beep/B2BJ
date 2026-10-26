@@ -1,0 +1,56 @@
+{
+  "transcript": "Rain, cold stone. I was in the supply room a moment ago. One more count before dawn. That's what I kept telling myself. No hands, no boots. I seem to have kept the exhaustion. There's a lamp beyond the ditch. Please let someone be holding it. Easy. The last thing that crawled out of that ditch tried to eat my boots. I'll try to be a better guest. I'm Rain-a-ray, quartermaster. Rain-a-ray? Your supplies reached us. You never did. I'm having some trouble accounting for myself. Where is everyone? We sent the wounded east. Then the rift struck the gatehouse. The warden turned on the road it was guarding. And you stayed? Someone has to be here if they come back. I'm Mara. Follow the torn banners east to muster ground. The road runs on through inner court to the gate. Someone called from the storehouse south of that road. You might fit under its fence. The dead still draw back before they strike. Step aside, then answer. East past the banners, then north at inner court. The signal tower lies north of camp if you need bearings. East, then north. I used to mark those supply routes myself. Rest to steady your I-Corps. Leave supplies here or at a lit brazier. We'll gather them. The gate's quiet. Was that your doing? Rain-a-ray, quartermaster. I was looking for a way out. You're the name on our supply slips? I'm Mara. I kept a bed for you. We sent the wounded east before the warden turned. I tried to follow, but the roots had closed the forest road. Then that's where I'll look next. Come back if you find them. Come back if you don't too. A dispatch folded under the bell rope. Hold the east road until the last stretcher passes. No death count, just names marked missing. Mine is here too. Someone crossed it out, then wrote it back in. Mara should see this. Someone crossed it out, then wrote it back in. Someone wasn't sure. Every bed was stripped for bandages except this one. A note on the blanket for whoever comes back. There's a dry dressing underneath. I'll leave it where she can find it. My seal. These are the crates I stayed to count. Blankets on top. Leave the weapons if the cart is too heavy. My handwriting too. The blankets are gone. Good, at least that part worked. I found the evacuation list. You crossed out my name. I thought I'd seen you fall. Then I thought of how far away I was. So you wrote it back in? Yes, I'm glad I did. Halt, the last stretcher has not passed. They're gone. Mara's the only one left. Open the gate. There's no stretcher on this road. Let me through. Someone may still need help. People are still coming back. You're blocking their way. Open the gate. I-Corps detected. You are not on the evacuation list. Rain-a-ray, quartermaster. You watched me bring those supplies in. Quartermaster deceased. Hold the road. Then you'll have to stop me twice. The chain is broken. Stretcher tracks run through the gate and into the trees. Only one set of footprints comes back, Mara's. Only one set of footprints comes back toward camp. The others got this far. I can follow them. The gate's quiet. It's open. I'm going after the stretcher tracks. I tried. The roots have swallowed the road. There's a dry scarf by the fire. Take it before you go. I'm not sure it would stay on. Then I'll keep it dry. Who's there? If you're a rift thing, I'm mostly bandages. Poor eating. Rain-a-ray, quartermaster. Mostly water these days. The quartermaster? We carried your crates out and left your name on the list. The fence came down behind me. I couldn't climb it, and nothing friendly fits under. Mara's lamp is still lit at captain camp. Can you make it that far? There's a lamp by the captain's tent. Head there. Someone is keeping it lit. For a lamp? I'll crawl. Thank you. Stay back. I've got one good arm, and I'm not afraid to use it. Rain-a-ray, quartermaster. I cut the thorns, not you. Ilsa, signals. I hid in here when the brambles came up. They grew faster than I could cut. That chest is the quartermaster's cache, locked tight, and the key went with the storehouse. Then it's still my job. Go to Mara's lamp at captain camp. There's a lamp by the captain's tent. Head there. Someone is keeping it lit. If anyone can find one small key in this mess, it's the man who counted every nail. Took them long enough to send someone. I pictured someone taller. Nobody sent me. I'm afraid I'm just late. Venn, sergeant once. I told the stretcher crew to go on without me. Then the culvert silted up, and I spent a week talking to the rain. Mara is keeping a fire at captain camp. She has room for you. There's a lamp by the captain's tent. Head there. Someone is keeping it lit. Mara, good. Then I'll go and be shouted at properly. The cache opens. Bandages, a little coin, and my ledger. Every crate, every blanket, every name that signed for them. Tobin, Ilsa, Venn all signed the same morning. I'll see that the count comes out right. Someone walked into my camp tonight and asked for you by name. They were still out there waiting. I couldn't leave them. Then keep looking. The dispatch listed more people than the warden let through. Tobin, Ilsa, and Venn, three beds that aren't empty anymore. The count finally adds up, better than I'd hoped. Ilsa found the last of the good tea. Take the coin we were saving with it. You've earned both. Keep to the road. I'll keep the lamp lit. One name off the missing list. Keep looking. Watch its windup, then move. I only need one opening. More power, less control. Good, I'll use that. Fall back. You need room. The road's open. And you are still here?",
+  "differences": [
+    {
+      "expected": "rainoray",
+      "heard": "rain a ray"
+    },
+    {
+      "expected": "rainoray",
+      "heard": "rain a ray"
+    },
+    {
+      "expected": "ichor",
+      "heard": "i corps"
+    },
+    {
+      "expected": "rainoray",
+      "heard": "rain a ray"
+    },
+    {
+      "expected": "ichor",
+      "heard": "i corps"
+    },
+    {
+      "expected": "rainoray",
+      "heard": "rain a ray"
+    },
+    {
+      "expected": "rainoray",
+      "heard": "rain a ray"
+    },
+    {
+      "expected": "rainoray",
+      "heard": "rain a ray"
+    },
+    {
+      "expected": "ilse",
+      "heard": "ilsa"
+    },
+    {
+      "expected": "ilse",
+      "heard": "ilsa"
+    },
+    {
+      "expected": "ilse",
+      "heard": "ilsa"
+    },
+    {
+      "expected": "ilse",
+      "heard": "ilsa"
+    }
+  ],
+  "expected_words": 1074,
+  "transcribed_words": 1088,
+  "review": "No omitted or added dialogue detected. Differences are transcriber spellings of Rainoray, Ichor and Ilse; name pronunciation still needs listening."
+}

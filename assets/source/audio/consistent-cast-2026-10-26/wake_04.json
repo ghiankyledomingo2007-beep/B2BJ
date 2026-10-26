@@ -1,0 +1,27 @@
+{
+  "file": "wake_04.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST WATCH",
+  "text": "There's a lamp beyond the ditch. Please let someone be holding it.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "O3m63kSYARuM9dGr1cbo",
+  "context_request_ids": [
+    "G7r7cONxNsxlK0NWjCMH",
+    "IhzN8MogsaLh6ZA4TV0N",
+    "3Q4GuWCGlegfKAvWoPUg"
+  ],
+  "generated_at": 1792948878.8396006,
+  "format": "mp3_44100_192",
+  "seconds": 3.344,
+  "peak_dbfs": -4.04,
+  "tempo": 1,
+  "sha256": "b5a8e63f4e74be678f747e4d563007af0d5475349a1831437e6c021fc00dbc1e"
+}

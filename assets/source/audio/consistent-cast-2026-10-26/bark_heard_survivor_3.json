@@ -1,0 +1,27 @@
+{
+  "file": "bark_heard_survivor_3.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Then we're not leaving them here.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "vYI6DLqc3BPqwqsEEdgt",
+  "context_request_ids": [
+    "W4wvvLbv621kxXOk8kcQ",
+    "xC2A36zZpp7vmO1G0uRJ",
+    "id30AlmemxymWzsJafQe"
+  ],
+  "generated_at": 1792949064.1634963,
+  "format": "mp3_44100_192",
+  "seconds": 1.533,
+  "peak_dbfs": -4.13,
+  "tempo": 1,
+  "sha256": "be17ec95112fa9c185639dab3f3c7926bf9d0b46c5a24e2a12589486b8fc69fa"
+}

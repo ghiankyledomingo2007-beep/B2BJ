@@ -96,7 +96,7 @@ public final class OutpostStory {
             };
             case COMPLETE -> new String[] {
                     "BRIARHEART'S ROOTS LOOSEN ABOVE THE STAIR.",
-                    "THE CATACOMBS RING BELOW. THIS IS ONLY THE BEGINNING.",
+                    "THE SURVIVORS HAVE A ROAD HOME. SHUNA'S LAMP IS STILL LIT.",
                     "PRESS R TO RUN AGAIN"
             };
             case DEAD -> new String[] {

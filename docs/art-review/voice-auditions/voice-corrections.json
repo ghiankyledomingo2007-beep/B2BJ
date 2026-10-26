@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-25",
+  "processing": "Clean Rainoray and NPCs; Sage uses approved polish-settings.json; Warden pitch 0.90 with short metallic echo. Master -19 LUFS / -3 dBTP; runtime 22050 Hz mono PCM16",
+  "lines": [
+    {
+      "file": "wake_01.wav",
+      "speaker": "RAINORAY",
+      "scene": "THE LAST WATCH",
+      "text": "Rain. Cold stone. I was in the supply room a moment ago.",
+      "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.6,
+        "similarity_boost": 0.55,
+        "style": 0,
+        "use_speaker_boost": false
+      },
+      "request_id": "7SDKvhhgoIguxI8Hn1Uh",
+      "format": "mp3_44100_192",
+      "seconds": 3.297,
+      "peak_dbfs": -4.43,
+      "sha256": "9f454fca80ad98b935de6dbb8f28c6102776d79cac75cdb1245bf919c3c766ec"
+    },
+    {
+      "file": "bark_after_rescue.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "One name off the missing list. Keep looking.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "8kkQvXbva5tDCDJfXqiZ",
+      "format": "mp3_44100_192",
+      "seconds": 2.993,
+      "peak_dbfs": -3.33,
+      "sha256": "f9457cd09254c3d3b44d0d689694ca32e57d88b4cf2c7082d4c2c9b0969612ab"
+    }
+  ]
+}

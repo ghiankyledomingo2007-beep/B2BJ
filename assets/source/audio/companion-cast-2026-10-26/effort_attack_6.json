@@ -1,0 +1,19 @@
+{
+  "file": "effort_attack_6.wav",
+  "speaker": "RAINORAY",
+  "text": "Take that!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84725,
+  "generated_at": 1793024819.1640215,
+  "request_id": "EjqQZtChzhhWLio0w1ss",
+  "seconds": 0.6528,
+  "peak_dbfs": -7.54,
+  "sha256": "b5a51f9cac00276f138d0a4a6c3d6a856ea0b8a420fcb4472e99fd896afa4a98"
+}

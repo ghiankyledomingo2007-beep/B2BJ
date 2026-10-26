@@ -1,0 +1,27 @@
+{
+  "file": "camp_06.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAMP AT CAMP",
+  "text": "And you stayed?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "wMmm0ewJkALCQCfxKxqd",
+  "context_request_ids": [
+    "O3m63kSYARuM9dGr1cbo",
+    "11jXDR1LyM83Utgb0jhR",
+    "xDrgCcAezPvzz1n0p4uR"
+  ],
+  "generated_at": 1792948991.6170392,
+  "format": "mp3_44100_192",
+  "seconds": 0.975,
+  "peak_dbfs": -4.22,
+  "tempo": 1,
+  "sha256": "5bc5bf4a4de2072bd44be3300538f5749f4e812395c36a55b1b0277fc7e40428"
+}

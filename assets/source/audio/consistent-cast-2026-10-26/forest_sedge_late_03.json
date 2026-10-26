@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_late_03.wav",
+  "speaker": "SEDGE",
+  "scene": "AN OPEN WAY",
+  "text": "Under the old stair. They were alive when the roots shut it. I'm Sedge. I can help carry them.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "ZyBBEzEptWHo9Ntayrtf",
+  "context_request_ids": [
+    "of7LvjJ0dHL6vPBTikJI",
+    "RqEk87IXCY8X3mrGxOa2",
+    "DiqPlOm2hQeuojXbeulr"
+  ],
+  "generated_at": 1792949006.4091954,
+  "format": "mp3_44100_192",
+  "seconds": 7.291,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "cc22489a3ab8dcfe8b494ef356fe9f73dec1d9381a68e2b607916f4e2a54f482"
+}

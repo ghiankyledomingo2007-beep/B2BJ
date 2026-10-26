@@ -1,0 +1,27 @@
+{
+  "file": "forest_end_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST STRETCHER",
+  "text": "There's a lamp below. Someone answered.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "Xhu1QUvKMscuhJkjxoXJ",
+  "context_request_ids": [
+    "9zBQW0HlI28T8cp2RO3w",
+    "68Ym3oaNJGURD41TfvsX",
+    "rqtJCOPx1nGRiNx5Vcc2"
+  ],
+  "generated_at": 1792949059.737723,
+  "format": "mp3_44100_192",
+  "seconds": 2.415,
+  "peak_dbfs": -4.09,
+  "tempo": 1,
+  "sha256": "2006de1c20ce46e592dc9aea0c44241c8656eca8fb92060f3db9118e7c7b7201"
+}

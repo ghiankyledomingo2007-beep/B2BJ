@@ -1,0 +1,26 @@
+{
+  "file": "forest_wayfinder_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "A PATH BACK",
+  "text": "The marks face both ways.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "EfgluTavTNez3TXniPWe",
+  "context_request_ids": [
+    "WL8Bipv3IuyCF3tQlBqR",
+    "gbFJLGpnAeFw5mZpzEdF"
+  ],
+  "generated_at": 1792948992.546747,
+  "format": "mp3_44100_192",
+  "seconds": 2.529,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "d436ab492fc26948ef09c0e386d87ce49fa1bc2a99117bbdb06420a2813dfe09"
+}

@@ -19,7 +19,9 @@ public final class GuardianTest {
         assert attacks.contains(Guardian.Attack.CHARGE)&&attacks.contains(Guardian.Attack.SHOCKWAVE)
                 : "boss needs different answers to ranged spacing";
         g.hurt(Guardian.MAX_HEALTH/2);
-        assert g.enraged() : "half health activates second phase";
+        assert !g.enraged() : "half health queues phase two without changing a committed attack";
+        for(int i=0;i<800&&!g.enraged();i++)g.update(.01,g.x()+600,g.y());
+        assert g.enraged() : "phase two starts after the recovery and transition";
         assert Guardian.MAX_HEALTH > Player.BLADE_DAMAGE*Player.BLADE_DURATION/Player.ATTACK_COOLDOWN
                 : "boss must exceed one uninterrupted base transformation";
         g.hurt(Guardian.MAX_HEALTH);

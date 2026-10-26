@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE STRANDED CROSSING",
+  "text": "Rainoray. Shuna is waiting beyond the gate. The road is open now.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "C7vhg6kqQCxt5XxePz8I",
+  "context_request_ids": [
+    "4k4xI7c0Q0A2Lbx3gOOg",
+    "ZB0KGWj1BOZN1oqmAwsQ",
+    "YJreNrjXjlWX2qrrRDAr"
+  ],
+  "generated_at": 1793011364.6521053,
+  "format": "mp3_44100_192",
+  "seconds": 4.226,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "44ce42adf6588b5c93400607e2b4568c1ef3994e13d512354c2dd619427283a6"
+}

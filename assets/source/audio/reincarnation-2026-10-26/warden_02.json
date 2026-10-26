@@ -1,0 +1,27 @@
+{
+  "file": "warden_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST ORDER",
+  "text": "There are people on the other side.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "SbXlYVOXsMldSNSO0enb",
+  "context_request_ids": [
+    "8jfjFBNb0NkFkOTD8xL1",
+    "SuyHkWZ3UL1ayrN8RakO",
+    "39XUYhZ3ukJaMy2tT5fX"
+  ],
+  "generated_at": 1793011351.2375727,
+  "format": "mp3_44100_192",
+  "seconds": 1.672,
+  "peak_dbfs": -4.47,
+  "tempo": 1,
+  "sha256": "78a2638de6c8788282f70095e081c39ba9e4ba1392b3a4ac1c112afa7f0c034b"
+}

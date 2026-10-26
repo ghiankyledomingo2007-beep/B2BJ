@@ -1,0 +1,27 @@
+{
+  "file": "wake_13.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE MORE CHANCE",
+  "text": "Someone's still out there.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "CAACZUoV0A5fZKCmgjSD",
+  "context_request_ids": [
+    "b9EW8Z41K2vqWP57clto",
+    "HE2TESlcU3F4UpAmVyE3",
+    "vSWVODyLmA3bIoSfHJSz"
+  ],
+  "generated_at": 1793011333.778754,
+  "format": "mp3_44100_192",
+  "seconds": 1.3,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "a12dc1fd2b042e1db391d603b70bc33b97181068f055f56bb0b516c74b76435b"
+}

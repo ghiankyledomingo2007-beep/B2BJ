@@ -1,0 +1,27 @@
+{
+  "file": "wake_10.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "ONE MORE CHANCE",
+  "text": "For a while. Once we have enough Ichor.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "ZHn18RH0g91o3JnUgqpO",
+  "context_request_ids": [
+    "9xuzfGnlOI1RYkRFEt8w",
+    "QEilodLIViV4tcDYi7MO",
+    "WP64tGxap1Lltd3jiFAm"
+  ],
+  "generated_at": 1793011334.3268414,
+  "format": "mp3_44100_192",
+  "seconds": 3.597,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "74f8f48192c8f09fc42f20b0d49a2aa68a47c0d507d901b09702a3f1d21c27ab"
+}

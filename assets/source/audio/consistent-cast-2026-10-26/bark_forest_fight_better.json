@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_better.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "That felt a little less accidental.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "fY5CrgKeU3fAJnx1hR6d",
+  "context_request_ids": [
+    "JhnImq5v9YV90y7zjq6K",
+    "8i31ErdtjGAIAlroU5N7",
+    "4Dyq0nfHwFQyN5z4ZrKF"
+  ],
+  "generated_at": 1792949107.4636428,
+  "format": "mp3_44100_192",
+  "seconds": 2.229,
+  "peak_dbfs": -4.18,
+  "tempo": 1,
+  "sha256": "61fd499f8c3adea0894d3f2ae9f3e1c419417c10c590380e262c45abf4bf0aa1"
+}

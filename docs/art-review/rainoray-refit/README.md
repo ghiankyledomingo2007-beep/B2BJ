@@ -1,5 +1,8 @@
 # Rainoray character refit — 2026-10-24
 
+The mask and hair were subsequently simplified in the
+[simple-mask pass](../rainoray-simple-mask/README.md). This page preserves the earlier refit.
+
 Ghian requested a better human character and chose to keep the porcelain mask.
 The white hair, navy outfit, sword and existing action poses remain.
 

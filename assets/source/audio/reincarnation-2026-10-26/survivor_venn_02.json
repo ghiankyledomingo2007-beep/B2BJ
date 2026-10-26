@@ -1,0 +1,27 @@
+{
+  "file": "survivor_venn_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE CULVERT",
+  "text": "Nobody sent me. I heard you were missing.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "fBE8Lfwy8QDw803lvfXE",
+  "context_request_ids": [
+    "moOPPShOJ046O054yAGO",
+    "WOavqShPyCz1yRAGBECr",
+    "6Nzv1REBXNqn5NeFD8fx"
+  ],
+  "generated_at": 1793011359.4441717,
+  "format": "mp3_44100_192",
+  "seconds": 2.601,
+  "peak_dbfs": -4.11,
+  "tempo": 1,
+  "sha256": "2cfe62a1fa997311833dc67459308c87ad03bbd195d26a1b163f13c82346357a"
+}

@@ -1,0 +1,29 @@
+{
+  "file": "survivor_tobin_06.wav",
+  "speaker": "TOBIN",
+  "scene": "BEHIND THE FENCE",
+  "text": "For a lamp? I'll crawl. Thank you.",
+  "spoken_text": "",
+  "voice_id": "pqHfZKP75CvOlQylNhV4",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.75,
+    "style": 0.1,
+    "use_speaker_boost": true,
+    "speed": 0.93
+  },
+  "seed": 84722,
+  "request_id": "EAxn2P3cctmKvPTeZW5i",
+  "context_request_ids": [
+    "tvnwxA33P3BbO2fO9TN5",
+    "NCkP1Rl8RzxE9Q0qB5F8",
+    "VBfT1JnwEUeoQPQOI4Qt"
+  ],
+  "generated_at": 1793024796.5697813,
+  "format": "mp3_44100_192",
+  "seconds": 3.669,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "5f249295d7f4707554cc557d33e43ec8e1c8d6deb2876694306427d05e0a2ffd"
+}

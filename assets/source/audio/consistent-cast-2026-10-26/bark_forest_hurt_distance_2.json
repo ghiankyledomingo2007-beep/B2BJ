@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_hurt_distance_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Let the roots settle before you return.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "rvQaXiBHGBpuDBlaqvUh",
+  "context_request_ids": [
+    "9jioDiJp4glkqHgtE1q9",
+    "LyvpukUIPe62uKW7Jp5F",
+    "LVgWvkZMxm59VdYlyNLW"
+  ],
+  "generated_at": 1792949020.0169246,
+  "format": "mp3_44100_192",
+  "seconds": 2.761,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "7b1cd919731e8e23d9994b6086a603416039492ce782844b90e5665baaad8846"
+}

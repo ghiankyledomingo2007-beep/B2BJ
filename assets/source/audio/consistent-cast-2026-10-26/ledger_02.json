@@ -1,0 +1,27 @@
+{
+  "file": "ledger_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE QUARTERMASTER'S CACHE",
+  "text": "Every crate, every blanket, every name that signed for them.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "EqYyXDJ7OGwR9ilmTqRW",
+  "context_request_ids": [
+    "11bW5eiE5HL3Qt9yTf3H",
+    "gzlrXgGjR1VzHEIakrvw",
+    "SSwdFiYO6ffQM16RzfeG"
+  ],
+  "generated_at": 1792949036.8684375,
+  "format": "mp3_44100_192",
+  "seconds": 4.226,
+  "peak_dbfs": -3.96,
+  "tempo": 1,
+  "sha256": "dafb675be08cd004d7ffa99abbf5a2c5a02186a7b692c7ff14267809a11e37dd"
+}

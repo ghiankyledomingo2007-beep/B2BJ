@@ -1,0 +1,27 @@
+{
+  "file": "ledger_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE QUARTERMASTER'S CACHE",
+  "text": "Tobin, Ilse, Venn. All signed the same morning. I'll see that the count comes out right.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ChJ0VaCQSC5aTCWziwLB",
+  "context_request_ids": [
+    "gzlrXgGjR1VzHEIakrvw",
+    "SSwdFiYO6ffQM16RzfeG",
+    "EqYyXDJ7OGwR9ilmTqRW"
+  ],
+  "generated_at": 1792949038.1497843,
+  "format": "mp3_44100_192",
+  "seconds": 6.037,
+  "peak_dbfs": -3.92,
+  "tempo": 1,
+  "sha256": "bc3962b8bd9f9d66bfd415a415497d29b8a24ea162c1940bc0be1cea74e64513"
+}

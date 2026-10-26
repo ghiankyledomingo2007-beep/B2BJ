@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_noise.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "So much for passing through quietly.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "4Dyq0nfHwFQyN5z4ZrKF",
+  "context_request_ids": [
+    "hCpG1nUgpwDIIGtivvv3",
+    "JhnImq5v9YV90y7zjq6K",
+    "8i31ErdtjGAIAlroU5N7"
+  ],
+  "generated_at": 1792949106.5473883,
+  "format": "mp3_44100_192",
+  "seconds": 2.322,
+  "peak_dbfs": -4.4,
+  "tempo": 1,
+  "sha256": "f7373a464a10b3ce6d5accaeaed7232c2c207bb4bfdba9834ac405830c9b4e54"
+}

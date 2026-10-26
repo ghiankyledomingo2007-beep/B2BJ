@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_late_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "AN OPEN WAY",
+  "text": "The tree at the clearing is down. I'm looking for the people from the outpost.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "3MRVkmsUZKRyjsXevwr3",
+  "context_request_ids": [
+    "TBKiBdo5HUrvP2OxT9EK",
+    "XyQcNea8zmK1P3DcZCMx",
+    "BDjipazAxiZ0sAZbBRQC"
+  ],
+  "generated_at": 1792949047.2224596,
+  "format": "mp3_44100_192",
+  "seconds": 4.04,
+  "peak_dbfs": -3.96,
+  "tempo": 1,
+  "sha256": "fd99420a77225716604ec65d8cc688899f661aa36dd997044d874affb55c8322"
+}

@@ -146,7 +146,7 @@ final class Tiles16 {
             case LITTER -> top ? Pal.EARTH[4] : Pal.EARTH[1];
             case MOSS -> top ? Pal.GRASS[4] : Pal.GRASS[1];
             case RIVERBED -> top ? Pal.CANVAS[3] : Pal.CANVAS[0];
-            case BLIGHT -> top ? Pal.VIOLET[3] : Pal.VIOLET[0];
+            case BLIGHT -> top ? Pal.WOOD[2] : Pal.WOOD[0];
         };
     }
 
@@ -200,11 +200,11 @@ final class Tiles16 {
                 double n = Noise.periodic(px, py, 4, 4, 64);
                 yield n < .3 && Noise.bayer(px, py) < .5 ? Pal.CANVAS[1] : Pal.CANVAS[2];
             }
-            case BLIGHT -> {                                                    // violet rot, fine-grained; its glowing roots are map decals
-                if (Noise.rnd(px, py, 71 + seed) < .004) yield Pal.GOLD[3];
-                if (Noise.rnd(px, py, 72 + seed) < .045) yield Pal.VIOLET[2];
+            case BLIGHT -> {                                                    // dead soil leaves bright gold for the attack warnings
+                if (Noise.rnd(px, py, 71 + seed) < .002) yield Pal.DRY[2];
+                if (Noise.rnd(px, py, 72 + seed) < .045) yield Pal.WOOD[2];
                 double n = Noise.periodic(px, py, 2, 8, 73);
-                yield n > .74 && Noise.bayer(px, py) < .6 ? Pal.VIOLET[0] : Pal.VIOLET[1];
+                yield n > .74 && Noise.bayer(px, py) < .6 ? Pal.WOOD[0] : Pal.EARTH[1];
             }
         };
     }

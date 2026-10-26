@@ -23,7 +23,7 @@ public final class CampaignWorld {
     private static final int[][] LOCATIONS = {{512,3072},{1216,2816},{2368,3008},{2944,2176},{2496,1216},
             {4032,1216},{4160,2688},{5120,2752},{5376,1664},{1088,960},{3264,640},{5376,3520}};
     private static final String[] LORE = {"Rainoray. Your last shift is over.",
-            "Mara keeps a lamp lit for anyone returning.", "The expedition gathered here. Its banners never returned.",
+            "Shuna keeps a lamp lit for anyone returning.", "The expedition gathered here. Its banners never returned.",
             "A broad breach cuts through the abandoned defence.", "Beds remain made for soldiers still listed as missing.",
             "The watch faced the forest until its final night.", "The fallen standard still carries a trace of Ichor.",
             "Two roads meet before the Warden's post.", "The Outpost Warden holds a gate no captain can relieve.",
@@ -53,9 +53,22 @@ public final class CampaignWorld {
         CampaignEnemy.Kind[] kinds = {CampaignEnemy.Kind.OUTPOST_SCOUT, CampaignEnemy.Kind.OUTPOST_SCOUT,
                 CampaignEnemy.Kind.OUTPOST_GUARD, CampaignEnemy.Kind.OUTPOST_SPITTER};
         int[][] offsets = {{-96,64},{112,64},{0,-112}};
-        for (int location = 2; location < 8; location++) for (int i = 0; i < offsets.length; i++) {
+        // The east road teaches one threat at a time before the mixed patrols farther in.
+        enemies.add(new EnemySpawn(1920, 2944, CampaignEnemy.Kind.OUTPOST_SCOUT));
+        enemies.add(new EnemySpawn(2640, 2960, CampaignEnemy.Kind.OUTPOST_GUARD));
+        enemies.add(new EnemySpawn(3350, 2832, CampaignEnemy.Kind.OUTPOST_SPITTER));
+        // Patrols use the space differently: breach flank, barracks approach, watch crossfire,
+        // standard defence and a staggered final approach. Indices stay stable for saved elite rewards.
+        int[][][] patrols = {
+                {{-190,150},{80,-90},{210,90}},
+                {{-130,170},{140,50},{100,-160}},
+                {{-210,100},{50,80},{-80,-170}},
+                {{-170,100},{120,60},{-80,-160}},
+                {{-240,60},{-40,170},{-240,-100}}
+        };
+        for (int location = 3; location < 8; location++) for (int i = 0; i < offsets.length; i++) {
             var point = landmarks.get(location);
-            enemies.add(new EnemySpawn(point.x() + offsets[i][0], point.y() + offsets[i][1],
+            enemies.add(new EnemySpawn(point.x() + patrols[location-3][i][0], point.y() + patrols[location-3][i][1],
                     kinds[(i + location - 2) % kinds.length]));
         }
         for (int location = 9; location < 12; location++) {
@@ -84,7 +97,7 @@ public final class CampaignWorld {
     private static final int[][] FOREST_LOCATIONS = {{576,3072},{1280,2624},{2112,3264},{2816,2368},{2176,1280},
             {3840,768},{4224,2432},{5120,3008},{5376,1536},{896,960},{2816,512},{5056,3648}};
     private static final String[] FOREST_LORE = {"Gold light moves between the roots.",
-            "Sedge marks the way back with white cloth.", "Rift Imps gather where the canopy opens.",
+            "Souei marks the way back with white cloth.", "Rift Imps gather where the canopy opens.",
             "Old roots divide the road into two ways forward.", "The trees drank what the knights spilled.",
             "The high road overlooks the ruined watercourse.", "The ford has gone dry, but its stones still lead east.",
             "Thorns grip the stair beneath the clearing.", "Briarheart has rooted itself across the descent.",
@@ -116,12 +129,17 @@ public final class CampaignWorld {
         for (int i = 0; i < FOREST_NAMES.length; i++) landmarks.add(new Landmark(
                 FOREST_NAMES[i], FOREST_LOCATIONS[i][0], FOREST_LOCATIONS[i][1], FOREST_LORE[i], i >= 9));
         var enemies = new ArrayList<EnemySpawn>();
-        CampaignEnemy.Kind[] kinds = {CampaignEnemy.Kind.RIFT_IMP, CampaignEnemy.Kind.RIFT_IMP,
-                CampaignEnemy.Kind.THORN_WOLF, CampaignEnemy.Kind.MIRE_SHAMAN};
-        int[][] offsets = {{-96,64},{112,64},{0,-112},{128,-96}};
-        for (int location = 2; location < 8; location++) for (int i = 0; i < offsets.length; i++) {
+        CampaignEnemy.Kind[] kinds = {CampaignEnemy.Kind.RIFT_IMP, CampaignEnemy.Kind.THORN_WOLF, CampaignEnemy.Kind.MIRE_SHAMAN};
+        // Introduce a role in space, then combine it with a different approach and escape route.
+        int[][][] encounters={{{-150,96,0},{144,-112,0}},
+                {{-144,112,1},{176,-96,0}},
+                {{0,-168,2},{-96,112,1},{184,96,1}},
+                {{-224,96,0},{112,144,0},{208,-112,0},{-32,-192,2}},
+                {{-176,-48,1},{176,128,1},{48,-224,2}},
+                {{-96,144,1},{-128,-160,2},{192,-96,2}}};
+        for (int location = 2; location < 8; location++) for (var enemy:encounters[location-2]) {
             var point = landmarks.get(location);
-            enemies.add(new EnemySpawn(point.x() + offsets[i][0], point.y() + offsets[i][1], kinds[i]));
+            enemies.add(new EnemySpawn(point.x()+enemy[0],point.y()+enemy[1],kinds[enemy[2]]));
         }
         for (int location = 9; location < 12; location++) {
             var point = landmarks.get(location);

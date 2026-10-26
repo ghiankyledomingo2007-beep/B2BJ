@@ -40,9 +40,11 @@ final class PixelSwing {
         private boolean quiet;
         private int textScale = 2;
         boolean titleSelected;
+        boolean menuStyle;
         String subtitle = "";
         int titleChoice;
         double titleTime, titleFocus;
+        double titleScale=1;
         boolean reducedTitleMotion;
 
         Button(String text, Ui.Icon icon) {
@@ -60,6 +62,7 @@ final class PixelSwing {
         }
 
         @Override public Dimension getPreferredSize() {
+            if (isPreferredSizeSet()) return super.getPreferredSize();
             int w = Ui.width(getText().toUpperCase(java.util.Locale.ROOT), 2) + (icon != null ? 92 : 64);
             return new Dimension(Math.max(160, w), 44);
         }
@@ -69,19 +72,26 @@ final class PixelSwing {
         @Override protected void paintComponent(Graphics graphics) {
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
+            if (menuStyle) {
+                boolean down = getModel().isArmed() && getModel().isPressed();
+                paintMenuRow(g, this, icon, down);
+                g.dispose(); return;
+            }
             if (quiet) {
+                g.scale(titleScale,titleScale);
                 double reveal=TitleScreen.entrance(titleTime,.78+titleChoice*.13,.5,reducedTitleMotion);
                 g.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)reveal));
                 g.translate((int)(-22*(1-reveal)+6*titleFocus),0);
                 boolean down = getModel().isArmed() && getModel().isPressed();
                 boolean selected = isEnabled() && titleSelected;
-                int baseline = subtitle.isEmpty() ? getHeight()/2 + (textScale==3?10:7) : 32;
+                int baseline = subtitle.isEmpty() ? (int)(getHeight()/titleScale)/2 + (textScale==3?10:7) : 32;
                 if (selected) {
                     TitlePointer.draw(g,baseline,titleTime,reducedTitleMotion);
                 }
-                Ui.text(g,getText(),44+(down?2:0),baseline,textScale,
+                TitleIcons.draw(g,titleChoice,44+(down?2:0),baseline-(textScale==3?23:20),selected,isEnabled());
+                Ui.text(g,getText(),80+(down?2:0),baseline,textScale,
                         !isEnabled()?Ui.DIM:selected?Ui.GOLD_LIGHT:textScale==3?Ui.TEXT:Ui.MUTED);
-                if(!subtitle.isEmpty())Ui.text(g,subtitle,44,58,2,isEnabled()?Ui.MUTED:Ui.DIM);
+                if(!subtitle.isEmpty())Ui.text(g,subtitle,80,58,2,isEnabled()?Ui.MUTED:Ui.DIM);
                 g.dispose(); return;
             }
             ButtonModel m = getModel();
@@ -111,6 +121,26 @@ final class PixelSwing {
             }
             g.dispose();
         }
+    }
+
+    /** Carved tabs drawn at native pixel scale; the crystal also marks keyboard focus. */
+    private static void paintMenuRow(Graphics2D g, AbstractButton button, Ui.Icon icon, boolean down) {
+        boolean hot = button.isEnabled() && (button.getClientProperty("menu.selected") instanceof Boolean selected
+                ? selected : button.getModel().isRollover() || button.isFocusOwner());
+        boolean large = Boolean.TRUE.equals(button.getClientProperty("menu.large"));
+        int width=button.getWidth(),height=button.getHeight();
+        double time=button.getClientProperty("menu.time") instanceof Number n?n.doubleValue():0;
+        double selectedAt=button.getClientProperty("menu.selectedAt") instanceof Number n?n.doubleValue():0;
+        boolean reduced=!Boolean.FALSE.equals(button.getClientProperty("menu.reduced"));
+        StoneMenuArt.row(g,width,height,hot,down,time,selectedAt,reduced);
+        int x=12,centerY=height/2+(down?2:0);
+        if(icon!=null) {
+            if(large)StoneMenuArt.icon(g,icon,x,centerY-20,button.isEnabled());
+            else TitleIcons.draw(g,icon,x,centerY-12,hot,button.isEnabled());
+            x+=large?54:34;
+        }
+        Ui.text(g,button.getText(),x,centerY+(large?10:7),large?3:2,
+                !button.isEnabled()?Ui.DIM:hot?new Color(0xffedc2):Ui.TEXT);
     }
 
     static JButton button(String text, char mnemonic, Ui.Icon icon, Runnable action, boolean enabled) {
@@ -287,6 +317,9 @@ final class PixelSwing {
             boolean down = m.isArmed() && m.isPressed(), hot = b.isEnabled() && (m.isRollover() || b.isFocusOwner());
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
+            if (Boolean.TRUE.equals(b.getClientProperty("menu.row"))) {
+                paintMenuRow(g, b, null, down); g.dispose(); return;
+            }
             Ui.nine(g, !b.isEnabled() ? Ui.Piece.BUTTON_OFF : down ? Ui.Piece.BUTTON_DOWN : hot ? Ui.Piece.BUTTON_HOT : Ui.Piece.BUTTON,
                     0, 0, c.getWidth(), c.getHeight());
             String label = b.getText();

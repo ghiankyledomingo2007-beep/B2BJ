@@ -1,0 +1,26 @@
+{
+  "file": "bark_identify_spitter.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Ichor spitter. Watch where it aims.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "V8AATkwFYucxcidhWxrG",
+  "context_request_ids": [
+    "kQQO1cRFXZXThQAfw3L4",
+    "eI0fPow24vvtap1NkPIJ"
+  ],
+  "generated_at": 1792970744.15254,
+  "format": "mp3_44100_192",
+  "seconds": 3.086,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "6d092ce169dfe3ff8d26ce394fae1ba44fad30450d5df6e77722e23026142786"
+}

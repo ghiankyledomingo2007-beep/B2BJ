@@ -1,0 +1,25 @@
+{
+  "file": "wake_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST WATCH",
+  "text": "One more count before dawn. That's what I kept telling myself.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "IhzN8MogsaLh6ZA4TV0N",
+  "context_request_ids": [
+    "G7r7cONxNsxlK0NWjCMH"
+  ],
+  "generated_at": 1792948876.4346912,
+  "format": "mp3_44100_192",
+  "seconds": 3.344,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "fc0fe6c52b0dd01b68dff4ae160283c9ef923943b67ff0f6f5a7d320c5d6346d"
+}

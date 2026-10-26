@@ -1,0 +1,758 @@
+[
+  {
+    "file": "wake_01.wav",
+    "expected": "Rain. Cold stone. I was in the supply room a moment ago.",
+    "recognized": "Rain. Cold stone. I was in the supply room a moment ago. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_02.wav",
+    "expected": "One more count before dawn. That's what I kept telling myself.",
+    "recognized": "One more count before dawn. That's what I kept telling myself. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_03.wav",
+    "expected": "No hands. No boots. I seem to have kept the exhaustion.",
+    "recognized": "No hands, no boots. I seem to have kept the exhaustion. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_04.wav",
+    "expected": "There's a lamp beyond the ditch. Please let someone be holding it.",
+    "recognized": "There's a lamp beyond the ditch. Please let someone be holding it. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_02.wav",
+    "expected": "I'll try to be a better guest. I'm Rainoray. Quartermaster.",
+    "recognized": "I'll try to be a better guest. I'm Raynor Rey, quartermaster. ",
+    "match": 0.88
+  },
+  {
+    "file": "camp_04.wav",
+    "expected": "I'm having some trouble accounting for myself. Where is everyone?",
+    "recognized": "I'm having some trouble accounting for myself. Where is everyone? ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_06.wav",
+    "expected": "And you stayed?",
+    "recognized": "And you stayed? ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_wait_02.wav",
+    "expected": "East, then north. I used to mark those supply routes myself.",
+    "recognized": "East, then north. I used to mark those supply routes myself. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_late_02.wav",
+    "expected": "Rainoray. Quartermaster. I was looking for a way out.",
+    "recognized": "Raynor Rey, quartermaster. I was looking for a way out. ",
+    "match": 0.842
+  },
+  {
+    "file": "camp_late_05.wav",
+    "expected": "Then that's where I'll look next.",
+    "recognized": "Then that's where I'll look next. ",
+    "match": 1.0
+  },
+  {
+    "file": "signal_01.wav",
+    "expected": "A dispatch, folded under the bell rope. 'Hold the east road until the last stretcher passes.'",
+    "recognized": "A dispatch folded under the bell rope. Hold the east road until the last stretcher passes. ",
+    "match": 1.0
+  },
+  {
+    "file": "signal_02.wav",
+    "expected": "No death count. Just names marked missing. Mine is here, too.",
+    "recognized": "No death count, just names marked missing. Mine is here too. ",
+    "match": 1.0
+  },
+  {
+    "file": "signal_03.wav",
+    "expected": "Someone crossed it out, then wrote it back in. Mara should see this.",
+    "recognized": "Someone crossed it out, then wrote it back in. Mara should see this. ",
+    "match": 1.0
+  },
+  {
+    "file": "signal_03_stranger.wav",
+    "expected": "Someone crossed it out, then wrote it back in. Someone wasn't sure.",
+    "recognized": "Someone crossed it out, then wrote it back in. Someone wasn't sure. ",
+    "match": 1.0
+  },
+  {
+    "file": "infirmary_01.wav",
+    "expected": "Every bed was stripped for bandages. Except this one.",
+    "recognized": "Every bed was stripped for bandages except this one. ",
+    "match": 1.0
+  },
+  {
+    "file": "infirmary_02.wav",
+    "expected": "A note on the blanket: 'For whoever comes back.'",
+    "recognized": "A note on the blanket. For whoever comes back. ",
+    "match": 1.0
+  },
+  {
+    "file": "infirmary_03.wav",
+    "expected": "There's a dry dressing underneath. I'll leave it where she can find it.",
+    "recognized": "There's a dry dressing underneath. I'll leave it where she can find it. ",
+    "match": 1.0
+  },
+  {
+    "file": "supplies_01.wav",
+    "expected": "My seal. These are the crates I stayed to count.",
+    "recognized": "My seal. These are the crates I stayed to count. ",
+    "match": 1.0
+  },
+  {
+    "file": "supplies_02.wav",
+    "expected": "'Blankets on top. Leave the weapons if the cart is too heavy.' My handwriting, too.",
+    "recognized": "Blankets on top. Leave the weapons if the cart is too heavy. My handwriting too. ",
+    "match": 1.0
+  },
+  {
+    "file": "supplies_03.wav",
+    "expected": "The blankets are gone. Good. At least that part worked.",
+    "recognized": "The blankets are gone. Good. At least that part worked. ",
+    "match": 1.0
+  },
+  {
+    "file": "report_01.wav",
+    "expected": "I found the evacuation list. You crossed out my name.",
+    "recognized": "I found the evacuation list. You crossed out my name. ",
+    "match": 1.0
+  },
+  {
+    "file": "report_03.wav",
+    "expected": "So you wrote it back in.",
+    "recognized": "So you wrote it back in. ",
+    "match": 1.0
+  },
+  {
+    "file": "warden_02.wav",
+    "expected": "They're gone. Mara's the only one left. Open the gate.",
+    "recognized": "They're gone. Mara's the only one left. Open the gate. ",
+    "match": 1.0
+  },
+  {
+    "file": "warden_02_stranger.wav",
+    "expected": "There's no stretcher on this road. Let me through. Someone may still need help.",
+    "recognized": "There's no stretcher on this road. Let me through. Someone may still need help. ",
+    "match": 1.0
+  },
+  {
+    "file": "warden_02_rescued.wav",
+    "expected": "People are still coming back. You're blocking their way. Open the gate.",
+    "recognized": "People are still coming back. You're blocking their way. Open the gate. ",
+    "match": 1.0
+  },
+  {
+    "file": "warden_04.wav",
+    "expected": "Rainoray. Quartermaster. You watched me bring those supplies in.",
+    "recognized": "Raynor Rey, quartermaster. You watched me bring those supplies in. ",
+    "match": 0.842
+  },
+  {
+    "file": "warden_06.wav",
+    "expected": "Then you'll have to stop me twice.",
+    "recognized": "Then you'll have to stop me twice. ",
+    "match": 1.0
+  },
+  {
+    "file": "gate_01.wav",
+    "expected": "The chain is broken. Stretcher tracks run through the gate and into the trees.",
+    "recognized": "The chain is broken. Stretcher tracks run through the gate and into the trees. ",
+    "match": 1.0
+  },
+  {
+    "file": "gate_02.wav",
+    "expected": "Only one set of footprints comes back. Mara's.",
+    "recognized": "Only one set of footprints comes back, Mara's. ",
+    "match": 1.0
+  },
+  {
+    "file": "gate_02_stranger.wav",
+    "expected": "Only one set of footprints comes back toward camp.",
+    "recognized": "Only one set of footprints comes back toward camp. ",
+    "match": 1.0
+  },
+  {
+    "file": "gate_03.wav",
+    "expected": "The others got this far. I can follow them.",
+    "recognized": "The others got this far. I can follow them. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_after_02.wav",
+    "expected": "It's open. I'm going after the stretcher tracks.",
+    "recognized": "It's open. I'm going after the stretcher tracks. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_after_04.wav",
+    "expected": "I'm not sure it would stay on.",
+    "recognized": "I'm not sure it would stay on. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_tobin_02.wav",
+    "expected": "Rainoray. Quartermaster. Mostly water, these days.",
+    "recognized": "Raynor Rey, quartermaster. Mostly water these days. ",
+    "match": 0.769
+  },
+  {
+    "file": "survivor_tobin_05.wav",
+    "expected": "Mara's lamp is still lit at Captain Camp. Can you make it that far?",
+    "recognized": "Mara's lamp is still lit at Captain Camp. Can you make it that far? ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_tobin_05_stranger.wav",
+    "expected": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+    "recognized": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_ilse_02.wav",
+    "expected": "Rainoray. Quartermaster. I cut the thorns, not you.",
+    "recognized": "Raynor Rey, quartermaster. I cut the thorns, not you. ",
+    "match": 0.824
+  },
+  {
+    "file": "survivor_ilse_05.wav",
+    "expected": "Then it's still my job. Go to Mara's lamp at Captain Camp.",
+    "recognized": "Then it's still my job. Go to Mara's lamp at Captain Camp. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_ilse_05_stranger.wav",
+    "expected": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+    "recognized": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_venn_02.wav",
+    "expected": "Nobody sent me. I'm afraid I'm just late.",
+    "recognized": "Nobody sent me. I'm afraid I'm just late. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_venn_05.wav",
+    "expected": "Mara is keeping a fire at Captain Camp. She has room for you.",
+    "recognized": "Mara is keeping a fire at Captain Camp. She has room for you. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_venn_05_stranger.wav",
+    "expected": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+    "recognized": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit. ",
+    "match": 1.0
+  },
+  {
+    "file": "ledger_01.wav",
+    "expected": "The cache opens. Bandages, a little coin, and my ledger.",
+    "recognized": "The cache opens. Bandages, a little coin, and my ledger. ",
+    "match": 1.0
+  },
+  {
+    "file": "ledger_02.wav",
+    "expected": "Every crate, every blanket, every name that signed for them.",
+    "recognized": "Every crate, every blanket, every name that signed for them. ",
+    "match": 1.0
+  },
+  {
+    "file": "ledger_03.wav",
+    "expected": "Tobin, Ilse, Venn. All signed the same morning. I'll see that the count comes out right.",
+    "recognized": "Tobin, Ilsa, Venn, all signed the same morning. I'll see that the count comes out right. ",
+    "match": 0.941
+  },
+  {
+    "file": "camp_rescued_02.wav",
+    "expected": "They were still out there, waiting. I couldn't leave them.",
+    "recognized": "They were still out there waiting. I couldn't leave them. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_home_02.wav",
+    "expected": "The count finally adds up. Better than I'd hoped.",
+    "recognized": "The count finally adds up. Better than I'd hoped. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_arrival_01.wav",
+    "expected": "The tracks are deeper here. They were carrying someone.",
+    "recognized": "The tracks are deeper here. They were carrying someone. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_arrival_03.wav",
+    "expected": "A route marker. Someone wanted them followed.",
+    "recognized": "A route marker. Someone wanted them followed. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_02.wav",
+    "expected": "I'm following the stretcher crew from the outpost.",
+    "recognized": "I'm following the stretcher crew from the outpost. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_05.wav",
+    "expected": "Rainoray. Mara is waiting beyond the gate. The road is open now.",
+    "recognized": "Raynor Rey, Mara is waiting beyond the gate. The road is open now. ",
+    "match": 0.88
+  },
+  {
+    "file": "forest_sedge_wait_02.wav",
+    "expected": "Can you help them back if I open it?",
+    "recognized": "Can you help them back if I open it? ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_late_02.wav",
+    "expected": "The tree at the clearing is down. I'm looking for the people from the outpost.",
+    "recognized": "The tree at the clearing is down. I'm looking for the people from the outpost. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_late_04.wav",
+    "expected": "Then bring the rope. There's a medic waiting beyond the gate.",
+    "recognized": "Then bring the rope. There's a medic waiting beyond the gate. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_wayfinder_01.wav",
+    "expected": "White strips on every branch. He must have torn up half his sail.",
+    "recognized": "White strips on every branch. He must have torn up half his sail. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_wayfinder_03.wav",
+    "expected": "He wasn't just showing them where to go. He expected them to come back.",
+    "recognized": "He wasn't just showing them where to go. He expected them to come back. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_moonwell_01.wav",
+    "expected": "Water, at last. Why hasn't this well dried up?",
+    "recognized": "Water at last. Why hasn't this well dried up? ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_moonwell_03.wav",
+    "expected": "Then that thing is drinking the river.",
+    "recognized": "Then that thing is drinking the river. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_orchard_01.wav",
+    "expected": "Someone left the good fruit within reach. Took the bruised ones.",
+    "recognized": "Someone left the good fruit within reach. Took the bruised ones. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_orchard_03.wav",
+    "expected": "We used to pack the carts like that. Best blankets where the wounded could reach.",
+    "recognized": "We used to pack the carts like that. Best blankets where the wounded could reach. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_briarheart_01.wav",
+    "expected": "Those are stretcher poles caught in its roots.",
+    "recognized": "Those are stretcher poles caught in its roots. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_briarheart_03.wav",
+    "expected": "Then we make a path. Keep an eye on the ground for me.",
+    "recognized": "Then we make a path. Keep an eye on the ground for me. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_after_02.wav",
+    "expected": "The roots have loosened. We can reach the stair.",
+    "recognized": "The roots have loosened. We can reach the stair. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_01.wav",
+    "expected": "There's a lamp below. Someone answered.",
+    "recognized": "There's a lamp below. Someone answered. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_03.wav",
+    "expected": "Easy. The path is clear. There's a medic waiting at the outpost.",
+    "recognized": "Easy. The path is clear. There's a medic waiting at the outpost. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_05.wav",
+    "expected": "Not everyone. But these people are going home.",
+    "recognized": "Not everyone, but these people are going home. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_heard_survivor.wav",
+    "expected": "Was that a voice? South of the road.",
+    "recognized": "Was that a voice south of the road? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_heard_survivor_3.wav",
+    "expected": "Then we're not leaving them here.",
+    "recognized": "Then we're not leaving them here. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_ledger.wav",
+    "expected": "That was not on the supply list.",
+    "recognized": "That was not on the supply list. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_listen.wav",
+    "expected": "Let's listen before we move.",
+    "recognized": "Let's listen before we move. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_road.wav",
+    "expected": "This road used to mean safe passage.",
+    "recognized": "This road used to mean safe passage. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_counting.wav",
+    "expected": "I preferred counting things.",
+    "recognized": "I preferred counting things. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_job.wav",
+    "expected": "Do I get a quieter job after this?",
+    "recognized": "Do I get a quieter job after this? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_order.wav",
+    "expected": "Someone taught them to hold this road.",
+    "recognized": "Someone taught them to hold this road. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_watch.wav",
+    "expected": "One moment. I'll check behind us.",
+    "recognized": "One moment, I'll check behind us. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_shaking.wav",
+    "expected": "Funny. I didn't stop shaking.",
+    "recognized": "Funny, I didn't stop shaking. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_reason.wav",
+    "expected": "I don't want to get used to that.",
+    "recognized": "I don't want to get used to that. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_forward.wav",
+    "expected": "Forward, then. One problem at a time.",
+    "recognized": "Forward then. One problem at a time. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_numbers.wav",
+    "expected": "Are you keeping count too?",
+    "recognized": "Are you keeping count too? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_moment.wav",
+    "expected": "Give me a moment before we go.",
+    "recognized": "Give me a moment before we go. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_hurt_shelter.wav",
+    "expected": "That was closer than I'd planned.",
+    "recognized": "That was closer than I'd planned. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_hurt_distance.wav",
+    "expected": "All right. A little less bravery.",
+    "recognized": "All right. A little less bravery. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_hurt_camp.wav",
+    "expected": "I could use that campfire now.",
+    "recognized": "I could use that campfire now. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_hurt_deliberate.wav",
+    "expected": "Tell me that looked deliberate.",
+    "recognized": "Tell me that looked deliberate. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_routes.wav",
+    "expected": "I used to know every turn here.",
+    "recognized": "I used to know every turn here. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_bag.wav",
+    "expected": "I keep reaching for a bag I lost.",
+    "recognized": "I keep reaching for a bag I lost. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_questions.wav",
+    "expected": "Do my questions ever tire you?",
+    "recognized": "Do my questions ever tire you? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_thoughts.wav",
+    "expected": "You can talk without being asked.",
+    "recognized": "You can talk without being asked. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_quiet.wav",
+    "expected": "Was it always this quiet here?",
+    "recognized": "Was it always this quiet here? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_waiting.wav",
+    "expected": "Who is still waiting out there?",
+    "recognized": "Who is still waiting out there? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_name.wav",
+    "expected": "Sage. That name suits you.",
+    "recognized": "Sage. That name suits you. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_map.wav",
+    "expected": "A map never shows how a place feels.",
+    "recognized": "A map never shows how a place feels. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_calm.wav",
+    "expected": "If I sound calm, don't be fooled.",
+    "recognized": "If I sound calm, don't be fooled. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_nails.wav",
+    "expected": "I used to worry about missing nails.",
+    "recognized": "I used to worry about missing nails. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_camp_lamp.wav",
+    "expected": "She really is keeping that lamp lit.",
+    "recognized": "She really is keeping that lamp lit. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_camp_person.wav",
+    "expected": "She spoke to me like I was a person.",
+    "recognized": "She spoke to me like I was a person. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_camp_talk.wav",
+    "expected": "I didn't expect to miss ordinary talk.",
+    "recognized": "I didn't expect to miss ordinary talk. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_camp_promise.wav",
+    "expected": "I wish I could promise her more.",
+    "recognized": "I wish I could promise her more. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_warden_start_2.wav",
+    "expected": "I only need one opening.",
+    "recognized": "I only need one opening. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_warden_phase_2.wav",
+    "expected": "Good. I'll use that.",
+    "recognized": "Good. I'll use that. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_warden_victory.wav",
+    "expected": "The road's open.",
+    "recognized": "The road's open. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_crossing.wav",
+    "expected": "Those roots weren't there a moment ago.",
+    "recognized": "Those roots weren't there a moment ago. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_grove.wav",
+    "expected": "The cloth is caught up there.",
+    "recognized": "The cloth is caught up there. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_ridge.wav",
+    "expected": "I can see the old river from here.",
+    "recognized": "I can see the old river from here. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_ford.wav",
+    "expected": "A boat without a river. That's a new one.",
+    "recognized": "A boat without a river. That's a new one. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_imps.wav",
+    "expected": "That little thing tried to get behind me.",
+    "recognized": "That little thing tried to get behind me. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_wolves.wav",
+    "expected": "I heard the claws before I saw it.",
+    "recognized": "I heard the claws before I saw it. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_shaman.wav",
+    "expected": "I thought it was aiming at me.",
+    "recognized": "I thought it was aiming at me. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_roots.wav",
+    "expected": "Even the roots don't want us here.",
+    "recognized": "Even the roots don't want us here. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_mud.wav",
+    "expected": "That was a very expensive patch of mud.",
+    "recognized": "That was a very expensive patch of mud. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_breath.wav",
+    "expected": "I still want to catch my breath.",
+    "recognized": "I still want to catch my breath. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_noise.wav",
+    "expected": "So much for passing through quietly.",
+    "recognized": "So much for passing through quietly. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_better.wav",
+    "expected": "That felt a little less accidental.",
+    "recognized": "That felt a little less accidental. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_hurt_distance.wav",
+    "expected": "I went in too soon.",
+    "recognized": "I went in too soon. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_hurt_wait.wav",
+    "expected": "I need a moment.",
+    "recognized": "I need a moment. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_cloth.wav",
+    "expected": "White cloth. I keep checking for it.",
+    "recognized": "White cloth. I keep checking for it. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_company.wav",
+    "expected": "You don't have to wait for a question.",
+    "recognized": "You don't have to wait for a question. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_boots.wav",
+    "expected": "At least I can't get mud in my boots.",
+    "recognized": "At least I can't get mud in my boots. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_names.wav",
+    "expected": "I wish I knew who was on those stretchers.",
+    "recognized": "I wish I knew who was on those stretchers. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_home.wav",
+    "expected": "The outpost almost feels like home now.",
+    "recognized": "The outpost almost feels like home now. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_memory.wav",
+    "expected": "I remember this road being wider.",
+    "recognized": "I remember this road being wider. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_camp_rope.wav",
+    "expected": "He kept the rope ready all this time.",
+    "recognized": "He kept the rope ready all this time. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_camp_boat.wav",
+    "expected": "He could have left when the river went.",
+    "recognized": "He could have left when the river went. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_start_2.wav",
+    "expected": "Tell me when that heart opens.",
+    "recognized": "Tell me when that heart opens. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_phase_2.wav",
+    "expected": "I see them. Keep talking.",
+    "recognized": "I see them. Keep talking. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_victory.wav",
+    "expected": "The roots are letting go.",
+    "recognized": "The roots are letting go.",
+    "match": 1.0
+  }
+]

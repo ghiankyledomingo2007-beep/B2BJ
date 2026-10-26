@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_crossing.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Those roots weren't there a moment ago.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "CTkUElGWvXF2ggDYhGiD",
+  "context_request_ids": [
+    "2hSVVzdsCTD5A2bKLSQg",
+    "jq96zZhhqwMnLz3l3jLS",
+    "UMOAA5AIoqXPZNwDNHib"
+  ],
+  "generated_at": 1792949096.86555,
+  "format": "mp3_44100_192",
+  "seconds": 2.136,
+  "peak_dbfs": -4.2,
+  "tempo": 1,
+  "sha256": "def5e0936c2a70ff2a3c022eafa4d49c733b188f472a1a7114bba50abbe681df"
+}

@@ -14,7 +14,7 @@ public final class Player {
     public static final double DASH_DURATION = 0.16;
     public static final double BLADE_DASH_SPEED = 1000.0;
     public static final double BLADE_DASH_DURATION = 0.12;
-    public static final double DASH_COOLDOWN = 0.32;
+    public static final double DASH_COOLDOWN = 1.20;
     public static final double ATTACK_COOLDOWN = 0.35;
     public static final double WATER_COOLDOWN = 0.60;
     public static final double WATER_SLOW_DURATION = 0.20;

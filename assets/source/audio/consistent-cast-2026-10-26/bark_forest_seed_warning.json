@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_seed_warning.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Seeds beneath you. Find clear ground.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "EXTlYwevX5sb7Ut63Lrm",
+  "context_request_ids": [
+    "TM55LvabBxcJvp2gU5gH",
+    "eoldc4PuQMekZlzeMlgp",
+    "jJDD7lE2oom38cdmAGia"
+  ],
+  "generated_at": 1792967471.1948981,
+  "format": "mp3_44100_192",
+  "seconds": 3.221,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "ecb56a504282ea93051eba2d70569f2bf3e75810b4c5dbaf414917bab10fa6e7"
+}

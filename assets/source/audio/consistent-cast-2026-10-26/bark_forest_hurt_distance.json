@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_hurt_distance.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I went in too soon.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "jNeyZCJ0RALOZPlHXoAt",
+  "context_request_ids": [
+    "8i31ErdtjGAIAlroU5N7",
+    "4Dyq0nfHwFQyN5z4ZrKF",
+    "fY5CrgKeU3fAJnx1hR6d"
+  ],
+  "generated_at": 1792949108.3378372,
+  "format": "mp3_44100_192",
+  "seconds": 1.533,
+  "peak_dbfs": -4.12,
+  "tempo": 1,
+  "sha256": "fdd9dcbd75815e2381b630fbcd362648e1e037345dd9d6f8c275a60249261436"
+}

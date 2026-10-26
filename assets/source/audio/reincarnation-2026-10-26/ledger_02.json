@@ -1,0 +1,27 @@
+{
+  "file": "ledger_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE EVACUATION CACHE",
+  "text": "Three names match the people missing from camp.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "PnoWYVvqfbHBZUtcPi7U",
+  "context_request_ids": [
+    "75QG6tVQjv4TsJGtKdam",
+    "iM2wVdY8vC8VQTc6ZMXq",
+    "dpzlGWc2Zp0nIUBbeJQI"
+  ],
+  "generated_at": 1793011344.5661736,
+  "format": "mp3_44100_192",
+  "seconds": 3.411,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "bcdbe11b63a32c1b3b63a5b8e029c841d7ea5e2cfe61f16d4aacddf13d13bb20"
+}

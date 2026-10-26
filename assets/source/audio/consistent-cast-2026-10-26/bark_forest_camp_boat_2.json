@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_camp_boat_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "His passengers could not.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "067XQuHBp1S6c57mRQgM",
+  "context_request_ids": [
+    "pGZhbaRQqu5emSfbC8yO",
+    "kh69WrDcMxUOGp2i6xg4",
+    "Z5ruTTiqHDlxC2M5w2ob"
+  ],
+  "generated_at": 1792949031.814851,
+  "format": "mp3_44100_192",
+  "seconds": 2.436,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "847d7e7b5ed8bf3423554f721aa1d23a95140fc71ce4d946a922b92ff9fb6c9d"
+}

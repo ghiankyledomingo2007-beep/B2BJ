@@ -1,0 +1,68 @@
+[
+  {
+    "file": "effort_attack_4.wav",
+    "expected": "Ha!",
+    "recognized": "Ha! ",
+    "match": 1.0
+  },
+  {
+    "file": "effort_attack_5.wav",
+    "expected": "Hyah!",
+    "recognized": "Yeah. ",
+    "match": 0.0
+  },
+  {
+    "file": "effort_attack_6.wav",
+    "expected": "Take that!",
+    "recognized": "Take that. ",
+    "match": 1.0
+  },
+  {
+    "file": "effort_heavy_3.wav",
+    "expected": "Here!",
+    "recognized": "Here. ",
+    "match": 1.0
+  },
+  {
+    "file": "effort_heavy_4.wav",
+    "expected": "Hah!",
+    "recognized": "Ha! ",
+    "match": 0.0
+  },
+  {
+    "file": "effort_hurt_3.wav",
+    "expected": "Ow!",
+    "recognized": "Oh, ",
+    "match": 0.0
+  },
+  {
+    "file": "effort_hurt_4.wav",
+    "expected": "That hurt!",
+    "recognized": "that hurt. ",
+    "match": 1.0
+  },
+  {
+    "file": "effort_hurt_5.wav",
+    "expected": "Easy!",
+    "recognized": "Easy. ",
+    "match": 1.0
+  },
+  {
+    "file": "effort_hurt_6.wav",
+    "expected": "Ah!",
+    "recognized": "Ah, ",
+    "match": 1.0
+  },
+  {
+    "file": "effort_hurt_7.wav",
+    "expected": "Still here.",
+    "recognized": "still here.",
+    "match": 1.0
+  },
+  {
+    "file": "effort_hurt_8.wav",
+    "expected": "Ugh!",
+    "recognized": "",
+    "match": 0.0
+  }
+]

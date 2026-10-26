@@ -1,0 +1,25 @@
+{
+  "file": "wake_05.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "ONE MORE CHANCE",
+  "text": "Raphael. Stay with my voice.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "9xuzfGnlOI1RYkRFEt8w",
+  "context_request_ids": [
+    "wgQUtzhJCgJsBEp9iKQZ"
+  ],
+  "generated_at": 1793011330.3718503,
+  "format": "mp3_44100_192",
+  "seconds": 3.132,
+  "peak_dbfs": -3.77,
+  "tempo": 1,
+  "sha256": "a2aeaab009cfdba7703011f2e219e6a2afea99b6927434379fc60dc6e72cd23d"
+}

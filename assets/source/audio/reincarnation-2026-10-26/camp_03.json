@@ -1,0 +1,27 @@
+{
+  "file": "camp_03.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE LAMP AT CAMP",
+  "text": "You are looking at the food.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "xS8oA4q8wxaJ4RHx6mw0",
+  "context_request_ids": [
+    "ZHn18RH0g91o3JnUgqpO",
+    "B60CvGBgMs9es67lkY24",
+    "BnND8LejvsnXlAh2e35x"
+  ],
+  "generated_at": 1793011338.0918405,
+  "format": "mp3_44100_192",
+  "seconds": 2.529,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "31030881d13ac9722f9b55ba1b9559c96d63d7d23b3eabfe8ddc0a7b45d15aa8"
+}

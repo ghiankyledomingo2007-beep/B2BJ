@@ -1,0 +1,27 @@
+{
+  "file": "forest_arrival_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE WHITE CLOTH",
+  "text": "The tracks are deeper here. They were carrying someone.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "beZuUU9QUZBbeexgJPmX",
+  "context_request_ids": [
+    "ChJ0VaCQSC5aTCWziwLB",
+    "nPRyB5KmI3XugTS45m7v",
+    "LMxiD6xKKWfrd9imHhoA"
+  ],
+  "generated_at": 1792949041.648859,
+  "format": "mp3_44100_192",
+  "seconds": 2.879,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "e478f17829678b4b3cf898cf44c3cf64159c79632fd9dede4a59d9d15b7cb4db"
+}

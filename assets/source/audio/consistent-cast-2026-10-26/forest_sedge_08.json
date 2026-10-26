@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_08.wav",
+  "speaker": "SEDGE",
+  "scene": "THE STRANDED FERRY",
+  "text": "If the big tree moves, watch the ground. It reaches farther than its branches.",
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "Bn5QE1E7xeYDycvc5FyP",
+  "context_request_ids": [
+    "OTuk9wiqqHCmNnDApREq",
+    "uUzWKw2qcSAnHE6I9LNx",
+    "6hE5bZoCQp2JPuVm07oi"
+  ],
+  "generated_at": 1792948997.7379634,
+  "format": "mp3_44100_192",
+  "seconds": 5.712,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "9ade296558750c15b75c0994837b2330531b7c6996c404959e21f8283ef016d7"
+}

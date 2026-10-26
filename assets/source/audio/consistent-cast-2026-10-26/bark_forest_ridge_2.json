@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_ridge_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Follow the stones. They still mark a crossing.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "BBqWyTEBWYiECh48y42d",
+  "context_request_ids": [
+    "usd8xXmCZs6Hz4mxemJW",
+    "bWdMcLk2MHof1Qi2EF0u",
+    "Dfz1tDuXH3n7m8ulk63Y"
+  ],
+  "generated_at": 1792949006.1628404,
+  "format": "mp3_44100_192",
+  "seconds": 3.783,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "7530cbf7d8d8c06a27b138a3b00a606bfe2f0c573605ba14f18f14b8785f030c"
+}

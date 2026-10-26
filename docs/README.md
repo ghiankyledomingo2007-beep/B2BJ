@@ -5,8 +5,12 @@ For the current implementation, start with the [project README](../README.md) an
 
 ## Current work and school files
 
-- [Area One story and portrait conversations](design/area-one-story.md)
+- [Current reincarnation story and cast](design/area-one-story.md)
+- [Beelzebub: human-form mass absorption](design/beelzebub.md)
+- [Beelzebub verification — 2026-10-26](testing/beelzebub-2026-10-26.md)
+- [Opening verification — 2026-10-26](testing/reincarnation-opening-2026-10-26.md)
 - [Attack feel design](design/attack-feel.md)
+- [Forest combat readability and pacing — 2026-10-26](testing/forest-feel-2026-10-26.md)
 - [Art generation and editing guide](../tools/art/README.md)
 - [UI design brief](research/ui-brief.md)
 - [Lab 6 enemy chase guide](testing/lab6/README.md)

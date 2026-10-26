@@ -1,0 +1,28 @@
+{
+  "file": "bark_walk_wind.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "WALK_WIND",
+  "text": "There. A little less wind.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "P6S7f52uGVSld6wXpp7G",
+  "context_request_ids": [
+    "VfJ3HsrKwwj9X2up9dRr",
+    "XbxHSZlOgd3oe6a4tFko",
+    "iciA7tgEIjX9h4Uw6CcR"
+  ],
+  "generated_at": 1793024786.3574677,
+  "format": "mp3_44100_192",
+  "seconds": 2.714,
+  "peak_dbfs": -4.2,
+  "tempo": 1,
+  "sha256": "b870bf9610733ca9b78c12f83014e47a36837995505a8eaf12718424e92c8b49"
+}

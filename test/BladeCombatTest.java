@@ -69,7 +69,8 @@ public final class BladeCombatTest {
         game=fixture();click(game,1,0);advance(game,RuinedOutpostGame.strikeWindup(0)+.02);assert game.dash(0,1);
         advance(game,.18);click(game,1,0);assert game.bladeMove()==1 : "one recovery dodge preserves chain";
         assert !game.dash(1,0) : "cannot cancel contact into free damage";
-        advance(game,.6);assert game.dash(0,1);advance(game,.18);click(game,1,0);
+        advance(game,.6);assert !game.dash(0,1) : "second dodge waits for the full cooldown";
+        advance(game,.45);assert game.dash(0,1);advance(game,.18);click(game,1,0);
         assert game.bladeMove()==RuinedOutpostGame.DASH_SLASH : "a click straight out of a dash is the dash slash";
         assert RuinedOutpostGame.strikeKind(RuinedOutpostGame.DASH_SLASH)==0 : "it hits wide, like the draw cut, not like the thrust";
         advance(game,RuinedOutpostGame.strikeDuration(RuinedOutpostGame.DASH_SLASH)+.02);click(game,1,0);

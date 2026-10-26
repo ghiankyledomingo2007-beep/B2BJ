@@ -1,0 +1,27 @@
+{
+  "file": "forest_end_07.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST STRETCHER",
+  "text": "Good. I wanted to hear someone say it.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "Vuw2r3iSN95J8mgUduEA",
+  "context_request_ids": [
+    "2UP5cJrwb2rSQ6iq65ew",
+    "fcjoFTfnD0wUbkbDZJ4L",
+    "mXT2dbAVeHVtqZXN6UZY"
+  ],
+  "generated_at": 1793011370.184116,
+  "format": "mp3_44100_192",
+  "seconds": 2.879,
+  "peak_dbfs": -4.08,
+  "tempo": 1,
+  "sha256": "34b2d37b4fc5cdb0be20b6b92a450d6473862c65b556448504f69f5be3bb9247"
+}

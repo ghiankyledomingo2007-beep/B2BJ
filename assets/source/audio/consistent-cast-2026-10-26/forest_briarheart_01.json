@@ -1,0 +1,27 @@
+{
+  "file": "forest_briarheart_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "WHAT HOLDS THE ROAD",
+  "text": "Those are stretcher poles caught in its roots.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "9zBQW0HlI28T8cp2RO3w",
+  "context_request_ids": [
+    "uNKldmQyb8PLr3ZNB56v",
+    "3C1MbnGFDOvPcIs11tpq",
+    "Qj3unNEeSsYvuyJSv1vx"
+  ],
+  "generated_at": 1792949056.5946014,
+  "format": "mp3_44100_192",
+  "seconds": 2.276,
+  "peak_dbfs": -4.3,
+  "tempo": 1,
+  "sha256": "753296214c191b195a26f2548905c7a28d81c7bd7a0e874077fbdd2fee8bc259"
+}

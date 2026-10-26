@@ -1,0 +1,98 @@
+[
+  {
+    "file": "bark_walk_birds_2.wav",
+    "expected": "I'm listening for the birds.",
+    "recognized": "I'm listening for the birds. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_feet.wav",
+    "expected": "How do I trip without feet?",
+    "recognized": "How do I trip without feet? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_body.wav",
+    "expected": "Is this body holding together?",
+    "recognized": "Is this body holding together? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_wind_2.wav",
+    "expected": "You noticed I was cold?",
+    "recognized": "You noticed I was cold? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_saw.wav",
+    "expected": "Did you see that?",
+    "recognized": "Did you see that? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_right_2.wav",
+    "expected": "Remind me before the next one.",
+    "recognized": "Remind me before the next one. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_harmless.wav",
+    "expected": "Aren't slimes meant to be harmless?",
+    "recognized": "Aren't slimes meant to be harmless? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_camp_warm.wav",
+    "expected": "That fire almost feels warm.",
+    "recognized": "That fire almost feels warm. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_sounds_2.wav",
+    "expected": "One of them might be someone.",
+    "recognized": "One of them might be someone. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_lost.wav",
+    "expected": "Do you ever get lost?",
+    "recognized": "Do you ever get lost? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_calm.wav",
+    "expected": "How are you always so calm?",
+    "recognized": "How are you always so calm? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_ground_2.wav",
+    "expected": "Thanks. I'm tired of sinking.",
+    "recognized": "Thanks. I'm tired of sinking. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_credit.wav",
+    "expected": "I almost had that one.",
+    "recognized": "I almost had that one. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_listen_2.wav",
+    "expected": "Right. Quiet doesn't always mean safe.",
+    "recognized": "Right. Quiet doesn't always mean safe. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_sit.wav",
+    "expected": "Remind me never to sit down here.",
+    "recognized": "Remind me never to sit down here. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_camp_return_2.wav",
+    "expected": "Good. I like knowing we can go back.",
+    "recognized": "Good. I like knowing we can go back",
+    "match": 1.0
+  }
+]

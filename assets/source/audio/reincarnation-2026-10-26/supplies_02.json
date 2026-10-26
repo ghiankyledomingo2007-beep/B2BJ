@@ -1,0 +1,27 @@
+{
+  "file": "supplies_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "WHAT THEY LEFT BEHIND",
+  "text": "A note: 'Leave the heavy crates. Make room for the wounded.'",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "McBfancZdn7FdSIwpevD",
+  "context_request_ids": [
+    "GFBUg1oSgZqX7zh1pdbu",
+    "K0XwT9YC3uRn0HM9g4Qi",
+    "qwH9XTc6S8dmFo90mPfX"
+  ],
+  "generated_at": 1793011346.370057,
+  "format": "mp3_44100_192",
+  "seconds": 4.458,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "5c08c6156ef1e8de045a99a03478ca74e7c936114b5f8dd0ee90bc9a0a13cf73"
+}

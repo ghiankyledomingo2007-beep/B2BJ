@@ -1,0 +1,27 @@
+{
+  "file": "bark_fight_moment.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Give me a moment before we go.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "nUEuEei9F4YhddlEDUlB",
+  "context_request_ids": [
+    "VyyGvjbl57Uzg6rJ4QGv",
+    "POR8f7VGvWhfWG0tTPWE",
+    "hiyH2c6GWM7h0phmmaEm"
+  ],
+  "generated_at": 1792949075.4270036,
+  "format": "mp3_44100_192",
+  "seconds": 1.811,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "c2ce124818f2880e5aea6292853088999964ba123503d599d1eb510fe42ea2d1"
+}

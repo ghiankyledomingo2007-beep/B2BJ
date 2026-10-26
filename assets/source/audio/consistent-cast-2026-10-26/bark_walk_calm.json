@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_calm.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "If I sound calm, don't be fooled.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "dpVA3hMhBABrvHoA5j3O",
+  "context_request_ids": [
+    "jZ84JZjEzxGQDA0TzTMf",
+    "QPdDsHJqHDdyKQdk323m",
+    "nt1d7o4BvwPwfnKEcNIE"
+  ],
+  "generated_at": 1792949087.7245293,
+  "format": "mp3_44100_192",
+  "seconds": 1.997,
+  "peak_dbfs": -4.1,
+  "tempo": 1,
+  "sha256": "1ad8c3dd5e6eae68b29d89a71a1cb3e24a6ee2d3667e6e157e8c65807ddfb304"
+}

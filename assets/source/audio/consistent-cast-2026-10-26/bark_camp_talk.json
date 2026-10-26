@@ -1,0 +1,27 @@
+{
+  "file": "bark_camp_talk.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I didn't expect to miss ordinary talk.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "vGWWgOWV2uHY1XYTn5gZ",
+  "context_request_ids": [
+    "1XoQHROwTlWqUVn74mmh",
+    "A69redtxzCwgrMEt7g81",
+    "PVYQmLWemYUW1FnADuhv"
+  ],
+  "generated_at": 1792949091.746862,
+  "format": "mp3_44100_192",
+  "seconds": 2.136,
+  "peak_dbfs": -4.12,
+  "tempo": 1,
+  "sha256": "d55c1bf7b45e5f1a3ccf4fd6d3ed90bf380da8d8338359a36f01f1b531c94aba"
+}

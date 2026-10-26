@@ -13,7 +13,7 @@ import java.util.WeakHashMap;
  * anticipation reads first, the strike lasts a few frames, nothing smears on the wind-up.
  */
 final class MobFx {
-    enum Kind { ALERT, GLINT, DUST, STREAK, ARC, MOTE, FLASH, SPARK }
+    enum Kind { ALERT, GLINT, DUST, STREAK, ARC, CLAW, BITE, CAST, MOTE, FLASH, SPARK }
 
     /** One mark; x, y in world pixels; vx, vy in world px/s; ax, ay its direction where it has one. */
     private static final class Bit {
@@ -26,6 +26,9 @@ final class MobFx {
     private final List<Bit> bits = new ArrayList<>();
     private final Map<Wisp, Wisp.State> last = new WeakHashMap<>();
     private final Map<Wisp, Boolean> noticed = new WeakHashMap<>();
+    private final Map<Wisp, Boolean> swiping = new WeakHashMap<>();
+    private List<Wisp> enemies=List.of();
+    private List<ForestHazard> hazards=List.of();
     private long seed = 0x6d6f62L;
 
     private double rnd() { seed = seed * 6364136223846793005L + 1442695040888963407L; return (seed >>> 11) / (double) (1L << 53); }
@@ -36,17 +39,29 @@ final class MobFx {
         return b;
     }
 
-    void clear() { bits.clear(); last.clear(); noticed.clear(); }
+    void clear() { bits.clear(); last.clear(); noticed.clear(); swiping.clear(); enemies=List.of();hazards=List.of(); }
 
     // ------------------------------------------------------------------ simulation
     void update(double seconds, RuinedOutpostGame game) {
+        enemies=game.scouts();hazards=game.forestHazards();
         for (Wisp w : game.scouts()) {
             var before = last.put(w, w.state());
             boolean aggro = w.alive() && w.aggro();
             Boolean was = noticed.put(w, aggro);
             if (aggro && Boolean.FALSE.equals(was)) alert(w);
             if (before != null && before != w.state()) transition(w, before);
-            if (w.state() == Wisp.State.TELEGRAPH && w.role() == Wisp.Role.SPITTER && rnd() < .5) chargeMote(w);
+            boolean claw=w.impSwipeActive();
+            if(claw&&!Boolean.TRUE.equals(swiping.put(w,claw))) {
+                double angle=Math.atan2(w.intentY(),w.intentX())+(w.stateSeconds()<.3?-.25:.25);
+                var slash=add(Kind.CLAW,w.x(),w.y()+Player.COLLISION_Y_OFFSET,.20,0xe1c8ef);
+                slash.ax=Math.cos(angle);slash.ay=Math.sin(angle);
+                for(int i=0;i<5;i++) {
+                    var chip=add(Kind.SPARK,w.x()+slash.ax*100,w.y()+24+slash.ay*100,.12+rnd()*.12,i%2==0?0xe1c8ef:0x9165b5);
+                    chip.vx=slash.ax*90+(rnd()-.5)*140;chip.vy=slash.ay*90+(rnd()-.5)*120;
+                }
+            } else if(!claw)swiping.put(w,false);
+            if (w.state() == Wisp.State.TELEGRAPH && w.ranged() && rnd() < .5) chargeMote(w);
+            if (w.state() == Wisp.State.TELEGRAPH && w.remnantRush() && rnd() < .3) chargeMote(w);
             if (w.state() == Wisp.State.LUNGE && lunger(w)) streak(w);
         }
         for (int i = bits.size() - 1; i >= 0; i--) {
@@ -62,7 +77,7 @@ final class MobFx {
         }
     }
 
-    private static boolean lunger(Wisp w) { return w.role() != Wisp.Role.SPITTER && !w.stationaryMelee(); }
+    private static boolean lunger(Wisp w) { return !w.ranged() && !w.stationaryMelee(); }
     private static double headY(Wisp w) { return w.y() - 44; }
 
     private void transition(Wisp w, Wisp.State from) {
@@ -75,19 +90,48 @@ final class MobFx {
                 if (lunger(w)) for (int i = 0; i < 3; i++) dust(w.x() - ix * 10, w.y() + 22, -ix * 50 + (rnd() - .5) * 40, -iy * 20);
             }
             case LUNGE -> {
+                if(w.role()==Wisp.Role.RIFT_IMP)return;
+                if(w.role()==Wisp.Role.MIRE_SHAMAN) {
+                    var cast=add(Kind.CAST,w.x(),w.y()-38,.24,0xb7c77b);
+                    cast.ax=w.markedX();cast.ay=w.markedY()+Player.COLLISION_Y_OFFSET;
+                    return;
+                }
+                if(w.role()==Wisp.Role.THORN_WOLF&&!w.wolfLeap()) {
+                    var bite=add(Kind.BITE,w.x()+ix*75,w.y()+Player.COLLISION_Y_OFFSET+iy*75,.26,0xd7d4ae);
+                    bite.ax=ix;bite.ay=iy;
+                    for(int i=0;i<4;i++)dust(w.x()+ix*70,w.y()+24+iy*70,ix*60+(rnd()-.5)*80,iy*60+(rnd()-.5)*80);
+                    return;
+                }
                 if (lunger(w)) for (int i = 0; i < 6; i++)                          // push-off dust behind the rush
                     dust(w.x() - ix * 18 + (rnd() - .5) * 20, w.y() + 22, -ix * (90 + rnd() * 80), -iy * 40 + (rnd() - .5) * 30);
                 else if (w.stationaryMelee()) {                                    // the blow's arc where it lands
-                    var arc = add(Kind.ARC, w.x() + ix * 26, w.y() + 10 + iy * 26, .2, 0xf16458);
+                    int colour=w.role()==Wisp.Role.REMNANT?0xbf87c9:0x8baeb5;
+                    var arc = add(Kind.ARC, w.x() + ix * 26, w.y() + 10 + iy * 26, .2, colour);
                     arc.ax = ix; arc.ay = iy;
+                    for(int i=0;i<5;i++) {
+                        var chip=add(Kind.SPARK,w.x()+ix*65,w.y()+24+iy*65,.18+rnd()*.12,colour);
+                        chip.vx=ix*60+(rnd()-.5)*140;chip.vy=iy*40-30+(rnd()-.5)*90;
+                    }
                     for (int i = 0; i < 4; i++) dust(w.x() + ix * 44 + (rnd() - .5) * 30, w.y() + 22 + iy * 30, ix * 60 + (rnd() - .5) * 60, iy * 30);
                 } else {                                                           // a spitter's muzzle flash and recoil puff
                     var flash = add(Kind.FLASH, w.x() + ix * 20, w.y() - 24 + iy * 10, .1, 0xfff0bd);
                     flash.ax = ix; flash.ay = iy;
+                    for(int i=0;i<6;i++) {
+                        var drop=add(Kind.SPARK,w.x()+ix*20,w.y()-24+iy*10,.2+rnd()*.12,i%2==0?0xab68cf:0xe2b6f5);
+                        drop.vx=ix*(80+rnd()*100)+(rnd()-.5)*50;drop.vy=iy*(80+rnd()*100)+(rnd()-.5)*50;
+                    }
                     dust(w.x() - ix * 12, w.y() + 22, -ix * 60, -iy * 30);
                 }
             }
             case RECOVER -> {
+                if(from==Wisp.State.LUNGE&&w.wolfLeap()) {
+                    for(int i=0;i<12;i++) {
+                        double a=i*Math.PI/6;
+                        var leaf=add(Kind.SPARK,w.x(),w.y()+24,.3+rnd()*.15,i%2==0?0x99a26a:0x655b45);
+                        leaf.vx=Math.cos(a)*(90+rnd()*90);leaf.vy=Math.sin(a)*80-25;
+                    }
+                    var bite=add(Kind.BITE,w.x(),w.y()+24,.22,0x9b9973);bite.ax=ix;bite.ay=iy;
+                }
                 if (from == Wisp.State.LUNGE && lunger(w))                        // the skid at the end of the rush
                     for (int i = 0; i < 3; i++) dust(w.x() + ix * 10 + (rnd() - .5) * 16, w.y() + 22, ix * 40, (rnd() - .5) * 20);
             }
@@ -108,7 +152,8 @@ final class MobFx {
     private void chargeMote(Wisp w) {
         double ix = w.intentX(), iy = w.intentY(), len = Math.max(1e-6, Math.hypot(ix, iy));
         double mx = w.x() + ix / len * 20, my = w.y() - 24, a = rnd() * Math.PI * 2, r = 26 + rnd() * 16;
-        var m = add(Kind.MOTE, mx + Math.cos(a) * r, my + Math.sin(a) * r * .7, .24, 0xe2b6f5);
+        var m = add(Kind.MOTE, mx + Math.cos(a) * r, my + Math.sin(a) * r * .7, .24,
+                w.role()==Wisp.Role.MIRE_SHAMAN?0xb7c77b:0xe2b6f5);
         m.ax = mx; m.ay = my;
     }
 
@@ -138,6 +183,9 @@ final class MobFx {
     // ------------------------------------------------------------------ drawing (native pixels, shown 2x)
     /** Dust and arcs lie on the ground, under every actor. */
     void drawGround(Graphics2D g, int cx, int cy, boolean reduced) {
+        for(var w:enemies)if(w.role()==Wisp.Role.MIRE_SHAMAN&&w.state()==Wisp.State.TELEGRAPH)
+            drawMire(g,w.markedX(),w.markedY(),74,w.stateSeconds(),.15+.35*w.stateSeconds()/w.telegraphDuration(),1,cx,cy,false,reduced);
+        for(var hazard:hazards)if(hazard.alive())drawMire(g,hazard,cx,cy,false,reduced);
         for (var b : bits) {
             double t = b.age / b.life;
             int x = snap(b.x - cx), y = snap(b.y - cy);
@@ -150,7 +198,7 @@ final class MobFx {
                 }
                 case ARC -> {
                     double reach = 34 + t * 26;
-                    g.setColor(t < .35 ? DANGER[2] : t < .7 ? DANGER[1] : DANGER[0]);
+                    g.setColor(new Color(t<.35?0xe2e5cc:b.colour));
                     double base = Math.atan2(b.ay, b.ax);
                     for (double a = -.9; a <= .9; a += .07) {
                         int px = snap(b.x - cx + Math.cos(base + a) * reach), py = snap(b.y - cy + Math.sin(base + a) * reach * .7);
@@ -165,10 +213,60 @@ final class MobFx {
 
     /** Alerts, glints, streaks, flashes, motes and sparks read above the actors. */
     void drawAbove(Graphics2D g, int cx, int cy, boolean reduced) {
+        for(var w:enemies)if(w.role()==Wisp.Role.MIRE_SHAMAN&&w.state()==Wisp.State.TELEGRAPH)
+            drawMire(g,w.markedX(),w.markedY(),74,w.stateSeconds(),.15+.35*w.stateSeconds()/w.telegraphDuration(),1,cx,cy,true,reduced);
+        for(var hazard:hazards)if(hazard.alive())drawMire(g,hazard,cx,cy,true,reduced);
+        for(var w:enemies)if(w.alive()&&w.ranged()&&w.state()==Wisp.State.TELEGRAPH) {
+            boolean shaman=w.role()==Wisp.Role.MIRE_SHAMAN;
+            double charge=Math.min(1,w.stateSeconds()/w.telegraphDuration());
+            int x=snap(w.x()-cx+(shaman?0:w.intentX()*20)),y=snap(w.y()-cy-(shaman?48:24)),r=2+(int)(charge*(shaman?4:2));
+            g.setColor(new Color(shaman?0x293e32:0x342c44));blob(g,x,y,r+2);
+            g.setColor(new Color(shaman?0x8fa961:0xab68cf));blob(g,x,y,r);
+            g.setColor(new Color(shaman?0xd5dfa3:0xe2b6f5));blob(g,x-2,y-2,Math.max(1,r/2));
+            if(shaman&&!reduced)for(int i=0;i<3;i++) {
+                double a=w.stateSeconds()*4+i*Math.PI*2/3;
+                g.fillRect(snap(x+Math.cos(a)*20),snap(y+Math.sin(a)*10),4,2);
+            }
+        }
         for (var b : bits) {
             double t = b.age / b.life;
             int x = snap(b.x - cx), y = snap(b.y - cy);
             switch (b.kind) {
+                case CLAW -> {
+                    // Paint whole outlines first so neighbouring pixels cannot cover the bright core.
+                    for(int layer=1;layer>=0;layer--) {
+                        g.setColor(new Color(layer==1?0x704a8c:t<.55?0xffe8fa:b.colour));
+                        for(int finger=-1;finger<=1;finger++)for(double u=Math.max(0,t-.35);u<=Math.min(1,.3+t*2);u+=.025) {
+                            double along=42+75*u,side=finger*14+(u-.5)*30+Math.sin(u*Math.PI)*12;
+                            int px=snap(b.x-cx+b.ax*along-b.ay*side),py=snap(b.y-cy+b.ay*along+b.ax*side);
+                            int width=(reduced||t>.7?2:4)+layer*4;
+                            g.fillRect(px-layer*2,py-layer*2,width,width);
+                        }
+                    }
+                }
+                case BITE -> {
+                    double gap=3+20*(1-Math.min(1,t/.65));
+                    for(int layer=1;layer>=0;layer--) {
+                        g.setColor(new Color(layer==1?0x343b32:b.colour));
+                        for(int jaw:new int[]{-1,1})for(int i=-12;i<=12;i++) {
+                            double along=i*2,side=jaw*(gap+Math.abs(i)*.8);
+                            int px=snap(b.x-cx+b.ax*along-b.ay*side),py=snap(b.y-cy+b.ay*along+b.ax*side);
+                            int width=(reduced?2:4)+layer*4;
+                            g.fillRect(px-layer*2,py-layer*2,width,width);
+                            if(layer==0&&i%4==0)for(int tooth=1;tooth<=3;tooth++)g.fillRect(
+                                    snap(px+b.ay*jaw*tooth*2),snap(py-b.ax*jaw*tooth*2),2,2);
+                        }
+                    }
+                }
+                case CAST -> {
+                    if(reduced)continue;
+                    for(double u=Math.max(0,t-.4);u<=Math.min(1,t+.35);u+=.012) {
+                        double bend=Math.sin(u*Math.PI)*20;
+                        int px=snap(b.x-cx+(b.ax-b.x)*u),py=snap(b.y-cy+(b.ay-b.y)*u-bend);
+                        g.setColor(new Color(0x42523a));g.fillRect(px-2,py-2,6,6);
+                        g.setColor(new Color(b.colour));g.fillRect(px,py,2,2);
+                    }
+                }
                 case ALERT -> {
                     double pop = t < .12 ? t / .12 * 1.3 : t < .2 ? 1.3 - (t - .12) / .08 * .3 : 1;
                     if (t > .82 && ((int) (b.age * 30) & 1) == 1) continue;
@@ -198,7 +296,7 @@ final class MobFx {
                     }
                 }
                 case MOTE -> {
-                    g.setColor(new Color(t < .5 ? b.colour : 0xab68cf));
+                    g.setColor(new Color(t < .5 ? b.colour : b.colour==0xb7c77b?0x70864b:0xab68cf));
                     g.fillRect(x, y, 2, 2);
                 }
                 case SPARK -> {
@@ -207,6 +305,44 @@ final class MobFx {
                     if (t < .4) g.fillRect(snap(x - b.vx * .012), snap(y - b.vy * .012), 2, 2);   // a short tail while fast
                 }
                 default -> { }
+            }
+        }
+    }
+
+    /** Released magic has height and substance; the quiet warning stays a separate ground layer. */
+    private static void drawMire(Graphics2D g,ForestHazard hazard,int cx,int cy,boolean above,boolean reduced) {
+        double age=hazard.age(),rise=Math.min(1,age/.18),sink=Math.min(1,hazard.remaining()/.4);
+        drawMire(g,hazard.x(),hazard.y(),hazard.radius(),age,rise,sink,cx,cy,above,reduced);
+    }
+    private static void drawMire(Graphics2D g,double wx,double wy,double r,double age,double rise,double sink,
+            int cx,int cy,boolean above,boolean reduced) {
+        int x=snap(wx-cx),y=snap(wy+Player.COLLISION_Y_OFFSET-cy);
+        if(!above) {
+            for(int i=0;i<9;i++) {
+                double a=i*2.4,spread=r*(.2+(i%3)*.22);
+                int px=snap(x+Math.cos(a)*spread),py=snap(y+Math.sin(a)*spread);
+                g.setColor(new Color(0x242a32));blob(g,px,py,5);
+                g.setColor(new Color(0x424344));blob(g,px,py,3);
+                if(!reduced) {
+                    double bubble=(age*1.7+i*.31)%1;
+                    g.setColor(new Color(0x929664));g.fillRect(px,snap(py-bubble*18),2,2);
+                }
+            }
+            return;
+        }
+        for(int i=0;i<7;i++) {
+            double a=i*2.4,spread=r*(i==0?.12:.48+(i%2)*.18);
+            int bx=snap(x+Math.cos(a)*spread),by=snap(y+Math.sin(a)*spread);
+            int height=(int)((20+(i%3)*10)*rise*sink),lean=(i%2==0?1:-1)*8;
+            for(int h=0;h<height;h+=2) {
+                int px=snap(bx+lean*(double)h/Math.max(1,height)),width=h<height*.35?8:h<height*.75?6:2;
+                g.setColor(new Color(0x22282a));g.fillRect(px-width/2-2,by-h,width+4,2);
+                g.setColor(new Color(h>height*.7?0xabb47a:0x666e50));g.fillRect(px-width/2,by-h,width,2);
+                if(h<height*.7) {g.setColor(new Color(0x899161));g.fillRect(px-width/2,by-h,2,2);}
+            }
+            if(height>12) {
+                g.setColor(new Color(0x899161));
+                for(int h=0;h<8;h+=2)g.fillRect(snap(bx-lean*.35+h*(lean>0?-1:1)),by-height/2-h,4,2);
             }
         }
     }

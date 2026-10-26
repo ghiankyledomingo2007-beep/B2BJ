@@ -1,0 +1,19 @@
+{
+  "file": "effort_hurt_2.wav",
+  "speaker": "RAINORAY",
+  "text": "Ugh!",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "generated_at": 1792967529.9406493,
+  "request_id": "tH8uG6v40J4zw6FCpQIU",
+  "seconds": 0.5633,
+  "peak_dbfs": -7.54,
+  "sha256": "cf479995e8ec82a5d6df22028aa1f178ff2a08a92ccfc6b59017036643cf98b3"
+}

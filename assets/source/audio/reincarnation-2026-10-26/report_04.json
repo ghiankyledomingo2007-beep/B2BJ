@@ -1,0 +1,27 @@
+{
+  "file": "report_04.wav",
+  "speaker": "MARA",
+  "scene": "STILL MISSING",
+  "text": "Until someone brings me an answer, that's where they'll stay.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "xkIAvMOSiVCKTsKEOq8T",
+  "context_request_ids": [
+    "3j8HDvYjnYBxMjZwmzfF",
+    "fnrcWhKO6xFwFhW7afO5",
+    "5GtCXq2PP0wn4z2IQcza"
+  ],
+  "generated_at": 1793011339.6028984,
+  "format": "mp3_44100_192",
+  "seconds": 3.019,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "d61bdab1c1e49c5ea88031656bd01700f385ebb25b7af734ceb7d199d01c17c9"
+}

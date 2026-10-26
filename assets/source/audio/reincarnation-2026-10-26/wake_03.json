@@ -1,0 +1,23 @@
+{
+  "file": "wake_03.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "ONE MORE CHANCE",
+  "text": "I cannot confirm. Your previous body has been lost.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "wgQUtzhJCgJsBEp9iKQZ",
+  "context_request_ids": [],
+  "generated_at": 1793011328.8248856,
+  "format": "mp3_44100_192",
+  "seconds": 3.875,
+  "peak_dbfs": -3.95,
+  "tempo": 1,
+  "sha256": "bcd9afd02ea3b1d8fe1ff8140a58a0f8ea14c838ec614bb78527e69d01851638"
+}

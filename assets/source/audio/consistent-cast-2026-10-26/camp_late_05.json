@@ -1,0 +1,27 @@
+{
+  "file": "camp_late_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAMP AT CAMP",
+  "text": "Then that's where I'll look next.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "Bogrf6z4wllRrg1xeXZf",
+  "context_request_ids": [
+    "wMmm0ewJkALCQCfxKxqd",
+    "lXooFDBPNTIOAW5OF7jf",
+    "hTfRNpW0h18dgiPFGbrO"
+  ],
+  "generated_at": 1792948994.9587796,
+  "format": "mp3_44100_192",
+  "seconds": 1.533,
+  "peak_dbfs": -4.22,
+  "tempo": 1,
+  "sha256": "83fbe93c2a5b0105a690976dfb128f1c990790a8057349b2f9b24a3dc4f89852"
+}

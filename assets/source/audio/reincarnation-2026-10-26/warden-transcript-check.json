@@ -1,0 +1,14 @@
+[
+  {
+    "file": "warden_01.wav",
+    "expected": "CONTAMINATED LIFEFORM. PASSAGE DENIED.",
+    "recognized": "Contaminated life form. Passage denied. ",
+    "match": 0.667
+  },
+  {
+    "file": "warden_03.wav",
+    "expected": "THE ROAD IS SEALED FOR THEIR PROTECTION.",
+    "recognized": "The road is sealed for their protection",
+    "match": 1.0
+  }
+]

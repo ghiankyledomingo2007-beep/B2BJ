@@ -8,13 +8,10 @@ final class ForestArt {
 
     static Canvas sheet(SetPieces.Kind kind) {
         return switch (kind) {
-            case OAK -> Canvas.strip(oak(0), oak(1), oak(2));
+            case OAK, BUSH, LOG, STUMP -> ImportedArt.forest(kind);
             case PINE -> Canvas.strip(pine(0), pine(1));
             case WITHERED -> Canvas.strip(withered(0), withered(1));
-            case BUSH -> Canvas.strip(bush(0), bush(1), bush(2));
-            case LOG -> Canvas.strip(log(0), log(1));
             case BOULDER -> Canvas.strip(boulder(0), boulder(1));
-            case STUMP -> stump();
             case BOAT -> boat();
             case CLOTH_POST -> Canvas.strip(clothPost(0), clothPost(1));
             case HOLLOW_TREE -> hollowTree();
@@ -93,7 +90,7 @@ final class ForestArt {
 
     static final int[] OAK_BARK = {Pal.WOOD[0], Pal.WOOD[1], Pal.WOOD[2], Pal.WOOD[3], Pal.WOOD[4]};
     static final int[] PALE_BARK = {Pal.STONE[1], Pal.STONE[2], Pal.STONE[3], Pal.STONE[4], Pal.STONE[5]};
-    static final int[] ROT_BARK = {Pal.INK, Pal.VIOLET[0], Pal.VIOLET[1], Pal.VIOLET[2], Pal.VIOLET[3]};
+    static final int[] ROT_BARK = {Pal.INK, Pal.WOOD[0], Pal.WOOD[1], Pal.WOOD[2], Pal.WOOD[3]};
 
     /** Thin glowing gold veins along a vertical span: the forest's corruption. */
     static void veins(Canvas c, int x0, int x1, int top, int bottom, int seed) {
@@ -103,7 +100,7 @@ final class ForestArt {
                 x += (Noise.rnd(v, y, seed) - .5) * 1.3;
                 int ix = (int) Math.round(x);
                 if (ix <= x0 || ix >= x1 || !c.opaque(ix, y)) continue;
-                c.set(ix, y, Noise.rnd(ix, y, seed + 3) < .25 ? Pal.GOLD[5] : Pal.GOLD[3]);
+                c.set(ix, y, Noise.rnd(ix, y, seed + 3) < .12 ? Pal.GOLD[3] : Pal.WOOD[3]);
             }
         }
     }

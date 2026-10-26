@@ -1,0 +1,27 @@
+{
+  "file": "bark_fight_watch.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "One moment. I'll check behind us.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ijBUnQIj7S6R5il7igKn",
+  "context_request_ids": [
+    "KaIEdGiAmkk2IciSOwWU",
+    "m2yghgOaHg6fAHjaTH2W",
+    "J2ZdvH5A1Mda49x2vsdj"
+  ],
+  "generated_at": 1792949070.734079,
+  "format": "mp3_44100_192",
+  "seconds": 1.811,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "c8a33b016f1660f48797c6d724afbc2e24b7052681c7c412517a863b15d24907"
+}

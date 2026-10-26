@@ -1,0 +1,27 @@
+{
+  "file": "camp_04.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAMP AT CAMP",
+  "text": "I'm having some trouble accounting for myself. Where is everyone?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "xDrgCcAezPvzz1n0p4uR",
+  "context_request_ids": [
+    "3Q4GuWCGlegfKAvWoPUg",
+    "O3m63kSYARuM9dGr1cbo",
+    "11jXDR1LyM83Utgb0jhR"
+  ],
+  "generated_at": 1792948990.6830983,
+  "format": "mp3_44100_192",
+  "seconds": 3.344,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "54a24202a4a2f8e8c34e381019bcf2b193593a6c6aab77658082b25241827739"
+}

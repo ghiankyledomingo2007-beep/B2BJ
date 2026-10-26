@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_routes_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "We will learn. Keep the camp behind us.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "cCm2FLmFM69hwnjMXUes",
+  "context_request_ids": [
+    "dpzlGWc2Zp0nIUBbeJQI",
+    "PnoWYVvqfbHBZUtcPi7U",
+    "AYGB3dF1RztWk3RybWR8"
+  ],
+  "generated_at": 1793011347.2278087,
+  "format": "mp3_44100_192",
+  "seconds": 3.377,
+  "peak_dbfs": -4.0,
+  "tempo": 1.01691,
+  "sha256": "6232d57d09821d52b28587340a2a89896e7312eb1698ed11b6dce4ebec4c3144"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_body.wav",
+  "speaker": "RAINORAY",
+  "scene": "WALK_BODY",
+  "text": "Is this body holding together?",
+  "spoken_text": "",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "SBq79dLTac7EvGsSguSH",
+  "context_request_ids": [
+    "BV5jGnfSrgnSPW4WoWoy",
+    "cuudy8HDIhRI0FaOdvYC"
+  ],
+  "generated_at": 1793024784.2201269,
+  "format": "mp3_44100_192",
+  "seconds": 1.672,
+  "peak_dbfs": -4.24,
+  "tempo": 1,
+  "sha256": "2e55cd886aea073d6d79df3428bcf8f8351436b20a86efd95d42ded1b6e8957c"
+}

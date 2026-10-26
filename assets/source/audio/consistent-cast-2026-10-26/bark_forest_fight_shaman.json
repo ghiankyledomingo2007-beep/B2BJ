@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_shaman.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I thought it was aiming at me.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "xiQeDNNkniSvVH1ULjqv",
+  "context_request_ids": [
+    "lUvjC4dS6yA2Tcvt6lue",
+    "P7xP8pPtrSfBzGC3o0O2",
+    "ELY3SaDp6G6zgODG3eI1"
+  ],
+  "generated_at": 1792949102.811563,
+  "format": "mp3_44100_192",
+  "seconds": 1.672,
+  "peak_dbfs": -4.19,
+  "tempo": 1,
+  "sha256": "c0192bd9f5f6c473cef7a2e733bd326948cd827bda6bdc5c7b179a8569ed8bad"
+}

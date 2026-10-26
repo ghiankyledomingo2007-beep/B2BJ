@@ -1,0 +1,27 @@
+{
+  "file": "gate_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE ROAD OPENS",
+  "text": "Only one set of footprints comes back. Shuna's.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "8CoZYuoRFSR25AGLF6Qj",
+  "context_request_ids": [
+    "39XUYhZ3ukJaMy2tT5fX",
+    "SbXlYVOXsMldSNSO0enb",
+    "B0RHZOVyXljMfrrjl9lJ"
+  ],
+  "generated_at": 1793011353.2659392,
+  "format": "mp3_44100_192",
+  "seconds": 3.158,
+  "peak_dbfs": -4.09,
+  "tempo": 1,
+  "sha256": "a672b5304d4e222cfa9f3a6ccc70d7d030957a96895162aa78b0404aa534d1d6"
+}

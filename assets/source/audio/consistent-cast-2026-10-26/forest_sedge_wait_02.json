@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_wait_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "SEDGE",
+  "text": "Can you help them back if I open it?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "BDjipazAxiZ0sAZbBRQC",
+  "context_request_ids": [
+    "yxuXv1rGnniG3xn763aV",
+    "TBKiBdo5HUrvP2OxT9EK",
+    "XyQcNea8zmK1P3DcZCMx"
+  ],
+  "generated_at": 1792949045.958624,
+  "format": "mp3_44100_192",
+  "seconds": 1.718,
+  "peak_dbfs": -4.23,
+  "tempo": 1,
+  "sha256": "51fab609380b61a6f646086cab8c80b4e148001217a5f48768a4378ccb4391d6"
+}

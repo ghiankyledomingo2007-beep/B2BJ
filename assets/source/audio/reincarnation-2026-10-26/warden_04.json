@@ -1,0 +1,27 @@
+{
+  "file": "warden_04.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE LAST ORDER",
+  "text": "The order is damaged. It cannot distinguish a rescue from an attack.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "iM2wVdY8vC8VQTc6ZMXq",
+  "context_request_ids": [
+    "BnND8LejvsnXlAh2e35x",
+    "xS8oA4q8wxaJ4RHx6mw0",
+    "75QG6tVQjv4TsJGtKdam"
+  ],
+  "generated_at": 1793011341.4315815,
+  "format": "mp3_44100_192",
+  "seconds": 5.036,
+  "peak_dbfs": -3.94,
+  "tempo": 1,
+  "sha256": "d96194d2a220da23f13dcab209fc78a119c8f258d5c322cad91ef136e50ce14f"
+}

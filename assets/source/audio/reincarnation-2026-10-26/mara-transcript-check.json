@@ -1,0 +1,68 @@
+[
+  {
+    "file": "camp_01.wav",
+    "expected": "Stop there. There are wounded behind me.",
+    "recognized": "Stop there. There are wounded behind me. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_05.wav",
+    "expected": "Then start with your name.",
+    "recognized": "Then start with your name. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_07.wav",
+    "expected": "I'm Shuna. Our people were sent east. Then the rift struck, and the Warden sealed their road.",
+    "recognized": "I'm Shuna. Our people were sent east. Then the rift struck and the warden sealed their road. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_08.wav",
+    "expected": "I have to keep this ward standing. If it fails, the wounded have nowhere safe to rest.",
+    "recognized": "I have to keep this ward standing. If it fails, the wounded have nowhere safe to rest. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_09.wav",
+    "expected": "Someone called from the storehouse south of the road. You might fit under its fence.",
+    "recognized": "Someone called from the storehouse south of the road. You might fit under its fence. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_10.wav",
+    "expected": "Follow the torn banners east, then north at Inner Court. Be careful. The dead still know how to fight.",
+    "recognized": "Follow the torn banners east, then north at inner court. Be careful. The dead still know how to fight. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_late_03.wav",
+    "expected": "I'm Shuna. You've opened a road we thought we'd lost.",
+    "recognized": "I'm Shuna. You've opened a road we thought we'd lost. ",
+    "match": 1.0
+  },
+  {
+    "file": "report_02.wav",
+    "expected": "After we sent the wounded through. No one could get back to them.",
+    "recognized": "After we sent the wounded through, no one could get back to them. ",
+    "match": 1.0
+  },
+  {
+    "file": "report_04.wav",
+    "expected": "Until someone brings me an answer, that's where they'll stay.",
+    "recognized": "Until someone brings me an answer, that's where they'll stay. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_home_01.wav",
+    "expected": "Kaijin, Eren and Rigurd. Three beds that aren't empty anymore.",
+    "recognized": "Kaijin, Eren, and Regurd, three beds that aren't empty anymore. ",
+    "match": 0.909
+  },
+  {
+    "file": "camp_home_03.wav",
+    "expected": "Eren found the last of the good tea. Take the coin we were saving with it. You've earned both.",
+    "recognized": "Eren found the last of the good tea. Take the coin we were saving with it. You've earned both",
+    "match": 1.0
+  }
+]

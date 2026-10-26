@@ -1,0 +1,7 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #111820; color: #e7eeed; font: 16px system-ui, sans-serif; color-scheme: dark; }
+main { max-width: 580px; margin: 60px auto; padding: 0 24px; }
+h1 { font-size: 28px; margin-bottom: 30px; }
+section { padding: 20px; margin-bottom: 18px; background: #1b2730; border-radius: 12px; }
+h2 { font-size: 17px; font-weight: 500; margin: 0 0 16px; }
+audio { width: 100%; }

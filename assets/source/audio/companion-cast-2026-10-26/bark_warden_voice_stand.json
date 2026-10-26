@@ -1,0 +1,25 @@
+{
+  "file": "bark_warden_voice_stand.wav",
+  "speaker": "WARDEN",
+  "scene": "WARDEN_VOICE_STAND",
+  "text": "Stand down.",
+  "spoken_text": "",
+  "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.2,
+    "use_speaker_boost": true,
+    "speed": 0.95
+  },
+  "seed": 84722,
+  "request_id": "MmMJcMy1xJW3qZ38TPKY",
+  "context_request_ids": [],
+  "generated_at": 1793024782.356854,
+  "format": "mp3_44100_192",
+  "seconds": 1.115,
+  "peak_dbfs": -4.25,
+  "tempo": 1,
+  "sha256": "1b1bfa3f3a24012db4637b37dc064c8eb0260dc2021872b0b776e6a8b1595e17"
+}

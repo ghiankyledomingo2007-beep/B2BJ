@@ -1,0 +1,27 @@
+{
+  "file": "infirmary_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE EMPTY BED",
+  "text": "There's a dry dressing underneath. I'll leave it where she can find it.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "tS6a5BcPPqLPMKDYTGw5",
+  "context_request_ids": [
+    "77KGzm9eiIFzkKXk8JgH",
+    "aH8QgwARqmUaFTEfxXJj",
+    "JkIE0NAM3eNC0Da9j1Dm"
+  ],
+  "generated_at": 1792949003.8540533,
+  "format": "mp3_44100_192",
+  "seconds": 3.808,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "19e75304fc250dfb44adf2c0e7f0b7dec8bbf8659d757559c6a95da5dd22b756"
+}

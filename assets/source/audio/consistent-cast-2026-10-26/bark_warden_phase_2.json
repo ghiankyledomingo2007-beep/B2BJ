@@ -1,0 +1,27 @@
+{
+  "file": "bark_warden_phase_2.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Good. I'll use that.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "jq96zZhhqwMnLz3l3jLS",
+  "context_request_ids": [
+    "vGWWgOWV2uHY1XYTn5gZ",
+    "ilxiRHDzR0YvQOJHxr6L",
+    "2hSVVzdsCTD5A2bKLSQg"
+  ],
+  "generated_at": 1792949094.7427976,
+  "format": "mp3_44100_192",
+  "seconds": 1.718,
+  "peak_dbfs": -4.05,
+  "tempo": 1,
+  "sha256": "4181ea72ae042163a1c1a6f9951f81ef04d4d798e018d50b53f0620b5ad720c4"
+}

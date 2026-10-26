@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_camp_rope.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "He kept the rope ready all this time.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ntJMHr68ggw2UlivqxLq",
+  "context_request_ids": [
+    "xaCSxlOxTgyTzjHGV3yE",
+    "KSfGhjsTqrcgkCSaD2XZ",
+    "8pz29BMX64bmmcMuW0le"
+  ],
+  "generated_at": 1792949116.2726653,
+  "format": "mp3_44100_192",
+  "seconds": 2.09,
+  "peak_dbfs": -4.42,
+  "tempo": 1,
+  "sha256": "b9a6e1f28652f3d5400d3a77d57cc228c7740126e4cc3a465b6cf268e727f65e"
+}

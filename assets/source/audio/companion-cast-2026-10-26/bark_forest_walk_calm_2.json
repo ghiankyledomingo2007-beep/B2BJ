@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_walk_calm_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "FOREST_WALK_CALM",
+  "text": "One of us has to be.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "Z8B2maDBUhvLj1LpnU07",
+  "context_request_ids": [
+    "cYHYtn2anTbzylhuhN3f",
+    "5CQEJsncbrg9hPs1gp0i",
+    "WhAT5ykf8sdhS4SckxDW"
+  ],
+  "generated_at": 1793024795.2126005,
+  "format": "mp3_44100_192",
+  "seconds": 2.157,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "804806574add039cfa254d65f5f7b8ad6fffab9a1f65088cb3b5cb9bcc5cb50c"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "signal_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE BROKEN ORDER",
+  "text": "A dispatch. 'Seal the road against Ichor-bearing life.' Someone added it over the evacuation order.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "eXlnbZOjSZdBKNQzKDGv",
+  "context_request_ids": [
+    "H0TH2a5gmu3d91QYOEdG",
+    "qD6Oo0yzadkNKo78yKT3",
+    "i3RWJWOtSDJQRqi87U20"
+  ],
+  "generated_at": 1793011341.2143223,
+  "format": "mp3_44100_192",
+  "seconds": 6.78,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "672d314ed1c0f44e8408c12dffd99811073f0321159c4a3cbecd386ca9434d70"
+}

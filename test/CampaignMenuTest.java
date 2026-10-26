@@ -9,6 +9,7 @@ import javax.swing.AbstractButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 public final class CampaignMenuTest {
@@ -31,15 +32,45 @@ public final class CampaignMenuTest {
         assert !button(menu, "Resume").isEnabled() && !button(menu, "Return to Title").isEnabled();
         assert !button(menu, "Admin / Testing").isEnabled() : "title screen cannot enable cheats";
         assert button(menu, "Settings").isEnabled();
-        assert menu.getPreferredSize().width <= 600 && menu.getPreferredSize().height <= 650;
+        var controlsButton = button(menu, "Controls");
+        var hover = new java.awt.event.MouseEvent(controlsButton, java.awt.event.MouseEvent.MOUSE_ENTERED,
+                0, 0, 4, 4, 0, false);
+        for (var listener : controlsButton.getMouseListeners()) listener.mouseEntered(hover);
+        assert Boolean.TRUE.equals(controlsButton.getClientProperty("menu.selected"));
+        var settingsButton = button(menu, "Settings");
+        var focus = new java.awt.event.FocusEvent(settingsButton, java.awt.event.FocusEvent.FOCUS_GAINED);
+        for (var listener : settingsButton.getFocusListeners()) listener.focusGained(focus);
+        assert Boolean.TRUE.equals(settingsButton.getClientProperty("menu.selected"))
+                && Boolean.FALSE.equals(controlsButton.getClientProperty("menu.selected"))
+                : "keyboard focus must replace the hovered selection, never light two rows";
+        assert button(menu, "Close").isEnabled() : "every menu page needs an internal close action";
+        assert descendants(menu).stream().noneMatch(JTextArea.class::isInstance)
+                : "pause home should leave instructions in Controls";
+        assert menu.getPreferredSize().width <= 600 && menu.getPreferredSize().height <= 688;
         menu.setSize(menu.getPreferredSize());
         layout(menu);
+        var frame = new BufferedImage(menu.getWidth(), menu.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        var frameGraphics = frame.createGraphics();
+        menu.paintComponent(frameGraphics);
+        frameGraphics.dispose();
+        var colors = new java.util.HashSet<Integer>();
+        for (int y = 0; y < frame.getHeight(); y += 2) for (int x = 0; x < frame.getWidth(); x += 2) {
+            int pixel = frame.getRGB(x, y);
+            colors.add(pixel);
+            assert pixel == frame.getRGB(x + 1, y) && pixel == frame.getRGB(x, y + 1)
+                    && pixel == frame.getRGB(x + 1, y + 1) : "panel art must stay on the native 2x pixel grid";
+        }
+        assert (frame.getRGB(0,0)>>>24)==0 : "carved frame silhouette must leave the world visible";
+        assert (frame.getRGB(frame.getWidth()/2,frame.getHeight()/2)>>>24)==255 : "content well must stay readable";
+        assert button(menu, "Close").getWidth() == 76 : "Close must keep its compact explicit width";
         for (String name : List.of("Resume", "Settings", "Admin / Testing", "Return to Title")) {
             assert button(menu, name).getHeight() >= 32
                     : "first layout must leave every Home button visible: " + name + " " + button(menu, name).getBounds()
                     + " / help " + descendants(menu).stream().filter(javax.swing.JTextArea.class::isInstance)
                             .map(component -> component.getBounds() + " preferred=" + component.getPreferredSize()).toList();
             var button = button(menu, name);
+            assert Ui.width(button.getText(), 3) + 64 <= button.getWidth() - 36
+                    : "larger labels must leave room for their icon and selection crystal";
             var bounds = SwingUtilities.convertRectangle(button.getParent(), button.getBounds(), menu);
             assert new java.awt.Rectangle(0, 0, menu.getWidth(), menu.getHeight()).contains(bounds)
                     : "Home button must stay inside the visible menu: " + name;
@@ -48,8 +79,13 @@ public final class CampaignMenuTest {
         game.pause();
         menu.home();
         assert button(menu, "Resume").isEnabled() && button(menu, "Return to Title").isEnabled();
+        button(menu, "Controls").doClick();
+        assert descendants(menu).stream().filter(CampaignMenu.ControlsSheet.class::isInstance)
+                .anyMatch(c -> c.getAccessibleContext().getAccessibleDescription().contains("Riposte"))
+                : "Controls must open and expose its bindings to screen readers";
+        button(menu, "Back").doClick();
         button(menu, "Settings").doClick();
-        assert descendants(menu).stream().filter(JSlider.class::isInstance).count() == 3
+        assert descendants(menu).stream().filter(JSlider.class::isInstance).count() == 4
                 : "Settings must embed the existing audio options";
         JCheckBox effects = descendants(menu).stream().filter(JCheckBox.class::isInstance).map(JCheckBox.class::cast)
                 .filter(box -> box.getText().startsWith("Reduce flashes")).findFirst().orElseThrow();
@@ -99,12 +135,26 @@ public final class CampaignMenuTest {
     private static void captureIntegratedMenu(Path output) {
         var game = RuinedOutpostGame.campaign();
         game.begin();
+        game.skipDialogue();
         var desktop = new B2BJ(false, game);
         desktop.setSize(1280, 720);
         layout(desktop);
         capture(desktop, output.resolve("menu-button.png"));
         button(desktop, "Menu").doClick();
+        desktop.step(.01);
+        assert !button(desktop, "Menu").isVisible() : "internal Close replaces the duplicate corner control";
+        button(desktop, "Resume").getModel().setRollover(true);
         capture(desktop, output.resolve("menu-home.png"));
+        var resumeModel = button(desktop, "Resume").getModel();
+        resumeModel.setArmed(true);
+        resumeModel.setPressed(true);
+        capture(desktop, output.resolve("menu-pressed.png"));
+        resumeModel.setArmed(false);
+        resumeModel.setPressed(false);
+        assert game.paused() : "cancelling a press must not activate Resume";
+        button(desktop, "Controls").doClick();
+        capture(desktop, output.resolve("menu-controls.png"));
+        button(desktop, "Back").doClick();
         button(desktop, "Settings").doClick();
         capture(desktop, output.resolve("menu-settings.png"));
         button(desktop, "Back").doClick();

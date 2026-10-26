@@ -1,0 +1,29 @@
+{
+  "file": "forest_end_06.wav",
+  "speaker": "SEDGE",
+  "scene": "THE LAST STRETCHER",
+  "text": "Everyone we found. They're at the camp.",
+  "spoken_text": "",
+  "voice_id": "cjVigY5qzO86Huf0OWal",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.68,
+    "similarity_boost": 0.75,
+    "style": 0.05,
+    "use_speaker_boost": true,
+    "speed": 0.96
+  },
+  "seed": 84722,
+  "request_id": "lgzLZSy20PrWlbnuCzFm",
+  "context_request_ids": [
+    "oHZ3uGhW2a2z1XG2faPt",
+    "ecYOCl0S4AJ0gXKFoTQs",
+    "P2YrArRtBVO5gqxUDN6T"
+  ],
+  "generated_at": 1793024816.9458165,
+  "format": "mp3_44100_192",
+  "seconds": 2.136,
+  "peak_dbfs": -4.13,
+  "tempo": 1,
+  "sha256": "0ad74aadf5e8686f6b810a7cc20cb98842a0a0f4c7c58300fb6cab692ff47ae7"
+}

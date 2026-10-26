@@ -1,0 +1,27 @@
+{
+  "file": "wake_07.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE MORE CHANCE",
+  "text": "A slime? That was your best option?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "b9EW8Z41K2vqWP57clto",
+  "context_request_ids": [
+    "2tDLTA05m7IcMTbkWDXI",
+    "9O4LMXKZXmJSQjyPuSjE",
+    "1Zuv9B1JEXFIsKVHaHgI"
+  ],
+  "generated_at": 1793011331.186668,
+  "format": "mp3_44100_192",
+  "seconds": 2.183,
+  "peak_dbfs": -4.21,
+  "tempo": 1,
+  "sha256": "e50b1713d6f28a47265b7dd0f0046945c31becb80c990366b05be652c8f7aef3"
+}

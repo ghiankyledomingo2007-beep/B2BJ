@@ -1,0 +1,28 @@
+{
+  "file": "survivor_ilse_06.wav",
+  "speaker": "ILSE",
+  "scene": "INSIDE THE THORNS",
+  "text": "Watch the roots when the wind stops. They don't stop with it.",
+  "spoken_text": "",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.1,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "TEMvCe4KN7ZT16OELtKm",
+  "context_request_ids": [
+    "TQ5ndOh5x21wZxJuzokL",
+    "VvfKk6SSnk6j1UXCiTj8",
+    "XTIAj3X5GN0oSBY5lxFl"
+  ],
+  "generated_at": 1793024802.5481021,
+  "format": "mp3_44100_192",
+  "seconds": 3.204,
+  "peak_dbfs": -3.97,
+  "tempo": 1,
+  "sha256": "47a55daa44a8f744549840d4146943e1497f35344dbdd3ee0745638b05ba74c3"
+}

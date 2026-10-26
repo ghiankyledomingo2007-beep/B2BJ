@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_map.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "A map never shows how a place feels.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "nt1d7o4BvwPwfnKEcNIE",
+  "context_request_ids": [
+    "3Tvpamy2OEEvIJ4yayOi",
+    "jZ84JZjEzxGQDA0TzTMf",
+    "QPdDsHJqHDdyKQdk323m"
+  ],
+  "generated_at": 1792949086.7725797,
+  "format": "mp3_44100_192",
+  "seconds": 2.508,
+  "peak_dbfs": -4.14,
+  "tempo": 1,
+  "sha256": "3bdad4c7a771845faf49b78253eeb1c1c8f6d21147af301e0757f2b38159d970"
+}

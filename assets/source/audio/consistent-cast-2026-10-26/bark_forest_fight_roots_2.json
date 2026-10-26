@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_roots_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "Someone beyond them does.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "7finEIxlNAIpVRDzhZg9",
+  "context_request_ids": [
+    "9tlcse8JC6hmB7Dm6AXx",
+    "HCUxIe4kWWugnejoDO3N",
+    "Ob5wm8CGr12L1BeOhWZo"
+  ],
+  "generated_at": 1792949013.2171361,
+  "format": "mp3_44100_192",
+  "seconds": 2.297,
+  "peak_dbfs": -4.47,
+  "tempo": 1,
+  "sha256": "763103362947246768571abc6e6348109747ae5e66f6a427ce6b336b25bb7f1d"
+}

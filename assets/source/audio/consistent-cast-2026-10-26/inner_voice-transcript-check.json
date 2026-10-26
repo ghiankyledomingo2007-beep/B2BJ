@@ -1,0 +1,272 @@
+[
+  {
+    "file": "forest_arrival_02.wav",
+    "expected": "And stopping often. There is cloth tied ahead.",
+    "recognized": "And stopping often. There is cloth tied ahead. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_sedge_07.wav",
+    "expected": "The roots all pull toward that clearing. We should find what is holding them.",
+    "recognized": "The roots all pull toward that clearing. We should find what is holding them. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_wayfinder_02.wav",
+    "expected": "The marks face both ways.",
+    "recognized": "The marks face both ways. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_moonwell_02.wav",
+    "expected": "Its roots are cut. The water here no longer feeds the heart.",
+    "recognized": "Its roots are cut. The water here no longer feeds the heart. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_orchard_02.wav",
+    "expected": "For whoever followed them.",
+    "recognized": "For whoever followed them. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_briarheart_02.wav",
+    "expected": "The entrance is behind it. I can hear movement below.",
+    "recognized": "The entrance is behind it. I can hear movement below. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_briarheart_04.wav",
+    "expected": "I will. Stay moving while I learn its pattern.",
+    "recognized": "I will. Stay moving while I learn its pattern. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_02.wav",
+    "expected": "More than one voice. They are coming toward us.",
+    "recognized": "More than one voice. They are coming toward us. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_04.wav",
+    "expected": "You found them.",
+    "recognized": "You found them. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_06.wav",
+    "expected": "Then we start with these people.",
+    "recognized": "Then we start with these people. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_crossing_2.wav",
+    "expected": "They move when the heart tightens.",
+    "recognized": "They move when the heart tightens. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_grove_2.wav",
+    "expected": "Still pointing east. He chose well.",
+    "recognized": "Still pointing east. He chose well. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_ridge_2.wav",
+    "expected": "Follow the stones. They still mark a crossing.",
+    "recognized": "Follow the stones. They still mark a crossing. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_ford_2.wav",
+    "expected": "The roots have taken more than the road.",
+    "recognized": "The roots have taken more than the road. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_imps_2.wav",
+    "expected": "It watched your first move. Then committed.",
+    "recognized": "It watched your first move, then committed. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_wolves_2.wav",
+    "expected": "The landing gives it away.",
+    "recognized": "The landing gives it away. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_shaman_2.wav",
+    "expected": "At the ground beneath you. Keep moving.",
+    "recognized": "At the ground beneath you. Keep moving. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_roots_2.wav",
+    "expected": "Someone beyond them does.",
+    "recognized": "Someone beyond them does. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_mud_2.wav",
+    "expected": "You can go around the next one.",
+    "recognized": "You can go around the next one. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_breath_2.wav",
+    "expected": "The habit is useful. Take a moment.",
+    "recognized": "The habit is useful. Take a moment. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_noise_2.wav",
+    "expected": "Quiet was unlikely. Passing through is enough.",
+    "recognized": "Quiet was unlikely. Passing through is enough. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_better_2.wav",
+    "expected": "You saw the opening before I did.",
+    "recognized": "You saw the opening before I did. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_hurt_distance_2.wav",
+    "expected": "Let the roots settle before you return.",
+    "recognized": "Let the roots settle before you return. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_hurt_wait_2.wav",
+    "expected": "Take the clear ground. I'll keep watch.",
+    "recognized": "Take the clear ground. I'll keep watch. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_cloth_2.wav",
+    "expected": "It is easier to follow a promise you can see.",
+    "recognized": "It is easier to follow a promise you can see. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_company_2.wav",
+    "expected": "I was listening to the trees.",
+    "recognized": "I was listening to the trees. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_boots_2.wav",
+    "expected": "You found an advantage.",
+    "recognized": "You found an advantage. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_names_2.wav",
+    "expected": "You can ask them when we get there.",
+    "recognized": "You can ask them when we get there. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_home_2.wav",
+    "expected": "Someone is waiting for you there.",
+    "recognized": "Someone is waiting for you there. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_memory_2.wav",
+    "expected": "It was. The roots are still growing.",
+    "recognized": "It was. The roots are still growing. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_camp_rope_2.wav",
+    "expected": "Waiting can be work, too.",
+    "recognized": "Waiting can be work too. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_camp_boat_2.wav",
+    "expected": "His passengers could not.",
+    "recognized": "His passengers could not. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_start.wav",
+    "expected": "I'll watch how the roots move. Stay clear.",
+    "recognized": "I'll watch how the roots move. Stay clear. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_read.wav",
+    "expected": "The roots follow a pattern. I can read it now.",
+    "recognized": "The roots follow a pattern. I can read it now. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_open.wav",
+    "expected": "It's open. Strike the heart.",
+    "recognized": "It's open. Strike the heart. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_phase.wav",
+    "expected": "It's drawing more roots in. Watch the gaps.",
+    "recognized": "It's drawing more roots in. Watch the gaps. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_weak.wav",
+    "expected": "The heart is fading. One more opening.",
+    "recognized": "The heart is fading. One more opening. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_close_call.wav",
+    "expected": "Get clear. Let yourself recover.",
+    "recognized": "Get clear. Let yourself recover. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_boss_victory_2.wav",
+    "expected": "Listen. Someone is calling from below.",
+    "recognized": "Listen. Someone is calling from below. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_root_warning.wav",
+    "expected": "Between the roots. Leave that strip.",
+    "recognized": "Between the roots. Leave that strip. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_root_again.wav",
+    "expected": "Roots coming up. Take the gap.",
+    "recognized": "Roots coming up. Take the gap. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_seed_warning.wav",
+    "expected": "Seeds beneath you. Find clear ground.",
+    "recognized": "Seeds beneath you. Find clear ground. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_seed_again.wav",
+    "expected": "Move away. Those seeds will burst.",
+    "recognized": "Move away. Those seeds will burst. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_cage_warning.wav",
+    "expected": "One side is open. Go through it.",
+    "recognized": "One side is open. Go through it. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_cage_again.wav",
+    "expected": "Out through the gap. Don't stay inside.",
+    "recognized": "Out through the gap. Don't stay inside.",
+    "match": 1.0
+  }
+]

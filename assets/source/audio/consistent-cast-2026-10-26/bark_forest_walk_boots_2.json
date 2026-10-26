@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_boots_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "You found an advantage.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "AllmXOhxQX8XGIql539a",
+  "context_request_ids": [
+    "7QeXvoPbjH7mOGzLTInu",
+    "6hmZp4Z0NTKFBFsNy9qN",
+    "u0qiIyYCsRAx2XFNFadG"
+  ],
+  "generated_at": 1792949025.173007,
+  "format": "mp3_44100_192",
+  "seconds": 2.343,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "a24c363095120531b5f7885a972d084906e5de2041faf410e9463bb732e9cf4f"
+}

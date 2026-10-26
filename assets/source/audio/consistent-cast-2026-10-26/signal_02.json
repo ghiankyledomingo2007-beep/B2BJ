@@ -1,0 +1,27 @@
+{
+  "file": "signal_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE MISSING NAMES",
+  "text": "No death count. Just names marked missing. Mine is here, too.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "nudc7AfMYf0JYMGk9Pkz",
+  "context_request_ids": [
+    "hTfRNpW0h18dgiPFGbrO",
+    "Bogrf6z4wllRrg1xeXZf",
+    "5LHDk3PUinDqF9QsIv2T"
+  ],
+  "generated_at": 1792948997.4114707,
+  "format": "mp3_44100_192",
+  "seconds": 4.365,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "06bd751dc3fda7ed612e84a0961a9f6b5361ba397686e8e158a0cd5f5a926485"
+}

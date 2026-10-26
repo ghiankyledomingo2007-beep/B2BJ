@@ -1,0 +1,27 @@
+{
+  "file": "survivor_tobin_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "BEHIND THE FENCE",
+  "text": "Shuna's lamp is still lit at Captain Camp. Can you make it that far?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "moOPPShOJ046O054yAGO",
+  "context_request_ids": [
+    "B0RHZOVyXljMfrrjl9lJ",
+    "8CoZYuoRFSR25AGLF6Qj",
+    "k7XoSqmpEnmLO2YrKcTI"
+  ],
+  "generated_at": 1793011355.566901,
+  "format": "mp3_44100_192",
+  "seconds": 4.412,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "f29b02709fe570ed57c2f6a800bf8886c767bb894e74aff4051bfdac192e8869"
+}

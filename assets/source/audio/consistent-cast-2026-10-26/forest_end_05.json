@@ -1,0 +1,27 @@
+{
+  "file": "forest_end_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST STRETCHER",
+  "text": "Not everyone. But these people are going home.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "xC2A36zZpp7vmO1G0uRJ",
+  "context_request_ids": [
+    "rqtJCOPx1nGRiNx5Vcc2",
+    "Xhu1QUvKMscuhJkjxoXJ",
+    "W4wvvLbv621kxXOk8kcQ"
+  ],
+  "generated_at": 1792949062.1858199,
+  "format": "mp3_44100_192",
+  "seconds": 2.972,
+  "peak_dbfs": -4.44,
+  "tempo": 1,
+  "sha256": "33a279a9530ac278654d8c8b49e89b979a0f5e4fa138afc6f085b5ceacd94196"
+}

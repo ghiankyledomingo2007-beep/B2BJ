@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-25",
+  "generation": {
+    "rainoray-clean": {
+      "text": "No hands. No boots. I seem to have kept the exhaustion.",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0.0,
+        "use_speaker_boost": false
+      },
+      "format": "mp3_44100_192",
+      "request_id": "DTm8TNHMQEjY6CgywYEF"
+    },
+    "exchange-01-clean": {
+      "text": "Was that a voice? South of the road.",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0.0,
+        "use_speaker_boost": false
+      },
+      "format": "mp3_44100_192",
+      "request_id": "qs7IA9Ls7SsPO8Vb6jns"
+    },
+    "exchange-03-clean": {
+      "text": "Then we're not leaving them here.",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.68,
+        "style": 0.0,
+        "use_speaker_boost": false
+      },
+      "format": "mp3_44100_192",
+      "request_id": "9EiBLbiRcpjpePWNaBSJ"
+    }
+  },
+  "inner_voice_filter": "[0:a]aresample=44100,highpass=f=70,asplit=4[dry][up][down][room];[dry]pan=stereo|c0=c0|c1=c0,volume=0.88[d];[up]rubberband=pitch=1.008:formant=preserved,highpass=f=220,lowpass=f=7200,adelay=18,volume=0.10,pan=stereo|c0=c0|c1=0.18*c0[u];[down]rubberband=pitch=0.992:formant=preserved,highpass=f=220,lowpass=f=7200,adelay=29,volume=0.10,pan=stereo|c0=0.18*c0|c1=c0[l];[room]highpass=f=260,lowpass=f=6200,aecho=0.8:0.7:71|113|179|263|401:0.24|0.18|0.12|0.07|0.035,volume=0.16,pan=stereo|c0=c0|c1=c0,adelay=11|23[r];[d][u][l][r]amix=inputs=4:normalize=0,adelay=190|190[v];[1:a]volume=0.075,afade=t=in:d=0.008,afade=t=out:st=0.22:d=0.38,pan=stereo|c0=c0|c1=c0[c];[v][c]amix=inputs=2:normalize=0,apad=pad_dur=0.15[fx]",
+  "chime_source": "aevalsrc=0.50*sin(2*PI*1046.5*t)*exp(-9*t)+0.28*sin(2*PI*1568*t)*exp(-13*t)+0.12*sin(2*PI*2093*t)*exp(-20*t):s=44100:d=0.6",
+  "master": "two-pass loudnorm -19 LUFS, -3 dBTP, 44.1 kHz stereo PCM16 WAV",
+  "checks": {
+    "rainoray-clean": {
+      "seconds": 3.019,
+      "peak_dbfs": -4.09,
+      "stereo_difference": 0.0
+    },
+    "inner-voice-ether": {
+      "seconds": 8.984,
+      "peak_dbfs": -4.03,
+      "stereo_difference": 0.007766
+    },
+    "rainoray-before-after": {
+      "seconds": 7.327,
+      "peak_dbfs": -4.09,
+      "stereo_difference": 0.0
+    },
+    "inner-voice-before-after": {
+      "seconds": 18.354,
+      "peak_dbfs": -4.03,
+      "stereo_difference": 0.003801
+    },
+    "exchange-polished": {
+      "seconds": 7.365,
+      "peak_dbfs": -5.25,
+      "stereo_difference": 0.002416
+    }
+  },
+  "status": "audition only; human listening required; original files preserved",
+  "transcript_check": {
+    "matched": true,
+    "text": "No hands, no boots. I seem to have kept the exhaustion. Was that a voice south of the road? Confirmed. Someone is still alive. Then we're not leaving them here"
+  }
+}

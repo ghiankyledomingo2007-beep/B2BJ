@@ -1,0 +1,27 @@
+{
+  "file": "forest_moonwell_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "UNDER THE SURFACE",
+  "text": "Water, at last. Why hasn't this well dried up?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "eiTwYJATPot84f2j5QKm",
+  "context_request_ids": [
+    "fQxAdQCXWszI3D5QvB2Y",
+    "EgNJoMlvHKn2nQ2rehMG",
+    "3yMb1MT1RvHQmcwHmLr2"
+  ],
+  "generated_at": 1792949052.36107,
+  "format": "mp3_44100_192",
+  "seconds": 3.251,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "e05cb27d664c6a50989f41bfbd3419ad782c06bb6593e4c041853a6094c7a92d"
+}

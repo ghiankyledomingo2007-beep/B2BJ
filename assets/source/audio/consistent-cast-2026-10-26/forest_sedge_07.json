@@ -1,0 +1,25 @@
+{
+  "file": "forest_sedge_07.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE STRANDED FERRY",
+  "text": "The roots all pull toward that clearing. We should find what is holding them.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "gbFJLGpnAeFw5mZpzEdF",
+  "context_request_ids": [
+    "WL8Bipv3IuyCF3tQlBqR"
+  ],
+  "generated_at": 1792948990.9279535,
+  "format": "mp3_44100_192",
+  "seconds": 4.804,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "a0674d20831f53ead81fb6453fb0d5c851aff69566c8e59e0b9c4038b60c05c7"
+}

@@ -9,9 +9,29 @@ public final class FieldObjectsTest {
         gatesByForm();
         carryUnlockAndDeliver();
         survivorsComeHome();
+        survivorArt();
         bladeCutsAndLights();
         saveAcceptsRestCheckpoints();
         System.out.println("FieldObjectsTest passed");
+    }
+
+    private static void survivorArt() {
+        var sheet=B2BJ.loadImage("assets/props/outpost/field_survivor.png");
+        assert sheet.getWidth()==FieldRenderer.PERSON_W*3&&sheet.getHeight()==FieldRenderer.PERSON_H*2;
+        for(int col=0;col<3;col++) {
+            int changed=0;
+            for(int row=0;row<2;row++) {
+                int top=64,bottom=-1,opaque=0;
+                for(int y=0;y<64;y++)for(int x=0;x<64;x++) {
+                    int pixel=sheet.getRGB(col*64+x,row*64+y);
+                    assert (pixel>>>24)==0||(pixel>>>24)==255;
+                    if(pixel>>>24!=0){top=Math.min(top,y);bottom=Math.max(bottom,y);opaque++;}
+                    if(row==0&&pixel!=sheet.getRGB(col*64+x,64+y))changed++;
+                }
+                assert bottom-top>=46&&bottom==63&&opaque>700 : "seated adults need Mara's world scale and a planted baseline";
+            }
+            assert changed>100 : "injured and resting poses must remain distinct";
+        }
     }
 
     /** Yards sit on open ground: their fences cross no existing obstacle and every placed thing stands clear. */
@@ -200,9 +220,9 @@ public final class FieldObjectsTest {
     }
 
     private static void saveAcceptsRestCheckpoints() {
-        new CampaignSave.Progress(0, FieldObjects.REST_CHECKPOINT + 2, java.util.Set.of(), java.util.Set.of(), java.util.Map.of(), 0);
+        new CampaignSave.Progress(0, FieldObjects.REST_CHECKPOINT + FieldObjects.GATE_REST, java.util.Set.of(), java.util.Set.of(), java.util.Map.of(), 0);
         try {
-            new CampaignSave.Progress(0, FieldObjects.REST_CHECKPOINT + 3, java.util.Set.of(), java.util.Set.of(), java.util.Map.of(), 0);
+            new CampaignSave.Progress(0, FieldObjects.REST_CHECKPOINT + FieldObjects.rests(0).size(), java.util.Set.of(), java.util.Set.of(), java.util.Map.of(), 0);
             throw new AssertionError("an unknown checkpoint must be rejected");
         } catch (IllegalArgumentException expected) { }
     }

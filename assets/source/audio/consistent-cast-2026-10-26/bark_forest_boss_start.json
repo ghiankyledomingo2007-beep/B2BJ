@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_boss_start.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "I'll watch how the roots move. Stay clear.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "ZG6aBCtxtbLRjnORsHWP",
+  "context_request_ids": [
+    "kh69WrDcMxUOGp2i6xg4",
+    "Z5ruTTiqHDlxC2M5w2ob",
+    "067XQuHBp1S6c57mRQgM"
+  ],
+  "generated_at": 1792949033.1971285,
+  "format": "mp3_44100_192",
+  "seconds": 3.379,
+  "peak_dbfs": -3.94,
+  "tempo": 1.07155,
+  "sha256": "85ac1d3a312cf7185011657c2fc856daf4dd676d24193afb00344f3ad1e3436f"
+}

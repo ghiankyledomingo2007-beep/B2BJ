@@ -1,0 +1,121 @@
+file	speaker	scene	text
+forest_arrival_01.wav	RAINORAY	THE WHITE CLOTH	The tracks are deeper here. They were carrying someone.
+forest_arrival_02.wav	INNER_VOICE	THE WHITE CLOTH	And stopping often. There is cloth tied ahead.
+forest_arrival_03.wav	RAINORAY	THE WHITE CLOTH	A route marker. Someone wanted them followed.
+forest_sedge_01.wav	SEDGE	THE STRANDED CROSSING	Watch the bank. Looks solid until you put a foot on it.
+forest_sedge_02.wav	RAINORAY	THE STRANDED CROSSING	I'm following the stretcher crew from the outpost.
+forest_sedge_03.wav	SEDGE	THE STRANDED CROSSING	I got them across before the roots took the river. The injured are sheltering beneath the old stair.
+forest_sedge_04.wav	SEDGE	THE STRANDED CROSSING	Souei. I marked a path back, but the roots keep closing it.
+forest_sedge_05.wav	RAINORAY	THE STRANDED CROSSING	Rainoray. Shuna is waiting beyond the gate. The road is open now.
+forest_sedge_06.wav	SEDGE	THE STRANDED CROSSING	Then they have somewhere safe to go. Follow the white cloth north, then east over the ford.
+forest_sedge_07.wav	INNER_VOICE	THE STRANDED CROSSING	The roots all pull toward that clearing. We should find what is holding them.
+forest_sedge_08.wav	SEDGE	THE STRANDED CROSSING	I'll guard their crossing. You reach the tree. Watch the ground; it reaches farther than its branches.
+forest_sedge_wait_01.wav	SEDGE	SOUEI	White cloth through the grove, then east across the dry ford. The stair is beyond the thorn clearing.
+forest_sedge_wait_02.wav	RAINORAY	SOUEI	Can you help them back if I open it?
+forest_sedge_wait_03.wav	SEDGE	SOUEI	The rope is ready. Clear the roots and I'll bring them through.
+forest_sedge_late_01.wav	SEDGE	AN OPEN WAY	The roots went slack. I thought the whole bank was falling.
+forest_sedge_late_02.wav	RAINORAY	AN OPEN WAY	The tree at the clearing is down. I'm looking for the people from the outpost.
+forest_sedge_late_03.wav	SEDGE	AN OPEN WAY	Under the old stair. I'm Souei. I've been guarding their route back. We can move them now.
+forest_sedge_late_04.wav	RAINORAY	AN OPEN WAY	Then bring the rope. There's a refuge waiting beyond the gate.
+forest_wayfinder_01.wav	RAINORAY	A PATH BACK	White strips on every branch. He must have torn up half his sail.
+forest_wayfinder_02.wav	INNER_VOICE	A PATH BACK	The marks face both ways.
+forest_wayfinder_03.wav	RAINORAY	A PATH BACK	He wasn't just showing them where to go. He expected them to come back.
+forest_moonwell_01.wav	RAINORAY	UNDER THE SURFACE	Water, at last. Why hasn't this well dried up?
+forest_moonwell_02.wav	INNER_VOICE	UNDER THE SURFACE	Its roots are cut. The water here no longer feeds the heart.
+forest_moonwell_03.wav	RAINORAY	UNDER THE SURFACE	Then that thing is drinking the river.
+forest_orchard_01.wav	RAINORAY	THE LAST HARVEST	Someone left the good fruit within reach. Took the bruised ones.
+forest_orchard_02.wav	INNER_VOICE	THE LAST HARVEST	For whoever followed them.
+forest_orchard_03.wav	RAINORAY	THE LAST HARVEST	We packed our van like that. Best supplies where people could reach them.
+forest_briarheart_01.wav	RAINORAY	WHAT HOLDS THE ROAD	Those are stretcher poles caught in its roots.
+forest_briarheart_02.wav	INNER_VOICE	WHAT HOLDS THE ROAD	The entrance is behind it. I can hear movement below.
+forest_briarheart_03.wav	RAINORAY	WHAT HOLDS THE ROAD	Then we make a path. Keep an eye on the ground for me.
+forest_briarheart_04.wav	INNER_VOICE	WHAT HOLDS THE ROAD	I will. Stay moving while I learn its pattern.
+forest_sedge_after_01.wav	SEDGE	BRING THE ROPE	The white cloth's moving again. There hasn't been a breeze through here in days.
+forest_sedge_after_02.wav	RAINORAY	BRING THE ROPE	The roots have loosened. We can reach the stair.
+forest_sedge_after_03.wav	SEDGE	BRING THE ROPE	I'll bring a stretcher. You see who's still down there.
+forest_end_01.wav	RAINORAY	THE LAST STRETCHER	There's a lamp below. Someone answered.
+forest_end_02.wav	INNER_VOICE	THE LAST STRETCHER	More than one voice. They are coming toward us.
+forest_end_03.wav	RAINORAY	THE LAST STRETCHER	Easy. The path is clear. There's a refuge waiting at the outpost.
+forest_end_04.wav	INNER_VOICE	THE LAST STRETCHER	The last stretcher has crossed.
+forest_end_05.wav	RAINORAY	THE LAST STRETCHER	All of them?
+forest_end_06.wav	SEDGE	THE LAST STRETCHER	Everyone we found. They're at the camp.
+forest_end_07.wav	RAINORAY	THE LAST STRETCHER	Good. I wanted to hear someone say it.
+bark_forest_walk_sounds.wav	INNER_VOICE	EXPLORATION	You're following every sound again.
+bark_forest_walk_sounds_2.wav	RAINORAY	EXPLORATION	One of them might be someone.
+bark_forest_walk_lost.wav	RAINORAY	EXPLORATION	Do you ever get lost?
+bark_forest_walk_lost_2.wav	INNER_VOICE	EXPLORATION	I would call it gathering information.
+bark_forest_walk_calm.wav	RAINORAY	EXPLORATION	How are you always so calm?
+bark_forest_walk_calm_2.wav	INNER_VOICE	EXPLORATION	One of us has to be.
+bark_forest_walk_ground.wav	INNER_VOICE	EXPLORATION	The ground is firmer on the left.
+bark_forest_walk_ground_2.wav	RAINORAY	EXPLORATION	Thanks. I'm tired of sinking.
+bark_forest_fight_credit.wav	RAINORAY	EXPLORATION	I almost had that one.
+bark_forest_fight_credit_2.wav	INNER_VOICE	EXPLORATION	You did have it. Give yourself that much.
+bark_forest_fight_listen.wav	INNER_VOICE	EXPLORATION	Wait. Listen before we move.
+bark_forest_fight_listen_2.wav	RAINORAY	EXPLORATION	Right. Quiet doesn't always mean safe.
+bark_forest_fight_sit.wav	RAINORAY	EXPLORATION	Remind me never to sit down here.
+bark_forest_fight_sit_2.wav	INNER_VOICE	EXPLORATION	I was about to.
+bark_forest_camp_return.wav	INNER_VOICE	EXPLORATION	The boat is still there.
+bark_forest_camp_return_2.wav	RAINORAY	EXPLORATION	Good. I like knowing we can go back.
+bark_forest_identify_imp.wav	INNER_VOICE	EXPLORATION	Rift Imp. It strikes twice. Wait for both.
+bark_forest_identify_wolf.wav	INNER_VOICE	EXPLORATION	Thorn Wolf. Give those jaws some room.
+bark_forest_identify_shaman.wav	INNER_VOICE	EXPLORATION	Mire Shaman. It'll curse the ground.
+bark_forest_crossing.wav	RAINORAY	EXPLORATION	Those roots weren't there a moment ago.
+bark_forest_crossing_2.wav	INNER_VOICE	EXPLORATION	They move when the heart tightens.
+bark_forest_grove.wav	RAINORAY	EXPLORATION	The cloth is caught up there.
+bark_forest_grove_2.wav	INNER_VOICE	EXPLORATION	Still pointing east. He chose well.
+bark_forest_ridge.wav	RAINORAY	EXPLORATION	I can see the old river from here.
+bark_forest_ridge_2.wav	INNER_VOICE	EXPLORATION	Follow the stones. They still mark a crossing.
+bark_forest_ford.wav	RAINORAY	EXPLORATION	A boat without a river. That's a new one.
+bark_forest_ford_2.wav	INNER_VOICE	EXPLORATION	The roots have taken more than the road.
+bark_forest_fight_imps.wav	RAINORAY	EXPLORATION	That little thing tried to get behind me.
+bark_forest_fight_imps_2.wav	INNER_VOICE	EXPLORATION	It watched your first move. Then committed.
+bark_forest_fight_wolves.wav	RAINORAY	EXPLORATION	I heard the claws before I saw it.
+bark_forest_fight_wolves_2.wav	INNER_VOICE	EXPLORATION	The landing gives it away.
+bark_forest_fight_shaman.wav	RAINORAY	EXPLORATION	I thought it was aiming at me.
+bark_forest_fight_shaman_2.wav	INNER_VOICE	EXPLORATION	At the ground beneath you. Keep moving.
+bark_forest_fight_roots.wav	RAINORAY	EXPLORATION	Even the roots don't want us here.
+bark_forest_fight_roots_2.wav	INNER_VOICE	EXPLORATION	Someone beyond them does.
+bark_forest_fight_mud.wav	RAINORAY	EXPLORATION	That was a very expensive patch of mud.
+bark_forest_fight_mud_2.wav	INNER_VOICE	EXPLORATION	You can go around the next one.
+bark_forest_fight_breath.wav	RAINORAY	EXPLORATION	I still want to catch my breath.
+bark_forest_fight_breath_2.wav	INNER_VOICE	EXPLORATION	The habit is useful. Take a moment.
+bark_forest_fight_noise.wav	RAINORAY	EXPLORATION	So much for passing through quietly.
+bark_forest_fight_noise_2.wav	INNER_VOICE	EXPLORATION	Quiet was unlikely. Passing through is enough.
+bark_forest_fight_better.wav	RAINORAY	EXPLORATION	That felt a little less accidental.
+bark_forest_fight_better_2.wav	INNER_VOICE	EXPLORATION	You saw the opening before I did.
+bark_forest_hurt_distance.wav	RAINORAY	EXPLORATION	I went in too soon.
+bark_forest_hurt_distance_2.wav	INNER_VOICE	EXPLORATION	Let the roots settle before you return.
+bark_forest_hurt_wait.wav	RAINORAY	EXPLORATION	I need a moment.
+bark_forest_hurt_wait_2.wav	INNER_VOICE	EXPLORATION	Take the clear ground. I'll keep watch.
+bark_forest_walk_cloth.wav	RAINORAY	EXPLORATION	White cloth. I keep checking for it.
+bark_forest_walk_cloth_2.wav	INNER_VOICE	EXPLORATION	It is easier to follow a promise you can see.
+bark_forest_walk_company.wav	RAINORAY	EXPLORATION	You don't have to wait for a question.
+bark_forest_walk_company_2.wav	INNER_VOICE	EXPLORATION	I was listening to the trees.
+bark_forest_walk_boots.wav	RAINORAY	EXPLORATION	At least I can't get mud in my boots.
+bark_forest_walk_boots_2.wav	INNER_VOICE	EXPLORATION	You found an advantage.
+bark_forest_walk_names.wav	RAINORAY	EXPLORATION	I wish I knew who was on those stretchers.
+bark_forest_walk_names_2.wav	INNER_VOICE	EXPLORATION	You can ask them when we get there.
+bark_forest_walk_home.wav	RAINORAY	EXPLORATION	The outpost almost feels like home now.
+bark_forest_walk_home_2.wav	INNER_VOICE	EXPLORATION	Someone is waiting for you there.
+bark_forest_walk_memory.wav	RAINORAY	EXPLORATION	The roots are narrowing the road.
+bark_forest_walk_memory_2.wav	INNER_VOICE	EXPLORATION	They are still growing. Keep to the middle.
+bark_forest_camp_rope.wav	RAINORAY	EXPLORATION	He kept the rope ready all this time.
+bark_forest_camp_rope_2.wav	INNER_VOICE	EXPLORATION	Waiting can be work, too.
+bark_forest_camp_boat.wav	RAINORAY	EXPLORATION	He could have left when the river went.
+bark_forest_camp_boat_2.wav	INNER_VOICE	EXPLORATION	The people he guards could not.
+bark_forest_boss_start.wav	INNER_VOICE	EXPLORATION	I'll watch how the roots move. Stay clear.
+bark_forest_boss_start_2.wav	RAINORAY	EXPLORATION	Tell me when that heart opens.
+bark_forest_boss_read.wav	INNER_VOICE	EXPLORATION	The roots follow a pattern. I can read it now.
+bark_forest_boss_open.wav	INNER_VOICE	EXPLORATION	It's open. Strike the heart.
+bark_forest_boss_phase.wav	INNER_VOICE	EXPLORATION	It's drawing more roots in. Watch the gaps.
+bark_forest_boss_phase_2.wav	RAINORAY	EXPLORATION	I see them. Keep talking.
+bark_forest_boss_weak.wav	INNER_VOICE	EXPLORATION	The heart is fading. One more opening.
+bark_forest_boss_close_call.wav	INNER_VOICE	EXPLORATION	Get clear. Let yourself recover.
+bark_forest_boss_victory.wav	RAINORAY	EXPLORATION	The roots are letting go.
+bark_forest_boss_victory_2.wav	INNER_VOICE	EXPLORATION	Listen. Someone is calling from below.
+bark_forest_root_warning.wav	INNER_VOICE	EXPLORATION	Between the roots. Leave that strip.
+bark_forest_root_again.wav	INNER_VOICE	EXPLORATION	Roots coming up. Take the gap.
+bark_forest_seed_warning.wav	INNER_VOICE	EXPLORATION	Seeds beneath you. Find clear ground.
+bark_forest_seed_again.wav	INNER_VOICE	EXPLORATION	Move away. Those seeds will burst.
+bark_forest_cage_warning.wav	INNER_VOICE	EXPLORATION	One side is open. Go through it.
+bark_forest_cage_again.wav	INNER_VOICE	EXPLORATION	Out through the gap. Don't stay inside.

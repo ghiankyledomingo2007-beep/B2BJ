@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_wolves_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "The landing gives it away.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "HCUxIe4kWWugnejoDO3N",
+  "context_request_ids": [
+    "BBqWyTEBWYiECh48y42d",
+    "NejwZs0X8VJzGp8UeIqD",
+    "9tlcse8JC6hmB7Dm6AXx"
+  ],
+  "generated_at": 1792949010.3967133,
+  "format": "mp3_44100_192",
+  "seconds": 2.297,
+  "peak_dbfs": -4.92,
+  "tempo": 1,
+  "sha256": "c62444667463639f4f96b7f0f5f0390a357b10615f4df4bbb8ab982868d715ae"
+}

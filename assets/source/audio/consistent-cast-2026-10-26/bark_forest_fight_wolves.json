@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_wolves.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I heard the claws before I saw it.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ELY3SaDp6G6zgODG3eI1",
+  "context_request_ids": [
+    "jTl950r3RUhq2PEYuKt5",
+    "lUvjC4dS6yA2Tcvt6lue",
+    "P7xP8pPtrSfBzGC3o0O2"
+  ],
+  "generated_at": 1792949101.9010296,
+  "format": "mp3_44100_192",
+  "seconds": 1.95,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "6629948c47bb7117f996256eba42ac2333da50f355a5729b018231d3b23b420f"
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "file": "bark_walk_birds.wav",
+    "expected": "You've gone quiet.",
+    "recognized": "You've gone quiet. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_feet_2.wav",
+    "expected": "You're finding new ways.",
+    "recognized": "You're finding new ways. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_body_2.wav",
+    "expected": "Yes. I'd tell you if it wasn't.",
+    "recognized": "Yes, I'd tell you if it wasn't. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_wind.wav",
+    "expected": "There. A little less wind.",
+    "recognized": "There, a little less wind. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_saw_2.wav",
+    "expected": "Even the part you meant to do.",
+    "recognized": "Even the part you meant to do. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_right.wav",
+    "expected": "You're leaving your right side open.",
+    "recognized": "You're leaving your right side open. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_fight_harmless_2.wav",
+    "expected": "You've met the local slimes.",
+    "recognized": "You've met the local slimes. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_camp_warm_2.wav",
+    "expected": "Then stay a moment.",
+    "recognized": "Then stay a moment. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_sounds.wav",
+    "expected": "You're following every sound again.",
+    "recognized": "You're following every sound again. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_lost_2.wav",
+    "expected": "I would call it gathering information.",
+    "recognized": "I would call it gathering information. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_calm_2.wav",
+    "expected": "One of us has to be.",
+    "recognized": "One of us has to be. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_ground.wav",
+    "expected": "The ground is firmer on the left.",
+    "recognized": "The ground is firmer on the left. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_credit_2.wav",
+    "expected": "You did have it. Give yourself that much.",
+    "recognized": "You did have it. Give yourself that much. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_listen.wav",
+    "expected": "Wait. Listen before we move.",
+    "recognized": "Wait. Listen before we move. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_fight_sit_2.wav",
+    "expected": "I was about to.",
+    "recognized": "I was about to. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_camp_return.wav",
+    "expected": "The boat is still there.",
+    "recognized": "The boat is still there. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_sage_hit_room.wav",
+    "expected": "Easy. Give yourself a little room.",
+    "recognized": "Easy. Give yourself a little room. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_sage_hit_hurt.wav",
+    "expected": "That one hurt. Step back.",
+    "recognized": "That one hurt. Step back. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_sage_hit_stay.wav",
+    "expected": "I'm here. Keep moving.",
+    "recognized": "I'm here. Keep moving. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_sage_hit_footing.wav",
+    "expected": "Watch your footing.",
+    "recognized": "Watch your footing. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_sage_hit_patient.wav",
+    "expected": "Don't rush the next move.",
+    "recognized": "Don't rush the next move. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_sage_hit_steady.wav",
+    "expected": "You're still in this.",
+    "recognized": "You're still in this.",
+    "match": 1.0
+  }
+]

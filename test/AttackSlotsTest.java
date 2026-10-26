@@ -1,6 +1,6 @@
 import java.nio.file.Files;
 
-/** In the campaign no more than two enemies wind up or strike at once; the rest circle and still take their turns. */
+/** In the campaign Forest enemies take turns: no more than one enemy wind up or strike at once; the rest circle and still take their turns. */
 public final class AttackSlotsTest {
     public static void main(String[] args) throws Exception {
         var save = Files.createTempDirectory("b2bj-slots-").resolve("campaign.properties");
@@ -19,7 +19,8 @@ public final class AttackSlotsTest {
         assert game.interact()&&game.dialogue()==OutpostDialogue.GATE;
         game.skipDialogue();
         assert game.interact() && game.biome() == 1 : "into the forest";
-        var clearing = game.campaignArea().landmarks().get(2);           // the Imp Clearing: four enemies round one spot
+        game.skipDialogue();
+        var clearing = game.campaignArea().landmarks().get(5);           // White Cloth Ridge: three Imps with a Shaman
         game.player().relocate(clearing.x(), clearing.y());
         int most = 0, starts = 0;
         java.util.Map<Wisp, Boolean> was = new java.util.HashMap<>();
@@ -35,8 +36,8 @@ public final class AttackSlotsTest {
             }
             most = Math.max(most, now);
         }
-        assert most <= RuinedOutpostGame.MAX_ATTACKERS : "at most two attackers at once, saw " + most;
-        assert most == RuinedOutpostGame.MAX_ATTACKERS : "the slots are used: pressure stays on";
+        assert most <= 1 : "at most one forest attacker at once, saw " + most;
+        assert most == 1 : "the slots are used: pressure stays on";
         assert starts >= 8 : "attacks keep coming while the others wait: " + starts;
         assert tookTurn.size() >= 3 : "waiting enemies get their turn too: " + tookTurn.size();
         System.out.println("AttackSlotsTest passed: peak " + most + " attackers, " + starts + " attacks by " + tookTurn.size() + " enemies in 20 s");

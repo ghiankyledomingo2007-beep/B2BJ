@@ -1,0 +1,27 @@
+{
+  "file": "warden_05.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE LAST ORDER",
+  "text": "Can you shut it down?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "B0RHZOVyXljMfrrjl9lJ",
+  "context_request_ids": [
+    "SuyHkWZ3UL1ayrN8RakO",
+    "39XUYhZ3ukJaMy2tT5fX",
+    "SbXlYVOXsMldSNSO0enb"
+  ],
+  "generated_at": 1793011352.1871285,
+  "format": "mp3_44100_192",
+  "seconds": 1.44,
+  "peak_dbfs": -6.7,
+  "tempo": 1,
+  "sha256": "ecb96f2eee998fcf337eaf8d8a2c7a9103b20cc2b717c380b779803c59694fab"
+}

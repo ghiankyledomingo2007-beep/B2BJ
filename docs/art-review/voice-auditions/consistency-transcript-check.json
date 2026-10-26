@@ -1,0 +1,206 @@
+{
+  "language": "eng",
+  "lines": [
+    {
+      "file": "wake_04.wav",
+      "text": "There's a lamp beyond the ditch. Please let someone be holding it.",
+      "start": 0,
+      "end": 3.251,
+      "transcribed": "There's a lamp beyond the ditch. Please let someone be holding it.",
+      "matches_normalized": true
+    },
+    {
+      "file": "signal_02.wav",
+      "text": "No death count. Just names marked missing. Mine is here, too.",
+      "start": 3.751,
+      "end": 7.141,
+      "transcribed": "No death count, just names marked missing. Mine is here too.",
+      "matches_normalized": true
+    },
+    {
+      "file": "infirmary_02.wav",
+      "text": "A note on the blanket: 'For whoever comes back.'",
+      "start": 7.641,
+      "end": 9.916,
+      "transcribed": "A note on the blanket for whoever comes back.",
+      "matches_normalized": true
+    },
+    {
+      "file": "infirmary_03.wav",
+      "text": "There's a dry dressing underneath. I'll leave it where she can find it.",
+      "start": 10.416,
+      "end": 13.76,
+      "transcribed": "There's a dry dressing underneath. I'll leave it where she can find it.",
+      "matches_normalized": true
+    },
+    {
+      "file": "report_01.wav",
+      "text": "I found the evacuation list. You crossed out my name.",
+      "start": 14.26,
+      "end": 17.418,
+      "transcribed": "I found the evacuation list. You crossed out my name.",
+      "matches_normalized": true
+    },
+    {
+      "file": "gate_01.wav",
+      "text": "The chain is broken. Stretcher tracks run through the gate and into the trees.",
+      "start": 17.918,
+      "end": 22.098,
+      "transcribed": "The chain is broken. Stretcher tracks run through the gate and into the trees.",
+      "matches_normalized": true
+    },
+    {
+      "file": "camp_after_02.wav",
+      "text": "It's open. I'm going after the stretcher tracks.",
+      "start": 22.598,
+      "end": 25.152,
+      "transcribed": "It's open. I'm going after the stretcher tracks.",
+      "matches_normalized": true
+    },
+    {
+      "file": "survivor_tobin_02.wav",
+      "text": "Rainoray. Quartermaster. Mostly water, these days.",
+      "start": 25.652,
+      "end": 28.578,
+      "transcribed": "Raynare, quartermaster. Mostly water these days.",
+      "matches_normalized": false
+    },
+    {
+      "file": "survivor_ilse_05_stranger.wav",
+      "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "start": 29.078,
+      "end": 33.071,
+      "transcribed": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "matches_normalized": true
+    },
+    {
+      "file": "survivor_venn_02.wav",
+      "text": "Nobody sent me. I'm afraid I'm just late.",
+      "start": 33.571,
+      "end": 35.8,
+      "transcribed": "Nobody sent me. I'm afraid I'm just late.",
+      "matches_normalized": true
+    },
+    {
+      "file": "survivor_venn_05_stranger.wav",
+      "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "start": 36.3,
+      "end": 40.805,
+      "transcribed": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+      "matches_normalized": true
+    },
+    {
+      "file": "ledger_02.wav",
+      "text": "Every crate, every blanket, every name that signed for them.",
+      "start": 41.305,
+      "end": 44.37,
+      "transcribed": "Every crate, every blanket, every name that signed for them.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_fight_listen.wav",
+      "text": "Let's listen before we move.",
+      "start": 44.87,
+      "end": 46.217,
+      "transcribed": "Let's listen before we move.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_fight_counting.wav",
+      "text": "I preferred counting things.",
+      "start": 46.717,
+      "end": 48.064,
+      "transcribed": "I preferred counting things.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_fight_watch.wav",
+      "text": "One moment. I'll check behind us.",
+      "start": 48.564,
+      "end": 50.328,
+      "transcribed": "One moment, I'll check behind us.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_fight_moment.wav",
+      "text": "Give me a moment before we go.",
+      "start": 50.828,
+      "end": 52.315,
+      "transcribed": "Give me a moment before we go.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_hurt_shelter.wav",
+      "text": "That was closer than I'd planned.",
+      "start": 52.815,
+      "end": 54.533,
+      "transcribed": "That was closer than I'd planned.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_walk_quiet.wav",
+      "text": "Was it always this quiet here?",
+      "start": 55.033,
+      "end": 56.519,
+      "transcribed": "Was it always this quiet here?",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_walk_map.wav",
+      "text": "A map never shows how a place feels.",
+      "start": 57.019,
+      "end": 59.294,
+      "transcribed": "A map never shows how a place feels.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_walk_nails.wav",
+      "text": "I used to worry about missing nails.",
+      "start": 59.794,
+      "end": 61.745,
+      "transcribed": "I used to worry about missing nails.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_sage_target.wav",
+      "text": "Ground slam.",
+      "start": 62.245,
+      "end": 63.794,
+      "transcribed": "Ground slam.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_sage_sweep.wav",
+      "text": "Wide sweep.",
+      "start": 64.294,
+      "end": 65.797,
+      "transcribed": "Wide sweep.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_sage_charge.wav",
+      "text": "Charge.",
+      "start": 66.297,
+      "end": 67.707,
+      "transcribed": "Charge.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_sage_shockwave.wav",
+      "text": "Shockwave.",
+      "start": 68.207,
+      "end": 69.617,
+      "transcribed": "Shockwave.",
+      "matches_normalized": true
+    },
+    {
+      "file": "bark_sage_fissure.wav",
+      "text": "Rift strike.",
+      "start": 70.117,
+      "end": 71.759,
+      "transcribed": "Rift strike.",
+      "matches_normalized": true
+    }
+  ],
+  "review": "All 25 final takes contain the intended words; Scribe renders the invented name Rainoray as Raynare. No omitted or extra dialogue detected. Automated text verification does not establish subjective voice quality."
+}

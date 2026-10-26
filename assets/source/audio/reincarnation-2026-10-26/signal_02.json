@@ -1,0 +1,27 @@
+{
+  "file": "signal_02.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE BROKEN ORDER",
+  "text": "That includes your new body. The Warden will see a threat, not a traveler.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "75QG6tVQjv4TsJGtKdam",
+  "context_request_ids": [
+    "B60CvGBgMs9es67lkY24",
+    "BnND8LejvsnXlAh2e35x",
+    "xS8oA4q8wxaJ4RHx6mw0"
+  ],
+  "generated_at": 1793011339.6062856,
+  "format": "mp3_44100_192",
+  "seconds": 5.826,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "90247f17697836295492df3878b0f61f8b4cbcc4e66e9ad632a37745d150f53a"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "survivor_venn_05_stranger.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE CULVERT",
+  "text": "There's a lamp by the captain's tent. Head there. Someone is keeping it lit.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "gzlrXgGjR1VzHEIakrvw",
+  "context_request_ids": [
+    "igHW7C4nNFTp5G21NZwb",
+    "LI9FFuFWiHIeEByfwHe7",
+    "11bW5eiE5HL3Qt9yTf3H"
+  ],
+  "generated_at": 1792949034.421603,
+  "format": "mp3_44100_192",
+  "seconds": 4.644,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "d94f2b811c98a3aeec62d051d4dec0c247566ecf14ec81977ab692ad1b09d503"
+}

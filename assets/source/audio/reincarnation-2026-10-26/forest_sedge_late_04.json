@@ -1,0 +1,27 @@
+{
+  "file": "forest_sedge_late_04.wav",
+  "speaker": "RAINORAY",
+  "scene": "AN OPEN WAY",
+  "text": "Then bring the rope. There's a refuge waiting beyond the gate.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "0DkS6gWkbMYfKDXwuhit",
+  "context_request_ids": [
+    "ZB0KGWj1BOZN1oqmAwsQ",
+    "YJreNrjXjlWX2qrrRDAr",
+    "C7vhg6kqQCxt5XxePz8I"
+  ],
+  "generated_at": 1793011365.7909346,
+  "format": "mp3_44100_192",
+  "seconds": 3.344,
+  "peak_dbfs": -3.98,
+  "tempo": 1,
+  "sha256": "2d9dc1e4d5379bb0eb0a33488d1ce26990cc5c1e8e5c68d5b46200447457d1e4"
+}

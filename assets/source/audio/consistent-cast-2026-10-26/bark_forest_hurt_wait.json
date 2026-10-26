@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_hurt_wait.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I need a moment.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "kyGibFFbJDjtcF1sgbHW",
+  "context_request_ids": [
+    "4Dyq0nfHwFQyN5z4ZrKF",
+    "fY5CrgKeU3fAJnx1hR6d",
+    "jNeyZCJ0RALOZPlHXoAt"
+  ],
+  "generated_at": 1792949109.2977178,
+  "format": "mp3_44100_192",
+  "seconds": 1.115,
+  "peak_dbfs": -4.3,
+  "tempo": 1,
+  "sha256": "2a5a76b2cef4d1445644ba911e38812bb83a9251f6e5abf11b1a604cf6a71735"
+}

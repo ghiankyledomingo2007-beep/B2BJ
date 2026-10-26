@@ -1,0 +1,23 @@
+{
+  "file": "camp_01.wav",
+  "speaker": "MARA",
+  "scene": "THE LAMP AT CAMP",
+  "text": "Stop there. There are wounded behind me.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "Gij8TgVjyDFYzbHxKmDg",
+  "context_request_ids": [],
+  "generated_at": 1793011327.894177,
+  "format": "mp3_44100_192",
+  "seconds": 2.276,
+  "peak_dbfs": -4.08,
+  "tempo": 1,
+  "sha256": "0f3686acbf268c98361eff9c2ff9e02c95eaed3f1dac5cf684fdf70282734837"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_nails.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I used to worry about late deliveries.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ZzHTbRbsBo5bn4P1E3X8",
+  "context_request_ids": [
+    "EAy6hdtyfvClJmjwDCA6",
+    "8g4jTWJvA5MsYtcN44J4",
+    "Fj2zvZ8EX11DAuL6Jgt0"
+  ],
+  "generated_at": 1793011374.1408522,
+  "format": "mp3_44100_192",
+  "seconds": 1.95,
+  "peak_dbfs": -4.49,
+  "tempo": 1,
+  "sha256": "bdb65b875f9ac174066dab3e261d4de21d81de272c5190db354834215564f8f9"
+}

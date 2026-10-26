@@ -1,0 +1,27 @@
+{
+  "file": "camp_10.wav",
+  "speaker": "MARA",
+  "scene": "THE LAMP AT CAMP",
+  "text": "Follow the torn banners east, then north at Inner Court. Be careful. The dead still know how to fight.",
+  "voice_id": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.15,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "3j8HDvYjnYBxMjZwmzfF",
+  "context_request_ids": [
+    "cUrOP5NgGriu6sfX85Gz",
+    "9SWFIt7dxS4IRrDistQj",
+    "2oUY9VE0JF7kljnpkpKW"
+  ],
+  "generated_at": 1793011335.456126,
+  "format": "mp3_44100_192",
+  "seconds": 5.294,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "a4d2e287715d654c4fbfca7b67bc3e41c010c47f88066bdb2e3a5f0a92ac362c"
+}

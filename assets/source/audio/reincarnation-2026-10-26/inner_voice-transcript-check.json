@@ -1,0 +1,110 @@
+[
+  {
+    "file": "wake_03.wav",
+    "expected": "I cannot confirm. Your previous body has been lost.",
+    "recognized": "I cannot confirm. Your previous body has been lost. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_05.wav",
+    "expected": "Raphael. Stay with my voice.",
+    "recognized": "Raphael, stay with my voice. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_06.wav",
+    "expected": "Reconstructing a body that can survive here.",
+    "recognized": "Reconstructing a body that can survive here. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_08.wav",
+    "expected": "It was the one that survived.",
+    "recognized": "It was the one that survived. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_10.wav",
+    "expected": "For a while. Once we have enough Ichor.",
+    "recognized": "For a while. Once we have enough Ichor. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_12.wav",
+    "expected": "Try moving toward the light.",
+    "recognized": "Try moving toward the light. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_14.wav",
+    "expected": "One step at a time.",
+    "recognized": "One step at a time. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_03.wav",
+    "expected": "You are looking at the food.",
+    "recognized": "You are looking at the food. ",
+    "match": 1.0
+  },
+  {
+    "file": "signal_02.wav",
+    "expected": "That includes your new body. The Warden will see a threat, not a traveler.",
+    "recognized": "That includes your new body. The warden will see a threat, not a traveler. ",
+    "match": 1.0
+  },
+  {
+    "file": "warden_04.wav",
+    "expected": "The order is damaged. It cannot distinguish a rescue from an attack.",
+    "recognized": "The order is damaged. It cannot distinguish a rescue from an attack. ",
+    "match": 1.0
+  },
+  {
+    "file": "warden_06.wav",
+    "expected": "Not from here. Keep moving. I need to see how it fights.",
+    "recognized": "Not from here. Keep moving. I need to see how it fights. ",
+    "match": 1.0
+  },
+  {
+    "file": "ledger_02.wav",
+    "expected": "Three names match the people missing from camp.",
+    "recognized": "Three names match the people missing from camp. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_04.wav",
+    "expected": "The last stretcher has crossed.",
+    "recognized": "The last stretcher has crossed. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_routes_2.wav",
+    "expected": "We will learn. Keep the camp behind us.",
+    "recognized": "We will learn. Keep the camp behind us. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_quiet_2.wav",
+    "expected": "The cart tracks suggest it was.",
+    "recognized": "The cart tracks suggest it was. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_name_2.wav",
+    "expected": "Yes. You do not have to keep checking.",
+    "recognized": "Yes. You do not have to keep checking. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_memory_2.wav",
+    "expected": "They are still growing. Keep to the middle.",
+    "recognized": "They are still growing. Keep to the middle. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_camp_boat_2.wav",
+    "expected": "The people he guards could not.",
+    "recognized": "The people he guards could not",
+    "match": 1.0
+  }
+]

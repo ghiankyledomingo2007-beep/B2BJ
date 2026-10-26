@@ -187,10 +187,9 @@ final class ForestBake {
                 if (m == Tiles16.Mat.RIVERBED || m == Tiles16.Mat.BLACKWATER) break;
                 double fade = s / len;
                 int width = fade < .45 ? 2 : 1;
-                // a lit back, a glowing gold core, a violet shadow side: a root, not a scribble
-                out[(iy - 1) * W + ix] = fade < .8 ? Pal.VIOLET[3] : Pal.VIOLET[2];
-                for (int w = 0; w < width; w++) out[(iy + w) * W + ix] = fade < .7 ? (Noise.rnd(ix, iy + w, 843) < .35 ? Pal.GOLD[4] : Pal.GOLD[3]) : Pal.GOLD[1];
-                out[(iy + width) * W + ix] = Pal.VIOLET[0];
+                out[(iy - 1) * W + ix] = fade < .8 ? Pal.WOOD[3] : Pal.WOOD[2];
+                for (int w = 0; w < width; w++) out[(iy + w) * W + ix] = fade < .7 && Noise.rnd(ix, iy+w,843)<.08 ? Pal.GOLD[2] : Pal.WOOD[1];
+                out[(iy + width) * W + ix] = Pal.WOOD[0];
             }
         }
     }

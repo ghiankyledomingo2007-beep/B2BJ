@@ -1,0 +1,27 @@
+{
+  "file": "gate_03.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE ROAD OPENS",
+  "text": "The others got this far. I can follow them.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "pWPR33i6gYqrkfkB4zaw",
+  "context_request_ids": [
+    "gZOTS8s4cuttPnDRLZq1",
+    "KCxZRvQdeh9LuP9q51U1",
+    "qMSmeIHmOVZAfwGlHaUa"
+  ],
+  "generated_at": 1792949020.6113892,
+  "format": "mp3_44100_192",
+  "seconds": 2.554,
+  "peak_dbfs": -4.24,
+  "tempo": 1,
+  "sha256": "d89adedabe048a7ad0e5ff95158df03ecf83d1ad8654eb5f0e637709faab90df"
+}

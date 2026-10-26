@@ -7,22 +7,24 @@ public final class GameAudio {
     /**
      * Every cue has a packaged recording, assets/audio/&lt;name&gt;.wav plus _2, _3... takes
      * (tools/audio/generate_sfx.py), and the synthesized chirp it had before as the fallback
-     * when the file is missing. The numbers below only describe that fallback.
+     * when the file is missing. The numbers below only describe that fallback. The slime, blade,
+     * hit, water-ability and slam takes come from tools/audio/generate_combat_sfx.py with their
+     * thud, crack, boom and liquid ring built in, so those cues name no layer and no chirp.
      */
     public enum Cue {
         DASH(0.12, 240, 90, 0.20, true),
         SLASH(0.16, 720, 180, 0.22, false),
         THRUST(0.14, 640, 260, 0.22, false),
-        SLASH_HEAVY(0.22, 520, 120, 0.24, false, "ice_crack", true),
-        CLEAVE(0.26, 480, 110, 0.26, true, "ice_crack", true),
+        SLASH_HEAVY(0.22, 520, 120, 0.24, false),
+        CLEAVE(0.26, 480, 110, 0.26, true),
         DASH_SLASH(0.18, 700, 210, 0.22, true),
-        SPIN_CLEAVE(0.34, 500, 140, 0.26, true, "ice_crack", true),
+        SPIN_CLEAVE(0.34, 500, 140, 0.26, true),
         COUNTER(0.20, 900, 300, 0.24, true),
         GUARD(0.14, 1100, 900, 0.18, false),
         CAST(0.20, 660, 330, 0.22, false),
         CRESCENT_IMPACT(0.14, 820, 240, 0.20, true),
         CHARGE_READY(0.24, 880, 1320, 0.16, false, null, false),
-        ENEMY_HIT(0.10, 210, 70, 0.30, true, "hit_thud", true),
+        ENEMY_HIT(0.10, 210, 70, 0.30, true),
         KILL(0.16, 260, 60, 0.26, true, "shatter", true),
         FOOTSTEP(0.05, 140, 60, 0.10, true),
         REVERT(0.44, 900, 160, 0.20, false, null, false),
@@ -30,22 +32,22 @@ public final class GameAudio {
         SPIT_IMPACT(0.12, 300, 90, 0.16, true, null, true, true),
         ABSORBED(0.18, 360, 200, 0.16, false, null, true, true),
         HEALED(0.30, 520, 780, 0.14, false, null, false),
-        BLOB_ATTACK(0.18, 420, 160, 0.16, true, null, true, true),
-        WATER_SPLASH(0.20, 260, 90, 0.16, true, null, true, true),
+        BLOB_ATTACK(0.18, 420, 160, 0.16, true),
+        WATER_SPLASH(0.20, 260, 90, 0.16, true),
         HURT(0.28, 190, 70, 0.24, false, "hit_thud", true),
         PICKUP(0.22, 420, 980, 0.20, false),
         TRANSFORM(0.48, 180, 920, 0.22, false, null, false),
-        GUARDIAN_SLAM(0.42, 92, 38, 0.32, true, "sub_boom", true),
+        GUARDIAN_SLAM(0.42, 92, 38, 0.32, true),
         VICTORY(0.72, 330, 660, 0.22, false, null, false),
-        TIDE_RELEASE(0.30, 130, 380, 0.23, true, null, true, true),
-        TIDE_IMPACT(0.38, 220, 78, 0.24, true, "sub_boom", true, true),
-        FINISHER_RELEASE(0.22, 560, 125, 0.18, true, null, true, true),
-        FINISHER_IMPACT(0.24, 125, 48, 0.25, true, "sub_boom", true, true),
+        TIDE_RELEASE(0.30, 130, 380, 0.23, true),
+        TIDE_IMPACT(0.38, 220, 78, 0.24, true),
+        FINISHER_RELEASE(0.22, 560, 125, 0.18, true),
+        FINISHER_IMPACT(0.24, 125, 48, 0.25, true),
         MEMBRANE_BREAK(0.18, 310, 95, 0.18, true, null, true, true),
         TRAIT_GAINED(0.36, 330, 740, 0.17, false, null, false),
         GUARDIAN_AWAKENED(0.60, 60, 30, 0.30, true, null, false),
         SLIME_MOVE(0.06, 200, 120, 0.08, true),
-        SLIME_DASH(0.14, 300, 110, 0.18, true, null, true, true),
+        SLIME_DASH(0.14, 300, 110, 0.18, true),
         DEATH_BLADE(0.50, 160, 40, 0.28, true, null, false),
         DEATH_SLIME(0.55, 240, 60, 0.24, true, null, false),
         BLADE_FADES(0.40, 700, 350, 0.16, false, null, false),
@@ -58,7 +60,26 @@ public final class GameAudio {
         UI_CONFIRM(0.16, 440, 660, 0.10, false, null, false),
         JOURNEY_START(0.90, 294, 587, 0.18, false, null, false),
         TIDE_DISSIPATE(0.30, 260, 120, 0.12, true),
-        RESPAWN(0.50, 330, 660, 0.18, false, null, false);
+        RESPAWN(0.50, 330, 660, 0.18, false, null, false),
+        SLIME_HURT(0.21, 185, 80, 0.20, true),
+        // Chapter Two forest enemies: original recordings from tools/audio/generate_forest_sfx.py
+        IMP_WINDUP(0.30, 310, 540, 0.16, true),
+        IMP_CLAW(0.16, 1400, 380, 0.20, true),
+        WOLF_GROWL(0.42, 95, 70, 0.22, true),
+        WOLF_BITE(0.14, 260, 90, 0.24, true),
+        WOLF_POUNCE(0.26, 420, 160, 0.18, true),
+        WOLF_LAND(0.20, 130, 45, 0.26, true),
+        MIRE_CHARGE(0.60, 70, 160, 0.18, true),
+        MIRE_ERUPT(0.34, 180, 50, 0.26, true),
+        // Boss attacks: original recordings from tools/audio/generate_boss_sfx.py
+        WARDEN_WINDUP(0.58, 70, 160, 0.20, true),
+        WARDEN_SWEEP(0.60, 520, 140, 0.26, true),
+        WARDEN_RUSH(0.56, 180, 90, 0.24, true),
+        WARDEN_FRACTURE(0.72, 110, 36, 0.30, true),
+        BRIAR_WINDUP(0.60, 90, 140, 0.18, true),
+        BRIAR_ROOTS(0.58, 240, 70, 0.26, true),
+        BRIAR_SEEDS(0.40, 900, 420, 0.20, true),
+        BRIAR_CAGE(0.68, 300, 110, 0.26, true);
 
         private final double duration;
         private final double startFrequency;
@@ -100,6 +121,7 @@ public final class GameAudio {
         CHARGE("charge_loop", 0.0), HEARTBEAT("heartbeat", 0.6), AMBIENCE("ambience_rain", 0.0),
         BOSS_MUSIC("boss_music", 0.0, true, BOSS_MUSIC_LEVEL),
         TITLE_MUSIC("title_music", 0.0, true, 1.8),
+        STORY_MUSIC("title_music", 0.0, true, 1.8),
         // the slime eating a remain: plays once, and can be stopped if the eat is cut short
         EATING("eating", 0.0, false, 1.0, true);
 
@@ -132,7 +154,7 @@ public final class GameAudio {
     private static final AudioFormat FORMAT = new AudioFormat(
             SAMPLE_RATE, 16, 1, true, false);
     private static volatile boolean muted;
-    private static volatile double masterVolume = 1, sfxVolume = 1, musicVolume = .25;
+    private static volatile double masterVolume = 1, sfxVolume = 1, musicVolume = .25, dialogueVolume = 1;
     private static volatile int musicBiome;
     private static volatile boolean musicBlade, musicActive;
     private static final double[][] MUSIC_NOTES = {
@@ -182,7 +204,7 @@ public final class GameAudio {
             this.wait = wait;
             this.loop = loop;
             this.gap = gap;
-            fadeIn = loop == Loop.TITLE_MUSIC ? SAMPLE_RATE : 0;
+            fadeIn = loop == Loop.TITLE_MUSIC||loop==Loop.STORY_MUSIC ? SAMPLE_RATE : 0;
         }
 
         /** The next sample at unit gain, advancing; 0 in the wait or the gap. */
@@ -197,7 +219,7 @@ public final class GameAudio {
             at += 2;
             if(fadeIn>0)value=(int)(value*(1-fadeIn--/(double)SAMPLE_RATE));
             if (stopping) {
-                fade = Math.max(0, fade - 1.0 / (loop==Loop.TITLE_MUSIC?SAMPLE_RATE:STOP_FADE));
+                fade = Math.max(0, fade - 1.0 / (loop==Loop.TITLE_MUSIC||loop==Loop.STORY_MUSIC?SAMPLE_RATE:STOP_FADE));
                 return (int) (value * fade);
             }
             return value;
@@ -210,8 +232,66 @@ public final class GameAudio {
     }
 
     private static final java.util.List<Voice> VOICES = new java.util.ArrayList<>();
+    private static final java.util.Map<String, byte[]> DIALOGUE = new java.util.HashMap<>();
+    private static String dialogueKey;
+    private static Voice dialogueVoice;
+    private static Voice effortVoice;
+    private static int effortCooldown;
+    private static final int[] effortTake=new int[3];
+    private static boolean dialoguePaused;
+    private static volatile double dialogueLevel;
     private static Thread mixer;
     private static long musicSample;
+
+    /** One recorded line at a time; missing recordings leave the existing subtitles usable. */
+    public static void setDialogue(String key, boolean paused) {
+        if(key!=null&&!key.matches("[a-z0-9_]{1,96}"))throw new IllegalArgumentException("Invalid dialogue key");
+        synchronized(VOICES) {
+            dialoguePaused=paused;
+            if(paused||key!=null)effortVoice=null;
+            if(paused)dialogueLevel=0;
+            if(java.util.Objects.equals(key,dialogueKey))return;
+            dialogueKey=key;dialogueVoice=null;dialogueLevel=0;
+            if(key==null)return;
+            if(!DIALOGUE.containsKey(key))DIALOGUE.put(key,readWav("/assets/audio/dialogue/"+key+".wav"));
+            byte[] pcm=DIALOGUE.get(key);
+            if(pcm!=null&&pcm.length>=2)dialogueVoice=new Voice(pcm,0,null,0);
+        }
+    }
+
+    /** Full length of the selected recording, even after it finishes playing. */
+    public static double dialogueDuration() {
+        synchronized(VOICES) {
+            if(dialogueKey==null)return 0;
+            byte[] pcm=DIALOGUE.get(dialogueKey);
+            return pcm==null?0:pcm.length/(2.0*SAMPLE_RATE);
+        }
+    }
+
+    /** Accepted combat events only. Speech owns this channel; discarded efforts never queue. */
+    public static boolean playCombatEffort(boolean hurt,boolean blade,boolean heavy) {
+        if(!hurt&&!blade)return false;
+        synchronized(VOICES) {
+            if(muted||masterVolume==0||sfxVolume==0||dialogueVolume==0||dialoguePaused
+                    ||dialogueKey!=null||effortVoice!=null||effortCooldown>0)return false;
+            int family=hurt?2:heavy?1:0,take=effortTake[family]++%(family==0?6:family==1?4:8)+1;
+            String key="effort_"+(hurt?"hurt":heavy?"heavy":"attack")+"_"+take;
+            if(!DIALOGUE.containsKey(key))DIALOGUE.put(key,readWav("/assets/audio/dialogue/"+key+".wav"));
+            var pcm=DIALOGUE.get(key);if(pcm==null||pcm.length<2)return false;
+            effortVoice=new Voice(pcm,0,null,0);effortCooldown=(int)((hurt?3:2.4)*SAMPLE_RATE);return true;
+        }
+    }
+
+    /** Measured speech envelope for the inner-voice seal, independent of music and effects. */
+    public static double dialogueLevel() {
+        return muted||masterVolume==0||dialogueVolume==0?0:dialogueLevel;
+    }
+
+    private static double dialogueDuck() {
+        synchronized(VOICES) {
+            return dialogueVoice!=null&&!dialoguePaused&&!muted&&masterVolume>0&&dialogueVolume>0?.35:1;
+        }
+    }
 
     private static void addVoice(Voice voice) {
         synchronized (VOICES) {
@@ -268,9 +348,27 @@ public final class GameAudio {
     }
 
     static void mixVoices(int[] sum) {
-        double sfx = muted ? 0 : masterVolume * sfxVolume;
-        double music = muted ? 0 : masterVolume * musicVolume * duckGain();
+        double sfx = muted ? 0 : masterVolume * sfxVolume * (dialogueDuck()<1?.5:1);
+        double music = muted ? 0 : masterVolume * musicVolume * duckGain() * dialogueDuck();
         synchronized (VOICES) {
+            if(!dialoguePaused) {
+                effortCooldown=Math.max(0,effortCooldown-sum.length);
+                if(effortVoice!=null) {
+                    double gain=muted?0:masterVolume*dialogueVolume*sfxVolume*.85;
+                    for(int index=0;index<sum.length;index++)sum[index]+=(int)Math.round(effortVoice.next()*gain);
+                    if(effortVoice.done())effortVoice=null;
+                }
+            }
+            if(dialogueVoice!=null&&!dialoguePaused) {
+                double gain=muted?0:masterVolume*dialogueVolume;
+                double energy=0;
+                for(int index=0;index<sum.length;index++) {
+                    int sample=(int)Math.round(dialogueVoice.next()*gain);
+                    sum[index]+=sample;energy+=(double)sample*sample;
+                }
+                dialogueLevel=.55*dialogueLevel+.45*Math.min(1,Math.sqrt(energy/Math.max(1,sum.length))/6000);
+                if(dialogueVoice.done()) {dialogueVoice=null;dialogueLevel=0;}
+            } else dialogueLevel=0;
             for (java.util.Iterator<Voice> it = VOICES.iterator(); it.hasNext();) {
                 Voice voice = it.next();
                 double gain = voice.loop == null ? sfx
@@ -282,12 +380,12 @@ public final class GameAudio {
     }
 
     private static void mixMusic(int[] sum) {
-        if (!musicAudible()) return;
+        if (!musicAudible()||loopRunning(Loop.STORY_MUSIC)) return;
         // the boss track crossfades with the pad: as it fades in, the pad fades out
         double pad = loopRunning(Loop.BOSS_MUSIC) ? 1 - LOOP_GAIN[Loop.BOSS_MUSIC.ordinal()] : 1;
         if (pad <= 0) return;
         byte[] music = renderMusicChunk(musicBiome, musicBlade, musicSample, sum.length,
-                masterVolume * musicVolume * duckGain() * pad);
+                masterVolume * musicVolume * duckGain() * dialogueDuck() * pad);
         musicSample += sum.length;
         for (int index = 0; index < sum.length; index++) sum[index] += sample(music, index * 2);
     }
@@ -552,6 +650,8 @@ public final class GameAudio {
     public static double masterVolume() { return masterVolume; }
     public static double sfxVolume() { return sfxVolume; }
     public static double musicVolume() { return musicVolume; }
+    public static double dialogueVolume() { return dialogueVolume; }
+    public static void setDialogueVolume(double value) { validateVolume(value);dialogueVolume=value; }
 
     public static void setMasterVolume(double value) {
         validateVolume(value);

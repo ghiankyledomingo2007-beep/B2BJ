@@ -1,0 +1,27 @@
+{
+  "file": "bark_fight_ledger.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "That was not on the supply list.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "a4DWTwjUVHJfejm3ith9",
+  "context_request_ids": [
+    "xC2A36zZpp7vmO1G0uRJ",
+    "id30AlmemxymWzsJafQe",
+    "vYI6DLqc3BPqwqsEEdgt"
+  ],
+  "generated_at": 1792949065.059774,
+  "format": "mp3_44100_192",
+  "seconds": 1.718,
+  "peak_dbfs": -4.16,
+  "tempo": 1,
+  "sha256": "6ec6fd208892b41d4ef0aeef10996836343b01ada4d0f7c0b1c17b3337289ee1"
+}

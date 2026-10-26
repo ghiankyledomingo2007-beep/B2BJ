@@ -1,0 +1,20 @@
+[
+  {
+    "file": "survivor_ilse_03.wav",
+    "expected": "Eren. I was scouting the road. Those roots moved against the wind, then closed behind me.",
+    "recognized": "Aaron. I was scouting the road. Those roots moved against the wind, then closed behind me. ",
+    "match": 0.938
+  },
+  {
+    "file": "survivor_ilse_04.wav",
+    "expected": "That chest holds our spare supplies. Locked tight, and the key went with the storehouse.",
+    "recognized": "That chest holds our spare supplies, locked tight, and the key went with the storehouse. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_ilse_06.wav",
+    "expected": "Watch the roots when the wind stops. They don't stop with it.",
+    "recognized": "Watch the roots when the wind stops. They don't stop with it",
+    "match": 1.0
+  }
+]

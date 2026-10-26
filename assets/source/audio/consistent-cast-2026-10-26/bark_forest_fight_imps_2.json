@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_imps_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "It watched your first move. Then committed.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "9tlcse8JC6hmB7Dm6AXx",
+  "context_request_ids": [
+    "Dfz1tDuXH3n7m8ulk63Y",
+    "BBqWyTEBWYiECh48y42d",
+    "NejwZs0X8VJzGp8UeIqD"
+  ],
+  "generated_at": 1792949008.9581869,
+  "format": "mp3_44100_192",
+  "seconds": 3.365,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "33cb75cbe00fc835db21699994926c60d54e446668e40835685522eef24a5c3e"
+}

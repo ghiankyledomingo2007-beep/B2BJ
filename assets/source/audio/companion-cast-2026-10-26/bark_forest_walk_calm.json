@@ -1,0 +1,28 @@
+{
+  "file": "bark_forest_walk_calm.wav",
+  "speaker": "RAINORAY",
+  "scene": "FOREST_WALK_CALM",
+  "text": "How are you always so calm?",
+  "spoken_text": "",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "dU8TIhHibVGvxF7UkuyT",
+  "context_request_ids": [
+    "z95rXXA6Z6qcfKs37GeT",
+    "xGwAIGXhPKD5GIIbmJac",
+    "Y8XDFIAy4fZSdsiz7iiq"
+  ],
+  "generated_at": 1793024791.2284317,
+  "format": "mp3_44100_192",
+  "seconds": 1.672,
+  "peak_dbfs": -4.05,
+  "tempo": 1,
+  "sha256": "260914248f7d1c7e54a601bed1ef4639ff9df06ba1f1bcf89b5aa606a16ebd68"
+}

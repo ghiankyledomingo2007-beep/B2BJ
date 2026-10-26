@@ -23,7 +23,7 @@ final class FieldRenderer {
             CHEST = B2BJ.loadImage("assets/props/outpost/field_chest.png"),
             PEOPLE = B2BJ.loadImage("assets/props/outpost/field_survivor.png"),
             BEDROLL = B2BJ.loadImage("assets/props/outpost/field_bedroll.png");
-    static final int FENCE_W = 96, FENCE_H = 112, LOW_H = 56, SIDE_W = 16, SIDE_H = 64, PERSON_W = 48, PERSON_H = 40;
+    static final int FENCE_W = 96, FENCE_H = 112, LOW_H = 56, SIDE_W = 16, SIDE_H = 64, PERSON_W = 64, PERSON_H = 64;
 
     /** Hands every visible field piece to `queue` as (ground y, painter). */
     static void queue(Graphics2D g, RuinedOutpostGame game, int cx, int cy, long frame, BiConsumer<Double, Runnable> queue) {
@@ -57,7 +57,11 @@ final class FieldRenderer {
             }
             case CACHE -> queue.accept(spot.y(), () -> sprite(g, CHEST, game.fieldDone(spot) ? 32 : 0, 0, 32, 28, spot.x(), spot.y(), cx, cy));
             case SURVIVOR -> {
-                if (!game.fieldDone(spot)) queue.accept(spot.y(), () -> person(g, spot.variant(), 0, spot.x(), spot.y(), cx, cy));
+                if (!game.fieldDone(spot)) queue.accept(spot.y(), () -> {
+                    person(g, spot.variant(), 0, spot.x(), spot.y(), cx, cy);
+                    if(Math.hypot(game.player().x()-spot.x(),game.player().y()-spot.y())<520)
+                        Ui.outlinedCentered(g,"Over here!",(int)spot.x()-cx,(int)spot.y()-cy-PERSON_H*2+12,1,Ui.GOLD_LIGHT);
+                });
                 else if (area == 0) {
                     var seat = FieldObjects.campSeat(game.campaignArea().hub(), spot.variant());
                     queue.accept(seat.y() - 1, () -> sprite(g, BEDROLL, spot.variant() % 2 * 40, 0, 40, 16, seat.x(), seat.y() + 6, cx, cy));

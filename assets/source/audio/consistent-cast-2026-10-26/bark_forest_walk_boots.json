@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_boots.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "At least I can't get mud in my boots.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "YOiuDnHevXiqtjNp8ljk",
+  "context_request_ids": [
+    "kyGibFFbJDjtcF1sgbHW",
+    "Zx2eVCp0nkRwApab8MBO",
+    "oPEn8SAW34Tyh3EJxQQr"
+  ],
+  "generated_at": 1792949112.3673248,
+  "format": "mp3_44100_192",
+  "seconds": 2.136,
+  "peak_dbfs": -4.09,
+  "tempo": 1,
+  "sha256": "90527fa22c4f9b8f47f3c0b24ecc5f57e9cf4cf6764c976ff707621e70edf496"
+}

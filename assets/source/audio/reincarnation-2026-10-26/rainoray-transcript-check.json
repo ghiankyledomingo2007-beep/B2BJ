@@ -1,0 +1,260 @@
+[
+  {
+    "file": "wake_01.wav",
+    "expected": "Stay with me. I've almost got it open.",
+    "recognized": "Stay with me. I've almost got it open. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_02.wav",
+    "expected": "Did they get out?",
+    "recognized": "Did they get out? ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_04.wav",
+    "expected": "Then... who am I talking to?",
+    "recognized": "Then who am I talking to? ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_07.wav",
+    "expected": "A slime? That was your best option?",
+    "recognized": "A slime? That was your best option? ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_09.wav",
+    "expected": "I can still change back?",
+    "recognized": "I can still change back? ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_11.wav",
+    "expected": "Where are my hands?",
+    "recognized": "Where are my hands? ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_13.wav",
+    "expected": "Someone's still out there.",
+    "recognized": "Someone's still out there. ",
+    "match": 1.0
+  },
+  {
+    "file": "wake_15.wav",
+    "expected": "You'll have to talk me through the steps.",
+    "recognized": "You'll have to talk me through the steps. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_02.wav",
+    "expected": "I heard someone calling. I wasn't coming for the food.",
+    "recognized": "I heard someone calling. I wasn't coming for the food. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_04.wav",
+    "expected": "I'm having a strange morning.",
+    "recognized": "I'm having a strange morning. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_06.wav",
+    "expected": "Rainoray. That's the part I'm sure about.",
+    "recognized": "Rain array. That's the part I'm sure about. ",
+    "match": 0.842
+  },
+  {
+    "file": "camp_wait_02.wav",
+    "expected": "East, then north. I'll remember.",
+    "recognized": "East, then north. I'll remember. ",
+    "match": 1.0
+  },
+  {
+    "file": "camp_late_02.wav",
+    "expected": "Rainoray. I was looking for a way through.",
+    "recognized": "Rain array. I was looking for a way through. ",
+    "match": 0.824
+  },
+  {
+    "file": "signal_01.wav",
+    "expected": "A dispatch. 'Seal the road against Ichor-bearing life.' Someone added it over the evacuation order.",
+    "recognized": "A dispatch. \"Seal the road against Ichor-bearing life.\" Someone added it over the evacuation order. ",
+    "match": 1.0
+  },
+  {
+    "file": "signal_03.wav",
+    "expected": "There's a list of missing people underneath. Shuna should see it.",
+    "recognized": "There's a list of missing people underneath. Shuna should see it. ",
+    "match": 1.0
+  },
+  {
+    "file": "signal_03_stranger.wav",
+    "expected": "A list of missing people. Someone at the camp might know these names.",
+    "recognized": "A list of missing people. Someone at the camp might know these names. ",
+    "match": 1.0
+  },
+  {
+    "file": "supplies_01.wav",
+    "expected": "Weapons left behind. Empty spaces where the blankets were.",
+    "recognized": "Weapons left behind. Empty spaces where the blankets were. ",
+    "match": 1.0
+  },
+  {
+    "file": "supplies_02.wav",
+    "expected": "A note: 'Leave the heavy crates. Make room for the wounded.'",
+    "recognized": "A note. \"Leave the heavy crates. Make room for the wounded.\" ",
+    "match": 1.0
+  },
+  {
+    "file": "supplies_03.wav",
+    "expected": "We packed our van like that. I hope those supplies reached someone.",
+    "recognized": "We packed our van like that. I hope those supplies reached someone. ",
+    "match": 1.0
+  },
+  {
+    "file": "report_01.wav",
+    "expected": "I found the dispatch. The Warden was told to seal the road against Ichor.",
+    "recognized": "I found the dispatch. The warden was told to seal the road against Ichor. ",
+    "match": 1.0
+  },
+  {
+    "file": "report_03.wav",
+    "expected": "Kaijin, Eren, Rigurd. You left their names marked missing.",
+    "recognized": "Kaijin, Aaron, Rigard. You left their names marked missing. ",
+    "match": 0.778
+  },
+  {
+    "file": "warden_02.wav",
+    "expected": "There are people on the other side.",
+    "recognized": "There are people on the other side. ",
+    "match": 1.0
+  },
+  {
+    "file": "warden_05.wav",
+    "expected": "Can you shut it down?",
+    "recognized": "Can you shut it down? ",
+    "match": 1.0
+  },
+  {
+    "file": "gate_02.wav",
+    "expected": "Only one set of footprints comes back. Shuna's.",
+    "recognized": "Only one set of footprints comes back. Shuna's. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_tobin_02.wav",
+    "expected": "Rainoray. Mostly water, these days.",
+    "recognized": "Rain array. Mostly water these days. ",
+    "match": 0.727
+  },
+  {
+    "file": "survivor_tobin_05.wav",
+    "expected": "Shuna's lamp is still lit at Captain Camp. Can you make it that far?",
+    "recognized": "Shuna's lamp is still lit at Captain Camp. Can you make it that far? ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_ilse_02.wav",
+    "expected": "Rainoray. I cut the thorns, not you.",
+    "recognized": "Rain array. I cut the thorns, not you. ",
+    "match": 0.8
+  },
+  {
+    "file": "survivor_ilse_05.wav",
+    "expected": "I'll find it. Go to Shuna's lamp at Captain Camp.",
+    "recognized": "I'll find it. Go to Shuna's lamp at Captain Camp. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_venn_02.wav",
+    "expected": "Nobody sent me. I heard you were missing.",
+    "recognized": "Nobody sent me. I heard you were missing. ",
+    "match": 1.0
+  },
+  {
+    "file": "survivor_venn_05.wav",
+    "expected": "Shuna is keeping a fire at Captain Camp. She has room for you.",
+    "recognized": "Shuna is keeping a fire at Captain Camp. She has room for you. ",
+    "match": 1.0
+  },
+  {
+    "file": "ledger_01.wav",
+    "expected": "The cache opens. Bandages, a little coin, and the evacuation ledger.",
+    "recognized": "The cache opens. Bandages, a little coin, and the evacuation ledger. ",
+    "match": 1.0
+  },
+  {
+    "file": "ledger_03.wav",
+    "expected": "Kaijin, Eren, Rigurd. Names, not numbers. Let's find out what happened to them.",
+    "recognized": "Kaijin, Aaron, Rigard. Names, not numbers. Let's find out what happened to them. ",
+    "match": 0.857
+  },
+  {
+    "file": "forest_sedge_05.wav",
+    "expected": "Rainoray. Shuna is waiting beyond the gate. The road is open now.",
+    "recognized": "Rain array. Shuna is waiting beyond the gate. The road is open now. ",
+    "match": 0.88
+  },
+  {
+    "file": "forest_sedge_late_04.wav",
+    "expected": "Then bring the rope. There's a refuge waiting beyond the gate.",
+    "recognized": "Then bring the rope. There's a refuge waiting beyond the gate. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_orchard_03.wav",
+    "expected": "We packed our van like that. Best supplies where people could reach them.",
+    "recognized": "We packed our van like that. Best supplies where people could reach them. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_03.wav",
+    "expected": "Easy. The path is clear. There's a refuge waiting at the outpost.",
+    "recognized": "Easy. The path is clear. There's a refuge waiting at the outpost. ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_05.wav",
+    "expected": "All of them?",
+    "recognized": "All of them? ",
+    "match": 1.0
+  },
+  {
+    "file": "forest_end_07.wav",
+    "expected": "Good. I wanted to hear someone say it.",
+    "recognized": "Good. I wanted to hear someone say it. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_routes.wav",
+    "expected": "I don't know which way is safe.",
+    "recognized": "I don't know which way is safe. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_quiet.wav",
+    "expected": "Was this a busy road once?",
+    "recognized": "Was this a busy road once? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_name.wav",
+    "expected": "Raphael. Are you still there?",
+    "recognized": "Raphael, are you still there? ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_walk_nails.wav",
+    "expected": "I used to worry about late deliveries.",
+    "recognized": "I used to worry about late deliveries. ",
+    "match": 1.0
+  },
+  {
+    "file": "bark_forest_walk_memory.wav",
+    "expected": "The roots are narrowing the road.",
+    "recognized": "The roots are narrowing the road.",
+    "match": 1.0
+  }
+]

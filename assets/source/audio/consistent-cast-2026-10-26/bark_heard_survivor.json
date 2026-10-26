@@ -1,0 +1,27 @@
+{
+  "file": "bark_heard_survivor.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Was that a voice? South of the road.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "id30AlmemxymWzsJafQe",
+  "context_request_ids": [
+    "Xhu1QUvKMscuhJkjxoXJ",
+    "W4wvvLbv621kxXOk8kcQ",
+    "xC2A36zZpp7vmO1G0uRJ"
+  ],
+  "generated_at": 1792949063.200275,
+  "format": "mp3_44100_192",
+  "seconds": 2.322,
+  "peak_dbfs": -4.41,
+  "tempo": 1,
+  "sha256": "0fa8952e617222d8353eda49aafd6ab569aa1dc9f443678f5db8c42294896a86"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "bark_hurt_camp.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I could use that campfire now.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "Y7gqGTcp1XjwK3A6fsOK",
+  "context_request_ids": [
+    "nUEuEei9F4YhddlEDUlB",
+    "spQ2zNOnkezRoFMEyZjX",
+    "riaZhvRiSk8nxVgUh3z1"
+  ],
+  "generated_at": 1792949078.3338575,
+  "format": "mp3_44100_192",
+  "seconds": 1.718,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "5711b80e2903d797dbae57af4905c8221ec4d3fe732a1870e749c3d5b8b3465f"
+}

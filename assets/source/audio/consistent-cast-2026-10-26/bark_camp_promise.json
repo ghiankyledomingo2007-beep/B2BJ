@@ -1,0 +1,27 @@
+{
+  "file": "bark_camp_promise.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I wish I could promise her more.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "ilxiRHDzR0YvQOJHxr6L",
+  "context_request_ids": [
+    "A69redtxzCwgrMEt7g81",
+    "PVYQmLWemYUW1FnADuhv",
+    "vGWWgOWV2uHY1XYTn5gZ"
+  ],
+  "generated_at": 1792949092.7905507,
+  "format": "mp3_44100_192",
+  "seconds": 1.765,
+  "peak_dbfs": -4.19,
+  "tempo": 1,
+  "sha256": "280158b7c0d624718a33483c05ffb5a013c7c3719f1870f4d193d78510b4c335"
+}

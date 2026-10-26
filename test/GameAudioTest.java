@@ -10,6 +10,7 @@ public final class GameAudioTest {
         ambientThemesAreDistinctAndVolumeAware();
         frameStateUpdatesNeverStartAudioWorkers();
         packagedRecordingsPlayInSessionFormat();
+        slimeFoleyStaysShortAndQuiet();
         detuneLayersAndDucking();
         loopsRunUntilStopped();
         mixerSumsVoicesOnTime();
@@ -160,6 +161,27 @@ public final class GameAudioTest {
         assert rejected : "a negative delay is a bug";
     }
 
+    private static void slimeFoleyStaysShortAndQuiet() {
+        double hopEnergy=0,attackEnergy=0;
+        for(var cue:new GameAudio.Cue[]{GameAudio.Cue.SLIME_MOVE,GameAudio.Cue.BLOB_ATTACK,
+                GameAudio.Cue.WATER_SPLASH,GameAudio.Cue.SLIME_DASH,GameAudio.Cue.SLIME_HURT}) {
+            var takes=GameAudio.samples(cue);var hashes=new HashSet<Integer>();
+            assert takes.length>=2 : "repeated slime actions need alternate takes";
+            for(var take:takes) {
+                assert take.length<=.30*22050*2 : "basic slime sounds must end before repeated actions pile up";
+                hashes.add(Arrays.hashCode(take));
+                double energy=0;int peak=0;
+                for(int i=0;i<take.length;i+=2) {int v=sample(take,i);energy+=(double)v*v;peak=Math.max(peak,Math.abs(v));}
+                energy=Math.sqrt(energy/(take.length/2))/32768;
+                assert peak<27000 : "leave mixing headroom";
+                if(cue==GameAudio.Cue.SLIME_MOVE) {assert peak<10000 : "every hop must stay quiet";hopEnergy+=energy/takes.length;}
+                if(cue==GameAudio.Cue.BLOB_ATTACK)attackEnergy+=energy/takes.length;
+            }
+            assert hashes.size()==takes.length : "alternate takes must differ";
+        }
+        assert attackEnergy>hopEnergy*2 : "attacks must stand out above movement foley";
+    }
+
     private static void detuneLayersAndDucking() {
         Class<?>[] signature = {GameAudio.Cue.class, int.class, double.class};
         byte[] plain = (byte[]) invoke("playbackSamples", signature, GameAudio.Cue.ENEMY_HIT, 0, 1.0);
@@ -167,9 +189,14 @@ public final class GameAudioTest {
         byte[] slow = (byte[]) invoke("playbackSamples", signature, GameAudio.Cue.ENEMY_HIT, 0, 0.95);
         assert fast.length < plain.length && plain.length < slow.length : "a higher pitch is a shorter sound";
         assert Math.abs(sample(fast, 0)) < 128 && Math.abs(sample(slow, slow.length - 2)) < 128 : "detuning keeps the edges clean";
-        byte[][] bare = (byte[][]) invoke("samples", new Class<?>[] {GameAudio.Cue.class}, GameAudio.Cue.ENEMY_HIT);
-        byte[] scaledBare = (byte[]) invoke("scaled", new Class<?>[] {byte[].class, double.class}, bare[0], .8);
-        assert !Arrays.equals(plain, scaledBare) : "a cue with a layer plays more than its bare take";
+        // ENEMY_HIT's thud is now inside its own takes; the hero's hurt and the kill still mix a layer under theirs
+        for (GameAudio.Cue layered : new GameAudio.Cue[] {GameAudio.Cue.HURT, GameAudio.Cue.KILL}) {
+            assert layered.layer != null : layered + " lost its layer";
+            byte[] played = (byte[]) invoke("playbackSamples", signature, layered, 0, 1.0);
+            byte[][] bare = (byte[][]) invoke("samples", new Class<?>[] {GameAudio.Cue.class}, layered);
+            byte[] scaledBare = (byte[]) invoke("scaled", new Class<?>[] {byte[].class, double.class}, bare[0], .8);
+            assert !Arrays.equals(played, scaledBare) : layered + ": a cue with a layer plays more than its bare take";
+        }
         boolean rejected = false;
         try { invoke("resampled", new Class<?>[] {byte[].class, double.class}, plain, 0.0); }
         catch (IllegalArgumentException expected) { rejected = true; }

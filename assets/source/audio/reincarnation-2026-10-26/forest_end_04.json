@@ -1,0 +1,27 @@
+{
+  "file": "forest_end_04.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "THE LAST STRETCHER",
+  "text": "The last stretcher has crossed.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "AYGB3dF1RztWk3RybWR8",
+  "context_request_ids": [
+    "iM2wVdY8vC8VQTc6ZMXq",
+    "dpzlGWc2Zp0nIUBbeJQI",
+    "PnoWYVvqfbHBZUtcPi7U"
+  ],
+  "generated_at": 1793011345.9543624,
+  "format": "mp3_44100_192",
+  "seconds": 2.436,
+  "peak_dbfs": -4.03,
+  "tempo": 1,
+  "sha256": "80007be94c52c03275c3c572245eac389bfe3b86715f13692de3e304d79cad6c"
+}

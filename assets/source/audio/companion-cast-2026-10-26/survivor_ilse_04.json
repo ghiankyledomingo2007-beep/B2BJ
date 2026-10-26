@@ -1,0 +1,27 @@
+{
+  "file": "survivor_ilse_04.wav",
+  "speaker": "ILSE",
+  "scene": "INSIDE THE THORNS",
+  "text": "That chest holds our spare supplies. Locked tight, and the key went with the storehouse.",
+  "spoken_text": "",
+  "voice_id": "cgSgspJ2msm6clMCkdW9",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.1,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "XTIAj3X5GN0oSBY5lxFl",
+  "context_request_ids": [
+    "TQ5ndOh5x21wZxJuzokL",
+    "VvfKk6SSnk6j1UXCiTj8"
+  ],
+  "generated_at": 1793024800.9154155,
+  "format": "mp3_44100_192",
+  "seconds": 4.783,
+  "peak_dbfs": -3.99,
+  "tempo": 1,
+  "sha256": "ec7ca563a9ebe7e1ade34316a2554c162e73ae13fa56ea6e9c78ec49e693b194"
+}

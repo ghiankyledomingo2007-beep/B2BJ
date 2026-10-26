@@ -35,6 +35,9 @@ def pose(p, t, amp, breath, view):
     # the hair is a thin shell: past ~35 degrees it turns edge-on to a side camera and vanishes
     p.turn("hair", X_AXIS, mix(4 + 3.5 * math.sin(b - 0.5), 24 + 6 * math.sin(2 * a + 1.0), amp))
     p.turn("hair_tip", X_AXIS, mix(3 + 6 * math.sin(b - 1.4), 16 + 12 * math.sin(2 * a + 0.2), amp))
+    # Sideways drift stays visible from behind; the ends follow a beat after the roots.
+    p.turn("hair", Y_AXIS, mix(3.5 * math.sin(b - 0.2), 3.5 * math.sin(a - 0.4), amp))
+    p.turn("hair_tip", Y_AXIS, mix(6.5 * math.sin(b - 1.0), 6 * math.sin(a - 1.1), amp))
 
     for side, ph in ((".L", 0.0), (".R", math.pi)):
         s = math.sin(a + ph)

@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_mud_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "You can go around the next one.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "EcDFEsV8cz0gmuMQBM7N",
+  "context_request_ids": [
+    "HCUxIe4kWWugnejoDO3N",
+    "Ob5wm8CGr12L1BeOhWZo",
+    "7finEIxlNAIpVRDzhZg9"
+  ],
+  "generated_at": 1792949014.4362907,
+  "format": "mp3_44100_192",
+  "seconds": 2.343,
+  "peak_dbfs": -4.9,
+  "tempo": 1,
+  "sha256": "2dac225650839f53a6241107d221d8617aa19423181ee9347b8d0568f0113924"
+}

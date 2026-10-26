@@ -1,0 +1,27 @@
+{
+  "file": "forest_wayfinder_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "A PATH BACK",
+  "text": "White strips on every branch. He must have torn up half his sail.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "EgNJoMlvHKn2nQ2rehMG",
+  "context_request_ids": [
+    "BDjipazAxiZ0sAZbBRQC",
+    "3MRVkmsUZKRyjsXevwr3",
+    "fQxAdQCXWszI3D5QvB2Y"
+  ],
+  "generated_at": 1792949049.7407885,
+  "format": "mp3_44100_192",
+  "seconds": 4.18,
+  "peak_dbfs": -3.97,
+  "tempo": 1,
+  "sha256": "4bf19519d5901d93c7c7dea89b013d462e8ba6fa61a1994204ce17d2a87f788a"
+}

@@ -1,0 +1,28 @@
+{
+  "file": "bark_camp_warm_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "CAMP_WARM",
+  "text": "Then stay a moment.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "cYHYtn2anTbzylhuhN3f",
+  "context_request_ids": [
+    "MYS8HS2VVYjSJUXcFhNw",
+    "cvY6XRh2DXn5hnC3Jnw2",
+    "JSVbUa8eiZ5HnLGNmA4Q"
+  ],
+  "generated_at": 1793024791.4558723,
+  "format": "mp3_44100_192",
+  "seconds": 2.111,
+  "peak_dbfs": -4.02,
+  "tempo": 1,
+  "sha256": "c516b917eb68781a03071c0f32e62c56616cc3af35b28f3f8561f8668b666f51"
+}

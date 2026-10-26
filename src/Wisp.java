@@ -1,7 +1,7 @@
 import java.util.List;
 
 public final class Wisp {
-    public enum Role { SCOUT, GUARD, SPITTER, KNIGHT, SHIELD_GUARD }
+    public enum Role { SCOUT, GUARD, SPITTER, KNIGHT, SHIELD_GUARD, REMNANT, RIFT_IMP, THORN_WOLF, MIRE_SHAMAN }
     public enum State {
         PATROL,
         PURSUE,
@@ -62,6 +62,9 @@ public final class Wisp {
     private double detourTime, detourX, detourY;
     private int shotNumber;
     private double staggerCooldown;
+    private boolean remnantRush,wolfLeap;
+    private double markedX,markedY,committedReach;
+    private int attackNumber;
 
     public int defense() { return switch(role) { case GUARD, SHIELD_GUARD -> 20; case KNIGHT -> 35; default -> 0; }; }
 
@@ -159,7 +162,7 @@ public final class Wisp {
             return;
         }
         stateTime += seconds;
-        if (role == Role.SPITTER && distance > 0 && distance < 160-1e-6
+        if (ranged() && distance > 0 && distance < 160-1e-6
                 && lineClear(targetX,targetY,map)
                 && (map == null || probeFree(-dx/distance, -dy/distance, map))) {
             double retreat = Math.min(160-distance, PURSUE_SPEED*seconds);
@@ -168,9 +171,14 @@ public final class Wisp {
             face(targetX, targetY, seconds);
             return;
         }
-        double attackRange = role==Role.SPITTER?300:role==Role.GUARD?220:stationaryMelee()?meleeReach():ATTACK_RANGE;
+        double attackRange = role==Role.MIRE_SHAMAN?360:role==Role.THORN_WOLF?(attackNumber%3==2?310:130):role==Role.RIFT_IMP?120:role==Role.SPITTER?300:role==Role.GUARD?220:role==Role.REMNANT?210:stationaryMelee()?meleeReach():ATTACK_RANGE;
         if (distance <= attackRange && lineClear(targetX, targetY, map)) {
             if (waitTurn) { circle(dx, dy, distance, attackRange, seconds, map); return; }
+            remnantRush=role==Role.REMNANT&&distance>ATTACK_RANGE;
+            wolfLeap=role==Role.THORN_WOLF&&attackNumber%3==2&&distance>130;
+            markedX=targetX;markedY=targetY;
+            committedReach=Math.min(310,distance);
+            attackNumber++;
             setIntent(dx, dy);
             enter(State.TELEGRAPH);
             face(targetX, targetY, 0);
@@ -182,7 +190,7 @@ public final class Wisp {
         }
         double[] direction = steer(dx / distance, dy / distance, seconds, map);
         setIntent(direction[0], direction[1]);
-        double speed=role==Role.GUARD?165:stationaryMelee()?110:PURSUE_SPEED;
+        double speed=role==Role.THORN_WOLF?155:role==Role.RIFT_IMP?140:role==Role.GUARD?165:stationaryMelee()?110:PURSUE_SPEED;
         move(direction[0] * speed * seconds,
                 direction[1] * speed * seconds, map);
         animation.update(direction[0], direction[1], seconds);
@@ -285,17 +293,25 @@ public final class Wisp {
     private void updateTelegraph(double seconds, double targetX, double targetY,
             RuinedOutpostMap map) {
         boolean tracking = stateTime < telegraphDuration() - lockWindow();
+        if(role==Role.RIFT_IMP&&stateTime<.20) {
+            double side=attackNumber%2==0?1:-1;
+            move(-intentY*side*160*seconds,intentX*side*160*seconds,map);
+        }
         stateTime += seconds;
         if (tracking) {
-            setIntent(targetX - x, targetY - y);
+            if(role==Role.THORN_WOLF&&wolfLeap) {
+                double distance=Math.max(1,Math.hypot(targetX-x,targetY-y));committedReach=Math.min(310,distance);
+                markedX=x+(targetX-x)/distance*committedReach;markedY=y+(targetY-y)/distance*committedReach;
+            }
+            setIntent((role==Role.MIRE_SHAMAN?markedX:targetX) - x, (role==Role.MIRE_SHAMAN?markedY:targetY) - y);
             face(targetX, targetY, seconds);
         } else {
             animation.update(intentX, intentY, seconds);
         }
         if (stateTime >= telegraphDuration()) {
-            if (role == Role.SPITTER) {
-                if (Math.hypot(targetX-x, targetY-y) > AWARENESS_RANGE
-                        || !lineClear(targetX, targetY, map)) {
+            if (ranged()) {
+                if (role==Role.SPITTER&&(Math.hypot(targetX-x, targetY-y) > AWARENESS_RANGE
+                        || !lineClear(targetX, targetY, map))) {
                     enter(State.RECOVER);
                     return;
                 }
@@ -308,8 +324,8 @@ public final class Wisp {
     }
 
     private void updateLunge(double seconds, RuinedOutpostMap map) {
-        if (role == Role.SPITTER || stationaryMelee()) {
-            // Ranged releases and a knight's overhead use attack frames without rush propulsion.
+        if (ranged() || stationaryMelee()) {
+            // Planted attacks and ranged releases never propel the body forward.
             animation.update(0, 0, seconds);
             stateTime += seconds;
             if (stateTime >= lungeDuration()) enter(State.RECOVER);
@@ -317,13 +333,13 @@ public final class Wisp {
         }
         double active = Math.min(seconds, lungeDuration() - stateTime);
         double beforeX = x, beforeY = y;
-        move(lungeX * LUNGE_SPEED * active,
-                lungeY * LUNGE_SPEED * active, map);
+        move(lungeX * lungeSpeed() * active,
+                lungeY * lungeSpeed() * active, map);
         double travelled = Math.hypot(x - beforeX, y - beforeY);
         animation.update(lungeX, lungeY, seconds);
         stateTime += seconds;
         boolean blocked = map != null && active > 0
-                && travelled < LUNGE_SPEED * active * 0.25;
+                && travelled < lungeSpeed() * active * 0.25;
         if (stateTime >= lungeDuration() || blocked) {
             enter(State.RECOVER);
         }
@@ -493,15 +509,33 @@ public final class Wisp {
     public Role role(){return role;}
     /** Monotonic release counter; callers consume changes immediately after update, not during hurt/death. */
     public int shotNumber(){return shotNumber;}
-    public boolean stationaryMelee(){return role==Role.KNIGHT||role==Role.SHIELD_GUARD;}
-    public double meleeReach(){return role==Role.KNIGHT?135:100;}
-    public double meleeHalfWidth(){return role==Role.KNIGHT?50:55;}
-    private double lockWindow(){return role==Role.SPITTER||role==Role.SHIELD_GUARD?0.25:LUNGE_LOCK_WINDOW;}
-    public double telegraphDuration(){return role==Role.SPITTER?0.75:role==Role.GUARD?0.6:role==Role.KNIGHT?.85:role==Role.SHIELD_GUARD?.65:TELEGRAPH_DURATION;}
+    public boolean ranged(){return role==Role.SPITTER||role==Role.MIRE_SHAMAN;}
+    public boolean wolfLeap(){return role==Role.THORN_WOLF&&wolfLeap;}
+    public double markedX(){return markedX;}
+    public double markedY(){return markedY;}
+    public boolean stationaryMelee(){return role==Role.RIFT_IMP||role==Role.KNIGHT||role==Role.SHIELD_GUARD||role==Role.THORN_WOLF&&!wolfLeap;}
+    public double meleeReach(){return role==Role.RIFT_IMP?140:role==Role.KNIGHT?135:role==Role.THORN_WOLF?130:100;}
+    public double meleeHalfWidth(){return role==Role.RIFT_IMP?70:role==Role.THORN_WOLF?45:role==Role.KNIGHT?50:55;}
+    /** Forest warning and damage use this same footprint. */
+    public boolean meleeContains(double wx,double wy) {
+        if(!Double.isFinite(wx)||!Double.isFinite(wy))return false;
+        double dx=wx-x,dy=wy-y,forward=dx*intentX()+dy*intentY();
+        double side=Math.abs(dx*intentY()-dy*intentX()),reach=meleeReach(),width=meleeHalfWidth();
+        if(forward<0||forward>reach||side>width)return false;
+        if(role==Role.RIFT_IMP)return forward*forward/(reach*reach)+side*side/(width*width)<=1;
+        if(role==Role.THORN_WOLF)return side<=width*(.35+.65*forward/reach);
+        return true;
+    }
+    public boolean impSwipeActive(){return role==Role.RIFT_IMP&&state==State.LUNGE
+            &&(stateTime>=.04&&stateTime<.17||stateTime>=.40&&stateTime<.56);}
+    public boolean remnantRush(){return remnantRush;}
+    private double lockWindow(){return role==Role.MIRE_SHAMAN?1.4:role==Role.THORN_WOLF?.60:role==Role.RIFT_IMP?.45:remnantRush?.40:role==Role.REMNANT?.30:role==Role.SPITTER||role==Role.SHIELD_GUARD?0.25:LUNGE_LOCK_WINDOW;}
+    public double telegraphDuration(){return role==Role.MIRE_SHAMAN?1.4:role==Role.THORN_WOLF?(wolfLeap?1.15:.80):role==Role.RIFT_IMP?.90:remnantRush?.85:role==Role.REMNANT?.60:role==Role.SPITTER?0.75:role==Role.GUARD?0.6:role==Role.KNIGHT?.85:role==Role.SHIELD_GUARD?.65:TELEGRAPH_DURATION;}
     /** How far a lunge carries the body: its warning marks exactly this path. */
-    public double lungeReach(){return LUNGE_SPEED*lungeDuration();}
-    public double lungeDuration(){return role==Role.GUARD?0.35:role==Role.KNIGHT?.22:role==Role.SHIELD_GUARD?.20:LUNGE_DURATION;}
-    public double recoverDuration(){return role==Role.SPITTER?1.4:role==Role.GUARD?0.85:role==Role.KNIGHT?1.1:role==Role.SHIELD_GUARD?1.0:RECOVER_DURATION;}
+    public double lungeReach(){return lungeSpeed()*lungeDuration();}
+    private double lungeSpeed(){return stationaryMelee()||ranged()?0:wolfLeap()?committedReach/lungeDuration():LUNGE_SPEED;}
+    public double lungeDuration(){return role==Role.MIRE_SHAMAN?.22:role==Role.THORN_WOLF?(wolfLeap?.48:.20):role==Role.RIFT_IMP?.68:remnantRush?.32:role==Role.GUARD?0.35:role==Role.KNIGHT?.22:role==Role.SHIELD_GUARD?.20:LUNGE_DURATION;}
+    public double recoverDuration(){return role==Role.MIRE_SHAMAN?3.0:role==Role.THORN_WOLF?(wolfLeap?1.45:1.0):role==Role.RIFT_IMP?1.2:remnantRush?1.0:role==Role.REMNANT?.70:role==Role.SPITTER?1.4:role==Role.GUARD?0.85:role==Role.KNIGHT?1.1:role==Role.SHIELD_GUARD?1.0:RECOVER_DURATION;}
     public double stateSeconds(){return stateTime;}
 
     public boolean usesAttackAnimation() {
@@ -511,6 +545,10 @@ public final class Wisp {
     }
 
     public int attackFrame() {
+        if(role==Role.RIFT_IMP&&state==State.LUNGE) {
+            double stroke=stateTime<.3?stateTime:stateTime-.36;
+            return stroke<.04?3:stroke<.10?4:stroke<.17?5:stroke<.24?6:2;
+        }
         return attackFrame(3, 3, 2);
     }
 

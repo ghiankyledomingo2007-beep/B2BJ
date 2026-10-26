@@ -1,0 +1,23 @@
+{
+  "file": "bark_forest_boss_open.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "It's open. Strike the heart.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "Kh2s2kNbhiKWk3OLUczZ",
+  "context_request_ids": [],
+  "generated_at": 1792967462.0395446,
+  "format": "mp3_44100_192",
+  "seconds": 2.529,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "3a678224c7ae08dedabbf50f741889ed459b79030fd5bc86f8dcde07ff404497"
+}

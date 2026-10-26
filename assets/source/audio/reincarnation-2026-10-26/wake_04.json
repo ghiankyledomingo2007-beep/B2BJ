@@ -1,0 +1,26 @@
+{
+  "file": "wake_04.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE MORE CHANCE",
+  "text": "Then... who am I talking to?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "1Zuv9B1JEXFIsKVHaHgI",
+  "context_request_ids": [
+    "2tDLTA05m7IcMTbkWDXI",
+    "9O4LMXKZXmJSQjyPuSjE"
+  ],
+  "generated_at": 1793011330.2741363,
+  "format": "mp3_44100_192",
+  "seconds": 1.904,
+  "peak_dbfs": -4.08,
+  "tempo": 1,
+  "sha256": "f9825c3a9b733c9cd8e0e0cb782c6826d72a282c290ae9594ae13630c09ad313"
+}

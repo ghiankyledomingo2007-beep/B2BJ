@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_camp_boat_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "The people he guards could not.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "QtnXwIAZWV81yki0Yunj",
+  "context_request_ids": [
+    "iwaABWUBXtW97EhywCpS",
+    "4PWgtpm8BUgWq5IfE6Gq",
+    "VbbN2UrV7tCQu6GjltHB"
+  ],
+  "generated_at": 1793011352.5855646,
+  "format": "mp3_44100_192",
+  "seconds": 2.714,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "7175cd7cf383e710c192e0552272aab49b8571114467b9bdcd716127de96362f"
+}

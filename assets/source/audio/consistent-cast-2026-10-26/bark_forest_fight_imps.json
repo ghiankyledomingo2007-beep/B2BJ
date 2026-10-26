@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_fight_imps.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "That little thing tried to get behind me.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "P7xP8pPtrSfBzGC3o0O2",
+  "context_request_ids": [
+    "iz06Bnblp2jGZqu4J9gr",
+    "jTl950r3RUhq2PEYuKt5",
+    "lUvjC4dS6yA2Tcvt6lue"
+  ],
+  "generated_at": 1792949100.9864404,
+  "format": "mp3_44100_192",
+  "seconds": 2.043,
+  "peak_dbfs": -4.19,
+  "tempo": 1,
+  "sha256": "487cb6d817c0d96b9c4815741579d4a1140fe77bb197417d3a894abea46789c1"
+}

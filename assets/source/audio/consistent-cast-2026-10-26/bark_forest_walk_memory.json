@@ -1,0 +1,27 @@
+{
+  "file": "bark_forest_walk_memory.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I remember this road being wider.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "8pz29BMX64bmmcMuW0le",
+  "context_request_ids": [
+    "YOiuDnHevXiqtjNp8ljk",
+    "xaCSxlOxTgyTzjHGV3yE",
+    "KSfGhjsTqrcgkCSaD2XZ"
+  ],
+  "generated_at": 1792949115.3292477,
+  "format": "mp3_44100_192",
+  "seconds": 1.997,
+  "peak_dbfs": -4.48,
+  "tempo": 1,
+  "sha256": "02bcae5472f4631e9ceb6adaa25b17c2da3d7691fdd173cfbef618da88aca6f8"
+}

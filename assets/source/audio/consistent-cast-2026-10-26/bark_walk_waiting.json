@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_waiting.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "Who is still waiting out there?",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "jZ84JZjEzxGQDA0TzTMf",
+  "context_request_ids": [
+    "piOxTXmaatUcz8LUvwhK",
+    "ClS3yEow9AiXGTxlW6iw",
+    "3Tvpamy2OEEvIJ4yayOi"
+  ],
+  "generated_at": 1792949084.7912,
+  "format": "mp3_44100_192",
+  "seconds": 1.811,
+  "peak_dbfs": -5.4,
+  "tempo": 1,
+  "sha256": "9d474387ffc96c7a5209685add66372a28b8ab453b0d6254eb2fe80fdbfd4278"
+}

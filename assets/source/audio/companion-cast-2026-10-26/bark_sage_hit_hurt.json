@@ -1,0 +1,28 @@
+{
+  "file": "bark_sage_hit_hurt.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "SAGE_HIT_HURT",
+  "text": "That one hurt. Step back.",
+  "spoken_text": "",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "lrU5zWFy60CbvgSB2yrY",
+  "context_request_ids": [
+    "MHh4NYLpXobJtONCJUDi",
+    "NH6BqnGcnEA8eOAo7vdG",
+    "f19YMa7QMvVHonkiYKJu"
+  ],
+  "generated_at": 1793024804.3647852,
+  "format": "mp3_44100_192",
+  "seconds": 2.714,
+  "peak_dbfs": -4.06,
+  "tempo": 1,
+  "sha256": "a436f79d593ca2915d1e7c8e8f7dd6f378541584dcc8c890d3870532d0c8755d"
+}

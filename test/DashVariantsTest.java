@@ -20,8 +20,8 @@ public final class DashVariantsTest {
             close(Math.hypot(p.x()-600,p.y()-400),blade?120:144);
             assert !p.dashing()&&!p.invulnerable() : "dodge immunity ends before cooldown";
             assert !p.dash(aim[0],aim[1])&&p.hurt(1) : "there is a hittable gap between dodges";
-            p.move(0,0,.319-duration,map);assert !p.dash(aim[0],aim[1]);
-            p.move(0,0,.002,map);assert p.dash(aim[0],aim[1]) : "dash ready at 0.32 seconds";
+            p.move(0,0,1.199-duration,map);assert !p.dash(aim[0],aim[1]);
+            p.move(0,0,.002,map);assert p.dash(aim[0],aim[1]) : "dash ready at 1.20 seconds";
         }
         var p=new Player(600,400);var map=new RuinedOutpostMap();
         assert p.dash(1,0);p.move(0,0,.08,map);p.collectIchor(100);assert p.transform();p.move(0,0,.08,map);
@@ -46,7 +46,7 @@ public final class DashVariantsTest {
             var panel=new B2BJ(false,game);set(panel,"reducedEffects",reduced);
             int[][] directions={{0,1},{1,0},{0,-1},{-1,0}};
             for(int row=0;row<directions.length;row++) {
-                panel.step(.5);game.player().relocate(600,400);
+                for(int wait=0;wait<30;wait++)panel.step(.05);game.player().relocate(600,400);
                 assert game.dash(directions[row][0],directions[row][1]);
                 for(int i=0;i<6;i++)panel.step(.01);
                 var trails=(List<?>)field(panel,"trails");

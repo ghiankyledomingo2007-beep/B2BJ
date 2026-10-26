@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_quiet_2.wav",
+  "speaker": "INNER_VOICE",
+  "scene": "EXPLORATION",
+  "text": "The cart tracks suggest it was.",
+  "voice_id": "5BqS4S2L9130EY4gngwS",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.7,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "use_speaker_boost": true
+  },
+  "seed": 84722,
+  "request_id": "iwaABWUBXtW97EhywCpS",
+  "context_request_ids": [
+    "PnoWYVvqfbHBZUtcPi7U",
+    "AYGB3dF1RztWk3RybWR8",
+    "cCm2FLmFM69hwnjMXUes"
+  ],
+  "generated_at": 1793011348.6435554,
+  "format": "mp3_44100_192",
+  "seconds": 2.714,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "28c3316e93911b54e1831dc9a64c5d00d8cba7ce334fb9bcb607fdc05b266df2"
+}

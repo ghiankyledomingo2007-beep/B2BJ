@@ -1,0 +1,27 @@
+{
+  "file": "bark_walk_bag.wav",
+  "speaker": "RAINORAY",
+  "scene": "EXPLORATION",
+  "text": "I keep reaching for a bag I lost.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "t9HGa0ixDKDDV4tscOlN",
+  "context_request_ids": [
+    "Y7gqGTcp1XjwK3A6fsOK",
+    "33Bq0q3ROPa0nhRwCY66",
+    "bFZAP80wi9OYZdXtYUHt"
+  ],
+  "generated_at": 1792949080.977809,
+  "format": "mp3_44100_192",
+  "seconds": 1.858,
+  "peak_dbfs": -4.01,
+  "tempo": 1,
+  "sha256": "77e0e04163181bf9d607463e6602e8305f3c299898ffb62e9a460029089c5db4"
+}

@@ -1,0 +1,28 @@
+{
+  "file": "bark_warden_voice_gate.wav",
+  "speaker": "WARDEN",
+  "scene": "WARDEN_VOICE_GATE",
+  "text": "The gate stays shut.",
+  "spoken_text": "",
+  "voice_id": "N2lVS1w4EtoT3dr4eOWO",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.75,
+    "style": 0.2,
+    "use_speaker_boost": true,
+    "speed": 0.95
+  },
+  "seed": 84722,
+  "request_id": "5LFqY7m3HFASpQhQi0Sh",
+  "context_request_ids": [
+    "MmMJcMy1xJW3qZ38TPKY",
+    "W1YztHtoQJ5wc1Qn7aQe"
+  ],
+  "generated_at": 1793024785.0728378,
+  "format": "mp3_44100_192",
+  "seconds": 1.579,
+  "peak_dbfs": -4.1,
+  "tempo": 1,
+  "sha256": "83074d4d9672330f3b76a5a65f8376355433ecb4b7fc8caff0b8f9a603e190c6"
+}

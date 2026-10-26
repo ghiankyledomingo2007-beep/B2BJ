@@ -1,0 +1,27 @@
+{
+  "file": "ledger_01.wav",
+  "speaker": "RAINORAY",
+  "scene": "THE QUARTERMASTER'S CACHE",
+  "text": "The cache opens. Bandages, a little coin, and my ledger.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "SSwdFiYO6ffQM16RzfeG",
+  "context_request_ids": [
+    "LI9FFuFWiHIeEByfwHe7",
+    "11bW5eiE5HL3Qt9yTf3H",
+    "gzlrXgGjR1VzHEIakrvw"
+  ],
+  "generated_at": 1792949035.6586397,
+  "format": "mp3_44100_192",
+  "seconds": 4.365,
+  "peak_dbfs": -3.19,
+  "tempo": 1,
+  "sha256": "d645b49c3c5905324efa5e69b873b65f08c67138eecd74f6ad1793d8970cfba3"
+}

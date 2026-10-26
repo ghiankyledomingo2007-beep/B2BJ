@@ -1,0 +1,27 @@
+{
+  "file": "infirmary_02.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE EMPTY BED",
+  "text": "A note on the blanket: 'For whoever comes back.'",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "JkIE0NAM3eNC0Da9j1Dm",
+  "context_request_ids": [
+    "XWyXW4iX5Fgq8PnP4nsz",
+    "77KGzm9eiIFzkKXk8JgH",
+    "aH8QgwARqmUaFTEfxXJj"
+  ],
+  "generated_at": 1792949002.6984544,
+  "format": "mp3_44100_192",
+  "seconds": 3.251,
+  "peak_dbfs": -3.97,
+  "tempo": 1,
+  "sha256": "e79829be5e84ce4ad55b209ea4a5fca74770c142c39ee17d98b4093037c2efe7"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "wake_15.wav",
+  "speaker": "RAINORAY",
+  "scene": "ONE MORE CHANCE",
+  "text": "You'll have to talk me through the steps.",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.6,
+    "similarity_boost": 0.55,
+    "style": 0,
+    "use_speaker_boost": false
+  },
+  "seed": 84722,
+  "request_id": "0ty5mSnUwWN54nbSk63x",
+  "context_request_ids": [
+    "HE2TESlcU3F4UpAmVyE3",
+    "vSWVODyLmA3bIoSfHJSz",
+    "CAACZUoV0A5fZKCmgjSD"
+  ],
+  "generated_at": 1793011334.713453,
+  "format": "mp3_44100_192",
+  "seconds": 1.95,
+  "peak_dbfs": -4.0,
+  "tempo": 1,
+  "sha256": "19e0d80c9abc92e2b6ebdf839b8506dcd3b275255d86504b6a06817579242952"
+}

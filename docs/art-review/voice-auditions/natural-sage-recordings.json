@@ -1,0 +1,326 @@
+{
+  "date": "2026-10-25",
+  "processing": "Clean Rainoray and NPCs; Sage uses approved polish-settings.json; Warden pitch 0.90 with short metallic echo. Master -19 LUFS / -3 dBTP; runtime 22050 Hz mono PCM16",
+  "lines": [
+    {
+      "file": "bark_warden_start.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Keep moving. I'll analyze its attacks.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "Y1hYNNApdfboFtAQghdK",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.854,
+      "peak_dbfs": -4.87,
+      "sha256": "0400f6fbc58674b2d6ce828bf2baf74f7370bd76a57bfc6d8610e0aed62bbc36"
+    },
+    {
+      "file": "bark_warden_read.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "I've got its rhythm. I'll warn you.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "Z8NAWPhyMAOrnfw4NiJP",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.761,
+      "peak_dbfs": -7.23,
+      "sha256": "7c337d9a0bb374a5194bbf0173cdb794c50418265af2933cba3ff737fc94faac"
+    },
+    {
+      "file": "bark_warden_phase.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Careful. It's getting desperate now.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "Mm4Jp28wMTRcW1VLbOGv",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.761,
+      "peak_dbfs": -3.22,
+      "sha256": "e1a85078936435e13149561ad832bc460b12b415cf12e724a1c60b8ddf074099"
+    },
+    {
+      "file": "bark_warden_weak.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "It's nearly down. Don't get careless.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "RGqRTxvptGcbghz7UkPJ",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.854,
+      "peak_dbfs": -3.07,
+      "sha256": "3db89cbf81658d72105fcd6a5216d7549ea2654aed0356de68b8e97469b4d6e1"
+    },
+    {
+      "file": "bark_sage_target.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Move! It's coming down.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "WYn9Fk0HZ3ZuzdK0b0Fl",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.06,
+      "peak_dbfs": -6.16,
+      "sha256": "f31512de4a671f966588b2a145b6e50eec6ad815aa995e829acc79bb768385f5"
+    },
+    {
+      "file": "bark_sage_target_again.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Get clear of that spot.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "6490gl0ilX7D1qamO4w9",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 1.874,
+      "peak_dbfs": -3.19,
+      "sha256": "3dde6b7143a3f6a9895da243532623287ddf31f0c86a42da9ab6f0debd1118d8"
+    },
+    {
+      "file": "bark_sage_sweep.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Get back. It's swinging wide.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "2kyMNYKcfaaxLcNsa0Dx",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.06,
+      "peak_dbfs": -3.03,
+      "sha256": "d93e920145c40620caf44e4b53190dd35c7d325993b09208938af54982e6f60e"
+    },
+    {
+      "file": "bark_sage_sweep_again.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Too close. Back away.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "T1UW7uyLyotJaFRAcCKv",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.014,
+      "peak_dbfs": -4.09,
+      "sha256": "193ac20758c4d18763000d75c3bd4c6d29da89968e9fed82574ddc5272f5c788"
+    },
+    {
+      "file": "bark_sage_charge.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Sidestep. It's coming straight at you.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "5eFvoQaqkH7kDXnp7BUj",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.71,
+      "peak_dbfs": -3.07,
+      "sha256": "38c141b17f059decb01766bb91ce0d72dcd9a8a373da697475339fe3c922b4f1"
+    },
+    {
+      "file": "bark_sage_charge_again.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Move sideways. Let it pass.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "gJ57m9fkO4QjEmjzraOD",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.385,
+      "peak_dbfs": -4.64,
+      "sha256": "92b20291cfd2f735f6fb1ffadfbb89c821320e0725e802137304220464d3cb35"
+    },
+    {
+      "file": "bark_sage_shockwave.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Back up. Here comes the wave.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "fdpsFXH0PuVRh2cKLFin",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.153,
+      "peak_dbfs": -3.01,
+      "sha256": "f41c11249489eb73c93d26affbb4500c65fe20aec2f62c7989fe9aa35da0bce1"
+    },
+    {
+      "file": "bark_sage_shockwave_again.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Get some distance. Another wave.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "lZQ0AhNdufqfMmkeguIa",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.571,
+      "peak_dbfs": -3.32,
+      "sha256": "0ccabdc6ae7a5051ba5d5bb88d7732299cbee23ce431ab23092983cd22a7541f"
+    },
+    {
+      "file": "bark_sage_fissure.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Move! The ground's breaking.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "qJtsukwRPKn1VcD4p9FT",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.107,
+      "peak_dbfs": -6.11,
+      "sha256": "e9679ea0f200dd452376b704d8b72619c13493aa5d3e336833636e7524e95be2"
+    },
+    {
+      "file": "bark_sage_fissure_again.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Off that line. It's splitting.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "bnWGT7lbpM9PhtpR5aaR",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.199,
+      "peak_dbfs": -3.0,
+      "sha256": "5ccf303c54b2b3fdc3c697921c9d8ae56a393a4bcc177d02989f20e2259eba39"
+    },
+    {
+      "file": "bark_sage_hit.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "That hit landed. Keep your distance.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "gClDkVpKUjXCaU8HYguR",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.478,
+      "peak_dbfs": -2.97,
+      "sha256": "cabdbe4dba4bcd82aa0a63fc753b16a3242cc020a8504b490d5ffc1348255d9f"
+    },
+    {
+      "file": "bark_sage_hit_again.wav",
+      "speaker": "INNER_VOICE",
+      "scene": "EXPLORATION",
+      "text": "Careful. Don't let it catch you again.",
+      "voice_id": "5BqS4S2L9130EY4gngwS",
+      "model": "eleven_multilingual_v2",
+      "settings": {
+        "stability": 0.7,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true
+      },
+      "request_id": "sSTxfbICHreUsJ5EmkIh",
+      "format": "mp3_44100_192",
+      "context_request_ids": [],
+      "seconds": 2.478,
+      "peak_dbfs": -3.91,
+      "sha256": "092d5397bee3944232015db3bed98488a18ad29be951aae91f43842d9b08d667"
+    }
+  ]
+}
