@@ -1,4 +1,4 @@
-"""Simplify the current mask and hair tones; keep geometry, skinning and the rig intact.
+"""Finish the simple mask's native-size markings; keep the body, skinning and rig intact.
 
 Run inside Blender with -- INPUT.blend NEW.blend.
 """
@@ -19,7 +19,7 @@ def simplify(source, output):
     bpy.ops.wm.open_mainfile(filepath=str(source))
     scene = bpy.context.scene
     arm, body, mask = (scene.objects[name] for name in ("RainorayRig", "RainorayBody", "RainorayMask"))
-    assert arm.get("coat_panels") and not mask.get("simple_markings"), "Apply once to the current model"
+    assert arm.get("coat_panels"), "Use the current refitted model"
     geometry = [tuple(v.co) for v in body.data.vertices]
     weights = [[(g.group, g.weight) for g in v.groups] for v in body.data.vertices]
     bones = {b.name: (tuple(b.head_local), tuple(b.tail_local)) for b in arm.data.bones}
@@ -27,11 +27,12 @@ def simplify(source, output):
     # Broad locks replace alternating narrow stripes in the hanging hair.
     light, shade = (body.data.materials.find(name) for name in ("HairLight", "HairMid"))
     assert light >= 0 and shade >= 0
-    for face in body.data.polygons:
-        if face.material_index in (light, shade):
-            x, _, z = face.center
-            x -= puppet.CX
-            face.material_index = shade if x > .10 or (-.06 < x < -.025 and z < .12) else light
+    if not mask.get("simple_markings"):
+        for face in body.data.polygons:
+            if face.material_index in (light, shade):
+                x, _, z = face.center
+                x -= puppet.CX
+                face.material_index = shade if x > .10 or (-.06 < x < -.025 and z < .12) else light
 
     mesh = bmesh.new()
     mesh.from_mesh(mask.data)
@@ -60,10 +61,11 @@ def simplify(source, output):
 
     marks = []
     for side in (-1, 1):
+        # Thin marks vanished between pixels when the breathing pose moved the head.
         marks.append(patch("Mask short eye", [(side*x, z) for x, z in
-            [(.045, .565), (.105, .570), (.112, .545), (.050, .545)]], ink))
+            [(.035, .585), (.125, .565), (.125, .525), (.035, .552)]], ink))
         marks.append(patch("Mask cheek tick", [(side*x, z) for x, z in
-            [(.112, .487), (.135, .498), (.145, .477), (.120, .466)]], ink))
+            [(.105, .482), (.143, .482), (.157, .445), (.119, .445)]], ink))
     marks.append(patch("Mask red nose", [(x, .505 + z) for x, z in
         [(-.023, -.023), (.023, -.023), (.023, .023), (-.023, .023)]], red))
     bpy.ops.object.select_all(action="DESELECT")
@@ -74,7 +76,8 @@ def simplify(source, output):
     bpy.ops.object.join()
     mask["native_markings"] = True
     mask["simple_markings"] = True
-    mask["reference"] = "Small red nose, short eyes and cheek ticks; no copied mask pattern"
+    mask["reference"] = "Small red nose, readable short eyes and cheek ticks; no copied mask pattern"
+    mask["readable_markings"] = True
     assert geometry == [tuple(v.co) for v in body.data.vertices]
     assert weights == [[(g.group, g.weight) for g in v.groups] for v in body.data.vertices]
     assert bones == {b.name: (tuple(b.head_local), tuple(b.tail_local)) for b in arm.data.bones}

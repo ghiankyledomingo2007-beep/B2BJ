@@ -7,10 +7,18 @@ public final class RainorayArtTest {
         if(args.length>0&&args[0].equals("--runtime-only"))return;
         var idle=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png");
         for(int frame=0;frame<8;frame++) {
-            int dot=0;
+            int dot=0,noseX=-1,noseY=-1;
             for(int y=8;y<32;y++)for(int x=frame*80+24;x<frame*80+56;x++)
-                if(idle.getRGB(x,y)==0xffe03040)dot++;
+                if(idle.getRGB(x,y)==0xffe03040){dot++;noseX=x;noseY=y;}
             assert dot==1 : "front-facing mask keeps one red pixel throughout its idle";
+            for(int side:new int[]{-1,1}) {
+                int ink=0;
+                for(int dy=-4;dy<0;dy++)for(int dx=1;dx<=4;dx++) {
+                    int color=idle.getRGB(noseX+side*dx,noseY+dy);
+                    if((color>>>24)>0&&((color>>16)&255)<70&&((color>>8)&255)<70&&(color&255)<70)ink++;
+                }
+                assert ink>=2 : "both mask eye markings must remain readable while breathing: frame "+frame;
+            }
         }
         for(String action:new String[]{"idle","charge","hold"})
             CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,8,8,8);

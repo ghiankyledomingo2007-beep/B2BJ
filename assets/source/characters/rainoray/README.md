@@ -15,6 +15,19 @@ bounds. Merge extra paint layers into Character or Effects before exporting.
 The sword is baked into the Character pixels; its separate 3D object remains in
 the [editable Blender source](../../../../docs/art-review/sprite3d-run/source/rainoray-editable/).
 
+## Mask readability finish — 2026-10-27
+
+Short angular eye marks now survive the breathing motion at native game size.
+The porcelain mask keeps one red nose pixel and small cheek ticks. Existing
+hair motion, body, rig, sword and combat timings are retained. All body sheets,
+matching contact effects and transforms were re-rendered from the editable model;
+this timeline contains the same final pixels in all 1,344 frames / 152 tags.
+
+**Before polish** now holds the preceding simple-mask art, including the eye marks
+that sometimes disappeared between pixels. The previous project and model are
+backed up under `~/tmp/b2bj-mask-polish-2026-10-27/before/`.
+[Comparison and validation](../../../../docs/art-review/rainoray-mask-finish/README.md).
+
 ## Simple mask and moving hair — 2026-10-24
 
 The current character uses a small red nose mark, short eye marks and tiny cheek
@@ -23,7 +36,7 @@ locks, with visible sideways sway and delayed tip motion in idle and running.
 Attack follow-through, body proportions, footwork and gameplay timings are retained.
 
 All 19 actions / eight directions are updated in this timeline and the game sheets.
-**Before polish** holds the previous curved-mask art. Source and runtime backups
+At that stage, **Before polish** held the previous curved-mask art. Source and runtime backups
 are under `~/tmp/rainoray-simple-mask-hair-20261024/before/`.
 [Review and regeneration](../../../../docs/art-review/rainoray-simple-mask/README.md).
 

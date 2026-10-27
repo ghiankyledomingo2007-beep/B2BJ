@@ -640,9 +640,10 @@ public final class CampaignRenderer {
         if (!game.debugSession()) return;
         String label = "TEST SESSION";
         int w = Ui.width(label, 2) + 54;
-        Ui.nine(g, Ui.Piece.TAG, 20, 150, w, 32);
-        Ui.icon(g, Ui.Icon.FLASK, 26, 154);
-        Ui.text(g, label, 54, 172, 2, Ui.AMBER);
+        int y = game.player().bladeForm()?248:game.player().recovering()?192:150;
+        Ui.nine(g, Ui.Piece.TAG, 20, y, w, 32);
+        Ui.icon(g, Ui.Icon.FLASK, 26, y+4);
+        Ui.text(g, label, 54, y+22, 2, Ui.AMBER);
     }
 
     // ------------------------------------------------------------------ minimap

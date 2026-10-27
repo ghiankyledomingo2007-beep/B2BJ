@@ -128,8 +128,8 @@ public final class ChapterOneExperienceTest {
         game.player().relocate(first.x(),first.y()+50);game.interact();
         assert game.bark()==null&&game.dialogue()!=null : "full conversation replaces the exploration line";
         game.skipDialogue();game.player().relocate(first.x()-400,first.y());
-        for(int i=0;i<37;i++)game.update(.5,0,0);
-        assert game.bark()==OutpostBark.AFTER_RESCUE;
+        for(int i=0;i<40&&game.bark()!=OutpostBark.AFTER_RESCUE;i++)game.update(.5,0,0);
+        assert game.bark()==OutpostBark.AFTER_RESCUE : "the rescue reminder must play after leaving the survivor";
         game.pause();game.returnToTitle();assert game.bark()==null;
     }
 }

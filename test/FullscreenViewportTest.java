@@ -10,6 +10,7 @@ public final class FullscreenViewportTest {
         SwingUtilities.invokeAndWait(()->{
             try {
                 titleScaling();
+                bladeHudClearsSageAndDebugLabel();
                 var game=RuinedOutpostGame.campaign();game.begin();game.skipDialogue();
                 var panel=new B2BJ(false,game);game.player().relocate(3000,2000);
                 int[] originalSkills=null;
@@ -43,6 +44,24 @@ public final class FullscreenViewportTest {
             } catch(Exception e) {throw new RuntimeException(e);}
         });
         System.out.println("FullscreenViewportTest passed: title scaling/hit targets, resize, camera, mouse aim, telegraphs, HUD, menus and loading coverage");
+    }
+
+    private static void bladeHudClearsSageAndDebugLabel() throws Exception {
+        var game=RuinedOutpostGame.campaign();game.begin();game.skipDialogue();game.setDebugGodMode(true);
+        game.player().collectIchor(100);assert game.transform();
+        var panel=new B2BJ(false,game);
+        var draw=B2BJ.class.getDeclaredMethod("drawPlayerHud",java.awt.Graphics2D.class);draw.setAccessible(true);
+        for(boolean boss:new boolean[]{false,true})for(int width:new int[]{1280,1920,2560}) {
+            if(boss)game.guardian().activate(game.player().x(),game.player().y());
+            panel.setSize(width,720);panel.doLayout();
+            var hud=new BufferedImage(width,300,BufferedImage.TYPE_INT_ARGB);var g=hud.createGraphics();draw.invoke(panel,g);g.dispose();
+            var overlays=new BufferedImage(width,300,BufferedImage.TYPE_INT_ARGB);g=overlays.createGraphics();
+            CampaignRenderer.drawSage(g,game,width,720,false);CampaignRenderer.drawDebugStatus(g,game);g.dispose();
+            assert (hud.getRGB(44,200)>>>24)>0 : "Blade meter belongs below HP and Ichor";
+            for(int y=0;y<300;y++)for(int x=0;x<width;x++)
+                assert (hud.getRGB(x,y)>>>24)==0||(overlays.getRGB(x,y)>>>24)==0
+                        : "Raphael and the debug label must not cover Blade resources at "+width+" / boss="+boss;
+        }
     }
 
     private static void titleScaling() throws Exception {

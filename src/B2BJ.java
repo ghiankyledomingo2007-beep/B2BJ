@@ -2114,17 +2114,17 @@ public final class B2BJ extends JPanel {
             pixelText(canvas,p.bladeForm()?"BLADE":"BLOB",1170,38,2,p.bladeForm()?GOLD:TEAL);
             pixelText(canvas,GameAudio.muted()?"MUTED":"",1170,64,1,new Color(139,156,170));
         }
-        canvas=(Graphics2D)canvas.create();canvas.translate((viewWidth-1280)/2,0);
         if(p.bladeForm()) {
             boolean ending=!p.unlimitedBlade()&&p.bladeSeconds()<=3;
             Color color=ending?RED:new Color(120,200,255);
-            drawHudFrame(canvas,480,16,88);
-            pixelText(canvas,"BLADE",504,36,2,color);
+            drawHudFrame(canvas,16,152,88);
+            pixelText(canvas,"BLADE",40,172,2,color);
             String time=p.unlimitedBlade()?"UNLIMITED":String.format(java.util.Locale.ROOT,"%.1f S",p.bladeSeconds());
-            pixelText(canvas,time,776-time.length()*12,36,2,color);
-            drawVitalsMeter(canvas,504,62,272,16,p.unlimitedBlade()?1:p.bladeSeconds()/p.bladeDuration(),
+            pixelText(canvas,time,312-time.length()*12,172,2,color);
+            drawVitalsMeter(canvas,40,198,272,16,p.unlimitedBlade()?1:p.bladeSeconds()/p.bladeDuration(),
                     ending?RED:new Color(49,137,190),new Color(192,237,255),new Color(32,69,112));
-        } else if(p.recovering()) pixelCentered(canvas,"REFORMING",640,34,2,RED);
+        } else if(p.recovering()) pixelText(canvas,"REFORMING",40,172,2,RED);
+        canvas=(Graphics2D)canvas.create();canvas.translate((viewWidth-1280)/2,0);
         canvas.translate(0,viewHeight-720);
         int first=p.bladeForm()?394:478;
         skill(canvas,first,p.bladeForm()?bladeIcon:slashIcon,"LMB",1,!p.recovering());
