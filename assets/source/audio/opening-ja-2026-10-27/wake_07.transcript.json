@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999614357948303,
+  "text": "スライム？他になかったのか？",
+  "words": [
+    {
+      "text": "ス",
+      "start": 0.2,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -1.4781842764932662e-05
+    },
+    {
+      "text": "ラ",
+      "start": 0.4,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -5.61460001335945e-05
+    },
+    {
+      "text": "イ",
+      "start": 0.5,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -5.61460001335945e-05
+    },
+    {
+      "text": "ム",
+      "start": 0.64,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "？",
+      "start": 0.78,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0007136897183954716
+    },
+    {
+      "text": "他",
+      "start": 1.48,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -0.004233802668750286
+    },
+    {
+      "text": "に",
+      "start": 1.76,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -0.00037496211007237434
+    },
+    {
+      "text": "な",
+      "start": 1.9,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -0.00037496211007237434
+    },
+    {
+      "text": "か",
+      "start": 2.02,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -4.7205765440594405e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.16,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -4.7205765440594405e-05
+    },
+    {
+      "text": "た",
+      "start": 2.2,
+      "end": 2.3,
+      "type": "word",
+      "logprob": -4.7205765440594405e-05
+    },
+    {
+      "text": "の",
+      "start": 2.3,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "か",
+      "start": 2.46,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "？",
+      "start": 2.64,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -0.0002849888114724308
+    }
+  ],
+  "transcription_id": "tlvxiNz9lGNWwuA4Mk6X",
+  "audio_duration_secs": 2.96
+}

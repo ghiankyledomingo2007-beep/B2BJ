@@ -1,0 +1,254 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.999858021736145,
+  "text": "白い布をたどって林を抜け、干上がった浅瀬を東へ。階段は茨の広場の先だ。",
+  "words": [
+    {
+      "text": "白",
+      "start": 0.22,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "い",
+      "start": 0.36,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "布",
+      "start": 0.54,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "を",
+      "start": 0.66,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -3.9219088648678735e-05
+    },
+    {
+      "text": "た",
+      "start": 0.82,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -0.07903449237346649
+    },
+    {
+      "text": "ど",
+      "start": 0.9,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -2.2649508537142538e-05
+    },
+    {
+      "text": "っ",
+      "start": 0.98,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "て",
+      "start": 1.14,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "林",
+      "start": 1.38,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.001259844284504652
+    },
+    {
+      "text": "を",
+      "start": 1.74,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.764281842042692e-05
+    },
+    {
+      "text": "抜",
+      "start": 1.82,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -3.158996332786046e-05
+    },
+    {
+      "text": "け",
+      "start": 2.06,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -3.158996332786046e-05
+    },
+    {
+      "text": "、",
+      "start": 2.12,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.0030902510043233633
+    },
+    {
+      "text": "干",
+      "start": 2.66,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -0.0008082698914222419
+    },
+    {
+      "text": "上",
+      "start": 2.82,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -0.0005840741214342415
+    },
+    {
+      "text": "が",
+      "start": 2.96,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -0.0005840741214342415
+    },
+    {
+      "text": "っ",
+      "start": 3.06,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "た",
+      "start": 3.14,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "浅",
+      "start": 3.26,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -9.619726915843785e-05
+    },
+    {
+      "text": "瀬",
+      "start": 3.42,
+      "end": 3.66,
+      "type": "word",
+      "logprob": -0.0005392765742726624
+    },
+    {
+      "text": "を",
+      "start": 3.7,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "東",
+      "start": 3.82,
+      "end": 4.1,
+      "type": "word",
+      "logprob": -9.298280929215252e-06
+    },
+    {
+      "text": "へ",
+      "start": 4.18,
+      "end": 4.2,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "。",
+      "start": 4.2,
+      "end": 4.2,
+      "type": "word",
+      "logprob": -0.00011765264935093
+    },
+    {
+      "text": "階",
+      "start": 4.96,
+      "end": 5.14,
+      "type": "word",
+      "logprob": -0.0006348263123072684
+    },
+    {
+      "text": "段",
+      "start": 5.14,
+      "end": 5.36,
+      "type": "word",
+      "logprob": -0.0006348263123072684
+    },
+    {
+      "text": "は",
+      "start": 5.36,
+      "end": 5.92,
+      "type": "word",
+      "logprob": -0.018366975709795952
+    },
+    {
+      "text": "茨",
+      "start": 5.92,
+      "end": 6.16,
+      "type": "word",
+      "logprob": -0.3860725462436676
+    },
+    {
+      "text": "の",
+      "start": 6.3,
+      "end": 6.38,
+      "type": "word",
+      "logprob": -0.00024577934527769685
+    },
+    {
+      "text": "広",
+      "start": 6.4,
+      "end": 6.5,
+      "type": "word",
+      "logprob": -9.42901024245657e-05
+    },
+    {
+      "text": "場",
+      "start": 6.56,
+      "end": 6.66,
+      "type": "word",
+      "logprob": -0.0014456784119829535
+    },
+    {
+      "text": "の",
+      "start": 6.66,
+      "end": 6.84,
+      "type": "word",
+      "logprob": -0.0014456784119829535
+    },
+    {
+      "text": "先",
+      "start": 6.84,
+      "end": 7.0,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "だ",
+      "start": 7.0,
+      "end": 7.08,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "。",
+      "start": 7.08,
+      "end": 7.08,
+      "type": "word",
+      "logprob": -0.016034582629799843
+    }
+  ],
+  "transcription_id": "kYpBB7VzuP1LlihMYEs2",
+  "audio_duration_secs": 7.36
+}

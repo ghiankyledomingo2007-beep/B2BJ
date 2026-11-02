@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "全員？",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "Rvd4LZRmFTHMIr81HhaY",
+  "generated_at": 1793156223.4860127
+}

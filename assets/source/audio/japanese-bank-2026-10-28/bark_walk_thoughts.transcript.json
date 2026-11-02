@@ -1,0 +1,121 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "聞かれなくても話していいんだぞ。",
+  "words": [
+    {
+      "text": "聞",
+      "start": 0.12,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -0.0001934579631779343
+    },
+    {
+      "text": "か",
+      "start": 0.26,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.00013505500101018697
+    },
+    {
+      "text": "れ",
+      "start": 0.32,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.00013505500101018697
+    },
+    {
+      "text": "な",
+      "start": 0.46,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -1.597391747054644e-05
+    },
+    {
+      "text": "く",
+      "start": 0.56,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -1.597391747054644e-05
+    },
+    {
+      "text": "て",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -1.597391747054644e-05
+    },
+    {
+      "text": "も",
+      "start": 0.78,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -1.597391747054644e-05
+    },
+    {
+      "text": "話",
+      "start": 1.38,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.016042208299040794
+    },
+    {
+      "text": "し",
+      "start": 1.52,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -6.0794889577664435e-05
+    },
+    {
+      "text": "て",
+      "start": 1.64,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -6.0794889577664435e-05
+    },
+    {
+      "text": "い",
+      "start": 1.72,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "い",
+      "start": 1.78,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "ん",
+      "start": 1.86,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "だ",
+      "start": 1.9,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "ぞ",
+      "start": 2.04,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -2.1457441107486375e-05
+    },
+    {
+      "text": "。",
+      "start": 2.2,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -0.12698811292648315
+    }
+  ],
+  "transcription_id": "ApXVbhkBtjL00jqcLhJ8",
+  "audio_duration_secs": 2.48
+}

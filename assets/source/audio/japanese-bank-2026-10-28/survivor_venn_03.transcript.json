@@ -1,0 +1,268 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "リグルドだ。最後の避難者に付き添っておったが、担架の者たちを先に行かせた。",
+  "words": [
+    {
+      "text": "リ",
+      "start": 0.1,
+      "end": 0.2,
+      "type": "word",
+      "logprob": -0.0008475763606838882
+    },
+    {
+      "text": "グ",
+      "start": 0.22,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.021521251648664474
+    },
+    {
+      "text": "ル",
+      "start": 0.32,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.021521251648664474
+    },
+    {
+      "text": "ド",
+      "start": 0.42,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0017613149248063564
+    },
+    {
+      "text": "だ",
+      "start": 0.52,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -3.576272320060525e-06
+    },
+    {
+      "text": "。",
+      "start": 0.7,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "最",
+      "start": 1.44,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -6.472854875028133e-05
+    },
+    {
+      "text": "後",
+      "start": 1.7,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -6.472854875028133e-05
+    },
+    {
+      "text": "の",
+      "start": 1.76,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -6.472854875028133e-05
+    },
+    {
+      "text": "避",
+      "start": 1.9,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.00011812942830147222
+    },
+    {
+      "text": "難",
+      "start": 2.04,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -3.158996332786046e-05
+    },
+    {
+      "text": "者",
+      "start": 2.16,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -0.0001573438785271719
+    },
+    {
+      "text": "に",
+      "start": 2.4,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -0.0001573438785271719
+    },
+    {
+      "text": "付",
+      "start": 2.46,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -6.222531374078244e-05
+    },
+    {
+      "text": "き",
+      "start": 2.58,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -6.222531374078244e-05
+    },
+    {
+      "text": "添",
+      "start": 2.68,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -1.645074735279195e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.8,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -0.00032360086333937943
+    },
+    {
+      "text": "て",
+      "start": 2.86,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -0.00032360086333937943
+    },
+    {
+      "text": "お",
+      "start": 2.92,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -0.00032360086333937943
+    },
+    {
+      "text": "っ",
+      "start": 3.04,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -0.00011503035057103261
+    },
+    {
+      "text": "た",
+      "start": 3.08,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -0.00011503035057103261
+    },
+    {
+      "text": "が",
+      "start": 3.32,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -3.397406908334233e-05
+    },
+    {
+      "text": "、",
+      "start": 3.42,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -9.226373367710039e-05
+    },
+    {
+      "text": "担",
+      "start": 3.92,
+      "end": 4.0,
+      "type": "word",
+      "logprob": -0.17932097613811493
+    },
+    {
+      "text": "架",
+      "start": 4.0,
+      "end": 4.18,
+      "type": "word",
+      "logprob": -0.009490611031651497
+    },
+    {
+      "text": "の",
+      "start": 4.2,
+      "end": 4.32,
+      "type": "word",
+      "logprob": -0.0011926926672458649
+    },
+    {
+      "text": "者",
+      "start": 4.42,
+      "end": 4.5,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "た",
+      "start": 4.5,
+      "end": 4.6,
+      "type": "word",
+      "logprob": -0.0006407829932868481
+    },
+    {
+      "text": "ち",
+      "start": 4.6,
+      "end": 4.72,
+      "type": "word",
+      "logprob": -0.0006407829932868481
+    },
+    {
+      "text": "を",
+      "start": 4.72,
+      "end": 5.0,
+      "type": "word",
+      "logprob": -0.00013648532330989838
+    },
+    {
+      "text": "先",
+      "start": 5.0,
+      "end": 5.18,
+      "type": "word",
+      "logprob": -0.0003083468764089048
+    },
+    {
+      "text": "に",
+      "start": 5.18,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "行",
+      "start": 5.22,
+      "end": 5.34,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "か",
+      "start": 5.34,
+      "end": 5.46,
+      "type": "word",
+      "logprob": -4.160317621426657e-05
+    },
+    {
+      "text": "せ",
+      "start": 5.46,
+      "end": 5.6,
+      "type": "word",
+      "logprob": -4.160317621426657e-05
+    },
+    {
+      "text": "た",
+      "start": 5.6,
+      "end": 5.7,
+      "type": "word",
+      "logprob": -3.576272320060525e-06
+    },
+    {
+      "text": "。",
+      "start": 5.7,
+      "end": 5.7,
+      "type": "word",
+      "logprob": -0.38687312602996826
+    }
+  ],
+  "transcription_id": "XvL1gaJ8v7gzkwR1e6SS",
+  "audio_duration_secs": 6.0
+}

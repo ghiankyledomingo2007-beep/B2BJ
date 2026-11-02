@@ -146,8 +146,8 @@ public final class CampaignRenderer {
                 canvas.drawRect(x - 10, y - 8, 20, 16);
                 canvas.fillRect(x - 2, y - 18, 4, 8);
             }
-            if (!game.bossActive() && Math.hypot(game.player().x() - landmark.x(), game.player().y() - landmark.y()) < 280)
-                Ui.outlinedCentered(canvas, landmark.name(), x, y - 28, 2, landmark.optional() ? Ui.GOLD : Ui.MUTED);
+            if (!CombatUi.cinematic && !game.opening() && !game.cutsceneActive() && !game.bossActive() && Math.hypot(game.player().x() - landmark.x(), game.player().y() - landmark.y()) < 280)
+                JourneyHud.location(canvas, landmark.name(), x, y - 48, landmark.optional() ? Ui.GOLD : MenuTheme.IVORY);
         }
         int hx = (int) area.hub().x() - cx, hy = (int) area.hub().y() - cy;
         if (!baked) {
@@ -156,10 +156,10 @@ public final class CampaignRenderer {
             canvas.setColor(GOLD);
             canvas.drawOval(hx - 42, hy - 2, 84, 28);
         }
-        Ui.outlinedCentered(canvas, "CAMP", hx, hy + 72, 2, Ui.MUTED);
+        if(!game.opening()&&!CombatUi.cinematic)JourneyHud.location(canvas, "Camp", hx, hy + 72, MenuTheme.IVORY);
         if (!baked) portal(canvas, area.exit(), cx, cy, "EAST GATE", !game.guardian().alive() ? GOLD : MUTED);
-        else Ui.outlinedCentered(canvas, game.biome() == 0 ? "EAST GATE" : "ROOTED STAIR", (int) area.exit().x() - cx,
-                (int) area.exit().y() - cy - 316, 2, !game.guardian().alive() ? Ui.GOLD : Ui.MUTED);
+        else if (!CombatUi.cinematic) JourneyHud.location(canvas, game.biome() == 0 ? "East Gate" : "Rooted Stair", (int) area.exit().x() - cx,
+                (int) area.exit().y() - cy - 316, !game.guardian().alive() ? Ui.GOLD : MenuTheme.IVORY);
     }
 
     /** One landmark set piece; animated kinds take their cell from the clock, fires play on top. */
@@ -288,7 +288,7 @@ public final class CampaignRenderer {
         g.fillRect(x + 40, y - 84, 12, 118);
         g.fillRect(x - 52, y - 84, 104, 12);
         g.drawRect(x - 32, y - 62, 64, 84);
-        Ui.outlinedCentered(g, label, x, y - 100, 2, color);
+        if (!CombatUi.cinematic) Ui.outlinedCentered(g, label, x, y - 100, 2, color);
     }
 
     private static void drawNpc(Graphics2D g, int x, int y, int biome) {
@@ -311,7 +311,7 @@ public final class CampaignRenderer {
     public static void drawEnemy(Graphics2D canvas, CampaignEnemy enemy, int cx, int cy) {
         Wisp body = enemy.body();
         var sheet=meleeSheet(enemy.kind());
-        boolean knight=enemy.kind()==CampaignEnemy.Kind.FALLEN_KNIGHT;
+        boolean knight=knightBody(enemy.kind());
         if (!body.visible() || (sheet!=null && !body.alive())) return; // The edible corpse owns the collapse.
         Graphics2D g = (Graphics2D) canvas.create();
         int x = (int) Math.round(body.x()) - cx, y = (int) Math.round(body.y()) - cy + 22;
@@ -324,7 +324,7 @@ public final class CampaignRenderer {
             int row=body.usesAttackAnimation()?(knight?13+direction:switch(direction){case 1->10;case 2->12;case 3->14;default->9;})
                     :body.state()==Wisp.State.HURT?(knight?9:5)+direction:(knight?1:16)+direction;
             int frame=body.usesAttackAnimation()?(knight?body.attackFrame(9,3,4):body.attackFrame(8,4,4))
-                    :body.state()==Wisp.State.HURT?body.hurtFrame(8):body.animation().frame();
+                    :body.state()==Wisp.State.HURT?body.hurtFrame(8):marchFrame(body);
             meleeFrame(g,B2BJ.hitTint(sheet,B2BJ.whiteHit(body)),knight,row,frame,0,0);
         } else {
         // Grounded anticipation/contact/recovery; shadow stays at the collision anchor.
@@ -341,6 +341,7 @@ public final class CampaignRenderer {
             case OUTPOST_SCOUT -> new Color(112, 142, 138);
             case OUTPOST_GUARD -> new Color(146, 143, 117);
             case OUTPOST_SPITTER -> new Color(138, 127, 161);
+            case BRIARLING -> new Color(149, 116, 80);
         };
         g.setColor(skin);
         switch (enemy.kind()) {
@@ -420,13 +421,45 @@ public final class CampaignRenderer {
     public static boolean drawCorpse(Graphics2D g, RuinedOutpostGame.Corpse corpse, int x, int y) {
         var sheet=meleeSheet(corpse.kind());
         if (sheet==null) return false;
-        boolean knight=corpse.kind()==CampaignEnemy.Kind.FALLEN_KNIGHT;
+        boolean knight=knightBody(corpse.kind());
         meleeFrame(g,sheet,knight,(knight?5:1)+corpse.direction(),Math.min(11,(int)(corpse.age()*20)),x,y);
         return true;
     }
 
+    private static final java.util.Map<String,int[]> CORPSE_SPANS=new java.util.HashMap<>();
+    /** The current death frame's painted extent from the body's x and feet (screen px): {left, right, bottom}.
+     *  Its contact shadow lies along it. Null without a sheet. */
+    static int[] corpseSpan(RuinedOutpostGame.Corpse corpse) {
+        var sheet=meleeSheet(corpse.kind());
+        if (sheet==null) return null;
+        boolean knight=knightBody(corpse.kind());
+        int cell=knight?92:88,foot=knight?76:72,row=(knight?5:1)+corpse.direction(),frame=Math.min(11,(int)(corpse.age()*20));
+        return CORPSE_SPANS.computeIfAbsent(knight+":"+row+":"+frame,key->{
+            int left=cell,right=-1,bottom=-1;
+            for(int y=0;y<cell;y++)for(int x=0;x<cell;x++)if(sheet.getRGB(frame*cell+x,row*cell+y)>>>24!=0) {
+                left=Math.min(left,x);right=Math.max(right,x);bottom=Math.max(bottom,y);
+            }
+            return right<0?new int[]{0,0,0}:new int[]{(left-cell/2)*2,(right+1-cell/2)*2,(bottom+1-foot)*2};
+        });
+    }
+
+    private static final java.util.Map<Wisp,double[]> STRIDES=new java.util.WeakHashMap<>();
+    /** Armoured walkers step with the ground they cover (one frame per 16 px, a full cycle per two strides), so the
+     *  feet never slide or march on the spot; standing still holds the last step. */
+    static int marchFrame(Wisp body) {return (int)(travelled(body)/16)%8;}
+    /** Ground a body has covered since it was first drawn; asking twice in one frame adds nothing. */
+    static double travelled(Wisp body) {
+        double[] s=STRIDES.computeIfAbsent(body,b->new double[]{b.x(),b.y(),0});
+        s[2]+=Math.min(40,Math.hypot(body.x()-s[0],body.y()-s[1]));s[0]=body.x();s[1]=body.y();
+        return s[2];
+    }
+
     private static java.awt.image.BufferedImage meleeSheet(CampaignEnemy.Kind kind) {
-        return kind==CampaignEnemy.Kind.OUTPOST_GUARD?GUARD:kind==CampaignEnemy.Kind.FALLEN_KNIGHT?KNIGHT:null;
+        return kind==CampaignEnemy.Kind.OUTPOST_GUARD?GUARD:knightBody(kind)?KNIGHT:null;
+    }
+    /** Outpost Remnants wear the Fallen Knight's body; their rules (64 HP, slime can hit them, Ichor) are their own. */
+    static boolean knightBody(CampaignEnemy.Kind kind) {
+        return kind==CampaignEnemy.Kind.FALLEN_KNIGHT||kind==CampaignEnemy.Kind.OUTPOST_SCOUT;
     }
 
     private static void meleeFrame(Graphics2D g,java.awt.image.BufferedImage sheet,boolean knight,int row,int frame,int x,int y) {
@@ -497,20 +530,30 @@ public final class CampaignRenderer {
 
     public static void drawHud(Graphics2D g, RuinedOutpostGame game, int width, int height, boolean reducedEffects) {
         Ui.crisp(g);
+        var hud=(Graphics2D)g.create();double scale=JourneyHud.scale(width,height);hud.scale(scale,scale);
+        int hw=(int)Math.round(width/scale),hh=(int)Math.round(height/scale);
         Player p = game.player();
-        if (game.bossActive() && game.guardian().alive()) bossBar(g, game, width);
-        tracker(g, game, width);
-        drawMiniMap(g, game, width - 240 - 16, height - 196 - 16, 240, 196);
+        if (game.bossActive() && game.guardian().alive()) bossBar(hud, game, hw);
+        tracker(hud, game, hw);
+        drawMiniMap(hud, game, hw - 240 - 16, hh - 196 - 16, 240, 196);
         String prompt = game.interactionPrompt();
-        if (!prompt.isEmpty() && !game.nearCampaignHub()) prompt(g, game, prompt, 16, height - 16 - 60);
+        if (!prompt.isEmpty() && !game.nearCampaignHub()) prompt(hud, game, prompt, 16, hh - 16 - 60);
         boolean danger = game.bossActive() || game.scouts().stream().anyMatch(enemy -> enemy.alive() && enemy.aggro()
                 && Math.hypot(enemy.x() - p.x(), enemy.y() - p.y()) < 700);
-        if (!game.campaignNotice().isEmpty() && !danger) toast(g, game.campaignNotice(), width / 2, 184);
+        if (!game.campaignNotice().isEmpty() && !danger) toast(hud, game.campaignNotice(), hw / 2, 184);
+        hud.dispose();
         drawSage(g,game,width,height,reducedEffects);
     }
 
     /** Also painted during conversations, when the gameplay HUD is hidden. */
     static void drawSage(Graphics2D g,RuinedOutpostGame game,int width,int height,boolean reducedEffects) {
+        if(game.wardenStepActive())return;
+        if(game.wardenVictory()&&game.bark()!=OutpostBark.WARDEN_VICTORY) {
+            if(game.bark()!=null)DialogueRenderer.drawExploration(g,game.barkLine(),game.barkElapsed(),game.barkRemaining(),width,height);
+            return;
+        }
+        // Full dialogue owns Raphael's floating seal; don't draw a second one at the top.
+        if(game.dialogue()!=null&&game.dialogueReady()&&game.dialogueLine().speaker()==OutpostDialogue.Speaker.INNER_VOICE)return;
         Player p=game.player();
         boolean danger=game.bossActive()||game.scouts().stream().anyMatch(enemy->enemy.alive()&&enemy.aggro()
                 &&Math.hypot(enemy.x()-p.x(),enemy.y()-p.y())<700);
@@ -518,7 +561,7 @@ public final class CampaignRenderer {
         boolean sageSpeaking=speaking&&game.barkLine().speaker()==OutpostDialogue.Speaker.INNER_VOICE;
         if(game.campaignMode()&&!game.story().blocksGameplay()&&p.alive()) {
             var voiceCanvas=(Graphics2D)g.create();
-            if(game.bossActive()||game.bossIntroduction())voiceCanvas.translate(0,108);
+            if(game.bossActive()&&!game.bossIntroduction())voiceCanvas.translate(0,108);
             if(sageSpeaking)InnerVoiceOverlay.draw(voiceCanvas,game.barkLine().text(),game.barkElapsed(),game.barkRemaining(),
                     GameAudio.dialogueLevel(),width,height,reducedEffects,game.sageTime());
             else InnerVoiceOverlay.drawPresence(voiceCanvas,game.sageTime(),GameAudio.dialogueLevel(),width,reducedEffects,
@@ -547,64 +590,41 @@ public final class CampaignRenderer {
         if (ghost < health) ghost = health;
         else if (now > ghostHoldUntil) ghost = Math.max(health, ghost - dt * .6);
 
-        int w = 560, x0 = width / 2 - w / 2, y0 = 40;
-        Ui.drawTitleCentered(g,boss.bossName(),width/2,10,2,boss.enraged()?Ui.BLOOD_RAMP:Ui.BONE_RAMP);
-        int left = Ui.Piece.BOSS_LEFT.w * Ui.S, right = Ui.Piece.BOSS_RIGHT.w * Ui.S;
-        for (int x = x0 + left; x < x0 + w - right; x += Ui.Piece.BOSS_MID.w * Ui.S) {
-            int tile = Math.min(Ui.Piece.BOSS_MID.w * Ui.S, x0 + w - right - x);
-            Ui.nine(g, Ui.Piece.BOSS_MID, x, y0, tile, Ui.Piece.BOSS_MID.h * Ui.S);
-        }
-        // trough between the rails
-        int tx = x0 + 46, ty = y0 + 18, tw = w - 46 - right, th = 14;
-        g.setColor(new Color(0x14101c));
-        g.fillRect(tx, ty, tw, th);
-        int ghostW = (int) Math.round(tw * ghost) / Ui.S * Ui.S, fillW = (int) Math.round(tw * health) / Ui.S * Ui.S;
-        if (ghostW > fillW) { g.setColor(new Color(0xf4dcc0)); g.fillRect(tx + fillW, ty, ghostW - fillW, th); }
-        boolean stagger = boss.coreExposed();
-        Color base = stagger ? new Color(0x2cc6c8) : boss.enraged() ? new Color(0xcc5222) : new Color(0xb8323a);
-        Color light = stagger ? new Color(0xcffff9) : boss.enraged() ? new Color(0xffc45e) : new Color(0xf16458);
-        Color dark = stagger ? new Color(0x178a93) : boss.enraged() ? new Color(0x8c2c16) : new Color(0x7a1c26);
-        if (fillW > 0) {
-            g.setColor(base); g.fillRect(tx, ty, fillW, th);
-            g.setColor(light); g.fillRect(tx, ty, fillW, 4);
-            g.setColor(dark); g.fillRect(tx, ty + th - 4, fillW, 4);
-        }
-        int notch = tx + tw / 2 / Ui.S * Ui.S;
-        g.setColor(Ui.INK);
-        g.fillRect(notch, ty, Ui.S, th);
-        Ui.piece(g, Ui.Piece.DIAMOND, notch - Ui.Piece.DIAMOND.w + 1, ty - 12);
-        Ui.piece(g, Ui.Piece.BOSS_LEFT, x0, y0);
-        Ui.piece(g, Ui.Piece.BOSS_RIGHT, x0 + w - right, y0);
-        Ui.piece(g, game.biome() == 0 ? Ui.Piece.EMBLEM_WARDEN : Ui.Piece.EMBLEM_BRIAR, x0 + 8, y0 + 8);
-        Ui.outlinedCentered(g,stagger?(game.biome()==1?"HEART EXPOSED":"CORE EXPOSED"):(game.biome()==1?"ROOTS WOVEN":"ARMOR CLOSED"),width/2,y0+62,2,
-                stagger?Ui.CYAN:Ui.MUTED);
+        int w=560,x=width/2-w/2,y=48;
+        boolean stagger=boss.coreExposed();
+        Color base=stagger?Ui.TEAL:boss.enraged()?new Color(0xcc5222):new Color(0xb8323a);
+        JourneyHud.center(g,boss.bossName(),width/2,32,Ui.menuFont(23).deriveFont(java.awt.Font.BOLD),MenuTheme.IVORY);
+        JourneyHud.frame(g,x,y,w,30);
+        JourneyHud.meter(g,x+16,y+8,w-32,14,ghost,new Color(0x9e8872),new Color(0xf4dcc0));
+        var current=(Graphics2D)g.create();current.clipRect(x+16,y+8,(int)Math.ceil((w-32)*health),14);
+        JourneyHud.meter(current,x+16,y+8,w-32,14,health,base,stagger?new Color(0xcffff9):new Color(0xf16458));current.dispose();
+        g.setColor(MenuTheme.GOLD);MenuTheme.star(g,width/2.,y+1,4);
+        JourneyHud.center(g,stagger?(game.biome()==1?"Heart exposed":"Core exposed"):(game.biome()==1?"Roots woven":"Armor closed"),width/2,y+48,JourneyHud.SMALL,stagger?Ui.CYAN:MenuTheme.MUTED);
     }
 
     // ------------------------------------------------------------------ tracker
 
-    /** Top-right: chapter and region, the current goal, shards. No box: a soft dark plate and shadowed type. */
-    private static void tracker(Graphics2D g, RuinedOutpostGame game, int width) {
-        int right = width - 16;
-        String goal = game.campaignObjective();
-        var lines = Ui.wrap(goal, 300, 2);
-        int plateH = 64 + lines.size() * 22 + 30;
-        Ui.fade(g, width - 420, 60, 420, plateH, 0, 190);
-        String area = Ui.roman(game.biome() + 1) + "  \u00b7  " + game.campaignArea().name();
-        Ui.textRight(g, area, right, 86, 2, Ui.GOLD);
-        for (int x = 0; x < 240; x += Ui.S) {
-            if (x > 150 && (x / Ui.S) % 2 == 1) continue;
-            g.setColor(new Color(0xc48a26));
-            g.fillRect(right - Ui.S - x, 96, Ui.S, Ui.S);
-        }
-        int y = 122;
-        for (int i = 0; i < lines.size(); i++) {
-            Ui.textRight(g, lines.get(i), right, y, 2, Ui.TEXT);
-            if (i == 0) Ui.icon(g, Ui.Icon.OBJECTIVE, right - Ui.width(lines.get(0), 2) - 32, y - 18);
-            y += 22;
-        }
-        String shards = Integer.toString(game.shards());
-        Ui.textRight(g, shards, right, y + 8, 2, Ui.GOLD);
-        Ui.icon(g, Ui.Icon.SHARD, right - Ui.width(shards, 2) - 30, y - 10);
+    /** Shared ivory/gold mission plaque with wrapped live objectives and currency. */
+    private static void tracker(Graphics2D graphics, RuinedOutpostGame game, int width) {
+        var g=(Graphics2D)graphics.create();int x=width-292,y=66,w=276;
+        var lines=JourneyHud.wrap(g,game.campaignObjective(),JourneyHud.BODY,244);
+        int h=80+lines.size()*21;
+        g.setColor(new Color(5,15,23,195));g.fillRect(x+22,y,w-22,h);
+        g.setColor(JourneyHud.GOLD);g.setStroke(new java.awt.BasicStroke(1.1f));
+        g.drawLine(x+20,y,x+w,y);g.drawLine(x+20,y+h,x+w,y+h);
+        MenuTheme.star(g,x+w,y,4);MenuTheme.star(g,x+w,y+h,4);
+        var badge=new java.awt.Polygon(new int[]{x+12,x+31,x+12,x-7},new int[]{y-1,y+18,y+37,y+18},4);
+        g.setColor(JourneyHud.INK);g.fill(badge);g.setColor(JourneyHud.GOLD);g.draw(badge);
+        JourneyHud.center(g,"!",x+12,y+25,Ui.heading(23),JourneyHud.GOLD);
+        String area=Ui.roman(game.biome()+1)+" · "+game.campaignArea().name();
+        JourneyHud.text(g,area,x+42,y+24,JourneyHud.SMALL,JourneyHud.GOLD);
+        g.setColor(Ui.CYAN);g.fillPolygon(new int[]{x+13,x+20,x+13,x+6},new int[]{y+46,y+53,y+60,y+53},4);
+        for(int i=0;i<lines.size();i++)JourneyHud.text(g,lines.get(i),x+28,y+59+i*21,JourneyHud.BODY,MenuTheme.IVORY);
+        String shards=Integer.toString(game.shards());int bottom=y+65+lines.size()*21;
+        JourneyHud.right(g,shards,x+w-20,bottom,JourneyHud.BODY,Ui.GOLD_LIGHT);
+        int coin=x+w-32-g.getFontMetrics(JourneyHud.BODY).stringWidth(shards);
+        g.setColor(Ui.GOLD_LIGHT);g.fillPolygon(new int[]{coin-4,coin+1,coin+5,coin+5,coin,coin-4},new int[]{bottom-12,bottom-15,bottom-12,bottom-3,bottom,bottom-3},6);
+        g.dispose();
     }
 
     // ------------------------------------------------------------------ prompts, toasts, camp
@@ -612,38 +632,32 @@ public final class CampaignRenderer {
     private static final java.util.regex.Pattern KEYED = java.util.regex.Pattern.compile("^([A-Z0-9])\\s+(.+)$");
 
     /** Bottom-left: a key cap and what it does; absorbing shows its progress under the words. */
-    private static void prompt(Graphics2D g, RuinedOutpostGame game, String prompt, int x, int y) {
-        var m = KEYED.matcher(prompt);
-        String key = m.matches() ? m.group(1) : null, words = m.matches() ? m.group(2).trim() : prompt;
-        int textW = Math.min(420, Ui.width(words, 2));
-        int w = (key != null ? 44 : 0) + textW + 36, h = 52;
-        Ui.nine(g, Ui.Piece.PANEL, x, y, w, h);
-        int tx = x + 18;
-        if (key != null) { Ui.keycap(g, key, tx, y + 12); tx += 44; }
-        Ui.wrapped(g, words, tx, y + 32, 420, 2, 20, 1, Ui.GOLD_LIGHT);
-        if (game.absorptionTarget() != null) Ui.bar(g, tx, y + 40, textW, 4, game.absorptionProgress(), Ui.GOLD, Ui.GOLD_LIGHT);
+    private static void prompt(Graphics2D graphics, RuinedOutpostGame game, String prompt, int x, int y) {
+        var g=(Graphics2D)graphics.create();var m=KEYED.matcher(prompt);
+        String key=m.matches()?m.group(1):null,words=m.matches()?m.group(2).trim():prompt;
+        var lines=JourneyHud.wrap(g,words,JourneyHud.BODY,key==null?260:218);
+        int h=30+lines.size()*21;y+=60-h;
+        JourneyHud.frame(g,x,y,300,h);int tx=x+18;
+        if(key!=null){JourneyHud.frame(g,tx,y+14,28,28);JourneyHud.center(g,key,tx+14,y+34,JourneyHud.LABEL,MenuTheme.IVORY);tx+=40;}
+        for(int i=0;i<lines.size();i++)JourneyHud.text(g,lines.get(i),tx,y+28+i*21,JourneyHud.BODY,MenuTheme.IVORY);
+        if(game.absorptionTarget()!=null)JourneyHud.meter(g,tx,y+h-10,282-(tx-x),4,game.absorptionProgress(),Ui.TEAL,Ui.CYAN);
+        g.dispose();
     }
 
-    /** A short message centred near the top, in a panel sized to its words. */
-    private static void toast(Graphics2D g, String message, int center, int y) {
-        var lines = Ui.wrap(message, 560, 2);
-        if (lines.size() > 3) lines = lines.subList(0, 3);
-        int textW = 0;
-        for (String line : lines) textW = Math.max(textW, Ui.width(line, 2));
-        int w = textW + 48, h = 26 + lines.size() * 22;
-        int x = center - w / 2 / Ui.S * Ui.S;
-        Ui.nine(g, Ui.Piece.PANEL, x, y, w, h);
-        for (int i = 0; i < lines.size(); i++) Ui.textCentered(g, lines.get(i), center, y + 30 + i * 22, 2, Ui.TEXT);
+    private static void toast(Graphics2D graphics,String message,int center,int y) {
+        var g=(Graphics2D)graphics.create();var lines=JourneyHud.wrap(g,message,JourneyHud.BODY,520);
+        int w=0;for(String line:lines)w=Math.max(w,g.getFontMetrics(JourneyHud.BODY).stringWidth(line));w+=40;
+        JourneyHud.frame(g,center-w/2,y,w,22+lines.size()*22);
+        for(int i=0;i<lines.size();i++)JourneyHud.center(g,lines.get(i),center,y+27+i*22,JourneyHud.BODY,MenuTheme.IVORY);
+        g.dispose();
     }
 
-    public static void drawDebugStatus(Graphics2D g, RuinedOutpostGame game) {
-        if (!game.debugSession()) return;
-        String label = "TEST SESSION";
-        int w = Ui.width(label, 2) + 54;
-        int y = game.player().bladeForm()?248:game.player().recovering()?192:150;
-        Ui.nine(g, Ui.Piece.TAG, 20, y, w, 32);
-        Ui.icon(g, Ui.Icon.FLASK, 26, y+4);
-        Ui.text(g, label, 54, y+22, 2, Ui.AMBER);
+    public static void drawDebugStatus(Graphics2D graphics,RuinedOutpostGame game,int width,int height) {
+        if(!game.debugSession())return;
+        var g=(Graphics2D)graphics.create();double scale=JourneyHud.scale(width,height);g.scale(scale,scale);
+        JourneyHud.frame(g,20,262,190,32);TitleIcons.draw(g,Ui.Icon.FLASK,28,266,24,false,true);
+        JourneyHud.text(g,"Test session",60,284,JourneyHud.SMALL,MenuTheme.MUTED);
+        g.dispose();
     }
 
     // ------------------------------------------------------------------ minimap
@@ -686,10 +700,11 @@ public final class CampaignRenderer {
 
     /** Framed minimap: header, the real floor in miniature, walls, landmarks, camp, boss, passages and you. */
     static void drawMiniMap(Graphics2D g, RuinedOutpostGame game, int x, int y, int w, int h) {
-        Ui.window(g, x, y, w, h);
-        Ui.text(g, "REGION MAP", x + 16, y + 30, 2, Ui.MUTED);
-        int capW = Ui.width("TAB", 2) + 14;
-        Ui.keycap(g, "TAB", x + w - 16 - Math.max(26, capW), y + 12);
+        JourneyHud.frame(g,x,y,w,h);
+        JourneyHud.text(g,"Region map",x+14,y+27,JourneyHud.SMALL,MenuTheme.IVORY);
+        JourneyHud.frame(g,x+w-54,y+9,42,24);
+        JourneyHud.center(g,"TAB",x+w-33,y+26,JourneyHud.SMALL,MenuTheme.IVORY);
+        g.setColor(JourneyHud.GOLD);g.drawLine(x+12,y+38,x+w-12,y+38);
         int mx = x + 12, my = y + 44, mw = w - 24, mh = h - 44 - 12;
         mw = mw / Ui.S * Ui.S; mh = mh / Ui.S * Ui.S;
         mapArea(g, game, mx, my, mw, mh, false);
@@ -785,65 +800,66 @@ public final class CampaignRenderer {
 
     /** TAB: the region map. The real floor framed on the left; regions, goal and a legend on the right. */
     public static void drawMap(Graphics2D g, RuinedOutpostGame game, int width, int height) {
+        g=(Graphics2D)g.create();
+        double scale=TitleScreen.menuScale(width,height);g.scale(scale,scale);
+        width=(int)Math.round(width/scale);height=(int)Math.round(height/scale);
         Ui.crisp(g);
         Ui.veil(g, width, height, 238);
         var area = game.campaignArea();
-        Ui.drawTitle(g, Ui.roman(game.biome() + 1) + "  " + area.name(), 36, 18, 2, Ui.GOLD_RAMP);
-        int hx = width - 168;   // clear of the Menu button
-        hx -= Ui.width(game.paused() ? "Paused" : "The world keeps moving", 2);
-        Ui.text(g, game.paused() ? "Paused" : "The world keeps moving", hx, 42, 2, Ui.MUTED);
-        hx -= 22 + Ui.width("Release", 2);
-        Ui.text(g, "Release", hx, 42, 2, Ui.MUTED);
-        Ui.keycap(g, "TAB", hx - 60, 24);
-        int fx = 28, fy = 66, fw = 916, fh = 628;
-        Ui.window(g, fx, fy, fw, fh);
+        JourneyHud.text(g,Ui.roman(game.biome()+1)+"  "+area.name(),36,42,Ui.menuFont(26),MenuTheme.IVORY);
+        JourneyHud.right(g,game.paused()?"Release Tab to close · Paused":"Release Tab to close · World stays live",
+                width-168,42,Ui.heading(15),MenuTheme.MUTED);
+        int fx = 28, fy = 66, fw = width-368, fh = height-92;
+        JourneyHud.frame(g, fx, fy, fw, fh);
         int mx = fx + 16, my = fy + 16, mw = (fw - 32) / Ui.S * Ui.S, mh = (fh - 32) / Ui.S * Ui.S;
         mapArea(g, game, mx, my, mw, mh, true);
         double sx = mw / (double) area.width(), sy = mh / (double) area.height();
         boolean firstOptional = true;
         for (var landmark : area.landmarks()) {
             int lx = snap(mx + landmark.x() * sx), ly = snap(my + landmark.y() * sy);
-            Ui.outlinedCentered(g, landmark.name(), lx, ly - 12, 2, landmark.optional() ? Ui.GOLD : Ui.TEXT);
-            if (landmark.optional()) Ui.outlinedCentered(g, firstOptional ? "memory" : "cache", lx, ly + 26, 2, Ui.MUTED);
+            JourneyHud.center(g,landmark.name(),lx+1,ly-11,JourneyHud.SMALL,Ui.INK);
+            JourneyHud.center(g,landmark.name(),lx,ly-12,JourneyHud.SMALL,landmark.optional()?JourneyHud.GOLD:MenuTheme.IVORY);
+            if (landmark.optional()) JourneyHud.center(g,firstOptional?"memory":"cache",lx,ly+26,Ui.heading(14),MenuTheme.MUTED);
             if (landmark.optional()) firstOptional = false;
         }
-        int camp = snap(mx + area.hub().x() * sx), campY = snap(my + area.hub().y() * sy);
-        Ui.outlinedCentered(g, "CAMP", camp, campY + 28, 2, new Color(0xf08a32));
-
         int cx = fx + fw + 20, cw = width - cx - 28;
         int y = fy;
-        Ui.text(g, "REGIONS", cx, y + 16, 2, Ui.MUTED);
+        JourneyHud.text(g,"Regions",cx,y+16,JourneyHud.LABEL,JourneyHud.GOLD);
         y += 28;
         for (int biome = 0; biome < CampaignWorld.AREA_COUNT; biome++) {
             boolean here = biome == game.biome(), open = game.biomeUnlocked(biome);
-            Ui.nine(g, here ? Ui.Piece.CARD : Ui.Piece.PANEL, cx, y, cw, 62);
-            Ui.text(g, Ui.roman(biome + 1) + "  " + CampaignWorld.area(biome).name(), cx + 14, y + 26, 2,
-                    here ? Ui.GOLD_LIGHT : open ? Ui.TEXT : Ui.DIM);
-            Ui.text(g, here ? "You are here" : open ? "Open" : "Beyond the gate", cx + 14, y + 48, 2, here ? Ui.CYAN : Ui.MUTED);
+            JourneyHud.frame(g,cx,y,cw,62);
+            JourneyHud.text(g,Ui.roman(biome+1)+"  "+CampaignWorld.area(biome).name(),cx+14,y+26,JourneyHud.SMALL,
+                    here?JourneyHud.GOLD:open?MenuTheme.IVORY:MenuTheme.MUTED);
+            JourneyHud.text(g,here?"You are here":open?"Open":"Beyond the gate",cx+14,y+48,JourneyHud.BODY,here?Ui.CYAN:MenuTheme.MUTED);
             y += 72;
         }
         y += 8;
-        Ui.text(g, "GOAL", cx, y + 16, 2, Ui.MUTED);
+        JourneyHud.text(g,"Goal",cx,y+16,JourneyHud.LABEL,JourneyHud.GOLD);
         String goal = game.campaignObjective();
-        y = Ui.wrapped(g, goal, cx, y + 42, cw, 2, 22, 3, Ui.TEXT) + 10;
-        Ui.text(g, "KEY", cx, y + 16, 2, Ui.MUTED);
+        y+=42;
+        for(String line:JourneyHud.wrap(g,goal,JourneyHud.BODY,cw)) {
+            JourneyHud.text(g,line,cx,y,JourneyHud.BODY,MenuTheme.IVORY);y+=22;
+        }
+        y+=10;
+        JourneyHud.text(g,"Key",cx,y+16,JourneyHud.LABEL,JourneyHud.GOLD);
         y += 30;
         Object[][] legend = {{Ui.CYAN, "You"}, {new Color(0xf08a32), "Camp"}, {Ui.DANGER, "Guardian"},
                 {Ui.GOLD, "Memory, cache"}, {new Color(0xb8b09a), "Landmark"}, {new Color(0x7b8da4), "Passage"}};
         for (Object[] row : legend) {
             if (row[0] == Ui.DANGER) diamond(g, cx + 8, y + 8, 4, Ui.DANGER);
             else mark(g, cx + 8, y + 8, 3, (Color) row[0]);
-            Ui.text(g, (String) row[1], cx + 30, y + 16, 2, Ui.TEXT);
+            JourneyHud.text(g,(String)row[1],cx+30,y+16,JourneyHud.BODY,MenuTheme.IVORY);
             y += 28;
         }
         if(game.biome()==0) {
             objectiveMark(g,cx+8,y+8,8);
-            Ui.text(g,"Next stop",cx+30,y+16,2,Ui.TEXT);
+            JourneyHud.text(g,"Next stop",cx+30,y+16,JourneyHud.BODY,MenuTheme.IVORY);
         }
+        g.dispose();
     }
 
     private static final String[] TAGLINES = {"Where the last knights fell", "Where the roots drink ichor"};
-    private static final int[][] AREA_RAMPS = {Ui.STEEL_RAMP, Ui.GOLD_RAMP};
 
     /**
      * The region title card: chapter, name, a flourish that unfurls, a tagline. It floats over play for about
@@ -861,14 +877,12 @@ public final class CampaignRenderer {
             Ui.fade(card, 0, band[0], width / 2, band[1], 0, band[2]);
             Ui.fade(card, width / 2, band[0], width / 2, band[1], band[2], 0);
         }
-        Ui.textCentered(card, "C H A P T E R   " + Ui.roman(biome + 1), cx, top + 6, 2, Ui.GOLD);
-        Ui.drawTitleCentered(card, CampaignWorld.area(biome).name(), cx, top + 20, 4, AREA_RAMPS[Math.min(biome, AREA_RAMPS.length - 1)]);
-        int open = reduced ? Ui.Piece.FLOURISH.w : (int) Math.min(Ui.Piece.FLOURISH.w, 12 + t * 200);
-        var clip = (Graphics2D) card.create();
-        clip.clipRect(cx - open, top + 88, open * 2, 36);
-        Ui.piece(clip, Ui.Piece.FLOURISH, cx - Ui.Piece.FLOURISH.w, top + 90);
-        clip.dispose();
-        Ui.textCentered(card, TAGLINES[Math.min(biome, TAGLINES.length - 1)], cx, top + 140, 2, Ui.MUTED);
+        JourneyHud.center(card,"Chapter "+Ui.roman(biome+1),cx,top+6,JourneyHud.LABEL,JourneyHud.GOLD);
+        JourneyHud.center(card,CampaignWorld.area(biome).name(),cx,top+65,Ui.menuFont(44),MenuTheme.IVORY);
+        int open=reduced?140:(int)Math.min(140,12+t*150);
+        card.setColor(JourneyHud.GOLD);card.drawLine(cx-open,top+95,cx-12,top+95);card.drawLine(cx+12,top+95,cx+open,top+95);
+        MenuTheme.star(card,cx,top+95,5);
+        JourneyHud.center(card,TAGLINES[Math.min(biome,TAGLINES.length-1)],cx,top+130,Ui.heading(18),MenuTheme.MUTED);
         card.dispose();
     }
 
@@ -877,9 +891,9 @@ public final class CampaignRenderer {
         Ui.crisp(g);
         if (!game.campaignNotice().isEmpty()) {
             var notice=(Graphics2D)g.create();double scale=TitleScreen.menuScale(width,height);notice.scale(scale,scale);
-            var lines = Ui.wrap(game.campaignNotice(), 330, 2);
-            Ui.nine(notice, Ui.Piece.PANEL, 68, 604, 344, 24 + Math.min(3, lines.size()) * 22);
-            for (int i = 0; i < lines.size() && i < 3; i++) Ui.text(notice, lines.get(i), 86, 632 + i * 22, 2, Ui.GOLD_LIGHT);
+            var lines = JourneyHud.wrap(notice,game.campaignNotice(),JourneyHud.BODY,312);
+            JourneyHud.frame(notice,68,604,344,24+Math.min(3,lines.size())*22);
+            for(int i=0;i<lines.size()&&i<3;i++)JourneyHud.text(notice,lines.get(i),84,632+i*22,JourneyHud.BODY,JourneyHud.GOLD);
             notice.dispose();
         }
         if (menuOpen) Ui.veil(g, width, height, 150);
@@ -890,6 +904,10 @@ public final class CampaignRenderer {
     }
 
     public static void drawOverlay(Graphics2D g, RuinedOutpostGame game, int width, int height, boolean menuOpen) {
+        g=(Graphics2D)g.create();
+        double scale=TitleScreen.menuScale(width,height);g.scale(scale,scale);
+        width=(int)Math.round(width/scale);height=(int)Math.round(height/scale);
+        try {
         boolean title = game.story().phase() == OutpostStory.Phase.PROLOGUE;
         boolean complete = game.story().phase() == OutpostStory.Phase.COMPLETE;
         if (!title && !complete && game.player().alive() && !game.paused())
@@ -898,66 +916,54 @@ public final class CampaignRenderer {
             // paused: the world stays visible, dimmed, behind the menu (or this banner when focus was lost)
             Ui.veil(g, width, height, 170);
             if (!menuOpen) {
-                Ui.nine(g, Ui.Piece.PANEL, width / 2 - 170, height / 2 - 40, 340, 84);
-                Ui.drawTitleCentered(g, "PAUSED", width / 2, height / 2 - 26, 3, Ui.GOLD_RAMP);
-                Ui.textCentered(g, "ESC TO RESUME", width / 2, height / 2 + 30, 2, Ui.MUTED);
+                JourneyHud.frame(g,width/2-180,height/2-60,360,120);
+                JourneyHud.center(g,"Paused",width/2,height/2-3,Ui.menuFont(34),MenuTheme.IVORY);
+                JourneyHud.center(g,"Esc to resume",width/2,height/2+32,Ui.heading(17),MenuTheme.MUTED);
             }
             return;
         }
         Ui.crisp(g);
         if (complete) { victory(g, game, width, height); return; }
         if (!title) { death(g, game, width, height); return; }
-        // title fallback (only when the title art failed to load): the old text card, in pixel type
+        // The fallback keeps the same identity even when the title art is missing.
         Ui.veil(g, width, height, 228);
-        Ui.window(g, 120, 106, width - 240, height - 212);
-        Ui.drawTitleCentered(g, "BLOB TO BLADE", width / 2, 150, 4, Ui.CYAN_RAMP);
-        Ui.textCentered(g, "ABSORB \u00b7 TRANSFORM \u00b7 CONQUER", width / 2, 250, 2, Ui.GOLD);
+        JourneyHud.frame(g,120,106,width-240,height-212);
+        JourneyHud.center(g,"Blob to Blade",width/2,210,Ui.menuFont(46),MenuTheme.IVORY);
         String[] lines = OutpostStory.openingLines();
-        for (int i = 0; i < lines.length; i++) Ui.textCentered(g, lines[i], width / 2, 300 + i * 26, 2, Ui.TEXT);
-        Ui.textCentered(g, "ENTER  NEW JOURNEY", width / 2, height - 190, 2, Ui.CYAN);
-        Ui.textCentered(g, game.saveAvailable() ? "C  CONTINUE FROM CAMP" : "NO SAVED JOURNEY", width / 2, height - 160, 2,
-                game.saveAvailable() ? Ui.GOLD : Ui.MUTED);
-        if (!game.campaignNotice().isEmpty()) Ui.textCentered(g, game.campaignNotice(), width / 2, height - 130, 2, Ui.GOLD_LIGHT);
+        for(int i=0;i<lines.length;i++)JourneyHud.center(g,lines[i],width/2,300+i*26,Ui.heading(18),MenuTheme.IVORY);
+        JourneyHud.center(g,"Enter · New journey",width/2,height-190,JourneyHud.LABEL,Ui.CYAN);
+        JourneyHud.center(g,game.saveAvailable()?"C · Continue from camp":"No saved journey",width/2,height-160,JourneyHud.BODY,MenuTheme.MUTED);
+        if(!game.campaignNotice().isEmpty())JourneyHud.center(g,game.campaignNotice(),width/2,height-130,JourneyHud.BODY,JourneyHud.GOLD);
+        } finally {g.dispose();}
     }
 
     /** Death: the world stays, darkened; a blood-red title, where you fell, and the one key that matters. */
     private static void death(Graphics2D g, RuinedOutpostGame game, int width, int height) {
         Ui.veil(g, width, height, 205);
-        int cx = width / 2;
-        Ui.drawTitleCentered(g, "SCATTERED", cx, 186, 5, Ui.BLOOD_RAMP);
-        Ui.drawTitleCentered(g, "NOT FINISHED", cx, 268, 2, Ui.BONE_RAMP);
-        Ui.piece(g, Ui.Piece.FLOURISH, cx - Ui.Piece.FLOURISH.w, 316);
-        Ui.textCentered(g, Ui.roman(game.biome() + 1) + "  \u00b7  " + game.campaignArea().name(), cx, 376, 2, Ui.GOLD);
-        Ui.textCentered(g, "Your ichor returns to the stones. Recovered strength stays with you.", cx, 408, 2, Ui.TEXT);
-        boolean bright = System.currentTimeMillis() / 600 % 2 == 0;
-        String words = "Reform at your last camp";
-        int w = 26 + 12 + Ui.width(words, 2), x = cx - w / 2 / Ui.S * Ui.S;
-        Ui.keycap(g, "R", x, 470);
-        Ui.text(g, words, x + 38, 489, 2, bright ? Ui.GOLD_LIGHT : Ui.GOLD);
+        int cx=width/2,cy=height/2;
+        JourneyHud.center(g,"Scattered",cx,cy-90,Ui.menuFont(54),new Color(0xd7aaa3));
+        JourneyHud.center(g,"Not finished",cx,cy-44,Ui.menuFont(23),MenuTheme.IVORY);
+        g.setColor(JourneyHud.GOLD);MenuTheme.star(g,cx,cy-6,6);
+        JourneyHud.center(g,Ui.roman(game.biome()+1)+" · "+game.campaignArea().name(),cx,cy+38,JourneyHud.LABEL,JourneyHud.GOLD);
+        JourneyHud.center(g,"Your ichor returns to the stones. Recovered strength stays with you.",cx,cy+74,Ui.heading(18),MenuTheme.MUTED);
+        JourneyHud.center(g,"R · Reform at your last camp",cx,cy+148,Ui.menuFont(20),MenuTheme.IVORY);
     }
 
     /** Victory: the crown, the cleared region, what comes next, and how to go again. */
     private static void victory(Graphics2D g, RuinedOutpostGame game, int width, int height) {
         Ui.veil(g, width, height, 210);
-        int cx = width / 2;
-        var crown = (Graphics2D) g.create();
-        crown.drawImage(Ui.KIT, cx - 36, 112, cx + 36, 184, Ui.Icon.CROWN.x(), Ui.Icon.CROWN.y(),
-                Ui.Icon.CROWN.x() + Ui.Icon.CELL, Ui.Icon.CROWN.y() + Ui.Icon.CELL, null);
-        crown.dispose();
-        Ui.drawTitleCentered(g, game.story().overlayTitle(), cx, 206, 4, Ui.GOLD_RAMP);
-        Ui.piece(g, Ui.Piece.FLOURISH, cx - Ui.Piece.FLOURISH.w, 282);
+        int cx=width/2,cy=height/2;
+        TitleIcons.draw(g,Ui.Icon.CROWN,cx-32,cy-224,64,true,true);
+        JourneyHud.center(g,game.story().overlayTitle(),cx,cy-106,Ui.menuFont(40),MenuTheme.IVORY);
+        g.setColor(JourneyHud.GOLD);MenuTheme.star(g,cx,cy-64,6);
         String[] lines = game.story().overlayLines();
-        int y = 350;
+        int y=cy-8;
         for (String line : lines) {
             if (line.startsWith("PRESS")) continue;
-            Ui.textCentered(g, line, cx, y, 2, Ui.TEXT);
+            JourneyHud.center(g,line,cx,y,Ui.heading(18),MenuTheme.IVORY);
             y += 28;
         }
-        boolean bright = System.currentTimeMillis() / 600 % 2 == 0;
-        String words = "Run again";
-        int w = 26 + 12 + Ui.width(words, 2), x = cx - w / 2 / Ui.S * Ui.S;
-        Ui.keycap(g, "R", x, y + 40);
-        Ui.text(g, words, x + 38, y + 59, 2, bright ? Ui.GOLD_LIGHT : Ui.GOLD);
+        JourneyHud.center(g,"R · Run again",cx,y+70,Ui.menuFont(20),JourneyHud.GOLD);
     }
 
     private static void bar(Graphics2D g, int x, int y, int width, int height, double fraction, Color color) {

@@ -14,6 +14,7 @@ public final class BuildArt {
         if (what.equals("warden-hires")) { WardenHiRes.build().save(WardenHiRes.OUT); WardenHiRes.strips(); }
         if (what.equals("briarheart")) ImportedArt.briarheart().save("assets/characters/guardian/briarheart_motion.png");
         if (what.equals("forest-creatures")) ImportedArt.forestCreatures();
+        if (what.equals("briarlings")) ImportedArt.briarlings();
         if (what.equals("sedge") || what.equals("all")) ImportedArt.sedge();
         if (what.equals("dummy")) ImportedArt.dummy().save(SetPieces.Kind.DUMMY.sheet());
         if (what.equals("gate")) Structures.sheet(SetPieces.Kind.EAST_GATE).save(SetPieces.Kind.EAST_GATE.sheet());
@@ -29,6 +30,7 @@ public final class BuildArt {
         if (what.equals("forest-corruption")) for(var kind:new SetPieces.Kind[]{
                 SetPieces.Kind.WITHERED,SetPieces.Kind.BRIAR_ROOT,SetPieces.Kind.STAIR}) ForestArt.sheet(kind).save(kind.sheet());
         if (what.equals("all") || what.equals("ui")) ui();
+        if (what.equals("splash")) UiArt.splash().save("assets/ui/splash.png");
         if (what.equals("all") || what.equals("field")) field();
         if(java.util.Set.of("reincarnation","all","portraits","survivors","sedge","field").contains(what))ImportedArt.reincarnation();
         System.out.printf("art built (%s) in %.1fs%n", what, (System.nanoTime() - t) / 1e9);

@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999716281890869,
+  "text": "次は先に言ってくれよ。",
+  "words": [
+    {
+      "text": "次",
+      "start": 0.24,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -1.0609570381348021e-05
+    },
+    {
+      "text": "は",
+      "start": 0.52,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -1.0609570381348021e-05
+    },
+    {
+      "text": "先",
+      "start": 1.14,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -0.0472492016851902
+    },
+    {
+      "text": "に",
+      "start": 1.3,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -0.0472492016851902
+    },
+    {
+      "text": "言",
+      "start": 1.38,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0010721894213929772
+    },
+    {
+      "text": "っ",
+      "start": 1.48,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.0010721894213929772
+    },
+    {
+      "text": "て",
+      "start": 1.52,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.0010721894213929772
+    },
+    {
+      "text": "く",
+      "start": 1.64,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "れ",
+      "start": 1.72,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "よ",
+      "start": 1.88,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "。",
+      "start": 2.08,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -0.014164742082357407
+    }
+  ],
+  "transcription_id": "jdPK1otqrNyQQv0iAG5I",
+  "audio_duration_secs": 2.4
+}

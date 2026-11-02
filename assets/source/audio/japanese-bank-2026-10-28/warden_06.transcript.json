@@ -1,0 +1,226 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "ここからでは無理です。動き続けてください。まず戦い方を見ます。",
+  "words": [
+    {
+      "text": "こ",
+      "start": 0.3,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -0.0001823735801735893
+    },
+    {
+      "text": "こ",
+      "start": 0.38,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0001823735801735893
+    },
+    {
+      "text": "か",
+      "start": 0.54,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.00011002412065863609
+    },
+    {
+      "text": "ら",
+      "start": 0.64,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.00011002412065863609
+    },
+    {
+      "text": "で",
+      "start": 0.76,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "は",
+      "start": 0.86,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "無",
+      "start": 1.0,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "理",
+      "start": 1.12,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "で",
+      "start": 1.24,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "す",
+      "start": 1.46,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 1.52,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "動",
+      "start": 2.1,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -3.755022044060752e-05
+    },
+    {
+      "text": "き",
+      "start": 2.32,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -3.755022044060752e-05
+    },
+    {
+      "text": "続",
+      "start": 2.44,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "け",
+      "start": 2.6,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "て",
+      "start": 2.66,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "く",
+      "start": 2.74,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.84,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "さ",
+      "start": 2.98,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "い",
+      "start": 3.12,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 3.18,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "ま",
+      "start": 3.84,
+      "end": 4.04,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "ず",
+      "start": 4.04,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "戦",
+      "start": 4.46,
+      "end": 4.72,
+      "type": "word",
+      "logprob": -0.008105125278234482
+    },
+    {
+      "text": "い",
+      "start": 4.72,
+      "end": 4.86,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "方",
+      "start": 4.92,
+      "end": 5.04,
+      "type": "word",
+      "logprob": -0.0005509527400135994
+    },
+    {
+      "text": "を",
+      "start": 5.04,
+      "end": 5.14,
+      "type": "word",
+      "logprob": -0.00010549465514486656
+    },
+    {
+      "text": "見",
+      "start": 5.14,
+      "end": 5.34,
+      "type": "word",
+      "logprob": -0.00010549465514486656
+    },
+    {
+      "text": "ま",
+      "start": 5.34,
+      "end": 5.48,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "す",
+      "start": 5.48,
+      "end": 5.56,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 5.56,
+      "end": 5.56,
+      "type": "word",
+      "logprob": -0.0011745942756533623
+    }
+  ],
+  "transcription_id": "UMTb6Y5DI4Iw0tbiyy3L",
+  "audio_duration_secs": 6.584
+}

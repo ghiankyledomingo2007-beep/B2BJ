@@ -1,0 +1,170 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9992362260818481,
+  "text": "ラファエルです。私の声に意識を向けてください。",
+  "words": [
+    {
+      "text": "ラ",
+      "start": 0.34,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.001116486731916666
+    },
+    {
+      "text": "フ",
+      "start": 0.44,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.0001248043408850208
+    },
+    {
+      "text": "ァ",
+      "start": 0.5,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.0001248043408850208
+    },
+    {
+      "text": "エ",
+      "start": 0.56,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.0009887097403407097
+    },
+    {
+      "text": "ル",
+      "start": 0.66,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.0009887097403407097
+    },
+    {
+      "text": "で",
+      "start": 0.76,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "す",
+      "start": 0.92,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "。",
+      "start": 1.04,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "私",
+      "start": 1.88,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -5.722029527532868e-06
+    },
+    {
+      "text": "の",
+      "start": 2.12,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -5.722029527532868e-06
+    },
+    {
+      "text": "声",
+      "start": 2.22,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -1.4662635294371285e-05
+    },
+    {
+      "text": "に",
+      "start": 2.38,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "意",
+      "start": 2.64,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -1.3232143828645349e-05
+    },
+    {
+      "text": "識",
+      "start": 2.86,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -1.3232143828645349e-05
+    },
+    {
+      "text": "を",
+      "start": 3.0,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -2.4199192921514623e-05
+    },
+    {
+      "text": "向",
+      "start": 3.1,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -0.001692411839030683
+    },
+    {
+      "text": "け",
+      "start": 3.26,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "て",
+      "start": 3.3,
+      "end": 3.4,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "く",
+      "start": 3.4,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "だ",
+      "start": 3.5,
+      "end": 3.64,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "さ",
+      "start": 3.64,
+      "end": 3.76,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "い",
+      "start": 3.76,
+      "end": 3.86,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "。",
+      "start": 3.86,
+      "end": 3.86,
+      "type": "word",
+      "logprob": -0.0002029928145930171
+    }
+  ],
+  "transcription_id": "ohdxS1RrtzuXQymI5EjW",
+  "audio_duration_secs": 4.904
+}

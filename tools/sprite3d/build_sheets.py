@@ -23,7 +23,7 @@ import shutil
 from PIL import Image
 
 import transform_fx
-from post_pixel import outline, palette_from, snap, polish_body
+from post_pixel import ink_overlaps, outline, palette_from, snap, polish_body
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
@@ -60,13 +60,21 @@ SHEETS = {
     "dash": [("dash", 8)], "cast": [("cast", 8)], "guard": [("guard", 8)], "hurt": [("hurt", 8)],
     "counter": [("counter", 8)],
 }
+# Actions taken from motion capture instead of hand-keyed poses: puppet action -> (Mixamo clip in MIXAMO_CLIPS,
+# clip frames, mixamo.py options). The clips are the owner's Mixamo downloads ('Without Skin' FBX); they stay
+# out of git. The run keeps the game's own trailing sword carry on top of the captured body.
+MIXAMO_CLIPS = REPO / "build/mixamo"
+MIXAMO = {
+    "run": ("Running With A Sword In The Right Hand.fbx", "1,4,7,10,13,16,19,22",
+            ["--loop", "--carry", "--travel", "0.9", "--upright", "12"]),
+}
 PREVIEW_MS = {"run": 62, "idle": 167, "start": 30, "stop": 30, "turn": 30, "slash": 45, "cleave": 50,
               "charge": 44, "hold": 125, "dash": 40, "cast": 44, "guard": 38, "hurt": 40, "counter": 40}
 PREVIEW_SCALE, PREVIEW_BG = 4, (70, 70, 70, 255)
 
 
-def blender(*args):
-    done = subprocess.run([BLENDER, "-b", "--python", str(HERE / "animate.py"), "--", *map(str, args)],
+def blender(*args, script="animate.py"):
+    done = subprocess.run([BLENDER, "-b", "--python", str(HERE / script), "--", *map(str, args)],
                           capture_output=True, text=True)
     if done.returncode != 0 or "Traceback" in done.stdout + done.stderr:
         raise SystemExit(f"blender failed: {' '.join(map(str, args))}\n{done.stdout[-2000:]}\n{done.stderr[-2000:]}")
@@ -135,7 +143,12 @@ def strip(out, action, facing, frames, palette, cache, notes, trails, wide):
     cells, swooshes = [], []
     for i in range(frames):
         shots = out / f"frames-{action}-{facing}"
-        shot = Image.open(shots / f"{facing}_{i:02d}.png").convert("RGBA")
+        if action in MIXAMO:
+            passes = out / f"mixamo-{action}"
+            shot = ink_overlaps(*(Image.open(passes / f"{kind}_{facing}_{i:02d}.png").convert("RGBA")
+                                  for kind in ("flat", "depth")))
+        else:
+            shot = Image.open(shots / f"{facing}_{i:02d}.png").convert("RGBA")
         where = f"{action} {facing} f{i}"
         cut, window = wide_cell(shot, notes, where) if wide else fit_cell(shot, notes, where, facing)
         cells.append(outline(polish_body(snap(cut, palette, cache))))
@@ -276,8 +289,21 @@ def main():
         raise SystemExit(f"Current editable source is missing: {SOURCE}")
     jobs = [(action, frames, ["--trail"] if s in TRAILED else []) for s in photographed for action, frames in SHEETS[s]]
     views = ",".join(ROWS[4:] if a.preserve_cardinals else ROWS)
+
+    def photograph(job):
+        action, frames, extra = job
+        if action not in MIXAMO:
+            return blender(SOURCE, out, "--armed", "--action", action, "--frames", frames, "--views", views, *extra)
+        clip, picks, options = MIXAMO[action]
+        if len(picks.split(",")) != frames:
+            raise SystemExit(f"{action}: {len(picks.split(','))} Mixamo frames for a {frames}-frame sheet")
+        if not (MIXAMO_CLIPS / clip).is_file():
+            raise SystemExit(f"{action} needs the Mixamo clip {MIXAMO_CLIPS / clip} (download it 'Without Skin')")
+        return blender(MIXAMO_CLIPS / clip, out / f"mixamo-{action}", "--frames", picks, "--views", views, "--armed",
+                       *options, script="mixamo.py")
+
     with ThreadPoolExecutor(max_workers=2) as pool:          # Blender does the work; threads just wait
-        list(pool.map(lambda j: blender(SOURCE, out, "--armed", "--action", j[0], "--frames", j[1], "--views", views, *j[2]), jobs))
+        list(pool.map(photograph, jobs))
     palette, cache = [*palette_from(PALETTE), MASK_RED], {}
     for name in photographed:
         assemble(out, name, palette, cache, a.preserve_cardinals)

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "動いて、地面が割れます！",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "D3x2cj8vi1F7OcUSn6Pw",
+  "generated_at": 1793156468.388444
+}

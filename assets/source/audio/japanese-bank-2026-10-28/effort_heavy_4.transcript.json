@@ -1,0 +1,30 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9857394695281982,
+  "text": "はぁ。",
+  "words": [
+    {
+      "text": "は",
+      "start": 0.24,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.6755979061126709
+    },
+    {
+      "text": "ぁ",
+      "start": 0.42,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.7635242938995361
+    },
+    {
+      "text": "。",
+      "start": 0.44,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.019304493442177773
+    }
+  ],
+  "transcription_id": "yZshtbXGQT7sYhuiOIyA",
+  "audio_duration_secs": 0.838125
+}

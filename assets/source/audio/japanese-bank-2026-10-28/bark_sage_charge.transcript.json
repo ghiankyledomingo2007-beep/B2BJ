@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9978705048561096,
+  "text": "横へ、まっすぐ来ます。",
+  "words": [
+    {
+      "text": "横",
+      "start": 0.42,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.0028186615090817213
+    },
+    {
+      "text": "へ",
+      "start": 0.64,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "、",
+      "start": 0.74,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -0.8427867889404297
+    },
+    {
+      "text": "ま",
+      "start": 1.26,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -0.014163684099912643
+    },
+    {
+      "text": "っ",
+      "start": 1.38,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -0.014163684099912643
+    },
+    {
+      "text": "す",
+      "start": 1.46,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -0.00047851080307736993
+    },
+    {
+      "text": "ぐ",
+      "start": 1.56,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.00047851080307736993
+    },
+    {
+      "text": "来",
+      "start": 1.7,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -0.0018375907093286514
+    },
+    {
+      "text": "ま",
+      "start": 1.86,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -3.194758028257638e-05
+    },
+    {
+      "text": "す",
+      "start": 2.0,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -3.194758028257638e-05
+    },
+    {
+      "text": "。",
+      "start": 2.16,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -0.0005546461907215416
+    }
+  ],
+  "transcription_id": "hKmtnBL47oFrUbNu7NgX",
+  "audio_duration_secs": 3.224
+}

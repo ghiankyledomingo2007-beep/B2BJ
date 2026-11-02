@@ -1,0 +1,142 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9997994303703308,
+  "text": "誰かの声が混じってるかもしれないだろ。",
+  "words": [
+    {
+      "text": "誰",
+      "start": 0.22,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "か",
+      "start": 0.4,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.000228140561375767
+    },
+    {
+      "text": "の",
+      "start": 0.48,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -0.000228140561375767
+    },
+    {
+      "text": "声",
+      "start": 0.7,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -7.295342220459133e-05
+    },
+    {
+      "text": "が",
+      "start": 0.92,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "混",
+      "start": 1.46,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.0004978132783435285
+    },
+    {
+      "text": "じ",
+      "start": 1.6,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.0009201106731779873
+    },
+    {
+      "text": "っ",
+      "start": 1.74,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "て",
+      "start": 1.78,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "る",
+      "start": 1.86,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "か",
+      "start": 1.98,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "も",
+      "start": 2.04,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "し",
+      "start": 2.16,
+      "end": 2.3,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "れ",
+      "start": 2.3,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "な",
+      "start": 2.38,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "い",
+      "start": 2.44,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "だ",
+      "start": 2.54,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -0.012514280155301094
+    },
+    {
+      "text": "ろ",
+      "start": 2.6,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 2.8,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -0.015283378772437572
+    }
+  ],
+  "transcription_id": "bAnRQmFyAPNA0o7UtBGY",
+  "audio_duration_secs": 3.04
+}

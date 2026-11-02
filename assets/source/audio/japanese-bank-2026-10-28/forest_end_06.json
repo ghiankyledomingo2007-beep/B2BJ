@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "見つけた者は全員だ。野営地に着いている。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "ryhbQQcVkNTeQtW8EuqB",
+  "request_id": "JLGbkjnjaAIm5gJAXGny",
+  "generated_at": 1793156224.1850739
+}

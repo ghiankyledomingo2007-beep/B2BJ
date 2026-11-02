@@ -1,0 +1,170 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "わかりました。動きながら相手の癖を見極めます。",
+  "words": [
+    {
+      "text": "わ",
+      "start": 0.28,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.07004371285438538
+    },
+    {
+      "text": "か",
+      "start": 0.36,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.07004371285438538
+    },
+    {
+      "text": "り",
+      "start": 0.46,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.07004371285438538
+    },
+    {
+      "text": "ま",
+      "start": 0.58,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "し",
+      "start": 0.7,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "た",
+      "start": 0.84,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "。",
+      "start": 0.92,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "動",
+      "start": 1.6,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -7.748573807475623e-06
+    },
+    {
+      "text": "き",
+      "start": 1.76,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -7.748573807475623e-06
+    },
+    {
+      "text": "な",
+      "start": 1.92,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "が",
+      "start": 2.0,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "ら",
+      "start": 2.2,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "相",
+      "start": 2.52,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -0.0015026956098154187
+    },
+    {
+      "text": "手",
+      "start": 2.68,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -0.0015026956098154187
+    },
+    {
+      "text": "の",
+      "start": 2.9,
+      "end": 3.04,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "癖",
+      "start": 3.04,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -0.018164945766329765
+    },
+    {
+      "text": "を",
+      "start": 3.2,
+      "end": 3.36,
+      "type": "word",
+      "logprob": -1.156323378381785e-05
+    },
+    {
+      "text": "見",
+      "start": 3.36,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -1.156323378381785e-05
+    },
+    {
+      "text": "極",
+      "start": 3.44,
+      "end": 3.66,
+      "type": "word",
+      "logprob": -1.7881233361549675e-05
+    },
+    {
+      "text": "め",
+      "start": 3.66,
+      "end": 3.84,
+      "type": "word",
+      "logprob": -0.0009354744106531143
+    },
+    {
+      "text": "ま",
+      "start": 3.86,
+      "end": 3.98,
+      "type": "word",
+      "logprob": -0.0009354744106531143
+    },
+    {
+      "text": "す",
+      "start": 3.98,
+      "end": 4.08,
+      "type": "word",
+      "logprob": -0.0009354744106531143
+    },
+    {
+      "text": "。",
+      "start": 4.08,
+      "end": 4.08,
+      "type": "word",
+      "logprob": -0.0010380124440416694
+    }
+  ],
+  "transcription_id": "gHahJepd7u9EqQY5m5Mi",
+  "audio_duration_secs": 5.144
+}

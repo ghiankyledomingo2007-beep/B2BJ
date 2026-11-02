@@ -24,7 +24,8 @@ public final class MobIdentificationTest {
         for(var kind:CampaignEnemy.Kind.values()) {
             var bark=OutpostBark.identification(kind);if(bark==null)continue;
             var path=Files.createTempDirectory("b2bj-identify-").resolve("save.properties");
-            CampaignSave.save(path,new CampaignSave.Progress(bark.biome(),1,bark.biome()==1?Set.of(0):Set.of(),Set.of(),Map.of(),0));
+            // Saves from before Rainoray's reply must still hear the complete exchange once.
+            CampaignSave.save(path,new CampaignSave.Progress(bark.biome(),1,bark.biome()==1?Set.of(0):Set.of(),Set.of(bark.key()),Map.of(),0));
             var game=RuinedOutpostGame.campaign(path);assert game.continueCampaign();
             double x=game.player().x(),y=game.player().y();
             // A clear stretch around camp, independent of authored enemy placement.
@@ -46,9 +47,14 @@ public final class MobIdentificationTest {
             assert game.bark()==bark&&game.barkLine().speaker()==OutpostDialogue.Speaker.INNER_VOICE;
             assert bark.combat()&&!game.blocked() : "identification stays visible without freezing combat";
             assert CampaignSave.load(path).orElseThrow().unlocks().contains(bark.key());
+            assert !CampaignSave.load(path).orElseThrow().unlocks().contains(bark.key()+"_exchange");
             double remaining=game.barkRemaining();game.pause();game.update(.5,0,0);
             assert game.barkRemaining()==remaining;game.togglePause();
+            tick(game,4.5);assert game.bark()==bark&&game.barkLine().speaker()==OutpostDialogue.Speaker.RAINORAY;
+            assert game.barkVoiceKey().equals(bark.key()+"_2");
+            assert !CampaignSave.load(path).orElseThrow().unlocks().contains(bark.key()+"_exchange") : "reply must finish before saving completion";
             tick(game,4.5);assert game.bark()!=bark;
+            assert CampaignSave.load(path).orElseThrow().unlocks().contains(bark.key()+"_exchange");
             tick(game,30);assert game.bark()!=bark : "same mob does not repeat";
             var restored=RuinedOutpostGame.campaign(path);assert restored.continueCampaign();
             restored.player().relocate(x,y);only(restored,new CampaignEnemy(kind,x+dx,y+dy));tick(restored,.1);
@@ -63,8 +69,10 @@ public final class MobIdentificationTest {
         var imp=new CampaignEnemy(CampaignEnemy.Kind.RIFT_IMP,1280,2624);
         var wolf=new CampaignEnemy(CampaignEnemy.Kind.THORN_WOLF,1280,2624);
         only(game,imp,wolf);tick(game,.1);var first=game.bark();assert first!=null;
-        tick(game,4.5);assert game.bark()==null : "mixed groups do not become back-to-back roll calls";
-        tick(game,3.6);assert game.bark()!=null&&game.bark()!=first;
+        tick(game,4.5);assert game.bark()==first&&game.barkLine().speaker()==OutpostDialogue.Speaker.RAINORAY;
+        tick(game,4.5);assert game.bark()==null : "mixed groups leave room after Rainoray's reply";
+        tick(game,3.9);assert game.bark()==null;
+        tick(game,.2);assert game.bark()!=null&&game.bark()!=first;
         set(game,"bark",null);set(game,"identificationCooldown",0d);
         var shaman=new CampaignEnemy(CampaignEnemy.Kind.MIRE_SHAMAN,1280,2624);only(game,shaman);
         boolean blocked=false;

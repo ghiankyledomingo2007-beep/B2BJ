@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "根にまで、嫌われてるみたいだな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "c12jSa99B044xbg3NnwU",
+  "generated_at": 1793156317.749078
+}

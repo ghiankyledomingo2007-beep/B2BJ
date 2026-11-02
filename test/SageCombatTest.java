@@ -4,7 +4,7 @@ import java.util.Set;
 
 public final class SageCombatTest {
     public static void main(String[] args) throws Exception {
-        learning();healthAndHits();dialogueClearsHitReaction();visibleDuringCombat();conversationMusic();
+        learning();healthAndHits();dialogueClearsHitReaction();visibleDuringCombat();conversationMusic();bossMusicHandoff();
         System.out.println("SageCombatTest passed: witnessed attacks, learned warnings, cadence, boss overlay and conversation music");
     }
     private static void set(Object object,String name,Object value) throws Exception {
@@ -95,6 +95,23 @@ public final class SageCombatTest {
         assert GameAudio.loopRunning(GameAudio.Loop.BOSS_MUSIC) : "Warden introduction needs its tense theme";
         assert !GameAudio.loopRunning(GameAudio.Loop.STORY_MUSIC);
         game.pause();panel.step(.1);assert !GameAudio.loopRunning(GameAudio.Loop.BOSS_MUSIC) : "pausing the Warden introduction stops its theme";
+        GameAudio.stopLoops();GameAudio.setDialogue(null,false);
+    }
+    private static void bossMusicHandoff() throws Exception {
+        GameAudio.stopLoops();GameAudio.mixVoices(new int[22050]);
+        var game=RuinedOutpostGame.campaign();game.begin();game.skipDialogue();
+        var panel=new B2BJ(false,game);var boss=game.guardian();
+        game.player().relocate(boss.x()-300,boss.y());
+        set(game,"dialogue",OutpostDialogue.WARDEN);set(game,"dialogueIndex",0);
+        var sync=B2BJ.class.getDeclaredMethod("syncConversationMusic");sync.setAccessible(true);sync.invoke(panel);
+        var gains=GameAudio.class.getDeclaredField("LOOP_GAIN");gains.setAccessible(true);
+        double intro=((double[])gains.get(null))[GameAudio.Loop.BOSS_MUSIC.ordinal()];
+        assert intro>=.7 : "the introduction must remain audible beneath speech ducking";
+        GameAudio.mixVoices(new int[2205]);
+        set(game,"dialogue",null);boss.activate(game.player().x(),game.player().y());
+        var fight=B2BJ.class.getDeclaredMethod("bossMusic",double.class);fight.setAccessible(true);fight.invoke(panel,.016);
+        double after=((double[])gains.get(null))[GameAudio.Loop.BOSS_MUSIC.ordinal()];
+        assert after>=intro&&after-intro<.05 : "intro-to-fight transition must not drop the soundtrack back to silence";
         GameAudio.stopLoops();GameAudio.setDialogue(null,false);
     }
 }

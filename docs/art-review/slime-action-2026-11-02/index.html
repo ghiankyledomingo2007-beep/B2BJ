@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blob to Blade · Slime combat</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;color:#eee4cb;background:#080e14}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;padding:32px;margin:auto}header{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:28px}h1{font:normal clamp(28px,4vw,44px) Georgia,serif;margin:6px 0 12px}p{color:#adb8ba;line-height:1.55;margin:0}.eyebrow{font-size:12px;letter-spacing:.18em;color:#83e6e7;text-transform:uppercase}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}article{border:1px solid #494435;background:#0c151d;overflow:hidden}video{display:block;width:100%;aspect-ratio:12/7;background:#080e14;image-rendering:pixelated}.caption{padding:18px 20px 22px}h2{font:normal 25px Georgia,serif;margin:0 0 9px}kbd{font:12px system-ui;border:1px solid #665c44;padding:3px 7px;margin-left:10px;vertical-align:middle}button{font:inherit;color:#eee4cb;border:1px solid #78684c;background:#111d25;padding:10px 16px;cursor:pointer}button:focus-visible{outline:2px solid #83e6e7;outline-offset:4px}footer{margin-top:26px;font-size:13px;color:#a2acae}@media(max-width:800px){main{padding:20px}.grid{grid-template-columns:1fr}header{align-items:flex-start}}
+.hold{grid-column:1/-1;display:grid;grid-template-columns:1.35fr 1fr;align-items:center}.hold .caption{padding:28px}.hold p{margin:16px 0}.hold a{display:inline-block;color:#83e6e7;margin-top:16px;font-size:13px}@media(max-width:800px){.hold{display:block}}
+</style>
+<main><header><div><p class="eyebrow">Blob to Blade · Combat update</p><h1>Tap for the combo. Hold for the jet.</h1><p>Actual game animation, shown against staged targets.</p></div><button id="toggle">Pause all</button></header>
+<div class="grid">
+<article class="hold"><video id="hold" src="hold-forming.mp4" autoplay muted loop controls playsinline aria-label="Hold to charge and release Water Jet with sound"></video><div class="caption"><p class="eyebrow">New · Hold attack</p><h2>Charged Water Jet</h2><p>Hold LMB: curling water streams gather farther in front of the slime, fill the orb, then compress into a bright core. Release at the ready chime for the jet, recoil and impact.</p><p>Full charge: 0.8 seconds. You can aim while charging. Early releases have less power.</p><button id="sound">Hear charge + impact</button><br><a href="hold-forming-reduced.mp4">See reduced effects</a></div></article>
+<article><video src="combo.mp4" autoplay muted loop controls playsinline aria-label="Three-hit slime combo"></video><div class="caption"><h2>Water combo <kbd>LMB</kbd></h2><p>Opposite curved lashes, then a planted wind-up, forward step and heavier burst. The body animation follows the release and hit pause.</p></div></article>
+<article><video src="tide.mp4" autoplay muted loop controls playsinline aria-label="Tide Wave hits three targets"></video><div class="caption"><h2>Tide Wave <kbd>RMB</kbd></h2><p>A broad foam front with splashes on each target. Keeps its crowd-control reach and cooldown.</p></div></article>
+<article><video src="counter.mp4" autoplay muted loop controls playsinline aria-label="Back dash and counter shot"></video><div class="caption"><h2>Counter shot <kbd>Dash → LMB</kbd></h2><p>Back dash, then fire the other way. The existing counter keeps its sharper trail and stronger push.</p></div></article>
+<article><video src="dash.mp4" autoplay muted loop controls playsinline aria-label="Slime body slam"></video><div class="caption"><h2>Body slam <kbd>Space</kbd></h2><p>The existing slime dash retains its body stretch, water wake and collision impact.</p></div></article>
+</div><footer>The hold preview includes the actual game sound mix; click Hear charge + impact. Other clips are silent. Fixed camera and passive test targets. All combat animation comes from the game renderer.</footer>
+</main><script>
+const videos=[...document.querySelectorAll('video')],button=document.querySelector('#toggle');
+let paused=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function sync(){videos.forEach(v=>{if(paused)v.pause();else v.play().catch(()=>{});});button.textContent=paused?'Play all':'Pause all';}
+const hold=document.querySelector('#hold'),sound=document.querySelector('#sound');
+sound.addEventListener('click',()=>{hold.muted=!hold.muted;if(!hold.muted){hold.currentTime=0;hold.play().catch(()=>{});}sound.textContent=hold.muted?'Hear charge + impact':'Mute sound';});
+button.addEventListener('click',()=>{paused=!paused;sync();});sync();
+</script></html>

@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9993953704833984,
+  "text": "昔の癖はすぐには変わりません。",
+  "words": [
+    {
+      "text": "昔",
+      "start": 0.38,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.0004899493651464581
+    },
+    {
+      "text": "の",
+      "start": 0.62,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -5.006777428206988e-06
+    },
+    {
+      "text": "癖",
+      "start": 0.84,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -0.062102507799863815
+    },
+    {
+      "text": "は",
+      "start": 1.1,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "す",
+      "start": 1.48,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.00038246947224251926
+    },
+    {
+      "text": "ぐ",
+      "start": 1.6,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -0.00038246947224251926
+    },
+    {
+      "text": "に",
+      "start": 1.72,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "は",
+      "start": 1.9,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "変",
+      "start": 2.06,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -5.471556869451888e-05
+    },
+    {
+      "text": "わ",
+      "start": 2.12,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -5.471556869451888e-05
+    },
+    {
+      "text": "り",
+      "start": 2.22,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -5.471556869451888e-05
+    },
+    {
+      "text": "ま",
+      "start": 2.34,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -9.65590606938349e-06
+    },
+    {
+      "text": "せ",
+      "start": 2.48,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -9.65590606938349e-06
+    },
+    {
+      "text": "ん",
+      "start": 2.58,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -9.65590606938349e-06
+    },
+    {
+      "text": "。",
+      "start": 2.68,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -0.0019298041006550193
+    }
+  ],
+  "transcription_id": "rBkbeznGGuHjbQgxsS1c",
+  "audio_duration_secs": 3.784
+}

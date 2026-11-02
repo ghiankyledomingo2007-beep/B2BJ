@@ -1,0 +1,79 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "静かになりましたね。",
+  "words": [
+    {
+      "text": "静",
+      "start": 0.44,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.00023278864682652056
+    },
+    {
+      "text": "か",
+      "start": 0.62,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -0.00020597243565134704
+    },
+    {
+      "text": "に",
+      "start": 0.74,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "な",
+      "start": 0.82,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "り",
+      "start": 0.92,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.02,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "し",
+      "start": 1.14,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "た",
+      "start": 1.24,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -1.2159273865108844e-05
+    },
+    {
+      "text": "ね",
+      "start": 1.4,
+      "end": 1.52,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 1.52,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.0004911408759653568
+    }
+  ],
+  "transcription_id": "4PBXJv7hyfWS2CXDNH2E",
+  "audio_duration_secs": 2.744
+}

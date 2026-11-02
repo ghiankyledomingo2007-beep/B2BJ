@@ -1,0 +1,44 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5168367624282837,
+  "text": "よいしょ。",
+  "words": [
+    {
+      "text": "よ",
+      "start": 0.18,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -0.0006737822550348938
+    },
+    {
+      "text": "い",
+      "start": 0.32,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.0006737822550348938
+    },
+    {
+      "text": "し",
+      "start": 0.58,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.005301227327436209
+    },
+    {
+      "text": "ょ",
+      "start": 0.68,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -0.005301227327436209
+    },
+    {
+      "text": "。",
+      "start": 0.9,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -0.02994132786989212
+    }
+  ],
+  "transcription_id": "DIh4z9vcGbvCLwNcyFPy",
+  "audio_duration_secs": 1.1175
+}

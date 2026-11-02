@@ -1,0 +1,23 @@
+{
+  "language_code": "eng",
+  "language_probability": 0.12450417876243591,
+  "text": "やあ",
+  "words": [
+    {
+      "text": "や",
+      "start": 0.14,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.07753235101699829
+    },
+    {
+      "text": "あ",
+      "start": 0.28,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.02412906475365162
+    }
+  ],
+  "transcription_id": "TLfM8MJaoF0iYJikEmwo",
+  "audio_duration_secs": 0.5986875
+}

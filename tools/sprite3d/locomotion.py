@@ -57,8 +57,12 @@ def pose(p, t, amp, breath, view):
     p.turn("upperarm.L", Y_AXIS, 38)                                         # out of the A-pose, beside the ribs
     p.turn("upperarm.L", X_AXIS, amp * (-72 * s + 5))
     p.turn("forearm.L", X_AXIS, mix(-24 + 3 * math.sin(b + 0.7), -95 - 15 * s, amp))
+    sword_arm(p, view, amp, a, b)
 
-    # sword arm: low guard when standing; locked back with the blade trailing when running
+
+def sword_arm(p, view, amp, a, b):
+    """Sword arm: low guard when standing; locked back with the blade trailing when running.
+    a = stride phase and b = breath phase, both in radians."""
     carry = view.get("carry_direction")
     p.turn("upperarm.R", Y_AXIS, mix(-30, view["arm_in"], amp))
     p.turn("upperarm.R", X_AXIS, amp * (view["arm_back"] + (1 if carry else 4) * math.sin(2 * a)))

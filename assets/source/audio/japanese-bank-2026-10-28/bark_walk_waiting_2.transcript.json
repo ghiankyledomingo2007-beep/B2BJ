@@ -1,0 +1,184 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9993242621421814,
+  "text": "誰かもあなたのことをそう考えているかもしれません。",
+  "words": [
+    {
+      "text": "誰",
+      "start": 0.38,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.00975897815078497
+    },
+    {
+      "text": "か",
+      "start": 0.56,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.003933550789952278
+    },
+    {
+      "text": "も",
+      "start": 0.66,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -0.003933550789952278
+    },
+    {
+      "text": "あ",
+      "start": 1.2,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -0.0003364712174516171
+    },
+    {
+      "text": "な",
+      "start": 1.3,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.0003364712174516171
+    },
+    {
+      "text": "た",
+      "start": 1.4,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -0.0003364712174516171
+    },
+    {
+      "text": "の",
+      "start": 1.56,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.0003364712174516171
+    },
+    {
+      "text": "こ",
+      "start": 1.64,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -3.3378044463461265e-05
+    },
+    {
+      "text": "と",
+      "start": 1.78,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -3.3378044463461265e-05
+    },
+    {
+      "text": "を",
+      "start": 1.88,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -3.3378044463461265e-05
+    },
+    {
+      "text": "そ",
+      "start": 2.14,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "う",
+      "start": 2.2,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "考",
+      "start": 2.4,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -5.1377883210079744e-05
+    },
+    {
+      "text": "え",
+      "start": 2.62,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -5.1377883210079744e-05
+    },
+    {
+      "text": "て",
+      "start": 2.74,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -5.1377883210079744e-05
+    },
+    {
+      "text": "い",
+      "start": 2.78,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "る",
+      "start": 2.88,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "か",
+      "start": 2.98,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "も",
+      "start": 3.06,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "し",
+      "start": 3.18,
+      "end": 3.28,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "れ",
+      "start": 3.28,
+      "end": 3.4,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "ま",
+      "start": 3.4,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "せ",
+      "start": 3.58,
+      "end": 3.6,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "ん",
+      "start": 3.6,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "。",
+      "start": 3.68,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -0.00038115866482257843
+    }
+  ],
+  "transcription_id": "skuNaSgWYY131sjlwZ8I",
+  "audio_duration_secs": 4.744
+}

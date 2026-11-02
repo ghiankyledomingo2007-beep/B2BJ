@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "隊長の野営地でシュナが火を守ってる。あんたの場所もあるよ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "phU93dYrSCxjHkkllIix",
+  "generated_at": 1793156173.2596364
+}

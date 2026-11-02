@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "根が緩んだ。岸ごと崩れるのかと思ったぞ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "ryhbQQcVkNTeQtW8EuqB",
+  "request_id": "UlQNXQlnOkkqHITkdfZW",
+  "generated_at": 1793156201.6742804
+}

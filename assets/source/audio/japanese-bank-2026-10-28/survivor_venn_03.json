@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "リグルドだ。最後の避難者に付き添っておったが、担架の者たちを先に行かせた。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "C6EwdDpfpjUWhKn1xeaG",
+  "request_id": "AOvTL3P4u4RNezzSN4qT",
+  "generated_at": 1793156170.8261333
+}

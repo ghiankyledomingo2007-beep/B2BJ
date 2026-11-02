@@ -1,0 +1,58 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5168367624282837,
+  "text": "守りを崩すな。",
+  "words": [
+    {
+      "text": "守",
+      "start": 0.24,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -2.1815061700181104e-05
+    },
+    {
+      "text": "り",
+      "start": 0.38,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.0006264869589358568
+    },
+    {
+      "text": "を",
+      "start": 0.5,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.0006264869589358568
+    },
+    {
+      "text": "崩",
+      "start": 0.66,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "す",
+      "start": 0.92,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "な",
+      "start": 1.08,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "。",
+      "start": 1.18,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.06199999526143074
+    }
+  ],
+  "transcription_id": "BLwyNkDIzuFz4kbSXMwt",
+  "audio_duration_secs": 1.78
+}

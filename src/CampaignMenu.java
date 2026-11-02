@@ -37,7 +37,7 @@ public final class CampaignMenu extends JPanel {
         this.effectsChanged = Objects.requireNonNull(effectsChanged, "effectsChanged");
         this.reducedEffects = Objects.requireNonNull(reducedEffects, "reducedEffects");
         setOpaque(false);
-        setBorder(BorderFactory.createEmptyBorder(118, 88, 128, 88));
+        setBorder(BorderFactory.createEmptyBorder(80, 52, 32, 52));
         setPreferredSize(new Dimension(600, 680));
         getAccessibleContext().setAccessibleName("Game menu");
         home();
@@ -45,8 +45,14 @@ public final class CampaignMenu extends JPanel {
 
     @Override protected void paintComponent(Graphics graphics) {
         var g=(Graphics2D)graphics.create();
-        StoneMenuArt.frame(g,getWidth(),getHeight(),animationTime,reducedEffects.getAsBoolean());
+        MenuTheme.frame(g,getWidth(),getHeight(),animationTime,reducedEffects.getAsBoolean(),true);
         g.dispose();
+    }
+
+    @Override protected void paintChildren(Graphics graphics) {
+        var g=(Graphics2D)graphics.create();
+        g.setRenderingHint(java.awt.RenderingHints.KEY_TEXT_ANTIALIASING,java.awt.RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        super.paintChildren(g);g.dispose();
     }
 
     void animate(double seconds) {
@@ -115,18 +121,30 @@ public final class CampaignMenu extends JPanel {
     }
 
     private JPanel heading(String text) {
-        var label=new PixelSwing.Title(text.toUpperCase(java.util.Locale.ROOT),3,Ui.GOLD_RAMP);
+        var label=new JLabel(text) {
+            @Override protected void paintComponent(Graphics graphics) {
+                var g=(Graphics2D)graphics.create();
+                Ui.prose(g,getText(),0,36,getFont(),MenuTheme.IVORY);g.dispose();
+            }
+        };
         label.putClientProperty("menu.heading",true);
         var close=PixelSwing.button("Close",'X',null,resume,true);
         close.setPreferredSize(new Dimension(76,34));
         close.setToolTipText("Close menu (Esc)");
         var row=new JPanel(null) {
+            @Override protected void paintComponent(Graphics graphics) {
+                var g=(Graphics2D)graphics.create();
+                Ui.Icon symbol=switch(text){case "Settings"->Ui.Icon.GEAR;case "Controls"->Ui.Icon.KEYS;
+                    case "Testing"->Ui.Icon.FLASK;case "Paused"->Ui.Icon.PLAY;default->Ui.Icon.GATE;};
+                TitleIcons.draw(g,symbol,0,0,44,true,true);
+                g.setColor(new Color(198,163,113,100));g.drawLine(0,60,getWidth(),60);g.dispose();
+            }
             @Override public void doLayout() {
-                label.setBounds(0,0,getWidth(),52);
-                close.setBounds(getWidth()-76,0,76,34);
+                label.setBounds(60,0,getWidth()-140,46);
+                close.setBounds(getWidth()-76,6,76,34);
             }
         };
-        row.setPreferredSize(new Dimension(424,52));
+        row.setPreferredSize(new Dimension(496,62));
         row.add(label);row.add(close);
         return row;
     }
@@ -163,8 +181,14 @@ public final class CampaignMenu extends JPanel {
         else if (component instanceof JButton button) button.putClientProperty("menu.row", true);
         if (component instanceof JComponent item) {
             boolean heading = Boolean.TRUE.equals(item.getClientProperty("menu.heading"));
-            item.setFont(Ui.sans(2));
+            item.setFont(heading?Ui.menuFont(36).deriveFont(java.awt.Font.BOLD)
+                    :item instanceof JLabel||item instanceof javax.swing.JCheckBox?Ui.heading(20):Ui.body(15));
+            if(item instanceof JLabel label && label.getLabelFor() instanceof javax.swing.JSlider slider) {
+                label.setIcon(TitleIcons.volumeIcon(slider.getName()));label.setIconTextGap(14);
+            }
             if (heading) item.setForeground(new Color(0xe7d9b5));
+            if (item instanceof javax.swing.JCheckBox)
+                item.setMaximumSize(new Dimension(Integer.MAX_VALUE,item.getPreferredSize().height));
         }
         if (component instanceof javax.swing.JComboBox || component instanceof javax.swing.JSlider) return;
         if (component instanceof Container parent)
@@ -175,8 +199,8 @@ public final class CampaignMenu extends JPanel {
     static final class ControlsSheet extends JPanel {
         private static final String[][] ROWS = {
             {"W A S D", "Move (or arrow keys)"}, {"LMB", "Attack / hold to charge"},
-            {"RMB", "Tide Wave / Ichor Crescent"}, {"SPACE", "Dash"}, {"Q", "Transform into the blade"},
-            {"F", "Riposte"}, {"R", "Beelzebub / mass absorb"}, {"E", "Interact  ·  talk  ·  absorb"}, {"H", "Rest and save at camp"},
+            {"RMB", "Tide Wave / Void Sever"}, {"SPACE", "Dash"}, {"Q", "Transform into the blade"},
+            {"F", "Parry / charged punish"}, {"R", "Beelzebub / empower next heavy"}, {"E", "Interact  ·  talk  ·  absorb"}, {"H", "Rest and save at camp"},
             {"U", "Open camp services"}, {"1 2 3 4", "Buy a camp upgrade"}, {"TAB", "Hold for the region map"}, {"ESC", "Pause menu"},
             {"ENTER", "Next line (or E / click)"}, {"X", "Skip conversation"},
             {"M", "Mute"}, {"V", "Reduce flashes and shake"}};
@@ -197,14 +221,11 @@ public final class CampaignMenu extends JPanel {
             for (String[] row : ROWS) {
                 int x = 0;
                 for (String key : row[0].split(" ")) {
-                    if (key.equals("LMB") || key.equals("RMB")) {
-                        Ui.piece(g, key.equals("LMB") ? Ui.Piece.MOUSE_L : Ui.Piece.MOUSE_R, x, y);
-                        x += 26;
-                    } else x += Ui.keycap(g, key, x, y) + 4;
+                    x += Ui.keycap(g, key, x, y) + 4;
                 }
                 g.setColor(new Color(0x1b2b38));
                 g.fillRect(0, y + 32, getWidth(), 1);
-                Ui.text(g, row[1], 150, y + 19, 2, Ui.TEXT);
+                Ui.prose(g,row[1],150,y+19,Ui.body(15),MenuTheme.IVORY);
                 y += 38;
             }
             g.dispose();

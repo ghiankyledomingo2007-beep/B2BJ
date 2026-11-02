@@ -1,0 +1,198 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "担架を持ってくる。お前は下に残っているものを確かめろ。",
+  "words": [
+    {
+      "text": "担",
+      "start": 0.12,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -0.12605807185173035
+    },
+    {
+      "text": "架",
+      "start": 0.24,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.0008401916129514575
+    },
+    {
+      "text": "を",
+      "start": 0.36,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.00240941415540874
+    },
+    {
+      "text": "持",
+      "start": 0.48,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.00240941415540874
+    },
+    {
+      "text": "っ",
+      "start": 0.56,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.00240941415540874
+    },
+    {
+      "text": "て",
+      "start": 0.6,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -0.00240941415540874
+    },
+    {
+      "text": "く",
+      "start": 0.7,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -0.00023529145983047783
+    },
+    {
+      "text": "る",
+      "start": 0.82,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -0.00023529145983047783
+    },
+    {
+      "text": "。",
+      "start": 0.92,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "お",
+      "start": 1.6,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "前",
+      "start": 1.72,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.0002127659390680492
+    },
+    {
+      "text": "は",
+      "start": 1.96,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -1.680836794548668e-05
+    },
+    {
+      "text": "下",
+      "start": 2.26,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -0.0006862907321192324
+    },
+    {
+      "text": "に",
+      "start": 2.46,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -0.0006862907321192324
+    },
+    {
+      "text": "残",
+      "start": 2.56,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -5.864924969500862e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.72,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "て",
+      "start": 2.78,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "い",
+      "start": 2.84,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "る",
+      "start": 2.92,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "も",
+      "start": 3.02,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -0.6356486082077026
+    },
+    {
+      "text": "の",
+      "start": 3.08,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -0.6356486082077026
+    },
+    {
+      "text": "を",
+      "start": 3.24,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.6356486082077026
+    },
+    {
+      "text": "確",
+      "start": 3.38,
+      "end": 3.48,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "か",
+      "start": 3.48,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "め",
+      "start": 3.56,
+      "end": 3.62,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "ろ",
+      "start": 3.62,
+      "end": 3.74,
+      "type": "word",
+      "logprob": -4.017272294731811e-05
+    },
+    {
+      "text": "。",
+      "start": 3.74,
+      "end": 3.74,
+      "type": "word",
+      "logprob": -0.0036010199692100286
+    }
+  ],
+  "transcription_id": "vLlu8JaIeuXqLOleTzJF",
+  "audio_duration_secs": 4.0
+}

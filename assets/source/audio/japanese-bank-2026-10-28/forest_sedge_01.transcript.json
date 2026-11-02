@@ -1,0 +1,156 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "岸に気をつけろ。硬く見えても踏めば崩れる。",
+  "words": [
+    {
+      "text": "岸",
+      "start": 0.18,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.11561956256628036
+    },
+    {
+      "text": "に",
+      "start": 0.34,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -7.629365427419543e-06
+    },
+    {
+      "text": "気",
+      "start": 0.5,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "を",
+      "start": 0.6,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "つ",
+      "start": 0.7,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -0.007620431482791901
+    },
+    {
+      "text": "け",
+      "start": 0.8,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -0.007620431482791901
+    },
+    {
+      "text": "ろ",
+      "start": 0.86,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -3.135155202471651e-05
+    },
+    {
+      "text": "。",
+      "start": 0.98,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "硬",
+      "start": 1.76,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.11379775404930115
+    },
+    {
+      "text": "く",
+      "start": 1.96,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -2.1219027985353023e-05
+    },
+    {
+      "text": "見",
+      "start": 2.08,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "え",
+      "start": 2.14,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -0.00011681827891152352
+    },
+    {
+      "text": "て",
+      "start": 2.24,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -0.00011681827891152352
+    },
+    {
+      "text": "も",
+      "start": 2.34,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "踏",
+      "start": 2.82,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -0.00464289728552103
+    },
+    {
+      "text": "め",
+      "start": 2.94,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.00018940561858471483
+    },
+    {
+      "text": "ば",
+      "start": 3.18,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "崩",
+      "start": 3.32,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "れ",
+      "start": 3.44,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "る",
+      "start": 3.62,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "。",
+      "start": 3.68,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -0.014163918793201447
+    }
+  ],
+  "transcription_id": "sj4l2Gt9yXompoBBUj99",
+  "audio_duration_secs": 3.92
+}

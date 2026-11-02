@@ -1,0 +1,100 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9994990229606628,
+  "text": "辞める必要はありませんよ。",
+  "words": [
+    {
+      "text": "辞",
+      "start": 0.36,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.5247622728347778
+    },
+    {
+      "text": "め",
+      "start": 0.46,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -1.4424220353248529e-05
+    },
+    {
+      "text": "る",
+      "start": 0.58,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -1.4424220353248529e-05
+    },
+    {
+      "text": "必",
+      "start": 0.68,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -1.07287787614041e-05
+    },
+    {
+      "text": "要",
+      "start": 0.9,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -1.07287787614041e-05
+    },
+    {
+      "text": "は",
+      "start": 1.2,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -0.00024136967840604484
+    },
+    {
+      "text": "あ",
+      "start": 1.5,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -0.00024136967840604484
+    },
+    {
+      "text": "り",
+      "start": 1.58,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.00024136967840604484
+    },
+    {
+      "text": "ま",
+      "start": 1.7,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -0.00024136967840604484
+    },
+    {
+      "text": "せ",
+      "start": 1.82,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -0.00024136967840604484
+    },
+    {
+      "text": "ん",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.00024136967840604484
+    },
+    {
+      "text": "よ",
+      "start": 2.04,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "。",
+      "start": 2.18,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.0002057340752799064
+    }
+  ],
+  "transcription_id": "UsxgrIVnEztjfccj5vyP",
+  "audio_duration_secs": 3.304
+}

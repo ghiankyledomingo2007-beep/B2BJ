@@ -1,0 +1,142 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9997320175170898,
+  "text": "あと一件だけ。これが終わったら帰ろう。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.1,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -9.298280929215252e-06
+    },
+    {
+      "text": "と",
+      "start": 0.24,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -9.298280929215252e-06
+    },
+    {
+      "text": "一",
+      "start": 0.46,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.018382541835308075
+    },
+    {
+      "text": "件",
+      "start": 0.68,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -0.018382541835308075
+    },
+    {
+      "text": "だ",
+      "start": 0.82,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "け",
+      "start": 1.0,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 1.08,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -7.748573807475623e-06
+    },
+    {
+      "text": "こ",
+      "start": 1.8,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -0.00011455356434453279
+    },
+    {
+      "text": "れ",
+      "start": 1.88,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.00011455356434453279
+    },
+    {
+      "text": "が",
+      "start": 2.06,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -0.00011455356434453279
+    },
+    {
+      "text": "終",
+      "start": 2.14,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -1.0609570381348021e-05
+    },
+    {
+      "text": "わ",
+      "start": 2.22,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -1.0609570381348021e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.32,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -1.966933996300213e-05
+    },
+    {
+      "text": "た",
+      "start": 2.4,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -1.966933996300213e-05
+    },
+    {
+      "text": "ら",
+      "start": 2.52,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -1.966933996300213e-05
+    },
+    {
+      "text": "帰",
+      "start": 2.9,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -0.023261751979589462
+    },
+    {
+      "text": "ろ",
+      "start": 3.02,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -0.0028049908578395844
+    },
+    {
+      "text": "う",
+      "start": 3.12,
+      "end": 3.24,
+      "type": "word",
+      "logprob": -0.0028049908578395844
+    },
+    {
+      "text": "。",
+      "start": 3.24,
+      "end": 3.24,
+      "type": "word",
+      "logprob": -0.12693066895008087
+    }
+  ],
+  "transcription_id": "pNZANIPKhOQWffG2ZKhL",
+  "audio_duration_secs": 3.44
+}

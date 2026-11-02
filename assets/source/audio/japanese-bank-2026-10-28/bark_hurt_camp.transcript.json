@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9206677675247192,
+  "text": "あの焚き火が恋しいな。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.1,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "の",
+      "start": 0.22,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "焚",
+      "start": 0.44,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.023450646549463272
+    },
+    {
+      "text": "き",
+      "start": 0.54,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.014237492345273495
+    },
+    {
+      "text": "火",
+      "start": 0.64,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "が",
+      "start": 0.88,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "恋",
+      "start": 1.5,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.0033983595203608274
+    },
+    {
+      "text": "し",
+      "start": 1.68,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "い",
+      "start": 1.8,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "な",
+      "start": 2.0,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -0.6659964323043823
+    },
+    {
+      "text": "。",
+      "start": 2.2,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -0.0019296851241961122
+    }
+  ],
+  "transcription_id": "Vikn5UUrNGYkZ4MqrPtk",
+  "audio_duration_secs": 2.64
+}

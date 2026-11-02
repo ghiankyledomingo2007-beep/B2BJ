@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "新しい方法を見つけていますね。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "I0kQNUSdatlXjbUf8I8x",
+  "generated_at": 1793156370.1174643
+}

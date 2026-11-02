@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "休めばイコルも落ち着きます。物資はここか、火のついたかがり火のそばへ。私たちが回収します。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "CqGAugitWzMzvRtsLrPc",
+  "generated_at": 1793156115.8703656
+}

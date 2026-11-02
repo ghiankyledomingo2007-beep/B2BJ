@@ -1,0 +1,79 @@
+[
+  {
+    "file": "effort_hurt_6.wav",
+    "kind": "effort",
+    "spoken_text": "うあっ！",
+    "transcript": "うわぁ。",
+    "detected_language": "jpn"
+  },
+  {
+    "file": "effort_attack_1.wav",
+    "kind": "effort",
+    "spoken_text": "はっ！",
+    "transcript": "",
+    "detected_language": "eng"
+  },
+  {
+    "file": "effort_heavy_4.wav",
+    "kind": "effort",
+    "spoken_text": "はああっ！",
+    "transcript": "はぁ。",
+    "detected_language": "jpn"
+  },
+  {
+    "file": "effort_attack_4.wav",
+    "kind": "effort",
+    "spoken_text": "ふっ！",
+    "transcript": "",
+    "detected_language": "eng"
+  },
+  {
+    "file": "effort_attack_3.wav",
+    "kind": "effort",
+    "spoken_text": "せいっ！",
+    "transcript": "Say!",
+    "detected_language": "eng"
+  },
+  {
+    "file": "effort_heavy_1.wav",
+    "kind": "effort",
+    "spoken_text": "はあっ！",
+    "transcript": "",
+    "detected_language": "eng"
+  },
+  {
+    "file": "effort_attack_5.wav",
+    "kind": "effort",
+    "spoken_text": "やあっ！",
+    "transcript": "やあ",
+    "detected_language": "eng"
+  },
+  {
+    "file": "effort_hurt_1.wav",
+    "kind": "effort",
+    "spoken_text": "あっ！",
+    "transcript": "ああ。",
+    "detected_language": "jpn"
+  },
+  {
+    "file": "camp_06.wav",
+    "kind": "dialogue",
+    "spoken_text": "レイノレイ。それだけは覚えてる。",
+    "transcript": "例の例、それだけは覚えてる。",
+    "detected_language": "jpn"
+  },
+  {
+    "file": "bark_fight_saw.wav",
+    "kind": "dialogue",
+    "spoken_text": "今の、見た？",
+    "transcript": "今の見た？",
+    "detected_language": "zho"
+  },
+  {
+    "file": "effort_attack_6.wav",
+    "kind": "effort",
+    "spoken_text": "くらえっ！",
+    "transcript": "食らえ！",
+    "detected_language": "jpn"
+  }
+]

@@ -1,0 +1,177 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "やっと水だ。ここの井戸はどうして枯れてないんだ？",
+  "words": [
+    {
+      "text": "や",
+      "start": 0.18,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.00024685196694917977
+    },
+    {
+      "text": "っ",
+      "start": 0.28,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.00024685196694917977
+    },
+    {
+      "text": "と",
+      "start": 0.54,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.00024685196694917977
+    },
+    {
+      "text": "水",
+      "start": 0.72,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "だ",
+      "start": 0.96,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "。",
+      "start": 1.16,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "こ",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "こ",
+      "start": 2.04,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "の",
+      "start": 2.18,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "井",
+      "start": 2.34,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -1.6212332411669195e-05
+    },
+    {
+      "text": "戸",
+      "start": 2.5,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -0.0017381097422912717
+    },
+    {
+      "text": "は",
+      "start": 2.64,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -7.521823135903105e-05
+    },
+    {
+      "text": "ど",
+      "start": 3.06,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -7.521823135903105e-05
+    },
+    {
+      "text": "う",
+      "start": 3.14,
+      "end": 3.28,
+      "type": "word",
+      "logprob": -7.521823135903105e-05
+    },
+    {
+      "text": "し",
+      "start": 3.28,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -8.106198947643861e-06
+    },
+    {
+      "text": "て",
+      "start": 3.44,
+      "end": 3.54,
+      "type": "word",
+      "logprob": -8.106198947643861e-06
+    },
+    {
+      "text": "枯",
+      "start": 3.54,
+      "end": 3.62,
+      "type": "word",
+      "logprob": -0.011972001753747463
+    },
+    {
+      "text": "れ",
+      "start": 3.62,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "て",
+      "start": 3.72,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "な",
+      "start": 3.82,
+      "end": 3.88,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "い",
+      "start": 3.88,
+      "end": 3.92,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "ん",
+      "start": 3.92,
+      "end": 4.019,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "だ",
+      "start": 4.019,
+      "end": 4.12,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "？",
+      "start": 4.12,
+      "end": 4.12,
+      "type": "word",
+      "logprob": -0.0495971217751503
+    }
+  ],
+  "transcription_id": "0kdqFi0RsgJLszCymhaX",
+  "audio_duration_secs": 4.56
+}

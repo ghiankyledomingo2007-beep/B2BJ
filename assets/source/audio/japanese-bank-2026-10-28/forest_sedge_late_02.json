@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "広場の木は倒した。砦から来た人たちを探してる。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "0Y5peMY5q5awMOtMlCdI",
+  "generated_at": 1793156201.8647885
+}

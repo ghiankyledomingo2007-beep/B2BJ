@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "注意。同じ手は避けて。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "N05Rkd6c8kHv3tGgX7uN",
+  "generated_at": 1793156469.023582
+}

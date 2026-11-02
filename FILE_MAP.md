@@ -32,6 +32,7 @@ existing Java files by responsibility; `build.sh` continues to compile `src/*.ja
 - `src/Telegraphs.java`: compact enemy windup glints; boss windups and impacts use `WardenFx` and `BossFx`.
 - `src/SlimeAnimation.java`, `src/BladeAnimation.java`, `src/WispAnimation.java`: actor animation timing.
 - `src/TransformationAnimation.java`: slime/Blade transitions.
+- `src/TransformFx.java`: the slime-to-Rainoray change (its own pixels stretched into a goo teardrop, goo strands, white flash, jelly reveal), drawn from game time in native pixels.
 - `src/WangTileset.java`: legacy terrain tile rendering used by older map paths.
 
 ## Menus and interface

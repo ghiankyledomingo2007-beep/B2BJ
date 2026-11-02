@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "旗を越えて東へ、内庭から北へ進んでください。迷ったら、野営地の北にある信号塔を目印に。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "tikbDCdfpj9SdqTgu7Aa",
+  "generated_at": 1793156112.7531235
+}

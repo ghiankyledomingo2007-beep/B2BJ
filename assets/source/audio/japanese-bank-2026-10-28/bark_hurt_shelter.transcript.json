@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "今のは思ったより危なかった。",
+  "words": [
+    {
+      "text": "今",
+      "start": 0.2,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -2.3364747903542593e-05
+    },
+    {
+      "text": "の",
+      "start": 0.32,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -2.5033637939486653e-05
+    },
+    {
+      "text": "は",
+      "start": 0.48,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -2.5033637939486653e-05
+    },
+    {
+      "text": "思",
+      "start": 1.12,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -0.0002464944263920188
+    },
+    {
+      "text": "っ",
+      "start": 1.22,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -0.0002464944263920188
+    },
+    {
+      "text": "た",
+      "start": 1.36,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0002464944263920188
+    },
+    {
+      "text": "よ",
+      "start": 1.48,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -4.005352093372494e-05
+    },
+    {
+      "text": "り",
+      "start": 1.56,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -4.005352093372494e-05
+    },
+    {
+      "text": "危",
+      "start": 1.76,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "な",
+      "start": 1.9,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -0.00010585224663373083
+    },
+    {
+      "text": "か",
+      "start": 1.98,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -0.00010585224663373083
+    },
+    {
+      "text": "っ",
+      "start": 2.14,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.00010585224663373083
+    },
+    {
+      "text": "た",
+      "start": 2.18,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -0.00010585224663373083
+    },
+    {
+      "text": "。",
+      "start": 2.36,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -0.0024760086089372635
+    }
+  ],
+  "transcription_id": "0S7lCRCloiKON5gem0XO",
+  "audio_duration_secs": 2.72
+}

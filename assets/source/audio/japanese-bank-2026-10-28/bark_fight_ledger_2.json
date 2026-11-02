@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "別の一覧を作っておきました。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "D8pop6G5w2XfXmejZfQE",
+  "generated_at": 1793156230.582437
+}

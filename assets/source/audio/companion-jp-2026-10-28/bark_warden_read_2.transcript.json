@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9990168809890747,
+  "text": "よし、動く時は教えて。",
+  "words": [
+    {
+      "text": "よ",
+      "start": 0.1,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -1.0490362910786644e-05
+    },
+    {
+      "text": "し",
+      "start": 0.26,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -1.0490362910786644e-05
+    },
+    {
+      "text": "、",
+      "start": 0.38,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -0.016066843643784523
+    },
+    {
+      "text": "動",
+      "start": 1.02,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -9.179073458653875e-06
+    },
+    {
+      "text": "く",
+      "start": 1.18,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "時",
+      "start": 1.4,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.28124910593032837
+    },
+    {
+      "text": "は",
+      "start": 1.52,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.28124910593032837
+    },
+    {
+      "text": "教",
+      "start": 1.64,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "え",
+      "start": 1.8,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "て",
+      "start": 1.9,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "。",
+      "start": 2.06,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -0.03365752846002579
+    }
+  ],
+  "transcription_id": "lPOVqvP8chjkceYMsZSM",
+  "audio_duration_secs": 2.4
+}

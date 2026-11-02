@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "最後の担架が渡りました。",
+  "words": [
+    {
+      "text": "最",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0013298486592248082
+    },
+    {
+      "text": "後",
+      "start": 0.56,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.0013298486592248082
+    },
+    {
+      "text": "の",
+      "start": 0.68,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.0013298486592248082
+    },
+    {
+      "text": "担",
+      "start": 0.84,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -0.6812882423400879
+    },
+    {
+      "text": "架",
+      "start": 0.96,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.034434448927640915
+    },
+    {
+      "text": "が",
+      "start": 1.18,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -4.172316494077677e-06
+    },
+    {
+      "text": "渡",
+      "start": 1.26,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -0.0001754606782924384
+    },
+    {
+      "text": "り",
+      "start": 1.42,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -3.0517112463712692e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.52,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -3.0517112463712692e-05
+    },
+    {
+      "text": "し",
+      "start": 1.66,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -3.0517112463712692e-05
+    },
+    {
+      "text": "た",
+      "start": 1.8,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -3.0517112463712692e-05
+    },
+    {
+      "text": "。",
+      "start": 1.94,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -0.038043249398469925
+    }
+  ],
+  "transcription_id": "nk2Hvtor5QbWFU4SrJcR",
+  "audio_duration_secs": 2.984
+}

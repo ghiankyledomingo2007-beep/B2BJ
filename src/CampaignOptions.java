@@ -31,7 +31,7 @@ public final class CampaignOptions {
         volume(panel, "Master volume", 'M', "masterVolume", GameAudio.masterVolume(), GameAudio::setMasterVolume);
         volume(panel, "Sound effects", 'S', "sfxVolume", GameAudio.sfxVolume(), GameAudio::setSfxVolume);
         volume(panel, "Dialogue", 'D', "dialogueVolume", GameAudio.dialogueVolume(), GameAudio::setDialogueVolume);
-        volume(panel, "Ambient music", 'U', "musicVolume", GameAudio.musicVolume(), GameAudio::setMusicVolume);
+        volume(panel, "Music", 'U', "musicVolume", GameAudio.musicVolume(), GameAudio::setMusicVolume);
         JCheckBox effects = new JCheckBox("Reduce flashes, weather, shake", reducedEffects);
         effects.setMnemonic('R');
         effects.addActionListener(event -> reducedEffectsChanged.accept(effects.isSelected()));

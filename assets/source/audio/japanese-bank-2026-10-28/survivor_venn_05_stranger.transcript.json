@@ -1,0 +1,240 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "隊長の天幕に明かりがある。そっちへ行って。誰かが消さずに待ってる。",
+  "words": [
+    {
+      "text": "隊",
+      "start": 0.14,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.05016348883509636
+    },
+    {
+      "text": "長",
+      "start": 0.36,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.02720225229859352
+    },
+    {
+      "text": "の",
+      "start": 0.46,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.02720225229859352
+    },
+    {
+      "text": "天",
+      "start": 0.6,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.00012933371181134135
+    },
+    {
+      "text": "幕",
+      "start": 0.76,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -0.006107595283538103
+    },
+    {
+      "text": "に",
+      "start": 1.06,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -0.00045098623377270997
+    },
+    {
+      "text": "明",
+      "start": 1.28,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -0.14302055537700653
+    },
+    {
+      "text": "か",
+      "start": 1.38,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0008057684754021466
+    },
+    {
+      "text": "り",
+      "start": 1.48,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.0008057684754021466
+    },
+    {
+      "text": "が",
+      "start": 1.64,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "あ",
+      "start": 1.7,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "る",
+      "start": 1.76,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "。",
+      "start": 1.96,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "そ",
+      "start": 2.5,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -2.9802276912960224e-06
+    },
+    {
+      "text": "っ",
+      "start": 2.56,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -8.940297266235575e-05
+    },
+    {
+      "text": "ち",
+      "start": 2.68,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -8.940297266235575e-05
+    },
+    {
+      "text": "へ",
+      "start": 2.74,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -1.6331539882230572e-05
+    },
+    {
+      "text": "行",
+      "start": 2.84,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -3.909988299710676e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.94,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -3.909988299710676e-05
+    },
+    {
+      "text": "て",
+      "start": 3.06,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -3.909988299710676e-05
+    },
+    {
+      "text": "。",
+      "start": 3.16,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "誰",
+      "start": 3.88,
+      "end": 4.04,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "か",
+      "start": 4.04,
+      "end": 4.12,
+      "type": "word",
+      "logprob": -0.00030048147891648114
+    },
+    {
+      "text": "が",
+      "start": 4.12,
+      "end": 4.66,
+      "type": "word",
+      "logprob": -0.00030048147891648114
+    },
+    {
+      "text": "消",
+      "start": 4.74,
+      "end": 4.86,
+      "type": "word",
+      "logprob": -0.0025148927234113216
+    },
+    {
+      "text": "さ",
+      "start": 4.86,
+      "end": 4.98,
+      "type": "word",
+      "logprob": -0.0031977968756109476
+    },
+    {
+      "text": "ず",
+      "start": 4.98,
+      "end": 5.12,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "に",
+      "start": 5.12,
+      "end": 5.24,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "待",
+      "start": 5.24,
+      "end": 5.36,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "っ",
+      "start": 5.36,
+      "end": 5.42,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "て",
+      "start": 5.42,
+      "end": 5.48,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "る",
+      "start": 5.54,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "。",
+      "start": 5.62,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -0.0006268443539738655
+    }
+  ],
+  "transcription_id": "gCsrqpLOk7nM2EI5XZxH",
+  "audio_duration_secs": 5.84
+}

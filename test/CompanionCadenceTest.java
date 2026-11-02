@@ -7,7 +7,7 @@ import java.util.Set;
 public final class CompanionCadenceTest {
     public static void main(String[] args) throws Exception {
         for(int biome=0;biome<2;biome++) { cadence(biome,false);cadence(biome,true); }
-        recordingClock();mixerCompletion();identificationPreservesContext();hitVariety();bossVoice();
+        recordingClock();mixerCompletion();identificationReplies();identificationPreservesContext();hitVariety();bossVoice();
         System.out.println("CompanionCadenceTest passed: both chapters, saved rotation, full recordings, context and reactions");
     }
     private static RuinedOutpostGame scene(int biome,boolean allHeard) throws Exception {
@@ -96,6 +96,26 @@ public final class CompanionCadenceTest {
         assert get(game,"pendingBanter")==OutpostBark.Trigger.FIGHT;
         for(int t=0;t<90&&(game.bark()==null||game.bark().trigger()!=OutpostBark.Trigger.FIGHT);t++)game.update(.1,0,0);
         assert game.bark()!=null&&game.bark().trigger()==OutpostBark.Trigger.FIGHT;
+    }
+    private static void identificationReplies() throws Exception {
+        var tick=RuinedOutpostGame.class.getDeclaredMethod("updateBark",double.class,double.class);tick.setAccessible(true);
+        var voice=GameAudio.class.getDeclaredField("dialogueVoice");voice.setAccessible(true);
+        for(var bark:OutpostBark.values()) {
+            if(bark.trigger()!=OutpostBark.Trigger.IDENTIFY&&bark!=OutpostBark.WARDEN_READ&&bark!=OutpostBark.FOREST_BOSS_READ)continue;
+            var game=scene(bark.biome(),false);start(game,bark);GameAudio.setDialogue(null,false);
+            String previous=null;boolean replied=false;
+            for(int i=0;i<600&&game.bark()==bark;i++) {
+                String key=game.barkVoiceKey();
+                if(previous!=null&&!previous.equals(key)) {
+                    assert voice.get(null)==null : "Rainoray must wait for Raphael's full recording: "+bark;
+                    assert game.barkLine().speaker()==OutpostDialogue.Speaker.RAINORAY;
+                    replied=true;
+                }
+                sync(game);tick.invoke(game,.02,0d);GameAudio.mixVoices(new int[441]);previous=key;
+            }
+            assert replied&&game.bark()!=bark&&voice.get(null)==null : "both clips must finish: "+bark;
+            GameAudio.setDialogue(null,false);
+        }
     }
     private static void hitVariety() throws Exception {
         var game=scene(0,false);var seen=new HashSet<OutpostBark>();

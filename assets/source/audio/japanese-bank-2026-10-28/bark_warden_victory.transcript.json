@@ -1,0 +1,51 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "道が開いた。",
+  "words": [
+    {
+      "text": "道",
+      "start": 0.24,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -1.3828182090946939e-05
+    },
+    {
+      "text": "が",
+      "start": 0.48,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -0.00033802041434682906
+    },
+    {
+      "text": "開",
+      "start": 1.2,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.00033802041434682906
+    },
+    {
+      "text": "い",
+      "start": 1.4,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "た",
+      "start": 1.58,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "。",
+      "start": 1.7,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.0046218945644795895
+    }
+  ],
+  "transcription_id": "RIWUledfPnjNJUcDqiJj",
+  "audio_duration_secs": 2.0
+}

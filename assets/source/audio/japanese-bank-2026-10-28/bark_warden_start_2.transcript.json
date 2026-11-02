@@ -1,0 +1,79 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999086260795593,
+  "text": "一度隙があればいい。",
+  "words": [
+    {
+      "text": "一",
+      "start": 0.16,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -1.3708974620385561e-05
+    },
+    {
+      "text": "度",
+      "start": 0.36,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -1.3708974620385561e-05
+    },
+    {
+      "text": "隙",
+      "start": 1.04,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.22727510333061218
+    },
+    {
+      "text": "が",
+      "start": 1.26,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -0.0002406545972917229
+    },
+    {
+      "text": "あ",
+      "start": 1.34,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.0002406545972917229
+    },
+    {
+      "text": "れ",
+      "start": 1.4,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.0002406545972917229
+    },
+    {
+      "text": "ば",
+      "start": 1.52,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.0002406545972917229
+    },
+    {
+      "text": "い",
+      "start": 1.64,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "い",
+      "start": 1.72,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "。",
+      "start": 1.86,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -0.011048096232116222
+    }
+  ],
+  "transcription_id": "wODTm9Lg2rwNxYQZUlTP",
+  "audio_duration_secs": 2.08
+}

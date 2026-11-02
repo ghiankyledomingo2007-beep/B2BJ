@@ -1,0 +1,79 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "では、まずお名前を。",
+  "words": [
+    {
+      "text": "で",
+      "start": 0.12,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "は",
+      "start": 0.24,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "、",
+      "start": 0.64,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.5759413242340088
+    },
+    {
+      "text": "ま",
+      "start": 0.66,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "ず",
+      "start": 0.82,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "お",
+      "start": 1.12,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -0.00029702542815357447
+    },
+    {
+      "text": "名",
+      "start": 1.32,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.0010433712741360068
+    },
+    {
+      "text": "前",
+      "start": 1.48,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.0010433712741360068
+    },
+    {
+      "text": "を",
+      "start": 1.66,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -4.6491513785440475e-06
+    },
+    {
+      "text": "。",
+      "start": 1.82,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -0.001932421582750976
+    }
+  ],
+  "transcription_id": "JD2UyvoH5VjFXGACjAFq",
+  "audio_duration_secs": 2.08
+}

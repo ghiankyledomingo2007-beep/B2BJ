@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999253153800964,
+  "text": "少しずつ覚えましょう。野営地は後ろです。",
+  "words": [
+    {
+      "text": "少",
+      "start": 0.38,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -6.603976362384856e-05
+    },
+    {
+      "text": "し",
+      "start": 0.54,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -6.603976362384856e-05
+    },
+    {
+      "text": "ず",
+      "start": 0.68,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -1.5258672647178173e-05
+    },
+    {
+      "text": "つ",
+      "start": 0.82,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -1.5258672647178173e-05
+    },
+    {
+      "text": "覚",
+      "start": 1.06,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -8.165503095369786e-05
+    },
+    {
+      "text": "え",
+      "start": 1.18,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -8.165503095369786e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.26,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "し",
+      "start": 1.38,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "ょ",
+      "start": 1.44,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "う",
+      "start": 1.5,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 1.58,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -0.0022430280223488808
+    },
+    {
+      "text": "野",
+      "start": 2.36,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -0.32781267166137695
+    },
+    {
+      "text": "営",
+      "start": 2.58,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -0.36251598596572876
+    },
+    {
+      "text": "地",
+      "start": 2.82,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.0015695883193984628
+    },
+    {
+      "text": "は",
+      "start": 3.0,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -5.006777428206988e-06
+    },
+    {
+      "text": "後",
+      "start": 3.16,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.0003401654539629817
+    },
+    {
+      "text": "ろ",
+      "start": 3.38,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -0.0003401654539629817
+    },
+    {
+      "text": "で",
+      "start": 3.56,
+      "end": 3.66,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "す",
+      "start": 3.66,
+      "end": 3.84,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "。",
+      "start": 3.84,
+      "end": 3.84,
+      "type": "word",
+      "logprob": -0.0010352734243497252
+    }
+  ],
+  "transcription_id": "9f72YUSnsMwm3j3eWjH3",
+  "audio_duration_secs": 4.904
+}

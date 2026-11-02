@@ -33,7 +33,7 @@ public final class TideCrowdTest {
         var focused=fixture(new RuinedOutpostMap(),new Player(700,500),List.of(first,second));
         waves(focused).add(new WaterProjectile(700,500,1,0,WaterProjectile.Kind.FINISHER));
         advanceWater(focused,1);
-        assert first.health()==68&&second.health()==100 : "finisher remains focused, not a free crowd wave";
+        assert first.health()==60&&second.health()==100 : "finisher remains focused, not a free crowd wave";
     }
     private static void cover() throws Exception {
         var map=new RuinedOutpostMap(2);var wall=map.barriers().get(0);

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "エレンよ。道を調べてたら、あの根が風と逆に動いて、後ろを塞いだの。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "MhnQB6oLKSlS0AIJzxtO",
+  "request_id": "I4V0ePwo6Y2IdzsXXu5n",
+  "generated_at": 1793156163.0807774
+}

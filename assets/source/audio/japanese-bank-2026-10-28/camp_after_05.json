@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "では、乾いたまま待っていますね。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "8AYy3NkI1AMJ4pLKlEUp",
+  "generated_at": 1793156152.2358096
+}

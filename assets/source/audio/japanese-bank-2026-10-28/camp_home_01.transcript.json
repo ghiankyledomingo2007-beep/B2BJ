@@ -1,0 +1,233 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "カイジン、エレン、ビグルド。空いていた三つの寝台が埋まりました。",
+  "words": [
+    {
+      "text": "カ",
+      "start": 0.14,
+      "end": 0.2,
+      "type": "word",
+      "logprob": -0.8354678153991699
+    },
+    {
+      "text": "イ",
+      "start": 0.24,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.8354678153991699
+    },
+    {
+      "text": "ジ",
+      "start": 0.4,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.0013509204145520926
+    },
+    {
+      "text": "ン",
+      "start": 0.5,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.0013509204145520926
+    },
+    {
+      "text": "、",
+      "start": 0.62,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -1.585470999998506e-05
+    },
+    {
+      "text": "エ",
+      "start": 1.06,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.0004757702990900725
+    },
+    {
+      "text": "レ",
+      "start": 1.18,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -3.957670196541585e-05
+    },
+    {
+      "text": "ン",
+      "start": 1.28,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -3.957670196541585e-05
+    },
+    {
+      "text": "、",
+      "start": 1.4,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -5.364403477869928e-06
+    },
+    {
+      "text": "ビ",
+      "start": 1.88,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -0.5983905792236328
+    },
+    {
+      "text": "グ",
+      "start": 2.02,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.07204975932836533
+    },
+    {
+      "text": "ル",
+      "start": 2.12,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -0.07204975932836533
+    },
+    {
+      "text": "ド",
+      "start": 2.26,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "。",
+      "start": 2.4,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -0.03005470149219036
+    },
+    {
+      "text": "空",
+      "start": 3.32,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -0.00200297380797565
+    },
+    {
+      "text": "い",
+      "start": 3.42,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -0.0007873057620599866
+    },
+    {
+      "text": "て",
+      "start": 3.56,
+      "end": 3.62,
+      "type": "word",
+      "logprob": -0.0007873057620599866
+    },
+    {
+      "text": "い",
+      "start": 3.62,
+      "end": 3.8,
+      "type": "word",
+      "logprob": -0.0007873057620599866
+    },
+    {
+      "text": "た",
+      "start": 3.8,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -0.0007873057620599866
+    },
+    {
+      "text": "三",
+      "start": 3.96,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -0.0014743659412488341
+    },
+    {
+      "text": "つ",
+      "start": 4.14,
+      "end": 4.3,
+      "type": "word",
+      "logprob": -6.556489552167477e-06
+    },
+    {
+      "text": "の",
+      "start": 4.36,
+      "end": 4.48,
+      "type": "word",
+      "logprob": -6.556489552167477e-06
+    },
+    {
+      "text": "寝",
+      "start": 4.6,
+      "end": 4.7,
+      "type": "word",
+      "logprob": -0.08646072447299957
+    },
+    {
+      "text": "台",
+      "start": 4.7,
+      "end": 4.96,
+      "type": "word",
+      "logprob": -0.00013362467871047556
+    },
+    {
+      "text": "が",
+      "start": 4.96,
+      "end": 5.28,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "埋",
+      "start": 5.28,
+      "end": 5.42,
+      "type": "word",
+      "logprob": -2.8967437174287625e-05
+    },
+    {
+      "text": "ま",
+      "start": 5.42,
+      "end": 5.48,
+      "type": "word",
+      "logprob": -7.223821739898995e-05
+    },
+    {
+      "text": "り",
+      "start": 5.48,
+      "end": 5.6,
+      "type": "word",
+      "logprob": -7.223821739898995e-05
+    },
+    {
+      "text": "ま",
+      "start": 5.6,
+      "end": 5.76,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "し",
+      "start": 5.76,
+      "end": 5.92,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "た",
+      "start": 5.92,
+      "end": 6.0,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "。",
+      "start": 6.0,
+      "end": 6.0,
+      "type": "word",
+      "logprob": -0.0008046964649111032
+    }
+  ],
+  "transcription_id": "Vb59FmM6zRAsh5VOa1ja",
+  "audio_duration_secs": 6.24
+}

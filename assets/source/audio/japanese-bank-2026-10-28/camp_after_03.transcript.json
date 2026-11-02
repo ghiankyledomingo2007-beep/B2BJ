@@ -1,0 +1,352 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "私も追いました。でも根が道を覆っていて。火のそばに乾いたエリマキがあります。持っていってください。",
+  "words": [
+    {
+      "text": "私",
+      "start": 0.26,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -1.6093124941107817e-05
+    },
+    {
+      "text": "も",
+      "start": 0.42,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -1.6093124941107817e-05
+    },
+    {
+      "text": "追",
+      "start": 0.56,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.08314258605241776
+    },
+    {
+      "text": "い",
+      "start": 0.64,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -9.16677454370074e-05
+    },
+    {
+      "text": "ま",
+      "start": 0.74,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -9.16677454370074e-05
+    },
+    {
+      "text": "し",
+      "start": 0.9,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -9.16677454370074e-05
+    },
+    {
+      "text": "た",
+      "start": 1.06,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -9.16677454370074e-05
+    },
+    {
+      "text": "。",
+      "start": 1.1,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "で",
+      "start": 1.78,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "も",
+      "start": 1.92,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "根",
+      "start": 2.34,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -0.14270061254501343
+    },
+    {
+      "text": "が",
+      "start": 2.62,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "道",
+      "start": 2.82,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -0.0007631250191479921
+    },
+    {
+      "text": "を",
+      "start": 3.08,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -0.0007631250191479921
+    },
+    {
+      "text": "覆",
+      "start": 3.16,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -0.00011455356434453279
+    },
+    {
+      "text": "っ",
+      "start": 3.3,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.00035470392322167754
+    },
+    {
+      "text": "て",
+      "start": 3.38,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -0.00035470392322167754
+    },
+    {
+      "text": "い",
+      "start": 3.44,
+      "end": 3.64,
+      "type": "word",
+      "logprob": -0.00035470392322167754
+    },
+    {
+      "text": "て",
+      "start": 3.66,
+      "end": 3.78,
+      "type": "word",
+      "logprob": -0.00035470392322167754
+    },
+    {
+      "text": "。",
+      "start": 3.78,
+      "end": 3.78,
+      "type": "word",
+      "logprob": -0.03364703804254532
+    },
+    {
+      "text": "火",
+      "start": 4.48,
+      "end": 4.68,
+      "type": "word",
+      "logprob": -0.0010144332190975547
+    },
+    {
+      "text": "の",
+      "start": 4.68,
+      "end": 4.78,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "そ",
+      "start": 4.82,
+      "end": 4.9,
+      "type": "word",
+      "logprob": -0.02598816528916359
+    },
+    {
+      "text": "ば",
+      "start": 4.9,
+      "end": 5.04,
+      "type": "word",
+      "logprob": -0.02598816528916359
+    },
+    {
+      "text": "に",
+      "start": 5.26,
+      "end": 5.38,
+      "type": "word",
+      "logprob": -7.259582343976945e-05
+    },
+    {
+      "text": "乾",
+      "start": 5.38,
+      "end": 5.54,
+      "type": "word",
+      "logprob": -0.00010406429646536708
+    },
+    {
+      "text": "い",
+      "start": 5.54,
+      "end": 5.68,
+      "type": "word",
+      "logprob": -0.00017820201173890382
+    },
+    {
+      "text": "た",
+      "start": 5.68,
+      "end": 5.76,
+      "type": "word",
+      "logprob": -0.00017820201173890382
+    },
+    {
+      "text": "エ",
+      "start": 5.76,
+      "end": 5.84,
+      "type": "word",
+      "logprob": -0.09656468778848648
+    },
+    {
+      "text": "リ",
+      "start": 5.84,
+      "end": 5.98,
+      "type": "word",
+      "logprob": -0.09656468778848648
+    },
+    {
+      "text": "マ",
+      "start": 5.98,
+      "end": 6.08,
+      "type": "word",
+      "logprob": -0.0002803409588523209
+    },
+    {
+      "text": "キ",
+      "start": 6.12,
+      "end": 6.26,
+      "type": "word",
+      "logprob": -0.0002791491860989481
+    },
+    {
+      "text": "が",
+      "start": 6.26,
+      "end": 6.3,
+      "type": "word",
+      "logprob": -1.883488948806189e-05
+    },
+    {
+      "text": "あ",
+      "start": 6.3,
+      "end": 6.36,
+      "type": "word",
+      "logprob": -1.883488948806189e-05
+    },
+    {
+      "text": "り",
+      "start": 6.36,
+      "end": 6.48,
+      "type": "word",
+      "logprob": -1.883488948806189e-05
+    },
+    {
+      "text": "ま",
+      "start": 6.48,
+      "end": 6.64,
+      "type": "word",
+      "logprob": -1.883488948806189e-05
+    },
+    {
+      "text": "す",
+      "start": 6.64,
+      "end": 6.72,
+      "type": "word",
+      "logprob": -1.883488948806189e-05
+    },
+    {
+      "text": "。",
+      "start": 6.72,
+      "end": 6.72,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "持",
+      "start": 7.26,
+      "end": 7.32,
+      "type": "word",
+      "logprob": -0.20144617557525635
+    },
+    {
+      "text": "っ",
+      "start": 7.36,
+      "end": 7.4,
+      "type": "word",
+      "logprob": -0.0001685477327555418
+    },
+    {
+      "text": "て",
+      "start": 7.4,
+      "end": 7.46,
+      "type": "word",
+      "logprob": -0.0001685477327555418
+    },
+    {
+      "text": "い",
+      "start": 7.46,
+      "end": 7.56,
+      "type": "word",
+      "logprob": -0.0001685477327555418
+    },
+    {
+      "text": "っ",
+      "start": 7.56,
+      "end": 7.6,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "て",
+      "start": 7.6,
+      "end": 7.68,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "く",
+      "start": 7.68,
+      "end": 7.76,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "だ",
+      "start": 7.76,
+      "end": 7.92,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "さ",
+      "start": 7.92,
+      "end": 8.06,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "い",
+      "start": 8.06,
+      "end": 8.14,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "。",
+      "start": 8.14,
+      "end": 8.14,
+      "type": "word",
+      "logprob": -0.054887156933546066
+    }
+  ],
+  "transcription_id": "bXyTLGXvRYhCGkOPiknB",
+  "audio_duration_secs": 8.4
+}

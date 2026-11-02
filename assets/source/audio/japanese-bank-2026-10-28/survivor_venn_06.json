@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "シュナか。それはよかった。では、たっぷり叱られに行くとしよう。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "C6EwdDpfpjUWhKn1xeaG",
+  "request_id": "2NTYk0aNBn2cJBz31YME",
+  "generated_at": 1793156175.7319279
+}

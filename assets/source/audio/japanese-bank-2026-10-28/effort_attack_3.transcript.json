@@ -1,0 +1,16 @@
+{
+  "language_code": "eng",
+  "language_probability": 0.12450417876243591,
+  "text": "Say!",
+  "words": [
+    {
+      "text": "Say!",
+      "start": 0.2,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.07288238828186877
+    }
+  ],
+  "transcription_id": "t3ZRGiz8PPmIZ3DouyvL",
+  "audio_duration_secs": 0.6785
+}

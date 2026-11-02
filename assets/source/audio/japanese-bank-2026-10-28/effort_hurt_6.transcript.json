@@ -1,0 +1,37 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9772302508354187,
+  "text": "うわぁ。",
+  "words": [
+    {
+      "text": "う",
+      "start": 0.08,
+      "end": 0.18,
+      "type": "word",
+      "logprob": -0.008724311366677284
+    },
+    {
+      "text": "わ",
+      "start": 0.18,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -0.0010251511121168733
+    },
+    {
+      "text": "ぁ",
+      "start": 0.28,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.4904164671897888
+    },
+    {
+      "text": "。",
+      "start": 0.4,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.6230565309524536
+    }
+  ],
+  "transcription_id": "dkmtR4OEixsdTOSHwoX5",
+  "audio_duration_secs": 0.6684375
+}

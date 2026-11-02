@@ -1,0 +1,156 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "地図じゃその場所の感じまではわからないな。",
+  "words": [
+    {
+      "text": "地",
+      "start": 0.16,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "図",
+      "start": 0.3,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "じ",
+      "start": 0.5,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "ゃ",
+      "start": 0.56,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "そ",
+      "start": 1.42,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -0.023681998252868652
+    },
+    {
+      "text": "の",
+      "start": 1.5,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.023681998252868652
+    },
+    {
+      "text": "場",
+      "start": 1.68,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -0.0002553137019276619
+    },
+    {
+      "text": "所",
+      "start": 1.8,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -0.0002553137019276619
+    },
+    {
+      "text": "の",
+      "start": 1.96,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -6.794906312279636e-06
+    },
+    {
+      "text": "感",
+      "start": 2.08,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -1.3470558769768104e-05
+    },
+    {
+      "text": "じ",
+      "start": 2.22,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -1.3470558769768104e-05
+    },
+    {
+      "text": "ま",
+      "start": 2.32,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -3.373566141817719e-05
+    },
+    {
+      "text": "で",
+      "start": 2.48,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -3.373566141817719e-05
+    },
+    {
+      "text": "は",
+      "start": 2.62,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -3.373566141817719e-05
+    },
+    {
+      "text": "わ",
+      "start": 2.8,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -0.02324649505317211
+    },
+    {
+      "text": "か",
+      "start": 2.9,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.02324649505317211
+    },
+    {
+      "text": "ら",
+      "start": 3.0,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -0.02324649505317211
+    },
+    {
+      "text": "な",
+      "start": 3.14,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -0.02324649505317211
+    },
+    {
+      "text": "い",
+      "start": 3.2,
+      "end": 3.34,
+      "type": "word",
+      "logprob": -0.02324649505317211
+    },
+    {
+      "text": "な",
+      "start": 3.34,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -0.001763456966727972
+    },
+    {
+      "text": "。",
+      "start": 3.5,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -0.014164859429001808
+    }
+  ],
+  "transcription_id": "MG7beZhyGFsO7zYWweVe",
+  "audio_duration_secs": 3.92
+}

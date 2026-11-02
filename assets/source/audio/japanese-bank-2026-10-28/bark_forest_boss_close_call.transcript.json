@@ -1,0 +1,58 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.942404568195343,
+  "text": "離れて回復を。",
+  "words": [
+    {
+      "text": "離",
+      "start": 0.38,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.001177809201180935
+    },
+    {
+      "text": "れ",
+      "start": 0.5,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -3.814689989667386e-06
+    },
+    {
+      "text": "て",
+      "start": 0.66,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -3.814689989667386e-06
+    },
+    {
+      "text": "回",
+      "start": 1.22,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -0.011431196704506874
+    },
+    {
+      "text": "復",
+      "start": 1.38,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.011431196704506874
+    },
+    {
+      "text": "を",
+      "start": 1.6,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -0.0002212279650848359
+    },
+    {
+      "text": "。",
+      "start": 1.8,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -0.0010382506297901273
+    }
+  ],
+  "transcription_id": "u0i8ssMe7RxpSVZt8k6g",
+  "audio_duration_secs": 2.824
+}

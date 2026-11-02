@@ -1,0 +1,79 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "二回だな。わかった。",
+  "words": [
+    {
+      "text": "二",
+      "start": 0.16,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.027644850313663483
+    },
+    {
+      "text": "回",
+      "start": 0.34,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.00014053787162993103
+    },
+    {
+      "text": "だ",
+      "start": 0.48,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "な",
+      "start": 0.58,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "。",
+      "start": 0.76,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -3.909988299710676e-05
+    },
+    {
+      "text": "わ",
+      "start": 1.44,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -0.1797456443309784
+    },
+    {
+      "text": "か",
+      "start": 1.5,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -2.396077979938127e-05
+    },
+    {
+      "text": "っ",
+      "start": 1.64,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -2.396077979938127e-05
+    },
+    {
+      "text": "た",
+      "start": 1.72,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -2.396077979938127e-05
+    },
+    {
+      "text": "。",
+      "start": 1.8,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -0.003600901225581765
+    }
+  ],
+  "transcription_id": "GOcBqDHqGlKPdqIe2sEX",
+  "audio_duration_secs": 2.08
+}

@@ -1,0 +1,163 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "開いた。包帯に少しの金。避難者の名簿もある。",
+  "words": [
+    {
+      "text": "開",
+      "start": 0.22,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.00013529339048545808
+    },
+    {
+      "text": "い",
+      "start": 0.34,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -3.3854863431770355e-05
+    },
+    {
+      "text": "た",
+      "start": 0.48,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -3.3854863431770355e-05
+    },
+    {
+      "text": "。",
+      "start": 0.66,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.0010917185572907329
+    },
+    {
+      "text": "包",
+      "start": 1.28,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.0011117237154394388
+    },
+    {
+      "text": "帯",
+      "start": 1.52,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -0.007460707798600197
+    },
+    {
+      "text": "に",
+      "start": 1.76,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -0.000196556793525815
+    },
+    {
+      "text": "少",
+      "start": 2.3,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -0.2811640501022339
+    },
+    {
+      "text": "し",
+      "start": 2.5,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -0.2811640501022339
+    },
+    {
+      "text": "の",
+      "start": 2.7,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -1.5616295058862306e-05
+    },
+    {
+      "text": "金",
+      "start": 2.84,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -0.0004839917819481343
+    },
+    {
+      "text": "。",
+      "start": 3.22,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -0.054994914680719376
+    },
+    {
+      "text": "避",
+      "start": 4.16,
+      "end": 4.3,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "難",
+      "start": 4.3,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -1.156323378381785e-05
+    },
+    {
+      "text": "者",
+      "start": 4.48,
+      "end": 4.62,
+      "type": "word",
+      "logprob": -0.001700980355963111
+    },
+    {
+      "text": "の",
+      "start": 4.62,
+      "end": 4.7,
+      "type": "word",
+      "logprob": -0.001700980355963111
+    },
+    {
+      "text": "名",
+      "start": 4.7,
+      "end": 4.88,
+      "type": "word",
+      "logprob": -1.9192511899746023e-05
+    },
+    {
+      "text": "簿",
+      "start": 4.9,
+      "end": 5.02,
+      "type": "word",
+      "logprob": -2.312633478140924e-05
+    },
+    {
+      "text": "も",
+      "start": 5.02,
+      "end": 5.12,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "あ",
+      "start": 5.12,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "る",
+      "start": 5.22,
+      "end": 5.38,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "。",
+      "start": 5.38,
+      "end": 5.38,
+      "type": "word",
+      "logprob": -0.02324567921459675
+    }
+  ],
+  "transcription_id": "BEZNk3ksWQs1xO0HMKml",
+  "audio_duration_secs": 5.6
+}

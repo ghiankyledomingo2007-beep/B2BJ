@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "彼らを守るため、道は封鎖した。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.85
+    },
+    "seed": 281028
+  },
+  "voice_id": "FlgZOCPLervz9WebHOWs",
+  "request_id": "AiqryKwGLlxwSPlQ2Wrn",
+  "generated_at": 1793161997.041341
+}

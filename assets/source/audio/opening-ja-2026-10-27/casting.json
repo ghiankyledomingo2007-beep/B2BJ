@@ -1,0 +1,20 @@
+{
+  "RAINORAY": {
+    "voice_id": "kkelxpWuWPklDYfIS9Vf",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    }
+  },
+  "INNER_VOICE": {
+    "voice_id": "Xk94e1zRK34B68WV891i",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "effect": "[0:a]aresample=44100,highpass=f=70,asplit=4[dry][up][down][room];[dry]pan=stereo|c0=c0|c1=c0,volume=0.88[d];[up]rubberband=pitch=1.008:formant=preserved,highpass=f=220,lowpass=f=7200,adelay=18,volume=0.10,pan=stereo|c0=c0|c1=0.18*c0[u];[down]rubberband=pitch=0.992:formant=preserved,highpass=f=220,lowpass=f=7200,adelay=29,volume=0.10,pan=stereo|c0=0.18*c0|c1=c0[l];[room]highpass=f=260,lowpass=f=6200,aecho=0.8:0.7:71|113|179|263|401:0.32|0.26|0.20|0.12|0.07,volume=0.28,pan=stereo|c0=c0|c1=c0,adelay=11|23[r];[d][u][l][r]amix=inputs=4:normalize=0,adelay=190|190[v];[1:a]volume=0.075,afade=t=in:d=0.008,afade=t=out:st=0.22:d=0.38,pan=stereo|c0=c0|c1=c0[c];[v][c]amix=inputs=2:normalize=0,apad=pad_dur=0.45[fx]",
+    "chime_source": "aevalsrc=0.50*sin(2*PI*1046.5*t)*exp(-9*t)+0.28*sin(2*PI*1568*t)*exp(-13*t)+0.12*sin(2*PI*2093*t)*exp(-20*t):s=44100:d=0.6"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "下がって距離を取りましょう。",
+  "words": [
+    {
+      "text": "下",
+      "start": 0.36,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.00010096516780322418
+    },
+    {
+      "text": "が",
+      "start": 0.48,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.00010096516780322418
+    },
+    {
+      "text": "っ",
+      "start": 0.54,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "て",
+      "start": 0.74,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "距",
+      "start": 1.3,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.0017337066819891334
+    },
+    {
+      "text": "離",
+      "start": 1.44,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -0.0017337066819891334
+    },
+    {
+      "text": "を",
+      "start": 1.56,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.023392189294099808
+    },
+    {
+      "text": "取",
+      "start": 1.68,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -0.023392189294099808
+    },
+    {
+      "text": "り",
+      "start": 1.78,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -0.023392189294099808
+    },
+    {
+      "text": "ま",
+      "start": 1.9,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "し",
+      "start": 2.0,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "ょ",
+      "start": 2.08,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "う",
+      "start": 2.12,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "。",
+      "start": 2.22,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -0.00026294111739844084
+    }
+  ],
+  "transcription_id": "UtpW8OdxkkANncEVmTHb",
+  "audio_duration_secs": 3.384
+}

@@ -62,5 +62,6 @@ public final class CampaignVictoryTest {
         var defeat = RuinedOutpostGame.class.getDeclaredMethod("afterGuardianHit", boolean.class);
         defeat.setAccessible(true);
         defeat.invoke(game, false);
+        if(game.wardenVictory()) {assert game.skipDialogue();for(int i=0;i<12;i++)game.update(.05,0,0);}
     }
 }

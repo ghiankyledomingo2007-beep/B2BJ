@@ -12,11 +12,11 @@ public final class ChapterTwoVoicesTest {
             double duration=ChapterOneVoicesTest.duration(key);
             assert duration>.5&&(bark.banter()?duration<5:duration+.15<bark.lineSeconds()) : "forest speech cut off: "+key;
         }
-        assert clips.size()==120 : "complete forest script: "+clips.size();
+        assert clips.size()==124 : "complete forest script: "+clips.size();
         for(String family:new String[]{"attack","heavy","hurt"})for(int i=1;i<=(family.equals("attack")?6:family.equals("heavy")?4:8);i++) {
             double duration=ChapterOneVoicesTest.duration("effort_"+family+"_"+i);
             assert duration>.1&&duration<2.0 : "combat feedback must remain a brief effort";
         }
-        System.out.println("ChapterTwoVoicesTest passed: 120 forest lines, timing, PCM and eighteen combat efforts");
+        System.out.println("ChapterTwoVoicesTest passed: 124 forest lines, timing, PCM and eighteen combat efforts");
     }
 }

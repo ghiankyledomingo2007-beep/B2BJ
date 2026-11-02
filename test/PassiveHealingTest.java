@@ -17,11 +17,11 @@ public final class PassiveHealingTest {
         var hurt=RuinedOutpostGame.class.getDeclaredMethod("hurtPlayer",int.class,double.class,double.class);hurt.setAccessible(true);
         hurt.invoke(game,10,game.player().x()+60,game.player().y());
         assert !game.passiveHealing()&&game.healingDelay()==5;var damaged=hud(panel);
-        assert recovering.getRGB(60,65)!=damaged.getRGB(60,65) : "regeneration changes the HP bar color";
+        assert recovering.getRGB(432,594)!=damaged.getRGB(432,594) : "regeneration changes the HP bar color";
         var events=B2BJ.class.getDeclaredMethod("handleEvents",java.util.List.class);events.setAccessible(true);events.invoke(panel,game.drainEvents());
-        assert hud(panel).getRGB(60,56)!=damaged.getRGB(60,56) : "a real hit flashes the HP bar edge";
+        assert hud(panel).getRGB(432,590)!=damaged.getRGB(432,590) : "a real hit flashes the HP bar edge";
         var reduced=B2BJ.class.getDeclaredField("reducedEffects");reduced.setAccessible(true);reduced.set(panel,true);
-        assert hud(panel).getRGB(60,56)==damaged.getRGB(60,56) : "Reduced Effects disables the new hit flash";
+        assert hud(panel).getRGB(432,590)==damaged.getRGB(432,590) : "Reduced Effects disables the new hit flash";
         hp=game.player().healthValue();advance(game,4.9);assert game.player().healthValue()==hp : "new hit restarts the damage-free wait";
         advance(game,1);assert game.player().healthValue()>hp;
         hp=game.player().healthValue();game.guardian().activate(game.player().x(),game.player().y());game.player().setGodMode(true);

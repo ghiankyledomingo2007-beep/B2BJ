@@ -1,0 +1,163 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999400973320007,
+  "text": "野営地の行方不明者と三人の名前が一致します。",
+  "words": [
+    {
+      "text": "野",
+      "start": 0.4,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.0007003477076068521
+    },
+    {
+      "text": "営",
+      "start": 0.5,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.01864560879766941
+    },
+    {
+      "text": "地",
+      "start": 0.64,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -7.450303382938728e-05
+    },
+    {
+      "text": "の",
+      "start": 0.88,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -7.450303382938728e-05
+    },
+    {
+      "text": "行",
+      "start": 0.92,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -8.272782724816352e-05
+    },
+    {
+      "text": "方",
+      "start": 1.16,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -2.992108420585282e-05
+    },
+    {
+      "text": "不",
+      "start": 1.42,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "明",
+      "start": 1.44,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "者",
+      "start": 1.64,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -0.000263894529780373
+    },
+    {
+      "text": "と",
+      "start": 1.88,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "三",
+      "start": 2.4,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -0.002096242504194379
+    },
+    {
+      "text": "人",
+      "start": 2.52,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "の",
+      "start": 2.7,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "名",
+      "start": 2.74,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "前",
+      "start": 2.92,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "が",
+      "start": 3.12,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -3.2782016205601394e-05
+    },
+    {
+      "text": "一",
+      "start": 3.18,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "致",
+      "start": 3.38,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "し",
+      "start": 3.44,
+      "end": 3.6,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "ま",
+      "start": 3.6,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "す",
+      "start": 3.72,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "。",
+      "start": 3.82,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -0.0010356307029724121
+    }
+  ],
+  "transcription_id": "1UMSTF12ioED6jX2WQjo",
+  "audio_duration_secs": 4.904
+}

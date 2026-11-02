@@ -1,0 +1,37 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5517278909683228,
+  "text": "食らえ！",
+  "words": [
+    {
+      "text": "食",
+      "start": 0.12,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.11945945769548416
+    },
+    {
+      "text": "ら",
+      "start": 0.28,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -1.0251946150674485e-05
+    },
+    {
+      "text": "え",
+      "start": 0.46,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -5.6503606174374e-05
+    },
+    {
+      "text": "！",
+      "start": 0.66,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.2851076126098633
+    }
+  ],
+  "transcription_id": "pIjSn4Tz1IdKF7E26zrL",
+  "audio_duration_secs": 0.828125
+}

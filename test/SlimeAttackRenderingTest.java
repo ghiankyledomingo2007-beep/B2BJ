@@ -57,13 +57,13 @@ public final class SlimeAttackRenderingTest {
     }
     private static void comboFrames(java.lang.reflect.Method draw) throws Exception {
         B2BJ panel=new B2BJ(false);panel.game().begin();
-        panel.game().player().relocate(300,300);
+        panel.game().player().relocate(500,400);
         int[] hashes=new int[3];
         int[] visible=new int[3];
         BufferedImage firstFrame=null;
         for(int cut=0;cut<3;cut++) {
             assert panel.game().attack(1,0);
-            panel.game().update(.2,0,0);
+            panel.game().update(.28,0,0);
             var waves=panel.game().projectiles();
             var wave=waves.get(waves.size()-1);
             var frame=new BufferedImage(320,320,BufferedImage.TYPE_INT_ARGB);

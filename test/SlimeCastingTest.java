@@ -20,10 +20,10 @@ public final class SlimeCastingTest {
             game.update(.11,0,0);
             double x=game.player().x();game.update(.1,1,0);
             close(game.player().x()-x,26);
-            game.update(.28,0,0);
+            game.update(tide?.28:.08,0,0);
             assert !game.attack(1,0) : "movement recovers before the shot cooldown";
             game.update(.02,0,0);
-            assert game.attack(1,0) : "next cast available after 0.60 seconds";
+            assert game.attack(1,0) : "light casts recover in 0.40s; Tide keeps its 0.60s recovery";
         }
         var wave=new WaterProjectile(0,0,1,0,false);
         assert wave.damage()==18 : "basic water stays weaker than Blade";

@@ -81,7 +81,16 @@ public final class GameAudio {
         BRIAR_SEEDS(0.40, 900, 420, 0.20, true),
         BRIAR_CAGE(0.68, 300, 110, 0.26, true),
         WARDEN_STRAIN(0.58, 82, 135, 0.20, true),
-        WARDEN_SLAM(0.78, 102, 41, 0.30, true);
+        WARDEN_SLAM(0.78, 102, 41, 0.30, true),
+        // Approved void bank: keep pitch fixed so the authored contact stays on time.
+        VOID_CHARGE(.50, 73, 78, .20, false, null, false),
+        VOID_DASH(.42, 440, 146, .22, true, null, false),
+        VOID_RUPTURE(2.15, 110, 55, .24, true, null, false),
+        SEAM_FRACTURE(.90, 196, 98, .20, true, null, false),
+        PARRY_CLASH(.75, 784, 392, .20, false, null, false),
+        COUNTER_CUT(.45, 587, 660, .20, true, null, false),
+        EMPOWER_CHARGE(1.10, 82, 110, .18, false, null, false),
+        HEAVY_CLEAVE(1.45, 146, 55, .24, true, null, false);
 
         private final double duration;
         private final double startFrequency;
@@ -125,7 +134,9 @@ public final class GameAudio {
         TITLE_MUSIC("title_music", 0.0, true, 1.8),
         STORY_MUSIC("title_music", 0.0, true, 1.8),
         // the slime eating a remain: plays once, and can be stopped if the eat is cut short
-        EATING("eating", 0.0, false, 1.0, true);
+        EATING("eating", 0.0, false, 1.0, true),
+        DEVOUR("devour_cast", 0.0, false, .65, true),
+        BLADE_CHARGE("void_hold", 0.0, false, .5);
 
         final String family;
         final double gapSeconds;          // silence between repeats (a heartbeat is not continuous)
@@ -148,9 +159,8 @@ public final class GameAudio {
         }
     }
 
-    /** The recorded track is full scale and the music slider defaults to 0.25: 3.0 plays it at 0.75 there,
-     *  just under the effects. The mixer caps slider x level at 1 so a high slider can't clip it. */
-    private static final double BOSS_MUSIC_LEVEL = 3.0;
+    /** The mastered battle track sits below dialogue; the music slider defaults to 0.25. */
+    private static final double BOSS_MUSIC_LEVEL = 1.8;
 
     private static final int SAMPLE_RATE = 22_050;
     private static final AudioFormat FORMAT = new AudioFormat(
@@ -177,6 +187,27 @@ public final class GameAudio {
         if (!Double.isFinite(delaySeconds) || delaySeconds < 0) throw new IllegalArgumentException("Invalid delay");
         if (muted || masterVolume == 0 || sfxVolume == 0) return;
         addVoice(new Voice(voicePcm(cue, take(cue), pitch(cue)), (int) Math.round(delaySeconds * SAMPLE_RATE), null, 0));
+    }
+
+    /** Align an authored contact to a live event; late events skip the cue's pre-roll. */
+    public static void playSynced(Cue cue, double secondsToContact, double contactOffset) {
+        playSynced(cue,take(cue),secondsToContact,contactOffset);
+    }
+    public static void playSynced(Cue cue, int take, double secondsToContact, double contactOffset) {
+        java.util.Objects.requireNonNull(cue, "cue");
+        if (take < 0 || !Double.isFinite(secondsToContact) || secondsToContact < 0
+                || !Double.isFinite(contactOffset) || contactOffset < 0)
+            throw new IllegalArgumentException("Invalid contact timing");
+        if (muted || masterVolume == 0 || sfxVolume == 0) return;
+        byte[] pcm = voicePcm(cue, take, 1);
+        int skip = (int)Math.min(pcm.length / 2, Math.round(Math.max(0, contactOffset - secondsToContact) * SAMPLE_RATE));
+        if (skip > 0) {
+            pcm = java.util.Arrays.copyOfRange(pcm, skip * 2, pcm.length);
+            int fade = Math.min(44, pcm.length / 2);
+            for (int i = 0; i < fade; i++) put(pcm, i * 2, (int)Math.round(sample(pcm, i * 2) * i / (double)fade));
+        }
+        if (pcm.length > 0) addVoice(new Voice(pcm,
+                (int)Math.min(Integer.MAX_VALUE, Math.round(Math.max(0, secondsToContact - contactOffset) * SAMPLE_RATE)), null, 0));
     }
 
     // ---------------------------------------------------------------- the mixer
@@ -235,6 +266,13 @@ public final class GameAudio {
 
     private static final java.util.List<Voice> VOICES = new java.util.ArrayList<>();
     private static final java.util.Map<String, byte[]> DIALOGUE = new java.util.HashMap<>();
+    public enum OpeningClip {
+        MEMORY, AWAKEN, RECONSTRUCT, HUMAN, WAKE;
+        private byte[] pcm;
+    }
+    private static OpeningClip openingClip;
+    private static Voice openingVoice;
+    private static boolean openingPaused;
     private static String dialogueKey;
     private static Voice dialogueVoice;
     private static Voice effortVoice;
@@ -242,6 +280,8 @@ public final class GameAudio {
     private static final int[] effortTake=new int[3];
     private static boolean dialoguePaused;
     private static volatile double dialogueLevel;
+    private static double speechMusicLevel=1;
+    private static double[] speechMusicGain=new double[CHUNK];
     private static Thread mixer;
     private static long musicSample;
 
@@ -258,6 +298,18 @@ public final class GameAudio {
             if(!DIALOGUE.containsKey(key))DIALOGUE.put(key,readWav("/assets/audio/dialogue/"+key+".wav"));
             byte[] pcm=DIALOGUE.get(key);
             if(pcm!=null&&pcm.length>=2)dialogueVoice=new Voice(pcm,0,null,0);
+        }
+    }
+
+    /** One authored sound bed per opening shot; pause preserves its exact playback position. */
+    public static void setOpeningSound(OpeningClip clip,boolean paused) {
+        synchronized(VOICES) {
+            openingPaused=paused;
+            if(clip==openingClip)return;
+            openingClip=clip;openingVoice=null;
+            if(clip==null)return;
+            if(clip.pcm==null)clip.pcm=readWav("/assets/audio/opening_"+clip.name().toLowerCase(java.util.Locale.ROOT)+".wav");
+            if(clip.pcm!=null&&clip.pcm.length>=2)openingVoice=new Voice(clip.pcm,0,null,0);
         }
     }
 
@@ -351,8 +403,19 @@ public final class GameAudio {
 
     static void mixVoices(int[] sum) {
         double sfx = muted ? 0 : masterVolume * sfxVolume * (dialogueDuck()<1?.5:1);
-        double music = muted ? 0 : masterVolume * musicVolume * duckGain() * dialogueDuck();
+        double music = muted ? 0 : masterVolume * musicVolume * duckGain();
         synchronized (VOICES) {
+            // Ease down in 60ms and recover over 450ms; both music sources share this sample clock.
+            if(speechMusicGain.length<sum.length)speechMusicGain=new double[sum.length];
+            double target=dialogueDuck(),step=.65/(SAMPLE_RATE*(target<speechMusicLevel?.06:.45));
+            for(int i=0;i<sum.length;i++) {
+                speechMusicLevel+=Math.max(-step,Math.min(step,target-speechMusicLevel));
+                speechMusicGain[i]=speechMusicLevel;
+            }
+            if(openingVoice!=null&&!openingPaused) {
+                for(int index=0;index<sum.length;index++)sum[index]+=(int)Math.round(openingVoice.next()*sfx);
+                if(openingVoice.done())openingVoice=null;
+            }
             if(!dialoguePaused) {
                 effortCooldown=Math.max(0,effortCooldown-sum.length);
                 if(effortVoice!=null) {
@@ -375,7 +438,8 @@ public final class GameAudio {
                 Voice voice = it.next();
                 double gain = voice.loop == null ? sfx
                         : (voice.loop.music ? Math.min(1, music * voice.loop.level) : sfx) * LOOP_GAIN[voice.loop.ordinal()];
-                for (int index = 0; index < sum.length; index++) sum[index] += (int) Math.round(voice.next() * gain);
+                for (int index = 0; index < sum.length; index++)
+                    sum[index] += (int) Math.round(voice.next() * gain * (voice.loop!=null&&voice.loop.music?speechMusicGain[index]:1));
                 if (voice.done()) it.remove();
             }
         }
@@ -387,9 +451,10 @@ public final class GameAudio {
         double pad = loopRunning(Loop.BOSS_MUSIC) ? 1 - LOOP_GAIN[Loop.BOSS_MUSIC.ordinal()] : 1;
         if (pad <= 0) return;
         byte[] music = renderMusicChunk(musicBiome, musicBlade, musicSample, sum.length,
-                masterVolume * musicVolume * duckGain() * dialogueDuck() * pad);
+                masterVolume * musicVolume * duckGain() * pad);
         musicSample += sum.length;
-        for (int index = 0; index < sum.length; index++) sum[index] += sample(music, index * 2);
+        for (int index = 0; index < sum.length; index++)
+            sum[index] += (int)Math.round(sample(music,index*2)*speechMusicGain[index]);
     }
 
     // ---------------------------------------------------------------- packaged recordings

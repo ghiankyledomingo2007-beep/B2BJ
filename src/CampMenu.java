@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 /**
  * Camp services open on demand; purchases still go through the game's save and price guards.
- * Drawn entirely from the pixel kit: each upgrade is a card with its icon, rank pips and a shard cost
+ * Each upgrade shares the heraldic menus' frame, icon, rank pips and a shard cost
  * that turns red when it cannot be paid; the actions along the bottom are key prompts.
  */
 @SuppressWarnings("serial")
@@ -98,21 +98,22 @@ final class CampMenu extends JPanel {
         leave.setBounds(getWidth()-SIDE-promptWidth("U","LEAVE"),y,promptWidth("U","LEAVE"),36);
     }
 
-    private static int promptWidth(String key, String label) { return Ui.keycapWidth(key)+10+Ui.width(label,2); }
+    private int promptWidth(String key,String label) {
+        return Ui.keycapWidth(key)+10+getFontMetrics(Ui.menuFont(14)).stringWidth(label);
+    }
 
     @Override protected void paintComponent(Graphics graphics) {
         var g=(Graphics2D)graphics.create();
         Ui.crisp(g);
         int w=getWidth(),h=getHeight();
-        Ui.window(g,0,0,w,h);
-        Ui.drawTitleCentered(g,"FIELD CAMP",w/2,30,3,Ui.GOLD_RAMP);
-        Ui.divider(g,w/2,80,180,Ui.GOLD);
-        Ui.textCentered(g,status,w/2,106,2,Ui.MUTED);
+        JourneyHud.frame(g,5,5,w-10,h-10);
+        JourneyHud.center(g,"Field Camp",w/2,61,Ui.menuFont(32),MenuTheme.IVORY);
+        JourneyHud.center(g,status,w/2,106,Ui.heading(14),MenuTheme.MUTED);
         // Shards on hand, top right.
         String shards=Integer.toString(game.shards());
-        int sx=w-SIDE-8-Ui.width(shards,2);
-        Ui.icon(g,Ui.Icon.SHARD,sx-30,30);
-        Ui.text(g,shards,sx,50,2,Ui.GOLD_LIGHT);
+        int sx=w-SIDE-8-g.getFontMetrics(JourneyHud.LABEL).stringWidth(shards);
+        TitleIcons.draw(g,Ui.Icon.SHARD,sx-28,34,20,false,true);
+        JourneyHud.text(g,shards,sx,52,JourneyHud.LABEL,JourneyHud.GOLD);
         for(int i=0;i<upgrades.length;i++)row(g,i);
         if(rest.isVisible())prompt(g,rest,"H","REST & SAVE");
         if(talk.isVisible())prompt(g,talk,"E","TALK TO SHUNA");
@@ -125,44 +126,38 @@ final class CampMenu extends JPanel {
         int x=slot.getX(),y=slot.getY(),w=slot.getWidth();
         int level=game.upgradeLevel(TRACKS[i]),max=max(i),cost=game.upgradeCost(TRACKS[i]);
         boolean mastered=level>=max,affordable=game.shards()>=cost;
-        Ui.nine(g,slot.hot()?Ui.Piece.BUTTON_HOT:Ui.Piece.PANEL,x,y,w,ROW_H);
+        var frame=(Graphics2D)g.create();frame.translate(x,y);MenuTheme.row(frame,w,ROW_H,slot.hot(),slot.getModel().isPressed());frame.dispose();
         Ui.keycap(g,Integer.toString(i+1),x+14,y+18);
-        Ui.nine(g,Ui.Piece.INSET,x+52,y+12,40,40);
-        Ui.icon(g,ICONS[i],x+60,y+20);
-        Color name=mastered?Ui.MUTED:Ui.TEXT;
-        Ui.text(g,NAMES[i].toUpperCase(java.util.Locale.ROOT),x+106,y+28,2,name);
-        Ui.text(g,DETAILS[i],x+106,y+50,2,Ui.MUTED);
+        TitleIcons.draw(g,ICONS[i],x+57,y+16,32,slot.hot(),!mastered);
+        Color name=mastered?MenuTheme.MUTED:MenuTheme.IVORY;
+        JourneyHud.text(g,NAMES[i],x+106,y+28,JourneyHud.LABEL,name);
+        JourneyHud.text(g,DETAILS[i],x+106,y+50,Ui.heading(14),MenuTheme.MUTED);
         // Rank pips beside the name: filled gold for bought ranks, dim sockets for the rest.
-        int px=x+106+Ui.width(NAMES[i].toUpperCase(java.util.Locale.ROOT),2)+14;
+        int px=x+106+g.getFontMetrics(JourneyHud.LABEL).stringWidth(NAMES[i])+14;
         for(int n=0;n<max;n++)pip(g,px+n*16,y+14,n<level);
         int right=x+w-18;
         if(mastered) {
-            Ui.textRight(g,"MASTERED",right,y+40,2,Ui.TEAL);
+            JourneyHud.right(g,"Mastered",right,y+29,Ui.menuFont(13),Ui.CYAN);
         } else {
             String price=Integer.toString(cost);
-            int tx=right-Ui.width(price,2);
-            Ui.icon(g,Ui.Icon.SHARD,tx-30,y+20);
-            Ui.text(g,price,tx,y+40,2,affordable?Ui.GOLD_LIGHT:Ui.DANGER);
+            int tx=right-g.getFontMetrics(JourneyHud.LABEL).stringWidth(price);
+            TitleIcons.draw(g,Ui.Icon.SHARD,tx-28,y+14,20,false,true);
+            JourneyHud.text(g,price,tx,y+32,JourneyHud.LABEL,affordable?JourneyHud.GOLD:Ui.DANGER);
         }
     }
 
-    /** A 10 px diamond on the 2x grid. */
+    /** Rank diamonds use the same ivory and gold as the resource ribbon. */
     private static void pip(Graphics2D g,int x,int y,boolean filled) {
-        int[][] rows={{4,2},{2,6},{0,10},{2,6},{4,2}};
-        for(int r=0;r<rows.length;r++) {
-            g.setColor(Ui.INK);g.fillRect(x+rows[r][0]-2,y+r*2,rows[r][1]+4,2);
-        }
-        for(int r=0;r<rows.length;r++) {
-            g.setColor(filled?(r<2?Ui.GOLD_LIGHT:Ui.GOLD):new Color(0x2a2a3c));
-            g.fillRect(x+rows[r][0],y+r*2,rows[r][1],2);
-        }
+        var rank=(Graphics2D)g.create();
+        if(!filled)rank.setComposite(java.awt.AlphaComposite.SrcOver.derive(.3f));
+        JourneyHud.diamond(rank,x+5,y+7,5);rank.dispose();
     }
 
     private static void prompt(Graphics2D g,Slot slot,String key,String label) {
         int x=slot.getX(),y=slot.getY();
         int kw=Ui.keycap(g,key,x,y+4);
         boolean hot=slot.hot();
-        Ui.text(g,label,x+kw+10,y+24,2,hot?Ui.GOLD_LIGHT:Ui.TEXT);
-        if(hot){g.setColor(Ui.GOLD);g.fillRect(x+kw+10,y+32,Ui.width(label,2),2);}
+        JourneyHud.text(g,label,x+kw+10,y+23,Ui.menuFont(14),hot?Ui.CYAN:MenuTheme.IVORY);
+        if(hot){g.setColor(Ui.CYAN);g.fillRect(x+kw+10,y+32,g.getFontMetrics(Ui.menuFont(14)).stringWidth(label),1);}
     }
 }

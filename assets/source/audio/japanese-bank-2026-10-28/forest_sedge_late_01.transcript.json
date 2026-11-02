@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "根が緩んだ。岸ごと崩れるのかと思ったぞ。",
+  "words": [
+    {
+      "text": "根",
+      "start": 0.18,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.00018654513405635953
+    },
+    {
+      "text": "が",
+      "start": 0.38,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -5.364403477869928e-06
+    },
+    {
+      "text": "緩",
+      "start": 0.6,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -0.008822744712233543
+    },
+    {
+      "text": "ん",
+      "start": 0.76,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -2.1576648578047752e-05
+    },
+    {
+      "text": "だ",
+      "start": 0.92,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -2.1576648578047752e-05
+    },
+    {
+      "text": "。",
+      "start": 1.04,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -0.0009785869624465704
+    },
+    {
+      "text": "岸",
+      "start": 1.78,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -0.05208474025130272
+    },
+    {
+      "text": "ご",
+      "start": 1.98,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.0001234931987710297
+    },
+    {
+      "text": "と",
+      "start": 2.08,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -0.0001234931987710297
+    },
+    {
+      "text": "崩",
+      "start": 2.28,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "れ",
+      "start": 2.44,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -1.811964830267243e-05
+    },
+    {
+      "text": "る",
+      "start": 2.54,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -1.811964830267243e-05
+    },
+    {
+      "text": "の",
+      "start": 2.62,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -1.1205610462639015e-05
+    },
+    {
+      "text": "か",
+      "start": 2.72,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -1.1205610462639015e-05
+    },
+    {
+      "text": "と",
+      "start": 2.82,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "思",
+      "start": 2.94,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "っ",
+      "start": 3.06,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "た",
+      "start": 3.14,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "ぞ",
+      "start": 3.26,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 3.38,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.01815124973654747
+    }
+  ],
+  "transcription_id": "OpkzFrqONboo55vFuNOg",
+  "audio_duration_secs": 3.68
+}

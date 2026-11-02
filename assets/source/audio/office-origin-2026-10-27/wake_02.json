@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "何が……起きたんだ？",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "request_id": "XCC4MMyrHXA0IaucNKDY",
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "generated_at": 1793115924.9376624
+}

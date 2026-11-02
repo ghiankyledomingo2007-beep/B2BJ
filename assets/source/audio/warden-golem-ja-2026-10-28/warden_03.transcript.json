@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "彼らを守るため、道は封鎖した。",
+  "words": [
+    {
+      "text": "彼",
+      "start": 0.2,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -2.9444261599564925e-05
+    },
+    {
+      "text": "ら",
+      "start": 0.34,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.019801557064056396
+    },
+    {
+      "text": "を",
+      "start": 0.52,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "守",
+      "start": 0.74,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "る",
+      "start": 0.92,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "た",
+      "start": 1.12,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -8.749579137656838e-05
+    },
+    {
+      "text": "め",
+      "start": 1.28,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -8.749579137656838e-05
+    },
+    {
+      "text": "、",
+      "start": 1.4,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.0032400989439338446
+    },
+    {
+      "text": "道",
+      "start": 2.22,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -0.002879641717299819
+    },
+    {
+      "text": "は",
+      "start": 2.52,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "封",
+      "start": 2.68,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -0.00018034738604910672
+    },
+    {
+      "text": "鎖",
+      "start": 2.92,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -7.712543447269127e-05
+    },
+    {
+      "text": "し",
+      "start": 3.12,
+      "end": 3.28,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "た",
+      "start": 3.28,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "。",
+      "start": 3.38,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.008614758029580116
+    }
+  ],
+  "transcription_id": "y90U9khFwOrtJ2ZyKjFf",
+  "audio_duration_secs": 3.86
+}

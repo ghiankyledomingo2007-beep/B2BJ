@@ -1,0 +1,30 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.7839486598968506,
+  "text": "全員。",
+  "words": [
+    {
+      "text": "全",
+      "start": 0.16,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -2.9802276912960224e-06
+    },
+    {
+      "text": "員",
+      "start": 0.56,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -2.9802276912960224e-06
+    },
+    {
+      "text": "。",
+      "start": 0.68,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.47413983941078186
+    }
+  ],
+  "transcription_id": "QVoEEKg3SIVtjVnXge0U",
+  "audio_duration_secs": 1.04
+}

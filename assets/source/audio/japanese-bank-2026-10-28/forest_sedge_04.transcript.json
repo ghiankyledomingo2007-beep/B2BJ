@@ -1,0 +1,198 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9996446967124939,
+  "text": "そうえいだ。帰り道に印をつけたが、根が何度も塞ぎ直す。",
+  "words": [
+    {
+      "text": "そ",
+      "start": 0.14,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -0.05659109354019165
+    },
+    {
+      "text": "う",
+      "start": 0.22,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.05659109354019165
+    },
+    {
+      "text": "え",
+      "start": 0.34,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -0.7478015422821045
+    },
+    {
+      "text": "い",
+      "start": 0.44,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.8355728387832642
+    },
+    {
+      "text": "だ",
+      "start": 0.46,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.8355728387832642
+    },
+    {
+      "text": "。",
+      "start": 0.58,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.0002802217786666006
+    },
+    {
+      "text": "帰",
+      "start": 1.38,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -3.8265450712060556e-05
+    },
+    {
+      "text": "り",
+      "start": 1.5,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -3.8265450712060556e-05
+    },
+    {
+      "text": "道",
+      "start": 1.72,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -6.437280717364047e-06
+    },
+    {
+      "text": "に",
+      "start": 1.84,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -0.008660850115120411
+    },
+    {
+      "text": "印",
+      "start": 2.08,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -1.8715683836489916e-05
+    },
+    {
+      "text": "を",
+      "start": 2.34,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -0.0005013877525925636
+    },
+    {
+      "text": "つ",
+      "start": 2.46,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -0.026308458298444748
+    },
+    {
+      "text": "け",
+      "start": 2.56,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -0.026308458298444748
+    },
+    {
+      "text": "た",
+      "start": 2.62,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -0.026308458298444748
+    },
+    {
+      "text": "が",
+      "start": 2.86,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -0.00011979816190432757
+    },
+    {
+      "text": "、",
+      "start": 2.9,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -0.0015779199311509728
+    },
+    {
+      "text": "根",
+      "start": 3.36,
+      "end": 3.6,
+      "type": "word",
+      "logprob": -0.00014172980445437133
+    },
+    {
+      "text": "が",
+      "start": 3.6,
+      "end": 3.8,
+      "type": "word",
+      "logprob": -4.291525328881107e-06
+    },
+    {
+      "text": "何",
+      "start": 3.8,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "度",
+      "start": 3.96,
+      "end": 4.08,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "も",
+      "start": 4.08,
+      "end": 4.28,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "塞",
+      "start": 4.28,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -0.04353715479373932
+    },
+    {
+      "text": "ぎ",
+      "start": 4.42,
+      "end": 4.48,
+      "type": "word",
+      "logprob": -4.1960789531003684e-05
+    },
+    {
+      "text": "直",
+      "start": 4.54,
+      "end": 4.7,
+      "type": "word",
+      "logprob": -0.020642563700675964
+    },
+    {
+      "text": "す",
+      "start": 4.7,
+      "end": 4.82,
+      "type": "word",
+      "logprob": -1.0490362910786644e-05
+    },
+    {
+      "text": "。",
+      "start": 4.82,
+      "end": 4.82,
+      "type": "word",
+      "logprob": -0.011048685759305954
+    }
+  ],
+  "transcription_id": "e3IO35jOQMGxVceQ9AET",
+  "audio_duration_secs": 5.2
+}

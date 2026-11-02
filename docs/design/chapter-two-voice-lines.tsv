@@ -25,7 +25,7 @@ forest_moonwell_02.wav	INNER_VOICE	UNDER THE SURFACE	Its roots are cut. The wate
 forest_moonwell_03.wav	RAINORAY	UNDER THE SURFACE	Then that thing is drinking the river.
 forest_orchard_01.wav	RAINORAY	THE LAST HARVEST	Someone left the good fruit within reach. Took the bruised ones.
 forest_orchard_02.wav	INNER_VOICE	THE LAST HARVEST	For whoever followed them.
-forest_orchard_03.wav	RAINORAY	THE LAST HARVEST	We packed our van like that. Best supplies where people could reach them.
+forest_orchard_03.wav	RAINORAY	THE LAST HARVEST	They saved the best supplies for people who needed them.
 forest_briarheart_01.wav	RAINORAY	WHAT HOLDS THE ROAD	Those are stretcher poles caught in its roots.
 forest_briarheart_02.wav	INNER_VOICE	WHAT HOLDS THE ROAD	The entrance is behind it. I can hear movement below.
 forest_briarheart_03.wav	RAINORAY	WHAT HOLDS THE ROAD	Then we make a path. Keep an eye on the ground for me.
@@ -57,8 +57,11 @@ bark_forest_fight_sit_2.wav	INNER_VOICE	EXPLORATION	I was about to.
 bark_forest_camp_return.wav	INNER_VOICE	EXPLORATION	The boat is still there.
 bark_forest_camp_return_2.wav	RAINORAY	EXPLORATION	Good. I like knowing we can go back.
 bark_forest_identify_imp.wav	INNER_VOICE	EXPLORATION	Rift Imp. It strikes twice. Wait for both.
+bark_forest_identify_imp_2.wav	RAINORAY	EXPLORATION	Two swings. Got it.
 bark_forest_identify_wolf.wav	INNER_VOICE	EXPLORATION	Thorn Wolf. Give those jaws some room.
+bark_forest_identify_wolf_2.wav	RAINORAY	EXPLORATION	Yeah, I saw those teeth.
 bark_forest_identify_shaman.wav	INNER_VOICE	EXPLORATION	Mire Shaman. It'll curse the ground.
+bark_forest_identify_shaman_2.wav	RAINORAY	EXPLORATION	Standing still was a bad idea, huh.
 bark_forest_crossing.wav	RAINORAY	EXPLORATION	Those roots weren't there a moment ago.
 bark_forest_crossing_2.wav	INNER_VOICE	EXPLORATION	They move when the heart tightens.
 bark_forest_grove.wav	RAINORAY	EXPLORATION	The cloth is caught up there.
@@ -106,6 +109,7 @@ bark_forest_camp_boat_2.wav	INNER_VOICE	EXPLORATION	The people he guards could n
 bark_forest_boss_start.wav	INNER_VOICE	EXPLORATION	I'll watch how the roots move. Stay clear.
 bark_forest_boss_start_2.wav	RAINORAY	EXPLORATION	Tell me when that heart opens.
 bark_forest_boss_read.wav	INNER_VOICE	EXPLORATION	The roots follow a pattern. I can read it now.
+bark_forest_boss_read_2.wav	RAINORAY	EXPLORATION	All right. I'm listening.
 bark_forest_boss_open.wav	INNER_VOICE	EXPLORATION	It's open. Strike the heart.
 bark_forest_boss_phase.wav	INNER_VOICE	EXPLORATION	It's drawing more roots in. Watch the gaps.
 bark_forest_boss_phase_2.wav	RAINORAY	EXPLORATION	I see them. Keep talking.

@@ -14,6 +14,7 @@ public final class AttackSlotsTest {
         var defeat = RuinedOutpostGame.class.getDeclaredMethod("afterGuardianHit", boolean.class);
         defeat.setAccessible(true);
         defeat.invoke(game, false);
+        assert game.skipDialogue();for(int i=0;i<12;i++)game.update(.05,0,0);
         var exit = game.campaignArea().exit();
         game.player().relocate(exit.x(), exit.y());
         assert game.interact()&&game.dialogue()==OutpostDialogue.GATE;

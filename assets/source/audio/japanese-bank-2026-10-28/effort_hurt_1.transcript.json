@@ -1,0 +1,30 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9910346865653992,
+  "text": "ああ。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.08,
+      "end": 0.2,
+      "type": "word",
+      "logprob": -0.7318369150161743
+    },
+    {
+      "text": "あ",
+      "start": 0.2,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -0.7318369150161743
+    },
+    {
+      "text": "。",
+      "start": 0.22,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -0.002476722002029419
+    }
+  ],
+  "transcription_id": "HZvo0My0MnTNjbsl0GEr",
+  "audio_duration_secs": 0.7
+}

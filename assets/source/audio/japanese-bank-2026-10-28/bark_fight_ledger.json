@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "こんなの、物資の一覧にはなかったぞ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "UNNAuZaLo6WQVjX9WI7q",
+  "generated_at": 1793156229.7066653
+}

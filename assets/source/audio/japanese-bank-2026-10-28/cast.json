@@ -1,0 +1,155 @@
+{
+  "MARA": {
+    "character": "Shuna",
+    "voice_id": "K4K6BTclwhxowAzvqVs9",
+    "library_voice_id": "K4K6BTclwhxowAzvqVs9",
+    "library_name": "Tomo - Natural, Clear",
+    "description": "A Japanese female voice with a natural, clear, and gentle tone. Medium to medium-high pitch, with a conversational speaking style and a calm, expressive delivery. Suitable for storytelling, emotional narration, letters, audiobooks, and heartfelt messages. The voice should sound natural, sincere, and easy to listen to, with clear Japanese pronunciation and subtle emotional nuance.",
+    "language": "ja",
+    "direction": "gentle, protective young woman",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "audition_seed": 281026,
+    "selection": "role-matched native Japanese library voice; not an anime actor clone",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  },
+  "ILSE": {
+    "character": "Eren",
+    "voice_id": "MhnQB6oLKSlS0AIJzxtO",
+    "library_voice_id": "MhnQB6oLKSlS0AIJzxtO",
+    "library_name": "Konomi - Soft & Friendly",
+    "description": "A soft and friendly female voice in her twenties. Warm, clear, and natural, well suited for game characters, narration, customer guidance, and conversational content. Speaks natural Japanese and clear English.",
+    "language": "ja",
+    "direction": "bright young scout",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "audition_seed": 281026,
+    "selection": "role-matched native Japanese library voice; not an anime actor clone",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  },
+  "TOBIN": {
+    "character": "Kaijin",
+    "voice_id": "JOcmGzB8OFjY8MhjHHEf",
+    "library_voice_id": "JOcmGzB8OFjY8MhjHHEf",
+    "library_name": "Jun - Calm, Clear and Husky",
+    "description": "This is the voice of a middle-aged to elderly Japanese speaker. It is intended for use in calm narration and similar applications.",
+    "language": "ja",
+    "direction": "older husky craftsman",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "audition_seed": 281026,
+    "selection": "role-matched native Japanese library voice; not an anime actor clone",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  },
+  "VENN": {
+    "character": "Rigurd",
+    "voice_id": "C6EwdDpfpjUWhKn1xeaG",
+    "library_voice_id": "C6EwdDpfpjUWhKn1xeaG",
+    "library_name": "Makoto - Calm 60s Japanese",
+    "description": "Makoto is a deep, composed, and reassuring Japanese male voice in his 60s. Unshakable and calm under any context, this voice brings exceptional maturity, trust, and clarity to every text. Perfect for audiobooks, documentary narrations, business explanations, educational content, and reflective stories.",
+    "language": "ja",
+    "direction": "mature, warm and dignified",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "audition_seed": 281026,
+    "selection": "role-matched native Japanese library voice; not an anime actor clone",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  },
+  "SEDGE": {
+    "character": "Souei",
+    "voice_id": "ryhbQQcVkNTeQtW8EuqB",
+    "library_voice_id": "ryhbQQcVkNTeQtW8EuqB",
+    "library_name": "Haruki - Calm & Trustworthy Narrator",
+    "description": "A calm, gentle male voice with a soft low tone and steady pacing. Ideal for narration, audiobooks, bedtime stories, documentaries and meditation.",
+    "language": "ja",
+    "direction": "quiet, restrained low voice",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "audition_seed": 281026,
+    "selection": "role-matched native Japanese library voice; not an anime actor clone",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  },
+  "WARDEN": {
+    "character": "Outpost Warden",
+    "voice_id": "AzXhp77fg6sHrgy2EtLn",
+    "library_voice_id": "AzXhp77fg6sHrgy2EtLn",
+    "library_name": "Taniguchi – A calm, husky, low-pitched",
+    "description": "A calm, husky, low-pitched voice that delivers clear, easy-to-understand Japanese. It is well-suited for content requiring a composed, steady tone—such as explanatory videos, narration, or dramatic readings.\n",
+    "language": "ja",
+    "direction": "low husky authority with restrained armor resonance",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "audition_seed": 281026,
+    "selection": "role-matched native Japanese library voice; not an anime actor clone",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  },
+  "RAINORAY": {
+    "character": "RAINORAY",
+    "display_name": "Rainoray",
+    "language": "ja",
+    "selected_take": "B",
+    "status": "user_selected",
+    "selected_date": "2026-10-27",
+    "voice_id": "kkelxpWuWPklDYfIS9Vf",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "audition_seed": 271026,
+    "sample": "Rainoray-B.mp3",
+    "master": "Rainoray-B.wav",
+    "master_sha256": "869d62a79809f199ef54281b2effb9ca09148d2501840588633dd4d1f5a7586e",
+    "source_metadata": "/home/ghiankylledomingo/tmp/b2bj-japanese-voices-v2-2026-10-27/rainoray-clean-clone.json",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  },
+  "INNER_VOICE": {
+    "character": "INNER_VOICE",
+    "display_name": "Raphael / Sage",
+    "language": "ja",
+    "status": "voice_approved_effect_working_default",
+    "approved_date": "2026-10-27",
+    "voice_id": "Xk94e1zRK34B68WV891i",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "audition_seed": 271027,
+    "working_effect_take": "B",
+    "effect": "[0:a]aresample=44100,highpass=f=70,asplit=4[dry][up][down][room];[dry]pan=stereo|c0=c0|c1=c0,volume=0.88[d];[up]rubberband=pitch=1.008:formant=preserved,highpass=f=220,lowpass=f=7200,adelay=18,volume=0.10,pan=stereo|c0=c0|c1=0.18*c0[u];[down]rubberband=pitch=0.992:formant=preserved,highpass=f=220,lowpass=f=7200,adelay=29,volume=0.10,pan=stereo|c0=0.18*c0|c1=c0[l];[room]highpass=f=260,lowpass=f=6200,aecho=0.8:0.7:71|113|179|263|401:0.32|0.26|0.20|0.12|0.07,volume=0.28,pan=stereo|c0=c0|c1=c0,adelay=11|23[r];[d][u][l][r]amix=inputs=4:normalize=0,adelay=190|190[v];[1:a]volume=0.075,afade=t=in:d=0.008,afade=t=out:st=0.22:d=0.38,pan=stereo|c0=c0|c1=c0[c];[v][c]amix=inputs=2:normalize=0,apad=pad_dur=0.45[fx]",
+    "chime_source": "aevalsrc=0.50*sin(2*PI*1046.5*t)*exp(-9*t)+0.28*sin(2*PI*1568*t)*exp(-13*t)+0.12*sin(2*PI*2093*t)*exp(-20*t):s=44100:d=0.6",
+    "master": "two-pass -19 LUFS, -3dBTP, stereo PCM16 44.1kHz",
+    "sample": "Sage-B.mp3",
+    "master_file": "Sage-B.wav",
+    "master_sha256": "cabd81378bca6e7d4681f52f2d36d6688f30697630062a6b207e8df68db6503d",
+    "selection_basis": "User approved the replay with \"ye sthats it\" without explicitly choosing A or B. Stronger-echo B retained as the stated working default.",
+    "runtime_installed": true,
+    "runtime_install_date": "2026-10-28"
+  }
+}

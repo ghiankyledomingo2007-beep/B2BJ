@@ -1,0 +1,121 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9998801350593567,
+  "text": "まだこの仕事が終わっていません。",
+  "words": [
+    {
+      "text": "ま",
+      "start": 0.32,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -5.8530047681415454e-05
+    },
+    {
+      "text": "だ",
+      "start": 0.42,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -5.8530047681415454e-05
+    },
+    {
+      "text": "こ",
+      "start": 0.86,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.00012385078298393637
+    },
+    {
+      "text": "の",
+      "start": 1.02,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.00012385078298393637
+    },
+    {
+      "text": "仕",
+      "start": 1.12,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "事",
+      "start": 1.32,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "が",
+      "start": 1.5,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -2.1219027985353023e-05
+    },
+    {
+      "text": "終",
+      "start": 1.6,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -2.1219027985353023e-05
+    },
+    {
+      "text": "わ",
+      "start": 1.7,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -2.1219027985353023e-05
+    },
+    {
+      "text": "っ",
+      "start": 1.72,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -0.00012051333033014089
+    },
+    {
+      "text": "て",
+      "start": 1.86,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -0.00012051333033014089
+    },
+    {
+      "text": "い",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.00012051333033014089
+    },
+    {
+      "text": "ま",
+      "start": 2.04,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -1.5139465176616795e-05
+    },
+    {
+      "text": "せ",
+      "start": 2.14,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -1.5139465176616795e-05
+    },
+    {
+      "text": "ん",
+      "start": 2.26,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -1.5139465176616795e-05
+    },
+    {
+      "text": "。",
+      "start": 2.34,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -0.0015051951631903648
+    }
+  ],
+  "transcription_id": "JzTXpiIuzCBL7OEmOdgz",
+  "audio_duration_secs": 3.544
+}

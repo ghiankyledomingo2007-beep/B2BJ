@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "開いた。包帯に、少しの金……避難者の名簿もある。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "wPaj7PDl25esnsWLSBpu",
+  "generated_at": 1793156176.7965524
+}

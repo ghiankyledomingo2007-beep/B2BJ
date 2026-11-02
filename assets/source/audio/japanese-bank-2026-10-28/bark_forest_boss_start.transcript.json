@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9984986186027527,
+  "text": "根を見ます。下がって。",
+  "words": [
+    {
+      "text": "根",
+      "start": 0.34,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.13097554445266724
+    },
+    {
+      "text": "を",
+      "start": 0.44,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.00027366707217879593
+    },
+    {
+      "text": "見",
+      "start": 0.56,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -0.00027366707217879593
+    },
+    {
+      "text": "ま",
+      "start": 0.72,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "す",
+      "start": 0.9,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "。",
+      "start": 1.02,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.0004732680681627244
+    },
+    {
+      "text": "下",
+      "start": 1.66,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.001701218425296247
+    },
+    {
+      "text": "が",
+      "start": 1.74,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -0.001701218425296247
+    },
+    {
+      "text": "っ",
+      "start": 1.88,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "て",
+      "start": 2.06,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "。",
+      "start": 2.16,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -0.004633879289031029
+    }
+  ],
+  "transcription_id": "tPFPvnLlKSvGIZL4Ww6c",
+  "audio_duration_secs": 3.224
+}

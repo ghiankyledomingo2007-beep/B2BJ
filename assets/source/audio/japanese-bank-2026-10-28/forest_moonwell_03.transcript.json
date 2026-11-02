@@ -1,0 +1,135 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9994012713432312,
+  "text": "じゃああいつが川の水を飲んでるのか。",
+  "words": [
+    {
+      "text": "じ",
+      "start": 0.14,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "ゃ",
+      "start": 0.22,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "あ",
+      "start": 0.92,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.251986026763916
+    },
+    {
+      "text": "あ",
+      "start": 1.04,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.251986026763916
+    },
+    {
+      "text": "い",
+      "start": 1.12,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -0.31737539172172546
+    },
+    {
+      "text": "つ",
+      "start": 1.24,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -0.31737539172172546
+    },
+    {
+      "text": "が",
+      "start": 1.42,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.0609570381348021e-05
+    },
+    {
+      "text": "川",
+      "start": 1.82,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "の",
+      "start": 1.98,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -0.00016306500765495002
+    },
+    {
+      "text": "水",
+      "start": 2.22,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -0.00014888131408952177
+    },
+    {
+      "text": "を",
+      "start": 2.36,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -0.00014888131408952177
+    },
+    {
+      "text": "飲",
+      "start": 2.5,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -6.758938252460212e-05
+    },
+    {
+      "text": "ん",
+      "start": 2.56,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "で",
+      "start": 2.66,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "る",
+      "start": 2.74,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -2.074220174108632e-05
+    },
+    {
+      "text": "の",
+      "start": 2.86,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "か",
+      "start": 3.02,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 3.18,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    }
+  ],
+  "transcription_id": "ZqrEnEYfyd8xa1wNnWuq",
+  "audio_duration_secs": 3.36
+}

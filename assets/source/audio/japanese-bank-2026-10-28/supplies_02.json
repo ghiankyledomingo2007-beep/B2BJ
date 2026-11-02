@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "書き置きだ。「重い箱は残せ。怪我人の場所を空けろ」。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "r3uV73183ml6ks3FhLtu",
+  "generated_at": 1793156130.649153
+}

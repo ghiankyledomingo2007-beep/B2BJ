@@ -21,6 +21,7 @@ public final class PackagedAssetLoadingTest {
 
         assert image != null : "packaged slime asset must load";
         assert Ui.fontsLoaded() : "the pixel fonts must load from the packaged classpath";
+        assert Ui.menuFont(30).getFamily().equals("Cinzel") : "menu identity font must load outside the repository";
         assert image.getWidth() > 0 : "packaged slime asset must have pixels";
         for(String path:new String[]{
                 "assets/characters/guardian/guardian_actions.png",
@@ -35,7 +36,8 @@ public final class PackagedAssetLoadingTest {
                 "assets/ui/stone-menu/frame.png", "assets/ui/stone-menu/button.png", "assets/ui/stone-menu/icons.png",
                 "assets/ui/splash.png",
                 "assets/ui/title/ruined-gate.png",
-                "assets/ui/opening/last-attempt.png",
+                "assets/ui/title/moonlit-gate-logo.png",
+                "assets/ui/opening/office-night-atlas.png",
                 "assets/ui/loading/sky.png",
                 "assets/ui/loading/outpost.png",
                 "assets/ui/loading/forest.png",

@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999629259109497,
+  "text": "動いて地面が割れます。",
+  "words": [
+    {
+      "text": "動",
+      "start": 0.36,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.00043764073052443564
+    },
+    {
+      "text": "い",
+      "start": 0.5,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "て",
+      "start": 0.72,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "地",
+      "start": 1.16,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -0.009931908920407295
+    },
+    {
+      "text": "面",
+      "start": 1.38,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -0.009931908920407295
+    },
+    {
+      "text": "が",
+      "start": 1.56,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "割",
+      "start": 1.64,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.00015233787416946143
+    },
+    {
+      "text": "れ",
+      "start": 1.8,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -6.627816765103489e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -6.627816765103489e-05
+    },
+    {
+      "text": "す",
+      "start": 2.04,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -6.627816765103489e-05
+    },
+    {
+      "text": "。",
+      "start": 2.18,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.0007115454645827413
+    }
+  ],
+  "transcription_id": "0kMg074zkriWCL7CCAbG",
+  "audio_duration_secs": 3.224
+}

@@ -239,6 +239,12 @@ public final class Guardian {
         double dx=x-ax,dy=y-ay,forward=(dx*fx+dy*fy)/length,sideways=Math.abs(dx*fy-dy*fx)/length;
         return forward>=0&&forward<=range&&sideways<=range*0.75&&hurt(damage);
     }
+    /** Only direct, grounded strikes can be caught. The normal recovery caps the opening. */
+    public void parried() {
+        if(alive()&&state==State.SLAM&&profile!=Profile.BRIARHEART&&(attack==Attack.TARGET||attack==Attack.SWEEP)) {
+            state=State.RECOVER;stateTime=0;
+        }
+    }
     public boolean hurt(int damage) {
         if(state==State.DORMANT||!alive()||damage<=0)return false;
         health=Math.max(0,health-damage);hurtFlash=0.18;

@@ -1,0 +1,212 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "今夜、野営地に戻ってきた方があなたの名前を呼んでいました。",
+  "words": [
+    {
+      "text": "今",
+      "start": 0.12,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.00047291061491705477
+    },
+    {
+      "text": "夜",
+      "start": 0.28,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "、",
+      "start": 0.44,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.01848681829869747
+    },
+    {
+      "text": "野",
+      "start": 0.98,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -0.004383716732263565
+    },
+    {
+      "text": "営",
+      "start": 1.1,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -0.0006590101984329522
+    },
+    {
+      "text": "地",
+      "start": 1.3,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -0.0012261499650776386
+    },
+    {
+      "text": "に",
+      "start": 1.46,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "戻",
+      "start": 1.6,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "っ",
+      "start": 1.7,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -0.0002618685248307884
+    },
+    {
+      "text": "て",
+      "start": 1.82,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -0.0002618685248307884
+    },
+    {
+      "text": "き",
+      "start": 1.92,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -0.0002618685248307884
+    },
+    {
+      "text": "た",
+      "start": 2.06,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -0.0002618685248307884
+    },
+    {
+      "text": "方",
+      "start": 2.24,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -8.523101132595912e-05
+    },
+    {
+      "text": "が",
+      "start": 2.56,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -8.523101132595912e-05
+    },
+    {
+      "text": "あ",
+      "start": 2.86,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -0.0024787436705082655
+    },
+    {
+      "text": "な",
+      "start": 2.92,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -0.0024787436705082655
+    },
+    {
+      "text": "た",
+      "start": 3.06,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -0.0024787436705082655
+    },
+    {
+      "text": "の",
+      "start": 3.24,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.0024787436705082655
+    },
+    {
+      "text": "名",
+      "start": 3.38,
+      "end": 3.52,
+      "type": "word",
+      "logprob": -3.7788631743751466e-05
+    },
+    {
+      "text": "前",
+      "start": 3.52,
+      "end": 3.66,
+      "type": "word",
+      "logprob": -3.7788631743751466e-05
+    },
+    {
+      "text": "を",
+      "start": 3.74,
+      "end": 3.76,
+      "type": "word",
+      "logprob": -9.775113539944869e-06
+    },
+    {
+      "text": "呼",
+      "start": 3.84,
+      "end": 3.9,
+      "type": "word",
+      "logprob": -0.008919279091060162
+    },
+    {
+      "text": "ん",
+      "start": 3.9,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -2.6464111215318553e-05
+    },
+    {
+      "text": "で",
+      "start": 4.0,
+      "end": 4.04,
+      "type": "word",
+      "logprob": -2.6464111215318553e-05
+    },
+    {
+      "text": "い",
+      "start": 4.04,
+      "end": 4.18,
+      "type": "word",
+      "logprob": -6.6756979322235566e-06
+    },
+    {
+      "text": "ま",
+      "start": 4.18,
+      "end": 4.3,
+      "type": "word",
+      "logprob": -6.6756979322235566e-06
+    },
+    {
+      "text": "し",
+      "start": 4.3,
+      "end": 4.46,
+      "type": "word",
+      "logprob": -6.6756979322235566e-06
+    },
+    {
+      "text": "た",
+      "start": 4.46,
+      "end": 4.52,
+      "type": "word",
+      "logprob": -6.6756979322235566e-06
+    },
+    {
+      "text": "。",
+      "start": 4.52,
+      "end": 4.52,
+      "type": "word",
+      "logprob": -0.008614758029580116
+    }
+  ],
+  "transcription_id": "6MAPxFGsuXZwoEr3XhsZ",
+  "audio_duration_secs": 4.8
+}

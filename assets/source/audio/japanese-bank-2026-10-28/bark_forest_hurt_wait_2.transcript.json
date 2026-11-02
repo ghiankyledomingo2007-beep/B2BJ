@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999948143959045,
+  "text": "何もない地面へ私が見ています。",
+  "words": [
+    {
+      "text": "何",
+      "start": 0.44,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.00016175392374861985
+    },
+    {
+      "text": "も",
+      "start": 0.58,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -6.603976362384856e-05
+    },
+    {
+      "text": "な",
+      "start": 0.78,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -6.603976362384856e-05
+    },
+    {
+      "text": "い",
+      "start": 0.86,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -6.603976362384856e-05
+    },
+    {
+      "text": "地",
+      "start": 1.06,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -6.210611172718927e-05
+    },
+    {
+      "text": "面",
+      "start": 1.22,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -6.210611172718927e-05
+    },
+    {
+      "text": "へ",
+      "start": 1.44,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -4.339123915997334e-05
+    },
+    {
+      "text": "私",
+      "start": 2.4,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -0.008334971033036709
+    },
+    {
+      "text": "が",
+      "start": 2.6,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -1.0371154530730564e-05
+    },
+    {
+      "text": "見",
+      "start": 2.7,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -1.0371154530730564e-05
+    },
+    {
+      "text": "て",
+      "start": 2.84,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -0.0018985120113939047
+    },
+    {
+      "text": "い",
+      "start": 2.9,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -0.0018985120113939047
+    },
+    {
+      "text": "ま",
+      "start": 3.06,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -0.0018985120113939047
+    },
+    {
+      "text": "す",
+      "start": 3.2,
+      "end": 3.34,
+      "type": "word",
+      "logprob": -0.0018985120113939047
+    },
+    {
+      "text": "。",
+      "start": 3.34,
+      "end": 3.34,
+      "type": "word",
+      "logprob": -0.0021893836092203856
+    }
+  ],
+  "transcription_id": "I1Hc3W3eeXmhJ3BQE1Hg",
+  "audio_duration_secs": 4.424
+}

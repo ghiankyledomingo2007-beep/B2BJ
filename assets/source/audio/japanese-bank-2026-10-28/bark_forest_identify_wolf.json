@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "茨の狼。顎に近づかないで。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "qS28JGpYD2b5JvhdEl38",
+  "generated_at": 1793156474.413245
+}

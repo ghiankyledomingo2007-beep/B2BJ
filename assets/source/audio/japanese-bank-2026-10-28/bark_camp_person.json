@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "普通の人みたいに、話してくれた。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "sz8z94CXGMMIYpRxzRAv",
+  "generated_at": 1793156276.0067708
+}

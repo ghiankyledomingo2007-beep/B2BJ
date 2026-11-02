@@ -1,0 +1,17 @@
+{
+  "request": {
+    "text": "They saved the best supplies for people who needed them.",
+    "model_id": "eleven_multilingual_v2",
+    "language_code": "en",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.55,
+      "style": 0,
+      "use_speaker_boost": false
+    },
+    "seed": 84722
+  },
+  "request_id": "tW3FqlLE9hfyeXPI1BUJ",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "generated_at": 1793115932.568512
+}

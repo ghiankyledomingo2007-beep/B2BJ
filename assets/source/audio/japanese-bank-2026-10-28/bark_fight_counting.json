@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "数を数えてる方が、よかったな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "Rm4wXCEVj3lxC05yor6O",
+  "generated_at": 1793156235.8798382
+}

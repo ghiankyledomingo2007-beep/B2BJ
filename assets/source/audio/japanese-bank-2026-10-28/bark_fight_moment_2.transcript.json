@@ -1,0 +1,121 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.995522677898407,
+  "text": "どうぞ。急いでも回復はしません。",
+  "words": [
+    {
+      "text": "ど",
+      "start": 0.3,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.0019292091019451618
+    },
+    {
+      "text": "う",
+      "start": 0.36,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.0019292091019451618
+    },
+    {
+      "text": "ぞ",
+      "start": 0.44,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.0019292091019451618
+    },
+    {
+      "text": "。",
+      "start": 0.62,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.0007569308509118855
+    },
+    {
+      "text": "急",
+      "start": 1.46,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -2.47952248173533e-05
+    },
+    {
+      "text": "い",
+      "start": 1.62,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.002345907734706998
+    },
+    {
+      "text": "で",
+      "start": 1.7,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -3.099436753473128e-06
+    },
+    {
+      "text": "も",
+      "start": 1.8,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -3.099436753473128e-06
+    },
+    {
+      "text": "回",
+      "start": 2.28,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -0.0013387774815782905
+    },
+    {
+      "text": "復",
+      "start": 2.44,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -0.0013387774815782905
+    },
+    {
+      "text": "は",
+      "start": 2.66,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -3.242440288886428e-05
+    },
+    {
+      "text": "し",
+      "start": 2.76,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -8.475421054754406e-05
+    },
+    {
+      "text": "ま",
+      "start": 2.86,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -8.475421054754406e-05
+    },
+    {
+      "text": "せ",
+      "start": 3.0,
+      "end": 3.1,
+      "type": "word",
+      "logprob": -8.475421054754406e-05
+    },
+    {
+      "text": "ん",
+      "start": 3.1,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -8.475421054754406e-05
+    },
+    {
+      "text": "。",
+      "start": 3.26,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -0.0007566926069557667
+    }
+  ],
+  "transcription_id": "FUxJOcl7AUKIcxc8cKFu",
+  "audio_duration_secs": 4.344
+}

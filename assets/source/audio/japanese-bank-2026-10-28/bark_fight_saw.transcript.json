@@ -1,0 +1,44 @@
+{
+  "language_code": "zho",
+  "language_probability": 0.48099806904792786,
+  "text": "今の見た？",
+  "words": [
+    {
+      "text": "今",
+      "start": 0.18,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -2.5748875486897305e-05
+    },
+    {
+      "text": "の",
+      "start": 0.32,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -2.5748875486897305e-05
+    },
+    {
+      "text": "見",
+      "start": 1.18,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -0.0792488232254982
+    },
+    {
+      "text": "た",
+      "start": 1.34,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -0.0792488232254982
+    },
+    {
+      "text": "？",
+      "start": 1.48,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.11283022910356522
+    }
+  ],
+  "transcription_id": "f78c2jjubF7JLwCmfa9u",
+  "audio_duration_secs": 1.76
+}

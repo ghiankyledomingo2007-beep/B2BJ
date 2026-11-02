@@ -105,9 +105,12 @@ Scale: a person is about 64 native pixels tall; the game draws everything at 2x.
   under `assets/ui/loading/`.
 - DejaVu Serif and Sans provide smooth menu text and boss names alongside the pixel HUD fonts.
   Their redistribution license is in `assets/ui/fonts/DejaVu-LICENSE.txt`.
-- `LogoArt.java` still supplies the boot splash logo; it no longer generates a runtime title logo.
-- `UiArt.splash()` -> `assets/ui/splash.png`: the boot splash, already doubled to 640x360 screen pixels because
-  the JVM shows it unscaled (`tools/manifest.txt` names it in the jar). `src/Splash.java` fills its load bar.
+- `LogoArt.java` preserves the former wordmark. The boot splash uses the owner-selected Moonlit Gate
+  logo from `assets/source/ui/splash/moonlit-gate-logo.png`. Rejected earlier crests remain under
+  `assets/source/ui/crest/` for history; they are not used by the game or art build.
+- `UiArt.splash()` -> `assets/ui/splash.png`: the boot splash, composited at 640x360 screen pixels because
+  the JVM shows it unscaled (`tools/manifest.txt` names it in the jar). `src/Splash.java` fills its load bar
+  and supplies the shared bar geometry. Rebuild only this image with `tools/art/build-art.sh splash`.
 
 Audio: `tools/audio/generate_combat_sfx.py` builds the current original slime attacks/dash/hurt,
 blade swings, water abilities and boss slam. `generate_forest_sfx.py` builds enemy attack sounds.

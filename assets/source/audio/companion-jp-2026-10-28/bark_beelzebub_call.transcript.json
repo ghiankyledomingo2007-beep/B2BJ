@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9990390539169312,
+  "text": "食らえ、ベルゼビュート",
+  "words": [
+    {
+      "text": "食",
+      "start": 0.1,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -0.04687662422657013
+    },
+    {
+      "text": "ら",
+      "start": 0.26,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -1.5735502529423684e-05
+    },
+    {
+      "text": "え",
+      "start": 0.38,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -5.1377883210079744e-05
+    },
+    {
+      "text": "、",
+      "start": 0.5,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.18795691430568695
+    },
+    {
+      "text": "ベ",
+      "start": 0.88,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.0007348936051130295
+    },
+    {
+      "text": "ル",
+      "start": 1.02,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.0007348936051130295
+    },
+    {
+      "text": "ゼ",
+      "start": 1.12,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.0004563482361845672
+    },
+    {
+      "text": "ビ",
+      "start": 1.26,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -0.41714975237846375
+    },
+    {
+      "text": "ュ",
+      "start": 1.3,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -0.008417130447924137
+    },
+    {
+      "text": "ー",
+      "start": 1.36,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.00029559535323642194
+    },
+    {
+      "text": "ト",
+      "start": 1.44,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -0.00029559535323642194
+    }
+  ],
+  "transcription_id": "DWUjfX19mQwFEU7ihN0o",
+  "audio_duration_secs": 2.0
+}

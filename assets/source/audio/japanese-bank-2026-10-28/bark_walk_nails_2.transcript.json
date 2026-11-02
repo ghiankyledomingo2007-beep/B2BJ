@@ -1,0 +1,170 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999678134918213,
+  "text": "他の人が見落とすことにも気づいていたのですね。",
+  "words": [
+    {
+      "text": "他",
+      "start": 0.38,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -3.302042750874534e-05
+    },
+    {
+      "text": "の",
+      "start": 0.58,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -3.302042750874534e-05
+    },
+    {
+      "text": "人",
+      "start": 0.72,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "が",
+      "start": 0.92,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "見",
+      "start": 1.06,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "落",
+      "start": 1.12,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "と",
+      "start": 1.28,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -0.00012814177898690104
+    },
+    {
+      "text": "す",
+      "start": 1.36,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "こ",
+      "start": 1.46,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -4.6491513785440475e-06
+    },
+    {
+      "text": "と",
+      "start": 1.56,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -4.6491513785440475e-06
+    },
+    {
+      "text": "に",
+      "start": 1.68,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "も",
+      "start": 1.8,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "気",
+      "start": 2.22,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -0.002193784574046731
+    },
+    {
+      "text": "づ",
+      "start": 2.32,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -0.002193784574046731
+    },
+    {
+      "text": "い",
+      "start": 2.38,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -0.0009047467028722167
+    },
+    {
+      "text": "て",
+      "start": 2.5,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -0.0009047467028722167
+    },
+    {
+      "text": "い",
+      "start": 2.56,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -0.0009047467028722167
+    },
+    {
+      "text": "た",
+      "start": 2.68,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -0.0009047467028722167
+    },
+    {
+      "text": "の",
+      "start": 2.76,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -0.0002980979916173965
+    },
+    {
+      "text": "で",
+      "start": 2.9,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "す",
+      "start": 2.98,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "ね",
+      "start": 3.14,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "。",
+      "start": 3.22,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -0.0002809368306770921
+    }
+  ],
+  "transcription_id": "urOaqMkf9PwziI0eQEbI",
+  "audio_duration_secs": 4.344
+}

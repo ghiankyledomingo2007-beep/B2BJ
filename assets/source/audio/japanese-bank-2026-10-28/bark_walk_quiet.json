@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "ここ、昔は賑やかな道だったのかな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "5yVFW3Vy8nEL9hIRuv2i",
+  "generated_at": 1793156264.0955067
+}

@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "退くことも前に進むためです。",
+  "words": [
+    {
+      "text": "退",
+      "start": 0.4,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.0025345126632601023
+    },
+    {
+      "text": "く",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -7.426462980220094e-05
+    },
+    {
+      "text": "こ",
+      "start": 0.78,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -3.802703940891661e-05
+    },
+    {
+      "text": "と",
+      "start": 0.9,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -3.802703940891661e-05
+    },
+    {
+      "text": "も",
+      "start": 1.04,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -3.802703940891661e-05
+    },
+    {
+      "text": "前",
+      "start": 1.56,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.00417053047567606
+    },
+    {
+      "text": "に",
+      "start": 1.74,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -0.00417053047567606
+    },
+    {
+      "text": "進",
+      "start": 2.02,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -7.629365427419543e-06
+    },
+    {
+      "text": "む",
+      "start": 2.2,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -1.0609570381348021e-05
+    },
+    {
+      "text": "た",
+      "start": 2.32,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -0.00033420699764974415
+    },
+    {
+      "text": "め",
+      "start": 2.42,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -0.00033420699764974415
+    },
+    {
+      "text": "で",
+      "start": 2.5,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "す",
+      "start": 2.68,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "。",
+      "start": 2.78,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -0.0004319211875554174
+    }
+  ],
+  "transcription_id": "l6Ygm100JiKSWihb6wAt",
+  "audio_duration_secs": 3.784
+}

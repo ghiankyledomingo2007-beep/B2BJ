@@ -2,8 +2,8 @@ import java.util.List;
 
 public final class WaterCombatTest {
     public static void main(String[] args) {
-        var enemy=new Wisp(510,300,510,510,80);
-        var game=fixture(new Player(300,300),List.of(enemy));
+        var enemy=new Wisp(710,400,710,710,80);
+        var game=fixture(new Player(500,400),List.of(enemy));
         assert game.attack(1,0);
         game.update(0.12,0,0);
         assert enemy.health()==80 : "water must travel, never deal instant melee damage";

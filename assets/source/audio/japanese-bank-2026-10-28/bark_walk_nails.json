@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "前は、配達が遅れるだけで心配してたな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "MkAvRJOnBhoIsHBYErsR",
+  "generated_at": 1793156272.1116107
+}

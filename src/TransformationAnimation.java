@@ -38,4 +38,9 @@ public final class TransformationAnimation {
     public int frame() {
         return Math.min(FRAMES - 1, (int) (time * FRAMES / DURATION));
     }
+
+    /** How far through the change (0-1), in game time: smooth under slow-motion substeps. */
+    public double progress() {
+        return Math.min(1, time / DURATION);
+    }
 }

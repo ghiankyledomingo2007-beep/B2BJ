@@ -1,0 +1,65 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "通行を許可する。",
+  "words": [
+    {
+      "text": "通",
+      "start": 0.34,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -7.807903602952138e-05
+    },
+    {
+      "text": "行",
+      "start": 0.46,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -7.807903602952138e-05
+    },
+    {
+      "text": "を",
+      "start": 0.72,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -6.05564855504781e-05
+    },
+    {
+      "text": "許",
+      "start": 1.54,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -0.0003432638186495751
+    },
+    {
+      "text": "可",
+      "start": 1.76,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -0.0003432638186495751
+    },
+    {
+      "text": "す",
+      "start": 2.42,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "る",
+      "start": 2.56,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "。",
+      "start": 2.7,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -0.0028055852744728327
+    }
+  ],
+  "transcription_id": "3qAxwhlw1KkknJRvWLJo",
+  "audio_duration_secs": 2.96
+}

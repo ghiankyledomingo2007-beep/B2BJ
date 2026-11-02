@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "白い布。つい探しちゃうな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "c7DUCPKaH6zoTggHK8Rg",
+  "generated_at": 1793156328.7789922
+}

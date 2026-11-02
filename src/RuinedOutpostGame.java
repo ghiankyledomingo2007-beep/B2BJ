@@ -11,7 +11,8 @@ public final class RuinedOutpostGame {
         TRANSFORM, REVERT, GUARDIAN_AWAKENED, GUARDIAN_SLAM, GUARDIAN_ENRAGE, GUARDIAN_PHASE_TWO, VICTORY, ROOM_ENTERED, SPIT_SHOT, SPIT_IMPACT,
         ABSORB_START, BEELZEBUB_CAST, ABSORBED, HEALED, TRAIT_GAINED, MEMBRANE_BREAK, CRESCENT_CAST, CRESCENT_IMPACT, RIPOSTE_START, RIPOSTE_COUNTER, CHARGE_READY,
         IMP_WINDUP, IMP_CLAW, WOLF_GROWL, WOLF_BITE, WOLF_POUNCE, WOLF_LAND, MIRE_CHARGE, MIRE_ERUPT,
-        DENIED, CHECKPOINT, UPGRADE, DAMAGE_DEALT, DAMAGE_TAKEN, ARMOR_BLOCK
+        DENIED, CHECKPOINT, UPGRADE, DAMAGE_DEALT, DAMAGE_TAKEN, ARMOR_BLOCK,
+        INTRO_WINDUP, INTRO_SLAM, INTRO_LAND, WARDEN_KNEEL, WARDEN_FALL, GATE_RELEASE, BRIARLING_SPROUT, BRIARLING_EMERGE, WATER_JET_RELEASE, WATER_JET_IMPACT, VOID_START, VOID_RELEASE, VOID_CONTACT, VOID_RUPTURE, EMPOWERED_HIT
     }
     public record Event(EventType type, double x, double y, boolean water, int damage, boolean critical, boolean heavy) {
         public Event(EventType type,double x,double y,boolean water) { this(type,x,y,water,0,false,false); }
@@ -100,6 +101,7 @@ public final class RuinedOutpostGame {
     private record AbsorptionPull(Corpse corpse,double x,double y) { }
     private final List<AbsorptionPull> beelzebubTargets = new ArrayList<>();
     private double beelzebubCooldown;
+    private int beelzebubCalls;
     private final List<Event> events = new ArrayList<>();
     private final List<WaterProjectile> projectiles = new ArrayList<>();
     private final List<Crescent> crescents = new ArrayList<>();
@@ -119,6 +121,12 @@ public final class RuinedOutpostGame {
     private int checkpoint;
     private int guardianHitImpact=-1;
     private int addSpawnIndex;
+    /** A Briarling about to break the ground: where, and the seconds of warning left (owner 2026-10-29). */
+    public record Sprout(double x,double y,double time) { }
+    static final double SPROUT_WARNING=.7;
+    private final List<Sprout> sprouts=new ArrayList<>();
+    private double sproutTimer;
+    private int sproutThresholds;
     private double addTimer;
     private double armorNoticeTime;
     private OutpostBark bark;
@@ -142,8 +150,8 @@ public final class RuinedOutpostGame {
     private int combo;
     private double comboTime;
     private double hitStop;
-    public static final double CHARGE_THRESHOLD=.18, FULL_CHARGE=.8, CHARGE_COST=10, INPUT_BUFFER=.12;
-    private boolean primaryHeld, charging, chargeReady, comboDodged;
+    public static final double CHARGE_THRESHOLD=.18, FULL_CHARGE=.8, CHARGE_COST=0, INPUT_BUFFER=.12;
+    private boolean primaryHeld, charging, chargeReady, comboDodged, bladeLinked;
     private double primaryTime, queuedTime, bladeTime, bladeDuration, releasedCharge, dashOpener, bladeCastTime;
     private int queuedAttack,queuedX,queuedY,bladeMove;
 
@@ -151,6 +159,14 @@ public final class RuinedOutpostGame {
     private double tideCooldown;
     private double counterWindow, dashX, dashY, waterWindup, counterTime;
     private double crescentCooldown,riposteCooldown,guardTime;
+    public static final double VOID_WINDUP=.48, VOID_ADVANCE=.18, VOID_RUPTURE_TIME=.80, VOID_DURATION=1.22;
+    private double voidTime=-1, voidReadiness, voidStartX, voidStartY, voidEndX, voidEndY;
+    private boolean devoured, voidEmpowered, cleaveEmpowered, finisherEarned, voidBossHit;
+    private final Set<Wisp> voidHits=Collections.newSetFromMap(new IdentityHashMap<>());
+    private final List<Wisp> empoweredHits=new ArrayList<>();
+    private double empoweredDelay;
+    private boolean empoweredBoss;
+
     private boolean waterCast, heavyCast;
     private WaterProjectile.Kind waterKind=WaterProjectile.Kind.CUT;
     private boolean campaignMode, saveBlocked;
@@ -162,6 +178,11 @@ public final class RuinedOutpostGame {
     private OutpostDialogue dialogue;
     private int dialogueIndex;
     private double wardenRevealTime,wardenReturnTime,wardenReturnWeight,gateTime;
+    private double wardenFocus=1,wardenFocusFrom=1,wardenFocusTime;
+    private double wardenStepTime=-1,wardenWalkTime,wardenWalkDistance,wardenStepX,wardenStepY;
+    private static final double INTRO_WINDUP=.9, INTRO_CONTACT=1.0, INTRO_FLIGHT=.55, INTRO_RECOVER=1.85;
+    private double wardenVictoryTime=-1,wardenCameraX,wardenCameraY;
+    private boolean wardenVictorySpoken;
     private double noticeTime,sageTime;
     private void notice(String text) { campaignNotice=text;noticeTime=8; }
     private final Set<Integer> clearedBosses=new java.util.HashSet<>();
@@ -194,19 +215,20 @@ public final class RuinedOutpostGame {
 
     private void enterBiome(int destination,int arrival) {
         dialogue=null;dialogueIndex=0;openingLineTime=0;
-        bark=null;pendingBossBark=null;barkIndex=0;barkTime=barkDuration=barkCooldown=identificationCooldown=0;
+        bark=null;pendingBossBark=null;barkIndex=beelzebubCalls=0;barkTime=barkDuration=barkCooldown=identificationCooldown=0;
         banterCooldown=12;quietTime=exploredDistance=pendingBanterTime=bossBarkCooldown=0;pendingBanter=null;lastDefeatedKind=null;
         java.util.Arrays.fill(observedBossAttacks,0);
         java.util.Arrays.fill(alternateBossWarnings,false);
         hurtReactionTime=hurtReactionCooldown=healingQuietTime=healingLastHealth=0;hurtReactions=0;passiveHealing=false;
         wardenRevealTime=wardenReturnTime=wardenReturnWeight=0;
+        wardenVictoryTime=-1;
         biome=destination;map=RuinedOutpostMap.campaign(biome);
         campaignCheckpoint=arrival==1||restIndex(arrival)>=0?arrival:0;
         carried=null;dropped.clear();syncFieldGates();
         scouts=new ArrayList<>();campaignEnemies.clear();forestAttackPhases.clear();
-        drops.clear();corpses.clear();cancelAbsorption();events.clear();
-        lungeHits.clear();dashHits.clear();bossAdds.clear();projectiles.clear();crescents.clear();hostileProjectiles.clear();forestHazards.clear();
-        tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=attackDelay=comboTime=hitStop=addTimer=counterWindow=0;
+        drops.clear();corpses.clear();endAbsorption();events.clear();
+        lungeHits.clear();dashHits.clear();bossAdds.clear();sprouts.clear();sproutTimer=sproutThresholds=0;projectiles.clear();crescents.clear();hostileProjectiles.clear();forestHazards.clear();
+        resetKit();tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=attackDelay=comboTime=hitStop=addTimer=counterWindow=0;
         cancelBladeInput();combo=addSpawnIndex=0;guardianHitImpact=-1;passageCooldown=.35;
         armorNoticeTime=0;
         for(var spawn:campaignArea().enemies()) {
@@ -214,6 +236,8 @@ public final class RuinedOutpostGame {
             scouts.add(enemy.body());campaignEnemies.put(enemy.body(),enemy);
         }
         guardian=new Guardian(map.guardianX(),map.guardianY(),Guardian.Profile.values()[biome]);
+        boolean giant=guardian.profile()==Guardian.Profile.BRIARHEART;           // the 3x redraw (owner 2026-10-29)
+        map.setGuardianFootprint(giant?BRIAR_FOOTPRINT_WIDTH:112,giant?BRIAR_FOOTPRINT_DEPTH:52);
         bossDefeated=clearedBosses.contains(biome);
         gateTime=bossDefeated?1.4:0;
         if(bossDefeated) {
@@ -290,7 +314,7 @@ public final class RuinedOutpostGame {
 
     public boolean returnToTitle() {
         if(!campaignMode||!paused||!player.alive()||story.blocksGameplay())return false;
-        saveProgress();cancelAbsorption();dialogue=null;wardenReturnTime=0;story=new OutpostStory();paused=false;
+        saveProgress();endAbsorption();dialogue=null;wardenReturnTime=0;wardenVictoryTime=-1;story=new OutpostStory();paused=false;
         campaignNotice="";noticeTime=0;bark=null;pendingBossBark=null;barkTime=0;return true;
     }
 
@@ -338,11 +362,11 @@ public final class RuinedOutpostGame {
             if(biome==1&&!dialogueSeen(OutpostDialogue.FOREST_END)) {openDialogue(OutpostDialogue.FOREST_END);return true;}
             if(biome+1<CampaignWorld.AREA_COUNT) {
                 // the open gate leads on into the next region
-                cancelAbsorption();enterBiome(biome+1,0);notice(campaignArea().name());saveProgress();return true;
+                endAbsorption();enterBiome(biome+1,0);notice(campaignArea().name());saveProgress();return true;
             }
             // the campaign story never passes the gatehouse phases on its own; the last exit is where it ends
             story.enterGatehouse();story.guardianDefeated();story.escaped();
-            cancelAbsorption();notice(campaignArea().name()+" CLEARED");saveProgress();
+            endAbsorption();notice(campaignArea().name()+" CLEARED");saveProgress();
             emit(EventType.VICTORY,player.x(),player.y());return true;
         }
         if(biome>0&&near(campaignArea().returnPortal().x(),campaignArea().returnPortal().y(),120)) {
@@ -352,8 +376,16 @@ public final class RuinedOutpostGame {
     }
 
     private double openingLineTime;
+    private boolean openingHeld;           // the opening film is playing WAKE lines 0-9
     public boolean opening() { return dialogue==OutpostDialogue.WAKE; }
     public double openingLineTime() { return openingLineTime; }
+    /** While the opening film plays, the drawn lines 0-9 neither time out nor advance. */
+    public void holdOpening(boolean held) { openingHeld=held; }
+    /** The film is over: carry on at line 10, where the slime wakes in the outpost. */
+    public void finishOpeningFilm() {
+        openingHeld=false;
+        if(opening()&&dialogueIndex<10) {dialogueIndex=10;openingLineTime=0;}
+    }
     public boolean campaignMode() { return campaignMode; }
     public OutpostDialogue dialogue() { return dialogue; }
     public int dialogueIndex() { return dialogueIndex; }
@@ -413,14 +445,7 @@ public final class RuinedOutpostGame {
         quietTime=danger?0:quietTime+seconds;
         if(danger)exploredDistance=0;
         else if(bark==null)exploredDistance+=travelled;
-        barkTime=Math.max(0,barkTime-seconds);
-        if(bark!=null&&barkTime==0) {
-            if(++barkIndex<bark.lines().size())barkTime=barkDuration=bark.lineSeconds();
-            else {
-                if(bark.banter()) {campaignUnlocks.add(bark.key());saveProgress();}
-                bark=null;
-            }
-        }
+        advanceBark(seconds);
         if(bark==null&&pendingBossBark!=null) {
             var next=pendingBossBark;pendingBossBark=null;bossBark(next);
         }
@@ -461,6 +486,20 @@ public final class RuinedOutpostGame {
         }
         if(next!=null)startBark(next);
     }
+    private void advanceBark(double seconds) {
+        barkTime=Math.max(0,barkTime-seconds);
+        if(bark!=null&&barkTime==0) {
+            if(wardenVictory()&&bark!=OutpostBark.WARDEN_VICTORY) {bark=null;return;}
+            if(++barkIndex<bark.lines().size())barkTime=barkDuration=bark.lineSeconds();
+            else {
+                if(bark.banter()) {campaignUnlocks.add(bark.key());saveProgress();}
+                else if(bark.trigger()==OutpostBark.Trigger.IDENTIFY) {
+                    campaignUnlocks.add(bark.key()+"_exchange");identificationCooldown=4;saveProgress();
+                }
+                bark=null;
+            }
+        }
+    }
     private OutpostBark nextBanter(OutpostBark.Trigger trigger) {
         var recent=new java.util.HashSet<String>();
         banterPlayedAt.forEach((line,time)->{if(sageTime-time<180)recent.add(line.key());});
@@ -472,7 +511,7 @@ public final class RuinedOutpostGame {
         OutpostBark next=null;double closest=460;
         for(var enemy:campaignEnemies.values()) {
             Wisp body=enemy.body();var description=OutpostBark.identification(enemy.kind());
-            if(description==null||campaignUnlocks.contains(description.key())||!body.alive())continue;
+            if(description==null||campaignUnlocks.contains(description.key()+"_exchange")||!body.alive())continue;
             double distance=Math.hypot(body.x()-player.x(),body.y()-player.y());
             if(distance>=closest||Math.abs(body.y()-player.y())>260
                     ||!map.clearLine(player.x(),player.y()+Player.COLLISION_Y_OFFSET,
@@ -483,16 +522,17 @@ public final class RuinedOutpostGame {
     }
     private void startBark(OutpostBark next) {
         bark=next;barkIndex=0;barkTime=barkDuration=next.lineSeconds();barkCooldown=next.combat()?6:10;
-        if(next.banter())banterPlayedAt.put(next,sageTime);else campaignUnlocks.add(next.key());
+        if(next.banter())banterPlayedAt.put(next,sageTime);
+        else if(next.trigger()!=OutpostBark.Trigger.SKILL)campaignUnlocks.add(next.key());
         exploredDistance=0;
         if(next.trigger()==OutpostBark.Trigger.STORY)banterCooldown=Math.max(banterCooldown,18);
         else if(next.banter()) {
             banterCooldown=24+Math.random()*10;
             pendingBanter=null;pendingBanterTime=0;
         }
-        if(next.combat()&&next.trigger()!=OutpostBark.Trigger.IDENTIFY)bossBarkCooldown=15;
+        if(next.trigger()==OutpostBark.Trigger.BOSS||next.trigger()==OutpostBark.Trigger.WARNING)bossBarkCooldown=15;
         if(next==OutpostBark.HEARD_SURVIVOR)campaignUnlocks.add("found_survivor_0");
-        if(!next.banter())saveProgress();
+        if(!next.banter()&&next.trigger()!=OutpostBark.Trigger.SKILL)saveProgress();
     }
     private void bossBark(OutpostBark next) {
         if(campaignMode&&biome==next.biome()&&player.alive()&&dialogue==null&&!campaignUnlocks.contains(next.key())) {
@@ -500,11 +540,118 @@ public final class RuinedOutpostGame {
         }
     }
     public boolean bossIntroduction() { return dialogue==OutpostDialogue.WARDEN||dialogue==OutpostDialogue.FOREST_BRIARHEART; }
-    public boolean cutsceneActive() { return bossIntroduction()||wardenReturnTime>0; }
-    public boolean dialogueReady() { return !bossIntroduction()||wardenRevealTime>=1.35; }
+    public boolean cutsceneActive() { return bossIntroduction()||wardenVictory()||wardenReturnTime>0; }
+    public boolean dialogueReady() { return (!bossIntroduction()||wardenRevealTime>=1.35)&&!wardenStepActive(); }
     public double storyCameraWeight() {
-        double t=bossIntroduction()?Math.min(1,wardenRevealTime/1.1):wardenReturnTime/.6;
-        return t*t*(3-2*t)*(bossIntroduction()?1:wardenReturnWeight);
+        if(giantFraming())return giantCamera;
+        double t=bossIntroduction()?Math.min(1,wardenRevealTime/1.1):wardenVictory()?Math.min(1,wardenVictoryTime/.8):wardenReturnTime/.6;
+        return t*t*(3-2*t)*(bossIntroduction()||wardenVictory()?1:wardenReturnWeight);
+    }
+    public double storyCameraFocus() { return wardenFocus; }
+    public double storyCameraX() {
+        if(giantFraming())return player.x()+(guardian.x()-player.x())*.35;
+        return bossIntroduction()?player.x()+(guardian.x()-player.x())*wardenFocus:wardenCameraX;
+    }
+    public double storyCameraY() {
+        // Lean toward its heart, but never push the player more than 170 px below the centre (onto the skill bar).
+        if(giantFraming())return Math.max(guardian.y()-190,player.y()-170/giantCamera);
+        double lift=guardian.profile()==Guardian.Profile.BRIARHEART?248*wardenFocus:0;   // frame the giant's crown too
+        return bossIntroduction()?player.y()+(guardian.y()-player.y())*wardenFocus+88-lift:wardenCameraY;
+    }
+    /** The 3x Briarheart fills the screen, so while the player fights near it the camera leans up until its heart and
+     *  the player both stay in view (owner 2026-10-29). It eases in and out with distance; cutscenes keep their camera,
+     *  and it waits out the 3 s name card at the bottom of the screen so the player is never framed behind it. */
+    private double giantCamera,giantFightTime;
+    private boolean giantFraming() {
+        return giantCamera>0&&!bossIntroduction()&&!wardenVictory()&&wardenReturnTime<=0;
+    }
+    private void updateGiantCamera(double seconds) {
+        double target=0;
+        if(guardian.profile()==Guardian.Profile.BRIARHEART&&bossActive()&&!bossDefeated&&guardian.alive()
+                &&!bossIntroduction()&&!wardenVictory()&&wardenReturnTime<=0) {
+            giantFightTime+=seconds;
+            double t=Math.max(0,Math.min(1,(760-Math.hypot(player.x()-guardian.x(),player.y()-guardian.y()))/260));
+            if(giantFightTime>=3)target=.5*t*t*(3-2*t);
+        } else giantFightTime=0;
+        giantCamera+=(target-giantCamera)*Math.min(1,seconds*2.5);
+        if(giantCamera<1e-4)giantCamera=0;
+    }
+    public boolean wardenVictory() { return wardenVictoryTime>=0; }
+    public double wardenVictorySeconds() { return Math.max(0,wardenVictoryTime); }
+    private static double eased(double time) { double t=Math.max(0,Math.min(1,time));return t*t*(3-2*t); }
+    static final double GATE_RELEASE_AT=4.8,LAST_WORDS_AT=1.6;
+    private void updateWardenVictory(double seconds) {
+        // Retire in-flight attacks after their iterators finish; the aftermath cannot hurt the player.
+        projectiles.clear();crescents.clear();hostileProjectiles.clear();forestHazards.clear();
+        double before=wardenVictoryTime;wardenVictoryTime+=seconds;
+        guardian.update(seconds*.25,player.x(),player.y());
+        advanceBark(seconds);
+        // Beats shared with WardenFx's performed death: it drops to a knee (1.55), breaks apart (2.2) and the
+        // camera stays on the rubble until it settles before panning to the gate (owner 2026-10-29).
+        if(before<WardenFx.KNELT&&wardenVictoryTime>=WardenFx.KNELT)emit(EventType.WARDEN_KNEEL,guardian.x(),guardian.y());
+        // Its last words land just after the knee: started directly, so they play however quiet the barks are set.
+        if(before<LAST_WORDS_AT&&wardenVictoryTime>=LAST_WORDS_AT)startBark(OutpostBark.WARDEN_LAST);
+        if(before<WardenFx.SETTLE&&wardenVictoryTime>=WardenFx.SETTLE)emit(EventType.WARDEN_FALL,guardian.x(),guardian.y());
+        if(before<GATE_RELEASE_AT&&wardenVictoryTime>=GATE_RELEASE_AT)emit(EventType.GATE_RELEASE,campaignArea().exit().x(),campaignArea().exit().y());
+        gateTime=Math.max(0,Math.min(1.4,wardenVictoryTime-GATE_RELEASE_AT));
+        double gate=eased((wardenVictoryTime-3.4)/1.2),returning=eased((wardenVictoryTime-6.4)/.9);
+        double x=guardian.x()+(campaignArea().exit().x()-guardian.x())*gate;
+        double y=guardian.y()+24+(campaignArea().exit().y()-160-guardian.y()-24)*gate;
+        wardenCameraX=x+(player.x()-x)*returning;
+        wardenCameraY=y+(player.y()+88-y)*returning;
+        if(wardenVictoryTime>=6.6&&bark==null) {
+            if(!wardenVictorySpoken) {wardenVictorySpoken=true;startBark(OutpostBark.WARDEN_VICTORY);}
+            else finishWardenVictory();
+        }
+    }
+    private void finishWardenVictory() {
+        projectiles.clear();crescents.clear();hostileProjectiles.clear();forestHazards.clear();
+        wardenReturnWeight=storyCameraWeight();wardenReturnTime=wardenReturnWeight>0?.6:0;
+        wardenVictoryTime=-1;gateTime=1.4;bark=null;barkTime=0;pendingBossBark=null;
+        campaignUnlocks.add(OutpostBark.WARDEN_VICTORY.key());
+        events.removeIf(e->e.type()==EventType.WARDEN_FALL||e.type()==EventType.GATE_RELEASE);
+        campaignNotice="";noticeTime=0;banterCooldown=12;saveProgress();
+    }
+    public boolean wardenStepActive() { return dialogue==OutpostDialogue.WARDEN&&wardenStepTime>=0; }
+    public boolean wardenRecoil() {
+        double time=wardenStepTime-wardenWalkTime-INTRO_CONTACT;
+        return wardenStepActive()&&time>=0&&time<INTRO_FLIGHT;
+    }
+    public double wardenPlayerLift() {
+        return wardenRecoil()?28*Math.sin(Math.PI*(wardenStepTime-wardenWalkTime-INTRO_CONTACT)/INTRO_FLIGHT):0;
+    }
+    public Guardian.Animation wardenIntroPose() {
+        double time=wardenStepTime-wardenWalkTime;
+        return time<0?Guardian.Animation.IDLE:time<INTRO_WINDUP?Guardian.Animation.WINDUP
+                :time<INTRO_WINDUP+Guardian.SLAM_DURATION?Guardian.Animation.STRIKE:Guardian.Animation.RECOVER;
+    }
+    public int wardenIntroFrame() {
+        double time=wardenStepTime-wardenWalkTime;
+        return Math.max(0,Math.min(7,(int)(switch(wardenIntroPose()) {
+            case IDLE -> (wardenStepTime*6)%8;
+            case WINDUP -> time*8/(INTRO_WINDUP*.72);
+            case STRIKE -> (time-INTRO_WINDUP)*8/Guardian.SLAM_DURATION;
+            default -> (time-INTRO_WINDUP-Guardian.SLAM_DURATION)*8/(INTRO_RECOVER-INTRO_WINDUP-Guardian.SLAM_DURATION);
+        })));
+    }
+    private void updateWardenStep(double seconds) {
+        // Borrow the attack poses without waking the combat AI or charging the player health.
+        double before=wardenStepTime,next=before+seconds;
+        double walk=Math.min(next,wardenWalkTime)-Math.min(before,wardenWalkTime);
+        player.attackStep(wardenStepX,wardenStepY,walk*wardenWalkDistance/wardenWalkTime,map);
+        if(before<wardenWalkTime&&next>=wardenWalkTime)
+            events.add(new Event(EventType.INTRO_WINDUP,guardian.x(),guardian.y()));
+        double contact=wardenWalkTime+INTRO_CONTACT,land=contact+INTRO_FLIGHT;
+        if(before<contact&&next>=contact)
+            events.add(new Event(EventType.INTRO_SLAM,player.x(),player.y()));
+        double a=Math.max(0,Math.min(1,(before-contact)/INTRO_FLIGHT));
+        double b=Math.max(0,Math.min(1,(next-contact)/INTRO_FLIGHT));
+        player.attackStep(-wardenStepX,-wardenStepY,84*((2*b-b*b)-(2*a-a*a)),map);
+        if(before<land&&next>=land)events.add(new Event(EventType.INTRO_LAND,player.x(),player.y()));
+        wardenStepTime=next;
+        if(next>=wardenWalkTime+INTRO_RECOVER) {
+            wardenStepTime=-1;wardenFocusFrom=wardenFocus;wardenFocusTime=0;
+        }
     }
     public double gateOpening() { return map.gateOpen()?Math.min(1,gateTime/1.4):0; }
     public boolean dialogueSeen(OutpostDialogue scene) { return campaignUnlocks.contains(scene.key()); }
@@ -554,30 +701,45 @@ public final class RuinedOutpostGame {
     }
 
     private void openDialogue(OutpostDialogue scene) {
-        cancelAbsorption();cancelBladeInput();
+        endAbsorption();cancelBladeInput();
         bark=null;pendingBossBark=null;barkTime=0;
         hurtReactionTime=0;
         pendingBanter=null;pendingBanterTime=quietTime=exploredDistance=0;
         banterCooldown=12;
-        dialogue=scene;dialogueIndex=0;openingLineTime=0;
+        dialogue=scene;dialogueIndex=0;openingLineTime=0;openingHeld=false;
         if(bossIntroduction()) {
             wardenRevealTime=0;
+            wardenStepTime=-1;
+            wardenFocus=wardenFocusFrom=1;wardenFocusTime=-1.35;
             // Arrival movement and queued casts must not resume after the camera returns.
             player.relocate(player.x(),player.y());attackDelay=waterWindup=0;waterCast=false;
         }
     }
 
     public boolean advanceDialogue() {
-        if(dialogue==null||paused||!dialogueReady())return false;
+        if(dialogue==null||paused||!dialogueReady()||openingHeld&&opening()&&dialogueIndex<10)return false;
+        if(bossIntroduction()) {wardenFocusFrom=wardenFocus;wardenFocusTime=0;}
+        if(dialogue==OutpostDialogue.WARDEN&&dialogueIndex==1) {
+            double dx=guardian.x()-player.x(),dy=guardian.y()-player.y(),distance=Math.hypot(dx,dy);
+            wardenStepX=distance>0?dx/distance:0;wardenStepY=distance>0?dy/distance:-1;
+            wardenWalkDistance=Math.min(420,Math.max(0,distance-112));
+            wardenWalkTime=Math.max(.75,wardenWalkDistance/145);
+            wardenStepTime=0;
+        }
         openingLineTime=0;
         if(++dialogueIndex>=dialogue.lines().size())skipDialogue();
         return true;
     }
 
     public boolean skipDialogue() {
-        if(dialogue==null||paused)return false;
+        if(paused)return false;
+        if(wardenVictory()) {finishWardenVictory();return true;}
+        if(dialogue==null)return false;
         if(bossIntroduction()) {
+            wardenCameraX=storyCameraX();wardenCameraY=storyCameraY();
             wardenReturnWeight=storyCameraWeight();wardenReturnTime=wardenReturnWeight>0?.6:0;
+            wardenStepTime=-1;
+            events.removeIf(e->e.type()==EventType.INTRO_WINDUP||e.type()==EventType.INTRO_SLAM||e.type()==EventType.INTRO_LAND);
         }
         campaignUnlocks.add(dialogue.key());
         if(dialogue==OutpostDialogue.CAMP_LATE)campaignUnlocks.add(OutpostDialogue.CAMP.key());
@@ -628,8 +790,8 @@ public final class RuinedOutpostGame {
     }
     public boolean debugRefill() {
         if(!debugAvailable())return false;
-        debugSession=true;player.refillForTesting();cancelAbsorption();
-        tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=attackDelay=comboTime=counterWindow=hitStop=0;
+        debugSession=true;player.refillForTesting();endAbsorption();
+        resetKit();tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=attackDelay=comboTime=counterWindow=hitStop=0;
         cancelBladeInput();combo=0;dashHits.clear();
         notice("TEST REFILL / HEALTH, ICHOR AND COOLDOWNS RESET");return true;
     }
@@ -704,7 +866,7 @@ public final class RuinedOutpostGame {
         }
         if (story.phase() == OutpostStory.Phase.DEAD && checkpoint == 7) {
             player = new Player(640,384);
-            tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=0;
+            resetKit();tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=0;
             story.resume();
             paused = false;
             enterRoom(7,-1);
@@ -715,7 +877,7 @@ public final class RuinedOutpostGame {
         java.util.Arrays.fill(visited,false);
         checkpoint = 0;
         tutorialTransformed = infirmaryUsed = bossDefeated = paused = false;
-        tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=0;
+        resetKit();tideCooldown=crescentCooldown=riposteCooldown=beelzebubCooldown=guardTime=0;
         story = new OutpostStory();
         player = new Player(640,384);
         enterRoom(0,-1);
@@ -726,7 +888,7 @@ public final class RuinedOutpostGame {
         scouts = new ArrayList<>();
         drops.clear();
         corpses.clear();
-        cancelAbsorption();
+        endAbsorption();
         events.clear();
         lungeHits.clear();
         dashHits.clear();
@@ -738,7 +900,7 @@ public final class RuinedOutpostGame {
         cancelBladeInput();combo = 0;
         guardianHitImpact=-1;
         addSpawnIndex=0;
-        guardian = new Guardian(map.guardianX(),map.guardianY());
+        guardian = new Guardian(map.guardianX(),map.guardianY());map.setGuardianFootprint(112,52);
         double x = map.spawnX(), y = map.spawnY();
         for (RuinedOutpostMap.Door door : map.doors()) {
             if (door.destination() == from) {
@@ -786,14 +948,26 @@ public final class RuinedOutpostGame {
         double elapsed=Math.min(seconds,.5);
         if(campaignMode)sageTime+=elapsed;
         if(opening()) {
+            if(openingHeld&&dialogueIndex<10)return;
             openingLineTime+=elapsed;
             if(openingLineTime>=OutpostDialogue.openingSeconds(dialogueIndex))advanceDialogue();
             return;
         }
+        if(wardenVictory()) {updateWardenVictory(elapsed);return;}
         if(map.gateOpen()&&(gateTime>0||!campaignMode||biome!=0
                 ||near(campaignArea().exit().x(),campaignArea().exit().y(),320)))gateTime=Math.min(1.4,gateTime+elapsed);
         if(cutsceneActive()) {
-            if(bossIntroduction())wardenRevealTime+=elapsed;
+            if(bossIntroduction()) {
+                wardenRevealTime+=elapsed;wardenFocusTime+=elapsed;
+                double target=wardenStepActive()?.5:switch(dialogueLine().speaker()) {
+                    case RAINORAY -> .12;
+                    case INNER_VOICE -> .9;
+                    default -> 1;
+                };
+                double t=Math.max(0,Math.min(1,wardenFocusTime/.85));
+                wardenFocus=wardenFocusFrom+(target-wardenFocusFrom)*t*t*(3-2*t);
+                if(wardenStepActive())updateWardenStep(elapsed);
+            }
             else wardenReturnTime=Math.max(0,wardenReturnTime-elapsed);
             if(guardian.state()==Guardian.State.DORMANT)guardian.update(elapsed,player.x(),player.y());
             return;
@@ -810,11 +984,12 @@ public final class RuinedOutpostGame {
         }
     }
     private void tick(double seconds, int horizontal, int vertical) {
+        updateGiantCamera(seconds);
         if(campaignMode&&noticeTime>0&&!campaignNotice.startsWith("SAVE FAILED")) {
             noticeTime=Math.max(0,noticeTime-seconds);
             if(noticeTime==0)campaignNotice="";
         }
-        if (!player.alive()) { projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear();forestHazards.clear(); attackDelay=0; cancelBladeInput(); cancelAbsorption(); story.playerDied(); return; }
+        if (!player.alive()) { resetKit();projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear();forestHazards.clear(); attackDelay=0; cancelBladeInput(); endAbsorption(); story.playerDied(); return; }
         if (hitStop > 0) { hitStop=Math.max(0,hitStop-seconds); return; }
         passageCooldown=Math.max(0,passageCooldown-seconds);
         tideCooldown=Math.max(0,tideCooldown-seconds);denyTime=Math.max(0,denyTime-seconds);
@@ -832,13 +1007,24 @@ public final class RuinedOutpostGame {
         counterWindow=Math.max(0,counterWindow-seconds);
         boolean wasBlade=player.bladeForm(), wasDashing=player.dashing(), wasRecovering=player.recovering();
         // These full-body poses plant the feet. Strikes retain their authored, collision-safe step below.
-        boolean planted=player.bladeForm()&&(bladePreparing()||bladeTime>0||bladeCastTime>0||guarding()||counterTime>0);
+        double slimeElapsed=slimeAttackElapsed();
+        boolean finisher=slimeElapsed>=0&&waterKind==WaterProjectile.Kind.FINISHER;
+        boolean planted=player.bladeForm()&&(voidActive()||bladePreparing()||bladeTime>0||bladeCastTime>0||guarding()||counterTime>0)
+                ||finisher&&slimeElapsed<.34;
         counterTime=player.bladeForm()?Math.max(0,counterTime-seconds):0;
         double previousX=player.x(),previousY=player.y();
-        player.move(horizontal,vertical,seconds,map,planted?0:1);
+        player.move(horizontal,vertical,seconds,map,planted?0:slimePreparing()?.45:1);
+        // The third lash commits forward through the release; collision still owns the step.
+        if(finisher&&slimeElapsed<.30) {
+            double length=Math.max(1,Math.hypot(aimX,aimY));
+            double travel=24*Math.max(0,Math.min(slimeElapsed+seconds,.30)-Math.max(slimeElapsed,.16))/.14;
+            player.attackStep(aimX/length,aimY/length,travel,map);
+        }
         bladeCastTime=Math.max(0,bladeCastTime-seconds);
         if(wasBlade&&!player.bladeForm())cancelBladeInput();
-        if(player.bladeForm())updateBladeInput(seconds);
+        updatePrimaryInput(seconds);
+        updateVoidSever(seconds);
+        updateEmpoweredHits(seconds);
         if(!player.bladeForm())guardTime=0;
         if (wasBlade && !player.bladeForm()) emit(EventType.REVERT,player.x(),player.y());
         comboTime=Math.max(0,comboTime-seconds);
@@ -855,6 +1041,7 @@ public final class RuinedOutpostGame {
             attackDelay=Math.max(0,attackDelay-seconds);
             if (attackDelay <= 1e-9) {attackDelay=0;resolveStrike();}
         }
+        if(wardenVictory())return;
         if(campaignMode&&!bossDefeated&&guardian.state()==Guardian.State.DORMANT
                 &&near(guardian.x(),guardian.y(),600)) {
             var introduction=biome==1?OutpostDialogue.FOREST_BRIARHEART:OutpostDialogue.WARDEN;
@@ -893,10 +1080,13 @@ public final class RuinedOutpostGame {
             scouts.get(j).separateFrom(scouts.get(i),seconds,map);
         }
         updateWater(seconds);
+        if(wardenVictory())return;
         updateCrescents(seconds);
+        if(wardenVictory())return;
         if (wasDashing || player.dashing()) damageEnemiesFromDash();
+        if(wardenVictory())return;
         // Resolve outgoing impacts before incoming contact/release: interrupted attacks cannot trade.
-        boolean dashProtected=wasDashing&&!player.recovering();
+        boolean dashProtected=wasDashing&&!player.recovering()||voidAdvancing();
         for(Wisp scout:scouts) {
             updateForestAttackCue(scout);
             if(scout.state()!=Wisp.State.LUNGE) lungeHits.remove(scout);
@@ -927,12 +1117,17 @@ public final class RuinedOutpostGame {
         if(bossActive()&&guardian.alive()&&guardianHitImpact!=guardian.impactNumber()
                 &&guardian.hits(player.x(),player.y())) {
             guardianHitImpact=guardian.impactNumber();
-            if(!dashProtected)hurtPlayer(guardian.profile()==Guardian.Profile.BRIARHEART?22:Guardian.SLAM_DAMAGE,guardian.targetX(),guardian.targetY());
+            if(!dashProtected) {
+                boolean parryable=guardian.profile()!=Guardian.Profile.BRIARHEART
+                        &&(guardian.attack()==Guardian.Attack.TARGET||guardian.attack()==Guardian.Attack.SWEEP);
+                if(parryable&&guarding()&&!player.invulnerable())guardian.parried();
+                hurtPlayer(guardian.profile()==Guardian.Profile.BRIARHEART?22:Guardian.SLAM_DAMAGE,guardian.targetX(),guardian.targetY(),parryable);
+            }
         }
         updateHostileProjectiles(seconds,dashProtected);
         for(var hazard:forestHazards) {
             hazard.update(seconds);
-            if(!dashProtected&&hazard.hit(player.x(),player.y()))hurtPlayer(9,hazard.x(),hazard.y());
+            if(!dashProtected&&hazard.hit(player.x(),player.y()))hurtPlayer(9,hazard.x(),hazard.y(),false);
         }
         forestHazards.removeIf(hazard->!hazard.alive());
         if(campaignMode&&bossActive()&&player.bladeForm()&&near(guardian.x(),guardian.y(),guardian.auraRadius())) {
@@ -944,7 +1139,7 @@ public final class RuinedOutpostGame {
             player.collectIchor(PASSIVE_ICHOR_PER_SECOND*seconds);
         updateAbsorption(seconds);
         updatePassiveHealing(seconds);
-        if (!player.alive()) { projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear();forestHazards.clear(); attackDelay=0; cancelBladeInput(); cancelAbsorption(); story.playerDied(); }
+        if (!player.alive()) { resetKit();projectiles.clear(); crescents.clear(); guardTime=0; hostileProjectiles.clear();forestHazards.clear(); attackDelay=0; cancelBladeInput(); endAbsorption(); story.playerDied(); }
         if (!campaignMode&&scouts.stream().noneMatch(Wisp::alive) && map.room()!=9) cleared[map.room()]=true;
         refreshPassages();
         if(player.alive()&&passageCooldown==0) {
@@ -1007,7 +1202,7 @@ public final class RuinedOutpostGame {
             emit(EventType.GUARDIAN_SLAM,guardian.targetX(),guardian.targetY());
             for(var seed:guardian.forestSeeds())forestHazards.add(new ForestHazard(seed.x(),seed.y(),seed.radius(),3.6));
         }
-        if(guardian.profile()==Guardian.Profile.BRIARHEART)return;
+        if(guardian.profile()==Guardian.Profile.BRIARHEART) {updateBriarlings(seconds);return;}
         addTimer+=seconds;
         long nearbyAdds=campaignMode?bossAdds.stream().filter(Wisp::alive).count():scouts.stream().filter(Wisp::alive).count();
         if (addTimer>=(guardian.enraged()?5:6) && nearbyAdds<(guardian.enraged()?3:2)) {
@@ -1029,12 +1224,55 @@ public final class RuinedOutpostGame {
             }
         }
     }
+    static final double BRIAR_FOOTPRINT_WIDTH=260,BRIAR_FOOTPRINT_DEPTH=84;
+    /** Where a strike meets the boss: Briarheart's trunk can be struck anywhere along its width; the Warden at its centre. */
+    private double bossNearX() {
+        double half=guardian.profile()==Guardian.Profile.BRIARHEART?map.guardianHalfWidth():0;
+        return Math.max(guardian.x()-half,Math.min(guardian.x()+half,player.x()));
+    }
+    /** Briarheart raises Briarlings: one on a timer and a pair at each quarter of its health, never more than two
+     *  (three once enraged) awake or sprouting. Each gives a short flat warning before it breaks the ground. */
+    private void updateBriarlings(double seconds) {
+        if(!campaignMode||!guardian.alive())return;
+        for(var it=sprouts.listIterator();it.hasNext();) {
+            var sprout=it.next();
+            if(sprout.time()>seconds) {it.set(new Sprout(sprout.x(),sprout.y(),sprout.time()-seconds));continue;}
+            it.remove();
+            var enemy=new CampaignEnemy(CampaignEnemy.Kind.BRIARLING,sprout.x(),sprout.y());
+            var add=enemy.body();campaignEnemies.put(add,enemy);scouts.add(add);bossAdds.add(add);
+            emit(EventType.BRIARLING_EMERGE,sprout.x(),sprout.y());
+        }
+        long awake=bossAdds.stream().filter(Wisp::alive).count()+sprouts.size();
+        double health=guardian.health()/(double)guardian.maxHealth();
+        int crossed=health<=.25?3:health<=.5?2:health<=.75?1:0,wanted=0;
+        if(crossed>sproutThresholds) {sproutThresholds=crossed;wanted=2;}
+        sproutTimer+=seconds;
+        if(sproutTimer>=(guardian.enraged()?7:9)) {sproutTimer=0;wanted=Math.max(wanted,1);}
+        for(int i=0;i<wanted&&awake<(guardian.enraged()?3:2);i++)if(sprout())awake++;
+    }
+    /** A clear patch on the arena side of its roots, away from the player and anything else standing there. */
+    private boolean sprout() {
+        for(int attempt=0;attempt<10;attempt++) {
+            int turn=addSpawnIndex++;
+            double angle=Math.PI*(.18+.64*((turn*37)%100)/100.0),reach=300+(turn*53)%90;
+            double x=guardian.x()+Math.cos(angle)*reach*(turn%2==0?1:-1),y=guardian.y()+Math.sin(angle)*reach*.7+40;
+            if(near(x,y,140)||map.isBlocked(x,y+Wisp.COLLISION_Y_OFFSET,Wisp.COLLISION_RADIUS)
+                    ||sprouts.stream().anyMatch(s->Math.hypot(s.x()-x,s.y()-y)<90)
+                    ||scouts.stream().anyMatch(w->w.alive()&&Math.hypot(x-w.x(),y-w.y())<90))continue;
+            sprouts.add(new Sprout(x,y,SPROUT_WARNING));emit(EventType.BRIARLING_SPROUT,x,y);return true;
+        }
+        return false;
+    }
+    public List<Sprout> sprouts() { return Collections.unmodifiableList(sprouts); }
     private boolean near(double x,double y,double radius) {
         return Math.hypot(player.x()-x,player.y()-y)<=radius;
     }
     private void emit(EventType type,double x,double y) { events.add(new Event(type,x,y)); }
-    private void hurtPlayer(int damage,double x,double y) {
-        if(damage>0&&guarding()&&!player.invulnerable()) {
+    private void hurtPlayer(int damage,double x,double y) { hurtPlayer(damage,x,y,true); }
+    private void hurtPlayer(int damage,double x,double y,boolean parryable) {
+        if(voidAdvancing())return;
+        if(damage>0&&parryable&&guarding()&&!player.invulnerable()) {
+            earnVoid(.5);hitStop=Math.max(hitStop,.04);
             guardTime=0;
             // He answers toward whoever hit him. The cut is only shown; the damage below is the riposte's own.
             aimX=(int)Math.round((x-player.x())*1000);aimY=(int)Math.round((y-player.y())*1000);
@@ -1044,11 +1282,11 @@ public final class RuinedOutpostGame {
             for(Wisp scout:scouts)if(scout.alive()&&near(scout.x(),scout.y(),RIPOSTE_RANGE)
                     &&map.clearLine(player.x(),player.y(),scout.x(),scout.y())&&hurtScout(scout,36,false,true)) {
                 double dx=scout.x()-player.x(),dy=scout.y()-player.y(),length=Math.max(1,Math.hypot(dx,dy));
-                scout.push(dx/length*300,dy/length*300);afterScoutHit(scout);
+                scout.push(dx/length*160,dy/length*160);scout.openForPunish();afterScoutHit(scout);
             }
             if(bossActive()&&!bossDefeated
-                    &&near(guardian.x(),guardian.y(),RIPOSTE_RANGE)
-                    &&map.clearLine(player.x(),player.y(),guardian.x(),guardian.y())&&hurtGuardian(36,false))
+                    &&near(bossNearX(),guardian.y(),RIPOSTE_RANGE)
+                    &&map.clearLine(player.x(),player.y(),bossNearX(),guardian.y())&&hurtGuardian(36,false))
                 afterGuardianHit(false);
             return;
         }
@@ -1060,13 +1298,15 @@ public final class RuinedOutpostGame {
             if(campaignMode&&player.alive()&&hurtReactionCooldown==0)hurtReactionTime=2.5;
             events.add(new Event(EventType.DAMAGE_TAKEN,player.x(),player.y(),false,before-player.health(),false,false));
             if(membrane)emit(EventType.MEMBRANE_BREAK,player.x(),player.y());
-            cancelAbsorption();cancelBladeInput();
+            cancelAbsorption();cancelBladeInput();guardTime=0;
+            if(!player.bladeForm()) {waterCast=false;attackDelay=comboTime=0;}
             emit(EventType.PLAYER_HIT,x,y);
             hitStop=0.1;                         // getting hurt lands hardest: six frames of stillness
             if (blade&&!player.bladeForm()) emit(EventType.REVERT,player.x(),player.y());
         }
     }
     public boolean dash(int horizontal,int vertical) {
+        if(voidActive())return false;
         if (blocked() || (player.bladeForm()&&attackDelay>0) || !player.dash(horizontal,vertical)) return false;
         boolean preserve=player.bladeForm()&&comboTime>0&&combo<3&&!comboDodged;
         clearBladeButtons();bladeTime=bladeCastTime=counterTime=0;
@@ -1074,6 +1314,7 @@ public final class RuinedOutpostGame {
         cancelAbsorption();
         guardTime=0;
         attackDelay=0;
+        waterCast=false;
         dashHits.clear();
         comboTime=preserve?player.dashSeconds()+.5:0;
         comboDodged=preserve;
@@ -1102,7 +1343,12 @@ public final class RuinedOutpostGame {
                 &&guardian.hurt(guardian.health()))afterGuardianHit(true);
     }
     public boolean attack(int facingX,int facingY) {
-        if (blocked() || guarding() || charging || (facingX==0&&facingY==0) || !player.startAttack()) return false;
+        if(voidActive())return false;
+        if (blocked() || guarding() || charging || !player.alive() || player.recovering()
+                || player.dashing() || (facingX==0&&facingY==0)) return false;
+        boolean linked=bladeComboActive()&&attackDelay==0&&bladeElapsed()+1e-9>=strikeLinkTime(bladeMove);
+        if(linked)player.attackRecovery(0);
+        if(!player.startAttack())return false;
         cancelAbsorption();counterTime=0;
         // A click straight out of a dash opens with the dash slash; the chain then carries on from move 2.
         boolean opener=player.bladeForm()&&dashOpener>0&&comboTime==0;
@@ -1119,16 +1365,18 @@ public final class RuinedOutpostGame {
             boolean counter=counterWindow>0&&(dashX*facingX+dashY*facingY)/Math.hypot(facingX,facingY)<-.6;
             waterKind=counter?WaterProjectile.Kind.COUNTER:combo==2?WaterProjectile.Kind.FINISHER
                     :combo==1?WaterProjectile.Kind.RETURN_CUT:WaterProjectile.Kind.CUT;
-            waterWindup=counter?.04:combo==2?.12:.08;
+            waterWindup=counter?.04:combo==2?.22:combo==1?.10:.08;
+            player.attackRecovery(slimeAttackDuration());
             if(counter) {combo=0;comboTime=0;}
         }
         counterWindow=0;
         int move=opener?DASH_SLASH:combo;
         attackDelay=waterCast?waterWindup:strikeWindup(move);
         if(!waterCast) {
+            bladeLinked=linked;
             bladeMove=move;bladeDuration=bladeTime=strikeDuration(move);
             player.attackRecovery(bladeDuration);comboTime=bladeDuration+.5;
-            dashOpener=0;releasedCharge=0;
+            dashOpener=0;releasedCharge=0;cleaveEmpowered=false;finisherEarned=false;
         }
         emit(EventType.ATTACK,player.x(),player.y());
         return true;
@@ -1140,6 +1388,12 @@ public final class RuinedOutpostGame {
      */
     static double strikeWindup(int move) { return switch(move) {case 1->.14;case 2->.17;case 3->.24;case 4,SPIN_CLEAVE->.18;case DASH_SLASH->.10;default->.13;}; }
     static double strikeDuration(int move) { return switch(move) {case 1->.42;case 2->.48;case 3->.70;case 4->.58;case DASH_SLASH->.42;case SPIN_CLEAVE->.70;default->.40;}; }
+    /** Link after the cut follows through, before the last return-to-guard poses. */
+    static double strikeLinkTime(int move) {return strikeWindup(move)+(strikeDuration(move)-strikeWindup(move))*.68;}
+    private boolean bladeComboActive() {return bladeAttacking()&&comboTime>0&&combo<player.bladeComboLength()-1
+            &&(bladeMove<3||bladeMove==DASH_SLASH);}
+    private double primaryInputWait() {return bladeComboActive()?Math.max(0,strikeLinkTime(bladeMove)-bladeElapsed()):player.attackCooldown();}
+    private double primaryBuffer() {return bladeComboActive()?.24:INPUT_BUFFER;}
     /** Every cut is made with a step: world pixels he advances during the wind-up, landing on contact. */
     static double strikeStep(int move) { return switch(move) {case 1->30;case 3->20;case 4,SPIN_CLEAVE->26;case DASH_SLASH->40;default->16;}; }
     /**
@@ -1148,16 +1402,29 @@ public final class RuinedOutpostGame {
      */
     static int strikeKind(int move) { return move==DASH_SLASH?0:move==SPIN_CLEAVE?4:move; }
     public boolean primaryPress(int x,int y) {
-        if(blocked()||!player.bladeForm()||!player.alive()||player.recovering()||guarding()||primaryHeld||queuedAttack!=0||(x==0&&y==0))return false;
-        if(player.attackCooldown()>INPUT_BUFFER||player.dashSeconds()>INPUT_BUFFER)return false;
+        if(blocked()||voidActive()||!player.alive()||player.recovering()||guarding()||primaryHeld||queuedAttack!=0||(x==0&&y==0))return false;
+        if(primaryInputWait()>primaryBuffer()+1e-9||player.dashSeconds()>INPUT_BUFFER)return false;
         cancelAbsorption();
-        primaryHeld=true;primaryTime=0;chargeReady=false;return true;
+        primaryHeld=true;primaryTime=0;chargeReady=false;
+        aimSlimeCharge(x,y);return true;
     }
     public void primaryRelease(int x,int y) {
         if(!primaryHeld)return;
         boolean charged=charging;double held=primaryTime;
         primaryHeld=charging=chargeReady=false;primaryTime=0;
-        if(blocked()||!player.bladeForm()||!player.alive())return;
+        if(blocked()||!player.alive())return;
+        if(!player.bladeForm()) {
+            if(charged)chargedJet(x,y,Math.min(1,held/FULL_CHARGE));
+            else if(held<CHARGE_THRESHOLD&&(x!=0||y!=0)) {
+                if(attack(x,y)) {
+                    double credit=Math.min(held,waterWindup*.7);
+                    attackDelay-=credit;player.attackRecovery(slimeAttackDuration()-credit);
+                } else if(player.attackCooldown()<=INPUT_BUFFER&&player.dashSeconds()<=INPUT_BUFFER) {
+                    queuedAttack=1;queuedX=x;queuedY=y;queuedTime=INPUT_BUFFER+.01;
+                }
+            }
+            return;
+        }
         if(charged)chargedCleave(x,y,Math.min(1,held/FULL_CHARGE));
         else if(held<CHARGE_THRESHOLD) {
             boolean busy=bladeTime>0;
@@ -1175,19 +1442,22 @@ public final class RuinedOutpostGame {
         double length=Math.max(1,Math.hypot(aimX,aimY));
         player.attackStep(aimX/length,aimY/length,strikeStep(bladeMove)*credit/bladeContact(),map);
         attackDelay=Math.max(0,attackDelay-credit);bladeTime-=credit;
+        player.attackRecovery(bladeTime);
     }
     public boolean requestBladeAttack(boolean crescent,int x,int y) {
-        if(blocked()||!player.bladeForm()||guarding()||charging||(x==0&&y==0))return false;
-        if(crescent?ichorCrescent(x,y):attack(x,y))return true;
+        if(blocked()||voidActive()||!player.bladeForm()||guarding()||charging||(x==0&&y==0))return false;
+        if(crescent?voidSever(x,y):attack(x,y))return true;
+        if(crescent&&voidReadiness<1)return false;
         if(queuedAttack==0||crescent) {
-            if(player.attackCooldown()<=INPUT_BUFFER+1e-9&&player.dashSeconds()<=INPUT_BUFFER+1e-9) {
-                queuedAttack=crescent?2:1;queuedX=x;queuedY=y;queuedTime=INPUT_BUFFER+.01;
+            double wait=crescent?player.attackCooldown():primaryInputWait(),buffer=crescent?INPUT_BUFFER:primaryBuffer();
+            if(wait<=buffer+1e-9&&player.dashSeconds()<=INPUT_BUFFER+1e-9) {
+                queuedAttack=crescent?2:1;queuedX=x;queuedY=y;queuedTime=buffer+.01;
                 return true;
             }
         }
         return false;
     }
-    private void updateBladeInput(double seconds) {
+    private void updatePrimaryInput(double seconds) {
         if(!player.alive()||player.recovering()){cancelBladeInput();return;}
         if(primaryHeld) {
             primaryTime+=seconds;
@@ -1197,16 +1467,23 @@ public final class RuinedOutpostGame {
             }
         }
         if(queuedAttack!=0) {
-            boolean started=queuedAttack==2?ichorCrescent(queuedX,queuedY):attack(queuedX,queuedY);
+            boolean started=queuedAttack==2&&player.bladeForm()?voidSever(queuedX,queuedY):attack(queuedX,queuedY);
             queuedTime-=seconds;
             if(started||queuedTime<=0)queuedAttack=0;
         }
     }
+    private boolean chargedJet(int x,int y,double power) {
+        if((x==0&&y==0)||!player.startAttack())return false;
+        cancelAbsorption();aimX=x;aimY=y;releasedCharge=power;
+        waterCast=true;heavyCast=false;waterKind=WaterProjectile.Kind.CHARGED_JET;
+        attackDelay=waterWindup=.04;player.attackRecovery(slimeAttackDuration());
+        comboTime=counterWindow=0;combo=0;return true;
+    }
     private boolean chargedCleave(int x,int y,double power) {
-        if((x==0&&y==0)||guarding()||player.ichor()<=CHARGE_COST||!player.startAttack())return false;
-        player.spendBladeIchor(CHARGE_COST);cancelAbsorption();
+        if((x==0&&y==0)||voidActive()||guarding()||!player.startAttack())return false;
+        cancelAbsorption();cleaveEmpowered=devoured;devoured=false;
         // Held to the charge-ready cue, the cut carries him right round; anything less is the plain cleave.
-        aimX=x;aimY=y;releasedCharge=power;bladeMove=power>=1?SPIN_CLEAVE:4;counterTime=0;
+        aimX=x;aimY=y;releasedCharge=power;bladeMove=power>=1?SPIN_CLEAVE:4;counterTime=0;bladeLinked=false;
         bladeDuration=bladeTime=strikeDuration(bladeMove);player.attackRecovery(bladeDuration);
         strikeDamage=player.attackDamage()+(int)Math.round(36*power);strikeRange=BLADE_ATTACK_RANGE;
         waterCast=heavyCast=false;attackDelay=strikeWindup(bladeMove);comboTime=dashOpener=0;combo=0;
@@ -1214,10 +1491,13 @@ public final class RuinedOutpostGame {
     }
     private void clearBladeButtons() {primaryHeld=charging=chargeReady=false;primaryTime=queuedTime=0;queuedAttack=0;}
     public void cancelBladeInput() {
-        clearBladeButtons();bladeTime=bladeCastTime=dashOpener=counterTime=0;comboDodged=false;
+        voidTime=-1;voidHits.clear();voidBossHit=false;empoweredDelay=0;empoweredHits.clear();empoweredBoss=false;cleaveEmpowered=false;
+        clearBladeButtons();bladeTime=bladeCastTime=dashOpener=counterTime=0;comboDodged=bladeLinked=false;
         if(!waterCast||player.bladeForm()){comboTime=0;attackDelay=0;}
     }
-    public boolean bladePreparing() {return primaryHeld&&!player.dashing()&&!guarding()&&player.attackCooldown()==0;}
+    public boolean bladePreparing() {return player.bladeForm()&&primaryHeld&&!player.dashing()&&!guarding()&&player.attackCooldown()==0;}
+    public boolean slimePreparing() {return !player.bladeForm()&&primaryHeld&&player.alive()&&!player.dashing()&&player.attackCooldown()==0;}
+    public void aimSlimeCharge(int x,int y) {if(slimePreparing()&&(x!=0||y!=0)){aimX=x;aimY=y;}}
     public boolean charging() {return charging;}
     public double chargeProgress() {return Math.min(1,primaryTime/FULL_CHARGE);}
     public double chargeSeconds() {return primaryTime;}
@@ -1225,16 +1505,111 @@ public final class RuinedOutpostGame {
     public boolean bladeCountering() {return player.bladeForm()&&counterTime>0;}
     public double counterElapsed() {return COUNTER_DURATION-counterTime;}
     public double bladeCastElapsed() {return BLADE_CAST_DURATION-bladeCastTime;}
-    public double bladeElapsed() {return bladeDuration-bladeTime;}
+    public double bladeElapsed() {
+        if(!voidActive())return bladeDuration-bladeTime;
+        if(voidTime<VOID_WINDUP)return voidTime/VOID_WINDUP*.098;
+        if(voidTime<.66)return .10+(voidTime-.48)/.18*.14;
+        return voidTime<.80?(voidTime-.66)/.14*.179:.18+(voidTime-.80)/.42*.519;
+    }
     public double bladeContact() {return strikeWindup(bladeMove);}
-    public boolean bladeAttacking() {return bladeTime>0&&player.bladeForm();}
-    public int bladeMove() {return bladeMove;}
+    public boolean bladeAttacking() {return (voidActive()||bladeTime>0)&&player.bladeForm();}
+    public int bladeMove() {return voidActive()?(voidTime<.66?DASH_SLASH:SPIN_CLEAVE):bladeMove;}
+    public boolean bladeLinked() {return !voidActive()&&bladeAttacking()&&bladeLinked;}
     public int bladeAimX() {return aimX;}
     public int bladeAimY() {return aimY;}
     public int dashAimX() {return (int)Math.round(dashX*1000);}
     public int dashAimY() {return (int)Math.round(dashY*1000);}
     public double releasedCharge() {return releasedCharge;}
     public int comboStep() {return comboTime>0?combo+1:0;}
+
+    public double slimeAttackDuration() {
+        return switch(waterKind) {case CUT->.40;case RETURN_CUT->.44;case FINISHER->.68;case COUNTER->.36;case CHARGED_JET->.58;case TIDE->Player.WATER_COOLDOWN;};
+    }
+    public double slimeAttackElapsed() {
+        return waterCast&&!player.bladeForm()&&player.alive()&&!player.dashing()&&player.attackCooldown()>0
+                ?Math.max(0,slimeAttackDuration()-player.attackCooldown()):-1;
+    }
+    public double slimeReleaseTime() {return waterWindup;}
+
+    public boolean voidActive(){return voidTime>=0;}
+    public boolean voidAdvancing(){return voidTime>=VOID_WINDUP&&voidTime<VOID_WINDUP+VOID_ADVANCE;}
+    public double voidElapsed(){return voidTime;}
+    public double voidReadiness(){return voidReadiness;}
+    public boolean devoured(){return devoured;}
+    public boolean voidEmpowered(){return voidEmpowered;}
+    public boolean cleaveEmpowered(){return cleaveEmpowered;}
+    public double voidStartX(){return voidStartX;}
+    public double voidStartY(){return voidStartY;}
+    public double voidEndX(){return voidEndX;}
+    public double voidEndY(){return voidEndY;}
+    private void earnVoid(double amount){voidReadiness=Math.min(1,voidReadiness+amount);}
+    private void resetKit(){voidReadiness=0;devoured=false;cancelBladeInput();}
+    public void aimVoidSever(int x,int y) {
+        if(voidActive()&&voidTime<VOID_WINDUP&&(x!=0||y!=0)){aimX=x;aimY=y;}
+    }
+    public boolean voidSever(int x,int y) {
+        if(blocked()||voidActive()||!player.bladeForm()||guarding()||charging()||(x==0&&y==0))return false;
+        if(voidReadiness<1){notice("VOID SEVER / EARN THROUGH FINISHERS, PARRIES AND ABSORPTION");deny();return false;}
+        if(!player.startAttack())return false;
+        cancelAbsorption();cancelBladeInput();voidReadiness=0;
+        voidEmpowered=devoured;devoured=false;voidTime=0;aimX=x;aimY=y;
+        voidStartX=voidEndX=player.x();voidStartY=voidEndY=player.y();
+        player.attackRecovery(VOID_DURATION);emit(EventType.VOID_START,player.x(),player.y());return true;
+    }
+    private void updateVoidSever(double seconds) {
+        if(!voidActive())return;
+        if(!player.alive()||!player.bladeForm()){cancelBladeInput();return;}
+        double before=voidTime;voidTime+=seconds;
+        if(before<VOID_WINDUP&&voidTime>=VOID_WINDUP)emit(EventType.VOID_RELEASE,player.x(),player.y());
+        double travel=Math.max(0,Math.min(voidTime,VOID_WINDUP+VOID_ADVANCE)-Math.max(before,VOID_WINDUP));
+        if(travel>0) {
+            double length=Math.max(1,Math.hypot(aimX,aimY)),distance=320*travel/VOID_ADVANCE;
+            int steps=Math.max(1,(int)Math.ceil(distance/4));
+            for(int i=0;i<steps;i++) {
+                double x=player.x(),y=player.y();
+                // Stop the lane at walls rather than sliding the attack around corners.
+                double nx=x+aimX/length*distance/steps,ny=y+aimY/length*distance/steps;
+                if(map.isBlocked(nx,ny+Player.COLLISION_Y_OFFSET,Player.COLLISION_RADIUS,false))break;
+                player.attackStep(aimX/length,aimY/length,distance/steps,map);
+                voidEndX=player.x();voidEndY=player.y();
+                for(Wisp body:scouts)if(body.alive()&&!voidHits.contains(body)&&near(body.x(),body.y(),70)
+                        &&map.clearLine(player.x(),player.y(),body.x(),body.y())) {
+                    voidHits.add(body);
+                    if(hurtScout(body,32,false,true)) {
+                        afterScoutHit(body);
+                        if(voidHits.size()==1){emit(EventType.VOID_CONTACT,body.x(),body.y());hitStop=Math.max(hitStop,.05);}
+                    }
+                }
+                if(!voidBossHit&&bossActive()&&guardian.alive()&&near(bossNearX(),guardian.y(),100)
+                        &&map.clearLine(player.x(),player.y(),bossNearX(),guardian.y())) {
+                    voidBossHit=true;if(hurtGuardian(32,false))afterGuardianHit(false);
+                }
+            }
+        }
+        if(before<VOID_RUPTURE_TIME&&voidTime>=VOID_RUPTURE_TIME) {
+            emit(EventType.VOID_RUPTURE,(voidStartX+voidEndX)/2,(voidStartY+voidEndY)/2);
+            for(Wisp body:new ArrayList<>(voidHits))if(body.alive()&&Math.hypot(body.x()-player.x(),body.y()-player.y())<=480
+                    &&map.clearLine(player.x(),player.y(),body.x(),body.y())&&hurtScout(body,voidEmpowered?66:48,false,true)) {
+                afterScoutHit(body);body.push(aimX/Math.max(1,Math.hypot(aimX,aimY))*180,aimY/Math.max(1,Math.hypot(aimX,aimY))*180);
+                if(voidEmpowered)body.openForPunish();
+            }
+            if(voidBossHit&&guardian.alive()&&bossActive()&&near(bossNearX(),guardian.y(),150)
+                    &&map.clearLine(player.x(),player.y(),bossNearX(),guardian.y())&&hurtGuardian(voidEmpowered?66:48,false))afterGuardianHit(false);
+            hitStop=Math.max(hitStop,.10);
+        }
+        if(voidTime>=VOID_DURATION){voidTime=-1;voidHits.clear();voidBossHit=false;}
+    }
+    private void updateEmpoweredHits(double seconds) {
+        if(empoweredDelay<=0)return;
+        empoweredDelay=Math.max(0,empoweredDelay-seconds);if(empoweredDelay>0)return;
+        for(Wisp body:new ArrayList<>(empoweredHits))if(body.alive()&&near(body.x(),body.y(),240)
+                &&map.clearLine(player.x(),player.y(),body.x(),body.y())&&hurtScout(body,18,false,true)) {
+            afterScoutHit(body);emit(EventType.VOID_CONTACT,body.x(),body.y());
+        }
+        if(empoweredBoss&&guardian.alive()&&bossActive()&&near(bossNearX(),guardian.y(),200)
+                &&map.clearLine(player.x(),player.y(),bossNearX(),guardian.y())&&hurtGuardian(18,false))afterGuardianHit(false);
+        empoweredHits.clear();empoweredBoss=false;
+    }
 
     public boolean ichorCrescent(int facingX,int facingY) {
         if(!blocked()&&player.bladeForm()&&(crescentCooldown>0||player.ichor()<=BLADE_SKILL_COST))deny();
@@ -1248,7 +1623,7 @@ public final class RuinedOutpostGame {
         emit(EventType.CRESCENT_CAST,player.x(),player.y());return true;
     }
     public boolean beelzebub(int facingX,int facingY) {
-        if(blocked()||!player.bladeForm()||!player.alive()||player.recovering()||player.dashing()
+        if(blocked()||voidActive()||!player.bladeForm()||!player.alive()||player.recovering()||player.dashing()
                 ||beelzebubActive()||guarding()||bladeAttacking()||bladeCasting()||primaryHeld||counterTime>0
                 ||(facingX==0&&facingY==0))return false;
         if(beelzebubCooldown>0) { deny();return false; }
@@ -1261,13 +1636,16 @@ public final class RuinedOutpostGame {
         beelzebubTargets.addAll(targets);absorptionTarget=targets.get(0).corpse();
         absorptionX=player.x();absorptionY=player.y();absorptionHealth=player.healthValue();
         aimX=facingX;aimY=facingY;beelzebubCooldown=BEELZEBUB_COOLDOWN;
+        if(campaignMode&&bark==null)startBark(switch(beelzebubCalls++%3) {
+            case 0 -> OutpostBark.BEELZEBUB_CALL;
+            case 1 -> OutpostBark.BEELZEBUB_CALL_AGAIN;
+            default -> OutpostBark.BEELZEBUB_CALL_TAKE;
+        });
         emit(EventType.BEELZEBUB_CAST,player.x(),player.y());return true;
     }
     public boolean riposte() {
-        if(!blocked()&&player.bladeForm()&&(riposteCooldown>0||player.ichor()<=BLADE_SKILL_COST))deny();
-        if(blocked()||!player.bladeForm()||riposteCooldown>0||player.ichor()<=BLADE_SKILL_COST
-                ||!player.startAttack())return false;
-        player.spendBladeIchor(BLADE_SKILL_COST);
+        if(!blocked()&&player.bladeForm()&&riposteCooldown>0)deny();
+        if(blocked()||voidActive()||!player.bladeForm()||riposteCooldown>0||!player.startAttack())return false;
         cancelAbsorption();cancelBladeInput();
         guardTime=RIPOSTE_DURATION;riposteCooldown=RIPOSTE_COOLDOWN;
         emit(EventType.RIPOSTE_START,player.x(),player.y());return true;
@@ -1276,7 +1654,7 @@ public final class RuinedOutpostGame {
         if(!blocked()&&!player.bladeForm()&&tideCooldown>0)deny();
         if(blocked()||player.bladeForm()||tideCooldown>0||(facingX==0&&facingY==0)
                 ||!player.startAttack()) return false;
-        cancelAbsorption();
+        cancelAbsorption();clearBladeButtons();
         aimX=facingX; aimY=facingY; waterCast=heavyCast=true;
         waterKind=WaterProjectile.Kind.TIDE;
         attackDelay=waterWindup=0.18; tideCooldown=TIDE_COOLDOWN;
@@ -1287,9 +1665,14 @@ public final class RuinedOutpostGame {
     private void resolveStrike() {
         if(waterCast) {
             if(!player.bladeForm()) {
-                projectiles.add(new WaterProjectile(player.x(),player.y(),aimX,aimY,waterKind,player.trait()==Player.Trait.JET));
+                projectiles.add(new WaterProjectile(player.x(),player.y(),aimX,aimY,waterKind,player.trait()==Player.Trait.JET,releasedCharge));
                 if(heavyCast)events.add(new Event(EventType.TIDE_RELEASE,player.x(),player.y(),true));
                 else if(waterKind==WaterProjectile.Kind.FINISHER)emit(EventType.FINISHER_RELEASE,player.x(),player.y());
+                else if(waterKind==WaterProjectile.Kind.CHARGED_JET) {
+                    emit(EventType.WATER_JET_RELEASE,player.x(),player.y());
+                    double length=Math.max(1,Math.hypot(aimX,aimY));
+                    player.attackStep(-aimX/length,-aimY/length,10+8*releasedCharge,map);
+                }
             }
             return;
         }
@@ -1298,20 +1681,31 @@ public final class RuinedOutpostGame {
         for(Wisp scout:scouts)if(scout.alive()&&bladeHits(scout.x(),scout.y())
                 &&(nearest==null||Math.hypot(scout.x()-player.x(),scout.y()-player.y())
                     <Math.hypot(nearest.x()-player.x(),nearest.y()-player.y())))nearest=scout;
-        boolean bossHit=bossActive()&&!bossDefeated&&bladeHits(guardian.x(),guardian.y());
+        boolean bossHit=bossActive()&&!bossDefeated&&bladeHits(bossNearX(),guardian.y());
         boolean bossFirst=bossHit&&(nearest==null||Math.hypot(guardian.x()-player.x(),guardian.y()-player.y())
                 <Math.hypot(nearest.x()-player.x(),nearest.y()-player.y()));
-        int kind=strikeKind(bladeMove);
+        int kind=strikeKind(bladeMove);boolean landed=false;
         for(Wisp scout:scouts) {
             if(!scout.alive()||!bladeHits(scout.x(),scout.y())||(kind==1&&(scout!=nearest||bossFirst)))continue;
             if(hurtScout(scout,strikeDamage,false,true)) {
+                landed=true;
                 double length=Math.max(1,Math.hypot(aimX,aimY));
                 double force=kind==4?220+100*releasedCharge:kind==3?260:kind==1?110:55;
                 scout.push(aimX/length*force,aimY/length*force);afterScoutHit(scout);
+                if(kind==3&&!finisherEarned){earnVoid(.34);finisherEarned=true;}
+                if(kind==4&&cleaveEmpowered&&!empoweredHits.contains(scout))empoweredHits.add(scout);
                 if(kind>=3)hitStop=.1;
             }
         }
-        if(bossHit&&(kind!=1||bossFirst)&&hurtGuardian(strikeDamage,false))afterGuardianHit(false);
+        if(bossHit&&(kind!=1||bossFirst)&&hurtGuardian(strikeDamage,false)) {
+            landed=true;afterGuardianHit(false);
+            if(kind==3&&!finisherEarned){earnVoid(.34);finisherEarned=true;}
+            if(kind==4&&cleaveEmpowered)empoweredBoss=true;
+        }
+        if(kind==4&&landed) {
+            events.add(new Event(EventType.EMPOWERED_HIT,player.x(),player.y(),false,0,false,cleaveEmpowered));
+            if(cleaveEmpowered)empoweredDelay=.16;
+        }
         fieldStrike();
     }
     private boolean bladeHits(double x,double y) {
@@ -1324,7 +1718,7 @@ public final class RuinedOutpostGame {
     private void afterGuardianHit(boolean water) {
         events.add(new Event(EventType.ENEMY_HIT,guardian.x(),guardian.y(),water));
         hitStop=0.06;
-        if (!guardian.alive()) {
+        if (!guardian.alive()&&!bossDefeated) {
                 bossDefeated=true;
                 gateTime=0;
                 if(campaignMode) {
@@ -1336,8 +1730,15 @@ public final class RuinedOutpostGame {
                 map.openGate();
                 forestHazards.clear();
                 for (Wisp add:scouts) if(add.alive()&&(!campaignMode||bossAdds.contains(add))) add.hurt(add.health());
+                sprouts.clear();                                    // nothing else breaks the ground once it falls
                 events.add(new Event(EventType.ENEMY_DEFEATED,guardian.x(),guardian.y(),water));
-                bossBark(biome==1?OutpostBark.FOREST_BOSS_VICTORY:OutpostBark.WARDEN_VICTORY);
+                if(campaignMode&&biome==0&&player.alive()) {
+                    cancelAbsorption();cancelBladeInput();
+                    player.relocate(player.x(),player.y());attackDelay=waterWindup=bladeTime=bladeCastTime=guardTime=counterTime=hitStop=0;waterCast=false;
+                    pendingBossBark=null;pendingBanter=null;hurtReactionTime=0;
+                    wardenVictoryTime=0;wardenVictorySpoken=false;
+                    wardenCameraX=guardian.x();wardenCameraY=guardian.y()+24;
+                } else bossBark(biome==1?OutpostBark.FOREST_BOSS_VICTORY:OutpostBark.WARDEN_VICTORY);
         }
     }
     private void updateWater(double seconds) {
@@ -1366,7 +1767,7 @@ public final class RuinedOutpostGame {
                         if(damaged) {
                             scout.push(wave.directionX()*wave.impulse(),wave.directionY()*wave.impulse());
                             afterScoutHit(scout,true);
-                            if(wave.kind()==WaterProjectile.Kind.FINISHER)hitStop=.1;
+                            if(wave.kind()==WaterProjectile.Kind.FINISHER||wave.kind()==WaterProjectile.Kind.CHARGED_JET)hitStop=.1;
                             if(wave.heavy())emit(EventType.TIDE_IMPACT,scout.x(),scout.y());
                         }
                         // Bodies part around the wave; a raised shield or solid terrain stops it.
@@ -1374,6 +1775,7 @@ public final class RuinedOutpostGame {
                     }
                 }
                 if(!wave.alive()) events.add(new Event(wave.heavy()?EventType.TIDE_IMPACT:
+                        wave.kind()==WaterProjectile.Kind.CHARGED_JET?EventType.WATER_JET_IMPACT:
                         wave.kind()==WaterProjectile.Kind.FINISHER?EventType.FINISHER_IMPACT:EventType.WATER_IMPACT,wave.x(),wave.y(),true));
             }
         }
@@ -1535,7 +1937,8 @@ public final class RuinedOutpostGame {
             notice("NO ROOM TO CHANGE HERE");deny();return false;
         }
         if(!player.transform()) return false;
-        cancelAbsorption();
+        waterCast=false;attackDelay=0;
+        endAbsorption();
         cancelBladeInput();
         comboTime=counterWindow=0;
         if(!campaignMode&&map.room()==4) tutorialTransformed=true;
@@ -1750,7 +2153,7 @@ public final class RuinedOutpostGame {
         return false;
     }
     private boolean canAbsorb() {
-        return player.alive()&&!player.bladeForm()&&!player.recovering()&&!player.dashing()&&attackDelay==0;
+        return player.alive()&&!player.bladeForm()&&!player.recovering()&&!player.dashing()&&!primaryHeld&&attackDelay==0;
     }
     private String absorbPrompt() {
         Corpse corpse=nearbyCorpse();
@@ -1777,7 +2180,12 @@ public final class RuinedOutpostGame {
         }
         return nearest;
     }
-    private void cancelAbsorption() { absorptionTarget=null;absorptionTime=0;beelzebubTargets.clear(); }
+    /** Ordinary actions (moving, dashing, a hit, guarding, attacks, charging, Crescent, Riposte, interacting) stop the
+     *  slime's own swallow, but a cast Beelzebub keeps eating until it finishes (owner 2026-10-29: "it only draws the
+     *  corpses closer, not absorb"). */
+    private void cancelAbsorption() { if(!beelzebubActive())endAbsorption(); }
+    /** The hard stop for both: death, reverting to slime, changing room or area, dialogue, the title, reset and debug. */
+    private void endAbsorption() { absorptionTarget=null;absorptionTime=0;beelzebubTargets.clear(); }
     private void updateAbsorption(double seconds) {
         for(Corpse corpse:corpses)corpse.age+=seconds;
         corpses.removeIf(corpse->corpse.age>=CORPSE_LIFETIME);
@@ -1791,7 +2199,7 @@ public final class RuinedOutpostGame {
         absorptionTarget.x=corpseStartX+(player.x()-corpseStartX)*pull;
         absorptionTarget.y=corpseStartY+(player.y()-corpseStartY)*pull;
         if(absorptionTime+1e-9<ABSORB_DURATION)return;
-        player.collectIchor(5);
+        player.collectIchor(5);earnVoid(.25);
         double beforeHealth=player.healthValue();
         if(absorptionTarget.healing())player.heal(10);
         if(player.healthValue()>beforeHealth)emit(EventType.HEALED,player.x(),player.y());
@@ -1803,31 +2211,36 @@ public final class RuinedOutpostGame {
         emit(EventType.ABSORBED,player.x(),player.y());
     }
     private void updateBeelzebub(double seconds) {
-        if(!player.alive()||!player.bladeForm()||player.dashing()||player.recovering()
-                ||Math.hypot(player.x()-absorptionX,player.y()-absorptionY)>.01
-                ||player.healthValue()<absorptionHealth) { cancelAbsorption();return; }
-        beelzebubTargets.removeIf(pull->!corpses.contains(pull.corpse())
-                ||!corpseReachable(pull.corpse(),BEELZEBUB_RADIUS));
-        if(beelzebubTargets.isEmpty()) { cancelAbsorption();return; }
+        // Owner 2026-10-29: "it only draws the corpses closer, not absorb". Once cast, the devour finishes:
+        // the hand moves with him, a hit or a dash doesn't drop the meal; only death or reverting ends it.
+        if(!player.alive()||!player.bladeForm()) { endAbsorption();return; }
+        absorptionX=player.x();absorptionY=player.y();
+        beelzebubTargets.removeIf(pull->!corpses.contains(pull.corpse()));   // caught at the cast, held to the end
+        if(beelzebubTargets.isEmpty()) { endAbsorption();return; }
         absorptionTarget=beelzebubTargets.get(0).corpse();
         absorptionTime+=seconds;
-        double fraction=absorptionProgress(),pull=fraction*fraction*(3-2*fraction);
+        double pull=beelzebubPull();
         for(var target:beelzebubTargets) {
             target.corpse().x=target.x()+(absorptionX-target.x())*pull;
             target.corpse().y=target.y()+(absorptionY-target.y())*pull;
         }
         if(absorptionTime+1e-9<BEELZEBUB_DURATION)return;
-        double beforeHealth=player.healthValue();
+        double beforeHealth=player.healthValue(),beforeIchor=player.ichor();
         player.collectIchor(5*beelzebubTargets.size());
+        devoured=true;earnVoid(.25*beelzebubTargets.size());
         for(var target:beelzebubTargets) {
             if(target.corpse().healing())player.heal(10);
             corpses.remove(target.corpse());
         }
         // Blade form takes the resources; temporary absorbed traits belong to slime form.
         if(player.healthValue()>beforeHealth)emit(EventType.HEALED,player.x(),player.y());
-        cancelAbsorption();emit(EventType.ABSORBED,player.x(),player.y());
+        // The gulp lands at the hand's vortex (BeelzebubFx: 34 px along the aim), carrying the Ichor it gave.
+        double length=Math.max(1,Math.hypot(aimX,aimY));
+        int gained=(int)Math.round(player.ichor()-beforeIchor);
+        endAbsorption();
+        events.add(new Event(EventType.ABSORBED,player.x()+aimX/length*68,player.y()-20+aimY/length*24,false,gained,false,true));
     }
-    public boolean blocked() { return paused||story.blocksGameplay()||dialogue!=null||wardenReturnTime>0; }
+    public boolean blocked() { return paused||story.blocksGameplay()||dialogue!=null||wardenVictory()||wardenReturnTime>0; }
     public boolean paused() { return paused; }
     public void togglePause() { if(!story.blocksGameplay()) {paused=!paused;if(paused)cancelBladeInput();} }
     public void pause() { if(!story.blocksGameplay()) {paused=true;cancelBladeInput();} }
@@ -1865,6 +2278,17 @@ public final class RuinedOutpostGame {
     public boolean beelzebubActive() { return !beelzebubTargets.isEmpty(); }
     public double beelzebubCooldown() { return beelzebubCooldown; }
     public boolean beelzebubTarget(Corpse corpse) { return beelzebubTargets.stream().anyMatch(pull->pull.corpse()==corpse); }
+    /** How far the caught remains have been drawn in (0-1): the hand vortex opens before they accelerate into it. */
+    public double beelzebubPull() { return beelzebubPull(absorptionProgress()); }
+    public static double beelzebubPull(double progress) {
+        double fraction=Math.max(0,Math.min(1,(progress-.18)/.7));
+        return fraction*fraction*(3-2*fraction);
+    }
+    /** Where a body caught by Beelzebub lay when the cast began (its drag is drawn from there); null if not caught. */
+    public double[] beelzebubOrigin(Corpse corpse) {
+        for(var pull:beelzebubTargets)if(pull.corpse()==corpse)return new double[]{pull.x(),pull.y()};
+        return null;
+    }
     public double absorptionAnchorX() { return absorptionTarget==null?player.x():corpseStartX; }
     public double absorptionAnchorY() { return absorptionTarget==null?player.y():corpseStartY; }
 }

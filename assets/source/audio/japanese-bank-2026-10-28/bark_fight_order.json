@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "誰かが、この道を守れって教えたんだな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "0VQuDd756vK3MTpuQxcq",
+  "generated_at": 1793156238.4671955
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "じゃあ、あいつが川の水を飲んでるのか。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "ZTCRGS9pogwfCtNbdUQ6",
+  "generated_at": 1793156210.0091026
+}

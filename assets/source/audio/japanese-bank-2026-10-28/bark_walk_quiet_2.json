@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "荷車の跡を見る限り、そうでしょう。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "Id7pXkyBvzu2LfskHQCh",
+  "generated_at": 1793156264.3115265
+}

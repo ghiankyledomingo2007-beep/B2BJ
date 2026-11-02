@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "待って。進む前に、音を聞いて。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "jW0q2mAqo35Jo1gySCS2",
+  "generated_at": 1793156380.0759673
+}

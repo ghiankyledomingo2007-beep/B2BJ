@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.8430209159851074,
+  "text": "沼の呪術師。足元注意。",
+  "words": [
+    {
+      "text": "沼",
+      "start": 0.36,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0007666985620744526
+    },
+    {
+      "text": "の",
+      "start": 0.52,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -2.1457441107486375e-05
+    },
+    {
+      "text": "呪",
+      "start": 0.68,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -0.0011173202656209469
+    },
+    {
+      "text": "術",
+      "start": 0.8,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -0.0005675135762430727
+    },
+    {
+      "text": "師",
+      "start": 1.06,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.00013624693383462727
+    },
+    {
+      "text": "。",
+      "start": 1.18,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.4864085614681244
+    },
+    {
+      "text": "足",
+      "start": 1.8,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "元",
+      "start": 1.92,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -0.004264072049409151
+    },
+    {
+      "text": "注",
+      "start": 2.24,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "意",
+      "start": 2.48,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 2.62,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -0.00034528967808000743
+    }
+  ],
+  "transcription_id": "J9P6cImPpFPvdOfJWkm5",
+  "audio_duration_secs": 3.624
+}

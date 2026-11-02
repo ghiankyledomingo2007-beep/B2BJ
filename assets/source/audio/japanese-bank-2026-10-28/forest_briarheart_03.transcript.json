@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9985918998718262,
+  "text": "じゃあ道を開けよう。地面の方見ててくれ。",
+  "words": [
+    {
+      "text": "じ",
+      "start": 0.12,
+      "end": 0.16,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "ゃ",
+      "start": 0.16,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "あ",
+      "start": 0.26,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -6.711257447022945e-05
+    },
+    {
+      "text": "道",
+      "start": 0.64,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -0.04753115773200989
+    },
+    {
+      "text": "を",
+      "start": 0.98,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -3.1709168979432434e-05
+    },
+    {
+      "text": "開",
+      "start": 1.04,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -3.1709168979432434e-05
+    },
+    {
+      "text": "け",
+      "start": 1.14,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -5.006777428206988e-06
+    },
+    {
+      "text": "よ",
+      "start": 1.28,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -4.660974445869215e-05
+    },
+    {
+      "text": "う",
+      "start": 1.36,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -4.660974445869215e-05
+    },
+    {
+      "text": "。",
+      "start": 1.44,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -3.731181277544238e-05
+    },
+    {
+      "text": "地",
+      "start": 2.0,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "面",
+      "start": 2.16,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "の",
+      "start": 2.24,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -0.00018320789968129247
+    },
+    {
+      "text": "方",
+      "start": 2.36,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -0.00018320789968129247
+    },
+    {
+      "text": "見",
+      "start": 2.86,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.03167302533984184
+    },
+    {
+      "text": "て",
+      "start": 3.0,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -0.03167302533984184
+    },
+    {
+      "text": "て",
+      "start": 3.06,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -5.1020273531321436e-05
+    },
+    {
+      "text": "く",
+      "start": 3.18,
+      "end": 3.24,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "れ",
+      "start": 3.24,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "。",
+      "start": 3.38,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.005235769785940647
+    }
+  ],
+  "transcription_id": "gAZK4PxlylIztUWy72ra",
+  "audio_duration_secs": 3.68
+}

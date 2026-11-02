@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "今夜、野営地に戻ってきた方が、あなたの名前を呼んでいました。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "oR9HyrEJhJP9ktKloLBB",
+  "generated_at": 1793156179.973501
+}

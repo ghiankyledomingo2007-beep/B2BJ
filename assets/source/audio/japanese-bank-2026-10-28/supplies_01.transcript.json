@@ -1,0 +1,177 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "武器は置き去りで、毛布のあった場所だけ空いてる。",
+  "words": [
+    {
+      "text": "武",
+      "start": 0.14,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -0.00020728347590193152
+    },
+    {
+      "text": "器",
+      "start": 0.26,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.00020728347590193152
+    },
+    {
+      "text": "は",
+      "start": 0.46,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "置",
+      "start": 0.56,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -7.116541382856667e-05
+    },
+    {
+      "text": "き",
+      "start": 0.7,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -7.116541382856667e-05
+    },
+    {
+      "text": "去",
+      "start": 0.76,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -0.03586239740252495
+    },
+    {
+      "text": "り",
+      "start": 0.9,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -0.0006680640508420765
+    },
+    {
+      "text": "で",
+      "start": 1.06,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -0.0006680640508420765
+    },
+    {
+      "text": "、",
+      "start": 1.16,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -0.1607314646244049
+    },
+    {
+      "text": "毛",
+      "start": 1.7,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -3.564294092939235e-05
+    },
+    {
+      "text": "布",
+      "start": 1.84,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "の",
+      "start": 2.0,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -2.4318398573086597e-05
+    },
+    {
+      "text": "あ",
+      "start": 2.1,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -2.932505594799295e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.12,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -2.932505594799295e-05
+    },
+    {
+      "text": "た",
+      "start": 2.26,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -2.932505594799295e-05
+    },
+    {
+      "text": "場",
+      "start": 2.4,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "所",
+      "start": 2.52,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.62,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "け",
+      "start": 2.74,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "空",
+      "start": 2.84,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -0.10025683790445328
+    },
+    {
+      "text": "い",
+      "start": 2.94,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -1.2278481335670222e-05
+    },
+    {
+      "text": "て",
+      "start": 3.08,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -1.2278481335670222e-05
+    },
+    {
+      "text": "る",
+      "start": 3.2,
+      "end": 3.28,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 3.28,
+      "end": 3.28,
+      "type": "word",
+      "logprob": -0.0019290901254862547
+    }
+  ],
+  "transcription_id": "6nA26Nmnwi9NlODeCpHt",
+  "audio_duration_secs": 3.52
+}

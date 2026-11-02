@@ -1,0 +1,131 @@
+{
+  "url": "http://127.0.0.1:4517/artifact/3833bd09a217/",
+  "date": "2026-11-02",
+  "revision": "Playable moving encounter and two-phase pressure",
+  "game_unchanged": {
+    "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/build/B2BJ.jar": true,
+    "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/src/Guardian.java": true,
+    "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/src/WardenFx.java": true,
+    "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/src/B2BJ.java": true
+  },
+  "browser_check": [
+    {
+      "mode": "hammer",
+      "bossPhase": 1,
+      "distinctFrames": 8,
+      "reducedDiffers": true
+    },
+    {
+      "mode": "hammer",
+      "bossPhase": 2,
+      "distinctFrames": 8,
+      "reducedDiffers": true
+    },
+    {
+      "mode": "sweep",
+      "bossPhase": 1,
+      "distinctFrames": 8,
+      "reducedDiffers": true
+    },
+    {
+      "mode": "sweep",
+      "bossPhase": 2,
+      "distinctFrames": 8,
+      "reducedDiffers": true
+    },
+    {
+      "mode": "fault",
+      "bossPhase": 1,
+      "distinctFrames": 8,
+      "reducedDiffers": true
+    },
+    {
+      "mode": "fault",
+      "bossPhase": 2,
+      "distinctFrames": 8,
+      "reducedDiffers": true
+    },
+    {
+      "mode": "core",
+      "bossPhase": 1,
+      "distinctFrames": 8,
+      "reducedDiffers": true
+    }
+  ],
+  "phase_visuals_differ": true,
+  "player_paths_and_impact_hold_preserved": true,
+  "transition_and_phase_controls_pass": true,
+  "audio_cues_decoded": 6,
+  "browser_errors_during_check": 0,
+  "horizontal_overflow": false,
+  "draft_only": true,
+  "movement_model": {
+    "checks": [
+      "Pursuit closes distance",
+      "Prediction capped at 24px",
+      "Rush locks and cannot steer",
+      "Wall rush gives extra recovery",
+      "Sweep front hits; back is safe",
+      "Beam lane, inner safe space and single hit",
+      "Second fist commits before landing",
+      "Dash cooldown cannot be bypassed",
+      "Half-health transition is safe",
+      "Both phases remain bounded for 60 seconds; full kit selected",
+      "Constant circling takes damage; phase two adds pressure in the fixed scenario",
+      "Default phase-two demo shows both spells before victory"
+    ],
+    "circlingWithReactiveDash": [
+      {
+        "phase": 1,
+        "moves": [
+          "punch",
+          "sweep",
+          "rush"
+        ],
+        "damageTaken": 44
+      },
+      {
+        "phase": 2,
+        "moves": [
+          "punch",
+          "sweep",
+          "fists",
+          "rush",
+          "beam"
+        ],
+        "damageTaken": 0
+      }
+    ],
+    "naiveCircling": [
+      {
+        "phase": 1,
+        "damageTaken": 31
+      },
+      {
+        "phase": 2,
+        "damageTaken": 90
+      }
+    ]
+  },
+  "scripted_input_check": {
+    "movement_pixels": 13,
+    "dash_cooldown_started": true,
+    "shots_fired": 1,
+    "inputs_released": true
+  },
+  "audio_cues_available": 6,
+  "limitations": [
+    "No live game integration",
+    "No terrain prop collision in prototype",
+    "Simplified player attacks",
+    "No physical-input balance playthrough",
+    "No subjective speaker check"
+  ],
+  "final_browser_check": {
+    "effect_variants_passed": 7,
+    "movement_checks_passed": 12,
+    "audio_context": "running",
+    "horizontal_overflow": false,
+    "playing": "Fight flow, phase I, demo with sound"
+  }
+}

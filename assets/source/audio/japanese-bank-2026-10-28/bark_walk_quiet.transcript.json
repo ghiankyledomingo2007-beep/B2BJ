@@ -1,0 +1,128 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999392628669739,
+  "text": "ここ、昔は賑やかな道だったのかな。",
+  "words": [
+    {
+      "text": "こ",
+      "start": 0.12,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "こ",
+      "start": 0.38,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "、",
+      "start": 0.52,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.007651190273463726
+    },
+    {
+      "text": "昔",
+      "start": 1.46,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "は",
+      "start": 1.68,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "賑",
+      "start": 1.92,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.6334741115570068
+    },
+    {
+      "text": "や",
+      "start": 2.12,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -9.321732068201527e-05
+    },
+    {
+      "text": "か",
+      "start": 2.28,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -9.321732068201527e-05
+    },
+    {
+      "text": "な",
+      "start": 2.38,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -9.321732068201527e-05
+    },
+    {
+      "text": "道",
+      "start": 2.56,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -1.966933996300213e-05
+    },
+    {
+      "text": "だ",
+      "start": 2.72,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "っ",
+      "start": 2.8,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "た",
+      "start": 2.84,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "の",
+      "start": 2.96,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "か",
+      "start": 3.06,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "な",
+      "start": 3.18,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "。",
+      "start": 3.26,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -0.006839318200945854
+    }
+  ],
+  "transcription_id": "utW8waeWJeZ66aGziAgo",
+  "audio_duration_secs": 3.68
+}

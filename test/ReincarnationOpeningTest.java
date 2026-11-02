@@ -21,7 +21,7 @@ public final class ReincarnationOpeningTest {
             double length=OutpostDialogue.openingSeconds(i);total+=length;
             assert ChapterOneVoicesTest.duration(OutpostDialogue.WAKE.voiceKey(i,false,0))+.2<length : "opening cuts off line "+i;
         }
-        assert total>=50&&total<=65;
+        assert total>=60&&total<=75;
         for(int i=0;i<1500&&natural.opening();i++)natural.update(.05,1,1);
         assert !natural.opening()&&!natural.blocked()&&natural.dialogueSeen(OutpostDialogue.WAKE);
         assert natural.player().x()==x&&natural.player().healthValue()==health : "film freezes gameplay";
@@ -32,11 +32,47 @@ public final class ReincarnationOpeningTest {
         assert java.util.Arrays.equals(FieldObjects.SURVIVORS,new String[]{"KAIJIN","EREN","RIGURD"});
         for(var scene:OutpostDialogue.values())for(var line:scene.lines())
             assert !line.text().matches(".*\\b(Mara|Tobin|Ilse|Venn|Sedge|Quartermaster|quartermaster)\\b.*") : line;
+        awakeningMotion();cameraHandoff();
         SwingUtilities.invokeAndWait(()->{
             try { keyboardAndReducedEffects();controlsAndFrames(args.length==0?null:Path.of(args[0])); }
             catch(Exception e) {throw new AssertionError(e);}
         });
         System.out.println("ReincarnationOpeningTest passed: voice slots, automatic ending, skip equivalence, pause, input, viewport, labels and Continue");
+    }
+
+    private static void awakeningMotion() {
+        var game=RuinedOutpostGame.campaign();game.begin();game.advanceDialogue();game.advanceDialogue();
+        var ignition=openingFrame(game,false);
+        for(int i=0;i<16;i++)game.update(.25,0,0);
+        var formed=openingFrame(game,false);
+        assert !java.util.Arrays.equals(ignition,formed) : "Raphael's awakening must visibly build over time";
+        assert java.util.Arrays.equals(formed,openingFrame(game,false)) : "effects use deterministic scene time";
+        game.pause();game.update(.5,0,0);
+        assert java.util.Arrays.equals(formed,openingFrame(game,false)) : "pause freezes awakening particles and geometry";
+        game.togglePause();game.advanceDialogue();
+        var reduced=openingFrame(game,true);game.update(.3,0,0);
+        assert java.util.Arrays.equals(reduced,openingFrame(game,true)) : "settled awakening respects reduced effects";
+    }
+
+    private static void cameraHandoff() {
+        var game=RuinedOutpostGame.campaign();game.begin();
+        while(game.dialogueIndex()<10)game.advanceDialogue();
+        var frame=new BufferedImage(1920,1080,BufferedImage.TYPE_INT_RGB);var g=frame.createGraphics();
+        ReincarnationOpening.frameWorld(g,game,1920,1080,0,0,false);
+        var subject=g.getTransform().transform(new java.awt.geom.Point2D.Double(game.player().x(),game.player().y()),null);
+        assert Math.abs(subject.getX()-960)<.001&&Math.abs(subject.getY()-550.8)<.001 : "wake shot centers on Rainoray";
+        var frozen=g.getTransform();game.pause();game.update(.4,0,0);g.setTransform(new java.awt.geom.AffineTransform());
+        ReincarnationOpening.frameWorld(g,game,1920,1080,0,0,false);
+        assert frozen.equals(g.getTransform()) : "pause freezes the cinematic camera";
+        g.setTransform(new java.awt.geom.AffineTransform());
+        ReincarnationOpening.frameWorld(g,game,1920,1080,0,0,true);
+        assert g.getTransform().isIdentity() : "reduced effects disable zoom and pan";
+        game.togglePause();while(game.dialogueIndex()<14)game.advanceDialogue();
+        double end=OutpostDialogue.openingSeconds(14)*.7;
+        for(double t=0;t<end;t+=.05)game.update(.05,0,0);
+        ReincarnationOpening.frameWorld(g,game,1920,1080,0,0,false);
+        assert g.getTransform().isIdentity()&&ReincarnationOpening.worldReveal(game)==1 : "camera returns before gameplay";
+        g.dispose();
     }
 
     private static void keyboardAndReducedEffects() {

@@ -243,9 +243,16 @@ public final class RuinedOutpostMap {
     public void setFieldGates(List<Obstacle> solid, List<Obstacle> slimeOnly) {
         fieldGates = List.copyOf(solid); slimeGates = List.copyOf(slimeOnly);
     }
+    private double guardianWidth=112,guardianDepth=52;
+    /** The boss's base: the Warden's 112x52; Briarheart's 3x redraw stands on a much wider trunk. */
+    public void setGuardianFootprint(double width,double depth) {
+        if(!(width>0&&depth>0))throw new IllegalArgumentException("guardian footprint");
+        guardianWidth=width;guardianDepth=depth;
+    }
+    public double guardianHalfWidth() { return guardianWidth/2; }
     public boolean touchesGuardian(double x,double y,double radius) {
         return guardianPresent && intersects(x,y,radius,
-                new Obstacle(liveGuardianX,liveGuardianY+GUARDIAN_COLLISION_Y_OFFSET,112,52));
+                new Obstacle(liveGuardianX,liveGuardianY+GUARDIAN_COLLISION_Y_OFFSET,guardianWidth,guardianDepth));
     }
     public boolean waterBlocked(double x,double y,double radius) {
         if(x-radius<0 || y-radius<0 || x+radius>worldWidth() || y+radius>worldHeight()) return true;

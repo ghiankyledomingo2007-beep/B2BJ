@@ -1,59 +1,135 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 
-/** Native-pixel inward currents: the bodies show the range without a bright screen-wide warning ring. */
+/** A hand-held devouring vortex; black flame silhouettes carry the motion at native pixel scale. */
 final class BeelzebubFx {
     static final BufferedImage ICON=icon();
-    private static final Color RIM=new Color(147,99,193),LIGHT=new Color(219,171,237);
+    private static final Color VOID=new Color(8,5,17),RIM=new Color(105,40,174),LIGHT=new Color(190,103,237);
     private BeelzebubFx() { }
+
+    /** The hand's vortex in native px from the player's position, along the aim. */
+    static int[] hand(RuinedOutpostGame game) {
+        double length=Math.max(1,Math.hypot(game.bladeAimX(),game.bladeAimY()));
+        return new int[]{(int)(game.bladeAimX()/length*34),-10+(int)(game.bladeAimY()/length*12)};
+    }
+
+    /** The share of the cast after which the caught bodies leave the ground, and by which they are gone into the hand. */
+    static final double SWALLOW=.82,GONE=.9;
+
+    /**
+     * Owner 2026-10-29, "they're floating": caught remains are dragged along the ground by the arms to the spot under
+     * the hand, and only lift into it as they are swallowed. {dx, dy, rise, left}: the body's offset on the ground from
+     * where the game holds it (world px), how far it is lifted off that ground, and how much of it is still there.
+     */
+    static double[] drag(RuinedOutpostGame game,RuinedOutpostGame.Corpse corpse) {
+        double p=game.absorptionProgress(),pull=game.beelzebubPull();
+        int[] hand=hand(game);
+        double up=Math.max(0,Math.min(1,(p-SWALLOW)/(GONE-SWALLOW)));
+        return new double[]{pull*hand[0]*2,pull*(68+hand[1]*2-ground(corpse)),Math.pow(up,2.5)*76,1-Math.max(0,Math.min(1,(p-GONE+.03)/.03))};
+    }
+
+    /** How far below a body's position its ground line is drawn (world px): armour falls at its feet, the rest lie
+     *  on the floor line of their old 96 px cell, the Spitter's carcass puddle a little nearer. */
+    static int ground(RuinedOutpostGame.Corpse corpse) {
+        var kind=corpse.kind();
+        return armoured(kind)?22:kind==CampaignEnemy.Kind.OUTPOST_SPITTER?52:48;
+    }
+    /** How high a lying body's middle sits above its ground line (world px): where the arm takes hold. */
+    static int middle(RuinedOutpostGame.Corpse corpse) {
+        var kind=corpse.kind();
+        return armoured(kind)?16:kind==CampaignEnemy.Kind.OUTPOST_SPITTER?22:20;
+    }
+    private static boolean armoured(CampaignEnemy.Kind kind) {
+        return kind!=null&&(CampaignRenderer.knightBody(kind)||kind==CampaignEnemy.Kind.OUTPOST_GUARD);
+    }
 
     static void draw(Graphics2D canvas,RuinedOutpostGame game,int cameraX,int cameraY,boolean reduced) {
         if(!game.beelzebubActive())return;
         var player=game.player();double p=game.absorptionProgress();
         var g=(Graphics2D)canvas.create();Ui.crisp(g);
         g.translate(Math.round(player.x()/2)*2-cameraX,Math.round(player.y()/2)*2-cameraY);g.scale(2,2);
-        double length=Math.max(1,Math.hypot(game.bladeAimX(),game.bladeAimY()));
-        int cx=(int)(game.bladeAimX()/length*26),cy=-16+(int)(game.bladeAimY()/length*12);
-        double motion=reduced?0:p*8;
+        int[] hand=hand(game);
+        int cx=hand[0],cy=hand[1];
+        double growth=Math.min(1,p/.18),collapse=Math.min(1,(1-p)/.18);
+        double strength=growth*collapse,motion=reduced?0:p*9;
         for(var corpse:game.corpses())if(game.beelzebubTarget(corpse)) {
-            double sx=(corpse.x()-player.x())/2,sy=(corpse.y()-player.y())/2+10;
-            int bends=reduced?1:3;
-            for(int lane=0;lane<bends;lane++) {
-                int lastX=(int)sx,lastY=(int)sy;
-                for(int segment=1;segment<=24;segment++) {
-                    double t=segment/24.,curl=Math.sin(t*Math.PI)*(lane-1)*10;
-                    int x=(int)Math.round(sx+(cx-sx)*t+curl),y=(int)Math.round(sy+(cy-sy)*t-curl*.6);
-                    g.setColor(new Color(126+lane*22,85+lane*10,171+lane*20,reduced?65:35+segment*3));
-                    g.drawLine(lastX,lastY,x,y);lastX=x;lastY=y;
+            // the arm holds the body where it is drawn: on the ground, then rising into the hand at the very end
+            double[] drag=drag(game,corpse);
+            if(drag[3]<=0)continue;
+            double sx=(corpse.x()+drag[0]-player.x())/2,sy=(corpse.y()+ground(corpse)+drag[1]-middle(corpse)-drag[2]-player.y())/2;
+            double reach=Math.min(1,p/.27);
+            sx=cx+(sx-cx)*reach;sy=cy+(sy-cy)*reach;
+            double width=(reduced?8:15)*strength;
+            ribbon(g,cx,cy,sx,sy,width+3,motion,new Color(72,26,117,90));
+            ribbon(g,cx,cy,sx,sy,width,motion,new Color(68,29,106));
+            ribbon(g,cx,cy,sx,sy,Math.max(1,width-3),motion,VOID);
+            if(!reduced)ribbon(g,cx,cy,sx,sy,width*.4,motion+.6,new Color(30,13,49));
+            if(!reduced) {
+                for(int mote=0;mote<9;mote++) {
+                    double t=(p*2+mote/9.)%1,a=motion+mote*2.4;
+                    double spread=Math.sin(t*Math.PI)*17;
+                    int x=(int)(sx+(cx-sx)*t+Math.cos(a)*spread);
+                    int y=(int)(sy+(cy-sy)*t+Math.sin(a)*spread);
+                    g.setColor(mote%3==0?LIGHT:RIM);g.fillRect(x,y,3,2);
                 }
-                if(!reduced)for(int mote=0;mote<5;mote++) {
-                    double t=(p*2.2+mote*.2+lane*.07)%1;
-                    int x=(int)(sx+(cx-sx)*t+Math.sin(t*Math.PI)*(lane-1)*10);
-                    int y=(int)(sy+(cy-sy)*t-Math.sin(t*Math.PI)*(lane-1)*6);
-                    g.setColor(mote%2==0?LIGHT:RIM);g.fillRect(x,y,2,1);
+                int radius=(int)((7+6*(1-p))*strength);          // the grip: clutching the body, not hiding it
+                for(int puff=0;puff<6;puff++) {
+                    double a=puff*2.4+motion*.5;
+                    int r=(int)(radius*(.4+.08*(puff%3)));
+                    int x=(int)(sx+Math.cos(a)*radius*.5),y=(int)(sy+Math.sin(a)*radius*.4);
+                    g.setColor(new Color(53,22,81));g.fillOval(x-r,y-r,r*2,r*2);
+                    g.setColor(VOID);g.fillOval(x-r+2,y-r+1,Math.max(1,r*2-3),Math.max(1,r*2-3));
                 }
             }
         }
-        int radius=reduced?23:12+(int)(Math.sin(Math.PI*p)*14);
-        g.setColor(new Color(53,26,78,55));g.fillOval(cx-radius-9,cy-radius-5,(radius+9)*2,(radius+5)*2);
-        g.setColor(new Color(10,7,20,240));g.fillOval(cx-radius,cy-radius*3/4,radius*2,radius*3/2);
-        for(int ring=0;ring<3;ring++) {
-            int r=radius+ring*3;
-            g.setColor(ring==0?LIGHT:ring==1?RIM:new Color(82,53,122,140));
-            for(int arm=0;arm<3;arm++)g.drawArc(cx-r,cy-r*3/4,r*2,r*3/2,
-                    (int)(motion*50)+arm*120+ring*28,70);
-        }
-        for(int arm=0;arm<(reduced?2:4);arm++) {
-            int lastX=cx,lastY=cy;
-            for(int step=0;step<20;step++) {
-                double r=radius*step/20.,a=arm*Math.PI/2+motion-r*.15;
-                int x=cx+(int)(Math.cos(a)*r),y=cy+(int)(Math.sin(a)*r*.7);
-                g.setColor(step<8?new Color(48,27,71):RIM);g.drawLine(lastX,lastY,x,y);lastX=x;lastY=y;
+        int radius=(int)((reduced?29:38)*strength);
+        if(radius>0) {
+            if(!reduced) {
+                g.setColor(new Color(103,38,172,28));g.fillOval(cx-radius-12,cy-radius-8,(radius+12)*2,(radius+8)*2);
+                g.setColor(new Color(134,43,201,38));g.fillOval(cx-radius-6,cy-radius-3,(radius+6)*2,(radius+3)*2);
             }
+            flame(g,cx,cy,radius,motion);
+            g.setColor(VOID);g.fillOval(cx-radius/3,cy-radius/4,radius*2/3,radius/2);
         }
-        g.setColor(new Color(5,4,12));g.fillOval(cx-6,cy-4,12,8);
         g.dispose();
+    }
+
+    private static void ribbon(Graphics2D g,double cx,double cy,double sx,double sy,double width,double motion,Color color) {
+        double dx=sx-cx,dy=sy-cy,length=Math.max(1,Math.hypot(dx,dy)),nx=-dy/length,ny=dx/length;
+        var shape=new Polygon();
+        for(int side:new int[]{1,-1})for(int step=0;step<=28;step++) {
+            double t=(side==1?step:28-step)/28.;
+            double curl=Math.sin(t*Math.PI)*Math.sin(t*7-motion)*Math.min(18,length*.14);
+            double edge=width*(.45+.55*Math.sin(t*Math.PI/2))*(1+.16*Math.sin(t*31-motion*2));
+            shape.addPoint((int)Math.round(cx+dx*t+nx*(curl+side*edge)),
+                    (int)Math.round(cy+dy*t+ny*(curl+side*edge)));
+        }
+        g.setColor(color);g.fillPolygon(shape);
+    }
+
+    private static void flame(Graphics2D g,int cx,int cy,int radius,double motion) {
+        if(radius<1)return;
+        var body=new Polygon();
+        for(int step=0;step<48;step++) {
+            double a=step*Math.PI/24,r=radius*(.78+.14*Math.sin(a*5-motion)+.08*Math.cos(a*9+motion));
+            body.addPoint(cx+(int)(Math.cos(a)*r),cy+(int)(Math.sin(a)*r*.8));
+        }
+        g.setColor(VOID);g.fillPolygon(body);
+        for(int arm=0;arm<4;arm++)for(int layer=0;layer<3;layer++) {
+            var petal=new Polygon();
+            for(int side:new int[]{1,-1})for(int step=0;step<=24;step++) {
+                double t=(side==1?step:24-step)/24.;
+                if(layer==2)t=.25+t*.5;
+                double a=arm*1.67+motion*.7-t*3.2;
+                double r=radius*(1-.82*t)*(1-.10*(arm%2));
+                double thickness=radius*Math.sin(t*Math.PI)*(.23-layer*.085);
+                petal.addPoint(cx+(int)(Math.cos(a)*(r+side*thickness)),
+                        cy+(int)(Math.sin(a)*(r+side*thickness)*.8));
+            }
+            g.setColor(layer==0?new Color(45,14,75):layer==1?RIM:new Color(154,72,213));g.fillPolygon(petal);
+        }
     }
 
     private static BufferedImage icon() {

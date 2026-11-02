@@ -1,0 +1,58 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.8569992780685425,
+  "text": "少し休ませて。",
+  "words": [
+    {
+      "text": "少",
+      "start": 0.22,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "し",
+      "start": 0.52,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "休",
+      "start": 1.1,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.0003000047872774303
+    },
+    {
+      "text": "ま",
+      "start": 1.44,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -2.6702524337451905e-05
+    },
+    {
+      "text": "せ",
+      "start": 1.56,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -2.6702524337451905e-05
+    },
+    {
+      "text": "て",
+      "start": 1.68,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 1.88,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -0.42871221899986267
+    }
+  ],
+  "transcription_id": "BiFCkiiP5xNsj2CAPPPq",
+  "audio_duration_secs": 2.24
+}

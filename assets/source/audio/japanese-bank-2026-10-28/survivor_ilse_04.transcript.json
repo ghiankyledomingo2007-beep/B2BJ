@@ -1,0 +1,247 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "あの箱に予備の物資がある。でも鍵がかかってて、鍵は倉庫に置いたまま。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.12,
+      "end": 0.18,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "の",
+      "start": 0.24,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "箱",
+      "start": 0.38,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "に",
+      "start": 0.68,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "予",
+      "start": 0.82,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -7.939023635117337e-05
+    },
+    {
+      "text": "備",
+      "start": 0.98,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -7.1403817855753e-05
+    },
+    {
+      "text": "の",
+      "start": 1.1,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "物",
+      "start": 1.24,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.00039402826223522425
+    },
+    {
+      "text": "資",
+      "start": 1.44,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "が",
+      "start": 1.66,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "あ",
+      "start": 1.72,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "る",
+      "start": 1.8,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "。",
+      "start": 1.94,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -2.169585604860913e-05
+    },
+    {
+      "text": "で",
+      "start": 2.62,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "も",
+      "start": 2.76,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "鍵",
+      "start": 3.14,
+      "end": 3.36,
+      "type": "word",
+      "logprob": -0.0022399353329092264
+    },
+    {
+      "text": "が",
+      "start": 3.36,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -0.004091939423233271
+    },
+    {
+      "text": "か",
+      "start": 3.44,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -0.004091939423233271
+    },
+    {
+      "text": "か",
+      "start": 3.56,
+      "end": 3.7,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "っ",
+      "start": 3.7,
+      "end": 3.78,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "て",
+      "start": 3.82,
+      "end": 3.9,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "て",
+      "start": 3.9,
+      "end": 3.9,
+      "type": "word",
+      "logprob": -2.8729025871143676e-05
+    },
+    {
+      "text": "、",
+      "start": 3.9,
+      "end": 3.9,
+      "type": "word",
+      "logprob": -0.00219164346344769
+    },
+    {
+      "text": "鍵",
+      "start": 4.6,
+      "end": 4.82,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "は",
+      "start": 4.82,
+      "end": 4.92,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "倉",
+      "start": 4.92,
+      "end": 5.16,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "庫",
+      "start": 5.16,
+      "end": 5.36,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "に",
+      "start": 5.36,
+      "end": 5.42,
+      "type": "word",
+      "logprob": -0.00011991735664196312
+    },
+    {
+      "text": "置",
+      "start": 5.42,
+      "end": 5.5,
+      "type": "word",
+      "logprob": -2.062299427052494e-05
+    },
+    {
+      "text": "い",
+      "start": 5.5,
+      "end": 5.64,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "た",
+      "start": 5.64,
+      "end": 5.76,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "ま",
+      "start": 5.76,
+      "end": 5.84,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "ま",
+      "start": 5.84,
+      "end": 5.98,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "。",
+      "start": 5.98,
+      "end": 5.98,
+      "type": "word",
+      "logprob": -0.02324579656124115
+    }
+  ],
+  "transcription_id": "wtAqKg14FWMPAmJmnbEC",
+  "audio_duration_secs": 6.32
+}

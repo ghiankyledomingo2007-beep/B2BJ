@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "目的が失われても命令だけが残ったのです。",
+  "words": [
+    {
+      "text": "目",
+      "start": 0.3,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.0006418551784008741
+    },
+    {
+      "text": "的",
+      "start": 0.48,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.0006418551784008741
+    },
+    {
+      "text": "が",
+      "start": 0.76,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "失",
+      "start": 0.9,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -3.504691630951129e-05
+    },
+    {
+      "text": "わ",
+      "start": 1.14,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -0.0018970841774716973
+    },
+    {
+      "text": "れ",
+      "start": 1.22,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -0.0018970841774716973
+    },
+    {
+      "text": "て",
+      "start": 1.36,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0018970841774716973
+    },
+    {
+      "text": "も",
+      "start": 1.56,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -1.2636104656849056e-05
+    },
+    {
+      "text": "命",
+      "start": 2.02,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -0.4741336703300476
+    },
+    {
+      "text": "令",
+      "start": 2.3,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -0.4741336703300476
+    },
+    {
+      "text": "だ",
+      "start": 2.48,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "け",
+      "start": 2.6,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "が",
+      "start": 2.8,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "残",
+      "start": 2.86,
+      "end": 3.1,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "っ",
+      "start": 3.1,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "た",
+      "start": 3.14,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "の",
+      "start": 3.26,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "で",
+      "start": 3.38,
+      "end": 3.48,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "す",
+      "start": 3.48,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "。",
+      "start": 3.58,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -0.008617476560175419
+    }
+  ],
+  "transcription_id": "1PToGbqB6ztVQEEY0Xmu",
+  "audio_duration_secs": 4.664
+}

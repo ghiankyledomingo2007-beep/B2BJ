@@ -1,7 +1,7 @@
 file	speaker	scene	text
-wake_01.wav	RAINORAY	ONE MORE CHANCE	Stay with me. I've almost got it open.
-wake_02.wav	RAINORAY	ONE MORE CHANCE	Did they get out?
-wake_03.wav	INNER_VOICE	ONE MORE CHANCE	I cannot confirm. Your previous body has been lost.
+wake_01.wav	RAINORAY	ONE MORE CHANCE	Just one more report... then I can go home.
+wake_02.wav	RAINORAY	ONE MORE CHANCE	What... happened?
+wake_03.wav	INNER_VOICE	ONE MORE CHANCE	Your previous body has been lost. Your consciousness remains.
 wake_04.wav	RAINORAY	ONE MORE CHANCE	Then... who am I talking to?
 wake_05.wav	INNER_VOICE	ONE MORE CHANCE	Raphael. Stay with my voice.
 wake_06.wav	INNER_VOICE	ONE MORE CHANCE	Reconstructing a body that can survive here.
@@ -42,7 +42,7 @@ infirmary_02.wav	RAINORAY	ONE EMPTY BED	A note on the blanket: 'For whoever come
 infirmary_03.wav	RAINORAY	ONE EMPTY BED	There's a dry dressing underneath. I'll leave it where she can find it.
 supplies_01.wav	RAINORAY	WHAT THEY LEFT BEHIND	Weapons left behind. Empty spaces where the blankets were.
 supplies_02.wav	RAINORAY	WHAT THEY LEFT BEHIND	A note: 'Leave the heavy crates. Make room for the wounded.'
-supplies_03.wav	RAINORAY	WHAT THEY LEFT BEHIND	We packed our van like that. I hope those supplies reached someone.
+supplies_03.wav	RAINORAY	WHAT THEY LEFT BEHIND	They left all this behind to help people. That's what mattered.
 report_01.wav	RAINORAY	STILL MISSING	I found the dispatch. The Warden was told to seal the road against Ichor.
 report_02.wav	MARA	STILL MISSING	After we sent the wounded through. No one could get back to them.
 report_03.wav	RAINORAY	STILL MISSING	Kaijin, Eren, Rigurd. You left their names marked missing.
@@ -188,6 +188,7 @@ bark_warden_voice_order.wav	WARDEN	EXPLORATION	I was ordered to protect them.
 bark_warden_start.wav	INNER_VOICE	EXPLORATION	Keep moving. I'll analyze its attacks.
 bark_warden_start_2.wav	RAINORAY	EXPLORATION	I only need one opening.
 bark_warden_read.wav	INNER_VOICE	EXPLORATION	I've got its rhythm. I'll warn you.
+bark_warden_read_2.wav	RAINORAY	EXPLORATION	Good. Tell me when to move.
 bark_warden_phase.wav	INNER_VOICE	EXPLORATION	Careful. It's getting desperate now.
 bark_warden_phase_2.wav	RAINORAY	EXPLORATION	Good. I'll use that.
 bark_warden_weak.wav	INNER_VOICE	EXPLORATION	It's nearly down. Don't get careless.
@@ -207,6 +208,13 @@ bark_sage_fissure_again.wav	INNER_VOICE	EXPLORATION	Off that line. It's splittin
 bark_sage_hit.wav	INNER_VOICE	EXPLORATION	That hit landed. Keep your distance.
 bark_sage_hit_again.wav	INNER_VOICE	EXPLORATION	Careful. Don't let it catch you again.
 bark_identify_remnant.wav	INNER_VOICE	EXPLORATION	A remnant. It still knows how to fight.
+bark_identify_remnant_2.wav	RAINORAY	EXPLORATION	Then I'll give it some space.
 bark_identify_guard.wav	INNER_VOICE	EXPLORATION	Outpost guard. Let the shield swing past.
+bark_identify_guard_2.wav	RAINORAY	EXPLORATION	Right. I'll go around the shield.
 bark_identify_spitter.wav	INNER_VOICE	EXPLORATION	Ichor spitter. Watch where it aims.
+bark_identify_spitter_2.wav	RAINORAY	EXPLORATION	Not getting that stuff on me.
 bark_identify_knight.wav	INNER_VOICE	EXPLORATION	Fallen Knight. Strike after its swing.
+bark_identify_knight_2.wav	RAINORAY	EXPLORATION	I'll wait for my turn, then.
+bark_beelzebub_call.wav	RAINORAY	EXPLORATION	Devour them. Beelzebub!
+bark_beelzebub_call_again.wav	RAINORAY	EXPLORATION	Beelzebub!
+bark_beelzebub_call_take.wav	RAINORAY	EXPLORATION	I'll take it all!

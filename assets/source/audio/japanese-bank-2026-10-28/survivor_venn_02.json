@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "頼まれたわけじゃないよ。行方不明だって聞いたんだ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "ngl3Akh9ViEqAkVEXnub",
+  "generated_at": 1793156169.1023595
+}

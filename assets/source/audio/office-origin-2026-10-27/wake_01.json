@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "あと一件だけ……これが終わったら、帰ろう。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "request_id": "wc0LoFcnpbgAp3z68MEg",
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "generated_at": 1793115922.310893
+}

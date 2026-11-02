@@ -1,0 +1,44 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5168367624282837,
+  "text": "落ち着け。",
+  "words": [
+    {
+      "text": "落",
+      "start": 0.1,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -0.004631150048226118
+    },
+    {
+      "text": "ち",
+      "start": 0.24,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.004631150048226118
+    },
+    {
+      "text": "着",
+      "start": 0.36,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.004631150048226118
+    },
+    {
+      "text": "け",
+      "start": 0.46,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "。",
+      "start": 0.62,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.20280782878398895
+    }
+  ],
+  "transcription_id": "EMK4aRz4qxHLUSnyy3lX",
+  "audio_duration_secs": 0.8081875
+}

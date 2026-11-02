@@ -1,0 +1,594 @@
+{
+  "cue_ceiling": 0.78,
+  "cues": {
+    "counter_cut": {
+      "dc": -1e-07,
+      "duration_s": 0.449977,
+      "file": "cues/counter_cut.wav",
+      "first_2ms_peak": 0.00012,
+      "function": "counter_cut",
+      "last_2ms_peak": 0.0,
+      "level": 0.74,
+      "peak": 0.74001,
+      "peak_dbfs": -2.62,
+      "purpose": "seal releases: bright breath slip, light tear, rising shimmer",
+      "rms_dbfs": -24.9,
+      "samples": 9922,
+      "seed": "rainoray:counter_cut",
+      "sha256": "6a0cde0f3720dada3e37e33dadacada1ca154c0d988b3c6e1f0f78d675942f6c",
+      "sync_s": 0.06,
+      "take": 0
+    },
+    "counter_cut_2": {
+      "dc": 0.0,
+      "duration_s": 0.449977,
+      "file": "cues/counter_cut_2.wav",
+      "first_2ms_peak": 3e-05,
+      "function": "counter_cut",
+      "last_2ms_peak": 0.0,
+      "level": 0.74,
+      "peak": 0.74001,
+      "peak_dbfs": -2.62,
+      "purpose": "alternate seal release take",
+      "rms_dbfs": -25.59,
+      "samples": 9922,
+      "seed": "rainoray:counter_cut_2",
+      "sha256": "c98ba5fec97b14a66c7bf75faa668d5a0a20635660342537045c596361fb79fe",
+      "sync_s": 0.06,
+      "take": 1
+    },
+    "devour_cast": {
+      "dc": -0.0,
+      "duration_s": 1.449977,
+      "file": "cues/devour_cast.wav",
+      "first_2ms_peak": 0.00015,
+      "function": "devour_cast",
+      "last_2ms_peak": 0.0,
+      "level": 0.66,
+      "peak": 0.65999,
+      "peak_dbfs": -3.61,
+      "purpose": "hollow ring-pitched throat; overtones collapse to one pitch, closing glassy blink",
+      "rms_dbfs": -19.27,
+      "samples": 31972,
+      "seed": "rainoray:devour_cast",
+      "sha256": "c5a50c773cecb0a3783dc6b11404216746fb619efe20ca628bfd2883127a6c75",
+      "sync_s": 0.012,
+      "take": 0
+    },
+    "empower_charge": {
+      "dc": -7e-07,
+      "duration_s": 0.42,
+      "file": "cues/empower_charge.wav",
+      "first_2ms_peak": 0.00012,
+      "function": "empower_charge",
+      "last_2ms_peak": 0.0,
+      "level": 0.68,
+      "peak": 0.68001,
+      "peak_dbfs": -3.35,
+      "purpose": "short rising void chord + whisper charge (parry punish wind-up)",
+      "rms_dbfs": -15.73,
+      "samples": 9261,
+      "seed": "rainoray:empower_charge",
+      "sha256": "aba6f498196aebb11a5ef6f0daec711f04c230d0ae67af55cc3e2a1f48d36fa9",
+      "sync_s": 0.0,
+      "take": 0
+    },
+    "empower_charge_2": {
+      "dc": 3e-07,
+      "duration_s": 1.1,
+      "file": "cues/empower_charge_2.wav",
+      "first_2ms_peak": 3e-05,
+      "function": "empower_charge",
+      "last_2ms_peak": 0.0,
+      "level": 0.68,
+      "peak": 0.68001,
+      "peak_dbfs": -3.35,
+      "purpose": "held, throbbing void empowerment (absorb)",
+      "rms_dbfs": -18.72,
+      "samples": 24255,
+      "seed": "rainoray:empower_charge_2",
+      "sha256": "e488f70f9139ae50353844ae4b83472c03289531e246d75fa1401cbb8b07d0a7",
+      "sync_s": 0.0,
+      "take": 1
+    },
+    "heavy_cleave": {
+      "dc": -8e-07,
+      "duration_s": 1.049977,
+      "file": "cues/heavy_cleave.wav",
+      "first_2ms_peak": 0.00122,
+      "function": "heavy_cleave",
+      "last_2ms_peak": 0.0,
+      "level": 0.78,
+      "peak": 0.77999,
+      "peak_dbfs": -2.16,
+      "purpose": "charged punish: ghost swing, reverse inhale, drop, space-tear, hollow chord, haze",
+      "rms_dbfs": -20.06,
+      "samples": 23152,
+      "seed": "rainoray:heavy_cleave",
+      "sha256": "f62d41a54bcfc45e7cc31689c6c5b2de4d045f917d68ccbc70d968bd3e34992e",
+      "sync_s": 0.165,
+      "take": 0
+    },
+    "heavy_cleave_2": {
+      "dc": -3e-07,
+      "duration_s": 1.449977,
+      "file": "cues/heavy_cleave_2.wav",
+      "first_2ms_peak": 0.0032,
+      "function": "heavy_cleave",
+      "last_2ms_peak": 0.0,
+      "level": 0.78,
+      "peak": 0.77999,
+      "peak_dbfs": -2.16,
+      "purpose": "dark empowered cleave: deeper tear, longer FM void chord and choir breath",
+      "rms_dbfs": -19.7,
+      "samples": 31972,
+      "seed": "rainoray:heavy_cleave_2",
+      "sha256": "642c30b620d7b8bb6739829e97dda18a76b4a0e2ad5ebe3306d9035992734bed",
+      "sync_s": 0.165,
+      "take": 1
+    },
+    "parry_clash": {
+      "dc": 1.1e-06,
+      "duration_s": 0.749977,
+      "file": "cues/parry_clash.wav",
+      "first_2ms_peak": 0.00385,
+      "function": "parry_clash",
+      "last_2ms_peak": 0.0,
+      "level": 0.78,
+      "peak": 0.77999,
+      "peak_dbfs": -2.16,
+      "purpose": "magic seal draws energy in (reverse swell) then catches it: glassy near-harmonic ring in haze",
+      "rms_dbfs": -20.38,
+      "samples": 16537,
+      "seed": "rainoray:parry_clash",
+      "sha256": "145890d09666dc6f53518bbf63aade2d93ee70f2e12c4d84c1081c91dc05a64d",
+      "sync_s": 0.15,
+      "take": 0
+    },
+    "parry_clash_2": {
+      "dc": 9e-07,
+      "duration_s": 0.749977,
+      "file": "cues/parry_clash_2.wav",
+      "first_2ms_peak": 0.00613,
+      "function": "parry_clash",
+      "last_2ms_peak": 0.0,
+      "level": 0.78,
+      "peak": 0.77999,
+      "peak_dbfs": -2.16,
+      "purpose": "alternate seal take (pitched up, different seed)",
+      "rms_dbfs": -20.3,
+      "samples": 16537,
+      "seed": "rainoray:parry_clash_2",
+      "sha256": "e618ada4c56aa946144cf7af78c4b44a3b25712f4ac81215041f05332d425bcb",
+      "sync_s": 0.15,
+      "take": 1
+    },
+    "seam_fracture": {
+      "dc": -0.0,
+      "duration_s": 0.9,
+      "file": "cues/seam_fracture.wav",
+      "first_2ms_peak": 0.0,
+      "function": "seam_fracture",
+      "last_2ms_peak": 0.0,
+      "level": 0.74,
+      "peak": 0.74001,
+      "peak_dbfs": -2.62,
+      "purpose": "delayed seam: small space-tear with an inward-folding hollow ring",
+      "rms_dbfs": -20.8,
+      "samples": 19845,
+      "seed": "rainoray:seam_fracture",
+      "sha256": "7a770573d37bd303fba61ddba1613a3d0b831a8ea55081b4fac8778b73e5759a",
+      "sync_s": 0.012,
+      "take": 0
+    },
+    "seam_fracture_2": {
+      "dc": -0.0,
+      "duration_s": 0.849977,
+      "file": "cues/seam_fracture_2.wav",
+      "first_2ms_peak": 0.0,
+      "function": "seam_fracture",
+      "last_2ms_peak": 0.0,
+      "level": 0.74,
+      "peak": 0.74001,
+      "peak_dbfs": -2.62,
+      "purpose": "second seam take (higher, tighter) so repeats differ",
+      "rms_dbfs": -22.15,
+      "samples": 18742,
+      "seed": "rainoray:seam_fracture_2",
+      "sha256": "04bfa0a8ebf6c32aff588db0af424ba192fea9a7fd1d8e5ff04ee2468e7d6235",
+      "sync_s": 0.012,
+      "take": 1
+    },
+    "seam_fracture_3": {
+      "dc": 2e-07,
+      "duration_s": 1.149977,
+      "file": "cues/seam_fracture_3.wav",
+      "first_2ms_peak": 0.0,
+      "function": "seam_fracture",
+      "last_2ms_peak": 0.0,
+      "level": 0.76,
+      "peak": 0.76,
+      "peak_dbfs": -2.38,
+      "purpose": "dark seam take with low hollow chord and breathing undertone (absorb aftershock)",
+      "rms_dbfs": -21.96,
+      "samples": 25357,
+      "seed": "rainoray:seam_fracture_3",
+      "sha256": "f049a44add13ffb41dce8766523f1881f0d25bfba3d35bf64e55df630cebe2cb",
+      "sync_s": 0.012,
+      "take": 2
+    },
+    "void_charge": {
+      "dc": 7.8e-06,
+      "duration_s": 0.5,
+      "file": "cues/void_charge.wav",
+      "first_2ms_peak": 0.0,
+      "function": "void_charge",
+      "last_2ms_peak": 0.0,
+      "level": 0.7,
+      "peak": 0.7,
+      "peak_dbfs": -3.1,
+      "purpose": "ultimate charge: rising detuned void chord + inhaled whisper + reverse shimmer swell; drops to silence before release",
+      "rms_dbfs": -18.66,
+      "samples": 11025,
+      "seed": "rainoray:void_charge",
+      "sha256": "bf748b61b6fad683e681e3ceeb6cdb44dddedc5780ad2daa7bdbf47c28b2bacc",
+      "sync_s": 0.0,
+      "take": 0
+    },
+    "void_dash": {
+      "dc": -1e-07,
+      "duration_s": 0.42,
+      "file": "cues/void_dash.wav",
+      "first_2ms_peak": 9e-05,
+      "function": "void_dash",
+      "last_2ms_peak": 0.0,
+      "level": 0.74,
+      "peak": 0.74001,
+      "peak_dbfs": -2.62,
+      "purpose": "ultimate release: ghostly breath slip into a small ring-modulated tear, overtones folding inward",
+      "rms_dbfs": -20.61,
+      "samples": 9261,
+      "seed": "rainoray:void_dash",
+      "sha256": "86599e3ce9ecf03d4f4b7e3544cb1ff898265a0cf8a915a03b93a966de993960",
+      "sync_s": 0.07,
+      "take": 0
+    },
+    "void_rupture": {
+      "dc": -2e-07,
+      "duration_s": 2.149977,
+      "file": "cues/void_rupture.wav",
+      "first_2ms_peak": 0.00287,
+      "function": "void_rupture",
+      "last_2ms_peak": 0.0,
+      "level": 0.78,
+      "peak": 0.77999,
+      "peak_dbfs": -2.16,
+      "purpose": "ultimate finisher: reverse inhale, 40 ms pressure drop, resonant space-tear, FM void chord folding inward, dark choir breath, spectral haze tail",
+      "rms_dbfs": -20.29,
+      "samples": 47407,
+      "seed": "rainoray:void_rupture",
+      "sha256": "4114edb1a14031e296b367ffe1201be02f8b777d00b7334eed63d936fe072936",
+      "sync_s": 0.28,
+      "take": 0
+    }
+  },
+  "format": "WAV PCM16 mono 22050 Hz",
+  "fps": 60,
+  "generator": "generate_rainoray_skill_sfx.py",
+  "mix_peak_target": 0.708,
+  "mixes": {
+    "absorb": {
+      "contacts": [
+        {
+          "frame": 176,
+          "kind": "major",
+          "peak": 0.708,
+          "pre_rms_dbfs": -56.39,
+          "rms_dbfs": -14.69,
+          "time_s": 2.933333
+        },
+        {
+          "frame": 186,
+          "kind": "minor",
+          "peak": 0.3044,
+          "pre_rms_dbfs": -16.73,
+          "rms_dbfs": -18.34,
+          "time_s": 3.1
+        }
+      ],
+      "dc": -1e-07,
+      "ducks": [
+        {
+          "depth": 0.25,
+          "frame": 176,
+          "time_s": 2.933333
+        },
+        {
+          "depth": 0.7,
+          "frame": 186,
+          "time_s": 3.1
+        }
+      ],
+      "duration_s": 4.783311,
+      "events": [
+        {
+          "cue": "devour_cast",
+          "frame": 30,
+          "gain": 0.45,
+          "onset_s": 0.487982,
+          "onset_sample": 10760,
+          "role": "devour opens; suction to ~1.65 s",
+          "sync_s": 0.012,
+          "time_s": 0.5
+        },
+        {
+          "cue": "empower_charge_2",
+          "frame": 102,
+          "gain": 0.5,
+          "onset_s": 1.7,
+          "onset_sample": 37485,
+          "role": "blade empowerment from ~1.70 s, held f116-f166, dips at release",
+          "sync_s": 0.0,
+          "time_s": 1.7
+        },
+        {
+          "cue": "heavy_cleave_2",
+          "frame": 176,
+          "gain": 1.0,
+          "onset_s": 2.768345,
+          "onset_sample": 61042,
+          "role": "charged cleave impact (impact silhouette)",
+          "sync_s": 0.165,
+          "time_s": 2.933333
+        },
+        {
+          "cue": "seam_fracture_3",
+          "frame": 186,
+          "gain": 0.42,
+          "onset_s": 3.087982,
+          "onset_sample": 68090,
+          "role": "delayed dark rupture",
+          "sync_s": 0.012,
+          "time_s": 3.1
+        }
+      ],
+      "expected_samples": 105472,
+      "file": "mixes/absorb.wav",
+      "first_2ms_peak": 0.0,
+      "frames": 287,
+      "last_2ms_peak": 0.0,
+      "peak": 0.708,
+      "peak_dbfs": -3.0,
+      "quiet_by_s": 4.35,
+      "rms_dbfs": -25.04,
+      "samples": 105472,
+      "sha256": "b7673a8a5cea4645b88c94765b2415dbd321ff77b27c134c921dc40a39ffd221",
+      "tail_energy_rms_dbfs": -21.94
+    },
+    "parry": {
+      "contacts": [
+        {
+          "frame": 48,
+          "kind": "major",
+          "peak": 0.4639,
+          "pre_rms_dbfs": -78.54,
+          "rms_dbfs": -16.92,
+          "time_s": 0.8
+        },
+        {
+          "frame": 54,
+          "kind": "minor",
+          "peak": 0.3498,
+          "pre_rms_dbfs": -20.98,
+          "rms_dbfs": -21.43,
+          "time_s": 0.9
+        },
+        {
+          "frame": 108,
+          "kind": "major",
+          "peak": 0.708,
+          "pre_rms_dbfs": -64.73,
+          "rms_dbfs": -15.86,
+          "time_s": 1.8
+        }
+      ],
+      "dc": 1e-07,
+      "ducks": [
+        {
+          "depth": 0.55,
+          "frame": 48,
+          "time_s": 0.8
+        },
+        {
+          "depth": 0.7,
+          "frame": 54,
+          "time_s": 0.9
+        },
+        {
+          "depth": 0.3,
+          "frame": 108,
+          "time_s": 1.8
+        }
+      ],
+      "duration_s": 3.6,
+      "events": [
+        {
+          "cue": "parry_clash",
+          "frame": 48,
+          "gain": 0.7,
+          "onset_s": 0.649977,
+          "onset_sample": 14332,
+          "role": "guard draw at f39, seal catch (impact silhouette)",
+          "sync_s": 0.15,
+          "time_s": 0.8
+        },
+        {
+          "cue": "counter_cut",
+          "frame": 54,
+          "gain": 0.6,
+          "onset_s": 0.84,
+          "onset_sample": 18522,
+          "role": "counter slice",
+          "sync_s": 0.06,
+          "time_s": 0.9
+        },
+        {
+          "cue": "empower_charge",
+          "frame": 74,
+          "gain": 0.45,
+          "onset_s": 1.233333,
+          "onset_sample": 27195,
+          "role": "charged follow-up winds up, dips out at release f98",
+          "sync_s": 0.0,
+          "time_s": 1.233333
+        },
+        {
+          "cue": "heavy_cleave",
+          "frame": 108,
+          "gain": 1.0,
+          "onset_s": 1.635011,
+          "onset_sample": 36052,
+          "role": "heavy charged punish contact (impact silhouette)",
+          "sync_s": 0.165,
+          "time_s": 1.8
+        }
+      ],
+      "expected_samples": 79380,
+      "file": "mixes/parry.wav",
+      "first_2ms_peak": 0.0,
+      "frames": 216,
+      "last_2ms_peak": 0.0,
+      "peak": 0.708,
+      "peak_dbfs": -3.0,
+      "quiet_by_s": 3.1,
+      "rms_dbfs": -25.56,
+      "samples": 79380,
+      "sha256": "a350b7200bf9bbd20eb162f99e990d7de89bd47c4807cd036e58791e45a61c2c",
+      "tail_energy_rms_dbfs": -23.85
+    },
+    "ultimate": {
+      "contacts": [
+        {
+          "frame": 63,
+          "kind": "minor",
+          "peak": 0.3561,
+          "pre_rms_dbfs": -31.26,
+          "rms_dbfs": -18.82,
+          "time_s": 1.05
+        },
+        {
+          "frame": 81,
+          "kind": "major",
+          "peak": 0.708,
+          "pre_rms_dbfs": -51.45,
+          "rms_dbfs": -15.25,
+          "time_s": 1.35
+        },
+        {
+          "frame": 89,
+          "kind": "minor",
+          "peak": 0.4682,
+          "pre_rms_dbfs": -15.84,
+          "rms_dbfs": -16.06,
+          "time_s": 1.483333
+        },
+        {
+          "frame": 91,
+          "kind": "minor",
+          "peak": 0.4343,
+          "pre_rms_dbfs": -15.21,
+          "rms_dbfs": -15.97,
+          "time_s": 1.516667
+        }
+      ],
+      "dc": -0.0,
+      "ducks": [
+        {
+          "depth": 0.6,
+          "frame": 63,
+          "time_s": 1.05
+        },
+        {
+          "depth": 0.3,
+          "frame": 81,
+          "time_s": 1.35
+        },
+        {
+          "depth": 0.82,
+          "frame": 89,
+          "time_s": 1.483333
+        },
+        {
+          "depth": 0.88,
+          "frame": 91,
+          "time_s": 1.516667
+        }
+      ],
+      "duration_s": 4.349977,
+      "events": [
+        {
+          "cue": "void_charge",
+          "frame": 30,
+          "gain": 0.55,
+          "onset_s": 0.5,
+          "onset_sample": 11025,
+          "role": "charge starts; vacuum dips out at release f59",
+          "sync_s": 0.0,
+          "time_s": 0.5
+        },
+        {
+          "cue": "void_dash",
+          "frame": 63,
+          "gain": 0.62,
+          "onset_s": 0.98,
+          "onset_sample": 21609,
+          "role": "breath slip from release f59 into advancing cut contact",
+          "sync_s": 0.07,
+          "time_s": 1.05
+        },
+        {
+          "cue": "void_rupture",
+          "frame": 81,
+          "gain": 1.0,
+          "onset_s": 1.070023,
+          "onset_sample": 23594,
+          "role": "strongest finishing rupture (major silhouette)",
+          "sync_s": 0.28,
+          "time_s": 1.35
+        },
+        {
+          "cue": "seam_fracture",
+          "frame": 89,
+          "gain": 0.58,
+          "onset_s": 1.471338,
+          "onset_sample": 32443,
+          "role": "delayed seam fracture",
+          "sync_s": 0.012,
+          "time_s": 1.483333
+        },
+        {
+          "cue": "seam_fracture_2",
+          "frame": 91,
+          "gain": 0.5,
+          "onset_s": 1.504671,
+          "onset_sample": 33178,
+          "role": "second delayed seam fracture",
+          "sync_s": 0.012,
+          "time_s": 1.516667
+        }
+      ],
+      "expected_samples": 95917,
+      "file": "mixes/ultimate.wav",
+      "first_2ms_peak": 0.0,
+      "frames": 261,
+      "last_2ms_peak": 0.0,
+      "peak": 0.708,
+      "peak_dbfs": -3.0,
+      "quiet_by_s": 3.4,
+      "rms_dbfs": -24.46,
+      "samples": 95917,
+      "sha256": "96a9c38322e91415e72eb5d32d75b244d5f096db2c1e31e3505f99c745f6e71d",
+      "tail_energy_rms_dbfs": -20.87
+    }
+  }
+}

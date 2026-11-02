@@ -1,0 +1,72 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999955892562866,
+  "text": "船はまだあります。",
+  "words": [
+    {
+      "text": "船",
+      "start": 0.38,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.0006386386230587959
+    },
+    {
+      "text": "は",
+      "start": 0.62,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "ま",
+      "start": 1.02,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "だ",
+      "start": 1.16,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "あ",
+      "start": 1.28,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "り",
+      "start": 1.38,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "ま",
+      "start": 1.5,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "す",
+      "start": 1.68,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "。",
+      "start": 1.82,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -0.033648308366537094
+    }
+  ],
+  "transcription_id": "BJOh3PeXw89PnE1KJluf",
+  "audio_duration_secs": 2.904
+}

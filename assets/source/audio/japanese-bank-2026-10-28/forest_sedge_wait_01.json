@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "白い布をたどって林を抜け、干上がった浅瀬を東へ。階段は、茨の広場の先だ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "ryhbQQcVkNTeQtW8EuqB",
+  "request_id": "pGZOBtnhjImapONFN57p",
+  "generated_at": 1793156198.7938645
+}

@@ -1,0 +1,2000 @@
+{
+  "checks": [
+    {
+      "check": "files.exact_cue_set",
+      "limit": "exactly the 16 cues + audition.wav (+ manifest.json, check_report.json)",
+      "measured": {
+        "cue_count": 16,
+        "missing": [],
+        "unexpected": []
+      },
+      "passed": true,
+      "target": "/home/ghiankylledomingo/Domynix/gamedev-vault/Projects/B2BJ/tools/guardian-preview/sound/output"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "51bd29f93c30fdb41a6a7268d1573db8b91a81d1de21cdaededb94510283823b",
+      "measured": "51bd29f93c30fdb41a6a7268d1573db8b91a81d1de21cdaededb94510283823b",
+      "passed": true,
+      "target": "warden_windup.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 18963,
+        "frames": 18963,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_windup.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "980fd1fea1e1027f6dac1ff610f91b549b415f8e030415179ea30259b77cbe73",
+      "measured": "980fd1fea1e1027f6dac1ff610f91b549b415f8e030415179ea30259b77cbe73",
+      "passed": true,
+      "target": "warden_slam.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 23152,
+        "frames": 23152,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_slam.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "9ea4d11cb47df2dbde25c72233827f9e32cde6f30f992cf9c650cb972a44eaba",
+      "measured": "9ea4d11cb47df2dbde25c72233827f9e32cde6f30f992cf9c650cb972a44eaba",
+      "passed": true,
+      "target": "warden_slam_2.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 22050,
+        "frames": 22050,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_slam_2.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "c5f7fb385e44169cefeeee99168b6f4c1eee1811ed88f401d97a4b73ffe4a83a",
+      "measured": "c5f7fb385e44169cefeeee99168b6f4c1eee1811ed88f401d97a4b73ffe4a83a",
+      "passed": true,
+      "target": "warden_sweep.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 18522,
+        "frames": 18522,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_sweep.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "1823bd81c06866439baafb0b772df32678fc5b5ba90a459749a89cb34322e15f",
+      "measured": "1823bd81c06866439baafb0b772df32678fc5b5ba90a459749a89cb34322e15f",
+      "passed": true,
+      "target": "warden_sweep_2.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 17640,
+        "frames": 17640,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_sweep_2.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "fb07036eea3beaa59078dc05a21c257783cc3889fc267d697b1943d1a3f2c4a2",
+      "measured": "fb07036eea3beaa59078dc05a21c257783cc3889fc267d697b1943d1a3f2c4a2",
+      "passed": true,
+      "target": "warden_rush.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 16758,
+        "frames": 16758,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_rush.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "8b630d64751b2969178cfbca4f71d63c31b01f9c40c2a98d019e893926e1e517",
+      "measured": "8b630d64751b2969178cfbca4f71d63c31b01f9c40c2a98d019e893926e1e517",
+      "passed": true,
+      "target": "warden_rush_2.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 15876,
+        "frames": 15876,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_rush_2.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "18077496417b8c98fdbcab0817a75b133e78feaa6a861645d3879f99d58429f8",
+      "measured": "18077496417b8c98fdbcab0817a75b133e78feaa6a861645d3879f99d58429f8",
+      "passed": true,
+      "target": "warden_fists_launch.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 9702,
+        "frames": 9702,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_fists_launch.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "776cee512ad52aecaba467fbc631582ccf3d02a922f71c070ac35ca979c3d9b8",
+      "measured": "776cee512ad52aecaba467fbc631582ccf3d02a922f71c070ac35ca979c3d9b8",
+      "passed": true,
+      "target": "warden_fists_impact.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 17640,
+        "frames": 17640,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_fists_impact.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "a4c8ef1850bb0877966d530c119c082f40842fdefec83c1d67fb65fcedba24ff",
+      "measured": "a4c8ef1850bb0877966d530c119c082f40842fdefec83c1d67fb65fcedba24ff",
+      "passed": true,
+      "target": "warden_fists_impact_2.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 17199,
+        "frames": 17199,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_fists_impact_2.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "90605b1a603eca2fd45ff3e84fe406a990a2c69eec8a06742b1d635f9c42c88d",
+      "measured": "90605b1a603eca2fd45ff3e84fe406a990a2c69eec8a06742b1d635f9c42c88d",
+      "passed": true,
+      "target": "warden_beam_charge.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 27562,
+        "frames": 27562,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_beam_charge.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "b03efd2d71b11b93e8548d6bf02dad00f32457c64fda98ca8a08fe2ecfc72072",
+      "measured": "b03efd2d71b11b93e8548d6bf02dad00f32457c64fda98ca8a08fe2ecfc72072",
+      "passed": true,
+      "target": "warden_beam.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 25357,
+        "frames": 25357,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_beam.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "68b76ba68e95d3889263ab29359bacc6490ce3015c19a1d557c9ce7cc7cb303e",
+      "measured": "68b76ba68e95d3889263ab29359bacc6490ce3015c19a1d557c9ce7cc7cb303e",
+      "passed": true,
+      "target": "warden_core_open.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 14553,
+        "frames": 14553,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_core_open.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "cd3959ec5550140a9f01a993d59e6b634bd30d61124fd9c81bbb6964e59f8e13",
+      "measured": "cd3959ec5550140a9f01a993d59e6b634bd30d61124fd9c81bbb6964e59f8e13",
+      "passed": true,
+      "target": "warden_strain.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 30870,
+        "frames": 30870,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_strain.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "6e3f8e7a72f5b47c98391987393dd0091faac54359870818af9466ec8c4a67c9",
+      "measured": "6e3f8e7a72f5b47c98391987393dd0091faac54359870818af9466ec8c4a67c9",
+      "passed": true,
+      "target": "warden_step.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 7056,
+        "frames": 7056,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_step.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "15ac2dca1cdfd0d58da8f06ebd3a4beca87873b61c810fa65fe1349b4e1c9b41",
+      "measured": "15ac2dca1cdfd0d58da8f06ebd3a4beca87873b61c810fa65fe1349b4e1c9b41",
+      "passed": true,
+      "target": "warden_step_2.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 6615,
+        "frames": 6615,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "warden_step_2.wav"
+    },
+    {
+      "check": "determinism.matches_fresh_render",
+      "limit": "290bbb857acd4ffe1797215c4ede3149af04385a3678ef40c6d5066dcfb2a4e2",
+      "measured": "290bbb857acd4ffe1797215c4ede3149af04385a3678ef40c6d5066dcfb2a4e2",
+      "passed": true,
+      "target": "audition.wav"
+    },
+    {
+      "check": "format.pcm16_mono_22050",
+      "limit": {
+        "channels": 1,
+        "comptype": "NONE",
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "measured": {
+        "channels": 1,
+        "comptype": "NONE",
+        "decoded": 460845,
+        "frames": 460845,
+        "rate": 22050,
+        "sampwidth": 2
+      },
+      "passed": true,
+      "target": "audition.wav"
+    },
+    {
+      "check": "determinism.manifest",
+      "limit": "byte-identical to a fresh render",
+      "measured": "present",
+      "passed": true,
+      "target": "manifest.json"
+    },
+    {
+      "check": "determinism.in_process_rerender",
+      "limit": "identical samples",
+      "measured": null,
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "determinism.in_process_rerender",
+      "limit": "identical samples",
+      "measured": null,
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "exactly 0.86 s",
+      "measured": 0.86,
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -18.0,
+        "rms_dbfs": -21.22
+      },
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": -0.0,
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.56758
+      },
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.34,
+        "sub": 0.0254
+      },
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-30.0, -17.0] dB",
+      "measured": {
+        "crest_db": 16.3,
+        "loudness_db": -18.0,
+        "peak_dbfs": -4.92
+      },
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.85-1.15 s",
+      "measured": 1.049977,
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -15.93,
+        "rms_dbfs": -20.9
+      },
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 0.0,
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.86428
+      },
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.3415,
+        "sub": 0.0666
+      },
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-24.0, -11.0] dB",
+      "measured": {
+        "crest_db": 19.63,
+        "loudness_db": -15.93,
+        "peak_dbfs": -1.27
+      },
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.01 s",
+      "measured": 0.00313,
+      "passed": true,
+      "target": "warden_slam"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.85-1.15 s",
+      "measured": 1.0,
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -15.33,
+        "rms_dbfs": -19.69
+      },
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 0.0,
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.86428
+      },
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.3275,
+        "sub": 0.051
+      },
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-24.0, -11.0] dB",
+      "measured": {
+        "crest_db": 18.42,
+        "loudness_db": -15.33,
+        "peak_dbfs": -1.27
+      },
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.01 s",
+      "measured": 0.00313,
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.7-0.95 s",
+      "measured": 0.84,
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -14.0,
+        "rms_dbfs": -19.84
+      },
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 0.0,
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.77969
+      },
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 3e-05,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.589,
+        "sub": 0.0197
+      },
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-26.0, -13.0] dB",
+      "measured": {
+        "crest_db": 17.68,
+        "loudness_db": -14.0,
+        "peak_dbfs": -2.16
+      },
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00331,
+      "passed": true,
+      "target": "warden_sweep"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.7-0.95 s",
+      "measured": 0.8,
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -14.0,
+        "rms_dbfs": -19.24
+      },
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 1e-07,
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.84021
+      },
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 3e-05,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.5625,
+        "sub": 0.0209
+      },
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-26.0, -13.0] dB",
+      "measured": {
+        "crest_db": 17.73,
+        "loudness_db": -14.0,
+        "peak_dbfs": -1.51
+      },
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00345,
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.65-0.85 s",
+      "measured": 0.76,
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -14.24,
+        "rms_dbfs": -16.82
+      },
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 0.0,
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.86428
+      },
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 6e-05,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.3615,
+        "sub": 0.0588
+      },
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-26.0, -13.0] dB",
+      "measured": {
+        "crest_db": 15.55,
+        "loudness_db": -14.24,
+        "peak_dbfs": -1.27
+      },
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00227,
+      "passed": true,
+      "target": "warden_rush"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.65-0.85 s",
+      "measured": 0.72,
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -15.38,
+        "rms_dbfs": -17.58
+      },
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 0.0,
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.86428
+      },
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 6e-05,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.3956,
+        "sub": 0.0573
+      },
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-26.0, -13.0] dB",
+      "measured": {
+        "crest_db": 16.31,
+        "loudness_db": -15.38,
+        "peak_dbfs": -1.27
+      },
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00231,
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.36-0.5 s",
+      "measured": 0.44,
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -16.0,
+        "rms_dbfs": -19.24
+      },
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": -0.0,
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.65352
+      },
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 3e-05,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.6791,
+        "sub": 0.0004
+      },
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-28.0, -15.0] dB",
+      "measured": {
+        "crest_db": 15.55,
+        "loudness_db": -16.0,
+        "peak_dbfs": -3.69
+      },
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00408,
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.7-0.9 s",
+      "measured": 0.8,
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -14.99,
+        "rms_dbfs": -20.25
+      },
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": -1e-07,
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.86428
+      },
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.477,
+        "sub": 0.0346
+      },
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-26.0, -13.0] dB",
+      "measured": {
+        "crest_db": 18.98,
+        "loudness_db": -14.99,
+        "peak_dbfs": -1.27
+      },
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00308,
+      "passed": true,
+      "target": "warden_fists_impact"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.7-0.9 s",
+      "measured": 0.78,
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -14.0,
+        "rms_dbfs": -18.97
+      },
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 1e-07,
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.85931
+      },
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.5411,
+        "sub": 0.0344
+      },
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-26.0, -13.0] dB",
+      "measured": {
+        "crest_db": 17.65,
+        "loudness_db": -14.0,
+        "peak_dbfs": -1.32
+      },
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00308,
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "exactly 1.25 s",
+      "measured": 1.249977,
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -17.0,
+        "rms_dbfs": -20.47
+      },
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 1e-07,
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.68075
+      },
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.3495,
+        "sub": 0.0257
+      },
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-29.0, -16.0] dB",
+      "measured": {
+        "crest_db": 17.13,
+        "loudness_db": -17.0,
+        "peak_dbfs": -3.34
+      },
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "exactly 1.15 s",
+      "measured": 1.149977,
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -14.06,
+        "rms_dbfs": -12.81
+      },
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": -0.0,
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.86428
+      },
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.00076,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.302,
+        "sub": 0.035
+      },
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-25.0, -12.0] dB",
+      "measured": {
+        "crest_db": 11.54,
+        "loudness_db": -14.06,
+        "peak_dbfs": -1.27
+      },
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.02 s",
+      "measured": 0.00372,
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.55-0.75 s",
+      "measured": 0.66,
+      "passed": true,
+      "target": "warden_core_open"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -20.5,
+        "rms_dbfs": -23.93
+      },
+      "passed": true,
+      "target": "warden_core_open"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": -1e-07,
+      "passed": true,
+      "target": "warden_core_open"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.27937
+      },
+      "passed": true,
+      "target": "warden_core_open"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 3e-05,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_core_open"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.5523,
+        "sub": 0.0002
+      },
+      "passed": true,
+      "target": "warden_core_open"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-32.5, -19.5] dB",
+      "measured": {
+        "crest_db": 12.85,
+        "loudness_db": -20.5,
+        "peak_dbfs": -11.08
+      },
+      "passed": true,
+      "target": "warden_core_open"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "exactly 1.4 s",
+      "measured": 1.4,
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -15.0,
+        "rms_dbfs": -19.03
+      },
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": -1e-07,
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.69503
+      },
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.00705,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0004,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.22, sub(< 80 Hz) <= 0.4",
+      "measured": {
+        "mid": 0.3187,
+        "sub": 0.0259
+      },
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-27.0, -14.0] dB",
+      "measured": {
+        "crest_db": 15.87,
+        "loudness_db": -15.0,
+        "peak_dbfs": -3.16
+      },
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.25-0.4 s",
+      "measured": 0.32,
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -23.0,
+        "rms_dbfs": -26.11
+      },
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": -1e-07,
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.41047
+      },
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.3, sub(< 80 Hz) <= 0.15",
+      "measured": {
+        "mid": 0.3429,
+        "sub": 0.0203
+      },
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-35.0, -22.0] dB",
+      "measured": {
+        "crest_db": 18.38,
+        "loudness_db": -23.0,
+        "peak_dbfs": -7.73
+      },
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00308,
+      "passed": true,
+      "target": "warden_step"
+    },
+    {
+      "check": "timing.duration",
+      "limit": "0.25-0.4 s",
+      "measured": 0.3,
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "level.non_silent",
+      "limit": "rms >= -42 dBFS, loudness >= -40 dB",
+      "measured": {
+        "loudness_db": -23.0,
+        "rms_dbfs": -26.08
+      },
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "level.dc_bounded",
+      "limit": "|mean| <= 0.002 FS",
+      "measured": 1e-07,
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "level.no_clipping",
+      "limit": "peak <= 0.891, no full-scale samples",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.48827
+      },
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "edges.tapered",
+      "limit": "first/last sample within 3 LSB, last 5 ms <= 0.025, first 0.5 ms <= 0.05",
+      "measured": {
+        "first_0.5ms_peak": 0.0,
+        "first_lsb": 0,
+        "last_5ms_peak": 0.0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "spectrum.audible_midrange",
+      "limit": "energy share mid(250 Hz-4 kHz) >= 0.3, sub(< 80 Hz) <= 0.15",
+      "measured": {
+        "mid": 0.4092,
+        "sub": 0.023
+      },
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "level.peak_rms_sensible",
+      "limit": "crest 5-30 dB and loudness in [-35.0, -22.0] dB",
+      "measured": {
+        "crest_db": 19.85,
+        "loudness_db": -23.0,
+        "peak_dbfs": -6.23
+      },
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "timing.onset_at_trigger",
+      "limit": "30 % of peak within 0.015 s",
+      "measured": 0.00308,
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "shape.no_impact_at_end",
+      "limit": "loudest 20 ms in the last 150 ms <= 0.5 x before; last 60 ms peak <= 0.25 x peak",
+      "measured": {
+        "end_vs_body": 0.0482,
+        "last_60ms_vs_peak": 0.0
+      },
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "shape.no_impact_at_end",
+      "limit": "loudest 20 ms in the last 150 ms <= 0.5 x before; last 60 ms peak <= 0.25 x peak",
+      "measured": {
+        "end_vs_body": 0.1236,
+        "last_60ms_vs_peak": 0.0
+      },
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "shape.readable_at_once",
+      "limit": "first 120 ms peak >= 0.15 x peak",
+      "measured": 0.5707,
+      "passed": true,
+      "target": "warden_windup"
+    },
+    {
+      "check": "shape.charge_gathers",
+      "limit": "rms 0.8-1.1 s >= 1.5 x 0.05-0.35 s",
+      "measured": 10.7998,
+      "passed": true,
+      "target": "warden_beam_charge"
+    },
+    {
+      "check": "shape.beam_release_at_zero",
+      "limit": "loudest 20 ms in the first 50 ms >= 0.35 x loudest overall",
+      "measured": 0.5448,
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "shape.beam_sustained_to_0.9s",
+      "limit": "ten 50 ms windows over 0.10-0.87 s within 10.5 dB of each other",
+      "measured": 0.5764,
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "shape.beam_dissipating_tail",
+      "limit": "rms 1.08-1.15 s at least 20 dB under 0.4-0.8 s",
+      "measured": 0.01684,
+      "passed": true,
+      "target": "warden_beam"
+    },
+    {
+      "check": "shape.strain_silence_then_bloom",
+      "limit": "1.17-1.195 s at least 12 dB under the 1.21-1.30 s bloom; bloom >= 0.4 x the strain",
+      "measured": {
+        "bloom_vs_strain": 0.936,
+        "dip_vs_bloom": 0.0006
+      },
+      "passed": true,
+      "target": "warden_strain"
+    },
+    {
+      "check": "shape.two_detach_events",
+      "limit": "second release peak >= 0.45 x first and >= 1.25 x the gap before it",
+      "measured": {
+        "second_burst_vs_gap": 2.3553,
+        "second_vs_first_peak": 1.0525
+      },
+      "passed": true,
+      "target": "warden_fists_launch"
+    },
+    {
+      "check": "level.relative_loudness",
+      "limit": "at least 5.0 dB quieter",
+      "measured": {
+        "loud_db": -15.93,
+        "quiet_db": -23.0
+      },
+      "passed": true,
+      "target": "warden_step < warden_slam"
+    },
+    {
+      "check": "level.relative_loudness",
+      "limit": "at least 5.0 dB quieter",
+      "measured": {
+        "loud_db": -15.93,
+        "quiet_db": -23.0
+      },
+      "passed": true,
+      "target": "warden_step_2 < warden_slam"
+    },
+    {
+      "check": "level.relative_loudness",
+      "limit": "at least 2.0 dB quieter",
+      "measured": {
+        "loud_db": -14.99,
+        "quiet_db": -20.5
+      },
+      "passed": true,
+      "target": "warden_core_open < warden_fists_impact"
+    },
+    {
+      "check": "level.relative_loudness",
+      "limit": "at least 4.0 dB quieter",
+      "measured": {
+        "loud_db": -15.93,
+        "quiet_db": -20.5
+      },
+      "passed": true,
+      "target": "warden_core_open < warden_slam"
+    },
+    {
+      "check": "identity.variation_differs",
+      "limit": "not a copy; length within 0.1 s",
+      "measured": {
+        "length_delta_s": 0.05,
+        "max_abs_diff": 1.0102
+      },
+      "passed": true,
+      "target": "warden_slam_2"
+    },
+    {
+      "check": "identity.variation_differs",
+      "limit": "not a copy; length within 0.1 s",
+      "measured": {
+        "length_delta_s": 0.04,
+        "max_abs_diff": 1.0037
+      },
+      "passed": true,
+      "target": "warden_sweep_2"
+    },
+    {
+      "check": "identity.variation_differs",
+      "limit": "not a copy; length within 0.1 s",
+      "measured": {
+        "length_delta_s": 0.04,
+        "max_abs_diff": 0.97
+      },
+      "passed": true,
+      "target": "warden_rush_2"
+    },
+    {
+      "check": "identity.variation_differs",
+      "limit": "not a copy; length within 0.1 s",
+      "measured": {
+        "length_delta_s": 0.02,
+        "max_abs_diff": 0.8813
+      },
+      "passed": true,
+      "target": "warden_fists_impact_2"
+    },
+    {
+      "check": "identity.variation_differs",
+      "limit": "not a copy; length within 0.1 s",
+      "measured": {
+        "length_delta_s": 0.02,
+        "max_abs_diff": 0.4226
+      },
+      "passed": true,
+      "target": "warden_step_2"
+    },
+    {
+      "check": "identity.actions_distinct",
+      "limit": "spectral/temporal fingerprint distance >= 0.05",
+      "measured": {
+        "closest_pair": [
+          "warden_fists_impact_2",
+          "warden_sweep_2"
+        ],
+        "distance": 0.1557
+      },
+      "passed": true,
+      "target": "every cross-action pair"
+    },
+    {
+      "check": "mix.two_fist_overlap_gain_safe",
+      "limit": "peak <= 0.891 and <= 1.3 x the louder single fist",
+      "measured": {
+        "peak": 0.7804,
+        "vs_loudest_single": 1.003
+      },
+      "passed": true,
+      "target": "impact + impact_2 at +0.48 s"
+    },
+    {
+      "check": "mix.two_fist_second_contact_reads",
+      "limit": "second contact >= +6 dB over the first fist's tail",
+      "measured": 8.038,
+      "passed": true,
+      "target": "impact + impact_2 at +0.48 s"
+    },
+    {
+      "check": "mix.beam_sequence_gain_safe",
+      "limit": "peak <= 0.891",
+      "measured": 0.8643,
+      "passed": true,
+      "target": "charge -> beam at 1.25 s -> core_open"
+    },
+    {
+      "check": "mix.beam_release_contrast",
+      "limit": "release >= +12 dB over the pre-release silence",
+      "measured": null,
+      "passed": true,
+      "target": "charge -> beam at 1.25 s"
+    },
+    {
+      "check": "mix.phase_transition_gain_safe",
+      "limit": "peak <= 0.891",
+      "measured": 0.5614,
+      "passed": true,
+      "target": "strain + core_open at the 1.2 s bloom"
+    },
+    {
+      "check": "audition.length",
+      "limit": "20.9 s",
+      "measured": 20.9,
+      "passed": true,
+      "target": "audition.wav"
+    },
+    {
+      "check": "audition.no_clipping",
+      "limit": "peak <= 0.891",
+      "measured": {
+        "full_scale_samples": 0,
+        "peak": 0.86428
+      },
+      "passed": true,
+      "target": "audition.wav"
+    },
+    {
+      "check": "audition.edges",
+      "limit": "silent lead-in, zero edges",
+      "measured": {
+        "first_lsb": 0,
+        "last_lsb": 0
+      },
+      "passed": true,
+      "target": "audition.wav"
+    },
+    {
+      "check": "audition.realistic_gain",
+      "limit": "cues summed at game gains; at most a 0.9 dB safety trim",
+      "measured": 1.0,
+      "passed": true,
+      "target": "audition.wav"
+    },
+    {
+      "check": "audition.group_audible",
+      "limit": ">= -40 dBFS rms",
+      "measured": -23.58,
+      "passed": true,
+      "target": "phase1_walk_and_slam"
+    },
+    {
+      "check": "audition.group_audible",
+      "limit": ">= -40 dBFS rms",
+      "measured": -21.05,
+      "passed": true,
+      "target": "phase1_slam_take2"
+    },
+    {
+      "check": "audition.group_audible",
+      "limit": ">= -40 dBFS rms",
+      "measured": -20.61,
+      "passed": true,
+      "target": "phase1_sweeps"
+    },
+    {
+      "check": "audition.group_audible",
+      "limit": ">= -40 dBFS rms",
+      "measured": -18.2,
+      "passed": true,
+      "target": "phase1_rushes"
+    },
+    {
+      "check": "audition.group_audible",
+      "limit": ">= -40 dBFS rms",
+      "measured": -21.23,
+      "passed": true,
+      "target": "phase_transition"
+    },
+    {
+      "check": "audition.group_audible",
+      "limit": ">= -40 dBFS rms",
+      "measured": -19.89,
+      "passed": true,
+      "target": "phase2_fists"
+    },
+    {
+      "check": "audition.group_audible",
+      "limit": ">= -40 dBFS rms",
+      "measured": -16.57,
+      "passed": true,
+      "target": "phase2_beam"
+    },
+    {
+      "check": "audition.clear_gap",
+      "limit": ">= 0.6 s of silence (peak <= 0.003)",
+      "measured": {
+        "gap_peak": 0.0,
+        "gap_s": 0.7
+      },
+      "passed": true,
+      "target": "phase1_walk_and_slam -> phase1_slam_take2"
+    },
+    {
+      "check": "audition.clear_gap",
+      "limit": ">= 0.6 s of silence (peak <= 0.003)",
+      "measured": {
+        "gap_peak": 0.0,
+        "gap_s": 0.8
+      },
+      "passed": true,
+      "target": "phase1_slam_take2 -> phase1_sweeps"
+    },
+    {
+      "check": "audition.clear_gap",
+      "limit": ">= 0.6 s of silence (peak <= 0.003)",
+      "measured": {
+        "gap_peak": 0.0,
+        "gap_s": 0.8
+      },
+      "passed": true,
+      "target": "phase1_sweeps -> phase1_rushes"
+    },
+    {
+      "check": "audition.clear_gap",
+      "limit": ">= 0.6 s of silence (peak <= 0.003)",
+      "measured": {
+        "gap_peak": 0.0,
+        "gap_s": 0.78
+      },
+      "passed": true,
+      "target": "phase1_rushes -> phase_transition"
+    },
+    {
+      "check": "audition.clear_gap",
+      "limit": ">= 0.6 s of silence (peak <= 0.003)",
+      "measured": {
+        "gap_peak": 0.0,
+        "gap_s": 0.79
+      },
+      "passed": true,
+      "target": "phase_transition -> phase2_fists"
+    },
+    {
+      "check": "audition.clear_gap",
+      "limit": ">= 0.6 s of silence (peak <= 0.003)",
+      "measured": {
+        "gap_peak": 0.0,
+        "gap_s": 0.84
+      },
+      "passed": true,
+      "target": "phase2_fists -> phase2_beam"
+    }
+  ],
+  "failed": 0,
+  "failures": [],
+  "generator": "generate_guardian_sfx.py",
+  "mode": "check",
+  "passed": true,
+  "total": 203,
+  "version": "guardian-sfx-1.0"
+}

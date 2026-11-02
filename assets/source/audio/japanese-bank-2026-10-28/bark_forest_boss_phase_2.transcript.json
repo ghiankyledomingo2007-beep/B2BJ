@@ -1,0 +1,100 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999508857727051,
+  "text": "見えてる。声をかけ続けて。",
+  "words": [
+    {
+      "text": "見",
+      "start": 0.12,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -2.5987286790041253e-05
+    },
+    {
+      "text": "え",
+      "start": 0.22,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -6.12716976320371e-05
+    },
+    {
+      "text": "て",
+      "start": 0.34,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -6.12716976320371e-05
+    },
+    {
+      "text": "る",
+      "start": 0.46,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 0.6,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.0010376551654189825
+    },
+    {
+      "text": "声",
+      "start": 1.44,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -9.965400386136025e-05
+    },
+    {
+      "text": "を",
+      "start": 1.58,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -9.965400386136025e-05
+    },
+    {
+      "text": "か",
+      "start": 1.8,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -0.42875632643699646
+    },
+    {
+      "text": "け",
+      "start": 1.9,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.42875632643699646
+    },
+    {
+      "text": "続",
+      "start": 2.12,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "け",
+      "start": 2.24,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "て",
+      "start": 2.36,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "。",
+      "start": 2.58,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -0.0017027654685080051
+    }
+  ],
+  "transcription_id": "yD286rtqWcwx6iTKllhh",
+  "audio_duration_secs": 2.8
+}

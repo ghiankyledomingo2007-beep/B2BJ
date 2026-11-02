@@ -14,6 +14,7 @@ public final class SlimeComboTest {
 
     private static void comboAndReset() {
         var game = fixture(List.of());
+        game.player().relocate(500,400);
         assert game.attack(1, 0);
         game.update(.2, 0, 0);
         WaterProjectile first = latest(game);
@@ -26,9 +27,9 @@ public final class SlimeComboTest {
         assert second.y() < game.player().y() : "second M1 must reverse the water cut";
         game.update(.41, 0, 0);
         assert game.attack(1, 0);
-        game.update(.2, 0, 0);
+        game.update(.26, 0, 0);
         WaterProjectile third = latest(game);
-        assert third.damage() == 32 && third.impulse() > first.impulse()
+        assert third.damage() == 40 && third.impulse() > first.impulse()
                 : "third M1 must finish with a stronger impact";
         assert !third.heavy() && game.tideCooldown() == 0 : "finisher is not a free Tide Wave";
         game.update(.5, 0, 0);
@@ -129,7 +130,7 @@ public final class SlimeComboTest {
             for(int i=0;i<24;i++)split.advance(.01);
             assert Math.hypot(one.x()-split.x(),one.y()-split.y())<1e-8
                     : "water path must not depend on update chunking: "+kind;
-            assert one.damage()==(kind==WaterProjectile.Kind.FINISHER||kind==WaterProjectile.Kind.TIDE?32:Player.SLIME_DAMAGE);
+            assert one.damage()==(kind==WaterProjectile.Kind.CHARGED_JET?52:kind==WaterProjectile.Kind.FINISHER?40:kind==WaterProjectile.Kind.TIDE?32:Player.SLIME_DAMAGE);
             assert one.staggers()==(kind!=WaterProjectile.Kind.CUT&&kind!=WaterProjectile.Kind.RETURN_CUT);
             one.advance(Double.NaN);one.advance(-1);
             assert Double.isFinite(one.x());

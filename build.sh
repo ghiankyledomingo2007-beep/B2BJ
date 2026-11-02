@@ -3,7 +3,9 @@ set -eu
 cd "$(dirname "$0")"
 build_dir="$(mktemp -d /tmp/b2bj-build.XXXXXX)"
 mkdir -p "$build_dir/classes/assets" "$build_dir/tests" build
-javac --release 17 -encoding UTF-8 -Xlint:all -d "$build_dir/classes" src/*.java
+javac --release 17 -encoding UTF-8 -Xlint:all -cp "$(printf '%s:' lib/*.jar)" -d "$build_dir/classes" src/*.java
+# Libraries (the opening film's H.264 decoder) go inside the one runnable JAR.
+(cd "$build_dir/classes" && for library in "$OLDPWD"/lib/*.jar; do jar xf "$library"; done && rm -f META-INF/MANIFEST.MF)
 for asset_dir in characters tilesets ui effects audio; do
     if [ -d "assets/$asset_dir" ]; then
         cp -R "assets/$asset_dir" "$build_dir/classes/assets/"

@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9934280514717102,
+  "text": "目にまで嫌われてるみたいだな。",
+  "words": [
+    {
+      "text": "目",
+      "start": 0.14,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.02388606034219265
+    },
+    {
+      "text": "に",
+      "start": 0.28,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.02388606034219265
+    },
+    {
+      "text": "ま",
+      "start": 0.42,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "で",
+      "start": 0.62,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "嫌",
+      "start": 1.16,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -0.0005551227368414402
+    },
+    {
+      "text": "わ",
+      "start": 1.28,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -0.0001209901092806831
+    },
+    {
+      "text": "れ",
+      "start": 1.38,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -0.0001209901092806831
+    },
+    {
+      "text": "て",
+      "start": 1.5,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -0.0001209901092806831
+    },
+    {
+      "text": "る",
+      "start": 1.58,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "み",
+      "start": 1.72,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "た",
+      "start": 1.84,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "い",
+      "start": 1.9,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.0,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -4.172316494077677e-06
+    },
+    {
+      "text": "な",
+      "start": 2.14,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -4.172316494077677e-06
+    },
+    {
+      "text": "。",
+      "start": 2.28,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -0.0009118927991949022
+    }
+  ],
+  "transcription_id": "Eje9TtU8APasxQe1HoO1",
+  "audio_duration_secs": 2.72
+}

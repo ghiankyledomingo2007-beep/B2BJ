@@ -1,0 +1,156 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "では、ここに来た理由を忘れないでください。",
+  "words": [
+    {
+      "text": "で",
+      "start": 0.3,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.0005536930402740836
+    },
+    {
+      "text": "は",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0005536930402740836
+    },
+    {
+      "text": "、",
+      "start": 0.52,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.06203921139240265
+    },
+    {
+      "text": "こ",
+      "start": 0.98,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -0.0001734344696160406
+    },
+    {
+      "text": "こ",
+      "start": 1.04,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.0001734344696160406
+    },
+    {
+      "text": "に",
+      "start": 1.18,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -1.0371154530730564e-05
+    },
+    {
+      "text": "来",
+      "start": 1.3,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -1.0371154530730564e-05
+    },
+    {
+      "text": "た",
+      "start": 1.44,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "理",
+      "start": 1.58,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -1.5735502529423684e-05
+    },
+    {
+      "text": "由",
+      "start": 1.74,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -1.5735502529423684e-05
+    },
+    {
+      "text": "を",
+      "start": 1.94,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "忘",
+      "start": 2.16,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -6.318072337307967e-06
+    },
+    {
+      "text": "れ",
+      "start": 2.4,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -1.156323378381785e-05
+    },
+    {
+      "text": "な",
+      "start": 2.5,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -1.156323378381785e-05
+    },
+    {
+      "text": "い",
+      "start": 2.54,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -1.156323378381785e-05
+    },
+    {
+      "text": "で",
+      "start": 2.64,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -1.8954096958623268e-05
+    },
+    {
+      "text": "く",
+      "start": 2.72,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.8,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "さ",
+      "start": 2.94,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "い",
+      "start": 3.06,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "。",
+      "start": 3.18,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -0.00020561488054227084
+    }
+  ],
+  "transcription_id": "1dHgjXekAUsbLdaSpJb8",
+  "audio_duration_secs": 4.264
+}

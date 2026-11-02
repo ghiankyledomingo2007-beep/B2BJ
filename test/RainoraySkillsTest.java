@@ -35,7 +35,7 @@ public final class RainoraySkillsTest {
         assert game.dash(1,0)&&!game.guarding() : "dash cancels guard rather than stacking immunity";
         var low=game(new RuinedOutpostMap(),300,300);blade(low);advance(low,11.1);
         double before=low.player().ichor();assert before<8;
-        assert !low.riposte()&&!low.ichorCrescent(1,0)&&low.player().ichor()==before;
+        assert low.riposte()&&!low.ichorCrescent(1,0)&&low.player().ichor()==before : "parry no longer taxes the form reservoir";
         low.restart();assert low.crescentCooldown()==0&&low.riposteCooldown()==0;
         var dead=game(new RuinedOutpostMap(),300,300);blade(dead);dead.player().hurt(1000);
         assert !dead.riposte()&&!dead.ichorCrescent(1,0);

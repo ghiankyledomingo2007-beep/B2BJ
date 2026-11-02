@@ -35,17 +35,17 @@ public final class AnimationPlaybackTest {
     public static void main(String[] args) throws Exception {
         GameAudio.setMuted(true);
         for(int row=0;row<4;row++) {
-            var panel=panel();blade(panel).face(-AIM[row][0],-AIM[row][1]);cast(panel,row);panel.step(1.0/60);
-            assert blade(panel).action()==BladeAnimation.Action.CAST&&blade(panel).directionRow()==row
-                    : "Crescent click must aim the body as well as the projectile";
-            var shot=panel.game().crescents().get(0);
-            assert shot.directionX()==AIM[row][0]&&shot.directionY()==AIM[row][1];
+            var panel=panel();blade(panel).face(-AIM[row][0],-AIM[row][1]);RainorayKitTest.ready(panel.game());cast(panel,row);panel.step(1.0/60);
+            assert blade(panel).action()==BladeAnimation.Action.SLASH&&blade(panel).directionRow()==row
+                    : "Void Sever click must aim the coiled sword pose";
+            assert panel.game().voidActive()&&panel.game().crescents().isEmpty();
+            assert Integer.signum(panel.game().bladeAimX())==AIM[row][0]&&Integer.signum(panel.game().bladeAimY())==AIM[row][1];
 
-            panel=panel();move(panel,row,true);advance(panel,.3);cast(panel,row);
+            panel=panel();move(panel,row,true);advance(panel,.3);RainorayKitTest.ready(panel.game());cast(panel,row);
             double x=panel.game().player().x(),y=panel.game().player().y();advance(panel,.3);
             assert panel.game().player().x()==x&&panel.game().player().y()==y : "cast feet must remain planted";
-            advance(panel,.15);
-            assert Math.hypot(panel.game().player().x()-x,panel.game().player().y()-y)>0 : "movement resumes after cast";
+            advance(panel,1.2);
+            assert !panel.game().voidActive()&&Math.hypot(panel.game().player().x()-x,panel.game().player().y()-y)>0 : "movement resumes after ultimate recovery";
 
             panel=panel();move(panel,row,true);panel.game().primaryPress(AIM[row][0],AIM[row][1]);
             x=panel.game().player().x();y=panel.game().player().y();advance(panel,.8);

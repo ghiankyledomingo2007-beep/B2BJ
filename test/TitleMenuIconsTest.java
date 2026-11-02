@@ -22,13 +22,25 @@ public final class TitleMenuIconsTest {
                     assert x >= 4 && x < 28 && y >= 4 && y < 28 : "icon must fit its reserved slot";
                 }
             }
-            assert painted > 40 : "icon asset must be visible";
-            assert shades.size() == 3 : "recoloring must retain outline, detail and highlight";
+            assert painted > 100 : "ivory silhouettes must stay substantial at the smallest menu size";
+            assert shades.size() > 2 : "heraldic icons need visible accents and smooth edges";
             for (int earlier = 0; earlier < choice; earlier++)
                 assert !Arrays.equals(previous[earlier], normal) : "each action needs a distinct icon";
             previous[choice] = normal;
         }
+        int[] sound=volume("masterVolume"),voice=volume("dialogueVolume"),music=volume("musicVolume");
+        assert !Arrays.equals(sound,voice)&&!Arrays.equals(voice,music)&&!Arrays.equals(sound,music)
+                : "audio channels need recognizable, distinct symbols";
         System.out.println("TitleMenuIconsTest passed");
+    }
+
+    private static int[] volume(String name) {
+        var icon=TitleIcons.volumeIcon(name);
+        var image=new BufferedImage(32,32,BufferedImage.TYPE_INT_ARGB);
+        var g=image.createGraphics();icon.paintIcon(new javax.swing.JLabel(),g,0,0);g.dispose();
+        int[] pixels=image.getRGB(0,0,32,32,null,0,32);
+        assert Arrays.stream(pixels).filter(pixel->(pixel>>>24)>0).count()>100 : name+" must remain visible";
+        return pixels;
     }
 
     private static int[] render(int choice, boolean selected, boolean enabled) {

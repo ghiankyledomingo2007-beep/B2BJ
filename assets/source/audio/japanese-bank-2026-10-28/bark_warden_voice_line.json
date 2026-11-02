@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "守りを崩すな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "AzXhp77fg6sHrgy2EtLn",
+  "request_id": "diQH4SZ1uJsoGvigL0Zl",
+  "generated_at": 1793156388.698357
+}

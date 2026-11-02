@@ -13,6 +13,7 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 final class TitleMenu extends JPanel {
     static final String NEW = "New Journey", CONFIRM = "Replace save?";
+    static final int X=112,Y=338,WIDTH=448,HEIGHT=256;
     private final PixelSwing.Button resume, fresh, settings, quit;
     private final RuinedOutpostGame game;
     private final Runnable start;
@@ -27,8 +28,8 @@ final class TitleMenu extends JPanel {
         getAccessibleContext().setAccessibleName("Title menu");
         resume = PixelSwing.textButton("Continue", 'C', 3, resumeAction);
         fresh = PixelSwing.textButton(NEW, 'N', 3, this::freshPressed);
-        settings = PixelSwing.textButton("Settings", 'S', 2, settingsAction);
-        quit = PixelSwing.textButton("Quit", 'Q', 2, ()->{GameAudio.play(GameAudio.Cue.UI_CONFIRM);quitAction.run();});
+        settings = PixelSwing.textButton("Settings", 'S', 3, settingsAction);
+        quit = PixelSwing.textButton("Quit", 'Q', 3, ()->{GameAudio.play(GameAudio.Cue.UI_CONFIRM);quitAction.run();});
         int choice=0;
         for(var b:new PixelSwing.Button[]{resume,fresh,settings,quit}) {
             b.titleChoice=choice++;
@@ -61,13 +62,13 @@ final class TitleMenu extends JPanel {
     }
 
     @Override public void doLayout() {
-        int y=0;double scale=getWidth()/420.;
+        int y=0;double scale=getWidth()/(double)WIDTH;
         var buttons=new PixelSwing.Button[]{resume,fresh,settings,quit};
-        int[] heights={72,66,48,48};
+        int[] heights={76,58,58,58};
         for(int i=0;i<buttons.length;i++) {
             buttons[i].titleScale=scale;
             buttons[i].setBounds(0,(int)Math.round(y*scale),getWidth(),(int)Math.round(heights[i]*scale));
-            y+=heights[i]+4;
+            y+=heights[i]+2;
         }
     }
 

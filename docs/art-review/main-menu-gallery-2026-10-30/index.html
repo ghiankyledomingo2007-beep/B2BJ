@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blob to Blade — five animated main menus</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="gallery.css">
+  <script src="gallery.js" defer></script>
+</head>
+<body>
+  <header class="gallery-header">
+    <div>
+      <p class="eyebrow">BLOB TO BLADE · DESIGN STUDY 02</p>
+      <h1>Five ways into the story.</h1>
+      <p class="intro">Your Moonlit Gate logo. Five animated main menus. Open any preview to try its navigation.</p>
+    </div>
+    <div class="identity"><img src="assets/moonlit-gate-logo.png" alt="Approved Blob to Blade logo"><span>THE CHOSEN IDENTITY</span></div>
+  </header>
+  <div class="toolbar">
+    <p>01—05 <span>Compare side by side</span></p>
+    <button id="motion" type="button" aria-pressed="false">Pause motion</button>
+  </div>
+  <main id="gallery" aria-label="Five animated main menu concepts"></main>
+  <p class="gallery-footer">Visual mockups only. Menu buttons preview their selected state; they do not change the game or your save.</p>
+  <dialog id="preview" aria-labelledby="preview-title">
+    <div class="dialog-bar"><h2 id="preview-title"></h2><div><button id="replay" type="button">Replay entrance</button><button id="close-preview" type="button">Close · Esc</button></div></div>
+    <div id="preview-content"></div>
+    <p class="preview-note">Hover, click, or use arrow keys to select. These are visual previews.</p>
+  </dialog>
+</body>
+</html>

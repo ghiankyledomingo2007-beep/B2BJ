@@ -1,0 +1,282 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "命令書だ。イコルを持つ生命体の通行を禁ずる。避難命令の上から書き加えられてる。",
+  "words": [
+    {
+      "text": "命",
+      "start": 0.18,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -7.86750388215296e-05
+    },
+    {
+      "text": "令",
+      "start": 0.28,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -7.86750388215296e-05
+    },
+    {
+      "text": "書",
+      "start": 0.46,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -4.6967357775429264e-05
+    },
+    {
+      "text": "だ",
+      "start": 0.66,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -9.179073458653875e-06
+    },
+    {
+      "text": "。",
+      "start": 0.76,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -2.1219027985353023e-05
+    },
+    {
+      "text": "イ",
+      "start": 1.54,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.37111377716064453
+    },
+    {
+      "text": "コ",
+      "start": 1.74,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -0.13921372592449188
+    },
+    {
+      "text": "ル",
+      "start": 1.82,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -0.13921372592449188
+    },
+    {
+      "text": "を",
+      "start": 1.92,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "持",
+      "start": 2.12,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "つ",
+      "start": 2.26,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "生",
+      "start": 2.52,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -0.002987685613334179
+    },
+    {
+      "text": "命",
+      "start": 2.58,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -0.002987685613334179
+    },
+    {
+      "text": "体",
+      "start": 2.92,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -4.8397800128441304e-05
+    },
+    {
+      "text": "の",
+      "start": 3.12,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -4.8397800128441304e-05
+    },
+    {
+      "text": "通",
+      "start": 3.42,
+      "end": 3.46,
+      "type": "word",
+      "logprob": -0.006162332836538553
+    },
+    {
+      "text": "行",
+      "start": 3.46,
+      "end": 3.66,
+      "type": "word",
+      "logprob": -0.006162332836538553
+    },
+    {
+      "text": "を",
+      "start": 3.66,
+      "end": 4.0,
+      "type": "word",
+      "logprob": -1.1324817933200393e-05
+    },
+    {
+      "text": "禁",
+      "start": 4.0,
+      "end": 4.22,
+      "type": "word",
+      "logprob": -0.0005079409456811845
+    },
+    {
+      "text": "ず",
+      "start": 4.22,
+      "end": 4.26,
+      "type": "word",
+      "logprob": -0.0011063652345910668
+    },
+    {
+      "text": "る",
+      "start": 4.26,
+      "end": 4.46,
+      "type": "word",
+      "logprob": -0.0011063652345910668
+    },
+    {
+      "text": "。",
+      "start": 4.46,
+      "end": 4.46,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "避",
+      "start": 5.14,
+      "end": 5.38,
+      "type": "word",
+      "logprob": -5.006777428206988e-06
+    },
+    {
+      "text": "難",
+      "start": 5.38,
+      "end": 5.52,
+      "type": "word",
+      "logprob": -9.059865078597795e-06
+    },
+    {
+      "text": "命",
+      "start": 5.52,
+      "end": 5.7,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "令",
+      "start": 5.7,
+      "end": 5.94,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "の",
+      "start": 5.94,
+      "end": 6.06,
+      "type": "word",
+      "logprob": -0.00038842763751745224
+    },
+    {
+      "text": "上",
+      "start": 6.06,
+      "end": 6.2,
+      "type": "word",
+      "logprob": -0.00038842763751745224
+    },
+    {
+      "text": "か",
+      "start": 6.24,
+      "end": 6.4,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "ら",
+      "start": 6.4,
+      "end": 6.74,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "書",
+      "start": 6.74,
+      "end": 6.92,
+      "type": "word",
+      "logprob": -0.000309657771140337
+    },
+    {
+      "text": "き",
+      "start": 6.92,
+      "end": 7.08,
+      "type": "word",
+      "logprob": -0.000309657771140337
+    },
+    {
+      "text": "加",
+      "start": 7.08,
+      "end": 7.14,
+      "type": "word",
+      "logprob": -0.0009984752396121621
+    },
+    {
+      "text": "え",
+      "start": 7.14,
+      "end": 7.2,
+      "type": "word",
+      "logprob": -0.0009984752396121621
+    },
+    {
+      "text": "ら",
+      "start": 7.2,
+      "end": 7.34,
+      "type": "word",
+      "logprob": -2.753696753643453e-05
+    },
+    {
+      "text": "れ",
+      "start": 7.34,
+      "end": 7.46,
+      "type": "word",
+      "logprob": -2.753696753643453e-05
+    },
+    {
+      "text": "て",
+      "start": 7.46,
+      "end": 7.5,
+      "type": "word",
+      "logprob": -2.753696753643453e-05
+    },
+    {
+      "text": "る",
+      "start": 7.5,
+      "end": 7.64,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 7.64,
+      "end": 7.64,
+      "type": "word",
+      "logprob": -0.033646002411842346
+    }
+  ],
+  "transcription_id": "HAigMxK4r4DdViT1ANpL",
+  "audio_duration_secs": 7.84
+}

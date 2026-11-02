@@ -67,9 +67,11 @@ public enum OutpostBark {
     WARDEN_VOICE_LINE(Trigger.BOSS,new OutpostDialogue.Line(OutpostDialogue.Speaker.WARDEN,"Hold the line.")),
     WARDEN_VOICE_GATE(Trigger.BOSS,new OutpostDialogue.Line(OutpostDialogue.Speaker.WARDEN,"The gate stays shut.")),
     WARDEN_VOICE_ORDER(Trigger.BOSS,new OutpostDialogue.Line(OutpostDialogue.Speaker.WARDEN,"I was ordered to protect them.")),
+    // Its dying words as it kneels (owner 2026-10-29): 「……通行を……許可、する……」
+    WARDEN_LAST(Trigger.BOSS,new OutpostDialogue.Line(OutpostDialogue.Speaker.WARDEN,"...Passage... granted...")),
 
     WARDEN_START(Trigger.BOSS,s("Keep moving. I'll analyze its attacks."),r("I only need one opening.")),
-    WARDEN_READ(Trigger.BOSS,s("I've got its rhythm. I'll warn you.")),
+    WARDEN_READ(Trigger.BOSS,s("I've got its rhythm. I'll warn you."),r("Good. Tell me when to move.")),
     WARDEN_PHASE(Trigger.BOSS,s("Careful. It's getting desperate now."),r("Good. I'll use that.")),
     WARDEN_WEAK(Trigger.BOSS,s("It's nearly down. Don't get careless.")),
     WARDEN_CLOSE_CALL(Trigger.BOSS,s("Fall back. You need room.")),
@@ -87,13 +89,17 @@ public enum OutpostBark {
     SAGE_HIT(Trigger.WARNING,s("That hit landed. Keep your distance.")),
     SAGE_HIT_AGAIN(Trigger.WARNING,s("Careful. Don't let it catch you again.")),
 
-    IDENTIFY_REMNANT(Trigger.IDENTIFY,s("A remnant. It still knows how to fight.")),
-    IDENTIFY_GUARD(Trigger.IDENTIFY,s("Outpost guard. Let the shield swing past.")),
-    IDENTIFY_SPITTER(Trigger.IDENTIFY,s("Ichor spitter. Watch where it aims.")),
-    IDENTIFY_KNIGHT(Trigger.IDENTIFY,s("Fallen Knight. Strike after its swing.")),
-    FOREST_IDENTIFY_IMP(Trigger.IDENTIFY,s("Rift Imp. It strikes twice. Wait for both.")),
-    FOREST_IDENTIFY_WOLF(Trigger.IDENTIFY,s("Thorn Wolf. Give those jaws some room.")),
-    FOREST_IDENTIFY_SHAMAN(Trigger.IDENTIFY,s("Mire Shaman. It'll curse the ground.")),
+    IDENTIFY_REMNANT(Trigger.IDENTIFY,s("A remnant. It still knows how to fight."),r("Then I'll give it some space.")),
+    IDENTIFY_GUARD(Trigger.IDENTIFY,s("Outpost guard. Let the shield swing past."),r("Right. I'll go around the shield.")),
+    IDENTIFY_SPITTER(Trigger.IDENTIFY,s("Ichor spitter. Watch where it aims."),r("Not getting that stuff on me.")),
+    IDENTIFY_KNIGHT(Trigger.IDENTIFY,s("Fallen Knight. Strike after its swing."),r("I'll wait for my turn, then.")),
+    FOREST_IDENTIFY_IMP(Trigger.IDENTIFY,s("Rift Imp. It strikes twice. Wait for both."),r("Two swings. Got it.")),
+    FOREST_IDENTIFY_WOLF(Trigger.IDENTIFY,s("Thorn Wolf. Give those jaws some room."),r("Yeah, I saw those teeth.")),
+    FOREST_IDENTIFY_SHAMAN(Trigger.IDENTIFY,s("Mire Shaman. It'll curse the ground."),r("Standing still was a bad idea, huh.")),
+
+    BEELZEBUB_CALL(Trigger.SKILL,r("Devour them. Beelzebub!")),
+    BEELZEBUB_CALL_AGAIN(Trigger.SKILL,r("Beelzebub!")),
+    BEELZEBUB_CALL_TAKE(Trigger.SKILL,r("I'll take it all!")),
 
     FOREST_CROSSING(r("Those roots weren't there a moment ago."),s("They move when the heart tightens.")),
     FOREST_GROVE(r("The cloth is caught up there."),s("Still pointing east. He chose well.")),
@@ -120,7 +126,7 @@ public enum OutpostBark {
     FOREST_CAMP_BOAT(Trigger.CAMP,r("He could have left when the river went."),s("The people he guards could not.")),
 
     FOREST_BOSS_START(Trigger.BOSS,s("I'll watch how the roots move. Stay clear."),r("Tell me when that heart opens.")),
-    FOREST_BOSS_READ(Trigger.BOSS,s("The roots follow a pattern. I can read it now.")),
+    FOREST_BOSS_READ(Trigger.BOSS,s("The roots follow a pattern. I can read it now."),r("All right. I'm listening.")),
     FOREST_BOSS_OPEN(Trigger.BOSS,s("It's open. Strike the heart.")),
     FOREST_BOSS_PHASE(Trigger.BOSS,s("It's drawing more roots in. Watch the gaps."),r("I see them. Keep talking.")),
     FOREST_BOSS_WEAK(Trigger.BOSS,s("The heart is fading. One more opening.")),
@@ -133,7 +139,7 @@ public enum OutpostBark {
     FOREST_CAGE_WARNING(Trigger.WARNING,s("One side is open. Go through it.")),
     FOREST_CAGE_AGAIN(Trigger.WARNING,s("Out through the gap. Don't stay inside."));
 
-    public enum Trigger { STORY, FIGHT, CLOSE_CALL, EXPLORING, CAMP, BOSS, WARNING, IDENTIFY }
+    public enum Trigger { STORY, FIGHT, CLOSE_CALL, EXPLORING, CAMP, BOSS, WARNING, IDENTIFY, SKILL }
     private final Trigger trigger;
     private final java.util.List<OutpostDialogue.Line> lines;
     OutpostBark(OutpostDialogue.Speaker speaker,String text) { this(new OutpostDialogue.Line(speaker,text)); }
@@ -141,11 +147,11 @@ public enum OutpostBark {
     OutpostBark(Trigger trigger,OutpostDialogue.Line... lines) { this.trigger=trigger;this.lines=java.util.List.of(lines); }
     public Trigger trigger() { return trigger; }
     public int biome() { return name().startsWith("FOREST_")?1:0; }
-    public boolean combat() { return trigger==Trigger.BOSS||trigger==Trigger.WARNING||trigger==Trigger.IDENTIFY; }
+    public boolean combat() { return trigger==Trigger.BOSS||trigger==Trigger.WARNING||trigger==Trigger.IDENTIFY||trigger==Trigger.SKILL; }
     public boolean banter() { return !combat()&&trigger!=Trigger.STORY; }
     public java.util.List<OutpostDialogue.Line> lines() { return lines; }
     public OutpostDialogue.Line line(int index) { return lines.get(index); }
-    public double lineSeconds() { return trigger==Trigger.IDENTIFY?4.4:biome()==1&&!combat()?4.2:lines.size()>1||combat()?3.6:6; }
+    public double lineSeconds() { return trigger==Trigger.IDENTIFY?4.4:line(0).speaker()==OutpostDialogue.Speaker.WARDEN||biome()==1&&!combat()?4.2:lines.size()>1||combat()?3.6:6; }
     static OutpostBark identification(CampaignEnemy.Kind kind) { return switch(kind) {
         case OUTPOST_SCOUT -> IDENTIFY_REMNANT;
         case OUTPOST_GUARD -> IDENTIFY_GUARD;
@@ -154,7 +160,7 @@ public enum OutpostBark {
         case RIFT_IMP -> FOREST_IDENTIFY_IMP;
         case THORN_WOLF -> FOREST_IDENTIFY_WOLF;
         case MIRE_SHAMAN -> FOREST_IDENTIFY_SHAMAN;
-        case CINDER_HEXER -> null;
+        case CINDER_HEXER, BRIARLING -> null;
     }; }
     // Keep the first clip and campaign unlock IDs compatible with existing saves.
     public String voiceKey(int index) { return key()+(index==0?"":"_"+(index+1)); }

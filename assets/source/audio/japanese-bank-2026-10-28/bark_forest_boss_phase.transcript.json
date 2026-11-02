@@ -1,0 +1,72 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.7520003318786621,
+  "text": "根が集まる隙間へ。",
+  "words": [
+    {
+      "text": "根",
+      "start": 0.34,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.023496991023421288
+    },
+    {
+      "text": "が",
+      "start": 0.52,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -4.827859811484814e-05
+    },
+    {
+      "text": "集",
+      "start": 0.72,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -4.827859811484814e-05
+    },
+    {
+      "text": "ま",
+      "start": 0.88,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -3.0874729418428615e-05
+    },
+    {
+      "text": "る",
+      "start": 1.0,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -3.0874729418428615e-05
+    },
+    {
+      "text": "隙",
+      "start": 1.72,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -0.01286116149276495
+    },
+    {
+      "text": "間",
+      "start": 1.88,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -0.00015841660206206143
+    },
+    {
+      "text": "へ",
+      "start": 2.06,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.0003554189461283386
+    },
+    {
+      "text": "。",
+      "start": 2.18,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.004622132051736116
+    }
+  ],
+  "transcription_id": "xyz9OFC59p4ppZdECQDb",
+  "audio_duration_secs": 3.304
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "この体でも、息を整えたくなるんだな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "FNtlty5ox2JJzcwoi0hk",
+  "generated_at": 1793156321.0620153
+}

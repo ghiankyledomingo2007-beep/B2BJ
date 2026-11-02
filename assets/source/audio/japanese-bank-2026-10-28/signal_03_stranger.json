@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "行方不明者の名簿か。野営地に、この人たちを知ってる誰かがいるかも。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "Q7uw10BI18a14fbS9ihZ",
+  "generated_at": 1793156126.649211
+}

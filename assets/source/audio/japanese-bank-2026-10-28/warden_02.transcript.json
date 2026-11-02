@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9993686079978943,
+  "text": "向こうに人がいるんだ。",
+  "words": [
+    {
+      "text": "向",
+      "start": 0.16,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -4.291525328881107e-06
+    },
+    {
+      "text": "こ",
+      "start": 0.28,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -6.9141146923357155e-06
+    },
+    {
+      "text": "う",
+      "start": 0.36,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -6.9141146923357155e-06
+    },
+    {
+      "text": "に",
+      "start": 0.48,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "人",
+      "start": 1.12,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -8.248942322097719e-05
+    },
+    {
+      "text": "が",
+      "start": 1.28,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -8.248942322097719e-05
+    },
+    {
+      "text": "い",
+      "start": 1.38,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "る",
+      "start": 1.46,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "ん",
+      "start": 1.56,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "だ",
+      "start": 1.62,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "。",
+      "start": 1.78,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -0.007647049613296986
+    }
+  ],
+  "transcription_id": "hTmq4aFNNjuGpRWBvV6D",
+  "audio_duration_secs": 2.08
+}

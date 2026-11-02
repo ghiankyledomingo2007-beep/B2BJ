@@ -1,0 +1,226 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "人を助けるために全部置いていったんだな。それが一番大事だった。",
+  "words": [
+    {
+      "text": "人",
+      "start": 0.2,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.00011455356434453279
+    },
+    {
+      "text": "を",
+      "start": 0.44,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.00011455356434453279
+    },
+    {
+      "text": "助",
+      "start": 0.6,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "け",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -4.768360213347478e-06
+    },
+    {
+      "text": "る",
+      "start": 0.78,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -4.768360213347478e-06
+    },
+    {
+      "text": "た",
+      "start": 0.96,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -8.618460560683161e-05
+    },
+    {
+      "text": "め",
+      "start": 1.06,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -8.618460560683161e-05
+    },
+    {
+      "text": "に",
+      "start": 1.14,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -8.618460560683161e-05
+    },
+    {
+      "text": "全",
+      "start": 1.86,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -0.00016091958968900144
+    },
+    {
+      "text": "部",
+      "start": 2.0,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -0.00016091958968900144
+    },
+    {
+      "text": "置",
+      "start": 2.08,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -3.5523738915799186e-05
+    },
+    {
+      "text": "い",
+      "start": 2.22,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -3.5523738915799186e-05
+    },
+    {
+      "text": "て",
+      "start": 2.34,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -3.5523738915799186e-05
+    },
+    {
+      "text": "い",
+      "start": 2.4,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -0.007709510624408722
+    },
+    {
+      "text": "っ",
+      "start": 2.52,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -0.007709510624408722
+    },
+    {
+      "text": "た",
+      "start": 2.6,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -0.007709510624408722
+    },
+    {
+      "text": "ん",
+      "start": 2.68,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.76,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "な",
+      "start": 2.9,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "。",
+      "start": 3.02,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "そ",
+      "start": 3.74,
+      "end": 3.86,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "れ",
+      "start": 3.86,
+      "end": 4.0,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "が",
+      "start": 4.0,
+      "end": 4.22,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "一",
+      "start": 4.22,
+      "end": 4.44,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "番",
+      "start": 4.44,
+      "end": 4.66,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "大",
+      "start": 4.66,
+      "end": 4.8,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "事",
+      "start": 4.8,
+      "end": 4.92,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "だ",
+      "start": 4.92,
+      "end": 5.02,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "っ",
+      "start": 5.02,
+      "end": 5.12,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "た",
+      "start": 5.12,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "。",
+      "start": 5.22,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -0.002185339340940118
+    }
+  ],
+  "transcription_id": "ewVxbrZc7wI0wgaomvoG",
+  "audio_duration_secs": 5.52
+}

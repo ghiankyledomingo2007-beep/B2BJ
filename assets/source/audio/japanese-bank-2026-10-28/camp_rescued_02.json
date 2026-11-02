@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "まだ外で待ってたんだ。置いていけないだろ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "dQoioTQdhHXn5U5zujbp",
+  "generated_at": 1793156179.9501462
+}

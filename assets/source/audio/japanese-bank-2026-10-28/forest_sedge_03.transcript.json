@@ -1,0 +1,219 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "目が川を塞ぐ前に渡した。怪我人は古い階段の下に避難している。",
+  "words": [
+    {
+      "text": "目",
+      "start": 0.14,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -0.002811172278597951
+    },
+    {
+      "text": "が",
+      "start": 0.3,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.002811172278597951
+    },
+    {
+      "text": "川",
+      "start": 0.46,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.004246979020535946
+    },
+    {
+      "text": "を",
+      "start": 0.78,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -0.00019786784832831472
+    },
+    {
+      "text": "塞",
+      "start": 0.96,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -0.0009377372916787863
+    },
+    {
+      "text": "ぐ",
+      "start": 1.14,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "前",
+      "start": 1.28,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -1.0490362910786644e-05
+    },
+    {
+      "text": "に",
+      "start": 1.4,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -1.0490362910786644e-05
+    },
+    {
+      "text": "渡",
+      "start": 1.52,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -2.932505594799295e-05
+    },
+    {
+      "text": "し",
+      "start": 1.82,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -3.9219088648678735e-05
+    },
+    {
+      "text": "た",
+      "start": 1.92,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -3.9219088648678735e-05
+    },
+    {
+      "text": "。",
+      "start": 1.96,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.0032620809506624937
+    },
+    {
+      "text": "怪",
+      "start": 2.74,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -0.004903553053736687
+    },
+    {
+      "text": "我",
+      "start": 2.9,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -1.8715683836489916e-05
+    },
+    {
+      "text": "人",
+      "start": 2.96,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -2.169585604860913e-05
+    },
+    {
+      "text": "は",
+      "start": 3.2,
+      "end": 3.64,
+      "type": "word",
+      "logprob": -2.169585604860913e-05
+    },
+    {
+      "text": "古",
+      "start": 3.64,
+      "end": 3.76,
+      "type": "word",
+      "logprob": -2.90866428258596e-05
+    },
+    {
+      "text": "い",
+      "start": 3.76,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -2.90866428258596e-05
+    },
+    {
+      "text": "階",
+      "start": 3.96,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -8.535020606359467e-05
+    },
+    {
+      "text": "段",
+      "start": 4.14,
+      "end": 4.24,
+      "type": "word",
+      "logprob": -8.535020606359467e-05
+    },
+    {
+      "text": "の",
+      "start": 4.3,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -1.07287787614041e-05
+    },
+    {
+      "text": "下",
+      "start": 4.42,
+      "end": 4.6,
+      "type": "word",
+      "logprob": -1.07287787614041e-05
+    },
+    {
+      "text": "に",
+      "start": 4.7,
+      "end": 4.76,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "避",
+      "start": 4.8,
+      "end": 4.88,
+      "type": "word",
+      "logprob": -0.0004892344586551189
+    },
+    {
+      "text": "難",
+      "start": 4.88,
+      "end": 5.0,
+      "type": "word",
+      "logprob": -2.753696753643453e-05
+    },
+    {
+      "text": "し",
+      "start": 5.0,
+      "end": 5.08,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "て",
+      "start": 5.12,
+      "end": 5.18,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "い",
+      "start": 5.18,
+      "end": 5.24,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "る",
+      "start": 5.3,
+      "end": 5.36,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "。",
+      "start": 5.36,
+      "end": 5.36,
+      "type": "word",
+      "logprob": -0.012509807012975216
+    }
+  ],
+  "transcription_id": "LaXaKb5D4D1V8XggIZ4Y",
+  "audio_duration_secs": 5.6
+}

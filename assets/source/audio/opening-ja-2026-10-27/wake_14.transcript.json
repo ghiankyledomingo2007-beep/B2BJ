@@ -1,0 +1,65 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5168367624282837,
+  "text": "まずは一歩ずつ。",
+  "words": [
+    {
+      "text": "ま",
+      "start": 0.28,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.00023123928986024112
+    },
+    {
+      "text": "ず",
+      "start": 0.42,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.00023123928986024112
+    },
+    {
+      "text": "は",
+      "start": 0.68,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -0.00023123928986024112
+    },
+    {
+      "text": "一",
+      "start": 1.04,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -0.00016723664884921163
+    },
+    {
+      "text": "歩",
+      "start": 1.2,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -5.960446742392378e-06
+    },
+    {
+      "text": "ず",
+      "start": 1.38,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -3.111314072157256e-05
+    },
+    {
+      "text": "つ",
+      "start": 1.52,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -3.111314072157256e-05
+    },
+    {
+      "text": "。",
+      "start": 1.68,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.0015172171406447887
+    }
+  ],
+  "transcription_id": "V2MDzuRPzA9B19Wy3UcC",
+  "audio_duration_secs": 2.824
+}

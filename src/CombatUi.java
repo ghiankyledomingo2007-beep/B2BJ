@@ -12,6 +12,8 @@ final class CombatUi {
     private static final Color BLOOD=new Color(0xc34c50), LIGHT=new Color(0xed8b77), TRACK=new Color(0x352c3c);
     private static final Cursor CURSOR=makeCursor();
     private final WeakHashMap<Wisp,Health> health=new WeakHashMap<>();
+    /** Trailer/screenshot capture: no bars, aim cue, damage numbers or key prompts in the world. */
+    static boolean cinematic;
     private static final class Health {double value=1,trail=1,hitAt,last;}
 
     static Cursor cursor() {return CURSOR;}
@@ -26,7 +28,7 @@ final class CombatUi {
     }
 
     void health(Graphics2D g,Wisp enemy,int x,int y,boolean targeted,double time,boolean reduced) {
-        if(!enemy.alive()||!enemy.visible()||(!targeted&&!enemy.aggro()&&enemy.health()==enemy.maxHealth()))return;
+        if(cinematic||!enemy.alive()||!enemy.visible()||(!targeted&&!enemy.aggro()&&enemy.health()==enemy.maxHealth()))return;
         var state=health.computeIfAbsent(enemy,key->new Health());
         double value=Math.max(0,Math.min(1,enemy.health()/(double)enemy.maxHealth()));
         if(value<state.value)state.hitAt=time;
@@ -48,6 +50,7 @@ final class CombatUi {
     }
 
     static void direction(Graphics2D g,int x,int y,int dx,int dy) {
+        if(cinematic)return;
         double length=Math.hypot(dx,dy);
         if(length==0)return;
         double nx=dx/length,ny=dy/length;

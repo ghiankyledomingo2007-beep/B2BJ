@@ -1,0 +1,121 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.99994295835495,
+  "text": "その割には食べ物を見ていますね。",
+  "words": [
+    {
+      "text": "そ",
+      "start": 0.32,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.00012396997772157192
+    },
+    {
+      "text": "の",
+      "start": 0.5,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.00012396997772157192
+    },
+    {
+      "text": "割",
+      "start": 0.68,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -0.005075783468782902
+    },
+    {
+      "text": "に",
+      "start": 0.84,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -5.245195097813848e-06
+    },
+    {
+      "text": "は",
+      "start": 1.08,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -5.245195097813848e-06
+    },
+    {
+      "text": "食",
+      "start": 1.42,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -4.23184028477408e-05
+    },
+    {
+      "text": "べ",
+      "start": 1.54,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -4.23184028477408e-05
+    },
+    {
+      "text": "物",
+      "start": 1.68,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -0.0018319981172680855
+    },
+    {
+      "text": "を",
+      "start": 1.82,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -9.452849917579442e-05
+    },
+    {
+      "text": "見",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -9.452849917579442e-05
+    },
+    {
+      "text": "て",
+      "start": 2.08,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -9.452849917579442e-05
+    },
+    {
+      "text": "い",
+      "start": 2.12,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -8.22540732769994e-06
+    },
+    {
+      "text": "ま",
+      "start": 2.22,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -8.22540732769994e-06
+    },
+    {
+      "text": "す",
+      "start": 2.34,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -8.22540732769994e-06
+    },
+    {
+      "text": "ね",
+      "start": 2.54,
+      "end": 2.7,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 2.7,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -0.00020621081057470292
+    }
+  ],
+  "transcription_id": "gXDazyia5JFGHx42ez1v",
+  "audio_duration_secs": 3.784
+}

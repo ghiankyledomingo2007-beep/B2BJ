@@ -1,0 +1,58 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999026656150818,
+  "text": "まだ戦えます。",
+  "words": [
+    {
+      "text": "ま",
+      "start": 0.3,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.00015877417172305286
+    },
+    {
+      "text": "だ",
+      "start": 0.4,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -0.00015877417172305286
+    },
+    {
+      "text": "戦",
+      "start": 0.96,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.002315342193469405
+    },
+    {
+      "text": "え",
+      "start": 1.26,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -3.45700973412022e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.36,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -3.45700973412022e-05
+    },
+    {
+      "text": "す",
+      "start": 1.5,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -3.45700973412022e-05
+    },
+    {
+      "text": "。",
+      "start": 1.66,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.006715704221278429
+    }
+  ],
+  "transcription_id": "s2otzlvi1fFV4FaWeDTQ",
+  "audio_duration_secs": 2.744
+}

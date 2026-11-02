@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9991390705108643,
+  "text": "そっちも数えてるのか。",
+  "words": [
+    {
+      "text": "そ",
+      "start": 0.18,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "っ",
+      "start": 0.26,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -4.386805812828243e-05
+    },
+    {
+      "text": "ち",
+      "start": 0.48,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -4.386805812828243e-05
+    },
+    {
+      "text": "も",
+      "start": 0.6,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "数",
+      "start": 0.84,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -1.0251946150674485e-05
+    },
+    {
+      "text": "え",
+      "start": 0.96,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -0.00037329382030293345
+    },
+    {
+      "text": "て",
+      "start": 1.04,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.00037329382030293345
+    },
+    {
+      "text": "る",
+      "start": 1.12,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "の",
+      "start": 1.2,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "か",
+      "start": 1.38,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 1.54,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -0.013211686164140701
+    }
+  ],
+  "transcription_id": "y2sMoe6puRpC69v42dhj",
+  "audio_duration_secs": 1.92
+}

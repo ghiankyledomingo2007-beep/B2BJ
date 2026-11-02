@@ -1,0 +1,177 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9998677968978882,
+  "text": "書き置きだ。重い箱は残せ。怪我人の場所を空けろ。",
+  "words": [
+    {
+      "text": "書",
+      "start": 0.12,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -0.00998301524668932
+    },
+    {
+      "text": "き",
+      "start": 0.24,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.00998301524668932
+    },
+    {
+      "text": "置",
+      "start": 0.36,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.0017678599106147885
+    },
+    {
+      "text": "き",
+      "start": 0.46,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.0017678599106147885
+    },
+    {
+      "text": "だ",
+      "start": 0.6,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "。",
+      "start": 0.68,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -6.9141146923357155e-06
+    },
+    {
+      "text": "重",
+      "start": 1.6,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "い",
+      "start": 1.8,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "箱",
+      "start": 2.0,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -6.532455881824717e-05
+    },
+    {
+      "text": "は",
+      "start": 2.2,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -5.125986263010418e-06
+    },
+    {
+      "text": "残",
+      "start": 2.4,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -7.045020902296528e-05
+    },
+    {
+      "text": "せ",
+      "start": 2.54,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -0.0006756883230991662
+    },
+    {
+      "text": "。",
+      "start": 2.66,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -0.004333985038101673
+    },
+    {
+      "text": "怪",
+      "start": 3.24,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -0.004739954136312008
+    },
+    {
+      "text": "我",
+      "start": 3.5,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -2.3007127310847864e-05
+    },
+    {
+      "text": "人",
+      "start": 3.58,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -2.6940935640595853e-05
+    },
+    {
+      "text": "の",
+      "start": 3.76,
+      "end": 3.84,
+      "type": "word",
+      "logprob": -2.6940935640595853e-05
+    },
+    {
+      "text": "場",
+      "start": 3.84,
+      "end": 3.98,
+      "type": "word",
+      "logprob": -1.0967194612021558e-05
+    },
+    {
+      "text": "所",
+      "start": 3.98,
+      "end": 4.12,
+      "type": "word",
+      "logprob": -1.0967194612021558e-05
+    },
+    {
+      "text": "を",
+      "start": 4.12,
+      "end": 4.2,
+      "type": "word",
+      "logprob": -0.026378821581602097
+    },
+    {
+      "text": "空",
+      "start": 4.2,
+      "end": 4.34,
+      "type": "word",
+      "logprob": -0.01712324097752571
+    },
+    {
+      "text": "け",
+      "start": 4.34,
+      "end": 4.4,
+      "type": "word",
+      "logprob": -4.458328112377785e-05
+    },
+    {
+      "text": "ろ",
+      "start": 4.4,
+      "end": 4.52,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "。",
+      "start": 4.52,
+      "end": 4.52,
+      "type": "word",
+      "logprob": -0.0031785464379936457
+    }
+  ],
+  "transcription_id": "wGl2L0ZfXBq0LVWmnoc6",
+  "audio_duration_secs": 4.8
+}

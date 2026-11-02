@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "少なくとも、靴に泥は入らないな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "gHCILoablNemRfX5lEIA",
+  "generated_at": 1793156333.059817
+}

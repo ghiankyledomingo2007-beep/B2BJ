@@ -1,0 +1,192 @@
+{
+  "01": {
+    "width": 1674,
+    "height": 940,
+    "source": "/home/ghiankylledomingo/.codex/generated_images/01a14f3c-ce5f-7ea1-8a0d-f73da12fb96d/exec-b01ffd1f-83a5-41be-ad7e-463751ad2165.png",
+    "sha256": "cdff3166511a1c08e71dca0cc0d71381503bfaf4179210a4cd487255e8e6fa61",
+    "crops": {
+      "board": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "vitals": [
+        0.005,
+        0.01,
+        0.24,
+        0.12
+      ],
+      "skills": [
+        0.365,
+        0.858,
+        0.27,
+        0.14
+      ],
+      "mission": [
+        0.8,
+        0.005,
+        0.2,
+        0.19
+      ],
+      "map": [
+        0.835,
+        0.74,
+        0.165,
+        0.25
+      ]
+    }
+  },
+  "02": {
+    "width": 1674,
+    "height": 939,
+    "source": "/home/ghiankylledomingo/.codex/generated_images/01a14f3c-ce5f-7ea1-8a0d-f73da12fb96d/exec-a80fd629-0319-4af8-918e-2e9829de5924.png",
+    "sha256": "9cd6b696068a14fe69e2d7ccafa1b1a2340d262fa1918b3eab43fa20f95d01e8",
+    "crops": {
+      "board": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "vitals": [
+        0.005,
+        0.005,
+        0.36,
+        0.15
+      ],
+      "skills": [
+        0.375,
+        0.858,
+        0.25,
+        0.14
+      ],
+      "mission": [
+        0.8,
+        0.005,
+        0.2,
+        0.19
+      ],
+      "map": [
+        0.835,
+        0.64,
+        0.165,
+        0.33
+      ]
+    }
+  },
+  "03": {
+    "width": 1674,
+    "height": 940,
+    "source": "/home/ghiankylledomingo/.codex/generated_images/01a14f3c-ce5f-7ea1-8a0d-f73da12fb96d/exec-76cd5e5b-00d6-498a-887d-ae0369b40658.png",
+    "sha256": "219f9e7d98bc11701b35fb2f9b49ebea7ab7be63276fb44ef3378fefe776a85f",
+    "crops": {
+      "board": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "vitals": [
+        0.01,
+        0.014,
+        0.22,
+        0.15
+      ],
+      "skills": [
+        0.387,
+        0.87,
+        0.23,
+        0.12
+      ],
+      "mission": [
+        0.8,
+        0.005,
+        0.2,
+        0.19
+      ],
+      "map": [
+        0.835,
+        0.74,
+        0.165,
+        0.25
+      ]
+    }
+  },
+  "04": {
+    "width": 1674,
+    "height": 940,
+    "source": "/home/ghiankylledomingo/.codex/generated_images/01a14f3c-ce5f-7ea1-8a0d-f73da12fb96d/exec-c1df7a83-126c-455b-84fe-f5d1118fb29e.png",
+    "sha256": "2ac4ad3329ef9e298c9133a0834e5e2381c69a23065d87ff5dc80d4f12d237b5",
+    "crops": {
+      "board": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "vitals": [
+        0.312,
+        0.765,
+        0.376,
+        0.087
+      ],
+      "skills": [
+        0.34,
+        0.845,
+        0.32,
+        0.145
+      ],
+      "mission": [
+        0.8,
+        0.005,
+        0.2,
+        0.19
+      ],
+      "map": [
+        0.835,
+        0.74,
+        0.165,
+        0.25
+      ]
+    }
+  },
+  "05": {
+    "width": 1674,
+    "height": 939,
+    "source": "/home/ghiankylledomingo/.codex/generated_images/01a14f3c-ce5f-7ea1-8a0d-f73da12fb96d/exec-058309ab-e236-41d9-b430-c395a722d0c7.png",
+    "sha256": "666da1844893150d64130dbef9155c6ff822f42e467168f71975a3cb5b66f2b8",
+    "crops": {
+      "board": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "vitals": [
+        0.005,
+        0.01,
+        0.3,
+        0.13
+      ],
+      "skills": [
+        0.379,
+        0.865,
+        0.245,
+        0.13
+      ],
+      "mission": [
+        0.8,
+        0.005,
+        0.2,
+        0.19
+      ],
+      "map": [
+        0.835,
+        0.74,
+        0.165,
+        0.25
+      ]
+    }
+  }
+}

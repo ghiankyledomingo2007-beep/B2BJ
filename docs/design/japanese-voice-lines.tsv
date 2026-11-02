@@ -1,0 +1,362 @@
+file	speaker	character	scene	text	spoken_text	language	kind	status
+wake_01.wav	RAINORAY	Rainoray	ONE MORE CHANCE	Just one more report... then I can go home.	あと一件だけ……これが終わったら、帰ろう。	ja	dialogue	Japanese installed; audited
+wake_02.wav	RAINORAY	Rainoray	ONE MORE CHANCE	What... happened?	何が……起きたんだ？	ja	dialogue	Japanese installed; audited
+wake_03.wav	INNER_VOICE	Raphael	ONE MORE CHANCE	Your previous body has been lost. Your consciousness remains.	以前の肉体は失われました。意識は残っています。	ja	dialogue	Japanese installed; audited
+wake_04.wav	RAINORAY	Rainoray	ONE MORE CHANCE	Then... who am I talking to?	じゃあ……今、誰と話してるんだ？	ja	dialogue	Japanese installed; audited
+wake_05.wav	INNER_VOICE	Raphael	ONE MORE CHANCE	Raphael. Stay with my voice.	ラファエルです。私の声に意識を向けてください。	ja	dialogue	Japanese installed; audited
+wake_06.wav	INNER_VOICE	Raphael	ONE MORE CHANCE	Reconstructing a body that can survive here.	この世界で生存可能な肉体を再構築します。	ja	dialogue	Japanese installed; audited
+wake_07.wav	RAINORAY	Rainoray	ONE MORE CHANCE	A slime? That was your best option?	スライム？ ほかになかったのか？	ja	dialogue	Japanese installed; audited
+wake_08.wav	INNER_VOICE	Raphael	ONE MORE CHANCE	It was the one that survived.	生き延びられるのは、この形態でした。	ja	dialogue	Japanese installed; audited
+wake_09.wav	RAINORAY	Rainoray	ONE MORE CHANCE	I can still change back?	人の姿にも戻れるのか？	ja	dialogue	Japanese installed; audited
+wake_10.wav	INNER_VOICE	Raphael	ONE MORE CHANCE	For a while. Once we have enough Ichor.	イコルが十分に集まれば、一時的には。	ja	dialogue	Japanese installed; audited
+wake_11.wav	RAINORAY	Rainoray	ONE MORE CHANCE	Where are my hands?	俺の手……どこにいったんだ？	ja	dialogue	Japanese installed; audited
+wake_12.wav	INNER_VOICE	Raphael	ONE MORE CHANCE	Try moving toward the light.	光のある方へ移動してみてください。	ja	dialogue	Japanese installed; audited
+wake_13.wav	RAINORAY	Rainoray	ONE MORE CHANCE	Someone's still out there.	まだ、あそこに誰かいる。	ja	dialogue	Japanese installed; audited
+wake_14.wav	INNER_VOICE	Raphael	ONE MORE CHANCE	One step at a time.	まずは、一歩ずつ。	ja	dialogue	Japanese installed; audited
+wake_15.wav	RAINORAY	Rainoray	ONE MORE CHANCE	You'll have to talk me through the steps.	歩き方から、教えてくれよ。	ja	dialogue	Japanese installed; audited
+camp_01.wav	MARA	Shuna	THE LAMP AT CAMP	Stop there. There are wounded behind me.	そこで止まってください。私の後ろには怪我人がいます。	ja	dialogue	Japanese installed; audited
+camp_02.wav	RAINORAY	Rainoray	THE LAMP AT CAMP	I heard someone calling. I wasn't coming for the food.	誰かの声が聞こえたんだ。食べ物を狙って来たわけじゃない。	ja	dialogue	Japanese installed; audited
+camp_03.wav	INNER_VOICE	Raphael	THE LAMP AT CAMP	You are looking at the food.	その割には、食べ物を見ていますね。	ja	dialogue	Japanese installed; audited
+camp_04.wav	RAINORAY	Rainoray	THE LAMP AT CAMP	I'm having a strange morning.	朝から変なことばっかりでさ。	ja	dialogue	Japanese installed; audited
+camp_05.wav	MARA	Shuna	THE LAMP AT CAMP	Then start with your name.	では、まずお名前を。	ja	dialogue	Japanese installed; audited
+camp_06.wav	RAINORAY	Rainoray	THE LAMP AT CAMP	Rainoray. That's the part I'm sure about.	レイノレイ。それだけは覚えてる。	ja	dialogue	Japanese installed; audited
+camp_07.wav	MARA	Shuna	THE LAMP AT CAMP	I'm Shuna. Our people were sent east. Then the rift struck, and the Warden sealed their road.	私はシュナです。皆を東へ避難させた後、裂け目が現れて、守護者が道を封鎖してしまいました。	ja	dialogue	Japanese installed; audited
+camp_08.wav	MARA	Shuna	THE LAMP AT CAMP	I have to keep this ward standing. If it fails, the wounded have nowhere safe to rest.	私はここの結界を守らなければなりません。壊れたら、怪我人たちの休める場所がなくなります。	ja	dialogue	Japanese installed; audited
+camp_09.wav	MARA	Shuna	THE LAMP AT CAMP	Someone called from the storehouse south of the road. You might fit under its fence.	道の南にある倉庫から、声が聞こえました。あなたなら、柵の下を通れるかもしれません。	ja	dialogue	Japanese installed; audited
+camp_10.wav	MARA	Shuna	THE LAMP AT CAMP	Follow the torn banners east, then north at Inner Court. Be careful. The dead still know how to fight.	破れた旗をたどって東へ。内庭に着いたら北です。お気をつけて。死者たちは、まだ戦い方を覚えています。	ja	dialogue	Japanese installed; audited
+camp_wait_01.wav	MARA	Shuna	SHUNA	East past the banners, then north at Inner Court. The signal tower lies north of camp if you need bearings.	旗を越えて東へ、内庭から北へ進んでください。迷ったら、野営地の北にある信号塔を目印に。	ja	dialogue	Japanese installed; audited
+camp_wait_02.wav	RAINORAY	Rainoray	SHUNA	East, then north. I'll remember.	東、それから北。覚えた。	ja	dialogue	Japanese installed; audited
+camp_wait_03.wav	MARA	Shuna	SHUNA	Rest to steady your Ichor. Leave supplies here or at a lit brazier; we'll gather them.	休めばイコルも落ち着きます。物資はここか、火のついたかがり火のそばへ。私たちが回収します。	ja	dialogue	Japanese installed; audited
+camp_late_01.wav	MARA	Shuna	THE LAMP AT CAMP	The gate's quiet. Was that your doing?	門が静かになりましたね。あなたが？	ja	dialogue	Japanese installed; audited
+camp_late_02.wav	RAINORAY	Rainoray	THE LAMP AT CAMP	Rainoray. I was looking for a way through.	レイノレイだ。通れる道を探してた。	ja	dialogue	Japanese installed; audited
+camp_late_03.wav	MARA	Shuna	THE LAMP AT CAMP	I'm Shuna. You've opened a road we thought we'd lost.	私はシュナです。もう戻れないと思っていた道を、開いてくださったんですね。	ja	dialogue	Japanese installed; audited
+camp_late_04.wav	MARA	Shuna	THE LAMP AT CAMP	We sent the wounded east before the Warden turned. I tried to follow, but the roots had closed the forest road.	守護者が変わる前に、怪我人を東へ送りました。追いかけようとしましたが、森の道は根に塞がれていました。	ja	dialogue	Japanese installed; audited
+camp_late_05.wav	RAINORAY	Rainoray	THE LAMP AT CAMP	Then that's where I'll look next.	じゃあ、次はそっちを探すよ。	ja	dialogue	Japanese installed; audited
+camp_late_06.wav	MARA	Shuna	THE LAMP AT CAMP	Come back if you find them. Come back if you don't, too.	見つかったら、戻ってきてください。見つからなくても、ですよ。	ja	dialogue	Japanese installed; audited
+signal_01.wav	RAINORAY	Rainoray	THE BROKEN ORDER	A dispatch. 'Seal the road against Ichor-bearing life.' Someone added it over the evacuation order.	命令書だ。「イコルを持つ生命体の通行を禁ずる」。避難命令の上から、書き加えられてる。	ja	dialogue	Japanese installed; audited
+signal_02.wav	INNER_VOICE	Raphael	THE BROKEN ORDER	That includes your new body. The Warden will see a threat, not a traveler.	今のあなたの体も対象です。守護者には、旅人ではなく脅威と映るでしょう。	ja	dialogue	Japanese installed; audited
+signal_03.wav	RAINORAY	Rainoray	THE BROKEN ORDER	There's a list of missing people underneath. Shuna should see it.	下に行方不明者の名簿がある。シュナに見せよう。	ja	dialogue	Japanese installed; audited
+signal_03_stranger.wav	RAINORAY	Rainoray	THE BROKEN ORDER	A list of missing people. Someone at the camp might know these names.	行方不明者の名簿か。野営地に、この人たちを知ってる誰かがいるかも。	ja	dialogue	Japanese installed; audited
+infirmary_01.wav	RAINORAY	Rainoray	ONE EMPTY BED	Every bed was stripped for bandages. Except this one.	包帯にするために、全部の寝台から布が剥がされてる。この一台以外は。	ja	dialogue	Japanese installed; audited
+infirmary_02.wav	RAINORAY	Rainoray	ONE EMPTY BED	A note on the blanket: 'For whoever comes back.'	毛布に書き置きだ。「戻ってきた人のために」。	ja	dialogue	Japanese installed; audited
+infirmary_03.wav	RAINORAY	Rainoray	ONE EMPTY BED	There's a dry dressing underneath. I'll leave it where she can find it.	下に乾いた包帯がある。あの人が見つけられる場所に置いておこう。	ja	dialogue	Japanese installed; audited
+supplies_01.wav	RAINORAY	Rainoray	WHAT THEY LEFT BEHIND	Weapons left behind. Empty spaces where the blankets were.	武器は置き去りで、毛布のあった場所だけ空いてる。	ja	dialogue	Japanese installed; audited
+supplies_02.wav	RAINORAY	Rainoray	WHAT THEY LEFT BEHIND	A note: 'Leave the heavy crates. Make room for the wounded.'	書き置きだ。「重い箱は残せ。怪我人の場所を空けろ」。	ja	dialogue	Japanese installed; audited
+supplies_03.wav	RAINORAY	Rainoray	WHAT THEY LEFT BEHIND	They left all this behind to help people. That's what mattered.	人を助けるために、全部置いていったんだな。それが一番大事だった。	ja	dialogue	Japanese installed; audited
+report_01.wav	RAINORAY	Rainoray	STILL MISSING	I found the dispatch. The Warden was told to seal the road against Ichor.	命令書を見つけた。守護者は、イコルを持つ者を通すなって命じられてた。	ja	dialogue	Japanese installed; audited
+report_02.wav	MARA	Shuna	STILL MISSING	After we sent the wounded through. No one could get back to them.	怪我人を送り出した後に……。だから、誰も迎えに行けなかったんですね。	ja	dialogue	Japanese installed; audited
+report_03.wav	RAINORAY	Rainoray	STILL MISSING	Kaijin, Eren, Rigurd. You left their names marked missing.	カイジン、エレン、リグルド。この三人、まだ行方不明になってる。	ja	dialogue	Japanese installed; audited
+report_04.wav	MARA	Shuna	STILL MISSING	Until someone brings me an answer, that's where they'll stay.	誰かが確かめてくれるまでは、そのままにしておきます。	ja	dialogue	Japanese installed; audited
+warden_01.wav	WARDEN	Outpost Warden	THE LAST ORDER	CONTAMINATED LIFEFORM. PASSAGE DENIED.	汚染生命体を確認。通行は許可しない。	ja	dialogue	Japanese original stone-golem voice; installed and transcribed
+warden_02.wav	RAINORAY	Rainoray	THE LAST ORDER	There are people on the other side.	向こうに、人がいるんだ。	ja	dialogue	Japanese installed; audited
+warden_02_stranger.wav	RAINORAY	Rainoray	THE LAST ORDER	There's no stretcher on this road. Let me through. Someone may still need help.	ここには担架も通ってない。通してくれ。まだ助けを待ってる人がいるかもしれない。	ja	dialogue	Japanese installed; audited
+warden_02_rescued.wav	RAINORAY	Rainoray	THE LAST ORDER	People are still coming back. You're blocking their way. Open the gate.	まだ戻ってくる人がいる。お前が邪魔してるんだ。門を開けろ。	ja	dialogue	Japanese installed; audited
+warden_03.wav	WARDEN	Outpost Warden	THE LAST ORDER	THE ROAD IS SEALED FOR THEIR PROTECTION.	彼らを守るため、道は封鎖した。	ja	dialogue	Japanese original stone-golem voice; installed and transcribed
+warden_04.wav	INNER_VOICE	Raphael	THE LAST ORDER	The order is damaged. It cannot distinguish a rescue from an attack.	命令が破損しています。救助と攻撃を区別できません。	ja	dialogue	Japanese installed; audited
+warden_05.wav	RAINORAY	Rainoray	THE LAST ORDER	Can you shut it down?	止められないのか？	ja	dialogue	Japanese installed; audited
+warden_06.wav	INNER_VOICE	Raphael	THE LAST ORDER	Not from here. Keep moving. I need to see how it fights.	ここからでは無理です。動き続けてください。まず、戦い方を見ます。	ja	dialogue	Japanese installed; audited
+gate_01.wav	RAINORAY	Rainoray	THE ROAD OPENS	The chain is broken. Stretcher tracks run through the gate and into the trees.	鎖が切れてる。担架を引いた跡が、門を抜けて森へ続いてる。	ja	dialogue	Japanese installed; audited
+gate_02.wav	RAINORAY	Rainoray	THE ROAD OPENS	Only one set of footprints comes back. Shuna's.	戻ってきたのは、一人だけ。シュナだ。	ja	dialogue	Japanese installed; audited
+gate_02_stranger.wav	RAINORAY	Rainoray	THE ROAD OPENS	Only one set of footprints comes back toward camp.	野営地に帰れたのは、一人だけか。	ja	dialogue	Japanese installed; audited
+gate_03.wav	RAINORAY	Rainoray	THE ROAD OPENS	The others got this far. I can follow them.	みんな、ここまでは来たんだ。まだ追える。	ja	dialogue	Japanese installed; audited
+camp_after_01.wav	MARA	Shuna	A PLACE TO RETURN TO	The gate's quiet.	門が静かになりましたね。	ja	dialogue	Japanese installed; audited
+camp_after_02.wav	RAINORAY	Rainoray	A PLACE TO RETURN TO	It's open. I'm going after the stretcher tracks.	開いたよ。担架の跡を追ってみる。	ja	dialogue	Japanese installed; audited
+camp_after_03.wav	MARA	Shuna	A PLACE TO RETURN TO	I tried. The roots have swallowed the road. There's a dry scarf by the fire; take it before you go.	私も追いました。でも根が道を覆っていて。火のそばに乾いた襟巻きがあります。持っていってください。	ja	dialogue	Japanese installed; audited
+camp_after_04.wav	RAINORAY	Rainoray	A PLACE TO RETURN TO	I'm not sure it would stay on.	この体で、巻いていられるかな。	ja	dialogue	Japanese installed; audited
+camp_after_05.wav	MARA	Shuna	A PLACE TO RETURN TO	Then I'll keep it dry.	では、乾いたまま待っていますね。	ja	dialogue	Japanese installed; audited
+survivor_tobin_01.wav	TOBIN	Kaijin	BEHIND THE FENCE	Who's there? If you're a rift thing, I'm mostly bandages. Poor eating.	誰だ？ 裂け目の化け物なら言っとくが、今の俺は包帯ばっかりだ。食ってもうまくねえぞ。	ja	dialogue	Japanese installed; audited
+survivor_tobin_02.wav	RAINORAY	Rainoray	BEHIND THE FENCE	Rainoray. Mostly water, these days.	レイノレイ。こっちは、ほとんど水だよ。	ja	dialogue	Japanese installed; audited
+survivor_tobin_03.wav	TOBIN	Kaijin	BEHIND THE FENCE	Kaijin. I worked on the gate relay. That sound means the Warden's still running a broken order.	カイジンだ。門の中継装置を直してた。あの音、守護者がまだ壊れた命令で動いてやがる。	ja	dialogue	Japanese installed; audited
+survivor_tobin_04.wav	TOBIN	Kaijin	BEHIND THE FENCE	The fence came down behind me. I couldn't climb it with this leg.	後ろで柵が倒れちまってな。この脚じゃ越えられなかった。	ja	dialogue	Japanese installed; audited
+survivor_tobin_05.wav	RAINORAY	Rainoray	BEHIND THE FENCE	Shuna's lamp is still lit at Captain Camp. Can you make it that far?	隊長の野営地で、シュナが明かりをつけて待ってる。そこまで行ける？	ja	dialogue	Japanese installed; audited
+survivor_tobin_05_stranger.wav	RAINORAY	Rainoray	BEHIND THE FENCE	There's a lamp by the captain's tent. Head there. Someone is keeping it lit.	隊長の天幕に明かりがある。そっちへ行って。誰かが、消さずに待ってる。	ja	dialogue	Japanese installed; audited
+survivor_tobin_06.wav	TOBIN	Kaijin	BEHIND THE FENCE	For a lamp? I'll crawl. Thank you.	明かりがあるなら、這ってでも行くさ。ありがとな。	ja	dialogue	Japanese installed; audited
+survivor_ilse_01.wav	ILSE	Eren	INSIDE THE THORNS	Stay back. I've got one good arm and I'm not afraid to use it.	近づかないで。この腕はまだ動くんだからね。	ja	dialogue	Japanese installed; audited
+survivor_ilse_02.wav	RAINORAY	Rainoray	INSIDE THE THORNS	Rainoray. I cut the thorns, not you.	レイノレイだ。切ったのは茨。君じゃないよ。	ja	dialogue	Japanese installed; audited
+survivor_ilse_03.wav	ILSE	Eren	INSIDE THE THORNS	Eren. I was scouting the road. Those roots moved against the wind, then closed behind me.	エレンよ。道を調べてたら、あの根が風と逆に動いて、後ろを塞いだの。	ja	dialogue	Japanese installed; audited
+survivor_ilse_04.wav	ILSE	Eren	INSIDE THE THORNS	That chest holds our spare supplies. Locked tight, and the key went with the storehouse.	あの箱に予備の物資がある。でも鍵がかかってて、鍵は倉庫に置いたまま。	ja	dialogue	Japanese installed; audited
+survivor_ilse_05.wav	RAINORAY	Rainoray	INSIDE THE THORNS	I'll find it. Go to Shuna's lamp at Captain Camp.	探してくる。君は隊長の野営地へ。シュナの明かりを目指して。	ja	dialogue	Japanese installed; audited
+survivor_ilse_05_stranger.wav	RAINORAY	Rainoray	INSIDE THE THORNS	There's a lamp by the captain's tent. Head there. Someone is keeping it lit.	隊長の天幕に明かりがある。そっちへ行って。誰かが、消さずに待ってる。	ja	dialogue	Japanese installed; audited
+survivor_ilse_06.wav	ILSE	Eren	INSIDE THE THORNS	Watch the roots when the wind stops. They don't stop with it.	風が止んだ時こそ、根を見て。あれは止まらないから。	ja	dialogue	Japanese installed; audited
+survivor_venn_01.wav	VENN	Rigurd	THE CULVERT	Took them long enough to send someone. I pictured someone taller.	ようやく迎えが来たか。もう少し背の高い者を想像しておったが。	ja	dialogue	Japanese installed; audited
+survivor_venn_02.wav	RAINORAY	Rainoray	THE CULVERT	Nobody sent me. I heard you were missing.	頼まれたわけじゃないよ。行方不明だって聞いたんだ。	ja	dialogue	Japanese installed; audited
+survivor_venn_03.wav	VENN	Rigurd	THE CULVERT	Rigurd. I stayed with the last evacuees, then told the stretcher crew to go on without me.	リグルドだ。最後の避難者に付き添っておったが、担架の者たちを先に行かせた。	ja	dialogue	Japanese installed; audited
+survivor_venn_04.wav	VENN	Rigurd	THE CULVERT	Then the culvert silted up and I spent a week talking to the rain.	その後、水路が泥で埋まってな。一週間、雨を話し相手にしておったわ。	ja	dialogue	Japanese installed; audited
+survivor_venn_05.wav	RAINORAY	Rainoray	THE CULVERT	Shuna is keeping a fire at Captain Camp. She has room for you.	隊長の野営地でシュナが火を守ってる。あんたの場所もあるよ。	ja	dialogue	Japanese installed; audited
+survivor_venn_05_stranger.wav	RAINORAY	Rainoray	THE CULVERT	There's a lamp by the captain's tent. Head there. Someone is keeping it lit.	隊長の天幕に明かりがある。そっちへ行って。誰かが、消さずに待ってる。	ja	dialogue	Japanese installed; audited
+survivor_venn_06.wav	VENN	Rigurd	THE CULVERT	Shuna. Good. Then I'll go and be shouted at properly.	シュナか。それはよかった。では、たっぷり叱られに行くとしよう。	ja	dialogue	Japanese installed; audited
+ledger_01.wav	RAINORAY	Rainoray	THE EVACUATION CACHE	The cache opens. Bandages, a little coin, and the evacuation ledger.	開いた。包帯に、少しの金……避難者の名簿もある。	ja	dialogue	Japanese installed; audited
+ledger_02.wav	INNER_VOICE	Raphael	THE EVACUATION CACHE	Three names match the people missing from camp.	野営地の行方不明者と、三人の名前が一致します。	ja	dialogue	Japanese installed; audited
+ledger_03.wav	RAINORAY	Rainoray	THE EVACUATION CACHE	Kaijin, Eren, Rigurd. Names, not numbers. Let's find out what happened to them.	カイジン、エレン、リグルド。数字じゃなくて、人の名前だ。何があったのか確かめよう。	ja	dialogue	Japanese installed; audited
+camp_rescued_01.wav	MARA	Shuna	SOMEONE CAME BACK	Someone walked into my camp tonight and asked for you by name.	今夜、野営地に戻ってきた方が、あなたの名前を呼んでいました。	ja	dialogue	Japanese installed; audited
+camp_rescued_02.wav	RAINORAY	Rainoray	SOMEONE CAME BACK	They were still out there, waiting. I couldn't leave them.	まだ外で待ってたんだ。置いていけないだろ。	ja	dialogue	Japanese installed; audited
+camp_rescued_03.wav	MARA	Shuna	SOMEONE CAME BACK	Then keep looking. The dispatch listed more people than the Warden let through.	では、どうか探し続けて。命令書にある人数は、門を通れた人数より多いんです。	ja	dialogue	Japanese installed; audited
+camp_home_01.wav	MARA	Shuna	THREE BEDS	Kaijin, Eren and Rigurd. Three beds that aren't empty anymore.	カイジン、エレン、リグルド。空いていた三つの寝台が、埋まりました。	ja	dialogue	Japanese installed; audited
+camp_home_02.wav	RAINORAY	Rainoray	THREE BEDS	The count finally adds up. Better than I'd hoped.	これで数が合ったな。思ってたより、ずっといい。	ja	dialogue	Japanese installed; audited
+camp_home_03.wav	MARA	Shuna	THREE BEDS	Eren found the last of the good tea. Take the coin we were saving with it. You've earned both.	エレンが最後のいいお茶を見つけてくれました。一緒にしまっていたお金も、受け取ってください。お礼です。	ja	dialogue	Japanese installed; audited
+forest_arrival_01.wav	RAINORAY	Rainoray	THE WHITE CLOTH	The tracks are deeper here. They were carrying someone.	ここから跡が深くなってる。誰かを運んでたんだ。	ja	dialogue	Japanese installed; audited
+forest_arrival_02.wav	INNER_VOICE	Raphael	THE WHITE CLOTH	And stopping often. There is cloth tied ahead.	何度も休んだようです。前方に、結ばれた布があります。	ja	dialogue	Japanese installed; audited
+forest_arrival_03.wav	RAINORAY	Rainoray	THE WHITE CLOTH	A route marker. Someone wanted them followed.	道しるべか。誰かに追ってきてほしかったんだな。	ja	dialogue	Japanese installed; audited
+forest_sedge_01.wav	SEDGE	Souei	THE STRANDED CROSSING	Watch the bank. Looks solid until you put a foot on it.	岸に気をつけろ。固く見えても、踏めば崩れる。	ja	dialogue	Japanese installed; audited
+forest_sedge_02.wav	RAINORAY	Rainoray	THE STRANDED CROSSING	I'm following the stretcher crew from the outpost.	砦から来た、担架を運んでた人たちを追ってる。	ja	dialogue	Japanese installed; audited
+forest_sedge_03.wav	SEDGE	Souei	THE STRANDED CROSSING	I got them across before the roots took the river. The injured are sheltering beneath the old stair.	根が川を塞ぐ前に渡した。怪我人は、古い階段の下に避難している。	ja	dialogue	Japanese installed; audited
+forest_sedge_04.wav	SEDGE	Souei	THE STRANDED CROSSING	Souei. I marked a path back, but the roots keep closing it.	ソウエイだ。帰り道に印をつけたが、根が何度も塞ぎ直す。	ja	dialogue	Japanese installed; audited
+forest_sedge_05.wav	RAINORAY	Rainoray	THE STRANDED CROSSING	Rainoray. Shuna is waiting beyond the gate. The road is open now.	レイノレイだ。門の向こうでシュナが待ってる。もう道は通れるよ。	ja	dialogue	Japanese installed; audited
+forest_sedge_06.wav	SEDGE	Souei	THE STRANDED CROSSING	Then they have somewhere safe to go. Follow the white cloth north, then east over the ford.	ならば、帰る場所はできたな。白い布をたどって北へ、その先の浅瀬を東に渡れ。	ja	dialogue	Japanese installed; audited
+forest_sedge_07.wav	INNER_VOICE	Raphael	THE STRANDED CROSSING	The roots all pull toward that clearing. We should find what is holding them.	根はすべて、あの広場へ伸びています。何が動かしているのか、確かめましょう。	ja	dialogue	Japanese installed; audited
+forest_sedge_08.wav	SEDGE	Souei	THE STRANDED CROSSING	I'll guard their crossing. You reach the tree. Watch the ground; it reaches farther than its branches.	渡る者は俺が守る。お前は木へ向かえ。地面に注意しろ。枝より遠くまで届く。	ja	dialogue	Japanese installed; audited
+forest_sedge_wait_01.wav	SEDGE	Souei	SOUEI	White cloth through the grove, then east across the dry ford. The stair is beyond the thorn clearing.	白い布をたどって林を抜け、干上がった浅瀬を東へ。階段は、茨の広場の先だ。	ja	dialogue	Japanese installed; audited
+forest_sedge_wait_02.wav	RAINORAY	Rainoray	SOUEI	Can you help them back if I open it?	道を開けたら、みんなを連れ戻せる？	ja	dialogue	Japanese installed; audited
+forest_sedge_wait_03.wav	SEDGE	Souei	SOUEI	The rope is ready. Clear the roots and I'll bring them through.	縄は用意してある。根を払え。俺が連れ帰る。	ja	dialogue	Japanese installed; audited
+forest_sedge_late_01.wav	SEDGE	Souei	AN OPEN WAY	The roots went slack. I thought the whole bank was falling.	根が緩んだ。岸ごと崩れるのかと思ったぞ。	ja	dialogue	Japanese installed; audited
+forest_sedge_late_02.wav	RAINORAY	Rainoray	AN OPEN WAY	The tree at the clearing is down. I'm looking for the people from the outpost.	広場の木は倒した。砦から来た人たちを探してる。	ja	dialogue	Japanese installed; audited
+forest_sedge_late_03.wav	SEDGE	Souei	AN OPEN WAY	Under the old stair. I'm Souei. I've been guarding their route back. We can move them now.	古い階段の下だ。俺はソウエイ。帰り道を守っていた。これで、皆を動かせる。	ja	dialogue	Japanese installed; audited
+forest_sedge_late_04.wav	RAINORAY	Rainoray	AN OPEN WAY	Then bring the rope. There's a refuge waiting beyond the gate.	じゃあ、縄を持ってきて。門の向こうに避難所がある。	ja	dialogue	Japanese installed; audited
+forest_wayfinder_01.wav	RAINORAY	Rainoray	A PATH BACK	White strips on every branch. He must have torn up half his sail.	どの枝にも白い布がある。帆を半分くらい裂いたんじゃないか？	ja	dialogue	Japanese installed; audited
+forest_wayfinder_02.wav	INNER_VOICE	Raphael	A PATH BACK	The marks face both ways.	印は、どちらの方向からも見えるようについています。	ja	dialogue	Japanese installed; audited
+forest_wayfinder_03.wav	RAINORAY	Rainoray	A PATH BACK	He wasn't just showing them where to go. He expected them to come back.	行き先を教えるだけじゃない。帰ってくるつもりで、つけたんだ。	ja	dialogue	Japanese installed; audited
+forest_moonwell_01.wav	RAINORAY	Rainoray	UNDER THE SURFACE	Water, at last. Why hasn't this well dried up?	やっと水だ。ここの井戸は、どうして枯れてないんだ？	ja	dialogue	Japanese installed; audited
+forest_moonwell_02.wav	INNER_VOICE	Raphael	UNDER THE SURFACE	Its roots are cut. The water here no longer feeds the heart.	根が切れています。この水は、もう心臓に流れ込んでいません。	ja	dialogue	Japanese installed; audited
+forest_moonwell_03.wav	RAINORAY	Rainoray	UNDER THE SURFACE	Then that thing is drinking the river.	じゃあ、あいつが川の水を飲んでるのか。	ja	dialogue	Japanese installed; audited
+forest_orchard_01.wav	RAINORAY	Rainoray	THE LAST HARVEST	Someone left the good fruit within reach. Took the bruised ones.	いい果物は取りやすい所に残して、傷んだ方を持っていったんだな。	ja	dialogue	Japanese installed; audited
+forest_orchard_02.wav	INNER_VOICE	Raphael	THE LAST HARVEST	For whoever followed them.	後から来る人のためでしょう。	ja	dialogue	Japanese installed; audited
+forest_orchard_03.wav	RAINORAY	Rainoray	THE LAST HARVEST	They saved the best supplies for people who needed them.	必要としてる人のために、いい物資を残していったんだ。	ja	dialogue	Japanese installed; audited
+forest_briarheart_01.wav	RAINORAY	Rainoray	WHAT HOLDS THE ROAD	Those are stretcher poles caught in its roots.	根に絡まってるあれ、担架の棒だ。	ja	dialogue	Japanese installed; audited
+forest_briarheart_02.wav	INNER_VOICE	Raphael	WHAT HOLDS THE ROAD	The entrance is behind it. I can hear movement below.	入り口はその奥です。下から物音がします。	ja	dialogue	Japanese installed; audited
+forest_briarheart_03.wav	RAINORAY	Rainoray	WHAT HOLDS THE ROAD	Then we make a path. Keep an eye on the ground for me.	じゃあ、道を開けよう。地面の方、見ててくれ。	ja	dialogue	Japanese installed; audited
+forest_briarheart_04.wav	INNER_VOICE	Raphael	WHAT HOLDS THE ROAD	I will. Stay moving while I learn its pattern.	わかりました。動きながら、相手の癖を見極めます。	ja	dialogue	Japanese installed; audited
+forest_sedge_after_01.wav	SEDGE	Souei	BRING THE ROPE	The white cloth's moving again. There hasn't been a breeze through here in days.	白い布が揺れている。ここに風が通るのは、何日ぶりだろうな。	ja	dialogue	Japanese installed; audited
+forest_sedge_after_02.wav	RAINORAY	Rainoray	BRING THE ROPE	The roots have loosened. We can reach the stair.	根が緩んだ。階段まで行けるよ。	ja	dialogue	Japanese installed; audited
+forest_sedge_after_03.wav	SEDGE	Souei	BRING THE ROPE	I'll bring a stretcher. You see who's still down there.	担架を持ってくる。お前は下に残っている者を確かめろ。	ja	dialogue	Japanese installed; audited
+forest_end_01.wav	RAINORAY	Rainoray	THE LAST STRETCHER	There's a lamp below. Someone answered.	下に明かりがある。返事が聞こえた。	ja	dialogue	Japanese installed; audited
+forest_end_02.wav	INNER_VOICE	Raphael	THE LAST STRETCHER	More than one voice. They are coming toward us.	一人ではありません。こちらへ向かっています。	ja	dialogue	Japanese installed; audited
+forest_end_03.wav	RAINORAY	Rainoray	THE LAST STRETCHER	Easy. The path is clear. There's a refuge waiting at the outpost.	ゆっくりでいい。道は通れるよ。砦に、休める場所がある。	ja	dialogue	Japanese installed; audited
+forest_end_04.wav	INNER_VOICE	Raphael	THE LAST STRETCHER	The last stretcher has crossed.	最後の担架が渡りました。	ja	dialogue	Japanese installed; audited
+forest_end_05.wav	RAINORAY	Rainoray	THE LAST STRETCHER	All of them?	全員？	ja	dialogue	Japanese installed; audited
+forest_end_06.wav	SEDGE	Souei	THE LAST STRETCHER	Everyone we found. They're at the camp.	見つけた者は全員だ。野営地に着いている。	ja	dialogue	Japanese installed; audited
+forest_end_07.wav	RAINORAY	Rainoray	THE LAST STRETCHER	Good. I wanted to hear someone say it.	よかった。それが聞きたかったんだ。	ja	dialogue	Japanese installed; audited
+bark_leaving_camp.wav	MARA	Shuna	EXPLORATION	Keep to the road. I'll keep the lamp lit.	道から外れないでくださいね。明かりをつけて待っています。	ja	dialogue	Japanese installed; audited
+bark_heard_survivor.wav	RAINORAY	Rainoray	EXPLORATION	Was that a voice? South of the road.	声だ。道の南から。	ja	dialogue	Japanese installed; audited
+bark_heard_survivor_2.wav	INNER_VOICE	Raphael	EXPLORATION	Confirmed. Someone is still alive.	はい、生存者がいます。	ja	dialogue	Japanese installed; audited
+bark_heard_survivor_3.wav	RAINORAY	Rainoray	EXPLORATION	Then we're not leaving them here.	じゃあ、置いていくわけにはいかないな。	ja	dialogue	Japanese installed; audited
+bark_after_rescue.wav	INNER_VOICE	Raphael	EXPLORATION	One name off the missing list. Keep looking.	行方不明者が一人減りました。引き続き探しましょう。	ja	dialogue	Japanese installed; audited
+bark_fight_ledger.wav	RAINORAY	Rainoray	EXPLORATION	That was not on the supply list.	こんなの、物資の一覧にはなかったぞ。	ja	dialogue	Japanese installed; audited
+bark_fight_ledger_2.wav	INNER_VOICE	Raphael	EXPLORATION	I have started a separate list.	別の一覧を作っておきました。	ja	dialogue	Japanese installed; audited
+bark_fight_listen.wav	RAINORAY	Rainoray	EXPLORATION	Let's listen before we move.	動く前に、耳を澄まそう。	ja	dialogue	Japanese installed; audited
+bark_fight_listen_2.wav	INNER_VOICE	Raphael	EXPLORATION	Agreed. The road carries sound.	そうしましょう。道には、音がよく通ります。	ja	dialogue	Japanese installed; audited
+bark_fight_road.wav	RAINORAY	Rainoray	EXPLORATION	This road used to mean safe passage.	前は、この道を通れば安全だったんだろうな。	ja	dialogue	Japanese installed; audited
+bark_fight_road_2.wav	INNER_VOICE	Raphael	EXPLORATION	It can again. That is why we continue.	また、そうできます。そのために進むのです。	ja	dialogue	Japanese installed; audited
+bark_fight_counting.wav	RAINORAY	Rainoray	EXPLORATION	I preferred counting things.	数を数えてる方が、よかったな。	ja	dialogue	Japanese installed; audited
+bark_fight_counting_2.wav	INNER_VOICE	Raphael	EXPLORATION	You still count who gets home.	今も、帰れた人を数えているでしょう。	ja	dialogue	Japanese installed; audited
+bark_fight_job.wav	RAINORAY	Rainoray	EXPLORATION	Do I get a quieter job after this?	これが終わったら、もっと静かな仕事にしてくれない？	ja	dialogue	Japanese installed; audited
+bark_fight_job_2.wav	INNER_VOICE	Raphael	EXPLORATION	You have not finished this one.	まだ、この仕事が終わっていません。	ja	dialogue	Japanese installed; audited
+bark_fight_order.wav	RAINORAY	Rainoray	EXPLORATION	Someone taught them to hold this road.	誰かが、この道を守れって教えたんだな。	ja	dialogue	Japanese installed; audited
+bark_fight_order_2.wav	INNER_VOICE	Raphael	EXPLORATION	The order survived its purpose.	目的が失われても、命令だけが残ったのです。	ja	dialogue	Japanese installed; audited
+bark_fight_watch.wav	RAINORAY	Rainoray	EXPLORATION	One moment. I'll check behind us.	ちょっと待って。後ろを確かめる。	ja	dialogue	Japanese installed; audited
+bark_fight_watch_2.wav	INNER_VOICE	Raphael	EXPLORATION	A sensible habit. Keep it.	いい習慣です。続けてください。	ja	dialogue	Japanese installed; audited
+bark_fight_shaking.wav	RAINORAY	Rainoray	EXPLORATION	Funny. I didn't stop shaking.	おかしいな。まだ震えてる。	ja	dialogue	Japanese installed; audited
+bark_fight_shaking_2.wav	INNER_VOICE	Raphael	EXPLORATION	You moved anyway.	それでも、動けていました。	ja	dialogue	Japanese installed; audited
+bark_fight_reason.wav	RAINORAY	Rainoray	EXPLORATION	I don't want to get used to that.	こんなことに、慣れたくないな。	ja	dialogue	Japanese installed; audited
+bark_fight_reason_2.wav	INNER_VOICE	Raphael	EXPLORATION	Then remember why you are here.	では、ここに来た理由を忘れないでください。	ja	dialogue	Japanese installed; audited
+bark_fight_forward.wav	RAINORAY	Rainoray	EXPLORATION	Forward, then. One problem at a time.	進もう。一つずつ、片づけていけばいい。	ja	dialogue	Japanese installed; audited
+bark_fight_forward_2.wav	INNER_VOICE	Raphael	EXPLORATION	One step is enough for now.	今は、一歩進めば十分です。	ja	dialogue	Japanese installed; audited
+bark_fight_numbers.wav	RAINORAY	Rainoray	EXPLORATION	Are you keeping count too?	そっちも数えてるのか？	ja	dialogue	Japanese installed; audited
+bark_fight_numbers_2.wav	INNER_VOICE	Raphael	EXPLORATION	Only of the decisions that matter.	大切な選択だけは、覚えています。	ja	dialogue	Japanese installed; audited
+bark_fight_moment.wav	RAINORAY	Rainoray	EXPLORATION	Give me a moment before we go.	行く前に、ちょっと休ませて。	ja	dialogue	Japanese installed; audited
+bark_fight_moment_2.wav	INNER_VOICE	Raphael	EXPLORATION	Take it. Rushing is not recovery.	どうぞ。急いでも、回復はしません。	ja	dialogue	Japanese installed; audited
+bark_hurt_shelter.wav	RAINORAY	Rainoray	EXPLORATION	That was closer than I'd planned.	今のは、思ったより危なかった。	ja	dialogue	Japanese installed; audited
+bark_hurt_shelter_2.wav	INNER_VOICE	Raphael	EXPLORATION	Find shelter before another fight.	次に戦う前に、安全な場所へ。	ja	dialogue	Japanese installed; audited
+bark_hurt_distance.wav	RAINORAY	Rainoray	EXPLORATION	All right. A little less bravery.	よし。ちょっと勇気を出しすぎたな。	ja	dialogue	Japanese installed; audited
+bark_hurt_distance_2.wav	INNER_VOICE	Raphael	EXPLORATION	A little more distance would help.	もう少し、距離を取るといいでしょう。	ja	dialogue	Japanese installed; audited
+bark_hurt_camp.wav	RAINORAY	Rainoray	EXPLORATION	I could use that campfire now.	あの焚き火が恋しいな。	ja	dialogue	Japanese installed; audited
+bark_hurt_camp_2.wav	INNER_VOICE	Raphael	EXPLORATION	A retreat can still be progress.	退くことも、前に進むためです。	ja	dialogue	Japanese installed; audited
+bark_hurt_deliberate.wav	RAINORAY	Rainoray	EXPLORATION	Tell me that looked deliberate.	今の、わざとやったように見えたよな？	ja	dialogue	Japanese installed; audited
+bark_hurt_deliberate_2.wav	INNER_VOICE	Raphael	EXPLORATION	I would prefer to be accurate.	正確に答えるべきでしょうか。	ja	dialogue	Japanese installed; audited
+bark_walk_routes.wav	RAINORAY	Rainoray	EXPLORATION	I don't know which way is safe.	どっちが安全なのか、わからないな。	ja	dialogue	Japanese installed; audited
+bark_walk_routes_2.wav	INNER_VOICE	Raphael	EXPLORATION	We will learn. Keep the camp behind us.	少しずつ覚えましょう。野営地は後ろです。	ja	dialogue	Japanese installed; audited
+bark_walk_bag.wav	RAINORAY	Rainoray	EXPLORATION	I keep reaching for a bag I lost.	なくした鞄に、つい手を伸ばしそうになる。	ja	dialogue	Japanese installed; audited
+bark_walk_bag_2.wav	INNER_VOICE	Raphael	EXPLORATION	Old habits are slow to catch up.	昔の癖は、すぐには変わりません。	ja	dialogue	Japanese installed; audited
+bark_walk_questions.wav	RAINORAY	Rainoray	EXPLORATION	Do my questions ever tire you?	質問ばっかりで、疲れない？	ja	dialogue	Japanese installed; audited
+bark_walk_questions_2.wav	INNER_VOICE	Raphael	EXPLORATION	Not yet. You may continue.	今のところは。続けて構いません。	ja	dialogue	Japanese installed; audited
+bark_walk_thoughts.wav	RAINORAY	Rainoray	EXPLORATION	You can talk without being asked.	聞かれなくても、話していいんだぞ。	ja	dialogue	Japanese installed; audited
+bark_walk_thoughts_2.wav	INNER_VOICE	Raphael	EXPLORATION	I was leaving room for your thoughts.	あなたが考える時間を、残していました。	ja	dialogue	Japanese installed; audited
+bark_walk_quiet.wav	RAINORAY	Rainoray	EXPLORATION	Was this a busy road once?	ここ、昔は賑やかな道だったのかな。	ja	dialogue	Japanese installed; audited
+bark_walk_quiet_2.wav	INNER_VOICE	Raphael	EXPLORATION	The cart tracks suggest it was.	荷車の跡を見る限り、そうでしょう。	ja	dialogue	Japanese installed; audited
+bark_walk_waiting.wav	RAINORAY	Rainoray	EXPLORATION	Who is still waiting out there?	まだ、誰が待ってるんだろう。	ja	dialogue	Japanese installed; audited
+bark_walk_waiting_2.wav	INNER_VOICE	Raphael	EXPLORATION	Someone may be asking that about you.	誰かも、あなたのことをそう考えているかもしれません。	ja	dialogue	Japanese installed; audited
+bark_walk_name.wav	RAINORAY	Rainoray	EXPLORATION	Raphael. Are you still there?	ラファエル。まだいる？	ja	dialogue	Japanese installed; audited
+bark_walk_name_2.wav	INNER_VOICE	Raphael	EXPLORATION	Yes. You do not have to keep checking.	はい。何度も確かめなくて大丈夫です。	ja	dialogue	Japanese installed; audited
+bark_walk_map.wav	RAINORAY	Rainoray	EXPLORATION	A map never shows how a place feels.	地図じゃ、その場所の感じまではわからないな。	ja	dialogue	Japanese installed; audited
+bark_walk_map_2.wav	INNER_VOICE	Raphael	EXPLORATION	Someone must carry that part.	そこは、誰かが覚えておくしかありません。	ja	dialogue	Japanese installed; audited
+bark_walk_calm.wav	RAINORAY	Rainoray	EXPLORATION	If I sound calm, don't be fooled.	落ち着いて聞こえても、騙されるなよ。	ja	dialogue	Japanese installed; audited
+bark_walk_calm_2.wav	INNER_VOICE	Raphael	EXPLORATION	I hear more than your tone.	声だけを聞いているわけではありません。	ja	dialogue	Japanese installed; audited
+bark_walk_nails.wav	RAINORAY	Rainoray	EXPLORATION	I used to worry about late deliveries.	前は、配達が遅れるだけで心配してたな。	ja	dialogue	Japanese installed; audited
+bark_walk_nails_2.wav	INNER_VOICE	Raphael	EXPLORATION	You noticed what others overlooked.	他の人が見落とすことにも、気づいていたのですね。	ja	dialogue	Japanese installed; audited
+bark_camp_lamp.wav	RAINORAY	Rainoray	EXPLORATION	She really is keeping that lamp lit.	本当に、あの明かりを消さずに待ってるんだな。	ja	dialogue	Japanese installed; audited
+bark_camp_lamp_2.wav	INNER_VOICE	Raphael	EXPLORATION	She is making a place to return to.	帰る場所を、守っているのです。	ja	dialogue	Japanese installed; audited
+bark_camp_person.wav	RAINORAY	Rainoray	EXPLORATION	She spoke to me like I was a person.	普通の人みたいに、話してくれた。	ja	dialogue	Japanese installed; audited
+bark_camp_person_2.wav	INNER_VOICE	Raphael	EXPLORATION	You still are.	あなたは、今もあなたです。	ja	dialogue	Japanese installed; audited
+bark_camp_talk.wav	RAINORAY	Rainoray	EXPLORATION	I didn't expect to miss ordinary talk.	普通の会話が恋しくなるとは、思わなかった。	ja	dialogue	Japanese installed; audited
+bark_camp_talk_2.wav	INNER_VOICE	Raphael	EXPLORATION	You do not have to stop having it.	やめる必要は、ありませんよ。	ja	dialogue	Japanese installed; audited
+bark_camp_promise.wav	RAINORAY	Rainoray	EXPLORATION	I wish I could promise her more.	もっと、約束してあげられたらな。	ja	dialogue	Japanese installed; audited
+bark_camp_promise_2.wav	INNER_VOICE	Raphael	EXPLORATION	Return when you can. Start with that.	戻れる時に戻る。まずは、それで十分です。	ja	dialogue	Japanese installed; audited
+bark_warden_start.wav	INNER_VOICE	Raphael	EXPLORATION	Keep moving. I'll analyze its attacks.	動いて。解析します。	ja	dialogue	Japanese installed; audited
+bark_warden_start_2.wav	RAINORAY	Rainoray	EXPLORATION	I only need one opening.	一度、隙があればいい。	ja	dialogue	Japanese installed; audited
+bark_warden_read.wav	INNER_VOICE	Raphael	EXPLORATION	I've got its rhythm. I'll warn you.	読めました。合図します。	ja	dialogue	Japanese installed; audited
+bark_warden_phase.wav	INNER_VOICE	Raphael	EXPLORATION	Careful. It's getting desperate now.	動きが荒い。注意を。	ja	dialogue	Japanese installed; audited
+bark_warden_phase_2.wav	RAINORAY	Rainoray	EXPLORATION	Good. I'll use that.	よし。そこを狙う。	ja	dialogue	Japanese installed; audited
+bark_warden_weak.wav	INNER_VOICE	Raphael	EXPLORATION	It's nearly down. Don't get careless.	あと少し。油断せずに。	ja	dialogue	Japanese installed; audited
+bark_warden_close_call.wav	INNER_VOICE	Raphael	EXPLORATION	Fall back. You need room.	下がって。距離を取りましょう。	ja	dialogue	Japanese installed; audited
+bark_warden_victory.wav	RAINORAY	Rainoray	EXPLORATION	The road's open.	道が、開いた。	ja	dialogue	Japanese installed; audited
+bark_warden_victory_2.wav	INNER_VOICE	Raphael	EXPLORATION	And you are still here.	あなたも、無事ですね。	ja	dialogue	Japanese installed; audited
+bark_sage_target.wav	INNER_VOICE	Raphael	EXPLORATION	Move! It's coming down.	避けて！ 振り下ろします。	ja	dialogue	Japanese installed; audited
+bark_sage_target_again.wav	INNER_VOICE	Raphael	EXPLORATION	Get clear of that spot.	そこを離れて。	ja	dialogue	Japanese installed; audited
+bark_sage_sweep.wav	INNER_VOICE	Raphael	EXPLORATION	Get back. It's swinging wide.	下がって、薙ぎ払います。	ja	dialogue	Japanese installed; audited
+bark_sage_sweep_again.wav	INNER_VOICE	Raphael	EXPLORATION	Too close. Back away.	近すぎます。離れて。	ja	dialogue	Japanese installed; audited
+bark_sage_charge.wav	INNER_VOICE	Raphael	EXPLORATION	Sidestep. It's coming straight at you.	横へ。まっすぐ来ます。	ja	dialogue	Japanese installed; audited
+bark_sage_charge_again.wav	INNER_VOICE	Raphael	EXPLORATION	Move sideways. Let it pass.	横へ、やり過ごして。	ja	dialogue	Japanese installed; audited
+bark_sage_shockwave.wav	INNER_VOICE	Raphael	EXPLORATION	Back up. Here comes the wave.	下がって、来ます！	ja	dialogue	Japanese installed; audited
+bark_sage_shockwave_again.wav	INNER_VOICE	Raphael	EXPLORATION	Get some distance. Another wave.	離れて。もう一度来ます。	ja	dialogue	Japanese installed; audited
+bark_sage_fissure.wav	INNER_VOICE	Raphael	EXPLORATION	Move! The ground's breaking.	動いて、地面が割れます！	ja	dialogue	Japanese installed; audited
+bark_sage_fissure_again.wav	INNER_VOICE	Raphael	EXPLORATION	Off that line. It's splitting.	その線から離れて。	ja	dialogue	Japanese installed; audited
+bark_sage_hit.wav	INNER_VOICE	Raphael	EXPLORATION	That hit landed. Keep your distance.	効きましたね。距離を。	ja	dialogue	Japanese installed; audited
+bark_sage_hit_again.wav	INNER_VOICE	Raphael	EXPLORATION	Careful. Don't let it catch you again.	注意。同じ手は避けて。	ja	dialogue	Japanese installed; audited
+bark_identify_remnant.wav	INNER_VOICE	Raphael	EXPLORATION	A remnant. It still knows how to fight.	亡骸です。戦い慣れています。	ja	dialogue	Japanese installed; audited
+bark_identify_guard.wav	INNER_VOICE	Raphael	EXPLORATION	Outpost guard. Let the shield swing past.	衛兵です。盾を振らせて。	ja	dialogue	Japanese installed; audited
+bark_identify_spitter.wav	INNER_VOICE	Raphael	EXPLORATION	Ichor spitter. Watch where it aims.	イコルを吐きます。狙いを見て。	ja	dialogue	Japanese installed; audited
+bark_identify_knight.wav	INNER_VOICE	Raphael	EXPLORATION	Fallen Knight. Strike after its swing.	堕ちた騎士。振り終わりを狙って。	ja	dialogue	Japanese installed; audited
+bark_forest_identify_imp.wav	INNER_VOICE	Raphael	EXPLORATION	Rift Imp. It strikes twice. Wait for both.	裂け目の小鬼、二撃目まで待って。	ja	dialogue	Japanese installed; audited
+bark_forest_identify_wolf.wav	INNER_VOICE	Raphael	EXPLORATION	Thorn Wolf. Give those jaws some room.	茨の狼。顎に近づかないで。	ja	dialogue	Japanese installed; audited
+bark_forest_identify_shaman.wav	INNER_VOICE	Raphael	EXPLORATION	Mire Shaman. It'll curse the ground.	沼の呪術師。足元注意。	ja	dialogue	Japanese installed; audited
+bark_forest_crossing.wav	RAINORAY	Rainoray	EXPLORATION	Those roots weren't there a moment ago.	さっきまで、あんな根はなかったぞ。	ja	dialogue	Japanese installed; audited
+bark_forest_crossing_2.wav	INNER_VOICE	Raphael	EXPLORATION	They move when the heart tightens.	心臓が縮むたび、動きます。	ja	dialogue	Japanese installed; audited
+bark_forest_grove.wav	RAINORAY	Rainoray	EXPLORATION	The cloth is caught up there.	あそこに、布が引っかかってる。	ja	dialogue	Japanese installed; audited
+bark_forest_grove_2.wav	INNER_VOICE	Raphael	EXPLORATION	Still pointing east. He chose well.	東ですね。いい目印です。	ja	dialogue	Japanese installed; audited
+bark_forest_ridge.wav	RAINORAY	Rainoray	EXPLORATION	I can see the old river from here.	ここから、元の川筋が見える。	ja	dialogue	Japanese installed; audited
+bark_forest_ridge_2.wav	INNER_VOICE	Raphael	EXPLORATION	Follow the stones. They still mark a crossing.	石が渡り場の目印です。	ja	dialogue	Japanese installed; audited
+bark_forest_ford.wav	RAINORAY	Rainoray	EXPLORATION	A boat without a river. That's a new one.	川のない舟か。初めて見た。	ja	dialogue	Japanese installed; audited
+bark_forest_ford_2.wav	INNER_VOICE	Raphael	EXPLORATION	The roots have taken more than the road.	根が奪ったのは、道だけではありません。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_imps.wav	RAINORAY	Rainoray	EXPLORATION	That little thing tried to get behind me.	あんな小さいのが、後ろを取ろうとしてきた。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_imps_2.wav	INNER_VOICE	Raphael	EXPLORATION	It watched your first move. Then committed.	最初の動きを見てから、飛び込んできました。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_wolves.wav	RAINORAY	Rainoray	EXPLORATION	I heard the claws before I saw it.	姿より先に、爪の音が聞こえた。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_wolves_2.wav	INNER_VOICE	Raphael	EXPLORATION	The landing gives it away.	着地の音で、位置がわかります。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_shaman.wav	RAINORAY	Rainoray	EXPLORATION	I thought it was aiming at me.	俺を狙ってるんだと思った。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_shaman_2.wav	INNER_VOICE	Raphael	EXPLORATION	At the ground beneath you. Keep moving.	狙いは足元です。止まらないで。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_roots.wav	RAINORAY	Rainoray	EXPLORATION	Even the roots don't want us here.	根にまで、嫌われてるみたいだな。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_roots_2.wav	INNER_VOICE	Raphael	EXPLORATION	Someone beyond them does.	その向こうには、あなたを待つ人がいます。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_mud.wav	RAINORAY	Rainoray	EXPLORATION	That was a very expensive patch of mud.	ずいぶん高くついた泥だな。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_mud_2.wav	INNER_VOICE	Raphael	EXPLORATION	You can go around the next one.	次は、迂回すればいいでしょう。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_breath.wav	RAINORAY	Rainoray	EXPLORATION	I still want to catch my breath.	この体でも、息を整えたくなるんだな。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_breath_2.wav	INNER_VOICE	Raphael	EXPLORATION	The habit is useful. Take a moment.	役に立つ習慣です。少し休みましょう。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_noise.wav	RAINORAY	Rainoray	EXPLORATION	So much for passing through quietly.	静かに通り抜けるつもりだったんだけどな。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_noise_2.wav	INNER_VOICE	Raphael	EXPLORATION	Quiet was unlikely. Passing through is enough.	静かには無理でも、通れました。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_better.wav	RAINORAY	Rainoray	EXPLORATION	That felt a little less accidental.	今のは、ちょっとだけ狙い通りだった。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_better_2.wav	INNER_VOICE	Raphael	EXPLORATION	You saw the opening before I did.	私より先に、隙を見つけましたね。	ja	dialogue	Japanese installed; audited
+bark_forest_hurt_distance.wav	RAINORAY	Rainoray	EXPLORATION	I went in too soon.	踏み込むのが早すぎた。	ja	dialogue	Japanese installed; audited
+bark_forest_hurt_distance_2.wav	INNER_VOICE	Raphael	EXPLORATION	Let the roots settle before you return.	根が落ち着くまで、戻らないで。	ja	dialogue	Japanese installed; audited
+bark_forest_hurt_wait.wav	RAINORAY	Rainoray	EXPLORATION	I need a moment.	少し、休ませて。	ja	dialogue	Japanese installed; audited
+bark_forest_hurt_wait_2.wav	INNER_VOICE	Raphael	EXPLORATION	Take the clear ground. I'll keep watch.	何もない地面へ。私が見ています。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_cloth.wav	RAINORAY	Rainoray	EXPLORATION	White cloth. I keep checking for it.	白い布。つい探しちゃうな。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_cloth_2.wav	INNER_VOICE	Raphael	EXPLORATION	It is easier to follow a promise you can see.	目に見える約束は、たどりやすいものです。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_company.wav	RAINORAY	Rainoray	EXPLORATION	You don't have to wait for a question.	質問されるまで、待たなくてもいいんだぞ。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_company_2.wav	INNER_VOICE	Raphael	EXPLORATION	I was listening to the trees.	木々の音を聞いていました。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_boots.wav	RAINORAY	Rainoray	EXPLORATION	At least I can't get mud in my boots.	少なくとも、靴に泥は入らないな。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_boots_2.wav	INNER_VOICE	Raphael	EXPLORATION	You found an advantage.	利点が見つかりましたね。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_names.wav	RAINORAY	Rainoray	EXPLORATION	I wish I knew who was on those stretchers.	あの担架に、誰がいたのかわかればな。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_names_2.wav	INNER_VOICE	Raphael	EXPLORATION	You can ask them when we get there.	着いたら、本人に聞きましょう。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_home.wav	RAINORAY	Rainoray	EXPLORATION	The outpost almost feels like home now.	あの砦が、家みたいに思えてきた。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_home_2.wav	INNER_VOICE	Raphael	EXPLORATION	Someone is waiting for you there.	あなたを待つ人が、いますから。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_memory.wav	RAINORAY	Rainoray	EXPLORATION	The roots are narrowing the road.	根で、道が狭くなってる。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_memory_2.wav	INNER_VOICE	Raphael	EXPLORATION	They are still growing. Keep to the middle.	まだ伸びています。中央を通ってください。	ja	dialogue	Japanese installed; audited
+bark_forest_camp_rope.wav	RAINORAY	Rainoray	EXPLORATION	He kept the rope ready all this time.	ずっと、縄を用意して待ってたんだな。	ja	dialogue	Japanese installed; audited
+bark_forest_camp_rope_2.wav	INNER_VOICE	Raphael	EXPLORATION	Waiting can be work, too.	待つことも、仕事です。	ja	dialogue	Japanese installed; audited
+bark_forest_camp_boat.wav	RAINORAY	Rainoray	EXPLORATION	He could have left when the river went.	川がなくなった時、自分だけ逃げられたはずなのに。	ja	dialogue	Japanese installed; audited
+bark_forest_camp_boat_2.wav	INNER_VOICE	Raphael	EXPLORATION	The people he guards could not.	彼が守る人たちは、逃げられませんでした。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_start.wav	INNER_VOICE	Raphael	EXPLORATION	I'll watch how the roots move. Stay clear.	根を見ます。下がって。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_start_2.wav	RAINORAY	Rainoray	EXPLORATION	Tell me when that heart opens.	心臓が開いたら、教えてくれ。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_read.wav	INNER_VOICE	Raphael	EXPLORATION	The roots follow a pattern. I can read it now.	根の動きが読めました。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_open.wav	INNER_VOICE	Raphael	EXPLORATION	It's open. Strike the heart.	今です。心臓を。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_phase.wav	INNER_VOICE	Raphael	EXPLORATION	It's drawing more roots in. Watch the gaps.	根が集まる。隙間へ。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_phase_2.wav	RAINORAY	Rainoray	EXPLORATION	I see them. Keep talking.	見えてる。声をかけ続けて。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_weak.wav	INNER_VOICE	Raphael	EXPLORATION	The heart is fading. One more opening.	弱った今が、好機です。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_close_call.wav	INNER_VOICE	Raphael	EXPLORATION	Get clear. Let yourself recover.	離れて、回復を。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_victory.wav	RAINORAY	Rainoray	EXPLORATION	The roots are letting go.	根が、ほどけていく。	ja	dialogue	Japanese installed; audited
+bark_forest_boss_victory_2.wav	INNER_VOICE	Raphael	EXPLORATION	Listen. Someone is calling from below.	聞いて、下から声が。	ja	dialogue	Japanese installed; audited
+bark_forest_root_warning.wav	INNER_VOICE	Raphael	EXPLORATION	Between the roots. Leave that strip.	根の間へ、早く。	ja	dialogue	Japanese installed; audited
+bark_forest_root_again.wav	INNER_VOICE	Raphael	EXPLORATION	Roots coming up. Take the gap.	根が来ます。隙間へ。	ja	dialogue	Japanese installed; audited
+bark_forest_seed_warning.wav	INNER_VOICE	Raphael	EXPLORATION	Seeds beneath you. Find clear ground.	足元に種。離れて。	ja	dialogue	Japanese installed; audited
+bark_forest_seed_again.wav	INNER_VOICE	Raphael	EXPLORATION	Move away. Those seeds will burst.	離れて、種が弾けます。	ja	dialogue	Japanese installed; audited
+bark_forest_cage_warning.wav	INNER_VOICE	Raphael	EXPLORATION	One side is open. Go through it.	開いた方へ、抜けて。	ja	dialogue	Japanese installed; audited
+bark_forest_cage_again.wav	INNER_VOICE	Raphael	EXPLORATION	Out through the gap. Don't stay inside.	隙間から外へ。	ja	dialogue	Japanese installed; audited
+bark_walk_birds_2.wav	RAINORAY	Rainoray	WALK_BIRDS	I'm listening for the birds.	鳥の声を探してるんだ。	ja	dialogue	Japanese installed; audited
+bark_walk_feet.wav	RAINORAY	Rainoray	WALK_FEET	How do I trip without feet?	足もないのに、どうしてつまずくんだ？	ja	dialogue	Japanese installed; audited
+bark_walk_body.wav	RAINORAY	Rainoray	WALK_BODY	Is this body holding together?	この体、ちゃんともってる？	ja	dialogue	Japanese installed; audited
+bark_walk_wind_2.wav	RAINORAY	Rainoray	WALK_WIND	You noticed I was cold?	寒いって、気づいてたのか？	ja	dialogue	Japanese installed; audited
+bark_fight_saw.wav	RAINORAY	Rainoray	FIGHT_SAW	Did you see that?	今の、見た？	ja	dialogue	Japanese installed; audited
+bark_fight_right_2.wav	RAINORAY	Rainoray	FIGHT_RIGHT	Remind me before the next one.	次は、先に言ってくれよ。	ja	dialogue	Japanese installed; audited
+bark_fight_harmless.wav	RAINORAY	Rainoray	FIGHT_HARMLESS	Aren't slimes meant to be harmless?	スライムって、もっと無害なものじゃないの？	ja	dialogue	Japanese installed; audited
+bark_camp_warm.wav	RAINORAY	Rainoray	CAMP_WARM	That fire almost feels warm.	あの火、ちょっと暖かく感じる。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_sounds_2.wav	RAINORAY	Rainoray	FOREST_WALK_SOUNDS	One of them might be someone.	誰かの声が、混じってるかもしれないだろ。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_lost.wav	RAINORAY	Rainoray	FOREST_WALK_LOST	Do you ever get lost?	お前も、迷子になることある？	ja	dialogue	Japanese installed; audited
+bark_forest_walk_calm.wav	RAINORAY	Rainoray	FOREST_WALK_CALM	How are you always so calm?	なんで、いつもそんなに落ち着いてるんだ？	ja	dialogue	Japanese installed; audited
+bark_forest_walk_ground_2.wav	RAINORAY	Rainoray	FOREST_WALK_GROUND	Thanks. I'm tired of sinking.	助かる。もう沈むのはうんざりだ。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_credit.wav	RAINORAY	Rainoray	FOREST_FIGHT_CREDIT	I almost had that one.	今の、あと少しだったな。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_listen_2.wav	RAINORAY	Rainoray	FOREST_FIGHT_LISTEN	Right. Quiet doesn't always mean safe.	そうだな。静かだからって、安全とは限らない。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_sit.wav	RAINORAY	Rainoray	FOREST_FIGHT_SIT	Remind me never to sit down here.	ここでは絶対座るなって、覚えといて。	ja	dialogue	Japanese installed; audited
+bark_forest_camp_return_2.wav	RAINORAY	Rainoray	FOREST_CAMP_RETURN	Good. I like knowing we can go back.	よかった。戻れるってわかると、安心する。	ja	dialogue	Japanese installed; audited
+bark_walk_birds.wav	INNER_VOICE	Raphael	WALK_BIRDS	You've gone quiet.	静かになりましたね。	ja	dialogue	Japanese installed; audited
+bark_walk_feet_2.wav	INNER_VOICE	Raphael	WALK_FEET	You're finding new ways.	新しい方法を見つけていますね。	ja	dialogue	Japanese installed; audited
+bark_walk_body_2.wav	INNER_VOICE	Raphael	WALK_BODY	Yes. I'd tell you if it wasn't.	はい。問題があれば、お伝えします。	ja	dialogue	Japanese installed; audited
+bark_walk_wind.wav	INNER_VOICE	Raphael	WALK_WIND	There. A little less wind.	こちらへ。少し、風が弱まります。	ja	dialogue	Japanese installed; audited
+bark_fight_saw_2.wav	INNER_VOICE	Raphael	FIGHT_SAW	Even the part you meant to do.	はい。狙い通りだった部分も。	ja	dialogue	Japanese installed; audited
+bark_fight_right.wav	INNER_VOICE	Raphael	FIGHT_RIGHT	You're leaving your right side open.	右側が、がら空きです。	ja	dialogue	Japanese installed; audited
+bark_fight_harmless_2.wav	INNER_VOICE	Raphael	FIGHT_HARMLESS	You've met the local slimes.	ここのスライムは、もう見たでしょう。	ja	dialogue	Japanese installed; audited
+bark_camp_warm_2.wav	INNER_VOICE	Raphael	CAMP_WARM	Then stay a moment.	では、少しそばにいましょう。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_sounds.wav	INNER_VOICE	Raphael	FOREST_WALK_SOUNDS	You're following every sound again.	また、聞こえる音を全部追っていますね。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_lost_2.wav	INNER_VOICE	Raphael	FOREST_WALK_LOST	I would call it gathering information.	情報収集中、と呼びます。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_calm_2.wav	INNER_VOICE	Raphael	FOREST_WALK_CALM	One of us has to be.	どちらかは、落ち着いている必要がありますから。	ja	dialogue	Japanese installed; audited
+bark_forest_walk_ground.wav	INNER_VOICE	Raphael	FOREST_WALK_GROUND	The ground is firmer on the left.	左の方が、地面は固いです。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_credit_2.wav	INNER_VOICE	Raphael	FOREST_FIGHT_CREDIT	You did have it. Give yourself that much.	ちゃんとできていました。そこは認めていいのです。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_listen.wav	INNER_VOICE	Raphael	FOREST_FIGHT_LISTEN	Wait. Listen before we move.	待って。進む前に、音を聞いて。	ja	dialogue	Japanese installed; audited
+bark_forest_fight_sit_2.wav	INNER_VOICE	Raphael	FOREST_FIGHT_SIT	I was about to.	今、言おうとしていました。	ja	dialogue	Japanese installed; audited
+bark_forest_camp_return.wav	INNER_VOICE	Raphael	FOREST_CAMP_RETURN	The boat is still there.	舟は、まだあります。	ja	dialogue	Japanese installed; audited
+bark_sage_hit_room.wav	INNER_VOICE	Raphael	SAGE_HIT_ROOM	Easy. Give yourself a little room.	落ち着いて。少し距離を。	ja	dialogue	Japanese installed; audited
+bark_sage_hit_hurt.wav	INNER_VOICE	Raphael	SAGE_HIT_HURT	That one hurt. Step back.	今のは痛い。下がって。	ja	dialogue	Japanese installed; audited
+bark_sage_hit_stay.wav	INNER_VOICE	Raphael	SAGE_HIT_STAY	I'm here. Keep moving.	ここにいます。動いて。	ja	dialogue	Japanese installed; audited
+bark_sage_hit_footing.wav	INNER_VOICE	Raphael	SAGE_HIT_FOOTING	Watch your footing.	足元に気をつけて。	ja	dialogue	Japanese installed; audited
+bark_sage_hit_patient.wav	INNER_VOICE	Raphael	SAGE_HIT_PATIENT	Don't rush the next move.	次の動きは、焦らずに。	ja	dialogue	Japanese installed; audited
+bark_sage_hit_steady.wav	INNER_VOICE	Raphael	SAGE_HIT_STEADY	You're still in this.	まだ、戦えます。	ja	dialogue	Japanese installed; audited
+bark_warden_voice_stand.wav	WARDEN	Outpost Warden	WARDEN_VOICE_STAND	Stand down.	退け。	ja	dialogue	Japanese original stone-golem voice; installed and transcribed
+bark_warden_voice_line.wav	WARDEN	Outpost Warden	WARDEN_VOICE_LINE	Hold the line.	守りを崩すな。	ja	dialogue	Japanese original stone-golem voice; installed and transcribed
+bark_warden_voice_gate.wav	WARDEN	Outpost Warden	WARDEN_VOICE_GATE	The gate stays shut.	この門は開かせん。	ja	dialogue	Japanese original stone-golem voice; installed and transcribed
+bark_warden_voice_order.wav	WARDEN	Outpost Warden	WARDEN_VOICE_ORDER	I was ordered to protect them.	私は、彼らを守れと命じられた。	ja	dialogue	Japanese original stone-golem voice; installed and transcribed
+effort_attack_1.wav	RAINORAY	Rainoray	COMBAT	Ha!	はっ！	ja	effort	Japanese installed; audited
+effort_attack_2.wav	RAINORAY	Rainoray	COMBAT	Hah!	やっ！	ja	effort	Japanese installed; audited
+effort_attack_3.wav	RAINORAY	Rainoray	COMBAT	Hyah!	せいっ！	ja	effort	Japanese installed; audited
+effort_heavy_1.wav	RAINORAY	Rainoray	COMBAT	Hah!	はあっ！	ja	effort	Japanese installed; audited
+effort_heavy_2.wav	RAINORAY	Rainoray	COMBAT	Hup!	よいしょっ！	ja	effort	Japanese installed; audited
+effort_hurt_1.wav	RAINORAY	Rainoray	COMBAT	Ah!	あっ！	ja	effort	Japanese installed; audited
+effort_hurt_2.wav	RAINORAY	Rainoray	COMBAT	Ugh!	ぐっ！	ja	effort	Japanese installed; audited
+effort_attack_4.wav	RAINORAY	Rainoray	COMBAT	Ha!	ふっ！	ja	effort	Japanese installed; audited
+effort_attack_5.wav	RAINORAY	Rainoray	COMBAT	Hyah!	やあっ！	ja	effort	Japanese installed; audited
+effort_attack_6.wav	RAINORAY	Rainoray	COMBAT	Take that!	くらえっ！	ja	effort	Japanese installed; audited
+effort_heavy_3.wav	RAINORAY	Rainoray	COMBAT	Here!	そこだっ！	ja	effort	Japanese installed; audited
+effort_heavy_4.wav	RAINORAY	Rainoray	COMBAT	Hah!	はああっ！	ja	effort	Japanese installed; audited
+effort_hurt_3.wav	RAINORAY	Rainoray	COMBAT	Ow!	いてっ！	ja	effort	Japanese installed; audited
+effort_hurt_4.wav	RAINORAY	Rainoray	COMBAT	That hurt!	痛っ！	ja	effort	Japanese installed; audited
+effort_hurt_5.wav	RAINORAY	Rainoray	COMBAT	Easy!	落ち着けっ！	ja	effort	Japanese installed; audited
+effort_hurt_6.wav	RAINORAY	Rainoray	COMBAT	Ah!	うあっ！	ja	effort	Japanese installed; audited
+effort_hurt_7.wav	RAINORAY	Rainoray	COMBAT	Still here.	まだだ。	ja	effort	Japanese installed; audited
+effort_hurt_8.wav	RAINORAY	Rainoray	COMBAT	Ugh!	うっ！	ja	effort	Japanese installed; audited
+bark_identify_remnant_2.wav	RAINORAY	Rainoray	EXPLORATION	Then I'll give it some space.	なら、少し離れよう。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_identify_guard_2.wav	RAINORAY	Rainoray	EXPLORATION	Right. I'll go around the shield.	よし、盾の横に回ろう。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_identify_spitter_2.wav	RAINORAY	Rainoray	EXPLORATION	Not getting that stuff on me.	あれは浴びたくないな。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_identify_knight_2.wav	RAINORAY	Rainoray	EXPLORATION	I'll wait for my turn, then.	じゃあ、振り終わるまで待つか。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_forest_identify_imp_2.wav	RAINORAY	Rainoray	EXPLORATION	Two swings. Got it.	二回だな。分かった。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_forest_identify_wolf_2.wav	RAINORAY	Rainoray	EXPLORATION	Yeah, I saw those teeth.	うん、あの牙は見えたよ。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_forest_identify_shaman_2.wav	RAINORAY	Rainoray	EXPLORATION	Standing still was a bad idea, huh.	立ち止まるのはまずいな。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_warden_read_2.wav	RAINORAY	Rainoray	COMBAT	Good. Tell me when to move.	よし、動く時は教えて。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_forest_boss_read_2.wav	RAINORAY	Rainoray	COMBAT	All right. I'm listening.	分かった。頼むぞ。	ja	dialogue	Japanese installed; transcript and cast checked
+bark_beelzebub_call.wav	RAINORAY	Rainoray	COMBAT	Devour them. Beelzebub!	喰らえ、ベルゼビュート！	ja	dialogue	Japanese installed; transcript and cast checked
+bark_beelzebub_call_again.wav	RAINORAY	Rainoray	COMBAT	Beelzebub!	ベルゼビュート！	ja	dialogue	Japanese installed; transcript and cast checked
+bark_beelzebub_call_take.wav	RAINORAY	Rainoray	COMBAT	I'll take it all!	まとめて喰らう！	ja	dialogue	Japanese installed; transcript and cast checked

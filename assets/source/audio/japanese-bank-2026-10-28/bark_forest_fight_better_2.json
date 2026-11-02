@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "私より先に、隙を見つけましたね。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "ITBjzsTUPnkuXAY1tc3v",
+  "generated_at": 1793156325.449544
+}

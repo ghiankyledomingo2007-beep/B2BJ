@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9998757839202881,
+  "text": "情報収集中と呼びます。",
+  "words": [
+    {
+      "text": "情",
+      "start": 0.42,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0004677870310842991
+    },
+    {
+      "text": "報",
+      "start": 0.52,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.0004677870310842991
+    },
+    {
+      "text": "収",
+      "start": 0.76,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -0.001864482183009386
+    },
+    {
+      "text": "集",
+      "start": 1.14,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.018145864829421043
+    },
+    {
+      "text": "中",
+      "start": 1.26,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -0.018145864829421043
+    },
+    {
+      "text": "と",
+      "start": 1.98,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -0.000379132863599807
+    },
+    {
+      "text": "呼",
+      "start": 2.08,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -0.0002743821241892874
+    },
+    {
+      "text": "び",
+      "start": 2.24,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -0.0002743821241892874
+    },
+    {
+      "text": "ま",
+      "start": 2.38,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "す",
+      "start": 2.5,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "。",
+      "start": 2.64,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -0.0007126175914891064
+    }
+  ],
+  "transcription_id": "ia2HzZ9eRdHvwp5NJtaa",
+  "audio_duration_secs": 3.704
+}

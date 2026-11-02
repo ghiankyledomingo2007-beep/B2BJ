@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "落ち着けっ！",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "ihCPvEIsUNUK6EaziKpx",
+  "generated_at": 1793156399.802396
+}

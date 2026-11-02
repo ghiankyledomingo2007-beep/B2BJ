@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "私はシュナです。皆を東へ避難させた後、裂け目が現れて、守護者が道を封鎖してしまいました。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "JcMFhzCd5Xr6bAYWPpYe",
+  "generated_at": 1793156108.900677
+}

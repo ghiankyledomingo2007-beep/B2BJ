@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "これが終わったら、もっと静かな仕事にしてくれない？",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "oj0dlCqMzLhWK2rcakrj",
+  "generated_at": 1793156237.055231
+}

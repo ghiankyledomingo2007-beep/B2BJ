@@ -1,0 +1,72 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999045729637146,
+  "text": "横へやり過ごして。",
+  "words": [
+    {
+      "text": "横",
+      "start": 0.42,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.004688816610723734
+    },
+    {
+      "text": "へ",
+      "start": 0.6,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -0.14388757944107056
+    },
+    {
+      "text": "や",
+      "start": 1.16,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -0.09199720621109009
+    },
+    {
+      "text": "り",
+      "start": 1.28,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.09199720621109009
+    },
+    {
+      "text": "過",
+      "start": 1.46,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.011381696909666061
+    },
+    {
+      "text": "ご",
+      "start": 1.56,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.011381696909666061
+    },
+    {
+      "text": "し",
+      "start": 1.66,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -7.855583680793643e-05
+    },
+    {
+      "text": "て",
+      "start": 1.8,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -7.855583680793643e-05
+    },
+    {
+      "text": "。",
+      "start": 1.9,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -0.004095382057130337
+    }
+  ],
+  "transcription_id": "F418ttyTXEVIaqXFZCLk",
+  "audio_duration_secs": 2.984
+}

@@ -1,0 +1,16 @@
+file	speaker	scene	text	spoken_text	language	status
+wake_01.wav	RAINORAY	ONE MORE CHANCE	Just one more report... then I can go home.	あと一件だけ……これが終わったら、帰ろう。	ja	transcribed and format checked
+wake_02.wav	RAINORAY	ONE MORE CHANCE	What... happened?	何が……起きたんだ？	ja	transcribed and format checked
+wake_03.wav	INNER_VOICE	ONE MORE CHANCE	Your previous body has been lost. Your consciousness remains.	以前の肉体は失われました。意識は残っています。	ja	transcribed and format checked
+wake_04.wav	RAINORAY	ONE MORE CHANCE	Then... who am I talking to?	じゃあ……今、誰と話してるんだ？	ja	translation draft
+wake_05.wav	INNER_VOICE	ONE MORE CHANCE	Raphael. Stay with my voice.	ラファエルです。私の声に意識を向けてください。	ja	translation draft
+wake_06.wav	INNER_VOICE	ONE MORE CHANCE	Reconstructing a body that can survive here.	この世界で生存可能な肉体を再構築します。	ja	translation draft
+wake_07.wav	RAINORAY	ONE MORE CHANCE	A slime? That was your best option?	スライム？ ほかになかったのか？	ja	translation draft
+wake_08.wav	INNER_VOICE	ONE MORE CHANCE	It was the one that survived.	生き延びられるのは、この形態でした。	ja	translation draft
+wake_09.wav	RAINORAY	ONE MORE CHANCE	I can still change back?	人の姿にも戻れるのか？	ja	translation draft
+wake_10.wav	INNER_VOICE	ONE MORE CHANCE	For a while. Once we have enough Ichor.	イコルが十分に集まれば、一時的には。	ja	translation draft
+wake_11.wav	RAINORAY	ONE MORE CHANCE	Where are my hands?	俺の手……どこにいったんだ？	ja	translation draft
+wake_12.wav	INNER_VOICE	ONE MORE CHANCE	Try moving toward the light.	光のある方へ移動してみてください。	ja	translation draft
+wake_13.wav	RAINORAY	ONE MORE CHANCE	Someone's still out there.	まだ、あそこに誰かいる。	ja	translation draft
+wake_14.wav	INNER_VOICE	ONE MORE CHANCE	One step at a time.	まずは、一歩ずつ。	ja	translation draft
+wake_15.wav	RAINORAY	ONE MORE CHANCE	You'll have to talk me through the steps.	歩き方から、教えてくれよ。	ja	translation draft

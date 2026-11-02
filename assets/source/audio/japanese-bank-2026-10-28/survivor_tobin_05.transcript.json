@@ -1,0 +1,226 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.999993622303009,
+  "text": "隊長の野営地でシュナが明かりをつけて待ってる。そこまで行ける？",
+  "words": [
+    {
+      "text": "隊",
+      "start": 0.14,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.0011144625023007393
+    },
+    {
+      "text": "長",
+      "start": 0.4,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -9.595887240720913e-05
+    },
+    {
+      "text": "の",
+      "start": 0.46,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -9.595887240720913e-05
+    },
+    {
+      "text": "野",
+      "start": 0.58,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -0.0005203323671594262
+    },
+    {
+      "text": "営",
+      "start": 0.74,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -6.305972783593461e-05
+    },
+    {
+      "text": "地",
+      "start": 0.96,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -0.0001656871900195256
+    },
+    {
+      "text": "で",
+      "start": 1.06,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -6.305972783593461e-05
+    },
+    {
+      "text": "シ",
+      "start": 1.56,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.206459179520607
+    },
+    {
+      "text": "ュ",
+      "start": 1.62,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -0.206459179520607
+    },
+    {
+      "text": "ナ",
+      "start": 1.72,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -4.386805812828243e-05
+    },
+    {
+      "text": "が",
+      "start": 1.9,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.11419428139925003
+    },
+    {
+      "text": "明",
+      "start": 1.96,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.11305692046880722
+    },
+    {
+      "text": "か",
+      "start": 2.04,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -0.00013326710904948413
+    },
+    {
+      "text": "り",
+      "start": 2.16,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -0.00013326710904948413
+    },
+    {
+      "text": "を",
+      "start": 2.26,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -0.0028259125538170338
+    },
+    {
+      "text": "つ",
+      "start": 2.4,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -0.0028259125538170338
+    },
+    {
+      "text": "け",
+      "start": 2.5,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -0.0028259125538170338
+    },
+    {
+      "text": "て",
+      "start": 2.56,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -0.0028259125538170338
+    },
+    {
+      "text": "待",
+      "start": 2.74,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "っ",
+      "start": 2.84,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "て",
+      "start": 2.92,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "る",
+      "start": 3.04,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "。",
+      "start": 3.14,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "そ",
+      "start": 3.66,
+      "end": 3.74,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "こ",
+      "start": 3.76,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "ま",
+      "start": 3.82,
+      "end": 3.94,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "で",
+      "start": 3.96,
+      "end": 4.019,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "行",
+      "start": 4.019,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -0.005235769785940647
+    },
+    {
+      "text": "け",
+      "start": 4.14,
+      "end": 4.22,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "る",
+      "start": 4.22,
+      "end": 4.34,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "？",
+      "start": 4.34,
+      "end": 4.4,
+      "type": "word",
+      "logprob": -0.03865461423993111
+    }
+  ],
+  "transcription_id": "219XFqsIptKTPGrmB4AY",
+  "audio_duration_secs": 4.56
+}

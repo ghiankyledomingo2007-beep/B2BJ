@@ -79,6 +79,7 @@ public final class UiOverhaulTest {
     private static void kitIsWhole() {
         assert Ui.heading(30).getFamily().equals("DejaVu Serif")&&Ui.body(18).getFamily().equals("DejaVu Sans") : "menu typefaces must load from the package";
         assert Ui.fontsLoaded() : "pixel fonts must load from assets/ui/fonts";
+        assert Ui.menuFont(30).getFamily().equals("Cinzel") : "menu lettering must use the bundled identity font";
         assert Ui.sans(2).getSize() == 20 && Ui.display(3).getSize() == 30;
         var kit = Ui.KIT;
         assert kit != null : "assets/ui/kit.png must load";

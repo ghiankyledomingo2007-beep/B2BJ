@@ -1,0 +1,163 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "どちらかは落ち着いている必要がありますから。",
+  "words": [
+    {
+      "text": "ど",
+      "start": 0.34,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.0003361137059982866
+    },
+    {
+      "text": "ち",
+      "start": 0.44,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.0003361137059982866
+    },
+    {
+      "text": "ら",
+      "start": 0.54,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -0.0003361137059982866
+    },
+    {
+      "text": "か",
+      "start": 0.7,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -0.0013016331940889359
+    },
+    {
+      "text": "は",
+      "start": 0.94,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -0.0013016331940889359
+    },
+    {
+      "text": "落",
+      "start": 1.3,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.00033623288618400693
+    },
+    {
+      "text": "ち",
+      "start": 1.42,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.00033623288618400693
+    },
+    {
+      "text": "着",
+      "start": 1.6,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.00033623288618400693
+    },
+    {
+      "text": "い",
+      "start": 1.64,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -5.900685573578812e-05
+    },
+    {
+      "text": "て",
+      "start": 1.78,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -5.900685573578812e-05
+    },
+    {
+      "text": "い",
+      "start": 1.84,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -5.900685573578812e-05
+    },
+    {
+      "text": "る",
+      "start": 1.98,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -5.900685573578812e-05
+    },
+    {
+      "text": "必",
+      "start": 2.1,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -0.0006524579366669059
+    },
+    {
+      "text": "要",
+      "start": 2.24,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -0.0006524579366669059
+    },
+    {
+      "text": "が",
+      "start": 2.44,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -0.0006524579366669059
+    },
+    {
+      "text": "あ",
+      "start": 2.48,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -0.0006524579366669059
+    },
+    {
+      "text": "り",
+      "start": 2.54,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -0.0006524579366669059
+    },
+    {
+      "text": "ま",
+      "start": 2.64,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -0.0006524579366669059
+    },
+    {
+      "text": "す",
+      "start": 2.76,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -0.0006524579366669059
+    },
+    {
+      "text": "か",
+      "start": 2.88,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "ら",
+      "start": 3.0,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "。",
+      "start": 3.08,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -0.0011717366287484765
+    }
+  ],
+  "transcription_id": "AmbXsZKg6t7qCn8HcAeQ",
+  "audio_duration_secs": 4.184
+}

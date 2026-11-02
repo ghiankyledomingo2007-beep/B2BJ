@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9998859763145447,
+  "text": "利点が見つかりましたね。",
+  "words": [
+    {
+      "text": "利",
+      "start": 0.34,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.00018499570433050394
+    },
+    {
+      "text": "点",
+      "start": 0.52,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -8.129743218887597e-05
+    },
+    {
+      "text": "が",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "見",
+      "start": 0.78,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -3.2186455882765586e-06
+    },
+    {
+      "text": "つ",
+      "start": 0.88,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "か",
+      "start": 0.96,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -1.823885577323381e-05
+    },
+    {
+      "text": "り",
+      "start": 1.06,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -1.823885577323381e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.16,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "し",
+      "start": 1.26,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "た",
+      "start": 1.38,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "ね",
+      "start": 1.52,
+      "end": 1.62,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 1.62,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.0009137984015978873
+    }
+  ],
+  "transcription_id": "ULX9dH3dxDSYi7Aml4ot",
+  "audio_duration_secs": 2.744
+}

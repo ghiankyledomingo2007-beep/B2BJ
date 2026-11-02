@@ -1,0 +1,191 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999209046363831,
+  "text": "そこで止まってください。私の後ろには怪我人がいます。",
+  "words": [
+    {
+      "text": "そ",
+      "start": 0.14,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -7.033323527139146e-06
+    },
+    {
+      "text": "こ",
+      "start": 0.24,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -7.033323527139146e-06
+    },
+    {
+      "text": "で",
+      "start": 0.36,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -7.033323527139146e-06
+    },
+    {
+      "text": "止",
+      "start": 0.5,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.0003364712174516171
+    },
+    {
+      "text": "ま",
+      "start": 0.64,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.00028308198670856655
+    },
+    {
+      "text": "っ",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.00028308198670856655
+    },
+    {
+      "text": "て",
+      "start": 0.78,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -0.00028308198670856655
+    },
+    {
+      "text": "く",
+      "start": 0.86,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "だ",
+      "start": 0.94,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "さ",
+      "start": 1.08,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "い",
+      "start": 1.24,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "。",
+      "start": 1.38,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "私",
+      "start": 2.16,
+      "end": 2.3,
+      "type": "word",
+      "logprob": -0.0015361425466835499
+    },
+    {
+      "text": "の",
+      "start": 2.38,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -0.0015361425466835499
+    },
+    {
+      "text": "後",
+      "start": 2.5,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -0.0004986473359167576
+    },
+    {
+      "text": "ろ",
+      "start": 2.62,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -0.0004986473359167576
+    },
+    {
+      "text": "に",
+      "start": 2.76,
+      "end": 2.96,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "は",
+      "start": 2.96,
+      "end": 3.18,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "怪",
+      "start": 3.3,
+      "end": 3.4,
+      "type": "word",
+      "logprob": -0.029051369056105614
+    },
+    {
+      "text": "我",
+      "start": 3.4,
+      "end": 3.54,
+      "type": "word",
+      "logprob": -0.0011474461061879992
+    },
+    {
+      "text": "人",
+      "start": 3.54,
+      "end": 3.7,
+      "type": "word",
+      "logprob": -8.702239938429557e-06
+    },
+    {
+      "text": "が",
+      "start": 3.7,
+      "end": 3.76,
+      "type": "word",
+      "logprob": -8.702239938429557e-06
+    },
+    {
+      "text": "い",
+      "start": 3.76,
+      "end": 3.9,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "ま",
+      "start": 3.9,
+      "end": 4.019,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "す",
+      "start": 4.019,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "。",
+      "start": 4.14,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -0.0024757706560194492
+    }
+  ],
+  "transcription_id": "TcNWmW983Rj7O6NXNqOg",
+  "audio_duration_secs": 4.32
+}

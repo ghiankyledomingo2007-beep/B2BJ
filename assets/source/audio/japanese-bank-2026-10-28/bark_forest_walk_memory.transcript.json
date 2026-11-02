@@ -1,0 +1,100 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "ねえべ、道が狭くなってる。",
+  "words": [
+    {
+      "text": "ね",
+      "start": 0.14,
+      "end": 0.18,
+      "type": "word",
+      "logprob": -0.9228163957595825
+    },
+    {
+      "text": "え",
+      "start": 0.22,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.02455197088420391
+    },
+    {
+      "text": "べ",
+      "start": 0.32,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.4319978654384613
+    },
+    {
+      "text": "、",
+      "start": 0.42,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.015590101480484009
+    },
+    {
+      "text": "道",
+      "start": 1.02,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -0.00012730741582345217
+    },
+    {
+      "text": "が",
+      "start": 1.24,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "狭",
+      "start": 1.44,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "く",
+      "start": 1.64,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -2.8371408916427754e-05
+    },
+    {
+      "text": "な",
+      "start": 1.76,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -2.8371408916427754e-05
+    },
+    {
+      "text": "っ",
+      "start": 1.88,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -5.125986263010418e-06
+    },
+    {
+      "text": "て",
+      "start": 1.92,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -5.125986263010418e-06
+    },
+    {
+      "text": "る",
+      "start": 2.0,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -5.125986263010418e-06
+    },
+    {
+      "text": "。",
+      "start": 2.14,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -0.0011703077470883727
+    }
+  ],
+  "transcription_id": "K3v3Oc3XUwAVsxGPbPof",
+  "audio_duration_secs": 2.48
+}

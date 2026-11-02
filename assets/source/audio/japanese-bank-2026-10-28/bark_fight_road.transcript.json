@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999994039535522,
+  "text": "前はこの道を通れば安全だったんだろうな。",
+  "words": [
+    {
+      "text": "前",
+      "start": 0.16,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -1.9907753085135482e-05
+    },
+    {
+      "text": "は",
+      "start": 0.34,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -0.00015853578224778175
+    },
+    {
+      "text": "こ",
+      "start": 0.96,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.00015853578224778175
+    },
+    {
+      "text": "の",
+      "start": 1.14,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.00015853578224778175
+    },
+    {
+      "text": "道",
+      "start": 1.32,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -1.4066597032069694e-05
+    },
+    {
+      "text": "を",
+      "start": 1.56,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -2.4199192921514623e-05
+    },
+    {
+      "text": "通",
+      "start": 1.7,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -2.4199192921514623e-05
+    },
+    {
+      "text": "れ",
+      "start": 1.76,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "ば",
+      "start": 1.94,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "安",
+      "start": 2.12,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -6.69933797325939e-05
+    },
+    {
+      "text": "全",
+      "start": 2.26,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -6.69933797325939e-05
+    },
+    {
+      "text": "だ",
+      "start": 2.42,
+      "end": 2.52,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "っ",
+      "start": 2.52,
+      "end": 2.56,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "た",
+      "start": 2.56,
+      "end": 2.64,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "ん",
+      "start": 2.64,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "だ",
+      "start": 2.74,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "ろ",
+      "start": 2.84,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "う",
+      "start": 2.9,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "な",
+      "start": 3.06,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -0.5387951135635376
+    },
+    {
+      "text": "。",
+      "start": 3.3,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -0.0003375437227077782
+    }
+  ],
+  "transcription_id": "vsV9v5CnaZBVFfSEEQ7o",
+  "audio_duration_secs": 3.52
+}

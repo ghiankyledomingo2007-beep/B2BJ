@@ -1,0 +1,254 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "私はシュナです。もう戻れないと思っていた道を開いてくださったんですね。",
+  "words": [
+    {
+      "text": "私",
+      "start": 0.3,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -5.006777428206988e-06
+    },
+    {
+      "text": "は",
+      "start": 0.52,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -5.006777428206988e-06
+    },
+    {
+      "text": "シ",
+      "start": 0.66,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -0.0009259465732611716
+    },
+    {
+      "text": "ュ",
+      "start": 0.72,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.0009259465732611716
+    },
+    {
+      "text": "ナ",
+      "start": 0.8,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -3.290122185717337e-05
+    },
+    {
+      "text": "で",
+      "start": 1.0,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "す",
+      "start": 1.12,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "。",
+      "start": 1.2,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "も",
+      "start": 1.92,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "う",
+      "start": 2.2,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "戻",
+      "start": 2.36,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "れ",
+      "start": 2.54,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -3.0040289857424796e-05
+    },
+    {
+      "text": "な",
+      "start": 2.68,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -3.0040289857424796e-05
+    },
+    {
+      "text": "い",
+      "start": 2.74,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -3.0040289857424796e-05
+    },
+    {
+      "text": "と",
+      "start": 2.84,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.0004273931554052979
+    },
+    {
+      "text": "思",
+      "start": 3.0,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -0.0004273931554052979
+    },
+    {
+      "text": "っ",
+      "start": 3.16,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -0.0004273931554052979
+    },
+    {
+      "text": "て",
+      "start": 3.22,
+      "end": 3.28,
+      "type": "word",
+      "logprob": -0.0004273931554052979
+    },
+    {
+      "text": "い",
+      "start": 3.28,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -0.0004273931554052979
+    },
+    {
+      "text": "た",
+      "start": 3.42,
+      "end": 3.48,
+      "type": "word",
+      "logprob": -0.0004273931554052979
+    },
+    {
+      "text": "道",
+      "start": 3.48,
+      "end": 3.88,
+      "type": "word",
+      "logprob": -0.02383158542215824
+    },
+    {
+      "text": "を",
+      "start": 3.88,
+      "end": 4.36,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "開",
+      "start": 4.38,
+      "end": 4.56,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "い",
+      "start": 4.56,
+      "end": 4.66,
+      "type": "word",
+      "logprob": -1.5735502529423684e-05
+    },
+    {
+      "text": "て",
+      "start": 4.66,
+      "end": 4.74,
+      "type": "word",
+      "logprob": -1.5735502529423684e-05
+    },
+    {
+      "text": "く",
+      "start": 4.74,
+      "end": 4.84,
+      "type": "word",
+      "logprob": -1.0013530300057027e-05
+    },
+    {
+      "text": "だ",
+      "start": 4.84,
+      "end": 4.94,
+      "type": "word",
+      "logprob": -1.0013530300057027e-05
+    },
+    {
+      "text": "さ",
+      "start": 4.98,
+      "end": 5.06,
+      "type": "word",
+      "logprob": -1.0013530300057027e-05
+    },
+    {
+      "text": "っ",
+      "start": 5.06,
+      "end": 5.14,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "た",
+      "start": 5.14,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "ん",
+      "start": 5.22,
+      "end": 5.3,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "で",
+      "start": 5.3,
+      "end": 5.4,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "す",
+      "start": 5.42,
+      "end": 5.6,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "ね",
+      "start": 5.6,
+      "end": 5.74,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "。",
+      "start": 5.74,
+      "end": 5.74,
+      "type": "word",
+      "logprob": -0.001033129869028926
+    }
+  ],
+  "transcription_id": "ciXOm8ZhcWBddOnZB1Yf",
+  "audio_duration_secs": 6.08
+}

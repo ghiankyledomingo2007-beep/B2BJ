@@ -7,7 +7,7 @@ Blade form by gathering Ichor. The current campaign includes **Ruined Outpost** 
 
 ## Local story update — 2026-10-26
 
-New Journey opens with Rainoray's reincarnation, Raphael's ability-awakening sequence and a voiced introduction to the outpost. Shuna, Kaijin, Eren, Rigurd and Souei now have matching dialogue and art. The opening advances automatically; Enter/E/click moves to the next beat, X skips and Esc pauses. Continue preserves an existing campaign. See the [current story](docs/design/area-one-story.md). This local revision has not been pushed to GitHub.
+New Journey opens with a 67-second animated reincarnation sequence: an exhausted office worker collapsing at his desk, Raphael's awakening, Rainoray's slime body assembling and a camera reveal of the outpost. All 331 dialogue clips and 18 combat reactions use Japanese voices; subtitles and menus remain English. The [complete voice list](docs/design/japanese-voice-lines.tsv) and [Claude trailer handoff](docs/design/trailer-voice-handoff.md) include scripts, cast and asset paths. Shuna, Kaijin, Eren, Rigurd and Souei now have matching dialogue and art. The opening advances automatically; Enter/E/click moves to the next beat, X skips and Esc pauses. Continue preserves an existing campaign. See the [current story](docs/design/area-one-story.md). This revision is included in the 2026-11-02 game checkpoint. An isolated replay window is available through `tools/PreviewOpening.java`; it never loads or writes the player save.
 
 ## Group playtest — 2026-10-24
 
@@ -93,8 +93,8 @@ also used by the build, tests and art tools; the file map groups them by respons
 
 - Enter starts a journey; C continues. N confirms replacing an existing save.
 - WASD/arrows move. The mouse aims. Left click attacks; hold left click to charge in Blade form.
-- Right click uses Tide Wave in Blob form or Ichor Crescent in Blade form. F uses Riposte.
-- R in Blade form casts Beelzebub: stand still for 1.15 seconds to absorb nearby corpses for HP and Ichor. Ten-second cooldown; movement or damage interrupts it. See [skill rules](docs/design/beelzebub.md).
+- Right click uses Tide Wave in Blob form or the earned Void Sever ultimate in Blade form. Finishers, successful parries and absorption fill its RMB icon. F parries; a successful catch opens a charged punish.
+- R in Blade form casts Beelzebub: absorb reachable nearby corpses for HP/Ichor and store one Devoured empowerment for the next charged cleave or ultimate. Ten-second cooldown; the cast keeps eating while you move or fight. See [current skill rules](docs/design/rainoray-kit-draft-2026-11-02.md).
 - Space dashes with a 1.2-second cooldown. Q transforms at 100 Ichor. E interacts with discoveries, remains and gates.
 - E at Captain Camp talks to Shuna. Enter, E or left click advances dialogue; X skips it. Combat and Ichor drain pause while you read.
 - H at camp heals, saves and sets the checkpoint. U opens camp services; 1–4 select upgrades there.
@@ -102,8 +102,8 @@ also used by the build, tests and art tools; the file map groups them by respons
 - Hold Tab for the regional map. M toggles audio; V reduces effects; O opens audio/effects options.
 - Menu or Alt+G opens the in-game menu. F1 opens testing controls during a campaign.
 
-Blade form starts with a base duration of 12 seconds. Pickups, damage, skills and
-upgrades alter that duration. At zero Ichor, Rainoray returns to slime form and recovers
+Blade form starts with a base duration of 12 seconds. Pickups, damage and
+upgrades alter that duration. Parry and charged cleave cost no additional Ichor. At zero Ichor, Rainoray returns to slime form and recovers
 for 1.5 seconds. Camp progression is saved at `~/.b2bj/campaign.properties`.
 
 Using a testing cheat disables saving for that test session. Turning the cheat off

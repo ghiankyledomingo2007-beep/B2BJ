@@ -1,0 +1,128 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "こんなの物資の一覧にはなかったぞ。",
+  "words": [
+    {
+      "text": "こ",
+      "start": 0.12,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -1.9907753085135482e-05
+    },
+    {
+      "text": "ん",
+      "start": 0.28,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -1.9907753085135482e-05
+    },
+    {
+      "text": "な",
+      "start": 0.42,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -1.9907753085135482e-05
+    },
+    {
+      "text": "の",
+      "start": 0.52,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -0.0032522189430892467
+    },
+    {
+      "text": "物",
+      "start": 1.14,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.0009347598534077406
+    },
+    {
+      "text": "資",
+      "start": 1.26,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.0007514513563364744
+    },
+    {
+      "text": "の",
+      "start": 1.44,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.0003716255014296621
+    },
+    {
+      "text": "一",
+      "start": 1.58,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -0.0003716255014296621
+    },
+    {
+      "text": "覧",
+      "start": 1.76,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -0.00010668662434909493
+    },
+    {
+      "text": "に",
+      "start": 1.88,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "は",
+      "start": 2.0,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "な",
+      "start": 2.12,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -1.3947389561508317e-05
+    },
+    {
+      "text": "か",
+      "start": 2.26,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -1.3947389561508317e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.42,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -1.3947389561508317e-05
+    },
+    {
+      "text": "た",
+      "start": 2.48,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -1.3947389561508317e-05
+    },
+    {
+      "text": "ぞ",
+      "start": 2.62,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -8.4638240878121e-06
+    },
+    {
+      "text": "。",
+      "start": 2.8,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -0.026393335312604904
+    }
+  ],
+  "transcription_id": "8aYB5BYtJVOP5T61egkX",
+  "audio_duration_secs": 3.04
+}

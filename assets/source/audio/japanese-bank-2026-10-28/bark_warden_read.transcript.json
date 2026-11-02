@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "読めました。合図します。",
+  "words": [
+    {
+      "text": "読",
+      "start": 0.3,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.0023310412652790546
+    },
+    {
+      "text": "め",
+      "start": 0.4,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.0012393658980727196
+    },
+    {
+      "text": "ま",
+      "start": 0.48,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "し",
+      "start": 0.62,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "た",
+      "start": 0.76,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "。",
+      "start": 0.84,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -0.000773488252889365
+    },
+    {
+      "text": "合",
+      "start": 1.48,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -1.5735502529423684e-05
+    },
+    {
+      "text": "図",
+      "start": 1.62,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -1.6569954823353328e-05
+    },
+    {
+      "text": "し",
+      "start": 1.74,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "ま",
+      "start": 1.86,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "す",
+      "start": 2.02,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 2.16,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -0.00038378025055862963
+    }
+  ],
+  "transcription_id": "g3eUfae9jKqxPqtdOAE1",
+  "audio_duration_secs": 3.224
+}

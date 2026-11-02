@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9899015426635742,
+  "text": "立ち止まるのはまずいな。",
+  "words": [
+    {
+      "text": "立",
+      "start": 0.1,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -0.00011777184408856556
+    },
+    {
+      "text": "ち",
+      "start": 0.28,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.00011777184408856556
+    },
+    {
+      "text": "止",
+      "start": 0.34,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -5.030505417380482e-05
+    },
+    {
+      "text": "ま",
+      "start": 0.46,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.00019643761334009469
+    },
+    {
+      "text": "る",
+      "start": 0.56,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.00019643761334009469
+    },
+    {
+      "text": "の",
+      "start": 0.66,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -1.883488948806189e-05
+    },
+    {
+      "text": "は",
+      "start": 0.78,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -1.883488948806189e-05
+    },
+    {
+      "text": "ま",
+      "start": 0.9,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -0.0031905481591820717
+    },
+    {
+      "text": "ず",
+      "start": 1.1,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.0031905481591820717
+    },
+    {
+      "text": "い",
+      "start": 1.18,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -6.568216485902667e-05
+    },
+    {
+      "text": "な",
+      "start": 1.32,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -0.00011622230522334576
+    },
+    {
+      "text": "。",
+      "start": 1.46,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -0.0059287878684699535
+    }
+  ],
+  "transcription_id": "wJkhp2v8AbrE4fdORAkn",
+  "audio_duration_secs": 1.76
+}

@@ -187,79 +187,94 @@ final class Buildings {
     }
 
     // ------------------------------------------------------------------ east gate
+    /**
+     * The gatehouse at the Outpost's exit. Two towers stand forward of a recessed curtain wall, so the
+     * left tower shades it and both show their inner sides. Frame 0 is sealed by the Warden's ward;
+     * frames 1..7 part the doors, then lift the portcullis off a dark passage.
+     */
     static Canvas eastGate(int frame) {
-        double opening=Math.max(0,Math.min(7,frame))/7.0;
-        boolean open=frame>0;
+        double opening = Math.max(0, Math.min(7, frame)) / 7.0;
+        boolean open = frame > 0;
         var k = SetPieces.Kind.EAST_GATE;
         Canvas c = new Canvas(k.width, k.anchorY + 4);
         int g = k.anchorY - 1, cx = k.anchorX;
-        int towerW = 68, towerH = 180, wallH = 150, halfWall = 60;
-        Kit.stoneBox(c, cx - halfWall, g, halfWall * 2, 18, wallH, 831, true);
-        merlons(c, cx - halfWall, cx + halfWall, g - wallH - 18, 832);
+        int towerW = 68, recess = 8, foot = g - recess, wallTop = foot - 149, walk = wallTop - 18;
+        int x0 = cx - 128 + towerW + 4, x1 = cx + 128 - towerW - 5;           // curtain face between the towers' side faces
+        int R = 28, spring = foot - 56, archTop = spring - R;
+
+        // curtain wall: face, plinth, wall-walk and its back parapet
+        gateAshlar(c, x0, x1, wallTop, foot - 10, 831, -1);
+        gateAshlar(c, x0, x1, foot - 8, foot, 838, -1);
+        c.hline(x0, x1, foot - 9, Pal.STONE[5]);
+        gateFlags(c, x0, x1, walk, wallTop - 3, 832);
+        c.hline(x0, x1, wallTop - 2, Pal.STONE[6]); c.hline(x0, x1, wallTop - 1, Pal.STONE[4]);   // coping lip
+        gateBattlement(c, x0, x1, walk, 833);
+        for (int x = x0; x <= x1; x++) for (int d = 0; d < 4; d++) gateShade(c, x, wallTop + d, d < 2 ? -2 : -1);
+        gateArch(c, cx, spring, foot, R);
+
         for (int side : new int[]{-1, 1}) {
-            int tx = side < 0 ? cx - halfWall - towerW : cx + halfWall;
-            Kit.stoneBox(c, tx, g, towerW, 22, towerH, 833 + side, true);
-            merlons(c, tx, tx + towerW, g - towerH - 22, 835 + side);
-            for (int s = 0; s < 2; s++) {                                     // arrow slits
-                int sx = tx + towerW / 2 - 1, sy = g - 150 + s * 56;
-                for (int y = 0; y < 16; y++) { c.set(sx, sy + y, Pal.INK); c.set(sx + 1, sy + y, Pal.INK); c.set(sx + 2, sy + y, Pal.STONE[0]); }
-                c.hline(sx - 2, sx + 4, sy + 16, Pal.STONE[6]);
-            }
-            int bx = tx + (side < 0 ? 10 : towerW - 30), by = g - towerH + 14;       // a long banner on each tower
-            for (int y = 0; y < 76; y++) for (int x = 0; x < 20; x++) {
-                if (y > 66 && (x + y) % 3 == 0) continue;
-                int colour = x <= 1 || x >= 18 ? Pal.GOLD[1] : x < 8 ? Pal.CRIMSON[3] : Pal.CRIMSON[2];
-                int sxs = x - 10, sys = y - 30;
-                double d = Math.hypot(sxs, sys);
-                if (d <= 6 && (sxs == 0 || sys == 0 || Math.abs(sxs) == Math.abs(sys) || d <= 2.5)) colour = d <= 1.6 ? Pal.GOLD[4] : Pal.GOLD[2];
-                c.set(bx + x, by + y, colour);
-            }
-            for (int x = bx - 2; x < bx + 22; x++) { c.set(x, by - 2, Pal.IRON[4]); c.set(x, by - 1, Pal.IRON[2]); }
-            sconce(c, side < 0 ? cx - 44 : cx + 40, g - 96);
-            for (int s = 0; s < 3; s++) {                                      // ivy up the tower foot
-                int ix = tx + 6 + s * 9 + (side > 0 ? 30 : 0), len = 30 + s * 24;
-                for (int y = 0; y < len; y++) c.tint(ix + (y / 5 % 2), g - 2 - y, y % 3 == 0 ? Pal.GRASS[3] : Pal.GRASS[2]);
-            }
+            int tx = side < 0 ? cx - 128 : cx + 128 - towerW;
+            boolean[] joints = gateTower(c, tx, towerW, g, spring - 3, side, 834 + side);
+            gateSideFace(c, side < 0 ? tx + towerW : tx - 1, g, spring - 3, joints, side);
         }
-        // the arch: a ring of wedge stones round the opening
-        int archW = 28, spring = g - 56, archTop = spring - archW;
-        for (int y = archTop - 7; y <= g; y++) for (int x = cx - archW - 7; x <= cx + archW + 7; x++) {
+
+        // weather: rain runs off the lip, grime climbs from the ground, moss holds the joints
+        for (int s = 0; s < 16; s++) {
+            int sx = x0 + 3 + (int) (Noise.rnd(s, 1, 839) * (x1 - x0 - 6));
+            if (Math.abs(sx - cx) < R + 12 && Noise.rnd(s, 2, 839) < .6) continue;
+            gateStreak(c, sx, wallTop + 2, 10 + (int) (Noise.rnd(s, 3, 839) * 46));
+        }
+        gateGrime(c, x0, x1, foot, 840);
+        gateLedgeMoss(c, x0, x1, foot - 9, 841);
+        gateLedgeMoss(c, x0, x1, wallTop - 2, 842);
+        gateJointMoss(c, x0, x1, foot - 26, foot, 843);
+        for (int[] v : new int[][]{{x0 + 7, 22}, {x0 + 19, 38}, {cx + 43, 30}, {x1 - 6, 16}}) gateVine(c, v[0], wallTop, v[1], v[0]);
+        for (int y = walk - 12; y <= foot; y++) for (int x = x0; x < x0 + 8; x++) gateShade(c, x, y, x < x0 + 4 ? -2 : -1);   // left tower's shadow
+        for (int y = walk; y <= foot; y++) gateShade(c, x1, y, -1);
+
+        // torches either side of the arch, their light stepped into the stone
+        for (int side : new int[]{-1, 1}) {
+            int tx = cx + side * 44, ty = spring - 26;
+            gateWarmth(c, tx, ty - 8, x0 - 4, x1 + 4);
+            gateTorch(c, tx, ty);
+        }
+
+        // the opening: doors, portcullis, and the passage behind them
+        int doorWidth = (int) Math.round(R * (1 - opening * .88));
+        int lift = (int) Math.round(Math.max(0, (opening - .15) / .85) * 80);
+        int bottom = foot - lift;
+        for (int y = archTop; y <= foot; y++) for (int x = cx - R; x <= cx + R; x++) {
             double r = y < spring ? Math.hypot(x + .5 - cx, y + .5 - spring) : Math.abs(x + .5 - cx);
-            if (r <= archW) c.set(x, y, open ? 0 : Pal.INK);
-            else if (r <= archW + 7) {
-                double a = Math.atan2(y + .5 - spring, x + .5 - cx);
-                int wedge = (int) Math.floor((a + Math.PI) / (Math.PI / 11));
-                c.set(x, y, r > archW + 6 ? Pal.STONE[1] : r < archW + 1 ? Pal.STONE[2] : wedge % 2 == 0 ? Pal.STONE[5] : Pal.STONE[4]);
+            if (r > R) continue;
+            int depth = foot - y, side = Math.abs(x - cx);
+            int colour = Pal.INK;
+            if (side >= R - 3 && depth < 64) colour = depth % 9 == 8 ? Pal.INK : depth < 24 ? Pal.STONE[1] : Pal.STONE[0];   // passage walls
+            if (depth < 40 && side < 24 - depth / 2) {                                         // the road runs on into the dark
+                colour = depth < 12 ? Pal.MUD[3] : depth < 26 ? Pal.MUD[2] : Pal.MUD[1];
+                if (depth == 12 || depth == 26) colour = Pal.MUD[1];
             }
+            if (depth <= 1) colour = depth == 1 ? Pal.STONE[5] : Pal.STONE[3];                 // threshold
+            if (side > R - doorWidth) {
+                int u = (R - side) * R / Math.max(1, doorWidth), plank = u % 7;
+                colour = plank == 0 ? Pal.WOOD[0] : plank == 1 ? Pal.WOOD[4] : plank == 6 ? Pal.WOOD[1] : u / 7 % 2 == 0 ? Pal.WOOD[3] : Pal.WOOD[2];
+                if (Noise.rnd(x, y / 3, 851) < .07) colour = Pal.shift(colour, -1);
+                for (int band : new int[]{10, 36, 62}) if (depth >= band && depth <= band + 2) {
+                    colour = depth == band + 2 ? Pal.IRON[3] : depth == band + 1 ? Pal.IRON[2] : Pal.IRON[1];
+                    if (depth == band + 1 && Math.floorMod(R - side, 5) == 2) colour = Pal.IRON[5];
+                }
+                if (open) colour = Pal.shift(colour, -1);                                     // leaves turned from the light
+            }
+            if (y <= bottom) {
+                int bar = Math.floorMod(x - cx, 7);
+                boolean cross = y < bottom - 3 && Math.floorMod(y + lift - archTop, 17) < 2;
+                if (bar < 2 && (y < bottom - 1 || bar == 0)) colour = y >= bottom - 1 ? Pal.IRON[3] : bar == 0 ? Pal.IRON[4] : Pal.IRON[1];
+                if (cross) colour = bar == 0 ? Pal.IRON[5] : Math.floorMod(y + lift - archTop, 17) == 0 ? Pal.IRON[3] : Pal.IRON[1];
+            }
+            c.set(x, y, colour);
         }
-        c.rect(cx - 5, archTop - 9, 10, 11, Pal.STONE[6]); c.rect(cx - 3, archTop - 6, 6, 5, Pal.CYAN[1]);
-        c.set(cx, archTop - 4, Pal.CYAN[open ? 1 : 4]);
-        int doorWidth=(int)Math.round(archW*(1-opening*.88));
-        int lift=(int)Math.round(Math.max(0,(opening-.15)/.85)*80);
-        for(int y=archTop;y<=g;y++)for(int x=cx-archW;x<=cx+archW;x++) {
-            double r=y<spring?Math.hypot(x+.5-cx,y+.5-spring):Math.abs(x+.5-cx);
-            if(r>archW)continue;
-            int depth=g-y,side=Math.abs(x-cx);
-            int colour=Pal.INK;
-            if(depth<40&&side<24-depth/2) {
-                colour=depth<12?Pal.MUD[3]:Pal.MUD[2];
-                if(depth==12||depth==26)colour=Pal.MUD[1];
-            }
-            if(side>archW-doorWidth) {
-                int plank=(int)((archW-side)*archW/Math.max(1,doorWidth))%7;
-                colour=plank==0?Pal.WOOD[0]:plank==1?Pal.WOOD[4]:plank==6?Pal.WOOD[1]:Pal.WOOD[2];
-                int band=g-y;
-                if(band>=10&&band<=12||band>=36&&band<=38||band>=62&&band<=64)
-                    colour=band%2==0?Pal.IRON[3]:Pal.IRON[1];
-            }
-            // The portcullis lifts after the doors separate, leaving a dark passage and road.
-            int bottom=g-lift;
-            if(y<=bottom&&Math.floorMod(x-cx,7)<2)colour=Math.floorMod(x-cx,7)==0?Pal.IRON[4]:Pal.IRON[1];
-            if(y<bottom-3&&Math.floorMod(y+lift-archTop,17)<2)colour=Pal.IRON[2];
-            c.set(x,y,colour);
-        }
+        gateKeystone(c, cx, archTop, open);
         if (!open) {                                       // the Warden's ward: a diamond eye across the seam
-            int sy = g - 44;
+            int sy = foot - 44;
             for (int y = -11; y <= 11; y++) for (int x = -14; x <= 14; x++) {
                 int d = Math.abs(x) + Math.abs(y) * 14 / 11;
                 if (d == 14 || d == 13) c.set(cx + x, sy + y, Pal.CYAN[4]);
@@ -271,6 +286,7 @@ final class Buildings {
         c.blit(Decals.RUBBLE.art(), cx - 100, g - Decals.RUBBLE.art().h + 3);
         c.blit(Decals.TUFT_C.art(), cx + 74, g - Decals.TUFT_C.art().h + 3);
         c.blit(Decals.BOULDER.art(), cx + 104, g - Decals.BOULDER.art().h + 3);
+        c.blit(Decals.ROCK_S.art(), x0 + 2, foot - Decals.ROCK_S.art().h + 4);
         c.selectiveOutline();
         return c;
     }
@@ -281,11 +297,398 @@ final class Buildings {
                 c.set(x + dx, y, y == topY - 11 ? Pal.STONE[6] : y == topY - 10 ? Pal.STONE[5] : dx == 0 ? Pal.STONE[5] : dx == 8 ? Pal.STONE[3] : Pal.STONE[4]);
         }
     }
-    private static void sconce(Canvas c, int x, int y) {
-        Canvas s = Decals.ascii("..E..", ".EWQ.", "QWWWQ", ".QWQ.", "..Q..", "..Q..");
-        c.blit(s, x - 2, y);
-        c.set(x, y - 1, Pal.FIRE[3]); c.set(x - 1, y - 2, Pal.FIRE[3]); c.set(x, y - 2, Pal.FIRE[4]); c.set(x + 1, y - 2, Pal.FIRE[2]);
-        c.set(x, y - 3, Pal.FIRE[5]); c.set(x, y - 4, Pal.FIRE[4]); c.set(x - 1, y - 5, Pal.FIRE[3]);
+    private static boolean gateStone(int colour) {
+        for (int s : Pal.STONE) if (s == colour) return true;
+        return false;
+    }
+    /** Darkens (or lightens) a stone pixel by whole ramp steps; anything else is left alone. */
+    private static void gateShade(Canvas c, int x, int y, int steps) {
+        int colour = c.get(x, y);
+        if (gateStone(colour)) c.set(x, y, Pal.shift(colour, steps));
+    }
+
+    /**
+     * Gate-only ashlar: courses of uneven height, blocks of uneven length (some big), each bevelled
+     * toward the moonlight, with chipped arrises, weathered patches and a few hairline cracks.
+     * Returns which rows are course joints, so quoins and side faces can follow the coursing.
+     */
+    private static boolean[] gateAshlar(Canvas c, int x0, int x1, int top, int bottom, int seed, int bias) {
+        boolean[] joints = new boolean[c.h + 1];
+        int y = bottom;
+        for (int course = 0; y >= top; course++) {
+            int ch = 8 + (int) (Noise.rnd(course, 0, seed) * 4), courseTop = y - ch + 1;
+            if (y >= 0 && y < joints.length) joints[y] = true;
+            int x = x0 - (int) (Noise.rnd(course, 1, seed) * 14);
+            for (int block = 0; x <= x1; block++) {
+                int bw = 9 + (int) (Noise.rnd(course, block + 2, seed) * 14);
+                if (Noise.rnd(course, block + 40, seed) < .12) bw += 8;                     // the odd big stone
+                double r = Noise.rnd(course * 31 + block, 3, seed);
+                int t = Math.max(2, Math.min(5, (r < .22 ? 3 : r > .9 ? 5 : 4) + bias));
+                boolean chipTop = Noise.rnd(course, block, seed + 1) < .3, chipFoot = Noise.rnd(course, block, seed + 2) < .2;
+                for (int py = Math.max(top, courseTop); py <= y; py++) for (int px = Math.max(x, x0); px < Math.min(x + bw, x1 + 1); px++) {
+                    int lx = px - x, ly = py - courseTop, tone;
+                    if (py == y || lx == 0) tone = 1;
+                    else if (chipTop && lx >= bw - 3 && ly <= 1 && lx + ly >= bw - 2) tone = 1;   // a bitten corner
+                    else if (chipFoot && lx <= 3 && py == y - 1) tone = t - 2;
+                    else if (ly == 0 || lx == 1) tone = t + 1;
+                    else if (py == y - 1 || lx == bw - 1) tone = t - 1;
+                    else {
+                        double n = Noise.value(px, py, 4, seed + 9);
+                        tone = n > .76 ? t + 1 : n < .2 ? t - 1 : t;
+                        if (Noise.rnd(px, py, seed + 5) < .006) tone = t - 1;              // pitting
+                    }
+                    c.set(px, py, Pal.STONE[Math.max(1, Math.min(7, tone))]);
+                }
+                x += bw;
+            }
+            y -= ch;
+        }
+        for (int s = 0; s < (x1 - x0) / 30 + 1; s++) {                                   // hairline cracks
+            int cx = x0 + 4 + (int) (Noise.rnd(s, 7, seed) * Math.max(1, x1 - x0 - 8));
+            int cy = top + 6 + (int) (Noise.rnd(s, 8, seed) * Math.max(1, bottom - top - 30));
+            int len = 8 + (int) (Noise.rnd(s, 9, seed) * 16);
+            for (int i = 0; i < len && cy <= bottom - 2; i++) {
+                if (!gateStone(c.get(cx, cy))) break;
+                c.set(cx, cy, Pal.STONE[1]);
+                int lip = c.get(cx + 1, cy);
+                if (gateStone(lip) && lip != Pal.STONE[1]) c.set(cx + 1, cy, Pal.shift(lip, 1));
+                double step = Noise.rnd(s * 50 + i, 10, seed);
+                if (step < .3) cx--; else if (step > .72) cx++;
+                cy++;
+            }
+        }
+        return joints;
+    }
+
+    /** A top face seen from above: flagstones in rows, joints holding moss that thickens at the back. */
+    private static void gateFlags(Canvas c, int x0, int x1, int y0, int y1, int seed) {
+        for (int y = y0; y <= y1; y++) {
+            int row = (y - y0) / 5, inRow = (y - y0) % 5;
+            int x = x0 - (int) (Noise.rnd(row, 0, seed) * 12);
+            for (int slab = 0; x <= x1; slab++) {
+                int sw = 8 + (int) (Noise.rnd(row, slab + 1, seed) * 9);
+                int tone = Noise.rnd(row * 17 + slab, 2, seed) < .3 ? 4 : Noise.rnd(row * 17 + slab, 3, seed) < .15 ? 6 : 5;
+                for (int px = Math.max(x, x0); px < Math.min(x + sw, x1 + 1); px++) {
+                    int lx = px - x;
+                    int colour = inRow == 4 || lx == 0 ? Pal.STONE[3] : inRow == 0 || lx == 1 ? Pal.STONE[Math.min(6, tone + 1)] : Pal.STONE[tone];
+                    c.set(px, y, colour);
+                }
+                x += sw;
+            }
+        }
+        boolean[] grow = new boolean[(x1 - x0 + 1) * (y1 - y0 + 1)];
+        for (int y = y0; y <= y1; y++) for (int x = x0; x <= x1; x++) {
+            boolean joint = c.get(x, y) == Pal.STONE[3];
+            double n = Noise.fbm(x, y * 1.7, 6, 2, seed + 4), need = y - y0 < 3 ? .45 : joint ? .56 : .7;
+            grow[(y - y0) * (x1 - x0 + 1) + (x - x0)] = n > need;
+        }
+        for (int y = y0; y <= y1; y++) for (int x = x0; x <= x1; x++) {                   // moss cushions: lit crowns, dark undersides
+            int w = x1 - x0 + 1, i = (y - y0) * w + (x - x0);
+            if (!grow[i]) continue;
+            boolean above = y > y0 && grow[i - w], below = y < y1 && grow[i + w];
+            c.set(x, y, !above ? Pal.GRASS[4] : !below ? Pal.GRASS[2] : Pal.GRASS[3]);
+        }
+    }
+
+    /** Back parapet of a wall-walk: a low wall, merlons with lit caps, each throwing its shadow forward. */
+    private static void gateBattlement(Canvas c, int x0, int x1, int floorY, int seed) {
+        for (int x = x0; x <= x1; x++) {
+            c.set(x, floorY - 3, Pal.STONE[6]); c.set(x, floorY - 2, Pal.STONE[4]); c.set(x, floorY - 1, Pal.STONE[3]);
+            gateShade(c, x, floorY, -1);
+        }
+        for (int x = x0 + 2, m = 0; x + 8 <= x1; x += 14, m++) {
+            boolean broken = Noise.rnd(m, 1, seed) < .18;
+            for (int dx = 0; dx < 9; dx++) {
+                int top = floorY - 12 + (broken && dx > 4 ? 3 + (dx - 4) / 2 : 0);
+                for (int y = top; y < floorY - 3; y++) {
+                    int ly = y - top;
+                    int colour = ly == 0 ? Pal.STONE[6] : ly == 1 ? Pal.STONE[5] : dx == 0 ? Pal.STONE[5] : dx == 8 ? Pal.STONE[2]
+                            : y == floorY - 7 ? Pal.STONE[2] : Pal.STONE[4];
+                    c.set(x + dx, y, colour);
+                }
+            }
+            for (int d = 0; d < 3; d++) for (int dx = 2 + d; dx < 11 + d; dx++) gateShade(c, x + dx, floorY + d, -1);
+        }
+    }
+
+    /** Voussoir ring round a deep reveal whose inner faces sit in shadow, on block-and-start jambs and moulded imposts. */
+    private static void gateArch(Canvas c, int cx, int spring, int foot, int R) {
+        int ring = R + 11;
+        for (int y = spring - ring - 1; y <= foot; y++) for (int x = cx - R - 16; x <= cx + R + 16; x++) {
+            double dx = x + .5 - cx, dy = y + .5 - spring;
+            boolean above = y < spring;
+            double r = above ? Math.hypot(dx, dy) : Math.abs(dx);
+            if (r <= R) continue;
+            double u = (Math.atan2(dy, dx) + Math.PI) / (Math.PI / 15), f = u - Math.floor(u);
+            boolean radial = above && f * Math.PI / 15 * r < 1;
+            int colour;
+            if (r <= R + 4) {                                                       // the reveal: the wall's thickness
+                if (above) colour = r <= R + 1 || radial ? Pal.STONE[0] : dx > R * .45 ? Pal.STONE[2] : Pal.STONE[1];
+                else {
+                    boolean joint = (y - spring) % 9 == 8;
+                    colour = dx < 0 ? (joint || r <= R + 1 ? Pal.STONE[0] : Pal.STONE[1]) : joint ? Pal.STONE[1] : r <= R + 1 ? Pal.STONE[2] : Pal.STONE[3];
+                }
+            } else if (above && r <= ring) {                                        // voussoirs, each bevelled to the light
+                if (radial || r > ring - 1) colour = Pal.STONE[1];
+                else {
+                    int t = Noise.rnd((int) Math.floor(u), 0, 861) < .35 ? 5 : 4;
+                    if (f * Math.PI / 15 * r < 2 || r <= R + 5) t++;
+                    else if ((1 - f) * Math.PI / 15 * r < 2 || r > ring - 2) t--;
+                    colour = Pal.STONE[t];
+                }
+            } else if (!above && r <= ring + ((y - spring) / 9 % 2 == 0 ? 4 : 0)) {  // jambs: long and short stones
+                int inCourse = (y - spring) % 9, outer = ring + ((y - spring) / 9 % 2 == 0 ? 4 : 0);
+                if (inCourse == 8 || r > outer - 1) colour = Pal.STONE[1];
+                else {
+                    int t = (y - spring) / 9 % 2 == 0 ? 5 : 4;
+                    if (inCourse == 0 || r <= R + 5) t++;
+                    else if (inCourse == 7 || r > outer - 2) t--;
+                    colour = Pal.STONE[t];
+                }
+            } else continue;
+            c.set(x, y, colour);
+        }
+        for (int s : new int[]{-1, 1}) for (int i = R + 3; i <= ring + 5; i++) {    // imposts at the springing
+            int x = s < 0 ? cx - 1 - i : cx + i;
+            c.set(x, spring - 3, Pal.STONE[6]); c.set(x, spring - 2, Pal.STONE[5]); c.set(x, spring - 1, Pal.STONE[2]);
+            gateShade(c, x, spring, -1);
+        }
+    }
+
+    /** The keystone stands proud of the ring and holds the ward's gem, lit while the gate is sealed. */
+    private static void gateKeystone(Canvas c, int cx, int archTop, boolean open) {
+        int top = archTop - 17, bottom = archTop - 1;
+        for (int y = top - 1; y <= bottom; y++) {
+            int half = 8 - Math.max(0, y - top) * 4 / (bottom - top);
+            for (int x = cx - half - 1; x <= cx + half; x++) {
+                int colour = y == top - 1 || x == cx - half - 1 || x == cx + half ? Pal.STONE[1]
+                        : y == top ? Pal.STONE[7] : y == bottom ? Pal.STONE[2] : x == cx - half ? Pal.STONE[6] : x == cx + half - 1 ? Pal.STONE[3] : Pal.STONE[5];
+                c.set(x, y, colour);
+            }
+        }
+        int gy = archTop - 8;
+        for (int y = gy - 3; y <= gy + 3; y++) for (int x = cx - 4; x <= cx + 3; x++) c.set(x, y, y == gy - 3 ? Pal.STONE[2] : Pal.STONE[3]);
+        for (int y = gy - 2; y <= gy + 2; y++) for (int x = cx - 3; x <= cx + 2; x++) {
+            double d = Math.abs(x + .5 - cx) + Math.abs(y - gy);
+            if (d > 2.5) continue;
+            c.set(x, y, d >= 2 ? Pal.CYAN[open ? 0 : 2] : d >= 1 ? Pal.CYAN[open ? 1 : 3] : Pal.CYAN[open ? 1 : 5]);
+        }
+    }
+
+    /** A flanking tower: battered foot, quoined corners, string course, banner and slits under a machicolated crown. */
+    private static boolean[] gateTower(Canvas c, int tx, int tw, int g, int stringY, int side, int seed) {
+        int t1 = tx + tw - 1, crown = g - 179;                                       // crown: first row of the corbel band
+        boolean[] joints = gateAshlar(c, tx, t1, crown + 6, g - 15, seed, 0);
+        boolean[] talus = gateAshlar(c, tx - 3, t1 + 3, g - 13, g, seed + 3, 1);    // battered foot flares outward
+        for (int y = g - 13; y <= g; y++) {
+            int flare = (y - (g - 13)) / 5;
+            for (int x = tx - 3; x <= t1 + 3; x++) if (side < 0 ? x < tx - flare || x > t1 : x > t1 + flare || x < tx) c.clear(x, y);
+            joints[y] = talus[y];
+        }
+        for (int x = tx - 1; x <= t1 + 1; x++) { c.set(x, g - 14, Pal.STONE[6]); gateShade(c, x, g - 13, 1); }
+        java.util.List<Integer> rows = new java.util.ArrayList<>();                   // quoins follow the coursing
+        for (int y = g - 15; y >= crown + 6; y--) if (joints[y]) rows.add(y);
+        rows.add(crown + 5);
+        for (int q = 0; q + 1 < rows.size(); q++) {
+            int jb = rows.get(q), jt = rows.get(q + 1);
+            for (int corner = 0; corner < 2; corner++) {
+                int len = (q + corner) % 2 == 0 ? 13 : 7, qx0 = corner == 0 ? tx : t1 - len + 1, qx1 = corner == 0 ? tx + len - 1 : t1;
+                for (int y = jt + 1; y < jb; y++) for (int x = qx0; x <= qx1; x++) {
+                    int colour = (corner == 0 ? x == qx1 : x == qx0) ? Pal.STONE[1] : y == jt + 1 ? Pal.STONE[6] : y == jb - 1 ? Pal.STONE[3]
+                            : (corner == 0 ? x == qx0 : x == qx0 + 1) ? Pal.STONE[6] : x == qx1 && corner == 1 ? Pal.STONE[4]
+                            : Noise.value(x, y, 3, seed + 6) > .74 ? Pal.STONE[6] : Pal.STONE[5];
+                    c.set(x, y, colour);
+                }
+            }
+        }
+        for (int x = tx - 1; x <= t1 + 1; x++) {                                       // string course at the springing line
+            c.set(x, stringY, Pal.STONE[6]); c.set(x, stringY + 1, Pal.STONE[5]); c.set(x, stringY + 2, Pal.STONE[2]);
+            gateShade(c, x, stringY + 3, -1);
+        }
+        // crown: corbels carry a projecting parapet; behind it the roof, merlons at the back
+        for (int x = tx; x <= t1; x++) for (int y = crown; y < crown + 6; y++) c.set(x, y, y < crown + 3 ? Pal.INK : Pal.STONE[0]);
+        String[] corbel = {"66553", "54442", "54332", ".543.", ".432.", ".321."};
+        for (int x = tx + 1; x + 4 <= t1; x += 8) for (int r = 0; r < 6; r++) for (int i = 0; i < 5; i++)
+            if (corbel[r].charAt(i) != '.') c.set(x + i, crown + r, Pal.STONE[corbel[r].charAt(i) - '0']);
+        for (int x = tx; x <= t1; x++) for (int d = 0; d < 3; d++) gateShade(c, x, crown + 6 + d, d < 2 ? -2 : -1);
+        for (int x = tx - 2, b = 0; x <= t1 + 2; b++) {                              // parapet: one course of big blocks
+            int bw = 11 + (int) (Noise.rnd(b, 1, seed + 4) * 6), t = Noise.rnd(b, 2, seed + 4) < .3 ? 3 : 4;
+            for (int px = x; px < Math.min(x + bw, t1 + 3); px++) for (int y = crown - 10; y < crown; y++) {
+                int colour = y == crown - 1 || px == x ? Pal.STONE[1] : y == crown - 10 || px == x + 1 ? Pal.STONE[t + 1] : y == crown - 2 || px == x + bw - 1 ? Pal.STONE[t - 1] : Pal.STONE[t];
+                c.set(px, y, colour);
+            }
+            x += bw;
+        }
+        for (int x = tx - 2; x <= t1 + 2; x++) { c.set(x, crown - 13, Pal.STONE[6]); c.set(x, crown - 12, Pal.STONE[5]); c.set(x, crown - 11, Pal.STONE[4]); }
+        gateFlags(c, tx + 1, t1 - 1, crown - 22, crown - 14, seed + 6);
+        for (int y = crown - 25; y <= crown - 14; y++) {
+            c.set(tx - 2, y, Pal.STONE[5]); c.set(tx - 1, y, Pal.STONE[6]); c.set(tx, y, Pal.STONE[3]);
+            c.set(t1, y, Pal.STONE[5]); c.set(t1 + 1, y, Pal.STONE[6]); c.set(t1 + 2, y, Pal.STONE[4]);
+            if (y >= crown - 22) { gateShade(c, tx + 1, y, -2); gateShade(c, tx + 2, y, -1); }
+        }
+        gateBattlement(c, tx - 2, t1 + 2, crown - 22, seed + 7);
+        gateLedgeMoss(c, tx - 2, t1 + 2, crown - 13, seed + 8);
+
+        int mid = tx + tw / 2 - 1, bannerX = tx + (side < 0 ? 10 : tw - 30);
+        for (int s = 0; s < 2; s++) gateSlit(c, mid, g - 149 + s * 56);
+        for (int s = 0; s < 6; s++) {                                                  // rain off the machicolations
+            int sx = tx + 6 + (int) (Noise.rnd(s, 1, seed + 9) * (tw - 12));
+            if (sx >= bannerX - 2 && sx < bannerX + 22) continue;
+            gateStreak(c, sx, crown + 6, 12 + (int) (Noise.rnd(s, 2, seed + 9) * 60));
+        }
+        gateGrime(c, tx - 3, t1 + 3, g, seed + 10);
+        gateLedgeMoss(c, tx - 1, t1 + 1, stringY, seed + 11);
+        gateLedgeMoss(c, tx - 1, t1 + 1, g - 14, seed + 12);
+        gateJointMoss(c, tx - 3, t1 + 3, g - 34, g, seed + 13);
+        gateBanner(c, bannerX, crown + 14);
+        for (int[] v : side < 0 ? new int[][]{{tx + 4, 46}, {t1 - 7, 24}} : new int[][]{{tx + 6, 30}, {t1 - 3, 58}}) gateVine(c, v[0], crown + 4, v[1], v[0] + seed);
+        gateIvy(c, side < 0 ? tx + 12 : t1 - 22, g, seed + 14);
+        return joints;
+    }
+
+    /** The tower's inner side face, seen past its corner: four columns stepping back to the recessed wall. */
+    private static void gateSideFace(Canvas c, int edgeX, int g, int stringY, boolean[] joints, int side) {
+        boolean lit = side > 0;                                                         // the right tower's side faces the moon
+        int crown = g - 179;
+        for (int i = 0; i < 4; i++) {
+            int x = edgeX - side * i, rise = 2 * (i + 1), bottom = g - rise;
+            for (int y = crown; y <= bottom; y++) {
+                int sy = y + rise, colour;
+                if (y < crown + 6) colour = Pal.STONE[0];
+                else if (sy >= stringY && sy <= stringY + 2) colour = Pal.STONE[(lit ? 6 : 3) - (sy - stringY)];
+                else if (sy < joints.length && joints[sy]) colour = Pal.STONE[lit ? 3 : 1];
+                else colour = Pal.STONE[(lit ? 5 : 2) + (i == 0 ? 1 : 0) + (sy > g - 14 ? 1 : 0)];
+                if (sy > g - 18 && y > crown + 6) colour = Pal.shift(colour, -1);
+                c.set(x, y, colour);
+            }
+            for (int d = 0; d < 3; d++) gateShade(c, x, crown + 6 + d, -1);
+        }
+    }
+
+    /** A cross-loop in a dressed surround; its sill sheds a rain streak down the tower. */
+    private static void gateSlit(Canvas c, int x, int y) {
+        for (int dy = -1; dy <= 16; dy++) { c.set(x - 1, y + dy, Pal.STONE[3]); c.set(x + 3, y + dy, Pal.STONE[5]); }
+        c.hline(x - 1, x + 3, y - 2, Pal.STONE[5]);
+        for (int dy = 0; dy < 16; dy++) { c.set(x, y + dy, Pal.INK); c.set(x + 1, y + dy, Pal.INK); c.set(x + 2, y + dy, Pal.STONE[0]); }
+        for (int dx = -3; dx <= 5; dx++) if (dx < 0 || dx > 2) c.set(x + dx, y + 5, dx > 2 ? Pal.STONE[0] : Pal.INK);
+        c.hline(x - 2, x + 4, y + 16, Pal.STONE[6]); c.hline(x - 2, x + 4, y + 17, Pal.STONE[3]);
+        gateStreak(c, x + 1, y + 18, 16);
+    }
+
+    /** A long banner on an iron rod: soft folds catch the moon, the sun device bends with them, and it shades the wall. */
+    private static void gateBanner(Canvas c, int bx, int by) {
+        int w = 20, h = 76;
+        int[] cloth = new int[w * h];
+        for (int y = 0; y < h; y++) for (int x = 0; x < w; x++) {
+            double fold = Math.cos((x + .5 - 3) * 2 * Math.PI / (6.2 + y * .02) + .7 * Math.sin(x * .33) - y * .012) + (w / 2.0 - x) * .05;
+            int hem = h - 1 - (int) Math.max(0, 8 - Math.abs(x + .5 - w / 2.0) * 1.5) + (fold > .5 ? 1 : 0);   // swallowtail
+            if (y > hem) continue;
+            int shade = fold > .55 ? 4 : fold > -.2 ? 3 : fold > -.75 ? 2 : 1;
+            int colour = x <= 1 || x >= w - 2 || y <= 2 || y >= hem - 2 ? Pal.GOLD[shade - 1] : Pal.CRIMSON[shade];
+            int sx = x - 10, sy = y - 30;
+            double d = Math.hypot(sx, sy);
+            if (d <= 6 && (sx == 0 || sy == 0 || Math.abs(sx) == Math.abs(sy) || d <= 2.5)) colour = d <= 1.6 ? Pal.GOLD[4] : Pal.GOLD[Math.max(1, shade - 1)];
+            cloth[y * w + x] = colour;
+        }
+        for (int y = 0; y < h + 2; y++) for (int x = 0; x < w + 2; x++) {             // its shadow, down and right
+            boolean over = x < w && y < h && cloth[y * w + x] != 0, caster = x >= 2 && y >= 2 && x - 2 < w && y - 2 < h && cloth[(y - 2) * w + x - 2] != 0;
+            if (caster && !over) gateShade(c, bx + x, by + y, -2);
+        }
+        for (int i = 0; i < cloth.length; i++) if (cloth[i] != 0) c.set(bx + i % w, by + i / w, cloth[i]);
+        for (int x = bx - 2; x < bx + w + 2; x++) { c.set(x, by - 2, Pal.IRON[4]); c.set(x, by - 1, Pal.IRON[2]); }
+        c.set(bx - 3, by - 2, Pal.IRON[5]); c.set(bx - 3, by - 1, Pal.IRON[3]); c.set(bx + w + 2, by - 2, Pal.IRON[4]); c.set(bx + w + 2, by - 1, Pal.IRON[1]);
+    }
+
+    /** Rain runs down from a ledge: a dark wet line that breaks up toward its end. */
+    private static void gateStreak(Canvas c, int x, int y, int len) {
+        for (int i = 0; i < len; i++) if (i < len * 2 / 3 || i % 3 != 2) gateShade(c, x, y + i, -1);
+    }
+
+    /** Splash-back grime: a ragged dark band up from the ground, darkest at the foot. */
+    private static void gateGrime(Canvas c, int x0, int x1, int foot, int seed) {
+        for (int x = x0; x <= x1; x++) {
+            int h = 6 + (int) (Noise.value(x, 0, 6, seed) * 12);
+            for (int y = foot - h; y <= foot; y++) gateShade(c, x, y, y > foot - 3 ? -2 : -1);
+        }
+    }
+
+    /** Moss cushions along a ledge where rain sits, a few strands dripping over its edge. */
+    private static void gateLedgeMoss(Canvas c, int x0, int x1, int y, int seed) {
+        for (int x = x0; x <= x1; x++) {
+            double n = Noise.fbm(x, y, 5, 2, seed);
+            if (n < .52 || !c.opaque(x, y)) continue;
+            c.set(x, y, n > .62 ? Pal.GRASS[4] : Pal.GRASS[3]);
+            if (n > .58) c.tint(x, y + 1, Pal.GRASS[2]);
+            if (n > .66 && Noise.rnd(x, y, seed) < .6) for (int d = 2; d < 2 + (int) (Noise.rnd(x, 1, seed) * 5); d++) c.tint(x, y + d, Pal.GRASS[1]);
+            if (n > .7) c.tint(x, y - 1, Pal.GRASS[3]);
+        }
+    }
+
+    /** Moss filling the mortar near the ground, creeping onto the stone above. */
+    private static void gateJointMoss(Canvas c, int x0, int x1, int y0, int y1, int seed) {
+        for (int y = y0; y <= y1; y++) for (int x = x0; x <= x1; x++) {
+            int colour = c.get(x, y);
+            if (colour != Pal.STONE[1] && colour != Pal.STONE[0]) continue;
+            double n = Noise.fbm(x, y, 6, 2, seed) + (y - y0) / (double) Math.max(1, y1 - y0) * .18;
+            if (n > .62) { c.set(x, y, Pal.GRASS[1]); if (n > .7) c.tint(x, y - 1, Pal.GRASS[2]); }
+        }
+    }
+
+    /** A vine hanging from the battlements, leaves in pairs that alternate sides. */
+    private static void gateVine(Canvas c, int x, int y, int len, int seed) {
+        for (int i = 0; i < len; i++) {
+            int vx = x + (int) Math.round(Math.sin(i * .17 + seed) * 1.4), vy = y + i;
+            c.tint(vx, vy, Pal.GRASS[1]);
+            if (i % 4 == 1 && i < len - 1) {
+                int dir = i / 4 % 2 == 0 ? -1 : 1;
+                c.tint(vx + dir, vy, Pal.GRASS[3]); c.tint(vx + dir * 2, vy, Pal.GRASS[2]);
+                c.tint(vx + dir, vy - 1, Pal.GRASS[4]); c.tint(vx + dir, vy + 1, Pal.GRASS[2]);
+            }
+        }
+    }
+
+    /** Ivy climbing from the ground: three stems, leaves thinning as they rise. */
+    private static void gateIvy(Canvas c, int x, int g, int seed) {
+        for (int s = 0; s < 3; s++) {
+            int len = 16 + (int) (Noise.rnd(s, 1, seed) * 34), sx = x + s * 6;
+            for (int i = 0; i < len; i++) {
+                int vx = sx + (int) Math.round(Math.sin(i * .21 + s * 2 + seed) * 1.6), vy = g - 1 - i;
+                c.tint(vx, vy, Pal.GRASS[1]);
+                if (i % 3 == 0 && (i < len / 2 || i % 6 == 0)) {
+                    int dir = (i / 3 + s) % 2 == 0 ? -1 : 1;
+                    c.tint(vx + dir, vy, Pal.GRASS[3]); c.tint(vx + dir * 2, vy, Pal.GRASS[2]); c.tint(vx + dir, vy - 1, Pal.GRASS[4]);
+                }
+            }
+        }
+    }
+
+    /** Torchlight on stone, stepped through warm ramps by distance: no blur, every pixel stays in the palette. */
+    private static final int[][] GATE_WARM = {
+            {Pal.WOOD[0], Pal.WOOD[1], Pal.RUST[1], Pal.RUST[2], Pal.RUST[3], Pal.GOLD[1], Pal.GOLD[2], Pal.GOLD[3]},
+            {Pal.WOOD[0], Pal.WOOD[1], Pal.WOOD[2], Pal.WOOD[3], Pal.WOOD[4], Pal.WOOD[5], Pal.CANVAS[4], Pal.BONE[2]},
+            {Pal.MUD[0], Pal.MUD[1], Pal.CANVAS[0], Pal.CANVAS[1], Pal.CANVAS[2], Pal.CANVAS[3], Pal.CANVAS[4], Pal.CANVAS[5]}};
+    private static void gateWarmth(Canvas c, int fx, int fy, int xMin, int xMax) {
+        for (int y = fy - 24; y <= fy + 24; y++) for (int x = Math.max(xMin, fx - 24); x <= Math.min(xMax, fx + 24); x++) {
+            int colour = c.get(x, y);
+            if (!gateStone(colour)) continue;
+            double d = Math.hypot(x + .5 - fx, (y + .5 - fy) * 1.15) + (Noise.value(x, y, 3, 871) - .5) * 2;
+            int i = Pal.index(colour), ring = d < 9 ? 0 : d < 14 ? 1 : d < 20 ? 2 : -1;
+            if (ring < 0 || ring == 2 && i < 3) continue;                              // the faint edge never reaches into the joints
+            if (i <= 1 && ring < 2) ring++;
+            c.set(x, y, GATE_WARM[ring][i]);
+        }
+    }
+
+    /** A wall torch: tall flame, pitch-soaked wrap, iron cup on a bracket plate. */
+    private static void gateTorch(Canvas c, int x, int y) {
+        String[] flame = {"...1...", "...12..", "..121..", "..132..", ".1232..", ".13431.", "1234421", "1345431", "1345531", ".24542.", "..343.."};
+        for (int r = 0; r < flame.length; r++) for (int i = 0; i < 7; i++)
+            if (flame[r].charAt(i) != '.') c.set(x - 3 + i, y - 13 + r, Pal.FIRE[flame[r].charAt(i) - '0']);
+        c.set(x - 1, y - 2, Pal.DRY[2]); c.set(x, y - 2, Pal.DRY[3]); c.set(x + 1, y - 2, Pal.DRY[1]);
+        c.vline(x, y - 1, y + 3, Pal.WOOD[3]); c.vline(x + 1, y - 1, y + 3, Pal.WOOD[1]);
+        c.hline(x - 1, x + 2, y + 1, Pal.IRON[4]); c.hline(x - 1, x + 2, y + 2, Pal.IRON[2]);
+        c.line(x - 1, y + 3, x - 3, y + 6, Pal.IRON[3]); c.line(x + 2, y + 3, x + 2, y + 6, Pal.IRON[1]);
+        c.rect(x - 4, y + 6, 8, 3, Pal.IRON[2]); c.hline(x - 4, x + 3, y + 6, Pal.IRON[4]); c.set(x - 3, y + 7, Pal.IRON[5]); c.set(x + 2, y + 7, Pal.IRON[5]);
     }
 
     // ------------------------------------------------------------------ signal tower

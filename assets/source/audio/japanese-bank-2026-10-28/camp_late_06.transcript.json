@@ -1,0 +1,205 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "見つかったら戻ってきてください。見つからなくてもですよ。",
+  "words": [
+    {
+      "text": "見",
+      "start": 0.12,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -9.417489309271332e-06
+    },
+    {
+      "text": "つ",
+      "start": 0.26,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -3.111314072157256e-05
+    },
+    {
+      "text": "か",
+      "start": 0.34,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -3.683499380713329e-05
+    },
+    {
+      "text": "っ",
+      "start": 0.46,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -3.683499380713329e-05
+    },
+    {
+      "text": "た",
+      "start": 0.56,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -3.683499380713329e-05
+    },
+    {
+      "text": "ら",
+      "start": 0.66,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -8.940656698541716e-06
+    },
+    {
+      "text": "戻",
+      "start": 1.12,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.00011383838864276186
+    },
+    {
+      "text": "っ",
+      "start": 1.34,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -8.702239938429557e-06
+    },
+    {
+      "text": "て",
+      "start": 1.38,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -8.702239938429557e-06
+    },
+    {
+      "text": "き",
+      "start": 1.48,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.0007272697403095663
+    },
+    {
+      "text": "て",
+      "start": 1.6,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.0007272697403095663
+    },
+    {
+      "text": "く",
+      "start": 1.66,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "だ",
+      "start": 1.76,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "さ",
+      "start": 1.92,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "い",
+      "start": 2.06,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "。",
+      "start": 2.18,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "見",
+      "start": 2.82,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "つ",
+      "start": 2.98,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -3.2305197237292305e-05
+    },
+    {
+      "text": "か",
+      "start": 3.12,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -0.00013433984713628888
+    },
+    {
+      "text": "ら",
+      "start": 3.24,
+      "end": 3.36,
+      "type": "word",
+      "logprob": -0.00013433984713628888
+    },
+    {
+      "text": "な",
+      "start": 3.36,
+      "end": 3.46,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "く",
+      "start": 3.46,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "て",
+      "start": 3.64,
+      "end": 3.74,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "も",
+      "start": 3.74,
+      "end": 4.08,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "で",
+      "start": 4.08,
+      "end": 4.24,
+      "type": "word",
+      "logprob": -0.0028198501095175743
+    },
+    {
+      "text": "す",
+      "start": 4.24,
+      "end": 4.36,
+      "type": "word",
+      "logprob": -0.0028198501095175743
+    },
+    {
+      "text": "よ",
+      "start": 4.36,
+      "end": 4.5,
+      "type": "word",
+      "logprob": -0.0028198501095175743
+    },
+    {
+      "text": "。",
+      "start": 4.5,
+      "end": 4.5,
+      "type": "word",
+      "logprob": -0.048596300184726715
+    }
+  ],
+  "transcription_id": "7tcc926yu5mlodBgmmFk",
+  "audio_duration_secs": 4.72
+}

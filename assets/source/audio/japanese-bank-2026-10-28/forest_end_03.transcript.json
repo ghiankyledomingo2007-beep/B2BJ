@@ -1,0 +1,191 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "ゆっくりでいい。道は通れるよ。砦に休める場所がある。",
+  "words": [
+    {
+      "text": "ゆ",
+      "start": 0.12,
+      "end": 0.18,
+      "type": "word",
+      "logprob": -6.365573790390044e-05
+    },
+    {
+      "text": "っ",
+      "start": 0.18,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -6.365573790390044e-05
+    },
+    {
+      "text": "く",
+      "start": 0.32,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -6.365573790390044e-05
+    },
+    {
+      "text": "り",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -6.365573790390044e-05
+    },
+    {
+      "text": "で",
+      "start": 0.52,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "い",
+      "start": 0.64,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "い",
+      "start": 0.76,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "。",
+      "start": 0.84,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -4.637133679352701e-05
+    },
+    {
+      "text": "道",
+      "start": 1.6,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.0001911934232339263
+    },
+    {
+      "text": "は",
+      "start": 1.7,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "通",
+      "start": 1.88,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "れ",
+      "start": 2.06,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "る",
+      "start": 2.16,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "よ",
+      "start": 2.22,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 2.38,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -1.0251946150674485e-05
+    },
+    {
+      "text": "砦",
+      "start": 3.08,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -4.565611743601039e-05
+    },
+    {
+      "text": "に",
+      "start": 3.44,
+      "end": 3.94,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "休",
+      "start": 3.94,
+      "end": 4.2,
+      "type": "word",
+      "logprob": -0.008638749830424786
+    },
+    {
+      "text": "め",
+      "start": 4.2,
+      "end": 4.3,
+      "type": "word",
+      "logprob": -3.611976353568025e-05
+    },
+    {
+      "text": "る",
+      "start": 4.3,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -3.611976353568025e-05
+    },
+    {
+      "text": "場",
+      "start": 4.42,
+      "end": 4.56,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "所",
+      "start": 4.56,
+      "end": 4.68,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "が",
+      "start": 4.68,
+      "end": 4.76,
+      "type": "word",
+      "logprob": -6.198863957251888e-06
+    },
+    {
+      "text": "あ",
+      "start": 4.76,
+      "end": 4.84,
+      "type": "word",
+      "logprob": -6.198863957251888e-06
+    },
+    {
+      "text": "る",
+      "start": 4.84,
+      "end": 5.0,
+      "type": "word",
+      "logprob": -6.198863957251888e-06
+    },
+    {
+      "text": "。",
+      "start": 5.0,
+      "end": 5.0,
+      "type": "word",
+      "logprob": -0.011048450134694576
+    }
+  ],
+  "transcription_id": "9zuO4vL3C0wQ4pe1H2cC",
+  "audio_duration_secs": 5.2
+}

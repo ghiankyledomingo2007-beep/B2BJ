@@ -1,0 +1,128 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "落ち着いて聞こえても騙されるなよ。",
+  "words": [
+    {
+      "text": "落",
+      "start": 0.1,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -0.0005053196800872684
+    },
+    {
+      "text": "ち",
+      "start": 0.24,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.0005053196800872684
+    },
+    {
+      "text": "着",
+      "start": 0.42,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.0005053196800872684
+    },
+    {
+      "text": "い",
+      "start": 0.48,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "て",
+      "start": 0.62,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "聞",
+      "start": 0.74,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -0.005372490733861923
+    },
+    {
+      "text": "こ",
+      "start": 0.86,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -0.005372490733861923
+    },
+    {
+      "text": "え",
+      "start": 0.92,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -0.001178047270514071
+    },
+    {
+      "text": "て",
+      "start": 1.06,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -0.001178047270514071
+    },
+    {
+      "text": "も",
+      "start": 1.14,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "騙",
+      "start": 1.84,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -0.07033620774745941
+    },
+    {
+      "text": "さ",
+      "start": 2.06,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -3.909988299710676e-05
+    },
+    {
+      "text": "れ",
+      "start": 2.14,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -3.909988299710676e-05
+    },
+    {
+      "text": "る",
+      "start": 2.22,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -3.909988299710676e-05
+    },
+    {
+      "text": "な",
+      "start": 2.38,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "よ",
+      "start": 2.44,
+      "end": 2.62,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 2.62,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -0.001578157884068787
+    }
+  ],
+  "transcription_id": "AQyyl6CmJ93thXKVD2e8",
+  "audio_duration_secs": 2.88
+}

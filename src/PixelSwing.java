@@ -38,7 +38,6 @@ final class PixelSwing {
         private static final long serialVersionUID = 1L;
         private final Ui.Icon icon;
         private boolean quiet;
-        private int textScale = 2;
         boolean titleSelected;
         boolean menuStyle;
         String subtitle = "";
@@ -79,19 +78,23 @@ final class PixelSwing {
             }
             if (quiet) {
                 g.scale(titleScale,titleScale);
-                double reveal=TitleScreen.entrance(titleTime,.78+titleChoice*.13,.5,reducedTitleMotion);
+                double reveal=TitleScreen.entrance(titleTime,.45+titleChoice*.09,.8,reducedTitleMotion);
                 g.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)reveal));
-                g.translate((int)(-22*(1-reveal)+6*titleFocus),0);
+                g.translate(0,(int)(9*(1-reveal)));
                 boolean down = getModel().isArmed() && getModel().isPressed();
                 boolean selected = isEnabled() && titleSelected;
-                int baseline = subtitle.isEmpty() ? (int)(getHeight()/titleScale)/2 + (textScale==3?10:7) : 32;
-                if (selected) {
-                    TitlePointer.draw(g,baseline,titleTime,reducedTitleMotion);
+                int height=(int)(getHeight()/titleScale);
+                int width=(int)(getWidth()/titleScale);
+                int baseline = subtitle.isEmpty() ? height/2 + 12 : 38;
+                if(titleFocus>.01&&isEnabled()) {
+                    var frame=(Graphics2D)g.create();
+                    frame.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)(reveal*titleFocus)));
+                    MenuTheme.row(frame,width,height,true,down);frame.dispose();
                 }
-                TitleIcons.draw(g,titleChoice,44+(down?2:0),baseline-(textScale==3?23:20),selected,isEnabled());
-                Ui.text(g,getText(),80+(down?2:0),baseline,textScale,
-                        !isEnabled()?Ui.DIM:selected?Ui.GOLD_LIGHT:textScale==3?Ui.TEXT:Ui.MUTED);
-                if(!subtitle.isEmpty())Ui.text(g,subtitle,80,58,2,isEnabled()?Ui.MUTED:Ui.DIM);
+                TitleIcons.draw(g,titleChoice,32+(down?1:0),height/2-22,44,selected,isEnabled());
+                Ui.prose(g,getText(),96+(down?1:0),baseline,getFont(),
+                        !isEnabled()?Ui.DIM:selected?new Color(0xfff6de):MenuTheme.IVORY);
+                if(!subtitle.isEmpty())Ui.prose(g,subtitle,96,63,Ui.menuFont(13),isEnabled()?MenuTheme.MUTED:Ui.DIM);
                 g.dispose(); return;
             }
             ButtonModel m = getModel();
@@ -123,24 +126,28 @@ final class PixelSwing {
         }
     }
 
-    /** Carved tabs drawn at native pixel scale; the crystal also marks keyboard focus. */
+    /** Shared heraldic rows preserve the Swing button's focus and enabled state. */
     private static void paintMenuRow(Graphics2D g, AbstractButton button, Ui.Icon icon, boolean down) {
         boolean hot = button.isEnabled() && (button.getClientProperty("menu.selected") instanceof Boolean selected
                 ? selected : button.getModel().isRollover() || button.isFocusOwner());
         boolean large = Boolean.TRUE.equals(button.getClientProperty("menu.large"));
-        int width=button.getWidth(),height=button.getHeight();
-        double time=button.getClientProperty("menu.time") instanceof Number n?n.doubleValue():0;
-        double selectedAt=button.getClientProperty("menu.selectedAt") instanceof Number n?n.doubleValue():0;
-        boolean reduced=!Boolean.FALSE.equals(button.getClientProperty("menu.reduced"));
-        StoneMenuArt.row(g,width,height,hot,down,time,selectedAt,reduced);
-        int x=12,centerY=height/2+(down?2:0);
+        double scale=button instanceof Button b?b.titleScale:1;
+        g.scale(scale,scale);
+        int width=(int)Math.round(button.getWidth()/scale),height=(int)Math.round(button.getHeight()/scale);
+        MenuTheme.row(g,width,height,hot,down);
+        int centerY=height/2+(down?1:0),size=large?36:20;
+        int fontSize=large?24:button.getText().equals("Back")?22:button.getText().equals("Close")?13:17;
+        var font=Ui.menuFont(fontSize).deriveFont(java.awt.Font.BOLD);
+        var metrics=g.getFontMetrics(font);
+        int gap=large?14:10;
+        int x=large?30:(width-metrics.stringWidth(button.getText())-(icon==null?0:size+gap))/2;
         if(icon!=null) {
-            if(large)StoneMenuArt.icon(g,icon,x,centerY-20,button.isEnabled());
-            else TitleIcons.draw(g,icon,x,centerY-12,hot,button.isEnabled());
-            x+=large?54:34;
+            TitleIcons.draw(g,icon,x,centerY-size/2,size,hot,button.isEnabled());
+            x+=size+gap;
         }
-        Ui.text(g,button.getText(),x,centerY+(large?10:7),large?3:2,
-                !button.isEnabled()?Ui.DIM:hot?new Color(0xffedc2):Ui.TEXT);
+        Ui.prose(g,button.getText(),x,centerY+(metrics.getAscent()-metrics.getDescent())/2,font,
+                !button.isEnabled()?Ui.DIM:MenuTheme.IVORY);
+
     }
 
     static JButton button(String text, char mnemonic, Ui.Icon icon, Runnable action, boolean enabled) {
@@ -154,8 +161,7 @@ final class PixelSwing {
     static Button textButton(String text, char mnemonic, int scale, Runnable action) {
         var button = new Button(text,null);
         button.quiet = true;
-        button.textScale = scale;
-        button.setFont(Ui.sans(scale));
+        button.setFont(Ui.menuFont(11f*scale).deriveFont(java.awt.Font.BOLD));
         button.setMnemonic(mnemonic);
         button.addActionListener(event -> action.run());
         return button;
@@ -192,10 +198,14 @@ final class PixelSwing {
             var box = (AbstractButton) c;
             boolean hot = box.getModel().isRollover() || box.isFocusOwner();
             boolean on = box.isSelected();
-            Ui.Piece piece = on ? (hot ? Ui.Piece.CHECK_HOT_ON : Ui.Piece.CHECK_ON) : (hot ? Ui.Piece.CHECK_HOT : Ui.Piece.CHECK);
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
-            Ui.piece(g, piece, x, y);
+            g.setColor(new Color(0x101f29));g.fillRect(x+2,y+2,18,18);
+            g.setColor(hot?Ui.CYAN:MenuTheme.GOLD);g.drawRoundRect(x+2,y+2,18,18,4,4);
+            if(on) {
+                g.setColor(Ui.CYAN);
+                g.fillPolygon(new int[]{x+11,x+16,x+11,x+6},new int[]{y+5,y+11,y+17,y+11},4);
+            }
             g.dispose();
         }
         @Override public int getIconWidth() { return 22; }
@@ -206,16 +216,20 @@ final class PixelSwing {
     private static final class SliderUi extends BasicSliderUI {
         SliderUi(JSlider slider) { super(slider); }
 
-        @Override protected Dimension getThumbSize() { return new Dimension(14, 22); }
+        @Override protected Dimension getThumbSize() { return new Dimension(24, 26); }
 
         @Override public void paintTrack(Graphics graphics) {
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
             Rectangle t = trackRect;
-            int y = t.y + t.height / 2 - 6;
-            Ui.nine(g, Ui.Piece.TRACK, t.x, y, t.width, 12);
-            int fill = thumbRect.x + thumbRect.width / 2 - t.x;
-            if (fill > 4) Ui.nine(g, Ui.Piece.TRACK_FILL, t.x, y, fill, 12);
+            int y=t.y+t.height/2,x=t.x,right=t.x+t.width;
+            var edge=new java.awt.geom.Path2D.Double();edge.moveTo(x,y);edge.lineTo(x+6,y-6);
+            edge.lineTo(right-6,y-6);edge.lineTo(right,y);edge.lineTo(right-6,y+6);edge.lineTo(x+6,y+6);edge.closePath();
+            g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+            g.setColor(new Color(0x08111a));g.fill(edge);g.setColor(MenuTheme.GOLD);g.draw(edge);
+            int fill=thumbRect.x+thumbRect.width/2-x-6;
+            if(fill>0){g.setColor(new Color(0x51cfe0));g.fillRect(x+6,y-3,fill,6);
+                g.setColor(new Color(0xb3f5ed));g.fillRect(x+6,y-3,fill,1);}
             g.dispose();
         }
 
@@ -223,7 +237,11 @@ final class PixelSwing {
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
             boolean hot = slider.isFocusOwner() || isDragging();
-            Ui.piece(g, hot ? Ui.Piece.KNOB_HOT : Ui.Piece.KNOB, thumbRect.x, thumbRect.y + (thumbRect.height - 22) / 2);
+            int x=thumbRect.x+thumbRect.width/2,y=thumbRect.y+thumbRect.height/2;
+            g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+            g.setColor(MenuTheme.GOLD);g.fillPolygon(new int[]{x,x+11,x,x-11},new int[]{y-12,y,y+12,y},4);
+            g.setColor(new Color(0x101823));g.fillPolygon(new int[]{x,x+8,x,x-8},new int[]{y-9,y,y+9,y},4);
+            g.setColor(hot?Ui.CYAN:MenuTheme.IVORY);g.fillPolygon(new int[]{x,x+5,x,x-5},new int[]{y-6,y,y+6,y},4);
             g.dispose();
         }
 
@@ -236,14 +254,14 @@ final class PixelSwing {
         @Override protected void paintTrack(Graphics graphics, JComponent c, Rectangle r) {
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
-            Ui.nine(g, Ui.Piece.INSET, r.x + 2, r.y, Math.max(8, r.width - 4), r.height);
+            g.setColor(new Color(0x13252f));g.fillRect(r.x+4,r.y,Math.max(4,r.width-8),r.height);
             g.dispose();
         }
         @Override protected void paintThumb(Graphics graphics, JComponent c, Rectangle r) {
             if (r.isEmpty()) return;
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
-            Ui.nine(g, Ui.Piece.SCROLL_THUMB, r.x + 2, r.y, Math.max(8, r.width - 4), r.height);
+            g.setColor(MenuTheme.GOLD);g.fillRect(r.x+4,r.y,Math.max(4,r.width-8),r.height);
             g.dispose();
         }
         @Override protected JButton createDecreaseButton(int orientation) { return zero(); }
@@ -280,7 +298,7 @@ final class PixelSwing {
         @Override public void paint(Graphics graphics, JComponent c) {
             var g = (Graphics2D) graphics.create();
             Ui.crisp(g);
-            Ui.nine(g, comboBox.isFocusOwner() ? Ui.Piece.BUTTON_HOT : Ui.Piece.BUTTON, 0, 0, c.getWidth(), c.getHeight());
+            MenuTheme.row(g,c.getWidth(),c.getHeight(),comboBox.isFocusOwner(),false);
             g.dispose();
             super.paint(graphics, c);
         }
@@ -289,10 +307,10 @@ final class PixelSwing {
     /** List rows for combo boxes: pixel type on the panel colour, gold when selected. */
     private static final class Cell extends JLabel implements ListCellRenderer<Object> {
         private static final long serialVersionUID = 1L;
-        Cell() { setOpaque(true); setFont(Ui.sans(2)); setBorder(BorderFactory.createEmptyBorder(6, 12, 6, 12)); }
+        Cell() { setOpaque(true); setFont(Ui.body(16)); setBorder(BorderFactory.createEmptyBorder(6, 12, 6, 12)); }
         @Override public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean selected, boolean focus) {
             setText(String.valueOf(value));
-            setBackground(selected && index >= 0 ? new Color(0x252037) : index < 0 ? new Color(0, 0, 0, 0) : Ui.PANEL);
+            setBackground(selected && index >= 0 ? new Color(0x18343e) : index < 0 ? new Color(0, 0, 0, 0) : new Color(0x0b1721));
             setOpaque(index >= 0);
             setForeground(selected ? Ui.GOLD_LIGHT : Ui.TEXT);
             return this;

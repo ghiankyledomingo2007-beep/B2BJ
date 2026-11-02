@@ -59,7 +59,7 @@ final class FieldRenderer {
             case SURVIVOR -> {
                 if (!game.fieldDone(spot)) queue.accept(spot.y(), () -> {
                     person(g, spot.variant(), 0, spot.x(), spot.y(), cx, cy);
-                    if(Math.hypot(game.player().x()-spot.x(),game.player().y()-spot.y())<520)
+                    if(!CombatUi.cinematic&&Math.hypot(game.player().x()-spot.x(),game.player().y()-spot.y())<520)
                         Ui.outlinedCentered(g,"Over here!",(int)spot.x()-cx,(int)spot.y()-cy-PERSON_H*2+12,1,Ui.GOLD_LIGHT);
                 });
                 else if (area == 0) {

@@ -1,0 +1,170 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "明かりがあるなら走ってでも行くさ。ありがとな。",
+  "words": [
+    {
+      "text": "明",
+      "start": 0.08,
+      "end": 0.18,
+      "type": "word",
+      "logprob": -0.016309291124343872
+    },
+    {
+      "text": "か",
+      "start": 0.22,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -0.0264239851385355
+    },
+    {
+      "text": "り",
+      "start": 0.3,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.0264239851385355
+    },
+    {
+      "text": "が",
+      "start": 0.46,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -2.2649508537142538e-05
+    },
+    {
+      "text": "あ",
+      "start": 0.54,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -2.2649508537142538e-05
+    },
+    {
+      "text": "る",
+      "start": 0.6,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -2.2649508537142538e-05
+    },
+    {
+      "text": "な",
+      "start": 0.74,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -2.0265373677830212e-05
+    },
+    {
+      "text": "ら",
+      "start": 0.9,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -2.0265373677830212e-05
+    },
+    {
+      "text": "走",
+      "start": 1.36,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -0.9054645895957947
+    },
+    {
+      "text": "っ",
+      "start": 1.5,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -4.2199197196168825e-05
+    },
+    {
+      "text": "て",
+      "start": 1.56,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -4.2199197196168825e-05
+    },
+    {
+      "text": "で",
+      "start": 1.64,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -8.892617915989831e-05
+    },
+    {
+      "text": "も",
+      "start": 1.74,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -8.892617915989831e-05
+    },
+    {
+      "text": "行",
+      "start": 1.84,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -0.00013183678674977273
+    },
+    {
+      "text": "く",
+      "start": 1.94,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -0.00013183678674977273
+    },
+    {
+      "text": "さ",
+      "start": 2.08,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "。",
+      "start": 2.2,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -0.0001699779968475923
+    },
+    {
+      "text": "あ",
+      "start": 2.82,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -0.012524758465588093
+    },
+    {
+      "text": "り",
+      "start": 2.88,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -0.012524758465588093
+    },
+    {
+      "text": "が",
+      "start": 2.98,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -0.012524758465588093
+    },
+    {
+      "text": "と",
+      "start": 3.08,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -4.732496745418757e-05
+    },
+    {
+      "text": "な",
+      "start": 3.22,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -4.732496745418757e-05
+    },
+    {
+      "text": "。",
+      "start": 3.32,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -0.10021229833364487
+    }
+  ],
+  "transcription_id": "wsffMc57iommwMNSM5PA",
+  "audio_duration_secs": 3.6
+}

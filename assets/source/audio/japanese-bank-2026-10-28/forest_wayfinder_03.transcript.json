@@ -1,0 +1,212 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999567866325378,
+  "text": "行き先を教えるだけじゃない。帰ってくるつもりでつけたんだ。",
+  "words": [
+    {
+      "text": "行",
+      "start": 0.1,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -0.0005003153928555548
+    },
+    {
+      "text": "き",
+      "start": 0.22,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -0.0005003153928555548
+    },
+    {
+      "text": "先",
+      "start": 0.54,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -2.372236667724792e-05
+    },
+    {
+      "text": "を",
+      "start": 0.66,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -3.755022044060752e-05
+    },
+    {
+      "text": "教",
+      "start": 0.86,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -3.9219088648678735e-05
+    },
+    {
+      "text": "え",
+      "start": 1.0,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "る",
+      "start": 1.14,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "だ",
+      "start": 1.26,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "け",
+      "start": 1.38,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "じ",
+      "start": 1.44,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "ゃ",
+      "start": 1.5,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "な",
+      "start": 1.56,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "い",
+      "start": 1.76,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "。",
+      "start": 1.9,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -0.00029666791670024395
+    },
+    {
+      "text": "帰",
+      "start": 2.42,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -0.00044216870446689427
+    },
+    {
+      "text": "っ",
+      "start": 2.66,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -0.00010895135346800089
+    },
+    {
+      "text": "て",
+      "start": 2.74,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -0.00010895135346800089
+    },
+    {
+      "text": "く",
+      "start": 2.82,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -0.00010895135346800089
+    },
+    {
+      "text": "る",
+      "start": 2.94,
+      "end": 3.04,
+      "type": "word",
+      "logprob": -0.00010895135346800089
+    },
+    {
+      "text": "つ",
+      "start": 3.08,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "も",
+      "start": 3.14,
+      "end": 3.24,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "り",
+      "start": 3.24,
+      "end": 3.4,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "で",
+      "start": 3.4,
+      "end": 3.74,
+      "type": "word",
+      "logprob": -2.0861407392658293e-05
+    },
+    {
+      "text": "つ",
+      "start": 3.74,
+      "end": 3.86,
+      "type": "word",
+      "logprob": -0.2166144996881485
+    },
+    {
+      "text": "け",
+      "start": 3.86,
+      "end": 3.98,
+      "type": "word",
+      "logprob": -0.2166144996881485
+    },
+    {
+      "text": "た",
+      "start": 3.98,
+      "end": 4.0,
+      "type": "word",
+      "logprob": -0.2166144996881485
+    },
+    {
+      "text": "ん",
+      "start": 4.0,
+      "end": 4.1,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "だ",
+      "start": 4.16,
+      "end": 4.26,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 4.26,
+      "end": 4.26,
+      "type": "word",
+      "logprob": -0.002476127352565527
+    }
+  ],
+  "transcription_id": "o9VcyQ2Vf2uIIBtsb5cL",
+  "audio_duration_secs": 4.64
+}

@@ -4,9 +4,9 @@ import java.util.Locale;
 /** Area One: the last evacuation order survived the people who gave it. */
 public enum OutpostDialogue {
     WAKE("ONE MORE CHANCE",
-            r("Stay with me. I've almost got it open."),
-            r("Did they get out?"),
-            s("I cannot confirm. Your previous body has been lost."),
+            r("Just one more report... then I can go home."),
+            r("What... happened?"),
+            s("Your previous body has been lost. Your consciousness remains."),
             r("Then... who am I talking to?"),
             s("Raphael. Stay with my voice."),
             s("Reconstructing a body that can survive here."),
@@ -52,7 +52,7 @@ public enum OutpostDialogue {
     SUPPLIES("WHAT THEY LEFT BEHIND",
             r("Weapons left behind. Empty spaces where the blankets were."),
             r("A note: 'Leave the heavy crates. Make room for the wounded.'"),
-            r("We packed our van like that. I hope those supplies reached someone.")),
+            r("They left all this behind to help people. That's what mattered.")),
     REPORT("STILL MISSING",
             r("I found the dispatch. The Warden was told to seal the road against Ichor."),
             m("After we sent the wounded through. No one could get back to them."),
@@ -141,7 +141,7 @@ public enum OutpostDialogue {
     FOREST_ORCHARD("THE LAST HARVEST",
             r("Someone left the good fruit within reach. Took the bruised ones."),
             s("For whoever followed them."),
-            r("We packed our van like that. Best supplies where people could reach them.")),
+            r("They saved the best supplies for people who needed them.")),
     FOREST_BRIARHEART("WHAT HOLDS THE ROAD",
             r("Those are stretcher poles caught in its roots."),
             s("The entrance is behind it. I can hear movement below."),
@@ -160,7 +160,7 @@ public enum OutpostDialogue {
             d("Everyone we found. They're at the camp."),
             r("Good. I wanted to hear someone say it."));
 
-    private static final double[] OPENING_SECONDS={6,3,4.5,3,4,5.5,3,3,3.5,4,2.5,3.5,3.5,3,4};
+    private static final double[] OPENING_SECONDS={10,3.4,6.2,3.4,5.3,5.5,3.4,4,3.5,4.7,3,4,3.5,3.2,4};
     static double openingSeconds(int index) { return OPENING_SECONDS[index]; }
 
     /** The scene for the survivor in FieldObjects.SURVIVORS order. */

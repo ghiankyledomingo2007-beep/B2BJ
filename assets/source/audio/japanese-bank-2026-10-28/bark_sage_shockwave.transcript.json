@@ -1,0 +1,65 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "下がって来ます。",
+  "words": [
+    {
+      "text": "下",
+      "start": 0.36,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -4.088794958079234e-05
+    },
+    {
+      "text": "が",
+      "start": 0.46,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -4.088794958079234e-05
+    },
+    {
+      "text": "っ",
+      "start": 0.6,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -1.6569954823353328e-05
+    },
+    {
+      "text": "て",
+      "start": 0.8,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -1.6569954823353328e-05
+    },
+    {
+      "text": "来",
+      "start": 1.18,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -0.5089846253395081
+    },
+    {
+      "text": "ま",
+      "start": 1.34,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -4.970903682988137e-05
+    },
+    {
+      "text": "す",
+      "start": 1.48,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -4.970903682988137e-05
+    },
+    {
+      "text": "。",
+      "start": 1.66,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.0004904259694740176
+    }
+  ],
+  "transcription_id": "pZ9bztQ4FJMOLrPghU3j",
+  "audio_duration_secs": 2.744
+}

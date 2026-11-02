@@ -1,0 +1,142 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "戻れる時に戻る。まずはそれで十分です。",
+  "words": [
+    {
+      "text": "戻",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.001043133088387549
+    },
+    {
+      "text": "れ",
+      "start": 0.52,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -2.2172682292875834e-05
+    },
+    {
+      "text": "る",
+      "start": 0.62,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -2.2172682292875834e-05
+    },
+    {
+      "text": "時",
+      "start": 0.8,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -0.031248729676008224
+    },
+    {
+      "text": "に",
+      "start": 1.0,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.031248729676008224
+    },
+    {
+      "text": "戻",
+      "start": 1.26,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "る",
+      "start": 1.38,
+      "end": 1.52,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 1.52,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.0003711488388944417
+    },
+    {
+      "text": "ま",
+      "start": 2.04,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "ず",
+      "start": 2.2,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "は",
+      "start": 2.38,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "そ",
+      "start": 2.7,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -0.0002044230350293219
+    },
+    {
+      "text": "れ",
+      "start": 2.8,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -0.0002044230350293219
+    },
+    {
+      "text": "で",
+      "start": 2.98,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -0.0002044230350293219
+    },
+    {
+      "text": "十",
+      "start": 3.08,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -0.00029690624796785414
+    },
+    {
+      "text": "分",
+      "start": 3.3,
+      "end": 3.46,
+      "type": "word",
+      "logprob": -0.00029690624796785414
+    },
+    {
+      "text": "で",
+      "start": 3.46,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "す",
+      "start": 3.56,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "。",
+      "start": 3.68,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -0.0031797345727682114
+    }
+  ],
+  "transcription_id": "naHbRN4deXYW1drALYmj",
+  "audio_duration_secs": 4.744
+}

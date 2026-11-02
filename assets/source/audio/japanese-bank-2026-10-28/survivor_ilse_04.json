@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "あの箱に予備の物資がある。でも鍵がかかってて、鍵は倉庫に置いたまま。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "MhnQB6oLKSlS0AIJzxtO",
+  "request_id": "mnUJJhO73XPDSKX4COdY",
+  "generated_at": 1793156164.212645
+}

@@ -1,0 +1,135 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "前は配達が遅れるだけで心配してたな。",
+  "words": [
+    {
+      "text": "前",
+      "start": 0.18,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -1.823885577323381e-05
+    },
+    {
+      "text": "は",
+      "start": 0.46,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "配",
+      "start": 1.02,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -0.0012887752382084727
+    },
+    {
+      "text": "達",
+      "start": 1.22,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0012887752382084727
+    },
+    {
+      "text": "が",
+      "start": 1.48,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "遅",
+      "start": 1.62,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "れ",
+      "start": 1.78,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "る",
+      "start": 1.88,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.0,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "け",
+      "start": 2.1,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "で",
+      "start": 2.24,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "心",
+      "start": 2.58,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "配",
+      "start": 2.72,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "し",
+      "start": 2.82,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -2.47952248173533e-05
+    },
+    {
+      "text": "て",
+      "start": 2.96,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -2.47952248173533e-05
+    },
+    {
+      "text": "た",
+      "start": 3.06,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -2.47952248173533e-05
+    },
+    {
+      "text": "な",
+      "start": 3.2,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.008947398513555527
+    },
+    {
+      "text": "。",
+      "start": 3.38,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -0.0021856960374861956
+    }
+  ],
+  "transcription_id": "jeacszUmBgDsKkuNDTht",
+  "audio_duration_secs": 3.68
+}

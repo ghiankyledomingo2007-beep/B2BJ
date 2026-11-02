@@ -199,34 +199,23 @@ final class UiArt {
     }
 
     /**
-     * The boot splash (assets/ui/splash.png). The JVM shows it at its own size before the game loads, so
-     * it is drawn at art size and doubled here: 640x360 screen pixels. The game paints the load bar into
-     * the empty strip at the bottom (see Splash.java).
+     * The JVM displays this 640x360 boot image unscaled; Splash paints the live loading line.
      */
     static Canvas splash() {
-        int w = 320, h = 180;
+        int w = 640, h = 360;
         Canvas c = new Canvas(w, h);
-        int[] ramp = {Pal.c(0x04060c),Pal.c(0x060912),Pal.c(0x080c19),Pal.c(0x0b1121),Pal.c(0x0f172c),
-                Pal.c(0x141f39),Pal.c(0x1a2848),Pal.c(0x213258),Pal.c(0x293d66)};
-        for (int y = 0; y < h; y++) for (int x = 0; x < w; x++) {
-            double d = Math.hypot((x - w / 2.0) / w, (y - h * .42) / h);
-            double at = 3.2 - d * 5.5;
-            at = Math.max(0, Math.min(ramp.length - 1, at));
-            int base = (int) at;
-            c.set(x, y, ramp[Math.min(ramp.length - 1, base + ((at - base) > Noise.bayer(x, y) ? 1 : 0))]);
-        }
-        for (int i = 0; i < 70; i++) {
-            int x = Noise.hash(i, 1, 3) & 0xff, y = Noise.hash(i, 2, 3) % 120;
-            if (x < w && y >= 0) c.set(x + 32, y, Noise.rnd(i, 3, 3) < .3 ? Pal.c(0xdfe8ff) : Pal.STONE[6]);
-        }
-        Canvas logo = LogoArt.logo();
-        c.blit(logo, (w - LogoArt.W) / 2, 22);
-        for (int x = 85; x < 235; x++) { c.set(x, 160, INK); c.set(x, 163, INK); }
-        for (int y = 160; y <= 163; y++) { c.set(84, y, INK); c.set(235, y, INK); }
-        for (int x = 85; x < 235; x++) for (int y = 161; y <= 162; y++) c.set(x, y, NAVY[1]);
-        Canvas big = new Canvas(w * 2, h * 2);
-        for (int y = 0; y < h * 2; y++) for (int x = 0; x < w * 2; x++) big.set(x, y, c.get(x / 2, y / 2));
-        return big;
+        c.fill(Pal.c(0x0c151f));
+        var image = c.image();
+        var g = image.createGraphics();
+        var logo = Canvas.load("assets/source/ui/splash/moonlit-gate-logo.png").image();
+        int logoWidth = 448, logoHeight = Math.round(logoWidth * logo.getHeight() / (float) logo.getWidth());
+        g.setRenderingHint(java.awt.RenderingHints.KEY_INTERPOLATION,
+                java.awt.RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        g.drawImage(logo, (w - logoWidth) / 2, 88, logoWidth, logoHeight, null);
+        g.dispose();
+        image.getRGB(0, 0, w, h, c.px, 0, w);
+        c.rect(Splash.BAR_X, Splash.BAR_Y, Splash.BAR_WIDTH, Splash.BAR_HEIGHT, Pal.c(0x263539));
+        return c;
     }
 
     /** Area-card filigree: a medallion with gold lines that curl and fade toward both ends. */

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "じゃあ、縄を持ってきて。門の向こうに避難所がある。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "PmGUiP9uyN49mV0Jazh4",
+  "generated_at": 1793156204.2428927
+}

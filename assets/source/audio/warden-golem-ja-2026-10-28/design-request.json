@@ -1,0 +1,8 @@
+{
+  "voice_description": "A gigantic ancient stone golem guardian speaking fluent native Japanese, male monster bass. Extremely deep subterranean chest resonance, a broad hollow stone-cavern timbre, rough rocky vocal folds, crushing authority and huge physical mass. Steady deliberate commands with hard clear consonants. Stern, threatening, battle-ready, never a soft narrator. Controlled low growl under the words, no high-pitched rasp, no cartoon or comical delivery. Natural Japanese intonation. Dry isolated studio speech, no music or background effects, no echo. Preserve intelligibility; the voice itself feels enormous.",
+  "model_id": "eleven_ttv_v3",
+  "text": "汚染生命体を確認。通行は許可しない。これより先は、封鎖区域だ。退け。守りを崩すな。この門は開かせん。彼らを守るため、道は封鎖した。私は、この場所を守り続ける。誰であろうと、通すわけにはいかない。私は、彼らを守れと命じられた。",
+  "loudness": 0.35,
+  "seed": 281028,
+  "guidance_scale": 5
+}

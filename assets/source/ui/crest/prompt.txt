@@ -1,0 +1,8 @@
+Use case: logo-brand
+Asset type: transparent emblem for the startup splash of the pixel fantasy game Blob to Blade.
+Primary request: a distinctive, very simple crest that identifies the game without spelling its name. Fuse a single upward-pointing sword with a flowing slime droplet into ONE compact, elegant silhouette. The slime curls around the lower blade; a small four-point gold star belongs in the lower center, recalling the hero Rainoray. Strong recognizable silhouette at 96 pixels tall.
+Style/medium: carefully designed 2D pixel-art insignia, crisp stepped contours, restrained flat colors, clean deliberate pixel clusters. Mature, quiet fantasy identity. A tiny amount of edge highlight gives clarity.
+Composition/framing: one centered isolated emblem, roughly square, generous transparent margin, balanced and compact.
+Color palette: pale ivory blade, muted luminous turquoise slime, one small warm gold accent; at most a handful of solid colors.
+Scene/backdrop: genuine transparent background.
+Constraints: no lettering, no words, no initials, no crest shield or border, no circular frame, no wings, no laurels, no mascot face, no ornamental filigree, no decorative particles, no drop shadow or glow, no 3D bevel, no realistic material texture, no mockup, no extra symbols. The sword and slime must read together as one unified mark, not a sword sticker placed over a blob.

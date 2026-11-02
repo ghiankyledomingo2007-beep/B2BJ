@@ -1,0 +1,156 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999034404754639,
+  "text": "本当にあの明かりを消さずに待ってるんだな。",
+  "words": [
+    {
+      "text": "本",
+      "start": 0.26,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "当",
+      "start": 0.44,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "に",
+      "start": 0.66,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "あ",
+      "start": 1.38,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -0.10021531581878662
+    },
+    {
+      "text": "の",
+      "start": 1.5,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.10021531581878662
+    },
+    {
+      "text": "明",
+      "start": 1.64,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.03822409361600876
+    },
+    {
+      "text": "か",
+      "start": 1.74,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -0.0005098473629914224
+    },
+    {
+      "text": "り",
+      "start": 1.86,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.0005098473629914224
+    },
+    {
+      "text": "を",
+      "start": 1.96,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -1.1801649634435307e-05
+    },
+    {
+      "text": "消",
+      "start": 2.1,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "さ",
+      "start": 2.28,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -0.0007557396893389523
+    },
+    {
+      "text": "ず",
+      "start": 2.38,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "に",
+      "start": 2.52,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "待",
+      "start": 2.64,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "っ",
+      "start": 2.74,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "て",
+      "start": 2.8,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "る",
+      "start": 2.88,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "ん",
+      "start": 2.98,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "だ",
+      "start": 3.08,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "な",
+      "start": 3.2,
+      "end": 3.34,
+      "type": "word",
+      "logprob": -1.4543427823809907e-05
+    },
+    {
+      "text": "。",
+      "start": 3.34,
+      "end": 3.34,
+      "type": "word",
+      "logprob": -0.04859470948576927
+    }
+  ],
+  "transcription_id": "ZtiAGWmPj58h4tisaIG9",
+  "audio_duration_secs": 3.68
+}

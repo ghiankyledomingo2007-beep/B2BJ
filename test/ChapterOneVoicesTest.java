@@ -7,7 +7,7 @@ import javax.sound.sampled.AudioSystem;
 public final class ChapterOneVoicesTest {
     public static void main(String[] args) throws Exception {
         bossMoments();recordings();
-        System.out.println("ChapterOneVoicesTest passed: all 211 clips, story branches and Warden moments");
+        System.out.println("ChapterOneVoicesTest passed: all 219 clips, story branches and Warden moments");
     }
 
     static void recordings() throws Exception {
@@ -23,7 +23,7 @@ public final class ChapterOneVoicesTest {
             assert bark.banter()?duration(bark.voiceKey(i))<5:duration(bark.voiceKey(i))+.2<bark.lineSeconds() : "bark cuts off speech: "+bark;
         }
         for(String key:clips.keySet())assert duration(key)>.5 : "empty recording: "+key;
-        assert clips.size()==211 : "every Chapter One line and branch must be voiced";
+        assert clips.size()==220 : "every Chapter One line and branch must be voiced";
     }
 
     static double duration(String key) throws Exception {

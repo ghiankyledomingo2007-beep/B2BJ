@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "カイジンだ。門の中継装置を直してた。あの音、守護者がまだ壊れた命令で動いてやがる。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "JOcmGzB8OFjY8MhjHHEf",
+  "request_id": "0b4dOk6DLCMOhqCT0tUD",
+  "generated_at": 1793156155.8861802
+}

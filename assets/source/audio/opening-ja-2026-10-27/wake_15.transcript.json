@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "歩き方から教えてくれよ。",
+  "words": [
+    {
+      "text": "歩",
+      "start": 0.18,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "き",
+      "start": 0.36,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "方",
+      "start": 0.56,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -4.291525328881107e-06
+    },
+    {
+      "text": "か",
+      "start": 0.68,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "ら",
+      "start": 0.9,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "教",
+      "start": 1.26,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -0.00011729506513802335
+    },
+    {
+      "text": "え",
+      "start": 1.46,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.00011729506513802335
+    },
+    {
+      "text": "て",
+      "start": 1.62,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.00011729506513802335
+    },
+    {
+      "text": "く",
+      "start": 1.7,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "れ",
+      "start": 1.78,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "よ",
+      "start": 1.94,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 2.14,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -0.033649343997240067
+    }
+  ],
+  "transcription_id": "VOGDhRvIoftZ72jdWHHL",
+  "audio_duration_secs": 2.4
+}

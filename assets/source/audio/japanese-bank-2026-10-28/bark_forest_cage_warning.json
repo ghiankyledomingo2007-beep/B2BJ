@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "開いた方へ、抜けて。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "z6nGIqc7mP7XwwijuJaB",
+  "generated_at": 1793156488.711774
+}

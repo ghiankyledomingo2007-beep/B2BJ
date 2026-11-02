@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "地図じゃ、その場所の感じまではわからないな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "8J5gPjcZoz32F8g773HS",
+  "generated_at": 1793156268.8134205
+}

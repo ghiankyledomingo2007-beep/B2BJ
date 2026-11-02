@@ -1,0 +1,205 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "白い布が揺れている。ここに風が通るのは何日ぶりだろうな。",
+  "words": [
+    {
+      "text": "白",
+      "start": 0.26,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "い",
+      "start": 0.42,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "布",
+      "start": 0.58,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "が",
+      "start": 0.78,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "揺",
+      "start": 0.92,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -3.290122185717337e-05
+    },
+    {
+      "text": "れ",
+      "start": 1.04,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -2.13382354559144e-05
+    },
+    {
+      "text": "て",
+      "start": 1.12,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -2.13382354559144e-05
+    },
+    {
+      "text": "い",
+      "start": 1.22,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -2.13382354559144e-05
+    },
+    {
+      "text": "る",
+      "start": 1.3,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -2.13382354559144e-05
+    },
+    {
+      "text": "。",
+      "start": 1.42,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "こ",
+      "start": 2.38,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "こ",
+      "start": 2.46,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "に",
+      "start": 2.62,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "風",
+      "start": 2.76,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -3.099436753473128e-06
+    },
+    {
+      "text": "が",
+      "start": 2.98,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -1.4781842764932662e-05
+    },
+    {
+      "text": "通",
+      "start": 3.14,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -0.000169382052263245
+    },
+    {
+      "text": "る",
+      "start": 3.22,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -2.4914430468925275e-05
+    },
+    {
+      "text": "の",
+      "start": 3.32,
+      "end": 3.52,
+      "type": "word",
+      "logprob": -2.4914430468925275e-05
+    },
+    {
+      "text": "は",
+      "start": 3.52,
+      "end": 4.059,
+      "type": "word",
+      "logprob": -2.4914430468925275e-05
+    },
+    {
+      "text": "何",
+      "start": 4.059,
+      "end": 4.22,
+      "type": "word",
+      "logprob": -9.65590606938349e-06
+    },
+    {
+      "text": "日",
+      "start": 4.22,
+      "end": 4.38,
+      "type": "word",
+      "logprob": -6.341733387671411e-05
+    },
+    {
+      "text": "ぶ",
+      "start": 4.38,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -4.100715523236431e-05
+    },
+    {
+      "text": "り",
+      "start": 4.42,
+      "end": 4.54,
+      "type": "word",
+      "logprob": -4.100715523236431e-05
+    },
+    {
+      "text": "だ",
+      "start": 4.54,
+      "end": 4.62,
+      "type": "word",
+      "logprob": -1.9192511899746023e-05
+    },
+    {
+      "text": "ろ",
+      "start": 4.62,
+      "end": 4.66,
+      "type": "word",
+      "logprob": -1.9192511899746023e-05
+    },
+    {
+      "text": "う",
+      "start": 4.66,
+      "end": 4.8,
+      "type": "word",
+      "logprob": -1.9192511899746023e-05
+    },
+    {
+      "text": "な",
+      "start": 4.8,
+      "end": 5.08,
+      "type": "word",
+      "logprob": -0.39002397656440735
+    },
+    {
+      "text": "。",
+      "start": 5.08,
+      "end": 5.08,
+      "type": "word",
+      "logprob": -0.00021002470748499036
+    }
+  ],
+  "transcription_id": "RGCeiXZqTRHtYCcMbUB1",
+  "audio_duration_secs": 5.36
+}

@@ -1,0 +1,233 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9986477494239807,
+  "text": "エレンよ。道を調べてたら、あの根が風と逆に動いて後ろを塞いだの。",
+  "words": [
+    {
+      "text": "エ",
+      "start": 0.08,
+      "end": 0.16,
+      "type": "word",
+      "logprob": -0.0004904259694740176
+    },
+    {
+      "text": "レ",
+      "start": 0.16,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -8.821448318485636e-06
+    },
+    {
+      "text": "ン",
+      "start": 0.26,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -8.821448318485636e-06
+    },
+    {
+      "text": "よ",
+      "start": 0.38,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "。",
+      "start": 0.56,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.012544183060526848
+    },
+    {
+      "text": "道",
+      "start": 1.28,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -8.606540359323844e-05
+    },
+    {
+      "text": "を",
+      "start": 1.42,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -8.606540359323844e-05
+    },
+    {
+      "text": "調",
+      "start": 1.64,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.5139465176616795e-05
+    },
+    {
+      "text": "べ",
+      "start": 1.82,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -1.5139465176616795e-05
+    },
+    {
+      "text": "て",
+      "start": 1.94,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -1.5139465176616795e-05
+    },
+    {
+      "text": "た",
+      "start": 2.06,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -4.792098479811102e-05
+    },
+    {
+      "text": "ら",
+      "start": 2.2,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -4.792098479811102e-05
+    },
+    {
+      "text": "、",
+      "start": 2.24,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -0.018151717260479927
+    },
+    {
+      "text": "あ",
+      "start": 2.74,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "の",
+      "start": 2.82,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "根",
+      "start": 2.94,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -0.001073261140845716
+    },
+    {
+      "text": "が",
+      "start": 3.22,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "風",
+      "start": 3.38,
+      "end": 3.6,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "と",
+      "start": 3.68,
+      "end": 3.78,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "逆",
+      "start": 3.92,
+      "end": 4.08,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "に",
+      "start": 4.08,
+      "end": 4.2,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "動",
+      "start": 4.2,
+      "end": 4.36,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "い",
+      "start": 4.36,
+      "end": 4.56,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "て",
+      "start": 4.56,
+      "end": 4.94,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "後",
+      "start": 4.94,
+      "end": 5.08,
+      "type": "word",
+      "logprob": -3.635817120084539e-05
+    },
+    {
+      "text": "ろ",
+      "start": 5.08,
+      "end": 5.26,
+      "type": "word",
+      "logprob": -3.635817120084539e-05
+    },
+    {
+      "text": "を",
+      "start": 5.26,
+      "end": 5.4,
+      "type": "word",
+      "logprob": -4.649054244509898e-05
+    },
+    {
+      "text": "塞",
+      "start": 5.48,
+      "end": 5.56,
+      "type": "word",
+      "logprob": -0.0006569849792867899
+    },
+    {
+      "text": "い",
+      "start": 5.56,
+      "end": 5.66,
+      "type": "word",
+      "logprob": -0.0005009111482650042
+    },
+    {
+      "text": "だ",
+      "start": 5.66,
+      "end": 5.8,
+      "type": "word",
+      "logprob": -0.0005009111482650042
+    },
+    {
+      "text": "の",
+      "start": 5.8,
+      "end": 5.88,
+      "type": "word",
+      "logprob": -5.245195097813848e-06
+    },
+    {
+      "text": "。",
+      "start": 5.88,
+      "end": 5.88,
+      "type": "word",
+      "logprob": -0.002477316651493311
+    }
+  ],
+  "transcription_id": "JH8F1d2H6CD6PmidFBPz",
+  "audio_duration_secs": 6.08
+}

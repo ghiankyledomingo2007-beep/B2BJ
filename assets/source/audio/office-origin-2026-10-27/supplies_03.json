@@ -1,0 +1,17 @@
+{
+  "request": {
+    "text": "They left all this behind to help people. That's what mattered.",
+    "model_id": "eleven_multilingual_v2",
+    "language_code": "en",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.55,
+      "style": 0,
+      "use_speaker_boost": false
+    },
+    "seed": 84722
+  },
+  "request_id": "Gazi8ImhKvveuJNafTZc",
+  "voice_id": "lOMvbhhkKRw1KRXcYQCn",
+  "generated_at": 1793115930.791417
+}

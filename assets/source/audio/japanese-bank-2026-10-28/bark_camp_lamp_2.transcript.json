@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "帰る場所を守っているのです。",
+  "words": [
+    {
+      "text": "帰",
+      "start": 0.34,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.00545169273391366
+    },
+    {
+      "text": "る",
+      "start": 0.48,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "場",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -6.890059739816934e-05
+    },
+    {
+      "text": "所",
+      "start": 0.82,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -6.890059739816934e-05
+    },
+    {
+      "text": "を",
+      "start": 0.94,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -9.762764238985255e-05
+    },
+    {
+      "text": "守",
+      "start": 1.52,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -9.762764238985255e-05
+    },
+    {
+      "text": "っ",
+      "start": 1.74,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -4.768360213347478e-06
+    },
+    {
+      "text": "て",
+      "start": 1.82,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -4.768360213347478e-06
+    },
+    {
+      "text": "い",
+      "start": 1.9,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -4.768360213347478e-06
+    },
+    {
+      "text": "る",
+      "start": 1.98,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -4.768360213347478e-06
+    },
+    {
+      "text": "の",
+      "start": 2.08,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "で",
+      "start": 2.2,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "す",
+      "start": 2.36,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "。",
+      "start": 2.46,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -0.0006280356901697814
+    }
+  ],
+  "transcription_id": "FhEoK6s4F1PBIerrV2mH",
+  "audio_duration_secs": 3.464
+}

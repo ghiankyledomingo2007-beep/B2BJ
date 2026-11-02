@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "その後、水路が泥で埋まってな。一週間、雨を話し相手にしておったわ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "C6EwdDpfpjUWhKn1xeaG",
+  "request_id": "a6fn22St4aThuD3w2NpP",
+  "generated_at": 1793156172.244434
+}

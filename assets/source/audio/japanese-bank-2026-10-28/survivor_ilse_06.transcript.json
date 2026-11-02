@@ -1,0 +1,177 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "風が止んだ時こそ根を見て。あれは止まらないから。",
+  "words": [
+    {
+      "text": "風",
+      "start": 0.2,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -3.6000557884108275e-05
+    },
+    {
+      "text": "が",
+      "start": 0.42,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -2.0861407392658293e-05
+    },
+    {
+      "text": "止",
+      "start": 0.5,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -0.008850631304085255
+    },
+    {
+      "text": "ん",
+      "start": 0.62,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -9.65590606938349e-06
+    },
+    {
+      "text": "だ",
+      "start": 0.76,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -9.65590606938349e-06
+    },
+    {
+      "text": "時",
+      "start": 0.96,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -0.0019388464279472828
+    },
+    {
+      "text": "こ",
+      "start": 1.16,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "そ",
+      "start": 1.26,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "根",
+      "start": 1.76,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -0.14537179470062256
+    },
+    {
+      "text": "を",
+      "start": 1.94,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "見",
+      "start": 2.1,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "て",
+      "start": 2.28,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "。",
+      "start": 2.4,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -0.002310228068381548
+    },
+    {
+      "text": "あ",
+      "start": 3.16,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -5.2569914259947836e-05
+    },
+    {
+      "text": "れ",
+      "start": 3.22,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -5.2569914259947836e-05
+    },
+    {
+      "text": "は",
+      "start": 3.42,
+      "end": 3.54,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "止",
+      "start": 3.58,
+      "end": 3.7,
+      "type": "word",
+      "logprob": -5.113947918289341e-05
+    },
+    {
+      "text": "ま",
+      "start": 3.7,
+      "end": 3.78,
+      "type": "word",
+      "logprob": -1.3351351299206726e-05
+    },
+    {
+      "text": "ら",
+      "start": 3.78,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -5.125986263010418e-06
+    },
+    {
+      "text": "な",
+      "start": 3.96,
+      "end": 4.019,
+      "type": "word",
+      "logprob": -5.125986263010418e-06
+    },
+    {
+      "text": "い",
+      "start": 4.019,
+      "end": 4.18,
+      "type": "word",
+      "logprob": -5.125986263010418e-06
+    },
+    {
+      "text": "か",
+      "start": 4.18,
+      "end": 4.32,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "ら",
+      "start": 4.32,
+      "end": 4.38,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 4.38,
+      "end": 4.38,
+      "type": "word",
+      "logprob": -0.06993656605482101
+    }
+  ],
+  "transcription_id": "rXNjXDTmsBNOKU5IdqG8",
+  "audio_duration_secs": 4.64
+}

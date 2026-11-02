@@ -1,0 +1,128 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9998120665550232,
+  "text": "イコルが十分に集まれば一時的には。",
+  "words": [
+    {
+      "text": "イ",
+      "start": 0.28,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.025963889434933662
+    },
+    {
+      "text": "コ",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.008040323853492737
+    },
+    {
+      "text": "ル",
+      "start": 0.52,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.008040323853492737
+    },
+    {
+      "text": "が",
+      "start": 0.72,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -6.067568756407127e-05
+    },
+    {
+      "text": "十",
+      "start": 0.86,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -0.0004015354788862169
+    },
+    {
+      "text": "分",
+      "start": 1.14,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.0004015354788862169
+    },
+    {
+      "text": "に",
+      "start": 1.32,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.0004015354788862169
+    },
+    {
+      "text": "集",
+      "start": 1.4,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "ま",
+      "start": 1.64,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -9.405170567333698e-05
+    },
+    {
+      "text": "れ",
+      "start": 1.7,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -2.9205850296420977e-05
+    },
+    {
+      "text": "ば",
+      "start": 1.92,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -2.9205850296420977e-05
+    },
+    {
+      "text": "一",
+      "start": 2.52,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -0.38742902874946594
+    },
+    {
+      "text": "時",
+      "start": 2.62,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -0.38742902874946594
+    },
+    {
+      "text": "的",
+      "start": 2.7,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -5.1616290875244886e-05
+    },
+    {
+      "text": "に",
+      "start": 2.94,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -5.1616290875244886e-05
+    },
+    {
+      "text": "は",
+      "start": 3.12,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -5.1616290875244886e-05
+    },
+    {
+      "text": "。",
+      "start": 3.26,
+      "end": 3.26,
+      "type": "word",
+      "logprob": -0.02327374927699566
+    }
+  ],
+  "transcription_id": "N19EJhATgRF7bY2uP5Ok",
+  "audio_duration_secs": 4.344
+}

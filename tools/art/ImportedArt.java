@@ -124,41 +124,92 @@ final class ImportedArt {
         return source.getSubimage(left,top,right-left+1,bottom-top+1);
     }
 
+    /** Owner 2026-10-29: "make him inherently bigger, like 3x". Redrawn at three times the native detail (288 px cells),
+     *  never the old sprite enlarged: on screen it keeps the game's one pixel size (2x). */
+    static final int BRIAR_CELL=288;
     static Canvas briarheart() {
-        var source=Canvas.load("assets/source/characters/forest/briarheart-keyposes.generated.png").image();
+        var source=Canvas.load("assets/source/characters/forest/briarheart-keyposes-3x.generated.png").image();
         if(source.getWidth()!=1774||source.getHeight()!=887)throw new IllegalStateException("Unexpected Briarheart source dimensions");
+        int cellSize=BRIAR_CELL,boxW=264,boxH=240,base=255,chest=195;
         int[] colours={0x101b20,0x1d2929,0x293b37,0x3d5147,0x56665a,0x7b8771,
                 0x201f23,0x30272b,0x44332e,0x5c4536,0x77583f,0x957450,0xb49665,0xd0b77d,
                 0x261f35,0x3b2d4a,0x573b61,0x785077,0xa07492,
                 0x592d20,0x925023,0xc47929,0xe5a53a,0xf6cc62,0xffe694,0xfff3ca};
         var crops=new BufferedImage[8];double scale=1;
         for(int cell=0;cell<8;cell++) {
-            int col=cell%4,row=cell/4,ox=col*source.getWidth()/4,oy=row*source.getHeight()/2;
-            int cw=(col+1)*source.getWidth()/4-ox,ch=(row+1)*source.getHeight()/2-oy;
+            // Some poses reach past the generator's grid (the crouch's roots, the raised leaves, the wide arms): crop
+            // 40 px beyond each cell so they stay whole, then keep the main body and drop the neighbours' tips.
+            int col=cell%4,row=cell/4,reach=40;
+            int ox=Math.max(0,col*source.getWidth()/4-reach),oy=Math.max(0,row*source.getHeight()/2-reach);
+            int cw=Math.min(source.getWidth(),(col+1)*source.getWidth()/4+reach)-ox,ch=Math.min(source.getHeight(),(row+1)*source.getHeight()/2+reach)-oy;
+            var region=mainBody(source.getSubimage(ox,oy,cw,ch),12);    // drop slivers of the neighbouring poses
             int left=cw,top=ch,right=-1,bottom=-1;
-            for(int y=0;y<ch;y++)for(int x=0;x<cw;x++)if(source.getRGB(ox+x,oy+y)>>>24>=128) {
+            for(int y=0;y<ch;y++)for(int x=0;x<cw;x++)if(region.getRGB(x,y)>>>24>=128) {
                 left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);
             }
             if(right<left)throw new IllegalStateException("Empty Briarheart key pose "+cell);
-            crops[cell]=source.getSubimage(ox+left,oy+top,right-left+1,bottom-top+1);
-            scale=Math.min(scale,Math.min(88.0/crops[cell].getWidth(),80.0/crops[cell].getHeight()));
+            crops[cell]=region.getSubimage(left,top,right-left+1,bottom-top+1);
+            scale=Math.min(scale,Math.min((double)boxW/crops[cell].getWidth(),(double)boxH/crops[cell].getHeight()));
         }
         var poses=new Canvas[8];
         for(int i=0;i<8;i++) {
             int w=Math.max(1,(int)Math.round(crops[i].getWidth()*scale)),h=Math.max(1,(int)Math.round(crops[i].getHeight()*scale));
-            poses[i]=new Canvas(96,96);poses[i].blit(fit(crops[i],w,h,colours),(96-w)/2,85-h);
+            poses[i]=new Canvas(cellSize,cellSize);poses[i].blit(fit(crops[i],w,h,colours),(cellSize-w)/2,base-h);
         }
         Canvas.strip(poses).save("assets/characters/guardian/briarheart_poses.png");
         int[][] sequence={{0,0,0,0,0,0,0,0},{0,0,1,1,1,1,0,0},{0,0,1,1,1,3,3,3},
                 {3,3,2,2,2,1,1,0},{4,4,4,4,4,4,4,4},{1,3,3,6,6,2,2,0},{6,6,4,7,7,7,7,7}};
-        var sheet=new Canvas(8*96,7*96);
+        var sheet=new Canvas(8*cellSize,7*cellSize);
         for(int row=0;row<7;row++)for(int frame=0;frame<8;frame++) {
             var pose=poses[sequence[row][frame]];
-            int breath=(row==0||row==1||row==4)&&(frame==2||frame==3||frame==4)?-1:0;
-            for(int y=0;y<96;y++)for(int x=0;x<96;x++)if(pose.opaque(x,y))
-                sheet.set(frame*96+x,row*96+y+(y<65?breath:0),pose.get(x,y));
+            int breath=(row==0||row==1||row==4)&&(frame==2||frame==3||frame==4)?-2:0;
+            for(int y=0;y<cellSize;y++)for(int x=0;x<cellSize;x++)if(pose.opaque(x,y)) {
+                sheet.set(frame*cellSize+x,row*cellSize+y+(y<chest?breath:0),pose.get(x,y));
+                // The breath lifts the chest; the rows it leaves are filled, so the body stretches and never splits.
+                if(y>=chest+breath&&y<chest)sheet.set(frame*cellSize+x,row*cellSize+y,pose.get(x,y));
+            }
         }
         return sheet;
+    }
+
+    /**
+     * Briarlings, the minions that sprout during Briarheart's fight (owner 2026-10-29): baby Briarhearts in the forest
+     * creatures' format (48 px cells at 2x; 6 poses, 4-frame walk and 8-frame attack per facing). Taken from the
+     * original 96-native Briarheart key poses, so they share its bark, amber heart and twig crown at a small size.
+     */
+    static void briarlings() {
+        var source=Canvas.load("assets/source/characters/forest/briarheart-keyposes.generated.png").image();
+        if(source.getWidth()!=1774||source.getHeight()!=887)throw new IllegalStateException("Unexpected Briarheart source dimensions");
+        int[] colours={0x101b20,0x1d2929,0x293b37,0x3d5147,0x56665a,0x7b8771,
+                0x201f23,0x30272b,0x44332e,0x5c4536,0x77583f,0x957450,0xb49665,0xd0b77d,
+                0x261f35,0x3b2d4a,0x573b61,0x785077,0xa07492,
+                0x592d20,0x925023,0xc47929,0xe5a53a,0xf6cc62,0xffe694,0xfff3ca};
+        // key poses: 0 idle, 3 arms raised, 6 lunge; walk faces use the idle, attacks raise then lunge
+        int[] picks={0,0,0,3,6,3};
+        var crops=new BufferedImage[6];double scale=1;
+        for(int i=0;i<6;i++) {
+            int cell=picks[i],col=cell%4,row=cell/4,ox=col*source.getWidth()/4,oy=row*source.getHeight()/2;
+            var region=mainBody(source.getSubimage(ox,oy,(col+1)*source.getWidth()/4-ox,(row+1)*source.getHeight()/2-oy),12);
+            crops[i]=trim(region);
+            scale=Math.min(scale,Math.min(34.0/crops[i].getWidth(),36.0/crops[i].getHeight()));
+        }
+        var poses=new Canvas[6];
+        for(int i=0;i<6;i++) {
+            int w=Math.max(1,(int)Math.round(crops[i].getWidth()*scale)),h=Math.max(1,(int)Math.round(crops[i].getHeight()*scale));
+            poses[i]=new Canvas(48,48);poses[i].blit(fit(crops[i],w,h,colours),(48-w)/2,46-h);
+        }
+        Canvas.strip(poses).save("assets/characters/forest/briarling_poses.png");
+        for(boolean attack:new boolean[]{false,true}) {
+            int frames=attack?8:4;var sheet=new Canvas(frames*48,3*48);
+            for(int direction=0;direction<3;direction++)for(int frame=0;frame<frames;frame++) {
+                var pose=poses[attack?(frame<2?0:frame<4?3:frame<7?4:0):direction];
+                for(int y=0;y<48;y++)for(int x=0;x<48;x++)if(pose.opaque(x,y)) {
+                    int dy=attack?(frame==2||frame==3?1:0):(frame==1||frame==3?-1:0);   // a hop on the walk, a crouch before the lunge
+                    sheet.set(frame*48+x,direction*48+y+(y<38?dy:0),pose.get(x,y));
+                }
+            }
+            sheet.save("assets/characters/forest/briarling"+(attack?"_attack.png":"_walk.png"));
+        }
     }
 
     static Canvas survivors() {
@@ -248,6 +299,41 @@ final class ImportedArt {
                 .flatMapToInt(java.util.Arrays::stream).toArray();
         return fit(source, kind == SetPieces.Kind.STUMP ? kind.width : width,
                 kind == SetPieces.Kind.STUMP ? 48 : height, palette);
+    }
+
+    /** The figure in one generated cell: its largest opaque piece and anything within margin of that piece's box, so
+     *  slivers of the neighbouring poses never become floating pixels. */
+    static BufferedImage mainBody(BufferedImage cell,int margin) {
+        int w=cell.getWidth(),h=cell.getHeight();int[] label=new int[w*h];int best=0,bestSize=0,next=0;
+        int[] minX=new int[w*h/4+2],minY=new int[w*h/4+2],maxX=new int[w*h/4+2],maxY=new int[w*h/4+2];
+        var queue=new java.util.ArrayDeque<Integer>();
+        for(int start=0;start<w*h;start++) {
+            if(label[start]!=0||cell.getRGB(start%w,start/w)>>>24<128)continue;
+            if(++next>=minX.length)break;
+            int size=0;minX[next]=w;minY[next]=h;maxX[next]=-1;maxY[next]=-1;
+            label[start]=next;queue.add(start);
+            while(!queue.isEmpty()) {
+                int at=queue.poll(),x=at%w,y=at/w;size++;
+                minX[next]=Math.min(minX[next],x);maxX[next]=Math.max(maxX[next],x);
+                minY[next]=Math.min(minY[next],y);maxY[next]=Math.max(maxY[next],y);
+                for(int[] d:new int[][]{{1,0},{-1,0},{0,1},{0,-1}}) {
+                    int nx=x+d[0],ny=y+d[1];
+                    if(nx<0||ny<0||nx>=w||ny>=h)continue;
+                    int n=ny*w+nx;
+                    if(label[n]==0&&cell.getRGB(nx,ny)>>>24>=128){label[n]=next;queue.add(n);}
+                }
+            }
+            if(size>bestSize){bestSize=size;best=next;}
+        }
+        var out=new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
+        if(best==0)return out;
+        for(int i=0;i<w*h;i++) {
+            int l=label[i];
+            if(l==0)continue;
+            boolean near=minX[l]>=minX[best]-margin&&maxX[l]<=maxX[best]+margin&&minY[l]>=minY[best]-margin&&maxY[l]<=maxY[best]+margin;
+            if(near)out.setRGB(i%w,i/w,cell.getRGB(i%w,i/w));
+        }
+        return out;
     }
 
     private static Canvas fit(BufferedImage source,int targetWidth,int targetHeight,int[] palette) {

@@ -1,0 +1,30 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5168367624282837,
+  "text": "ぐっ。",
+  "words": [
+    {
+      "text": "ぐ",
+      "start": 0.12,
+      "end": 0.2,
+      "type": "word",
+      "logprob": -0.026988422498106956
+    },
+    {
+      "text": "っ",
+      "start": 0.2,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -0.11980024725198746
+    },
+    {
+      "text": "。",
+      "start": 0.3,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -0.3502851128578186
+    }
+  ],
+  "transcription_id": "YU6od5GIci4ZLwsQIMN3",
+  "audio_duration_secs": 0.518875
+}

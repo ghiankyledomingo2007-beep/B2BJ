@@ -1,0 +1,345 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9998347759246826,
+  "text": "破れた旗をたどって東へ。内庭に着いたら北です。お気をつけて。死者たちはまだ戦い方を覚えています。",
+  "words": [
+    {
+      "text": "破",
+      "start": 0.2,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.014390966854989529
+    },
+    {
+      "text": "れ",
+      "start": 0.34,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.00011562632425921038
+    },
+    {
+      "text": "た",
+      "start": 0.52,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.00011562632425921038
+    },
+    {
+      "text": "旗",
+      "start": 0.66,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -0.005401895847171545
+    },
+    {
+      "text": "を",
+      "start": 0.86,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -5.8053239627042785e-05
+    },
+    {
+      "text": "た",
+      "start": 1.04,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.0489155650138855
+    },
+    {
+      "text": "ど",
+      "start": 1.12,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -3.1709168979432434e-05
+    },
+    {
+      "text": "っ",
+      "start": 1.26,
+      "end": 1.36,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "て",
+      "start": 1.44,
+      "end": 1.66,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "東",
+      "start": 1.66,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -7.497983460780233e-05
+    },
+    {
+      "text": "へ",
+      "start": 2.0,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -5.006777428206988e-06
+    },
+    {
+      "text": "。",
+      "start": 2.12,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.00687436293810606
+    },
+    {
+      "text": "内",
+      "start": 2.78,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -0.0006090931710787117
+    },
+    {
+      "text": "庭",
+      "start": 3.14,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -0.0003271759778726846
+    },
+    {
+      "text": "に",
+      "start": 3.4,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -0.007759547792375088
+    },
+    {
+      "text": "着",
+      "start": 3.5,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -0.007759547792375088
+    },
+    {
+      "text": "い",
+      "start": 3.56,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -8.976056415122002e-05
+    },
+    {
+      "text": "た",
+      "start": 3.72,
+      "end": 3.78,
+      "type": "word",
+      "logprob": -8.976056415122002e-05
+    },
+    {
+      "text": "ら",
+      "start": 3.92,
+      "end": 3.94,
+      "type": "word",
+      "logprob": -8.976056415122002e-05
+    },
+    {
+      "text": "北",
+      "start": 3.94,
+      "end": 4.16,
+      "type": "word",
+      "logprob": -4.8397800128441304e-05
+    },
+    {
+      "text": "で",
+      "start": 4.26,
+      "end": 4.36,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "す",
+      "start": 4.36,
+      "end": 4.46,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 4.46,
+      "end": 4.46,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "お",
+      "start": 4.98,
+      "end": 5.08,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "気",
+      "start": 5.08,
+      "end": 5.16,
+      "type": "word",
+      "logprob": -0.0031874587293714285
+    },
+    {
+      "text": "を",
+      "start": 5.16,
+      "end": 5.3,
+      "type": "word",
+      "logprob": -1.1444026313256472e-05
+    },
+    {
+      "text": "つ",
+      "start": 5.3,
+      "end": 5.42,
+      "type": "word",
+      "logprob": -1.1444026313256472e-05
+    },
+    {
+      "text": "け",
+      "start": 5.42,
+      "end": 5.5,
+      "type": "word",
+      "logprob": -1.1444026313256472e-05
+    },
+    {
+      "text": "て",
+      "start": 5.6,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -1.1444026313256472e-05
+    },
+    {
+      "text": "。",
+      "start": 5.62,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "死",
+      "start": 6.56,
+      "end": 6.68,
+      "type": "word",
+      "logprob": -0.22554954886436462
+    },
+    {
+      "text": "者",
+      "start": 6.68,
+      "end": 6.8,
+      "type": "word",
+      "logprob": -0.00010108436981681734
+    },
+    {
+      "text": "た",
+      "start": 6.8,
+      "end": 6.9,
+      "type": "word",
+      "logprob": -0.0002485204895492643
+    },
+    {
+      "text": "ち",
+      "start": 6.9,
+      "end": 7.12,
+      "type": "word",
+      "logprob": -0.0002485204895492643
+    },
+    {
+      "text": "は",
+      "start": 7.12,
+      "end": 7.6,
+      "type": "word",
+      "logprob": -0.0002485204895492643
+    },
+    {
+      "text": "ま",
+      "start": 7.6,
+      "end": 7.74,
+      "type": "word",
+      "logprob": -5.8410845667822286e-05
+    },
+    {
+      "text": "だ",
+      "start": 7.8,
+      "end": 8.0,
+      "type": "word",
+      "logprob": -5.8410845667822286e-05
+    },
+    {
+      "text": "戦",
+      "start": 8.14,
+      "end": 8.26,
+      "type": "word",
+      "logprob": -0.00041154498467221856
+    },
+    {
+      "text": "い",
+      "start": 8.26,
+      "end": 8.46,
+      "type": "word",
+      "logprob": -2.109982233378105e-05
+    },
+    {
+      "text": "方",
+      "start": 8.46,
+      "end": 8.66,
+      "type": "word",
+      "logprob": -0.0009604846709407866
+    },
+    {
+      "text": "を",
+      "start": 8.66,
+      "end": 8.8,
+      "type": "word",
+      "logprob": -0.0009604846709407866
+    },
+    {
+      "text": "覚",
+      "start": 8.8,
+      "end": 8.92,
+      "type": "word",
+      "logprob": -0.003925595432519913
+    },
+    {
+      "text": "え",
+      "start": 8.92,
+      "end": 9.02,
+      "type": "word",
+      "logprob": -8.4638240878121e-06
+    },
+    {
+      "text": "て",
+      "start": 9.06,
+      "end": 9.1,
+      "type": "word",
+      "logprob": -8.4638240878121e-06
+    },
+    {
+      "text": "い",
+      "start": 9.1,
+      "end": 9.24,
+      "type": "word",
+      "logprob": -8.4638240878121e-06
+    },
+    {
+      "text": "ま",
+      "start": 9.24,
+      "end": 9.36,
+      "type": "word",
+      "logprob": -8.4638240878121e-06
+    },
+    {
+      "text": "す",
+      "start": 9.38,
+      "end": 9.44,
+      "type": "word",
+      "logprob": -8.4638240878121e-06
+    },
+    {
+      "text": "。",
+      "start": 9.44,
+      "end": 9.44,
+      "type": "word",
+      "logprob": -0.0006266061100177467
+    }
+  ],
+  "transcription_id": "3BXMkR1Xn3koxKtb5mQs",
+  "audio_duration_secs": 9.68
+}

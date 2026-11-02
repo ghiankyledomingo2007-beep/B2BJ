@@ -1,0 +1,699 @@
+{
+  "audition": {
+    "crest_db": 19.63,
+    "dc": -0.0,
+    "duration_s": 20.9,
+    "file": "audition.wav",
+    "groups": [
+      {
+        "end_s": 3.4,
+        "events": [
+          {
+            "cue": "warden_step",
+            "gain": 0.55,
+            "time_s": 0.4
+          },
+          {
+            "cue": "warden_step_2",
+            "gain": 0.55,
+            "time_s": 0.95
+          },
+          {
+            "cue": "warden_windup",
+            "gain": 0.8,
+            "time_s": 1.45
+          },
+          {
+            "cue": "warden_slam",
+            "gain": 1.0,
+            "time_s": 2.35
+          }
+        ],
+        "group": "phase1_walk_and_slam",
+        "start_s": 0.4
+      },
+      {
+        "end_s": 6.0,
+        "events": [
+          {
+            "cue": "warden_windup",
+            "gain": 0.8,
+            "time_s": 4.1
+          },
+          {
+            "cue": "warden_slam_2",
+            "gain": 1.0,
+            "time_s": 5.0
+          }
+        ],
+        "group": "phase1_slam_take2",
+        "start_s": 4.1
+      },
+      {
+        "end_s": 8.5,
+        "events": [
+          {
+            "cue": "warden_sweep",
+            "gain": 0.9,
+            "time_s": 6.8
+          },
+          {
+            "cue": "warden_sweep_2",
+            "gain": 0.9,
+            "time_s": 7.7
+          }
+        ],
+        "group": "phase1_sweeps",
+        "start_s": 6.8
+      },
+      {
+        "end_s": 10.82,
+        "events": [
+          {
+            "cue": "warden_rush",
+            "gain": 0.9,
+            "time_s": 9.3
+          },
+          {
+            "cue": "warden_rush_2",
+            "gain": 0.9,
+            "time_s": 10.1
+          }
+        ],
+        "group": "phase1_rushes",
+        "start_s": 9.3
+      },
+      {
+        "end_s": 13.71,
+        "events": [
+          {
+            "cue": "warden_strain",
+            "gain": 0.9,
+            "time_s": 11.6
+          },
+          {
+            "cue": "warden_core_open",
+            "gain": 0.8,
+            "time_s": 13.05
+          }
+        ],
+        "group": "phase_transition",
+        "start_s": 11.6
+      },
+      {
+        "end_s": 16.26,
+        "events": [
+          {
+            "cue": "warden_fists_launch",
+            "gain": 0.85,
+            "time_s": 14.5
+          },
+          {
+            "cue": "warden_fists_impact",
+            "gain": 0.9,
+            "time_s": 15.0
+          },
+          {
+            "cue": "warden_fists_impact_2",
+            "gain": 0.9,
+            "time_s": 15.48
+          }
+        ],
+        "group": "phase2_fists",
+        "start_s": 14.5
+      },
+      {
+        "end_s": 20.28,
+        "events": [
+          {
+            "cue": "warden_beam_charge",
+            "gain": 0.85,
+            "time_s": 17.1
+          },
+          {
+            "cue": "warden_beam",
+            "gain": 1.0,
+            "time_s": 18.35
+          },
+          {
+            "cue": "warden_core_open",
+            "gain": 0.8,
+            "time_s": 19.62
+          }
+        ],
+        "group": "phase2_beam",
+        "start_s": 17.1
+      }
+    ],
+    "length_s": 20.9,
+    "loudness_db": -14.05,
+    "mix_scale": 0.999984,
+    "peak": 0.86428,
+    "peak_dbfs": -1.27,
+    "rms_dbfs": -20.9,
+    "samples": 460845,
+    "sha256": "290bbb857acd4ffe1797215c4ede3149af04385a3678ef40c6d5066dcfb2a4e2"
+  },
+  "cue_ceiling": 0.891,
+  "cues": {
+    "warden_beam": {
+      "crest_db": 11.54,
+      "dc": -0.0,
+      "duration_rule_s": [
+        1.15,
+        1.15
+      ],
+      "duration_s": 1.149977,
+      "family": "warden_beam",
+      "file": "warden_beam.wav",
+      "function": "warden_beam",
+      "game_gain": 1.0,
+      "highpass_hz": 38.0,
+      "layers": "1.15 s: release front at 2 ms (pressure burst + knock), then a dense sustained core beam to 0.9 s - harmonic chord with chorus, violet fifth undertone, pitched tearing through 16 harmonic resonators, a resonant comb roar and a thin cyan glaze - dissipating through the room over the final 0.25 s.",
+      "loudness_db": -14.06,
+      "loudness_target_db": -13.0,
+      "master_gain_db": 0.62,
+      "mid": 0.302,
+      "peak": 0.86428,
+      "peak_capped": true,
+      "peak_dbfs": -1.27,
+      "purpose": "beam release at 0, sustained tearing core resonance to 0.9 s, 0.25 s dissipating tail",
+      "rms_dbfs": -12.81,
+      "samples": 25357,
+      "seed": "guardian:warden_beam",
+      "sha256": "b03efd2d71b11b93e8548d6bf02dad00f32457c64fda98ca8a08fe2ecfc72072",
+      "sub": 0.035,
+      "sync_s": 0.002,
+      "take": 0,
+      "translation_eq": [],
+      "trigger": "beam release frame"
+    },
+    "warden_beam_charge": {
+      "crest_db": 17.13,
+      "dc": 1e-07,
+      "duration_rule_s": [
+        1.25,
+        1.25
+      ],
+      "duration_s": 1.249977,
+      "family": "warden_beam_charge",
+      "file": "warden_beam_charge.wav",
+      "function": "warden_beam_charge",
+      "game_gain": 0.85,
+      "highpass_hz": 38.0,
+      "layers": "1.25 s coherent core gathering: core harmonics enter in three waves over a one-semitone rise, an accelerating throb (2.5 -> 10 Hz), two void suctions drawing inward and a pitched rising gust, then a 120 ms fall to silence at 1.14 s. No fake impact: the release is the separate warden_beam cue.",
+      "loudness_db": -17.0,
+      "loudness_target_db": -17.0,
+      "master_gain_db": -6.03,
+      "mid": 0.3495,
+      "peak": 0.68075,
+      "peak_capped": false,
+      "peak_dbfs": -3.34,
+      "purpose": "coherent core pressure gathering; falls silent before release, no fake impact",
+      "rms_dbfs": -20.47,
+      "samples": 27562,
+      "seed": "guardian:warden_beam_charge",
+      "sha256": "90605b1a603eca2fd45ff3e84fe406a990a2c69eec8a06742b1d635f9c42c88d",
+      "sub": 0.0257,
+      "sync_s": 0.0,
+      "take": 0,
+      "translation_eq": [
+        "peak 1.4 kHz +2 dB",
+        "peak 1.4 kHz +2 dB",
+        "peak 1.4 kHz +2 dB",
+        "peak 1.4 kHz +2 dB"
+      ],
+      "trigger": "beam charge start, exactly 1.25 s before the release frame"
+    },
+    "warden_core_open": {
+      "crest_db": 12.85,
+      "dc": -1e-07,
+      "duration_rule_s": [
+        0.55,
+        0.75
+      ],
+      "duration_s": 0.66,
+      "family": "warden_core_open",
+      "file": "warden_core_open.wav",
+      "function": "warden_core_open",
+      "game_gain": 0.8,
+      "highpass_hz": 38.0,
+      "layers": "Punish window: two soft unlatch taps, the shell exhales (a falling resonant breath) and the exposed core rings a clear, gentle fifth with a glass overtone. Quieter and softer-edged than any impact.",
+      "loudness_db": -20.5,
+      "loudness_target_db": -20.5,
+      "master_gain_db": -6.12,
+      "mid": 0.5523,
+      "peak": 0.27937,
+      "peak_capped": false,
+      "peak_dbfs": -11.08,
+      "purpose": "short resonant armor release and gentle core chime, subtler than any impact",
+      "rms_dbfs": -23.93,
+      "samples": 14553,
+      "seed": "guardian:warden_core_open",
+      "sha256": "68b76ba68e95d3889263ab29359bacc6490ce3015c19a1d557c9ce7cc7cb303e",
+      "sub": 0.0002,
+      "sync_s": 0.004,
+      "take": 0,
+      "translation_eq": [],
+      "trigger": "core exposed / punish window opens"
+    },
+    "warden_fists_impact": {
+      "crest_db": 18.98,
+      "dc": -1e-07,
+      "duration_rule_s": [
+        0.7,
+        0.9
+      ],
+      "duration_s": 0.8,
+      "family": "warden_fists_impact",
+      "file": "warden_fists_impact.wav",
+      "function": "warden_fists_impact",
+      "game_gain": 0.9,
+      "highpass_hz": 38.0,
+      "layers": "Focused fist contact at 3 ms: smaller and brighter than the slam with a short tail. Take 1 is centred on D3, take 2 on A3 (a fifth above), so the pair fired 0.48 s apart rings as one open fifth instead of mud.",
+      "loudness_db": -14.99,
+      "loudness_target_db": -14.0,
+      "master_gain_db": -0.73,
+      "mid": 0.477,
+      "peak": 0.86428,
+      "peak_capped": true,
+      "peak_dbfs": -1.27,
+      "purpose": "focused magical fist contact centred on D3",
+      "rms_dbfs": -20.25,
+      "samples": 17640,
+      "seed": "guardian:warden_fists_impact",
+      "sha256": "776cee512ad52aecaba467fbc631582ccf3d02a922f71c070ac35ca979c3d9b8",
+      "sub": 0.0346,
+      "sync_s": 0.003,
+      "take": 0,
+      "translation_eq": [],
+      "trigger": "first fist lands"
+    },
+    "warden_fists_impact_2": {
+      "crest_db": 17.65,
+      "dc": 1e-07,
+      "duration_rule_s": [
+        0.7,
+        0.9
+      ],
+      "duration_s": 0.78,
+      "family": "warden_fists_impact",
+      "file": "warden_fists_impact_2.wav",
+      "function": "warden_fists_impact",
+      "game_gain": 0.9,
+      "highpass_hz": 38.0,
+      "layers": "Focused fist contact at 3 ms: smaller and brighter than the slam with a short tail. Take 1 is centred on D3, take 2 on A3 (a fifth above), so the pair fired 0.48 s apart rings as one open fifth instead of mud.",
+      "loudness_db": -14.0,
+      "loudness_target_db": -14.0,
+      "master_gain_db": 0.62,
+      "mid": 0.5411,
+      "peak": 0.85931,
+      "peak_capped": false,
+      "peak_dbfs": -1.32,
+      "purpose": "focused magical fist contact centred on A3 (open fifth over take 1)",
+      "rms_dbfs": -18.97,
+      "samples": 17199,
+      "seed": "guardian:warden_fists_impact_2",
+      "sha256": "a4c8ef1850bb0877966d530c119c082f40842fdefec83c1d67fb65fcedba24ff",
+      "sub": 0.0344,
+      "sync_s": 0.003,
+      "take": 1,
+      "translation_eq": [],
+      "trigger": "second fist lands, 0.48 s after the first"
+    },
+    "warden_fists_launch": {
+      "crest_db": 15.55,
+      "dc": -0.0,
+      "duration_rule_s": [
+        0.36,
+        0.5
+      ],
+      "duration_s": 0.44,
+      "family": "warden_fists_launch",
+      "file": "warden_fists_launch.wav",
+      "function": "warden_fists_launch",
+      "game_gain": 0.85,
+      "highpass_hz": 38.0,
+      "layers": "Two armor pieces unlatch 74 ms apart (left/right, a tone apart), each a bright latch tick, a small plate, a shell ping and a puff; the core tether lifts them on a rising glass fifth. Two mechanical releases, no shot.",
+      "loudness_db": -16.0,
+      "loudness_target_db": -16.0,
+      "master_gain_db": -0.09,
+      "mid": 0.6791,
+      "peak": 0.65352,
+      "peak_capped": false,
+      "peak_dbfs": -3.69,
+      "purpose": "two resonant armor pieces unlatch and lift on the core tether",
+      "rms_dbfs": -19.24,
+      "samples": 9702,
+      "seed": "guardian:warden_fists_launch",
+      "sha256": "18077496417b8c98fdbcab0817a75b133e78feaa6a861645d3879f99d58429f8",
+      "sub": 0.0004,
+      "sync_s": 0.004,
+      "take": 0,
+      "translation_eq": [],
+      "trigger": "fists release frame (fires once for both fists)"
+    },
+    "warden_rush": {
+      "crest_db": 15.55,
+      "dc": 0.0,
+      "duration_rule_s": [
+        0.65,
+        0.85
+      ],
+      "duration_s": 0.76,
+      "family": "warden_rush",
+      "file": "warden_rush.wav",
+      "function": "warden_rush",
+      "game_gain": 0.9,
+      "highpass_hz": 38.0,
+      "layers": "Plated shoulder burst at 2 ms (no windup): three plate clanks as the armor drives forward, a low pressure whump with a pitched body, a resonant forward gust, a core surge rising four semitones and a short back-draft. Take 2 is a semitone up and shorter.",
+      "loudness_db": -14.24,
+      "loudness_target_db": -14.0,
+      "master_gain_db": 1.94,
+      "mid": 0.3615,
+      "peak": 0.86428,
+      "peak_capped": true,
+      "peak_dbfs": -1.27,
+      "purpose": "plated shoulder burst and pressure displacement, no windup",
+      "rms_dbfs": -16.82,
+      "samples": 16758,
+      "seed": "guardian:warden_rush",
+      "sha256": "fb07036eea3beaa59078dc05a21c257783cc3889fc267d697b1943d1a3f2c4a2",
+      "sub": 0.0588,
+      "sync_s": 0.002,
+      "take": 0,
+      "translation_eq": [],
+      "trigger": "rush launch frame"
+    },
+    "warden_rush_2": {
+      "crest_db": 16.31,
+      "dc": 0.0,
+      "duration_rule_s": [
+        0.65,
+        0.85
+      ],
+      "duration_s": 0.72,
+      "family": "warden_rush",
+      "file": "warden_rush_2.wav",
+      "function": "warden_rush",
+      "game_gain": 0.9,
+      "highpass_hz": 38.0,
+      "layers": "Plated shoulder burst at 2 ms (no windup): three plate clanks as the armor drives forward, a low pressure whump with a pitched body, a resonant forward gust, a core surge rising four semitones and a short back-draft. Take 2 is a semitone up and shorter.",
+      "loudness_db": -15.38,
+      "loudness_target_db": -14.0,
+      "master_gain_db": 0.86,
+      "mid": 0.3956,
+      "peak": 0.86428,
+      "peak_capped": true,
+      "peak_dbfs": -1.27,
+      "purpose": "same rush, a semitone up and shorter",
+      "rms_dbfs": -17.58,
+      "samples": 15876,
+      "seed": "guardian:warden_rush_2",
+      "sha256": "8b630d64751b2969178cfbca4f71d63c31b01f9c40c2a98d019e893926e1e517",
+      "sub": 0.0573,
+      "sync_s": 0.002,
+      "take": 1,
+      "translation_eq": [],
+      "trigger": "rush launch frame (alternate)"
+    },
+    "warden_slam": {
+      "crest_db": 19.63,
+      "dc": 0.0,
+      "duration_rule_s": [
+        0.85,
+        1.15
+      ],
+      "duration_s": 1.049977,
+      "family": "warden_slam",
+      "file": "warden_slam.wav",
+      "function": "warden_slam",
+      "game_gain": 1.0,
+      "highpass_hz": 38.0,
+      "layers": "Heavy fist contact at 3 ms: tick + knock, two plate layers, hollow shell, body weight and settling plates; the violet core chord flares and cyan glass shimmers through a dark room. Take 2: same recipe, a semitone up, fifth-up glass, one less settling tap.",
+      "loudness_db": -15.93,
+      "loudness_target_db": -12.0,
+      "master_gain_db": -4.34,
+      "mid": 0.3415,
+      "peak": 0.86428,
+      "peak_capped": true,
+      "peak_dbfs": -1.27,
+      "purpose": "heavy plated fist contact with violet/cyan core flare",
+      "rms_dbfs": -20.9,
+      "samples": 23152,
+      "seed": "guardian:warden_slam",
+      "sha256": "980fd1fea1e1027f6dac1ff610f91b549b415f8e030415179ea30259b77cbe73",
+      "sub": 0.0666,
+      "sync_s": 0.003,
+      "take": 0,
+      "translation_eq": [
+        "peak 1.4 kHz +2 dB",
+        "peak 1.4 kHz +2 dB"
+      ],
+      "trigger": "slam fist contact frame"
+    },
+    "warden_slam_2": {
+      "crest_db": 18.42,
+      "dc": 0.0,
+      "duration_rule_s": [
+        0.85,
+        1.15
+      ],
+      "duration_s": 1.0,
+      "family": "warden_slam",
+      "file": "warden_slam_2.wav",
+      "function": "warden_slam",
+      "game_gain": 1.0,
+      "highpass_hz": 38.0,
+      "layers": "Heavy fist contact at 3 ms: tick + knock, two plate layers, hollow shell, body weight and settling plates; the violet core chord flares and cyan glass shimmers through a dark room. Take 2: same recipe, a semitone up, fifth-up glass, one less settling tap.",
+      "loudness_db": -15.33,
+      "loudness_target_db": -12.0,
+      "master_gain_db": -4.06,
+      "mid": 0.3275,
+      "peak": 0.86428,
+      "peak_capped": true,
+      "peak_dbfs": -1.27,
+      "purpose": "same slam identity, a semitone up, fifth-up glass",
+      "rms_dbfs": -19.69,
+      "samples": 22050,
+      "seed": "guardian:warden_slam_2",
+      "sha256": "9ea4d11cb47df2dbde25c72233827f9e32cde6f30f992cf9c650cb972a44eaba",
+      "sub": 0.051,
+      "sync_s": 0.003,
+      "take": 1,
+      "translation_eq": [
+        "peak 1.4 kHz +2 dB",
+        "peak 1.4 kHz +2 dB",
+        "peak 1.4 kHz +2 dB"
+      ],
+      "trigger": "slam fist contact frame (alternate)"
+    },
+    "warden_step": {
+      "crest_db": 18.38,
+      "dc": -1e-07,
+      "duration_rule_s": [
+        0.25,
+        0.4
+      ],
+      "duration_s": 0.32,
+      "family": "warden_step",
+      "file": "warden_step.wav",
+      "function": "warden_step",
+      "game_gain": 0.55,
+      "highpass_hz": 70.0,
+      "layers": "Compact plated footfall at 3 ms: tick, small plate clank, short body, shell ping, two settling taps. High-passed at 70 Hz in mastering so walking never clutters the bass under attacks.",
+      "loudness_db": -23.0,
+      "loudness_target_db": -23.0,
+      "master_gain_db": -4.42,
+      "mid": 0.3429,
+      "peak": 0.41047,
+      "peak_capped": false,
+      "peak_dbfs": -7.73,
+      "purpose": "compact heavy plated footfall, quiet, no bass clutter",
+      "rms_dbfs": -26.11,
+      "samples": 7056,
+      "seed": "guardian:warden_step",
+      "sha256": "6e3f8e7a72f5b47c98391987393dd0091faac54359870818af9466ec8c4a67c9",
+      "sub": 0.0203,
+      "sync_s": 0.003,
+      "take": 0,
+      "translation_eq": [],
+      "trigger": "footfall contact frame"
+    },
+    "warden_step_2": {
+      "crest_db": 19.85,
+      "dc": 1e-07,
+      "duration_rule_s": [
+        0.25,
+        0.4
+      ],
+      "duration_s": 0.3,
+      "family": "warden_step",
+      "file": "warden_step_2.wav",
+      "function": "warden_step",
+      "game_gain": 0.55,
+      "highpass_hz": 70.0,
+      "layers": "Compact plated footfall at 3 ms: tick, small plate clank, short body, shell ping, two settling taps. High-passed at 70 Hz in mastering so walking never clutters the bass under attacks.",
+      "loudness_db": -23.0,
+      "loudness_target_db": -23.0,
+      "master_gain_db": -3.98,
+      "mid": 0.4092,
+      "peak": 0.48827,
+      "peak_capped": false,
+      "peak_dbfs": -6.23,
+      "purpose": "alternate footfall, slightly higher plates",
+      "rms_dbfs": -26.08,
+      "samples": 6615,
+      "seed": "guardian:warden_step_2",
+      "sha256": "15ac2dca1cdfd0d58da8f06ebd3a4beca87873b61c810fa65fe1349b4e1c9b41",
+      "sub": 0.023,
+      "sync_s": 0.003,
+      "take": 1,
+      "translation_eq": [],
+      "trigger": "footfall contact frame (alternate)"
+    },
+    "warden_strain": {
+      "crest_db": 15.87,
+      "dc": -1e-07,
+      "duration_rule_s": [
+        1.4,
+        1.4
+      ],
+      "duration_s": 1.4,
+      "family": "warden_strain",
+      "file": "warden_strain.wav",
+      "function": "warden_strain",
+      "game_gain": 0.9,
+      "highpass_hz": 38.0,
+      "layers": "1.4 s phase transition: the armor strains (two creaking groans sagging in pitch, a tightening tremble and a rising core pressure), a plate gives at 1.10 s, everything is gated to near-silence 1.165-1.20 s (room tail included), then the core opens at 1.20 s in a harmonic bloom - a chord, not a melody.",
+      "loudness_db": -15.0,
+      "loudness_target_db": -15.0,
+      "master_gain_db": 0.18,
+      "mid": 0.3187,
+      "peak": 0.69503,
+      "peak_capped": false,
+      "peak_dbfs": -3.16,
+      "purpose": "armor strains, pre-bloom silence, core opens at 1.2 s in a harmonic bloom",
+      "rms_dbfs": -19.03,
+      "samples": 30870,
+      "seed": "guardian:warden_strain",
+      "sha256": "cd3959ec5550140a9f01a993d59e6b634bd30d61124fd9c81bbb6964e59f8e13",
+      "sub": 0.0259,
+      "sync_s": 1.2,
+      "take": 0,
+      "translation_eq": [
+        "peak 1.4 kHz +2 dB"
+      ],
+      "trigger": "phase I -> II transition start; the core opens 1.2 s in"
+    },
+    "warden_sweep": {
+      "crest_db": 17.68,
+      "dc": 0.0,
+      "duration_rule_s": [
+        0.7,
+        0.95
+      ],
+      "duration_s": 0.84,
+      "family": "warden_sweep",
+      "file": "warden_sweep.wav",
+      "function": "warden_sweep",
+      "game_gain": 0.9,
+      "highpass_hz": 38.0,
+      "layers": "Heavy hollow backhand, leading edge at 2 ms: a cyan shearing edge (gliding comb-pitched noise and a falling glass partial) over a glancing plate scrape, a hollow 'whoom' gust ringing the shell cavity, a falling core trail and a light body. Take 2 is a little lower and shorter.",
+      "loudness_db": -14.0,
+      "loudness_target_db": -14.0,
+      "master_gain_db": -1.1,
+      "mid": 0.589,
+      "peak": 0.77969,
+      "peak_capped": false,
+      "peak_dbfs": -2.16,
+      "purpose": "heavy hollow backhand with a cyan shearing leading edge",
+      "rms_dbfs": -19.84,
+      "samples": 18522,
+      "seed": "guardian:warden_sweep",
+      "sha256": "c5f7fb385e44169cefeeee99168b6f4c1eee1811ed88f401d97a4b73ffe4a83a",
+      "sub": 0.0197,
+      "sync_s": 0.002,
+      "take": 0,
+      "translation_eq": [],
+      "trigger": "backhand release frame"
+    },
+    "warden_sweep_2": {
+      "crest_db": 17.73,
+      "dc": 1e-07,
+      "duration_rule_s": [
+        0.7,
+        0.95
+      ],
+      "duration_s": 0.8,
+      "family": "warden_sweep",
+      "file": "warden_sweep_2.wav",
+      "function": "warden_sweep",
+      "game_gain": 0.9,
+      "highpass_hz": 38.0,
+      "layers": "Heavy hollow backhand, leading edge at 2 ms: a cyan shearing edge (gliding comb-pitched noise and a falling glass partial) over a glancing plate scrape, a hollow 'whoom' gust ringing the shell cavity, a falling core trail and a light body. Take 2 is a little lower and shorter.",
+      "loudness_db": -14.0,
+      "loudness_target_db": -14.0,
+      "master_gain_db": -0.9,
+      "mid": 0.5625,
+      "peak": 0.84021,
+      "peak_capped": false,
+      "peak_dbfs": -1.51,
+      "purpose": "same backhand, lower and shorter",
+      "rms_dbfs": -19.24,
+      "samples": 17640,
+      "seed": "guardian:warden_sweep_2",
+      "sha256": "1823bd81c06866439baafb0b772df32678fc5b5ba90a459749a89cb34322e15f",
+      "sub": 0.0209,
+      "sync_s": 0.002,
+      "take": 1,
+      "translation_eq": [],
+      "trigger": "backhand release frame (alternate)"
+    },
+    "warden_windup": {
+      "crest_db": 16.3,
+      "dc": -0.0,
+      "duration_rule_s": [
+        0.86,
+        0.86
+      ],
+      "duration_s": 0.86,
+      "family": "warden_windup",
+      "file": "warden_windup.wav",
+      "function": "warden_windup",
+      "game_gain": 0.8,
+      "highpass_hz": 38.0,
+      "layers": "0.86 s: the armor shifts at once (readable from the first frame), strain creaks, the low core hum and a void swell rise together, then everything drops out by 0.735 s so the slam lands after a beat of silence.",
+      "loudness_db": -18.0,
+      "loudness_target_db": -18.0,
+      "master_gain_db": -4.44,
+      "mid": 0.34,
+      "peak": 0.56758,
+      "peak_capped": false,
+      "peak_dbfs": -4.92,
+      "purpose": "low armor/pressure rise; readable at once; drops to silence, no impact at the end",
+      "rms_dbfs": -21.22,
+      "samples": 18963,
+      "seed": "guardian:warden_windup",
+      "sha256": "51bd29f93c30fdb41a6a7268d1573db8b91a81d1de21cdaededb94510283823b",
+      "sub": 0.0254,
+      "sync_s": 0.0,
+      "take": 0,
+      "translation_eq": [
+        "peak 1.4 kHz +2 dB",
+        "peak 1.4 kHz +2 dB"
+      ],
+      "trigger": "slam telegraph start, ~0.90 s before the slam contact frame"
+    }
+  },
+  "format": {
+    "channels": 1,
+    "container": "RIFF WAVE",
+    "encoding": "PCM signed 16-bit little-endian",
+    "sample_rate": 22050
+  },
+  "generator": "generate_guardian_sfx.py",
+  "loudness_measure": "laptop-weighted short-term: 4th-order 150 Hz high-pass, loudest 100 ms RMS (dB)",
+  "mix_ceiling": 0.891,
+  "version": "guardian-sfx-1.0"
+}

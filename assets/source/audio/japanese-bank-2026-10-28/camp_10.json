@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "破れた旗をたどって東へ。内庭に着いたら北です。お気をつけて。死者たちは、まだ戦い方を覚えています。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "FU3QNVGWyShoZMQXWOCd",
+  "generated_at": 1793156112.9801517
+}

@@ -11,10 +11,20 @@ public final class PixelConsistencyTest {
     /** Known exceptions: the JVM splash is shown unscaled, so it is doubled on purpose; the loading layers are pending a redraw. */
     private static final Set<String> EXEMPT = Set.of("assets/ui/splash.png", "assets/ui/loading/outpost.png", "assets/ui/loading/sky.png",
             "assets/ui/title/ruined-gate.png",
+            // Approved menu identity keeps the same smooth alpha as the loading-screen master.
+            "assets/ui/title/moonlit-gate-logo.png",
+            // Journey Ribbon samples the four approved painted skill illustrations from this unchanged board.
+            "assets/ui/journey-ribbon-approved.png",
             // Approved high-resolution UI sources are sampled to binary-alpha native pixels by StoneMenuArt.
             "assets/ui/stone-menu/frame.png", "assets/ui/stone-menu/button.png", "assets/ui/stone-menu/icons.png");
 
     public static void main(String[] args) throws Exception {
+        assert Files.mismatch(Path.of("assets/ui/journey-ribbon-approved.png"),
+                Path.of("docs/art-review/hud-ivory-mockups-2026-10-31/assets/board-04.png"))==-1
+                : "Journey Ribbon must sample the owner's exact approved artwork";
+        assert Files.mismatch(Path.of("assets/ui/title/moonlit-gate-logo.png"),
+                Path.of("assets/source/ui/splash/moonlit-gate-logo.png"))==-1
+                : "title identity must preserve the approved loading-screen logo exactly";
         int checked = 0;
         try (var files = Files.walk(Path.of("assets"))) {
             for (var path : (Iterable<Path>) files.filter(p -> p.toString().endsWith(".png") && !p.toString().contains("/source/"))::iterator) {
@@ -29,7 +39,7 @@ public final class PixelConsistencyTest {
         var warden = B2BJ.loadImage("assets/characters/guardian/warden_motion.png");
         assert warden.getWidth() / 8 * 2 == Guardian.RENDER_SIZE : "the Warden is drawn at exactly 2x";
         var briar = B2BJ.loadImage("assets/characters/guardian/briarheart_motion.png");
-        assert briar.getWidth() / 8 * 2 == 192 : "Briarheart is drawn at exactly 2x";
+        assert briar.getWidth() / 8 * 2 == 576 : "Briarheart (3x redraw, 288 px cells) is drawn at exactly 2x";
         assert checked > 150 : "asset walk found too little: " + checked;
         System.out.println("PixelConsistencyTest passed (" + checked + " sheets)");
     }

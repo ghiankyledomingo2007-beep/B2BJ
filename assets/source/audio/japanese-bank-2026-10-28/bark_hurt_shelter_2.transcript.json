@@ -1,0 +1,100 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9547520279884338,
+  "text": "次に戦う前に安全な場所へ。",
+  "words": [
+    {
+      "text": "次",
+      "start": 0.38,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0007116645574569702
+    },
+    {
+      "text": "に",
+      "start": 0.52,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -0.0007116645574569702
+    },
+    {
+      "text": "戦",
+      "start": 0.74,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.00020037073409184813
+    },
+    {
+      "text": "う",
+      "start": 1.02,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "前",
+      "start": 1.2,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -1.2636104656849056e-05
+    },
+    {
+      "text": "に",
+      "start": 1.34,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.2636104656849056e-05
+    },
+    {
+      "text": "安",
+      "start": 1.98,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -0.02057810313999653
+    },
+    {
+      "text": "全",
+      "start": 2.14,
+      "end": 2.3,
+      "type": "word",
+      "logprob": -0.02057810313999653
+    },
+    {
+      "text": "な",
+      "start": 2.3,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "場",
+      "start": 2.42,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "所",
+      "start": 2.56,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "へ",
+      "start": 2.68,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "。",
+      "start": 2.78,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -0.00038675934774801135
+    }
+  ],
+  "transcription_id": "Ff8z271vdpwFoA3ShgiO",
+  "audio_duration_secs": 3.864
+}

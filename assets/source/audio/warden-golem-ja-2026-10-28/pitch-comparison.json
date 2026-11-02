@@ -1,0 +1,17 @@
+[
+  {
+    "candidate": 1,
+    "approximate_median_f0": 57.7,
+    "voiced_frames": 42
+  },
+  {
+    "candidate": 2,
+    "approximate_median_f0": 79.9,
+    "voiced_frames": 63
+  },
+  {
+    "candidate": 3,
+    "approximate_median_f0": 106.0,
+    "voiced_frames": 85
+  }
+]

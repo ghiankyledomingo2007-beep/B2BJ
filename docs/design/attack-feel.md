@@ -97,3 +97,7 @@ clock. Existing hit-stop (0.05 s light, 0.10 s finisher/cleave, 0.085 s kill) is
 a contact pose that is already held. Input buffer (0.12 s), chain window (move end + 0.5 s), dash rules and
 press-time credit unchanged. BladeCombatTest fails if a cut drops below 0.10 s draw / 0.40 s total, a pose
 flashes for under 1.2 frames, contact holds under three frames, or the finisher stops being the heaviest.
+
+## 2026-11-02 — Connected Rainoray combo
+
+Keep the weighted wind-ups/contact holds above. A buffered next cut can now connect after68% of post-contact recovery for moves0–2 and the dash opener, with a0.24s one-click buffer. Linked wind-ups begin ready at pose1; unbuffered attacks play the full recovery and the finisher stays committed. Credit press time to both animation and attack cooldown, and schedule swing audio from the remaining wind-up. [Verification and before/after](../testing/rainoray-combo-flow-2026-11-02.md).

@@ -1,0 +1,142 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9903600215911865,
+  "text": "そこは誰かが覚えておくしかありません。",
+  "words": [
+    {
+      "text": "そ",
+      "start": 0.34,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -7.939023635117337e-05
+    },
+    {
+      "text": "こ",
+      "start": 0.44,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -7.939023635117337e-05
+    },
+    {
+      "text": "は",
+      "start": 0.66,
+      "end": 1.28,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "誰",
+      "start": 1.28,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0002037079248111695
+    },
+    {
+      "text": "か",
+      "start": 1.48,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.0001787979417713359
+    },
+    {
+      "text": "が",
+      "start": 1.66,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -0.0001787979417713359
+    },
+    {
+      "text": "覚",
+      "start": 1.78,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -4.2437604861333966e-05
+    },
+    {
+      "text": "え",
+      "start": 1.94,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -4.2437604861333966e-05
+    },
+    {
+      "text": "て",
+      "start": 2.06,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -4.2437604861333966e-05
+    },
+    {
+      "text": "お",
+      "start": 2.12,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -2.586808113846928e-05
+    },
+    {
+      "text": "く",
+      "start": 2.26,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -2.586808113846928e-05
+    },
+    {
+      "text": "し",
+      "start": 2.36,
+      "end": 2.46,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "か",
+      "start": 2.5,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "あ",
+      "start": 2.54,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "り",
+      "start": 2.6,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "ま",
+      "start": 2.74,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "せ",
+      "start": 2.84,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "ん",
+      "start": 2.94,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "。",
+      "start": 3.02,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -0.002808200428262353
+    }
+  ],
+  "transcription_id": "CnrxiYRjO4bbB54KRKpx",
+  "audio_duration_secs": 4.104
+}

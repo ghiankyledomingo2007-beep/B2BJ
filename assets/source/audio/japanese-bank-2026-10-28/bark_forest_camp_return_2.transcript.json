@@ -1,0 +1,142 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "よかった。戻れるってわかると安心する。",
+  "words": [
+    {
+      "text": "よ",
+      "start": 0.12,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -0.02976164035499096
+    },
+    {
+      "text": "か",
+      "start": 0.26,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.02976164035499096
+    },
+    {
+      "text": "っ",
+      "start": 0.42,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.02976164035499096
+    },
+    {
+      "text": "た",
+      "start": 0.52,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.02976164035499096
+    },
+    {
+      "text": "。",
+      "start": 0.76,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.00015090756642166525
+    },
+    {
+      "text": "戻",
+      "start": 1.58,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -2.9802276912960224e-06
+    },
+    {
+      "text": "れ",
+      "start": 1.8,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "る",
+      "start": 1.88,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "っ",
+      "start": 2.04,
+      "end": 2.1,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "て",
+      "start": 2.1,
+      "end": 2.18,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "わ",
+      "start": 2.18,
+      "end": 2.3,
+      "type": "word",
+      "logprob": -0.07018040865659714
+    },
+    {
+      "text": "か",
+      "start": 2.32,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -0.00032217081752605736
+    },
+    {
+      "text": "る",
+      "start": 2.42,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "と",
+      "start": 2.62,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "安",
+      "start": 3.16,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -0.0077166082337498665
+    },
+    {
+      "text": "心",
+      "start": 3.32,
+      "end": 3.46,
+      "type": "word",
+      "logprob": -0.0077166082337498665
+    },
+    {
+      "text": "す",
+      "start": 3.46,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "る",
+      "start": 3.64,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 3.72,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -0.0007101159426383674
+    }
+  ],
+  "transcription_id": "VtvaqdCzgvrRSjsEESlp",
+  "audio_duration_secs": 4.0
+}

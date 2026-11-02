@@ -1,0 +1,142 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "例の例だ。切ったのは茨、君じゃないよ。",
+  "words": [
+    {
+      "text": "例",
+      "start": 0.18,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.28001025319099426
+    },
+    {
+      "text": "の",
+      "start": 0.32,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -8.83301836438477e-05
+    },
+    {
+      "text": "例",
+      "start": 0.48,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.013436715118587017
+    },
+    {
+      "text": "だ",
+      "start": 0.66,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "。",
+      "start": 0.74,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -4.637133679352701e-05
+    },
+    {
+      "text": "切",
+      "start": 1.36,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -0.043112270534038544
+    },
+    {
+      "text": "っ",
+      "start": 1.56,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "た",
+      "start": 1.64,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -1.0847986231965479e-05
+    },
+    {
+      "text": "の",
+      "start": 1.72,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "は",
+      "start": 1.9,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "茨",
+      "start": 2.08,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -0.1769605129957199
+    },
+    {
+      "text": "、",
+      "start": 2.1,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -0.17989811301231384
+    },
+    {
+      "text": "君",
+      "start": 2.94,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -0.018259529024362564
+    },
+    {
+      "text": "じ",
+      "start": 3.08,
+      "end": 3.14,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "ゃ",
+      "start": 3.14,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "な",
+      "start": 3.22,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "い",
+      "start": 3.38,
+      "end": 3.46,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "よ",
+      "start": 3.46,
+      "end": 3.62,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 3.62,
+      "end": 3.62,
+      "type": "word",
+      "logprob": -0.04862729832530022
+    }
+  ],
+  "transcription_id": "rxjlXjczbIicqQoM9DIQ",
+  "audio_duration_secs": 4.0
+}

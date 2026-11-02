@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9863079786300659,
+  "text": "待って。進む前に音を聞いて。",
+  "words": [
+    {
+      "text": "待",
+      "start": 0.32,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.001077548018656671
+    },
+    {
+      "text": "っ",
+      "start": 0.42,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.00011228884250158444
+    },
+    {
+      "text": "て",
+      "start": 0.54,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.00011228884250158444
+    },
+    {
+      "text": "。",
+      "start": 0.58,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.007407342549413443
+    },
+    {
+      "text": "進",
+      "start": 1.36,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -5.602820692729438e-06
+    },
+    {
+      "text": "む",
+      "start": 1.56,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -3.099436753473128e-06
+    },
+    {
+      "text": "前",
+      "start": 1.74,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "に",
+      "start": 1.9,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -3.4570634852570947e-06
+    },
+    {
+      "text": "音",
+      "start": 2.28,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -0.0019500303314998746
+    },
+    {
+      "text": "を",
+      "start": 2.54,
+      "end": 2.68,
+      "type": "word",
+      "logprob": -0.029764071106910706
+    },
+    {
+      "text": "聞",
+      "start": 2.68,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -0.029764071106910706
+    },
+    {
+      "text": "い",
+      "start": 2.76,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "て",
+      "start": 2.96,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "。",
+      "start": 3.0,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.0013266343157738447
+    }
+  ],
+  "transcription_id": "v9XmFDa0l3JeSb82urob",
+  "audio_duration_secs": 4.104
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "包帯にするために、全部の寝台から布が剥がされてる。この一台以外は。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "YUTJPXZErsSwDiVqby3W",
+  "generated_at": 1793156127.153705
+}

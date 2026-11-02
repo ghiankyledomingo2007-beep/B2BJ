@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9979383945465088,
+  "text": "今の、あと少しだったな。",
+  "words": [
+    {
+      "text": "今",
+      "start": 0.24,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -6.318072337307967e-06
+    },
+    {
+      "text": "の",
+      "start": 0.38,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -6.318072337307967e-06
+    },
+    {
+      "text": "、",
+      "start": 0.52,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.4754078984260559
+    },
+    {
+      "text": "あ",
+      "start": 1.16,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -5.531158240046352e-05
+    },
+    {
+      "text": "と",
+      "start": 1.3,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -5.531158240046352e-05
+    },
+    {
+      "text": "少",
+      "start": 1.52,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "し",
+      "start": 1.78,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "だ",
+      "start": 1.86,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "っ",
+      "start": 1.98,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "た",
+      "start": 2.04,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "な",
+      "start": 2.18,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -0.0013713965890929103
+    },
+    {
+      "text": "。",
+      "start": 2.4,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -0.00023064337437972426
+    }
+  ],
+  "transcription_id": "bYhXuGGmdSX0GRwT3qwt",
+  "audio_duration_secs": 2.72
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "私はここの結界を守らなければなりません。壊れたら、怪我人たちの休める場所がなくなります。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "yh1TbZAqfrkQJGjAdHhS",
+  "generated_at": 1793156108.8990014
+}

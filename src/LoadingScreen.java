@@ -123,17 +123,19 @@ final class LoadingScreen {
         }
         Ui.fade(g, 0, 0, 680, H, 130, 0);
         String heading = kind == Kind.REFORM ? "RETURNING TO CAMP" : "CHAPTER " + Ui.roman(biome + 1);
-        Ui.text(g, heading, 80, 238, 2, Ui.GOLD);
+        Ui.prose(g, heading, 90, 238, Ui.menuFont(18), MenuTheme.GOLD);
         String[] name = CampaignWorld.area(biome).name().split(" ", 2);
-        Ui.drawTitle(g, name[0], 76, 262, 4, Ui.STEEL_RAMP);
-        if (name.length > 1) Ui.drawTitle(g, name[1], 76, 322, 4, Ui.STEEL_RAMP);
-        g.setColor(Ui.TEAL);
-        g.fillRect(80, 396, 48, 2);
-        Ui.text(g, kind == Kind.REFORM ? "Reforming" : "Entering", 80, 448, 2, Ui.MUTED);
-        int end = 80 + Ui.width(kind == Kind.REFORM ? "Reforming" : "Entering", 2) + 12;
+        var title = Ui.menuFont(52).deriveFont(java.awt.Font.BOLD);
+        Ui.prose(g, name[0], 86, 308, title, MenuTheme.IVORY);
+        if (name.length > 1) Ui.prose(g, name[1], 86, 368, title, MenuTheme.IVORY);
+        String status = kind == Kind.REFORM ? "Reforming" : "Entering";
+        var caption = Ui.heading(18);
+        Ui.prose(g, status, 90, 428, caption, MenuTheme.MUTED);
+        int end = 90 + g.getFontMetrics(caption).stringWidth(status) + 18;
+        g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
         for (int i = 0; i < 3; i++) {
-            g.setColor(reduced || (int)(c * 3) % 3 == i ? Ui.TEAL : Ui.DIM);
-            g.fillRect(end + i * 10, 442, 4, 4);
+            g.setColor(reduced || (int)(c * 3) % 3 == i ? MenuTheme.GOLD : Ui.DIM);
+            MenuTheme.star(g, end + i * 12, 422, 3);
         }
         g.dispose();
     }

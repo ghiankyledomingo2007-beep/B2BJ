@@ -12,7 +12,10 @@ public final class CampaignEnemy {
         THORN_WOLF("Thorn Wolf", Wisp.Role.THORN_WOLF, 80, 15, 18),
         MIRE_SHAMAN("Mire Shaman", Wisp.Role.MIRE_SHAMAN, 80, 15, 16),
         FALLEN_KNIGHT("Fallen Knight", Wisp.Role.KNIGHT, 160, 25, 32),
-        CINDER_HEXER("Cinder Hexer", Wisp.Role.SPITTER, 90, 20, 24);
+        CINDER_HEXER("Cinder Hexer", Wisp.Role.SPITTER, 90, 20, 24),
+        // Sprouts during Briarheart's fight: light, quick swipes, a body that can be absorbed (owner 2026-10-29).
+        // 50 HP is the least that still takes three combo hits in either form (CombatStatsTest's 3-5 hit rule).
+        BRIARLING("Briarling", Wisp.Role.RIFT_IMP, 50, 5, 10);
 
         private final String name;
         private final Wisp.Role role;

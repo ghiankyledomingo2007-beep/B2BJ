@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "カイジン、エレン、リグルド。数字じゃなくて、人の名前だ。何があったのか確かめよう。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "J3Gpm3YIr4Y3Qete3FJa",
+  "generated_at": 1793156178.923114
+}

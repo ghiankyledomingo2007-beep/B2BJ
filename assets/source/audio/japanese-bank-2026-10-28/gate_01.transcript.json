@@ -1,0 +1,198 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "鎖が切れてる。担架を引いた跡が門を抜けて森へ続いてる。",
+  "words": [
+    {
+      "text": "鎖",
+      "start": 0.32,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -3.540453326422721e-05
+    },
+    {
+      "text": "が",
+      "start": 0.5,
+      "end": 0.62,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "切",
+      "start": 0.62,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -4.935142715112306e-05
+    },
+    {
+      "text": "れ",
+      "start": 0.74,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -7.271740287251305e-06
+    },
+    {
+      "text": "て",
+      "start": 0.86,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -7.271740287251305e-06
+    },
+    {
+      "text": "る",
+      "start": 0.96,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 1.06,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -9.775113539944869e-06
+    },
+    {
+      "text": "担",
+      "start": 1.74,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.1520395427942276
+    },
+    {
+      "text": "架",
+      "start": 1.96,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -0.0025122768711298704
+    },
+    {
+      "text": "を",
+      "start": 2.06,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -6.949660019017756e-05
+    },
+    {
+      "text": "引",
+      "start": 2.26,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -0.009546580724418163
+    },
+    {
+      "text": "い",
+      "start": 2.32,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -1.1920858014491387e-05
+    },
+    {
+      "text": "た",
+      "start": 2.48,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -1.1920858014491387e-05
+    },
+    {
+      "text": "跡",
+      "start": 2.6,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -0.035033177584409714
+    },
+    {
+      "text": "が",
+      "start": 2.8,
+      "end": 3.34,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "門",
+      "start": 3.42,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -0.0036871323827654123
+    },
+    {
+      "text": "を",
+      "start": 3.62,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -1.9192511899746023e-05
+    },
+    {
+      "text": "抜",
+      "start": 3.72,
+      "end": 3.84,
+      "type": "word",
+      "logprob": -0.00011205045302631333
+    },
+    {
+      "text": "け",
+      "start": 3.84,
+      "end": 3.92,
+      "type": "word",
+      "logprob": -6.556489552167477e-06
+    },
+    {
+      "text": "て",
+      "start": 3.92,
+      "end": 4.44,
+      "type": "word",
+      "logprob": -6.556489552167477e-06
+    },
+    {
+      "text": "森",
+      "start": 4.44,
+      "end": 4.62,
+      "type": "word",
+      "logprob": -0.00013243274588603526
+    },
+    {
+      "text": "へ",
+      "start": 4.62,
+      "end": 4.82,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "続",
+      "start": 4.82,
+      "end": 4.94,
+      "type": "word",
+      "logprob": -0.0001426833332516253
+    },
+    {
+      "text": "い",
+      "start": 4.94,
+      "end": 5.06,
+      "type": "word",
+      "logprob": -0.0001426833332516253
+    },
+    {
+      "text": "て",
+      "start": 5.06,
+      "end": 5.18,
+      "type": "word",
+      "logprob": -0.0001426833332516253
+    },
+    {
+      "text": "る",
+      "start": 5.18,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "。",
+      "start": 5.22,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -0.003177952254191041
+    }
+  ],
+  "transcription_id": "M701pe3LI4G4nxiCyS1G",
+  "audio_duration_secs": 5.52
+}

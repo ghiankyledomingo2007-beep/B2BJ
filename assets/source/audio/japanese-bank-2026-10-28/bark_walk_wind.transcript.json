@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9996243119239807,
+  "text": "こちらへ。少し風が弱まります。",
+  "words": [
+    {
+      "text": "こ",
+      "start": 0.3,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.0013275867095217109
+    },
+    {
+      "text": "ち",
+      "start": 0.4,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.0013275867095217109
+    },
+    {
+      "text": "ら",
+      "start": 0.5,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.0013275867095217109
+    },
+    {
+      "text": "へ",
+      "start": 0.66,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.0001711698860162869
+    },
+    {
+      "text": "。",
+      "start": 0.76,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.00987961981445551
+    },
+    {
+      "text": "少",
+      "start": 1.38,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "し",
+      "start": 1.64,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "風",
+      "start": 2.1,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -9.560128091834486e-05
+    },
+    {
+      "text": "が",
+      "start": 2.34,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "弱",
+      "start": 2.46,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "ま",
+      "start": 2.6,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -0.00025149996508844197
+    },
+    {
+      "text": "り",
+      "start": 2.72,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -0.00025149996508844197
+    },
+    {
+      "text": "ま",
+      "start": 2.82,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.00025149996508844197
+    },
+    {
+      "text": "す",
+      "start": 3.0,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -0.00025149996508844197
+    },
+    {
+      "text": "。",
+      "start": 3.12,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -0.002488494385033846
+    }
+  ],
+  "transcription_id": "VxLl05ofE6mfM0mEM6Ji",
+  "audio_duration_secs": 4.184
+}

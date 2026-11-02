@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "入り口はその奥です。下から物音がします。",
+  "words": [
+    {
+      "text": "入",
+      "start": 0.3,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.02996666543185711
+    },
+    {
+      "text": "り",
+      "start": 0.34,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.02996666543185711
+    },
+    {
+      "text": "口",
+      "start": 0.56,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "は",
+      "start": 0.8,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -3.099436753473128e-06
+    },
+    {
+      "text": "そ",
+      "start": 0.94,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -3.099436753473128e-06
+    },
+    {
+      "text": "の",
+      "start": 1.06,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -3.099436753473128e-06
+    },
+    {
+      "text": "奥",
+      "start": 1.2,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -0.00010239553375868127
+    },
+    {
+      "text": "で",
+      "start": 1.46,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "す",
+      "start": 1.56,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "。",
+      "start": 1.7,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "下",
+      "start": 2.3,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "か",
+      "start": 2.44,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "ら",
+      "start": 2.6,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "物",
+      "start": 2.8,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.00032074074260890484
+    },
+    {
+      "text": "音",
+      "start": 3.0,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -2.52720492426306e-05
+    },
+    {
+      "text": "が",
+      "start": 3.16,
+      "end": 3.24,
+      "type": "word",
+      "logprob": -2.52720492426306e-05
+    },
+    {
+      "text": "し",
+      "start": 3.24,
+      "end": 3.36,
+      "type": "word",
+      "logprob": -1.1801649634435307e-05
+    },
+    {
+      "text": "ま",
+      "start": 3.36,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -1.1801649634435307e-05
+    },
+    {
+      "text": "す",
+      "start": 3.54,
+      "end": 3.64,
+      "type": "word",
+      "logprob": -1.1801649634435307e-05
+    },
+    {
+      "text": "。",
+      "start": 3.64,
+      "end": 3.64,
+      "type": "word",
+      "logprob": -0.0004913791781291366
+    }
+  ],
+  "transcription_id": "nrpYGn0l6MxduegEmirF",
+  "audio_duration_secs": 4.744
+}

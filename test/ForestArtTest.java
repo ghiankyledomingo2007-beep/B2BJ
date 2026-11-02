@@ -43,9 +43,10 @@ public final class ForestArtTest {
         }
 
         BufferedImage briar = B2BJ.loadImage("assets/characters/guardian/briarheart_motion.png");
-        assert briar != null && briar.getWidth() == 8 * 96 && briar.getHeight() == Guardian.Animation.values().length * 96
-                : "Briarheart's motion sheet: 8 frames of every Guardian animation, 96 px cells";
-        pixelSheet(briar,96,27);
+        assert briar != null && briar.getWidth() == 8 * 288 && briar.getHeight() == Guardian.Animation.values().length * 288
+                : "Briarheart's motion sheet: 8 frames of every Guardian animation, 288 px cells (the 3x redraw)";
+        pixelSheet(briar,288,27);
+        wholeFrames(briar,288);
         pixelSheet(B2BJ.loadImage("assets/characters/npcs/sedge_idle.png"),80,20);
         for (String fx : new String[]{"debris", "dust", "crack", "sweep", "flame", "spike", "beam", "mote", "impact"})
             assert B2BJ.loadImage("assets/effects/briar_" + fx + ".png") != null : "missing Briarheart effect " + fx;
@@ -109,6 +110,34 @@ public final class ForestArtTest {
         }
         assert colors.size()<=paletteLimit : "uncontrolled sprite palette: "+colors.size();
     }
+
+    /** 2026-10-29, the ground showed through Briarheart: every frame is one unbroken body, with no transparent seam
+     *  across it (the breathing frames split at the chest) and no straight edge where a pose was cut at the grid of
+     *  its generated source (the crouch's roots, the raised leaves, the wide claws). */
+    private static void wholeFrames(BufferedImage sheet,int cell) {
+        for(int top=0;top<sheet.getHeight();top+=cell)for(int left=0;left<sheet.getWidth();left+=cell) {
+            String frame="Briarheart frame "+left/cell+" of row "+top/cell;
+            int minX=cell,maxX=-1,maxY=-1;
+            for(int y=0;y<cell;y++)for(int x=0;x<cell;x++)if(opaque(sheet,left+x,top+y)) {
+                minX=Math.min(minX,x);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);
+            }
+            for(int y=1;y<cell-2;y++) {
+                int seam=0;
+                for(int x=0;x<cell;x++)if(!opaque(sheet,left+x,top+y)&&opaque(sheet,left+x,top+y-1)
+                        &&(opaque(sheet,left+x,top+y+1)||opaque(sheet,left+x,top+y+2)))seam++;
+                assert seam<24 : frame+" splits across row "+y;
+            }
+            assert run(sheet,left,top+maxY,1,0,cell)<48 : frame+" ends in a straight cut along its base";
+            assert run(sheet,left+minX,top,0,1,cell)<24&&run(sheet,left+maxX,top,0,1,cell)<24 : frame+" is cut straight at a side";
+        }
+    }
+    /** The longest opaque run along a line of the sheet. */
+    private static int run(BufferedImage sheet,int x,int y,int dx,int dy,int length) {
+        int best=0,run=0;
+        for(int i=0;i<length;i++) {run=opaque(sheet,x+i*dx,y+i*dy)?run+1:0;best=Math.max(best,run);}
+        return best;
+    }
+    private static boolean opaque(BufferedImage image,int x,int y) { return y<image.getHeight()&&image.getRGB(x,y)>>>24>=128; }
 
     private static boolean[][] flood(RuinedOutpostMap map, double sx, double sy) {
         int w = map.worldWidth() / 16, h = map.worldHeight() / 16;

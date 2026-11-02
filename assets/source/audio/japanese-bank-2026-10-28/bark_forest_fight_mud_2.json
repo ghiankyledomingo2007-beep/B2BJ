@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "次は、迂回すればいいでしょう。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "VrZu8ugqgQFA1Msr558T",
+  "generated_at": 1793156320.035653
+}

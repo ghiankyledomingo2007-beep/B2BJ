@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "ゆっくりでいい。道は通れるよ。砦に、休める場所がある。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "aNUbUaFjSfmpbFEe9Z0v",
+  "generated_at": 1793156221.4677596
+}

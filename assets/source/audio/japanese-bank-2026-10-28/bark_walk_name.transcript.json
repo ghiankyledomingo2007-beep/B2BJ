@@ -1,0 +1,79 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9925759434700012,
+  "text": "ラファエルまだいる？",
+  "words": [
+    {
+      "text": "ラ",
+      "start": 0.12,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -0.0012500813463702798
+    },
+    {
+      "text": "フ",
+      "start": 0.26,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -8.892617915989831e-05
+    },
+    {
+      "text": "ァ",
+      "start": 0.32,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -8.892617915989831e-05
+    },
+    {
+      "text": "エ",
+      "start": 0.44,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0006170752458274364
+    },
+    {
+      "text": "ル",
+      "start": 0.52,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.0006170752458274364
+    },
+    {
+      "text": "ま",
+      "start": 1.32,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.22580324113368988
+    },
+    {
+      "text": "だ",
+      "start": 1.48,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.22580324113368988
+    },
+    {
+      "text": "い",
+      "start": 1.64,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "る",
+      "start": 1.74,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "？",
+      "start": 1.96,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.005946089047938585
+    }
+  ],
+  "transcription_id": "4UbC1Cng8MWDUAgWbSCx",
+  "audio_duration_secs": 2.32
+}

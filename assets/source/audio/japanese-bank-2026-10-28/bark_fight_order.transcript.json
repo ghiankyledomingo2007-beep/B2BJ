@@ -1,0 +1,135 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999765157699585,
+  "text": "誰かがこの道を守れって教えたんだな。",
+  "words": [
+    {
+      "text": "誰",
+      "start": 0.2,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "か",
+      "start": 0.36,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.00010907054820563644
+    },
+    {
+      "text": "が",
+      "start": 0.52,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -0.00010907054820563644
+    },
+    {
+      "text": "こ",
+      "start": 1.0,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -0.00976511649787426
+    },
+    {
+      "text": "の",
+      "start": 1.2,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.00976511649787426
+    },
+    {
+      "text": "道",
+      "start": 1.44,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.02839551866054535
+    },
+    {
+      "text": "を",
+      "start": 1.6,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "守",
+      "start": 1.82,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "れ",
+      "start": 2.1,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.00017069313616957515
+    },
+    {
+      "text": "っ",
+      "start": 2.18,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -8.34461570775602e-06
+    },
+    {
+      "text": "て",
+      "start": 2.44,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -8.34461570775602e-06
+    },
+    {
+      "text": "教",
+      "start": 2.66,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -4.1126360883936286e-05
+    },
+    {
+      "text": "え",
+      "start": 2.76,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -1.549708758830093e-05
+    },
+    {
+      "text": "た",
+      "start": 2.9,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -1.549708758830093e-05
+    },
+    {
+      "text": "ん",
+      "start": 2.94,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -8.583032467868179e-06
+    },
+    {
+      "text": "だ",
+      "start": 3.06,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -8.583032467868179e-06
+    },
+    {
+      "text": "な",
+      "start": 3.2,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 3.32,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -0.012803846038877964
+    }
+  ],
+  "transcription_id": "aG6gHa8Gp1oEF9xxWjNo",
+  "audio_duration_secs": 3.68
+}

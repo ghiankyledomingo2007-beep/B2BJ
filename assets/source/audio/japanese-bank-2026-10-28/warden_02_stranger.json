@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "ここには担架も通ってない。通してくれ。まだ助けを待ってる人がいるかもしれない。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "F77K9b2Cw5EF04KG8I2t",
+  "generated_at": 1793156139.2748916
+}

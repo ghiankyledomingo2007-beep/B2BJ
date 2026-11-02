@@ -7,8 +7,7 @@ final class TitleScreen {
     private static final BufferedImage ART=B2BJ.loadImage("assets/ui/title/ruined-gate.png");
     private static final BufferedImage WATER=water();
     private static final TitleWind WIND=new TitleWind(ART,B2BJ.loadImage("assets/ui/title/ruined-gate-wind-clean.png"));
-    private static final BufferedImage[] BLOB=word("BLOB",new int[]{0xc4e5df,0xa6ceca,0x79aaa9,0x507e86});
-    private static final BufferedImage[] BLADE=word("BLADE",new int[]{0xf2f1e6,0xdce1de,0xbdc8cc,0x8e9da8});
+    private static final BufferedImage LOGO=B2BJ.loadImage("assets/ui/title/moonlit-gate-logo.png");
     private final double[] mood={1,0,0,0};
     private final BufferedImage sceneBuffer=new BufferedImage(640,360,BufferedImage.TYPE_INT_RGB);
     private int selected;
@@ -24,16 +23,24 @@ final class TitleScreen {
     }
 
     void draw(Graphics2D g,int width,int height,double seconds,BufferedImage slimeIdle,boolean reduced) {
-        drawBackdrop(g,width,height,seconds,reduced);
+        var backdrop=(Graphics2D)g.create();
+        double drift=reduced?1:1+.008*(1-Math.cos(seconds*Math.PI/24));
+        backdrop.translate(width*(1-drift)*.8,height*(1-drift)*.6);
+        backdrop.scale(drift,drift);
+        drawBackdrop(backdrop,width,height,seconds,reduced);backdrop.dispose();
+        MenuTheme.frame(g,width,height,seconds,reduced,false);
         g=(Graphics2D)g.create();double scale=menuScale(width,height);g.scale(scale,scale);
-        word(g,BLOB,76,80,seconds,0,reduced,-28);
-        double link=entrance(seconds,.28,.6,reduced);
-        var connector=(Graphics2D)g.create();
-        connector.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)link));
-        Ui.text(connector,"TO",80,225,3,Ui.GOLD);
-        connector.setColor(new Color(153,127,83,150));connector.fillRect(140,214,(int)(240*link),2);connector.dispose();
-        word(g,BLADE,74,240,seconds,.35,reduced,32);
-        g.setColor(Ui.TEAL);g.fillRect(80,366,(int)(50*entrance(seconds,1.05,.4,reduced)),2);
+        double reveal=entrance(seconds,0,1.2,reduced);
+        var brand=(Graphics2D)g.create();
+        brand.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)reveal));
+        brand.translate(0,(int)(12*(1-reveal)));
+        if(LOGO!=null) {
+            brand.setRenderingHint(java.awt.RenderingHints.KEY_INTERPOLATION,java.awt.RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+            brand.drawImage(LOGO,90,86,550,Math.round(550f*LOGO.getHeight()/LOGO.getWidth()),null);
+        } else JourneyHud.text(brand,"Blob to Blade",90,220,Ui.menuFont(46),MenuTheme.IVORY);
+        brand.dispose();
+        var chapter=Ui.menuFont(11);
+        Ui.prose(g,"CHAPTER I",(int)(width/scale)-76-g.getFontMetrics(chapter).stringWidth("CHAPTER I"),686,chapter,MenuTheme.MUTED);
         g.dispose();
     }
 
@@ -51,66 +58,6 @@ final class TitleScreen {
             g.drawImage(sceneBuffer,0,0,width,height,null);
         }
         Ui.fade(g,0,0,(int)(620*menuScale(width,height)),height,120,0);
-        if(!reduced) {
-            g.setColor(new Color(151,190,204,(int)(55*(1-.65*mood[2]))));
-            for(int i=0;i<22;i++) {
-                int x=520+Math.floorMod(i*137,740),y=(int)(seconds*80+i*61)%height;
-                g.fillRect(x/2*2,y/2*2,2,6+(i%3)*2);
-            }
-        }
-
-    }
-
-    private static BufferedImage[] word(String value,int[] ramp) {
-        var original=Ui.title(value,ramp);
-        var face=new BufferedImage(original.getWidth(),original.getHeight(),BufferedImage.TYPE_INT_ARGB);
-        var shade=new BufferedImage(original.getWidth(),original.getHeight(),BufferedImage.TYPE_INT_ARGB);
-        // The kit's one-pixel outline becomes nine pixels at logo scale; keep only its letter faces.
-        for(int y=0;y<face.getHeight();y++)for(int x=0;x<face.getWidth();x++) {
-            int pixel=original.getRGB(x,y);
-            for(int color:ramp)if(pixel==(0xff000000|color)) {
-                face.setRGB(x,y,pixel);shade.setRGB(x,y,0xb005101b);break;
-            }
-        }
-        return new BufferedImage[]{shade,face};
-    }
-
-    private static void word(Graphics2D graphics,BufferedImage[] word,int x,int y,double time,
-            double delay,boolean reduced,int travel) {
-        double reveal=entrance(time,delay,.85,reduced);
-        if(reveal<=0)return;
-        int w=word[0].getWidth()*9,h=word[0].getHeight()*9;
-        var g=(Graphics2D)graphics.create();
-        g.translate((int)(travel*(1-reveal)),(int)(10*(1-reveal)));
-        glow(g,x+w*.45,y+48,w*.65,70,new Color(78,208,229,(int)(34*(1-reveal))));
-        g.setComposite(java.awt.AlphaComposite.SrcOver.derive((float)reveal));
-        g.clipRect(x-20,y-20,(int)((w+12)*reveal),h+16);
-        g.drawImage(word[0],x-18+4,y-18+6,w,h,null);
-        double sweep=-1;
-        if(!reduced) {
-            if(time<delay+1.2)sweep=(time-delay-.18)/.9;
-            else if(time>4.2+delay) {
-                double repeat=(time-4.2-delay)%9;
-                if(repeat<1.1)sweep=repeat/1.1;
-            }
-        }
-        g.drawImage(sheen(word[1],sweep),x-18,y-18,w,h,null);
-        g.dispose();
-    }
-
-    private static BufferedImage sheen(BufferedImage face,double sweep) {
-        if(sweep<0||sweep>1)return face;
-        var bright=new BufferedImage(face.getWidth(),face.getHeight(),BufferedImage.TYPE_INT_ARGB);
-        for(int y=0;y<face.getHeight();y++)for(int x=0;x<face.getWidth();x++) {
-            int pixel=face.getRGB(x,y);
-            if((pixel>>>24)==0)continue;
-            double position=(x+y*.45)/(face.getWidth()+face.getHeight()*.45);
-            double shine=Math.max(0,1-Math.abs(position-sweep)/.11)*.6;
-            int r=pixel>>16&255,green=pixel>>8&255,b=pixel&255;
-            r+=(int)((220-r)*shine);green+=(int)((255-green)*shine);b+=(int)((255-b)*shine);
-            bright.setRGB(x,y,0xff000000|r<<16|green<<8|b);
-        }
-        return bright;
     }
 
     private static BufferedImage water() {
@@ -130,10 +77,16 @@ final class TitleScreen {
         double flicker=reduced?0:(Math.sin(seconds*3.4)*.6+Math.sin(seconds*7.9)*.4)*(1-.75*mood[2]);
         glow(g,564,183,43,56,new Color(255,171,65,18+(int)(flicker*5)));
         glow(g,564,181,8,13,new Color(255,214,133,25+(int)(flicker*8)));
-        glow(g,494,171,42,71,new Color(98,222,241,(int)(mood[0]*16+mood[1]*29+mood[2]*5)));
+        double pulse=reduced?1:1+Math.sin(seconds*1.25)*.14;
+        glow(g,494,171,42,71,new Color(98,222,241,(int)((mood[0]*16+mood[1]*29+mood[2]*5)*pulse)));
         glow(g,477,302,31,10,new Color(80,219,238,(int)(mood[0]*5+mood[1]*17)));
         glow(g,463,232,123,110,new Color(112,152,210,(int)(mood[2]*12)));
         if(!reduced) {
+            g.setColor(new Color(151,190,204,(int)(42*(1-.65*mood[2]))));
+            for(int i=0;i<24;i++) {
+                int x=Math.floorMod(i*137,650),y=(int)(seconds*90+i*61)%400-20;
+                g.drawLine(x,y,x-2,y+8+i%3*2);
+            }
             glow(g,376+Math.sin(seconds*.08)*22,282,146,17,new Color(131,172,184,12));
             glow(g,503+Math.sin(seconds*.11+1)*18,327,128,13,new Color(153,182,190,10));
             for(int y=298;y<350;y+=2) {

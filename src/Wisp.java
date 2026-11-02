@@ -31,6 +31,7 @@ public final class Wisp {
 
     private static final double RECOVER_DURATION = 0.45;
     private static final double HURT_DURATION = 0.28;
+    private double hurtDuration=HURT_DURATION;
     private static final double STAGGER_COOLDOWN = 1.2;
     public static final double LUNGE_SPEED = 520.0;
     private static final double PROBE_DISTANCE = 24.0;
@@ -383,7 +384,7 @@ public final class Wisp {
     private void updateHurt(double seconds) {
         animation.update(0, 0, seconds);
         stateTime += seconds;
-        if (stateTime >= HURT_DURATION) {
+        if (stateTime >= hurtDuration) {
             enter(aggroTime > 0 ? State.PURSUE : State.PATROL);
         }
     }
@@ -391,6 +392,7 @@ public final class Wisp {
     private void enter(State next) {
         state = next;
         stateTime = 0;
+        if(next==State.HURT)hurtDuration=HURT_DURATION;
         if (next != State.PURSUE) {
             detourSign = 0;
             detourTime = 0;
@@ -442,6 +444,12 @@ public final class Wisp {
             staggerCooldown=STAGGER_COOLDOWN;
         }
         return true;
+    }
+
+    /** A successful parry buys one charged follow-up; ordinary hits cannot extend it. */
+    public void openForPunish() {
+        if(!alive())return;
+        enter(State.HURT);hurtDuration=1.15;staggerCooldown=Math.max(staggerCooldown,1.2);
     }
 
     public void push(double velocityX,double velocityY) {
@@ -561,7 +569,7 @@ public final class Wisp {
         };
     }
 
-    public int hurtFrame(int count) { return timedFrame(0, count, HURT_DURATION); }
+    public int hurtFrame(int count) { return timedFrame(0, count, hurtDuration); }
 
     private int timedFrame(int first, int count, double duration) {
         return first + Math.min(count - 1, (int) (stateTime / duration * count));

@@ -1,0 +1,100 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.998608410358429,
+  "text": "じゃあ次はそっちを探すよ。",
+  "words": [
+    {
+      "text": "じ",
+      "start": 0.12,
+      "end": 0.18,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "ゃ",
+      "start": 0.18,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "あ",
+      "start": 0.28,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -2.062299427052494e-05
+    },
+    {
+      "text": "次",
+      "start": 0.88,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.0021856960374861956
+    },
+    {
+      "text": "は",
+      "start": 1.08,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -0.0021856960374861956
+    },
+    {
+      "text": "そ",
+      "start": 1.32,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "っ",
+      "start": 1.38,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -2.6464111215318553e-05
+    },
+    {
+      "text": "ち",
+      "start": 1.54,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -2.6464111215318553e-05
+    },
+    {
+      "text": "を",
+      "start": 1.62,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -0.0011878109071403742
+    },
+    {
+      "text": "探",
+      "start": 1.78,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.0011878109071403742
+    },
+    {
+      "text": "す",
+      "start": 1.96,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -2.098061486321967e-05
+    },
+    {
+      "text": "よ",
+      "start": 2.04,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "。",
+      "start": 2.24,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -0.0021872424986213446
+    }
+  ],
+  "transcription_id": "5jhqphHECy2z8AdzImF9",
+  "audio_duration_secs": 2.48
+}

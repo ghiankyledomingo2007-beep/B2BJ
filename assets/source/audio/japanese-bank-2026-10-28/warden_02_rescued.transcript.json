@@ -1,0 +1,212 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "まだ戻ってくる人がいる。お前が邪魔してるんだ。門を開けろ。",
+  "words": [
+    {
+      "text": "ま",
+      "start": 0.14,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "だ",
+      "start": 0.26,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "戻",
+      "start": 0.4,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "っ",
+      "start": 0.64,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -2.7656173188006505e-05
+    },
+    {
+      "text": "て",
+      "start": 0.74,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -2.7656173188006505e-05
+    },
+    {
+      "text": "く",
+      "start": 0.84,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -2.7656173188006505e-05
+    },
+    {
+      "text": "る",
+      "start": 0.92,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -2.7656173188006505e-05
+    },
+    {
+      "text": "人",
+      "start": 1.08,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -1.0251946150674485e-05
+    },
+    {
+      "text": "が",
+      "start": 1.24,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -1.0251946150674485e-05
+    },
+    {
+      "text": "い",
+      "start": 1.3,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "る",
+      "start": 1.36,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "。",
+      "start": 1.52,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "お",
+      "start": 2.14,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "前",
+      "start": 2.32,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -0.00030989613151177764
+    },
+    {
+      "text": "が",
+      "start": 2.52,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "邪",
+      "start": 2.7,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "魔",
+      "start": 2.82,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "し",
+      "start": 2.88,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "て",
+      "start": 2.96,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "る",
+      "start": 3.06,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "ん",
+      "start": 3.16,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -1.2040065485052764e-05
+    },
+    {
+      "text": "だ",
+      "start": 3.3,
+      "end": 3.4,
+      "type": "word",
+      "logprob": -1.2040065485052764e-05
+    },
+    {
+      "text": "。",
+      "start": 3.4,
+      "end": 3.4,
+      "type": "word",
+      "logprob": -1.1324817933200393e-05
+    },
+    {
+      "text": "門",
+      "start": 3.84,
+      "end": 4.019,
+      "type": "word",
+      "logprob": -0.0015049570938572288
+    },
+    {
+      "text": "を",
+      "start": 4.019,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -6.198863957251888e-06
+    },
+    {
+      "text": "開",
+      "start": 4.14,
+      "end": 4.26,
+      "type": "word",
+      "logprob": -6.198863957251888e-06
+    },
+    {
+      "text": "け",
+      "start": 4.26,
+      "end": 4.36,
+      "type": "word",
+      "logprob": -3.6954195820726454e-05
+    },
+    {
+      "text": "ろ",
+      "start": 4.36,
+      "end": 4.54,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "。",
+      "start": 4.54,
+      "end": 4.54,
+      "type": "word",
+      "logprob": -0.03812874108552933
+    }
+  ],
+  "transcription_id": "w2rgmJbBypRKA4mHwafS",
+  "audio_duration_secs": 4.8
+}

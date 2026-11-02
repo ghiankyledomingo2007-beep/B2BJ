@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "進もう。一つずつ、片づけていけばいい。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "xYULg7RVMm1UDfJ4Paox",
+  "generated_at": 1793156245.4415247
+}

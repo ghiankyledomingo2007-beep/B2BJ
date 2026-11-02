@@ -1,0 +1,37 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9994696974754333,
+  "text": "そこだ。",
+  "words": [
+    {
+      "text": "そ",
+      "start": 0.18,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "こ",
+      "start": 0.3,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "だ",
+      "start": 0.4,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "。",
+      "start": 0.56,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.031047897413372993
+    }
+  ],
+  "transcription_id": "MQmWbOlwyUnBH1JOngM6",
+  "audio_duration_secs": 0.728375
+}

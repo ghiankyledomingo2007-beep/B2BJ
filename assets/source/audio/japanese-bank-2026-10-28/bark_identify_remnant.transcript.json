@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999711513519287,
+  "text": "亡骸です。戦い慣れています。",
+  "words": [
+    {
+      "text": "亡",
+      "start": 0.42,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.004140377044677734
+    },
+    {
+      "text": "骸",
+      "start": 0.54,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.0022975020110607147
+    },
+    {
+      "text": "で",
+      "start": 0.82,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -3.3378044463461265e-05
+    },
+    {
+      "text": "す",
+      "start": 0.92,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -3.3378044463461265e-05
+    },
+    {
+      "text": "。",
+      "start": 1.04,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -3.433168603805825e-05
+    },
+    {
+      "text": "戦",
+      "start": 1.58,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -0.0002882065309677273
+    },
+    {
+      "text": "い",
+      "start": 1.88,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -3.123234637314454e-05
+    },
+    {
+      "text": "慣",
+      "start": 1.94,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.00034767304896377027
+    },
+    {
+      "text": "れ",
+      "start": 2.04,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -9.655486064730212e-05
+    },
+    {
+      "text": "て",
+      "start": 2.16,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -9.655486064730212e-05
+    },
+    {
+      "text": "い",
+      "start": 2.24,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -9.655486064730212e-05
+    },
+    {
+      "text": "ま",
+      "start": 2.34,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -9.655486064730212e-05
+    },
+    {
+      "text": "す",
+      "start": 2.52,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -9.655486064730212e-05
+    },
+    {
+      "text": "。",
+      "start": 2.64,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -0.005964575335383415
+    }
+  ],
+  "transcription_id": "KM7jyg9Asi07n6CyMaCv",
+  "audio_duration_secs": 3.704
+}

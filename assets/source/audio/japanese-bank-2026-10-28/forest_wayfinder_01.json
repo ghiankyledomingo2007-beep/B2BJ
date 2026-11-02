@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "どの枝にも白い布がある。帆を半分くらい裂いたんじゃないか？",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "bget2KXq11GHScQ5qCOQ",
+  "generated_at": 1793156204.765051
+}

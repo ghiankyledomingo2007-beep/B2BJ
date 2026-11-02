@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "今の、わざとやったように見えたよな？",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "qUyhz30U5X2Co5gQdWyy",
+  "generated_at": 1793156255.8390725
+}

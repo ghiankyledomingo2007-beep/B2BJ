@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9996594190597534,
+  "text": "はい、生存者がいます。",
+  "words": [
+    {
+      "text": "は",
+      "start": 0.28,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -1.1205610462639015e-05
+    },
+    {
+      "text": "い",
+      "start": 0.38,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -1.1205610462639015e-05
+    },
+    {
+      "text": "、",
+      "start": 0.52,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.4741581082344055
+    },
+    {
+      "text": "生",
+      "start": 1.14,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "存",
+      "start": 1.2,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "者",
+      "start": 1.38,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -6.603976362384856e-05
+    },
+    {
+      "text": "が",
+      "start": 1.52,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -6.603976362384856e-05
+    },
+    {
+      "text": "い",
+      "start": 1.6,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "ま",
+      "start": 1.7,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "す",
+      "start": 1.88,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "。",
+      "start": 2.0,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -0.005929735954850912
+    }
+  ],
+  "transcription_id": "lJFWLYZuwB8VIPQtGBuc",
+  "audio_duration_secs": 3.064
+}

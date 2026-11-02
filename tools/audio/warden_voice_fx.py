@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Remaster the six existing Warden takes. No new synthesis, pitch shift or network.
+"""Remaster the designed Japanese stone-golem takes. No pitch shift or network.
 
 Run with an output directory, or --check to compare against shipped recordings.
-Keeps the direct voice in front of quiet armor modes and a 223 ms stone-room tail.
+Keeps consonants direct, with low stone resonances and a short chamber tail beneath.
 """
 import array
 import hashlib
@@ -18,10 +18,10 @@ from pathlib import Path
 from generate_forest_sfx import RATE, bands, biquad
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "assets/source/audio/companion-cast-2026-10-26"
+SOURCE = ROOT / "assets/source/audio/warden-golem-ja-2026-10-28"
 FILES = ("warden_01", "warden_03", "bark_warden_voice_stand", "bark_warden_voice_line",
-         "bark_warden_voice_gate", "bark_warden_voice_order")
-REFLECTIONS = ((.032, .08), (.061, .06), (.107, .045), (.157, .028), (.223, .015))
+         "bark_warden_voice_gate", "bark_warden_voice_order", "bark_warden_last")
+REFLECTIONS = ((.041, .10), (.079, .075), (.137, .055), (.191, .03), (.247, .015))
 
 
 def rms(samples):
@@ -30,12 +30,12 @@ def rms(samples):
 
 def treatment(dry, vulnerable=False):
     padded = list(dry) + [0.] * round(.26 * RATE)
-    body = biquad(padded, "band", 145, .8)
-    armor = bands(padded, [(530, 7, 1), (920, 8, .65), (1630, 6, .3)])
-    # The low-health confession exposes more of the actor and less of the armor.
-    gain = min(.7, rms(dry) * (.045 if vulnerable else .085) / max(1e-9, rms(armor)))
-    out = [d + b*.12 + a*gain for d, b, a in zip(padded, body, armor)]
-    room = biquad(padded, "low", 3200)
+    body = biquad(padded, "band", 105, .7)
+    armor = bands(padded, [(190, 2.5, 1), (390, 3, .65), (760, 4, .25)])
+    # The low-health confession retains the same giant voice with less stone resonance.
+    gain = min(.9, rms(dry) * (.08 if vulnerable else .17) / max(1e-9, rms(armor)))
+    out = [d + b*.22 + a*gain for d, b, a in zip(padded, body, armor)]
+    room = biquad(padded, "low", 2600)
     for delay, level in REFLECTIONS:
         offset = round(delay * RATE)
         for i in range(len(room)-offset):
@@ -43,7 +43,7 @@ def treatment(dry, vulnerable=False):
     assert all(math.isfinite(x) for x in out)
     direct = padded[:len(dry)]
     wet = [b-a for a, b in zip(direct, out)]
-    assert rms(wet) < rms(dry)*.35, "Effects must remain behind intelligible speech"
+    assert rms(wet) < rms(dry)*.5, "Effects must remain behind intelligible speech"
     return out
 
 
@@ -64,7 +64,7 @@ def render(key, out, work):
     ff(["-i", str(source), "-af", "highpass=f=65", "-ar", str(RATE), "-ac", "1",
         "-c:a", "pcm_s16le", str(dry)])
     original = read(dry)
-    samples = treatment(original, key.endswith("_order"))
+    samples = treatment(original, key.endswith(("_order", "_last")))   # confession and dying words: less stone
     peak = max(abs(x) for x in samples)
     # A single linear gain preserves the performance before final loudness matching.
     gain = min(1, .9/max(1e-9, peak))
@@ -72,10 +72,10 @@ def render(key, out, work):
     with wave.open(str(effected), "wb") as dest:
         dest.setparams((1, 2, RATE, 0, "NONE", "not compressed"))
         dest.writeframes(array.array("h", (round(x*gain*32767) for x in samples)).tobytes())
-    analysis = ff(["-i", str(effected), "-af", "loudnorm=I=-18:TP=-4:LRA=9:print_format=json",
+    analysis = ff(["-i", str(effected), "-af", "loudnorm=I=-18:TP=-4:LRA=11:print_format=json",
                    "-f", "null", "-"]).stderr
     data = json.loads(re.search(r'\{[^{}]+"input_i"[^{}]+\}', analysis, re.S).group())
-    filt = ("loudnorm=I=-18:TP=-4:LRA=9:measured_I={input_i}:measured_TP={input_tp}:"
+    filt = ("loudnorm=I=-18:TP=-4:LRA=11:measured_I={input_i}:measured_TP={input_tp}:"
             "measured_LRA={input_lra}:measured_thresh={input_thresh}:offset={target_offset}:linear=true").format(**data)
     target = out/(key+".wav")
     ff(["-i", str(effected), "-af", filt, "-ar", str(RATE), "-ac", "1", "-c:a", "pcm_s16le", str(target)])
@@ -88,7 +88,7 @@ def render(key, out, work):
             "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
             "seconds": round(len(final)/RATE, 4),
             "peak_dbfs": round(20*math.log10(max(abs(x) for x in final)), 2),
-            "armor_rms_ratio": .045 if key.endswith("_order") else .085,
+            "armor_rms_ratio": .08 if key.endswith(("_order", "_last")) else .17,
             "room_reflections": REFLECTIONS, "tail_seconds": .26, "pitch_shift": 0}
 
 
@@ -106,7 +106,7 @@ def main():
                 assert hashlib.sha256(shipped.read_bytes()).hexdigest() == record["sha256"], shipped
         else:
             (out/"processing.json").write_text(json.dumps(records, indent=2)+"\n")
-        print("Six Warden recordings verified" if check else "Six Warden recordings rendered")
+        print(f"{len(FILES)} Warden recordings verified" if check else f"{len(FILES)} Warden recordings rendered")
 
 
 if __name__ == "__main__":

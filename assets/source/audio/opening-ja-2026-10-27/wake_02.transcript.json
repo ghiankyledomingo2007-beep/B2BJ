@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9991132020950317,
+  "text": "あの人は逃げられたのか？",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.12,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "の",
+      "start": 0.26,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "人",
+      "start": 0.38,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "は",
+      "start": 0.7,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -6.079655122448457e-06
+    },
+    {
+      "text": "逃",
+      "start": 1.42,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.18122467398643494
+    },
+    {
+      "text": "げ",
+      "start": 1.6,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "ら",
+      "start": 1.74,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -1.0013530300057027e-05
+    },
+    {
+      "text": "れ",
+      "start": 1.82,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -1.0013530300057027e-05
+    },
+    {
+      "text": "た",
+      "start": 1.94,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -1.0013530300057027e-05
+    },
+    {
+      "text": "の",
+      "start": 2.02,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "か",
+      "start": 2.18,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "？",
+      "start": 2.32,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -0.002226375974714756
+    }
+  ],
+  "transcription_id": "JHwO1jTYaG24pCzt71VW",
+  "audio_duration_secs": 2.56
+}

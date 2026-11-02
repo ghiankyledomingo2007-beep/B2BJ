@@ -1,5 +1,7 @@
 # Reincarnation opening — story draft, 2026-10-26
 
+> Historical draft: the owner replaced this rescue-van origin on 2026-10-27 with an overworked Japanese office worker collapsing at his desk. See [the current story](area-one-story.md).
+
 Status: accepted and implemented on 2026-10-26. This preserves the original proposal. The [current story](area-one-story.md) and [verification report](../testing/reincarnation-opening-2026-10-26.md) describe the shipped scope and exact timing. The implementation uses one illustrated road memory with rain/push-in, the existing sprite animation and seal, and the actual world reveal; it is not a separately animated film.
 
 ## Direction

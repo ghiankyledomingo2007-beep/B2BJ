@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "退け。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "AzXhp77fg6sHrgy2EtLn",
+  "request_id": "hsoXvjxUnpkh2JakVr5G",
+  "generated_at": 1793156387.4664335
+}

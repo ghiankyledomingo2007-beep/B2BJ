@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "私も追いました。でも根が道を覆っていて。火のそばに乾いた襟巻きがあります。持っていってください。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "zORmuNBLPP1Y2prRdUi1",
+  "generated_at": 1793156151.3946595
+}

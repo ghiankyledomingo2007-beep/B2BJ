@@ -14,6 +14,7 @@ public final class SlimeAnimation {
     private boolean dashing;
     private boolean attacking;
     private double time;
+    private double castDuration=ATTACK_DURATION,releaseTime=.12;
 
     public void update(int horizontal, int vertical, double seconds) {
         update(horizontal, vertical, false, seconds);
@@ -30,7 +31,7 @@ public final class SlimeAnimation {
         }
         if (attacking) {
             time += seconds;
-            if (time >= ATTACK_DURATION) {
+            if (time >= castDuration) {
                 attacking = false;
                 time = 0;
             }
@@ -62,10 +63,23 @@ public final class SlimeAnimation {
         return (int) (time * framesPerSecond) % COLUMNS;
     }
     public int idleFrame() { return (int)(time*6)%8; }
-    public int castFrame() { return Math.min(7,(int)(time/ATTACK_DURATION*8)); }
+    public int castFrame() {
+        return Math.min(7,(int)(time<releaseTime?time/releaseTime*3:3+(time-releaseTime)/(castDuration-releaseTime)*5));
+    }
+
+    /** Follow simulation time so release, hit pause and recovery cannot drift apart. */
+    public void pose(double elapsed,double duration,double release) {
+        if(!Double.isFinite(elapsed+duration+release)||duration<=release||release<=0)
+            throw new IllegalArgumentException("Invalid slime pose timing");
+        attacking=elapsed>=0&&elapsed<duration;
+        castDuration=duration;releaseTime=release;time=attacking?elapsed:0;
+    }
+
+    public void cancelAttack() {if(attacking){attacking=false;time=0;}}
 
     public void attack() {
         attacking = true;
+        castDuration=ATTACK_DURATION;releaseTime=.12;
         time = 0;
     }
 

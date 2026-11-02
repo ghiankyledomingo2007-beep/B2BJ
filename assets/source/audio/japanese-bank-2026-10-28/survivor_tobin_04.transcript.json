@@ -1,0 +1,198 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "後ろで柵が倒れちまってな。この足じゃ越えられなかった。",
+  "words": [
+    {
+      "text": "後",
+      "start": 0.18,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -7.629365427419543e-06
+    },
+    {
+      "text": "ろ",
+      "start": 0.32,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -7.629365427419543e-06
+    },
+    {
+      "text": "で",
+      "start": 0.5,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "柵",
+      "start": 0.78,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.00014304091746453196
+    },
+    {
+      "text": "が",
+      "start": 1.02,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "倒",
+      "start": 1.2,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "れ",
+      "start": 1.32,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.00020525732543319464
+    },
+    {
+      "text": "ち",
+      "start": 1.44,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -2.6464111215318553e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.54,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.00018189683032687753
+    },
+    {
+      "text": "っ",
+      "start": 1.66,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.00018189683032687753
+    },
+    {
+      "text": "て",
+      "start": 1.7,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -0.00018189683032687753
+    },
+    {
+      "text": "な",
+      "start": 1.86,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.0004624251159839332
+    },
+    {
+      "text": "。",
+      "start": 1.96,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.016074467450380325
+    },
+    {
+      "text": "こ",
+      "start": 2.64,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "の",
+      "start": 2.84,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "足",
+      "start": 3.02,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -0.0031835371628403664
+    },
+    {
+      "text": "じ",
+      "start": 3.16,
+      "end": 3.2,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "ゃ",
+      "start": 3.2,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "越",
+      "start": 3.44,
+      "end": 3.52,
+      "type": "word",
+      "logprob": -0.22550082206726074
+    },
+    {
+      "text": "え",
+      "start": 3.52,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -8.821448318485636e-06
+    },
+    {
+      "text": "ら",
+      "start": 3.58,
+      "end": 3.7,
+      "type": "word",
+      "logprob": -0.00020847532141488045
+    },
+    {
+      "text": "れ",
+      "start": 3.7,
+      "end": 3.8,
+      "type": "word",
+      "logprob": -0.00020847532141488045
+    },
+    {
+      "text": "な",
+      "start": 3.8,
+      "end": 3.86,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "か",
+      "start": 3.86,
+      "end": 3.98,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "っ",
+      "start": 3.98,
+      "end": 4.08,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "た",
+      "start": 4.08,
+      "end": 4.24,
+      "type": "word",
+      "logprob": -3.3378546504536644e-06
+    },
+    {
+      "text": "。",
+      "start": 4.24,
+      "end": 4.24,
+      "type": "word",
+      "logprob": -0.12692846357822418
+    }
+  ],
+  "transcription_id": "F98fNSmpdXR66ANzWTly",
+  "audio_duration_secs": 4.56
+}

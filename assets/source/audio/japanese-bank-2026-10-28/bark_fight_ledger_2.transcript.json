@@ -1,0 +1,107 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "別の一覧を作っておきました。",
+  "words": [
+    {
+      "text": "別",
+      "start": 0.46,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.0006531727267429233
+    },
+    {
+      "text": "の",
+      "start": 0.56,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -0.0003921216703020036
+    },
+    {
+      "text": "一",
+      "start": 0.7,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -0.0003921216703020036
+    },
+    {
+      "text": "覧",
+      "start": 0.9,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -0.00034350217902101576
+    },
+    {
+      "text": "を",
+      "start": 1.04,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -2.2053474822314456e-05
+    },
+    {
+      "text": "作",
+      "start": 1.22,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -2.2053474822314456e-05
+    },
+    {
+      "text": "っ",
+      "start": 1.38,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.00020692592079285532
+    },
+    {
+      "text": "て",
+      "start": 1.48,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.00020692592079285532
+    },
+    {
+      "text": "お",
+      "start": 1.52,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.00020692592079285532
+    },
+    {
+      "text": "き",
+      "start": 1.62,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -8.583032467868179e-06
+    },
+    {
+      "text": "ま",
+      "start": 1.72,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -8.583032467868179e-06
+    },
+    {
+      "text": "し",
+      "start": 1.86,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -8.583032467868179e-06
+    },
+    {
+      "text": "た",
+      "start": 1.98,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -8.583032467868179e-06
+    },
+    {
+      "text": "。",
+      "start": 2.06,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -0.0009230881696566939
+    }
+  ],
+  "transcription_id": "asdvGskkgB0wAsseA3NZ",
+  "audio_duration_secs": 3.224
+}

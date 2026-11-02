@@ -1,0 +1,128 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "根に絡まってる。あれ、担架の棒だ。",
+  "words": [
+    {
+      "text": "根",
+      "start": 0.18,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.07617863267660141
+    },
+    {
+      "text": "に",
+      "start": 0.3,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -3.814689989667386e-06
+    },
+    {
+      "text": "絡",
+      "start": 0.42,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -7.033323527139146e-06
+    },
+    {
+      "text": "ま",
+      "start": 0.64,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -0.0019721598364412785
+    },
+    {
+      "text": "っ",
+      "start": 0.72,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "て",
+      "start": 0.84,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "る",
+      "start": 0.92,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "。",
+      "start": 1.08,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.00010263393050990999
+    },
+    {
+      "text": "あ",
+      "start": 1.46,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -7.986990567587782e-06
+    },
+    {
+      "text": "れ",
+      "start": 1.52,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -7.986990567587782e-06
+    },
+    {
+      "text": "、",
+      "start": 1.66,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.0018789985915645957
+    },
+    {
+      "text": "担",
+      "start": 2.08,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -0.22929269075393677
+    },
+    {
+      "text": "架",
+      "start": 2.28,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -0.003062085248529911
+    },
+    {
+      "text": "の",
+      "start": 2.4,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "棒",
+      "start": 2.54,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.76,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 2.88,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -0.002186052966862917
+    }
+  ],
+  "transcription_id": "nN4KY3RGVTp5QYxIisJ5",
+  "audio_duration_secs": 3.12
+}

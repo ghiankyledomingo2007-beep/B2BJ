@@ -1,0 +1,282 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "怪人だ。門の中継装置を直してた。あの男、守護者がまだ壊れた命令で動いてやがる。",
+  "words": [
+    {
+      "text": "怪",
+      "start": 0.18,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.02030024118721485
+    },
+    {
+      "text": "人",
+      "start": 0.32,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.00010942813969450071
+    },
+    {
+      "text": "だ",
+      "start": 0.58,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -7.510157047363464e-06
+    },
+    {
+      "text": "。",
+      "start": 0.7,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -0.00022373080719262362
+    },
+    {
+      "text": "門",
+      "start": 1.28,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -0.0004847066884394735
+    },
+    {
+      "text": "の",
+      "start": 1.46,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.0007784912013448775
+    },
+    {
+      "text": "中",
+      "start": 1.64,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -0.0007784912013448775
+    },
+    {
+      "text": "継",
+      "start": 1.82,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -3.635817120084539e-05
+    },
+    {
+      "text": "装",
+      "start": 1.98,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -5.364403477869928e-06
+    },
+    {
+      "text": "置",
+      "start": 2.18,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -5.364403477869928e-06
+    },
+    {
+      "text": "を",
+      "start": 2.36,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -1.4424220353248529e-05
+    },
+    {
+      "text": "直",
+      "start": 2.42,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -0.0015912501839920878
+    },
+    {
+      "text": "し",
+      "start": 2.58,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -0.0002754547167569399
+    },
+    {
+      "text": "て",
+      "start": 2.66,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -0.0002754547167569399
+    },
+    {
+      "text": "た",
+      "start": 2.78,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -0.0002754547167569399
+    },
+    {
+      "text": "。",
+      "start": 2.88,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -7.60526381782256e-05
+    },
+    {
+      "text": "あ",
+      "start": 3.7,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "の",
+      "start": 3.82,
+      "end": 4.0,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "男",
+      "start": 4.0,
+      "end": 4.16,
+      "type": "word",
+      "logprob": -0.3199247717857361
+    },
+    {
+      "text": "、",
+      "start": 4.16,
+      "end": 4.16,
+      "type": "word",
+      "logprob": -0.0022380324080586433
+    },
+    {
+      "text": "守",
+      "start": 4.78,
+      "end": 4.9,
+      "type": "word",
+      "logprob": -0.00011693747364915907
+    },
+    {
+      "text": "護",
+      "start": 4.9,
+      "end": 5.02,
+      "type": "word",
+      "logprob": -4.255681051290594e-05
+    },
+    {
+      "text": "者",
+      "start": 5.02,
+      "end": 5.12,
+      "type": "word",
+      "logprob": -0.001369372708722949
+    },
+    {
+      "text": "が",
+      "start": 5.12,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -0.001369372708722949
+    },
+    {
+      "text": "ま",
+      "start": 5.22,
+      "end": 5.38,
+      "type": "word",
+      "logprob": -1.3708974620385561e-05
+    },
+    {
+      "text": "だ",
+      "start": 5.38,
+      "end": 5.6,
+      "type": "word",
+      "logprob": -1.3708974620385561e-05
+    },
+    {
+      "text": "壊",
+      "start": 5.62,
+      "end": 5.72,
+      "type": "word",
+      "logprob": -0.00016640232934150845
+    },
+    {
+      "text": "れ",
+      "start": 5.72,
+      "end": 5.86,
+      "type": "word",
+      "logprob": -5.364403477869928e-06
+    },
+    {
+      "text": "た",
+      "start": 5.86,
+      "end": 5.96,
+      "type": "word",
+      "logprob": -5.364403477869928e-06
+    },
+    {
+      "text": "命",
+      "start": 6.08,
+      "end": 6.1,
+      "type": "word",
+      "logprob": -0.00019560330838430673
+    },
+    {
+      "text": "令",
+      "start": 6.1,
+      "end": 6.24,
+      "type": "word",
+      "logprob": -0.00019560330838430673
+    },
+    {
+      "text": "で",
+      "start": 6.24,
+      "end": 6.46,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "動",
+      "start": 6.46,
+      "end": 6.6,
+      "type": "word",
+      "logprob": -4.1483970562694594e-05
+    },
+    {
+      "text": "い",
+      "start": 6.6,
+      "end": 6.7,
+      "type": "word",
+      "logprob": -6.270212179515511e-05
+    },
+    {
+      "text": "て",
+      "start": 6.7,
+      "end": 6.76,
+      "type": "word",
+      "logprob": -6.270212179515511e-05
+    },
+    {
+      "text": "や",
+      "start": 6.78,
+      "end": 6.84,
+      "type": "word",
+      "logprob": -0.00034898388548754156
+    },
+    {
+      "text": "が",
+      "start": 6.84,
+      "end": 6.96,
+      "type": "word",
+      "logprob": -4.029192859889008e-05
+    },
+    {
+      "text": "る",
+      "start": 6.96,
+      "end": 7.02,
+      "type": "word",
+      "logprob": -4.029192859889008e-05
+    },
+    {
+      "text": "。",
+      "start": 7.02,
+      "end": 7.02,
+      "type": "word",
+      "logprob": -0.06196817383170128
+    }
+  ],
+  "transcription_id": "9ahrm4lt6vuiI9q2MdaT",
+  "audio_duration_secs": 7.36
+}

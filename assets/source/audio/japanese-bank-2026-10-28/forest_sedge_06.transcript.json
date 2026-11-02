@@ -1,0 +1,254 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9978737235069275,
+  "text": "ならば帰る場所はできたな。白い布をたどって北へ、その先の浅瀬を東に渡れ",
+  "words": [
+    {
+      "text": "な",
+      "start": 0.14,
+      "end": 0.2,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "ら",
+      "start": 0.2,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "ば",
+      "start": 0.32,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "帰",
+      "start": 0.84,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -0.06999247521162033
+    },
+    {
+      "text": "る",
+      "start": 1.0,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "場",
+      "start": 1.1,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "所",
+      "start": 1.22,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "は",
+      "start": 1.32,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -0.0004901876673102379
+    },
+    {
+      "text": "で",
+      "start": 1.38,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.01816307194530964
+    },
+    {
+      "text": "き",
+      "start": 1.48,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -0.01816307194530964
+    },
+    {
+      "text": "た",
+      "start": 1.58,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.01816307194530964
+    },
+    {
+      "text": "な",
+      "start": 1.68,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -1.5497195136049413e-06
+    },
+    {
+      "text": "。",
+      "start": 1.8,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -3.576272320060525e-06
+    },
+    {
+      "text": "白",
+      "start": 2.62,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "い",
+      "start": 2.78,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "布",
+      "start": 2.96,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -4.291525328881107e-06
+    },
+    {
+      "text": "を",
+      "start": 3.16,
+      "end": 3.24,
+      "type": "word",
+      "logprob": -3.2066785934148356e-05
+    },
+    {
+      "text": "た",
+      "start": 3.24,
+      "end": 3.36,
+      "type": "word",
+      "logprob": -0.0891660675406456
+    },
+    {
+      "text": "ど",
+      "start": 3.36,
+      "end": 3.44,
+      "type": "word",
+      "logprob": -7.807903602952138e-05
+    },
+    {
+      "text": "っ",
+      "start": 3.44,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "て",
+      "start": 3.58,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "北",
+      "start": 3.78,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -6.997340824455023e-05
+    },
+    {
+      "text": "へ",
+      "start": 3.96,
+      "end": 4.04,
+      "type": "word",
+      "logprob": -0.00015138434537220746
+    },
+    {
+      "text": "、",
+      "start": 4.04,
+      "end": 4.04,
+      "type": "word",
+      "logprob": -0.06197982653975487
+    },
+    {
+      "text": "そ",
+      "start": 4.58,
+      "end": 4.68,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "の",
+      "start": 4.68,
+      "end": 4.82,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "先",
+      "start": 4.82,
+      "end": 5.04,
+      "type": "word",
+      "logprob": -6.913899414939806e-05
+    },
+    {
+      "text": "の",
+      "start": 5.04,
+      "end": 5.16,
+      "type": "word",
+      "logprob": -6.913899414939806e-05
+    },
+    {
+      "text": "浅",
+      "start": 5.16,
+      "end": 5.3,
+      "type": "word",
+      "logprob": -3.6954195820726454e-05
+    },
+    {
+      "text": "瀬",
+      "start": 5.3,
+      "end": 5.52,
+      "type": "word",
+      "logprob": -0.0007432320853695273
+    },
+    {
+      "text": "を",
+      "start": 5.52,
+      "end": 5.76,
+      "type": "word",
+      "logprob": -2.9802276912960224e-06
+    },
+    {
+      "text": "東",
+      "start": 5.76,
+      "end": 6.06,
+      "type": "word",
+      "logprob": -6.23445157543756e-05
+    },
+    {
+      "text": "に",
+      "start": 6.08,
+      "end": 6.16,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "渡",
+      "start": 6.16,
+      "end": 6.38,
+      "type": "word",
+      "logprob": -0.0004970983718521893
+    },
+    {
+      "text": "れ",
+      "start": 6.38,
+      "end": 6.4,
+      "type": "word",
+      "logprob": -2.5748875486897305e-05
+    }
+  ],
+  "transcription_id": "yPoIQXYnnLyFUfSOWd7j",
+  "audio_duration_secs": 6.64
+}

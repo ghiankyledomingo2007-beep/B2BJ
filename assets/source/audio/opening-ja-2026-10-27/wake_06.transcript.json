@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9991548657417297,
+  "text": "この世界で生存可能な肉体を再構築します。",
+  "words": [
+    {
+      "text": "こ",
+      "start": 0.26,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -3.6238969187252223e-05
+    },
+    {
+      "text": "の",
+      "start": 0.4,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -3.6238969187252223e-05
+    },
+    {
+      "text": "世",
+      "start": 0.5,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "界",
+      "start": 0.7,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "で",
+      "start": 0.9,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "生",
+      "start": 1.16,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "存",
+      "start": 1.36,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "可",
+      "start": 1.44,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.0001896439935080707
+    },
+    {
+      "text": "能",
+      "start": 1.62,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.0001896439935080707
+    },
+    {
+      "text": "な",
+      "start": 1.8,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.0001896439935080707
+    },
+    {
+      "text": "肉",
+      "start": 1.96,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "体",
+      "start": 2.1,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -9.583967766957358e-05
+    },
+    {
+      "text": "を",
+      "start": 2.4,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -9.583967766957358e-05
+    },
+    {
+      "text": "再",
+      "start": 2.72,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -0.0013898485340178013
+    },
+    {
+      "text": "構",
+      "start": 2.94,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -0.0008679436868987978
+    },
+    {
+      "text": "築",
+      "start": 3.06,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -0.0008679436868987978
+    },
+    {
+      "text": "し",
+      "start": 3.3,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "ま",
+      "start": 3.42,
+      "end": 3.6,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "す",
+      "start": 3.6,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "。",
+      "start": 3.72,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -0.0009209443815052509
+    }
+  ],
+  "transcription_id": "zO7htYjsdn5lE2Vivswi",
+  "audio_duration_secs": 4.824
+}

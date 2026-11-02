@@ -1,0 +1,310 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "私はシュナです。皆を東へ避難させた後、裂け目が現れて守護者が道を封鎖してしまいました。",
+  "words": [
+    {
+      "text": "私",
+      "start": 0.32,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -7.748573807475623e-06
+    },
+    {
+      "text": "は",
+      "start": 0.52,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -7.748573807475623e-06
+    },
+    {
+      "text": "シ",
+      "start": 0.66,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -9.512448741588742e-05
+    },
+    {
+      "text": "ュ",
+      "start": 0.7,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -9.512448741588742e-05
+    },
+    {
+      "text": "ナ",
+      "start": 0.78,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -7.486063259420916e-05
+    },
+    {
+      "text": "で",
+      "start": 0.92,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -5.722029527532868e-06
+    },
+    {
+      "text": "す",
+      "start": 1.12,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -5.722029527532868e-06
+    },
+    {
+      "text": "。",
+      "start": 1.18,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "皆",
+      "start": 1.86,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -0.00026246439665555954
+    },
+    {
+      "text": "を",
+      "start": 2.0,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -1.1801649634435307e-05
+    },
+    {
+      "text": "東",
+      "start": 2.26,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -9.298280929215252e-06
+    },
+    {
+      "text": "へ",
+      "start": 2.54,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -2.9801878554280847e-05
+    },
+    {
+      "text": "避",
+      "start": 2.66,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "難",
+      "start": 2.86,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -1.585470999998506e-05
+    },
+    {
+      "text": "さ",
+      "start": 3.02,
+      "end": 3.1,
+      "type": "word",
+      "logprob": -0.0005575056420639157
+    },
+    {
+      "text": "せ",
+      "start": 3.1,
+      "end": 3.24,
+      "type": "word",
+      "logprob": -0.0005575056420639157
+    },
+    {
+      "text": "た",
+      "start": 3.3,
+      "end": 3.46,
+      "type": "word",
+      "logprob": -0.0005575056420639157
+    },
+    {
+      "text": "後",
+      "start": 3.46,
+      "end": 3.48,
+      "type": "word",
+      "logprob": -0.012891287915408611
+    },
+    {
+      "text": "、",
+      "start": 3.48,
+      "end": 3.48,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "裂",
+      "start": 4.12,
+      "end": 4.2,
+      "type": "word",
+      "logprob": -0.00272486568428576
+    },
+    {
+      "text": "け",
+      "start": 4.2,
+      "end": 4.26,
+      "type": "word",
+      "logprob": -0.0006015875260345638
+    },
+    {
+      "text": "目",
+      "start": 4.26,
+      "end": 4.46,
+      "type": "word",
+      "logprob": -0.019962593913078308
+    },
+    {
+      "text": "が",
+      "start": 4.46,
+      "end": 4.56,
+      "type": "word",
+      "logprob": -0.019962593913078308
+    },
+    {
+      "text": "現",
+      "start": 4.56,
+      "end": 4.78,
+      "type": "word",
+      "logprob": -0.00016830935783218592
+    },
+    {
+      "text": "れ",
+      "start": 4.86,
+      "end": 4.98,
+      "type": "word",
+      "logprob": -0.0001525762490928173
+    },
+    {
+      "text": "て",
+      "start": 5.12,
+      "end": 5.48,
+      "type": "word",
+      "logprob": -0.0001525762490928173
+    },
+    {
+      "text": "守",
+      "start": 5.48,
+      "end": 5.6,
+      "type": "word",
+      "logprob": -0.3135053813457489
+    },
+    {
+      "text": "護",
+      "start": 5.6,
+      "end": 5.74,
+      "type": "word",
+      "logprob": -2.5510462364763953e-05
+    },
+    {
+      "text": "者",
+      "start": 5.74,
+      "end": 5.88,
+      "type": "word",
+      "logprob": -0.0007428746903315187
+    },
+    {
+      "text": "が",
+      "start": 5.96,
+      "end": 6.12,
+      "type": "word",
+      "logprob": -0.0007428746903315187
+    },
+    {
+      "text": "道",
+      "start": 6.12,
+      "end": 6.4,
+      "type": "word",
+      "logprob": -0.0008456706418655813
+    },
+    {
+      "text": "を",
+      "start": 6.4,
+      "end": 6.52,
+      "type": "word",
+      "logprob": -0.0008456706418655813
+    },
+    {
+      "text": "封",
+      "start": 6.52,
+      "end": 6.6,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "鎖",
+      "start": 6.6,
+      "end": 6.74,
+      "type": "word",
+      "logprob": -4.994744449504651e-05
+    },
+    {
+      "text": "し",
+      "start": 6.78,
+      "end": 6.86,
+      "type": "word",
+      "logprob": -4.291525328881107e-06
+    },
+    {
+      "text": "て",
+      "start": 6.86,
+      "end": 6.94,
+      "type": "word",
+      "logprob": -4.291525328881107e-06
+    },
+    {
+      "text": "し",
+      "start": 6.94,
+      "end": 7.08,
+      "type": "word",
+      "logprob": -0.00040463366894982755
+    },
+    {
+      "text": "ま",
+      "start": 7.08,
+      "end": 7.14,
+      "type": "word",
+      "logprob": -0.00040463366894982755
+    },
+    {
+      "text": "い",
+      "start": 7.14,
+      "end": 7.24,
+      "type": "word",
+      "logprob": -0.00040463366894982755
+    },
+    {
+      "text": "ま",
+      "start": 7.28,
+      "end": 7.38,
+      "type": "word",
+      "logprob": -0.00040463366894982755
+    },
+    {
+      "text": "し",
+      "start": 7.38,
+      "end": 7.54,
+      "type": "word",
+      "logprob": -0.00040463366894982755
+    },
+    {
+      "text": "た",
+      "start": 7.54,
+      "end": 7.58,
+      "type": "word",
+      "logprob": -0.00040463366894982755
+    },
+    {
+      "text": "。",
+      "start": 7.58,
+      "end": 7.58,
+      "type": "word",
+      "logprob": -7.497983460780233e-05
+    }
+  ],
+  "transcription_id": "78YxP2335Lxc9lHeD7WZ",
+  "audio_duration_secs": 7.84
+}

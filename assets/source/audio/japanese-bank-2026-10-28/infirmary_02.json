@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "毛布に書き置きだ。「戻ってきた人のために」。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "bTv9VSaH81ZYAbFBbwe2",
+  "generated_at": 1793156127.605257
+}

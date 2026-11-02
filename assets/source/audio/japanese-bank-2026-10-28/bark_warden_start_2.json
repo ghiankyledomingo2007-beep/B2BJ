@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "一度、隙があればいい。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "k8KmHtlKcUrGO9hZVhdV",
+  "generated_at": 1793156281.308778
+}

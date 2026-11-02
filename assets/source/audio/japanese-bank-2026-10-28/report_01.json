@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "命令書を見つけた。守護者は、イコルを持つ者を通すなって命じられてた。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "8vhsQZrZrPGsjauz3KqW",
+  "generated_at": 1793156133.2047045
+}

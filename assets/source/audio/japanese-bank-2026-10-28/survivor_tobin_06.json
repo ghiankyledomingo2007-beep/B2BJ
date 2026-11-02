@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "明かりがあるなら、這ってでも行くさ。ありがとな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "JOcmGzB8OFjY8MhjHHEf",
+  "request_id": "nWTinlFk2rEKimD1hYY7",
+  "generated_at": 1793156160.2369587
+}

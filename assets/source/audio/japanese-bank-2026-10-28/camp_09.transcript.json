@@ -1,0 +1,282 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "道の南にある倉庫から声が聞こえました。あなたなら柵の下を通れるかもしれません。",
+  "words": [
+    {
+      "text": "道",
+      "start": 0.28,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -8.153582894010469e-05
+    },
+    {
+      "text": "の",
+      "start": 0.44,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -8.153582894010469e-05
+    },
+    {
+      "text": "南",
+      "start": 0.56,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "に",
+      "start": 0.82,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "あ",
+      "start": 0.96,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "る",
+      "start": 1.04,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "倉",
+      "start": 1.2,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "庫",
+      "start": 1.4,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "か",
+      "start": 1.6,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "ら",
+      "start": 1.74,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "声",
+      "start": 2.08,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -9.512448741588742e-05
+    },
+    {
+      "text": "が",
+      "start": 2.34,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -4.8397800128441304e-05
+    },
+    {
+      "text": "聞",
+      "start": 2.42,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -0.0012931802775710821
+    },
+    {
+      "text": "こ",
+      "start": 2.5,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -0.0012931802775710821
+    },
+    {
+      "text": "え",
+      "start": 2.58,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -0.00036554806865751743
+    },
+    {
+      "text": "ま",
+      "start": 2.74,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -0.00036554806865751743
+    },
+    {
+      "text": "し",
+      "start": 2.84,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.00036554806865751743
+    },
+    {
+      "text": "た",
+      "start": 3.0,
+      "end": 3.04,
+      "type": "word",
+      "logprob": -0.00036554806865751743
+    },
+    {
+      "text": "。",
+      "start": 3.04,
+      "end": 3.04,
+      "type": "word",
+      "logprob": -0.0076561588793993
+    },
+    {
+      "text": "あ",
+      "start": 3.96,
+      "end": 4.019,
+      "type": "word",
+      "logprob": -1.4066597032069694e-05
+    },
+    {
+      "text": "な",
+      "start": 4.059,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -1.4066597032069694e-05
+    },
+    {
+      "text": "た",
+      "start": 4.14,
+      "end": 4.32,
+      "type": "word",
+      "logprob": -1.4066597032069694e-05
+    },
+    {
+      "text": "な",
+      "start": 4.32,
+      "end": 4.46,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "ら",
+      "start": 4.46,
+      "end": 4.84,
+      "type": "word",
+      "logprob": -1.1920922133867862e-06
+    },
+    {
+      "text": "柵",
+      "start": 4.92,
+      "end": 5.22,
+      "type": "word",
+      "logprob": -0.00043823651503771544
+    },
+    {
+      "text": "の",
+      "start": 5.22,
+      "end": 5.36,
+      "type": "word",
+      "logprob": -2.658331868587993e-05
+    },
+    {
+      "text": "下",
+      "start": 5.44,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -2.658331868587993e-05
+    },
+    {
+      "text": "を",
+      "start": 5.62,
+      "end": 5.74,
+      "type": "word",
+      "logprob": -0.00023469554434996098
+    },
+    {
+      "text": "通",
+      "start": 5.74,
+      "end": 5.86,
+      "type": "word",
+      "logprob": -0.00023469554434996098
+    },
+    {
+      "text": "れ",
+      "start": 5.92,
+      "end": 6.0,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "る",
+      "start": 6.0,
+      "end": 6.1,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "か",
+      "start": 6.1,
+      "end": 6.18,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "も",
+      "start": 6.18,
+      "end": 6.3,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "し",
+      "start": 6.3,
+      "end": 6.38,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "れ",
+      "start": 6.38,
+      "end": 6.54,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "ま",
+      "start": 6.54,
+      "end": 6.64,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "せ",
+      "start": 6.64,
+      "end": 6.76,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "ん",
+      "start": 6.76,
+      "end": 6.88,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "。",
+      "start": 6.88,
+      "end": 6.88,
+      "type": "word",
+      "logprob": -0.0002307625545654446
+    }
+  ],
+  "transcription_id": "doY4fkp8IwPl1rUH9U9g",
+  "audio_duration_secs": 7.2
+}

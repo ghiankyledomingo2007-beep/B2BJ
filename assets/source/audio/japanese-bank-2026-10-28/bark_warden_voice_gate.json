@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "この門は開かせん。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "AzXhp77fg6sHrgy2EtLn",
+  "request_id": "QxGLLrx6AeC7F0pZRQLF",
+  "generated_at": 1793156389.4148598
+}

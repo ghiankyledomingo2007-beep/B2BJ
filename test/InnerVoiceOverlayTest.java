@@ -3,7 +3,7 @@ import javax.sound.sampled.AudioSystem;
 
 public final class InnerVoiceOverlayTest {
     public static void main(String[] args) throws Exception {
-        sequence();interruptions();rendering();characterSubtitles();recordings();
+        sequence();interruptions();rendering();inheritedOpacity();characterSubtitles();recordings();
         System.out.println("InnerVoiceOverlayTest passed: sequence, movement, pause, interruption, seal motion and packaged speech");
     }
 
@@ -73,6 +73,20 @@ public final class InnerVoiceOverlayTest {
         assert occupied<48_000 : "overlay must leave the playfield visible";
     }
 
+    private static void inheritedOpacity() {
+        for(float opacity:new float[]{0,.25f,1}) {
+            var image=new BufferedImage(1280,200,BufferedImage.TYPE_INT_ARGB);var g=image.createGraphics();
+            var composite=java.awt.AlphaComposite.SrcOver.derive(opacity);g.setComposite(composite);
+            InnerVoiceOverlay.drawPresence(g,1,.5,1280,false,true);
+            assert g.getComposite().equals(composite) : "seal must preserve caller composition";
+            int coreAlpha=image.getRGB(640,76)>>>24;
+            if(opacity==0)assert coreAlpha==0 : "hidden seal must stay hidden";
+            else if(opacity<1)assert coreAlpha>0&&coreAlpha<240 : "cinematic backdrop must honor opacity";
+            else assert coreAlpha==255 : "ordinary speaking seal stays opaque";
+            g.dispose();
+        }
+    }
+
     private static void recordings() throws Exception {
         var bark=OutpostBark.HEARD_SURVIVOR;
         for(int i=0;i<bark.lines().size();i++)try(var source=Ui.open("assets/audio/dialogue/"+bark.voiceKey(i)+".wav")) {
@@ -93,7 +107,7 @@ public final class InnerVoiceOverlayTest {
             int occupied=0;
             for(int y=0;y<720;y++)for(int x=0;x<1280;x++)if(image.getRGB(x,y)!=0) {
                 occupied++;
-                assert x>=360&&x<920&&y>=510&&y<580 : "subtitles must avoid the player, map and abilities";
+                assert x>=360&&x<920&&y>=460&&y<530 : "subtitles must clear the new resource ribbon, player and map";
             }
             assert occupied>1000&&occupied<24_000 : "subtitle backing is too large: "+occupied;
         }

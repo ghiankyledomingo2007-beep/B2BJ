@@ -53,7 +53,8 @@ final class InnerVoiceOverlay {
         // The halo stays around the compact seal, clear of subtitles and the boss bar.
         var seal=(Graphics2D)canvas.create();Ui.crisp(seal);
         seal.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-        seal.setComposite(AlphaComposite.SrcOver.derive((float)(speaking?1:.78+.05*Math.sin(time*1.6))));seal.translate(cx,cy);seal.scale(.85,.85);
+        float inherited=canvas.getComposite() instanceof AlphaComposite composite?composite.getAlpha():1;
+        seal.setComposite(AlphaComposite.SrcOver.derive(inherited*(float)(speaking?1:.78+.05*Math.sin(time*1.6))));seal.translate(cx,cy);seal.scale(.85,.85);
         seal.setColor(new Color(12,15,19,110));seal.fillOval(-52,-52,104,104);
         seal.setPaint(new RadialGradientPaint(0,0,(float)(76+pulse*6),new float[]{0,.42f,.72f,1},new Color[]{
                 new Color(255,219,123,65+(int)(pulse*50)),new Color(255,193,65,45+(int)(pulse*40)),

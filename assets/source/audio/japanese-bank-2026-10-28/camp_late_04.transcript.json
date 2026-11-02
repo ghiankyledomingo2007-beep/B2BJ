@@ -1,0 +1,352 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "守護者が変わる前に怪我人を東へ送りました。追いかけようとしましたが、森の道は根に塞がれていました。",
+  "words": [
+    {
+      "text": "守",
+      "start": 0.18,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -0.00026222606538794935
+    },
+    {
+      "text": "護",
+      "start": 0.3,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -2.8132995794294402e-05
+    },
+    {
+      "text": "者",
+      "start": 0.44,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.02801399491727352
+    },
+    {
+      "text": "が",
+      "start": 0.56,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -0.02801399491727352
+    },
+    {
+      "text": "変",
+      "start": 0.7,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.11981885880231857
+    },
+    {
+      "text": "わ",
+      "start": 0.84,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -0.11981885880231857
+    },
+    {
+      "text": "る",
+      "start": 0.88,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "前",
+      "start": 1.1,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -2.5748875486897305e-05
+    },
+    {
+      "text": "に",
+      "start": 1.36,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -2.5748875486897305e-05
+    },
+    {
+      "text": "怪",
+      "start": 1.72,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -0.14127576351165771
+    },
+    {
+      "text": "我",
+      "start": 1.9,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -6.615896563744172e-05
+    },
+    {
+      "text": "人",
+      "start": 1.98,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.00013040646445006132
+    },
+    {
+      "text": "を",
+      "start": 2.24,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -0.00013040646445006132
+    },
+    {
+      "text": "東",
+      "start": 2.34,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -1.1801649634435307e-05
+    },
+    {
+      "text": "へ",
+      "start": 2.56,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -1.4543427823809907e-05
+    },
+    {
+      "text": "送",
+      "start": 2.86,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -0.00011681827891152352
+    },
+    {
+      "text": "り",
+      "start": 2.96,
+      "end": 3.08,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "ま",
+      "start": 3.08,
+      "end": 3.22,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "し",
+      "start": 3.22,
+      "end": 3.38,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "た",
+      "start": 3.38,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "。",
+      "start": 3.42,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -7.390948667307384e-06
+    },
+    {
+      "text": "追",
+      "start": 4.08,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -3.576214658096433e-05
+    },
+    {
+      "text": "い",
+      "start": 4.14,
+      "end": 4.26,
+      "type": "word",
+      "logprob": -3.576214658096433e-05
+    },
+    {
+      "text": "か",
+      "start": 4.26,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -0.001761909923516214
+    },
+    {
+      "text": "け",
+      "start": 4.42,
+      "end": 4.5,
+      "type": "word",
+      "logprob": -0.001761909923516214
+    },
+    {
+      "text": "よ",
+      "start": 4.5,
+      "end": 4.52,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "う",
+      "start": 4.52,
+      "end": 4.64,
+      "type": "word",
+      "logprob": -2.622600959512056e-06
+    },
+    {
+      "text": "と",
+      "start": 4.64,
+      "end": 4.76,
+      "type": "word",
+      "logprob": -8.77341881277971e-05
+    },
+    {
+      "text": "し",
+      "start": 4.76,
+      "end": 4.94,
+      "type": "word",
+      "logprob": -0.00040356122190132737
+    },
+    {
+      "text": "ま",
+      "start": 4.94,
+      "end": 5.0,
+      "type": "word",
+      "logprob": -0.00040356122190132737
+    },
+    {
+      "text": "し",
+      "start": 5.04,
+      "end": 5.12,
+      "type": "word",
+      "logprob": -0.00040356122190132737
+    },
+    {
+      "text": "た",
+      "start": 5.12,
+      "end": 5.3,
+      "type": "word",
+      "logprob": -0.00040356122190132737
+    },
+    {
+      "text": "が",
+      "start": 5.3,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -0.00040356122190132737
+    },
+    {
+      "text": "、",
+      "start": 5.62,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -5.709961988031864e-05
+    },
+    {
+      "text": "森",
+      "start": 5.74,
+      "end": 5.88,
+      "type": "word",
+      "logprob": -6.854299135738984e-05
+    },
+    {
+      "text": "の",
+      "start": 6.0,
+      "end": 6.22,
+      "type": "word",
+      "logprob": -8.702239938429557e-06
+    },
+    {
+      "text": "道",
+      "start": 6.26,
+      "end": 6.38,
+      "type": "word",
+      "logprob": -0.0002456601650919765
+    },
+    {
+      "text": "は",
+      "start": 6.38,
+      "end": 6.54,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "根",
+      "start": 6.54,
+      "end": 6.78,
+      "type": "word",
+      "logprob": -2.3603161025675945e-05
+    },
+    {
+      "text": "に",
+      "start": 6.78,
+      "end": 6.94,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "塞",
+      "start": 6.94,
+      "end": 7.1,
+      "type": "word",
+      "logprob": -0.20384129881858826
+    },
+    {
+      "text": "が",
+      "start": 7.1,
+      "end": 7.2,
+      "type": "word",
+      "logprob": -0.00030357998912222683
+    },
+    {
+      "text": "れ",
+      "start": 7.2,
+      "end": 7.34,
+      "type": "word",
+      "logprob": -6.758938252460212e-05
+    },
+    {
+      "text": "て",
+      "start": 7.34,
+      "end": 7.42,
+      "type": "word",
+      "logprob": -6.758938252460212e-05
+    },
+    {
+      "text": "い",
+      "start": 7.42,
+      "end": 7.56,
+      "type": "word",
+      "logprob": -7.867782187531702e-06
+    },
+    {
+      "text": "ま",
+      "start": 7.56,
+      "end": 7.66,
+      "type": "word",
+      "logprob": -7.867782187531702e-06
+    },
+    {
+      "text": "し",
+      "start": 7.66,
+      "end": 7.82,
+      "type": "word",
+      "logprob": -7.867782187531702e-06
+    },
+    {
+      "text": "た",
+      "start": 7.82,
+      "end": 7.86,
+      "type": "word",
+      "logprob": -7.867782187531702e-06
+    },
+    {
+      "text": "。",
+      "start": 7.86,
+      "end": 7.86,
+      "type": "word",
+      "logprob": -0.003178308717906475
+    }
+  ],
+  "transcription_id": "faLbiws6XCeptm8rC1Qt",
+  "audio_duration_secs": 8.24
+}

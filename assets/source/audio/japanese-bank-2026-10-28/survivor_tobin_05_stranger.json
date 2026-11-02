@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "隊長の天幕に明かりがある。そっちへ行って。誰かが、消さずに待ってる。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "lPLnGjjG9raMKINfe2MZ",
+  "generated_at": 1793156159.7531927
+}

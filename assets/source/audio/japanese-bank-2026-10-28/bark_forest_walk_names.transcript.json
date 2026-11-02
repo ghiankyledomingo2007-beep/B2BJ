@@ -1,0 +1,128 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.999712347984314,
+  "text": "あの短歌に誰がいたのかわかればな。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.1,
+      "end": 0.18,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "の",
+      "start": 0.2,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "短",
+      "start": 0.42,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.18664440512657166
+    },
+    {
+      "text": "歌",
+      "start": 0.54,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -0.0008629412623122334
+    },
+    {
+      "text": "に",
+      "start": 0.74,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "誰",
+      "start": 1.42,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.0009116546134464443
+    },
+    {
+      "text": "が",
+      "start": 1.62,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -3.397406908334233e-05
+    },
+    {
+      "text": "い",
+      "start": 1.68,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -2.13382354559144e-05
+    },
+    {
+      "text": "た",
+      "start": 1.8,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -2.13382354559144e-05
+    },
+    {
+      "text": "の",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -1.6569954823353328e-05
+    },
+    {
+      "text": "か",
+      "start": 2.04,
+      "end": 2.16,
+      "type": "word",
+      "logprob": -1.6569954823353328e-05
+    },
+    {
+      "text": "わ",
+      "start": 2.2,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -0.06199529021978378
+    },
+    {
+      "text": "か",
+      "start": 2.28,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -0.0001528146385680884
+    },
+    {
+      "text": "れ",
+      "start": 2.38,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -6.437280717364047e-06
+    },
+    {
+      "text": "ば",
+      "start": 2.54,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -6.437280717364047e-06
+    },
+    {
+      "text": "な",
+      "start": 2.66,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 2.76,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -0.006715585943311453
+    }
+  ],
+  "transcription_id": "1kXPyP5DUpnoPdsnszmm",
+  "audio_duration_secs": 3.12
+}

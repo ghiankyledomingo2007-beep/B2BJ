@@ -1,0 +1,12 @@
+2.083	3.167	h	Amamiya, that thing - can you have it by 8 a.m.?
+3.208	4.0	h	Yes.
+5.917	7.833	h	Just five minutes.
+11.542	13.208	h	...So dark.
+13.208	18.842	s	Confirmed. Skill acquired: Analysis.
+18.708	20.875	h	...I'm hungry.
+20.583	25.977	s	Confirmed. Skill acquired: Absorption.
+25.708	28.125	h	...It isn't even done yet.
+29.917	35.391	s	Confirmed. Skill acquired: Regeneration.
+35.083	37.417	h	...My body... it's melting...
+36.625	41.859	s	Confirmed. Reconstructing body: Slime.
+51.417	56.75	s	Notice: reincarnation complete. Race: Slime.

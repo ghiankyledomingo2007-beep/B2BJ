@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9993879795074463,
+  "text": "イコルを吐きます。狙いを見て。",
+  "words": [
+    {
+      "text": "イ",
+      "start": 0.26,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.013529276475310326
+    },
+    {
+      "text": "コ",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.025498120114207268
+    },
+    {
+      "text": "ル",
+      "start": 0.52,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -0.025498120114207268
+    },
+    {
+      "text": "を",
+      "start": 0.64,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -8.046303264563903e-05
+    },
+    {
+      "text": "吐",
+      "start": 0.82,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -0.36617109179496765
+    },
+    {
+      "text": "き",
+      "start": 0.9,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.00017307691450696439
+    },
+    {
+      "text": "ま",
+      "start": 1.02,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.00017307691450696439
+    },
+    {
+      "text": "す",
+      "start": 1.18,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -0.00017307691450696439
+    },
+    {
+      "text": "。",
+      "start": 1.3,
+      "end": 1.3,
+      "type": "word",
+      "logprob": -8.284702198579907e-05
+    },
+    {
+      "text": "狙",
+      "start": 1.92,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -1.7404405298293568e-05
+    },
+    {
+      "text": "い",
+      "start": 2.1,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.004088496323674917
+    },
+    {
+      "text": "を",
+      "start": 2.18,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -1.6093124941107817e-05
+    },
+    {
+      "text": "見",
+      "start": 2.32,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -1.6093124941107817e-05
+    },
+    {
+      "text": "て",
+      "start": 2.48,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -1.6093124941107817e-05
+    },
+    {
+      "text": "。",
+      "start": 2.54,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -0.0018368767341598868
+    }
+  ],
+  "transcription_id": "A0odCUR897lA0yRSjtE9",
+  "audio_duration_secs": 3.624
+}

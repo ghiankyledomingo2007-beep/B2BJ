@@ -1,0 +1,100 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9988914132118225,
+  "text": "心臓が開いたら教えてくれ。",
+  "words": [
+    {
+      "text": "心",
+      "start": 0.3,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -7.903263758635148e-05
+    },
+    {
+      "text": "臓",
+      "start": 0.36,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.0005436849314719439
+    },
+    {
+      "text": "が",
+      "start": 0.54,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -1.4543427823809907e-05
+    },
+    {
+      "text": "開",
+      "start": 0.7,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -1.4543427823809907e-05
+    },
+    {
+      "text": "い",
+      "start": 0.9,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -5.173549288883805e-05
+    },
+    {
+      "text": "た",
+      "start": 1.02,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -5.173549288883805e-05
+    },
+    {
+      "text": "ら",
+      "start": 1.16,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -5.173549288883805e-05
+    },
+    {
+      "text": "教",
+      "start": 1.68,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -0.0003358753747306764
+    },
+    {
+      "text": "え",
+      "start": 1.86,
+      "end": 1.94,
+      "type": "word",
+      "logprob": -0.0003358753747306764
+    },
+    {
+      "text": "て",
+      "start": 1.94,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.0003358753747306764
+    },
+    {
+      "text": "く",
+      "start": 2.04,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "れ",
+      "start": 2.18,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "。",
+      "start": 2.26,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -0.12692952156066895
+    }
+  ],
+  "transcription_id": "AW1uhRCevE9QB64MF1QL",
+  "audio_duration_secs": 2.56
+}

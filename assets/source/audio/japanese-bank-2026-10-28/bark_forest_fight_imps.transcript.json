@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "あんな小さいのが後ろを取ろうとしてきた。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.12,
+      "end": 0.2,
+      "type": "word",
+      "logprob": -8.22540732769994e-06
+    },
+    {
+      "text": "ん",
+      "start": 0.2,
+      "end": 0.4,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "な",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "小",
+      "start": 0.62,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "さ",
+      "start": 0.8,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "い",
+      "start": 0.88,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "の",
+      "start": 0.94,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -7.915183232398704e-05
+    },
+    {
+      "text": "が",
+      "start": 1.12,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -7.915183232398704e-05
+    },
+    {
+      "text": "後",
+      "start": 1.74,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -0.0001951265730895102
+    },
+    {
+      "text": "ろ",
+      "start": 1.88,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -0.0001951265730895102
+    },
+    {
+      "text": "を",
+      "start": 2.08,
+      "end": 2.14,
+      "type": "word",
+      "logprob": -0.0063482061959803104
+    },
+    {
+      "text": "取",
+      "start": 2.18,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -0.0063482061959803104
+    },
+    {
+      "text": "ろ",
+      "start": 2.28,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "う",
+      "start": 2.32,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "と",
+      "start": 2.42,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -0.0002723561483435333
+    },
+    {
+      "text": "し",
+      "start": 2.54,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -0.0002723561483435333
+    },
+    {
+      "text": "て",
+      "start": 2.62,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -0.0002723561483435333
+    },
+    {
+      "text": "き",
+      "start": 2.7,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -3.158996332786046e-05
+    },
+    {
+      "text": "た",
+      "start": 2.84,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -3.158996332786046e-05
+    },
+    {
+      "text": "。",
+      "start": 3.02,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -0.001508051878772676
+    }
+  ],
+  "transcription_id": "Py1HJSTPJ1l1vTCIJbxI",
+  "audio_duration_secs": 3.28
+}

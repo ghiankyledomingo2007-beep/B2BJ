@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9992074370384216,
+  "text": "よし、盾の横に回ろう。",
+  "words": [
+    {
+      "text": "よ",
+      "start": 0.1,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -1.6212332411669195e-05
+    },
+    {
+      "text": "し",
+      "start": 0.26,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -1.6212332411669195e-05
+    },
+    {
+      "text": "、",
+      "start": 0.38,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -0.024091361090540886
+    },
+    {
+      "text": "盾",
+      "start": 0.9,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.1277897208929062
+    },
+    {
+      "text": "の",
+      "start": 1.08,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "横",
+      "start": 1.26,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -4.0531076592742465e-06
+    },
+    {
+      "text": "に",
+      "start": 1.4,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "回",
+      "start": 1.54,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -0.0001299296854995191
+    },
+    {
+      "text": "ろ",
+      "start": 1.68,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -1.1205610462639015e-05
+    },
+    {
+      "text": "う",
+      "start": 1.76,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -1.1205610462639015e-05
+    },
+    {
+      "text": "。",
+      "start": 1.84,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -0.006729202810674906
+    }
+  ],
+  "transcription_id": "z6NUoNqtuPfwOEvlzDhi",
+  "audio_duration_secs": 2.16
+}

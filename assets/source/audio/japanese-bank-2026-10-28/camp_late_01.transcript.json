@@ -1,0 +1,121 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999603033065796,
+  "text": "門が静かになりましたね。あなたが",
+  "words": [
+    {
+      "text": "門",
+      "start": 0.16,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.004308940377086401
+    },
+    {
+      "text": "が",
+      "start": 0.42,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -4.7205765440594405e-05
+    },
+    {
+      "text": "静",
+      "start": 0.64,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -6.6756979322235566e-06
+    },
+    {
+      "text": "か",
+      "start": 0.86,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -0.00048387263086624444
+    },
+    {
+      "text": "に",
+      "start": 0.94,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "な",
+      "start": 1.06,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "り",
+      "start": 1.14,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "ま",
+      "start": 1.26,
+      "end": 1.38,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "し",
+      "start": 1.38,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "た",
+      "start": 1.5,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -2.861018856492592e-06
+    },
+    {
+      "text": "ね",
+      "start": 1.66,
+      "end": 1.78,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 1.78,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -0.00018273114983458072
+    },
+    {
+      "text": "あ",
+      "start": 2.4,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "な",
+      "start": 2.52,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "た",
+      "start": 2.62,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "が",
+      "start": 2.86,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    }
+  ],
+  "transcription_id": "k7rLOy5HBoBng1tjgjpQ",
+  "audio_duration_secs": 3.2
+}

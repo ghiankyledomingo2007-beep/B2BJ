@@ -1,0 +1,30 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5168367624282837,
+  "text": "やっ。",
+  "words": [
+    {
+      "text": "や",
+      "start": 0.16,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -0.6343839764595032
+    },
+    {
+      "text": "っ",
+      "start": 0.26,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.5443286895751953
+    },
+    {
+      "text": "。",
+      "start": 0.28,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.09052922576665878
+    }
+  ],
+  "transcription_id": "URLvqwwzYxfAqHPlfoND",
+  "audio_duration_secs": 0.4889375
+}

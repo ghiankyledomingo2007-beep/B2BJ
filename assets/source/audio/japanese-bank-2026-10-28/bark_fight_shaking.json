@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "おかしいな。まだ震えてる。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "M1eypEIKeviL4QqzvvS3",
+  "generated_at": 1793156241.5650098
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "離れて、種が弾けます。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "G1hO7WZjjBHwLS1VM3Zf",
+  "generated_at": 1793156487.5695472
+}

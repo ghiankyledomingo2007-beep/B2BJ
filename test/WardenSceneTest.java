@@ -25,7 +25,10 @@ public final class WardenSceneTest {
         assert boss.state()==Guardian.State.DORMANT&&game.projectiles().isEmpty();
         int bx=(int)boss.x()-panel.worldCameraX(),feet=(int)boss.y()+Guardian.GROUND_Y_OFFSET-panel.worldCameraY();
         assert bx>160&&bx<1120&&feet>256&&feet<480 : "Warden must be visible above dialogue";
-        while(game.dialogue()!=null)assert game.advanceDialogue();
+        for(int i=0;game.dialogue()!=null&&i<1000;i++) {
+            if(game.dialogueReady())assert game.advanceDialogue();else game.update(.05,0,0);
+        }
+        assert game.dialogue()==null;
         assert game.cutsceneActive()&&game.blocked()&&!game.attack(1,0);
         game.update(.3,1,1);assert game.storyCameraWeight()>0&&game.storyCameraWeight()<1;
         double held=game.storyCameraWeight();game.pause();game.update(.5,0,0);

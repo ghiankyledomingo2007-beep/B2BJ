@@ -1,0 +1,37 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9978271722793579,
+  "text": "まだだ。",
+  "words": [
+    {
+      "text": "ま",
+      "start": 0.12,
+      "end": 0.26,
+      "type": "word",
+      "logprob": -7.629365427419543e-06
+    },
+    {
+      "text": "だ",
+      "start": 0.28,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -7.629365427419543e-06
+    },
+    {
+      "text": "だ",
+      "start": 0.38,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "。",
+      "start": 0.52,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.5759406089782715
+    }
+  ],
+  "transcription_id": "5fgWgKNxAppuAO4tymt4",
+  "audio_duration_secs": 0.7683125
+}

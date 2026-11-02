@@ -61,6 +61,8 @@ final class     Ui {
     static final BufferedImage KIT = B2BJ.loadImage("assets/ui/kit.png");
     static final Font SANS = font("assets/ui/fonts/b2bj-sans.ttf"), DISPLAY = font("assets/ui/fonts/b2bj-display.ttf");
     private static final Font HEADING = font("assets/ui/fonts/DejaVuSerif.ttf"), BODY = font("assets/ui/fonts/DejaVuSans.ttf");
+    private static final Font MENU = font("assets/ui/fonts/Cinzel.ttf");
+    static Font menuFont(float size) { return MENU.deriveFont(size); }
     static Font heading(float size) { return HEADING.deriveFont(size); }
     static Font body(float size) { return BODY.deriveFont(size); }
     static void prose(Graphics2D g, String text, int x, int y, Font font, Color color) {
@@ -316,10 +318,13 @@ final class     Ui {
      * outlined so it reads on any ground. (center, bottom) is the middle of its base line.
      */
     static void worldPrompt(Graphics2D g, String key, String label, int center, int bottom) {
-        int kw = keycapWidth(key), w = kw + 8 + width(label, 2);
+        if (CombatUi.cinematic) return;
+        var font=menuFont(17);
+        int kw=keycapWidth(key),w=kw+8+g.getFontMetrics(font).stringWidth(label);
         int x = (center - w / 2) / S * S;
         keycap(g, key, x, bottom - 28);
-        outlined(g, label, x + kw + 8, bottom - 9, 2, GOLD_LIGHT);
+        prose(g,label,x+kw+9,bottom-8,font,INK);
+        prose(g,label,x+kw+8,bottom-9,font,MenuTheme.IVORY);
     }
 
     static int keycapWidth(String key) { return Math.max(26, width(key, 2) + 14) / S * S; }
@@ -327,11 +332,8 @@ final class     Ui {
     /** A key cap with its legend; returns its width. (x, y) is the top-left; height is 28. */
     static int keycap(Graphics2D g, String key, int x, int y) {
         int w = keycapWidth(key);
-        nine(g, Piece.KEYCAP, x, y, w, 28);
-        crisp(g);
-        g.setFont(sans(2));
-        g.setColor(new Color(0x1a1622));
-        g.drawString(key, x + (w - width(key, 2)) / 2 / S * S, y + 18);
+        JourneyHud.frame(g,x,y,w,26);
+        JourneyHud.center(g,key,x+w/2,y+18,menuFont(13).deriveFont(Font.BOLD),MenuTheme.IVORY);
         return w;
     }
 

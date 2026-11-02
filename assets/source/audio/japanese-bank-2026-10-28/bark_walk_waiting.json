@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "まだ、誰が待ってるんだろう。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "9yVm0vQR3Ykqz5QI4dxY",
+  "generated_at": 1793156266.5242362
+}

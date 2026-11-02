@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "隊長の野営地で、シュナが明かりをつけて待ってる。そこまで行ける？",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "VKFHzesbcvJWQYZHt31Q",
+  "generated_at": 1793156157.6069036
+}

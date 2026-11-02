@@ -12,6 +12,7 @@ final class Splash {
 
     /** Images the game loads before its first frame (measured 2026-10-16); the bar fills against it. */
     static final int EXPECTED = 171;
+    static final int BAR_X = 256, BAR_Y = 276, BAR_WIDTH = 128, BAR_HEIGHT = 2;
     private static int loaded;
     private static SplashScreen screen;
     private static boolean looked;
@@ -27,11 +28,9 @@ final class Splash {
         try {
             if (!splash.isVisible()) { screen = null; return; }
             Graphics2D g = splash.createGraphics();
-            int fill = (int) Math.round(300 * Math.min(1, loaded / (double) EXPECTED)) / 2 * 2;
-            g.setColor(new Color(0xc48a26));
-            g.fillRect(170, 322, fill, 4);
-            g.setColor(new Color(0xffdd80));
-            g.fillRect(170, 322, fill, 2);
+            int fill = (int) Math.round(BAR_WIDTH * Math.min(1, loaded / (double) EXPECTED)) / 2 * 2;
+            g.setColor(new Color(0x8ccfca));
+            g.fillRect(BAR_X, BAR_Y, fill, BAR_HEIGHT);
             g.dispose();
             splash.update();
         } catch (IllegalStateException closed) {

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "亡骸です。戦い慣れています。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "36yXqjJKBwEZTvIKGYs1",
+  "generated_at": 1793156471.053533
+}

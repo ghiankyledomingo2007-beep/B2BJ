@@ -164,7 +164,7 @@ public final class BladeCombatTest {
         var hurt=RuinedOutpostGame.class.getDeclaredMethod("hurtPlayer",int.class,double.class,double.class);hurt.setAccessible(true);
         hurt.invoke(game,1,1000.0,550.0);assert !game.bladeAttacking() : "hurt cancels pending strike";
         game=fixture();game.primaryPress(1,0);advance(game,.3);game.player().spendBladeIchor(90);
-        game.primaryRelease(1,0);assert !game.bladeAttacking() : "insufficient Ichor cannot release charge";
+        game.primaryRelease(1,0);assert game.bladeAttacking() : "a charge spends no extra Ichor while Blade form remains active";
         game=fixture();var map=game.map();var wall=map.barriers().get(0);
         player=game.player();player.relocate(wall.centerX()-wall.width()/2-Player.COLLISION_RADIUS-1,wall.centerY()-Player.COLLISION_Y_OFFSET);
         assert !map.isBlocked(player.x(),player.y()+Player.COLLISION_Y_OFFSET,Player.COLLISION_RADIUS);

@@ -20,7 +20,7 @@ public final class SlimeDepthRenderingTest {
         for(int i=0;i<2;i++) {assert game.attack(1,0);game.update(.5,0,0);game.update(.11,0,0);game.drainEvents();}
         assert game.attack(1,0);
         assert game.drainEvents().stream().noneMatch(e->e.type().name().equals("FINISHER_RELEASE"));
-        game.update(.12,0,0);
+        game.update(.22,0,0);
         assert game.drainEvents().stream().filter(e->e.type().name().equals("FINISHER_RELEASE")).count()==1
                 : "finisher needs a distinct cue at physical release, not input acceptance";
         var cancel=fixture();
@@ -104,16 +104,15 @@ public final class SlimeDepthRenderingTest {
             }
             assert added>40 : "trait has a visible world cue";
             var activeHud=draw(panel,"drawPlayerHud");int changed=0;
-            for(int y=538;y<592;y++)for(int x=478;x<810;x++)if(hud.getRGB(x,y)!=activeHud.getRGB(x,y))changed++;
+            for(int y=144;y<197;y++)for(int x=16;x<236;x++)if(hud.getRGB(x,y)!=activeHud.getRGB(x,y))changed++;
             assert changed>100 : "trait name and remaining time need a HUD slot";
             if(trait==Player.Trait.JET) {
                 var expected=new BufferedImage(1280,720,BufferedImage.TYPE_INT_ARGB);var ink=expected.createGraphics();
-                var text=B2BJ.class.getDeclaredMethod("pixelText",Graphics2D.class,String.class,int.class,int.class,int.class,java.awt.Color.class);
-                text.setAccessible(true);text.invoke(panel,ink,"SHOT SPEED 1.3X",526,571,1,new java.awt.Color(191,203,209));ink.dispose();
-                for(int y=571;y<578;y++)for(int x=526;x<616;x++)if((expected.getRGB(x,y)>>>24)>0)
-                    assert activeHud.getRGB(x,y)==expected.getRGB(x,y) : "Jet description needs supported, unambiguous pixel-font glyphs";
+                ink.scale(.8,.8);JourneyHud.text(ink,"Shot speed 1.3x",70,224,Ui.body(13),MenuTheme.IVORY);ink.dispose();
+                for(int y=169;y<182;y++)for(int x=56;x<140;x++)if((expected.getRGB(x,y)>>>24)==255)
+                    assert activeHud.getRGB(x,y)==expected.getRGB(x,y) : "Jet effect description remains readable";
             }
-            for(int y=16;y<144;y++)for(int x=16;x<336;x++)assert activeHud.getRGB(x,y)==hud.getRGB(x,y)
+            for(int y=16;y<140;y++)for(int x=16;x<336;x++)assert activeHud.getRGB(x,y)==hud.getRGB(x,y)
                     : "trait UI must preserve health/Ichor";
         }
     }

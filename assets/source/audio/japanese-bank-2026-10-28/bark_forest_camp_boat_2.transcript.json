@@ -1,0 +1,142 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "彼が守る人たちは逃げられませんでした。",
+  "words": [
+    {
+      "text": "彼",
+      "start": 0.36,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -0.005947985220700502
+    },
+    {
+      "text": "が",
+      "start": 0.54,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "守",
+      "start": 0.68,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -0.00012468514614738524
+    },
+    {
+      "text": "る",
+      "start": 0.84,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "人",
+      "start": 1.02,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "た",
+      "start": 1.22,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "ち",
+      "start": 1.32,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "は",
+      "start": 1.52,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "逃",
+      "start": 2.0,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -0.0011703077470883727
+    },
+    {
+      "text": "げ",
+      "start": 2.08,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "ら",
+      "start": 2.18,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -0.00018106251081917435
+    },
+    {
+      "text": "れ",
+      "start": 2.34,
+      "end": 2.44,
+      "type": "word",
+      "logprob": -0.00018106251081917435
+    },
+    {
+      "text": "ま",
+      "start": 2.44,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -9.524368942948058e-05
+    },
+    {
+      "text": "せ",
+      "start": 2.54,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -9.524368942948058e-05
+    },
+    {
+      "text": "ん",
+      "start": 2.62,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -9.524368942948058e-05
+    },
+    {
+      "text": "で",
+      "start": 2.72,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -9.524368942948058e-05
+    },
+    {
+      "text": "し",
+      "start": 2.82,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -9.524368942948058e-05
+    },
+    {
+      "text": "た",
+      "start": 3.0,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -9.524368942948058e-05
+    },
+    {
+      "text": "。",
+      "start": 3.06,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -0.014165212400257587
+    }
+  ],
+  "transcription_id": "0uj1YARDI5YPSlNDYK7n",
+  "audio_duration_secs": 4.104
+}

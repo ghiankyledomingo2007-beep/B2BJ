@@ -1,0 +1,79 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9986907839775085,
+  "text": "随分高くついた泥だな",
+  "words": [
+    {
+      "text": "随",
+      "start": 0.26,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.048620034009218216
+    },
+    {
+      "text": "分",
+      "start": 0.5,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.00015817821258679032
+    },
+    {
+      "text": "高",
+      "start": 0.8,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -4.1960789531003684e-05
+    },
+    {
+      "text": "く",
+      "start": 0.98,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -4.1960789531003684e-05
+    },
+    {
+      "text": "つ",
+      "start": 1.12,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -0.012996372766792774
+    },
+    {
+      "text": "い",
+      "start": 1.22,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -1.4185804502631072e-05
+    },
+    {
+      "text": "た",
+      "start": 1.36,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -1.4185804502631072e-05
+    },
+    {
+      "text": "泥",
+      "start": 1.5,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.000734297966118902
+    },
+    {
+      "text": "だ",
+      "start": 1.7,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "な",
+      "start": 1.84,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    }
+  ],
+  "transcription_id": "3UyTHpWnKhTi0MhKdr99",
+  "audio_duration_secs": 2.4
+}

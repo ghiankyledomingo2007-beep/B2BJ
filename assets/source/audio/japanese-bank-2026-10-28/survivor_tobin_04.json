@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "後ろで柵が倒れちまってな。この脚じゃ越えられなかった。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "JOcmGzB8OFjY8MhjHHEf",
+  "request_id": "P7FfCk7YiXwc5MQoEt79",
+  "generated_at": 1793156157.4288564
+}

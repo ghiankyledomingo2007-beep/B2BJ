@@ -1,0 +1,58 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9676268696784973,
+  "text": "そこを離れて。",
+  "words": [
+    {
+      "text": "そ",
+      "start": 0.34,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.0007122601964510977
+    },
+    {
+      "text": "こ",
+      "start": 0.46,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.0007122601964510977
+    },
+    {
+      "text": "を",
+      "start": 0.6,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "離",
+      "start": 0.82,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -6.794906312279636e-06
+    },
+    {
+      "text": "れ",
+      "start": 1.0,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -3.182837463100441e-05
+    },
+    {
+      "text": "て",
+      "start": 1.14,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -3.182837463100441e-05
+    },
+    {
+      "text": "。",
+      "start": 1.32,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -0.003600901225581765
+    }
+  ],
+  "transcription_id": "rT0nEWddng0iifDIzo0G",
+  "audio_duration_secs": 2.424
+}

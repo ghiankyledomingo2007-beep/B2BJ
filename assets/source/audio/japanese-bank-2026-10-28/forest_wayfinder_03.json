@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "行き先を教えるだけじゃない。帰ってくるつもりで、つけたんだ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "zvDe5B8lgEDTGTqNe7ly",
+  "generated_at": 1793156207.1749113
+}

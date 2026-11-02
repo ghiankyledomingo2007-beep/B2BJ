@@ -1,0 +1,233 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.999190628528595,
+  "text": "行方不明者の名簿か。野営地にこの人たちを知ってる誰かがいるかも。",
+  "words": [
+    {
+      "text": "行",
+      "start": 0.22,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.0003364712174516171
+    },
+    {
+      "text": "方",
+      "start": 0.36,
+      "end": 0.54,
+      "type": "word",
+      "logprob": -3.576214658096433e-05
+    },
+    {
+      "text": "不",
+      "start": 0.54,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "明",
+      "start": 0.68,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "者",
+      "start": 0.86,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -0.0005530973430722952
+    },
+    {
+      "text": "の",
+      "start": 1.06,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.0005530973430722952
+    },
+    {
+      "text": "名",
+      "start": 1.2,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -5.2927523938706145e-05
+    },
+    {
+      "text": "簿",
+      "start": 1.32,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "か",
+      "start": 1.54,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -3.933898824470816e-06
+    },
+    {
+      "text": "。",
+      "start": 1.72,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -5.519237674889155e-05
+    },
+    {
+      "text": "野",
+      "start": 2.5,
+      "end": 2.7,
+      "type": "word",
+      "logprob": -0.023280037567019463
+    },
+    {
+      "text": "営",
+      "start": 2.7,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -0.07850100845098495
+    },
+    {
+      "text": "地",
+      "start": 2.86,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -0.00010644822759786621
+    },
+    {
+      "text": "に",
+      "start": 3.04,
+      "end": 3.54,
+      "type": "word",
+      "logprob": -0.00010644822759786621
+    },
+    {
+      "text": "こ",
+      "start": 3.54,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -0.002805347554385662
+    },
+    {
+      "text": "の",
+      "start": 3.72,
+      "end": 3.8,
+      "type": "word",
+      "logprob": -0.002805347554385662
+    },
+    {
+      "text": "人",
+      "start": 3.8,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "た",
+      "start": 3.96,
+      "end": 4.059,
+      "type": "word",
+      "logprob": -0.018180865794420242
+    },
+    {
+      "text": "ち",
+      "start": 4.059,
+      "end": 4.14,
+      "type": "word",
+      "logprob": -0.018180865794420242
+    },
+    {
+      "text": "を",
+      "start": 4.16,
+      "end": 4.3,
+      "type": "word",
+      "logprob": -2.1815061700181104e-05
+    },
+    {
+      "text": "知",
+      "start": 4.3,
+      "end": 4.38,
+      "type": "word",
+      "logprob": -2.1815061700181104e-05
+    },
+    {
+      "text": "っ",
+      "start": 4.38,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -0.005965642165392637
+    },
+    {
+      "text": "て",
+      "start": 4.42,
+      "end": 4.56,
+      "type": "word",
+      "logprob": -0.005965642165392637
+    },
+    {
+      "text": "る",
+      "start": 4.56,
+      "end": 4.72,
+      "type": "word",
+      "logprob": -0.005965642165392637
+    },
+    {
+      "text": "誰",
+      "start": 4.82,
+      "end": 4.88,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "か",
+      "start": 4.88,
+      "end": 4.94,
+      "type": "word",
+      "logprob": -4.088794958079234e-05
+    },
+    {
+      "text": "が",
+      "start": 5.0,
+      "end": 5.06,
+      "type": "word",
+      "logprob": -4.088794958079234e-05
+    },
+    {
+      "text": "い",
+      "start": 5.06,
+      "end": 5.12,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "る",
+      "start": 5.12,
+      "end": 5.26,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "か",
+      "start": 5.26,
+      "end": 5.34,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "も",
+      "start": 5.34,
+      "end": 5.48,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 5.48,
+      "end": 5.48,
+      "type": "word",
+      "logprob": -0.004078879952430725
+    }
+  ],
+  "transcription_id": "zaTMM6JypIsfbnYFwcwM",
+  "audio_duration_secs": 5.84
+}

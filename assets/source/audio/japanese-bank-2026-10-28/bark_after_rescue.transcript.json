@@ -1,0 +1,184 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "行方不明者が一人減りました。引き続き探しましょう。",
+  "words": [
+    {
+      "text": "行",
+      "start": 0.4,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.03821893036365509
+    },
+    {
+      "text": "方",
+      "start": 0.52,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -1.8715683836489916e-05
+    },
+    {
+      "text": "不",
+      "start": 0.76,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "明",
+      "start": 0.8,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "者",
+      "start": 0.98,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.00014006110723130405
+    },
+    {
+      "text": "が",
+      "start": 1.12,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -0.00014006110723130405
+    },
+    {
+      "text": "一",
+      "start": 1.24,
+      "end": 1.44,
+      "type": "word",
+      "logprob": -0.0009790633339434862
+    },
+    {
+      "text": "人",
+      "start": 1.44,
+      "end": 1.56,
+      "type": "word",
+      "logprob": -0.0009790633339434862
+    },
+    {
+      "text": "減",
+      "start": 1.56,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.00010644822759786621
+    },
+    {
+      "text": "り",
+      "start": 1.66,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -3.790783375734463e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.78,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -3.790783375734463e-05
+    },
+    {
+      "text": "し",
+      "start": 1.88,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -3.790783375734463e-05
+    },
+    {
+      "text": "た",
+      "start": 2.04,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -3.790783375734463e-05
+    },
+    {
+      "text": "。",
+      "start": 2.12,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -4.672895011026412e-05
+    },
+    {
+      "text": "引",
+      "start": 2.7,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "き",
+      "start": 2.88,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "続",
+      "start": 2.98,
+      "end": 3.16,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "き",
+      "start": 3.16,
+      "end": 3.3,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "探",
+      "start": 3.32,
+      "end": 3.54,
+      "type": "word",
+      "logprob": -0.0077018216252326965
+    },
+    {
+      "text": "し",
+      "start": 3.54,
+      "end": 3.66,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "ま",
+      "start": 3.66,
+      "end": 3.74,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "し",
+      "start": 3.74,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "ょ",
+      "start": 3.82,
+      "end": 3.84,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "う",
+      "start": 3.84,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -1.0132738680113107e-05
+    },
+    {
+      "text": "。",
+      "start": 3.96,
+      "end": 3.96,
+      "type": "word",
+      "logprob": -0.004625335801392794
+    }
+  ],
+  "transcription_id": "ZHLXNT2kGTFWq7TCrfPd",
+  "audio_duration_secs": 5.064
+}

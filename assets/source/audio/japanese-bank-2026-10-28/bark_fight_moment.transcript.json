@@ -1,0 +1,100 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9490201473236084,
+  "text": "行く前にちょっと休ませて。",
+  "words": [
+    {
+      "text": "行",
+      "start": 0.08,
+      "end": 0.22,
+      "type": "word",
+      "logprob": -0.00016211149340961128
+    },
+    {
+      "text": "く",
+      "start": 0.22,
+      "end": 0.36,
+      "type": "word",
+      "logprob": -0.00016211149340961128
+    },
+    {
+      "text": "前",
+      "start": 0.36,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "に",
+      "start": 0.5,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "ち",
+      "start": 1.08,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -0.0009121309849433601
+    },
+    {
+      "text": "ょ",
+      "start": 1.14,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -0.0009121309849433601
+    },
+    {
+      "text": "っ",
+      "start": 1.24,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -0.0009121309849433601
+    },
+    {
+      "text": "と",
+      "start": 1.36,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.0009121309849433601
+    },
+    {
+      "text": "休",
+      "start": 1.4,
+      "end": 1.68,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "ま",
+      "start": 1.68,
+      "end": 1.76,
+      "type": "word",
+      "logprob": -2.8609820219571702e-05
+    },
+    {
+      "text": "せ",
+      "start": 1.76,
+      "end": 1.88,
+      "type": "word",
+      "logprob": -2.8609820219571702e-05
+    },
+    {
+      "text": "て",
+      "start": 1.88,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 2.04,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -0.14271539449691772
+    }
+  ],
+  "transcription_id": "QZcATgQVESeINrDY8FnE",
+  "audio_duration_secs": 2.32
+}

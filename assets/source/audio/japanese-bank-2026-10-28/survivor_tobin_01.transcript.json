@@ -1,0 +1,289 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9998622536659241,
+  "text": "誰だ？酒めの化け物なら言っとくが、今の俺は包帯ばっかりだ。食ってもうまくねえぞ。",
+  "words": [
+    {
+      "text": "誰",
+      "start": 0.22,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -5.8412379075889476e-06
+    },
+    {
+      "text": "だ",
+      "start": 0.38,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "？",
+      "start": 0.48,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -0.00035089056473225355
+    },
+    {
+      "text": "酒",
+      "start": 1.24,
+      "end": 1.42,
+      "type": "word",
+      "logprob": -0.35105443000793457
+    },
+    {
+      "text": "め",
+      "start": 1.42,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.9672107696533203
+    },
+    {
+      "text": "の",
+      "start": 1.56,
+      "end": 1.64,
+      "type": "word",
+      "logprob": -0.9672107696533203
+    },
+    {
+      "text": "化",
+      "start": 1.64,
+      "end": 1.78,
+      "type": "word",
+      "logprob": -0.023999888449907303
+    },
+    {
+      "text": "け",
+      "start": 1.78,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -6.770858453819528e-05
+    },
+    {
+      "text": "物",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -6.90197994117625e-05
+    },
+    {
+      "text": "な",
+      "start": 2.06,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "ら",
+      "start": 2.18,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "言",
+      "start": 2.26,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -0.00011193125828867778
+    },
+    {
+      "text": "っ",
+      "start": 2.38,
+      "end": 2.42,
+      "type": "word",
+      "logprob": -0.012605514377355576
+    },
+    {
+      "text": "と",
+      "start": 2.42,
+      "end": 2.54,
+      "type": "word",
+      "logprob": -0.012605514377355576
+    },
+    {
+      "text": "く",
+      "start": 2.54,
+      "end": 2.74,
+      "type": "word",
+      "logprob": -5.364274329622276e-05
+    },
+    {
+      "text": "が",
+      "start": 2.74,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -1.5735502529423684e-05
+    },
+    {
+      "text": "、",
+      "start": 2.8,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -2.098061486321967e-05
+    },
+    {
+      "text": "今",
+      "start": 3.4,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "の",
+      "start": 3.58,
+      "end": 3.68,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "俺",
+      "start": 3.68,
+      "end": 3.82,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "は",
+      "start": 3.82,
+      "end": 4.12,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "包",
+      "start": 4.12,
+      "end": 4.22,
+      "type": "word",
+      "logprob": -0.0006400682032108307
+    },
+    {
+      "text": "帯",
+      "start": 4.22,
+      "end": 4.34,
+      "type": "word",
+      "logprob": -0.0011800715001299977
+    },
+    {
+      "text": "ば",
+      "start": 4.34,
+      "end": 4.38,
+      "type": "word",
+      "logprob": -4.529942543740617e-06
+    },
+    {
+      "text": "っ",
+      "start": 4.38,
+      "end": 4.5,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "か",
+      "start": 4.5,
+      "end": 4.58,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "り",
+      "start": 4.58,
+      "end": 4.66,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "だ",
+      "start": 4.72,
+      "end": 4.86,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "。",
+      "start": 4.86,
+      "end": 4.86,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "食",
+      "start": 5.32,
+      "end": 5.48,
+      "type": "word",
+      "logprob": -0.00016962042718660086
+    },
+    {
+      "text": "っ",
+      "start": 5.48,
+      "end": 5.54,
+      "type": "word",
+      "logprob": -0.0003367095487192273
+    },
+    {
+      "text": "て",
+      "start": 5.54,
+      "end": 5.62,
+      "type": "word",
+      "logprob": -0.0003367095487192273
+    },
+    {
+      "text": "も",
+      "start": 5.62,
+      "end": 5.7,
+      "type": "word",
+      "logprob": -0.0003367095487192273
+    },
+    {
+      "text": "う",
+      "start": 5.7,
+      "end": 5.84,
+      "type": "word",
+      "logprob": -0.013352026231586933
+    },
+    {
+      "text": "ま",
+      "start": 5.84,
+      "end": 5.94,
+      "type": "word",
+      "logprob": -0.013352026231586933
+    },
+    {
+      "text": "く",
+      "start": 5.94,
+      "end": 6.06,
+      "type": "word",
+      "logprob": -0.013352026231586933
+    },
+    {
+      "text": "ね",
+      "start": 6.06,
+      "end": 6.1,
+      "type": "word",
+      "logprob": -1.1920858014491387e-05
+    },
+    {
+      "text": "え",
+      "start": 6.1,
+      "end": 6.24,
+      "type": "word",
+      "logprob": -0.06049547344446182
+    },
+    {
+      "text": "ぞ",
+      "start": 6.24,
+      "end": 6.38,
+      "type": "word",
+      "logprob": -7.152555099310121e-07
+    },
+    {
+      "text": "。",
+      "start": 6.38,
+      "end": 6.38,
+      "type": "word",
+      "logprob": -0.003601495176553726
+    }
+  ],
+  "transcription_id": "8ks70coywrDlCbw9O2Fy",
+  "audio_duration_secs": 6.64
+}

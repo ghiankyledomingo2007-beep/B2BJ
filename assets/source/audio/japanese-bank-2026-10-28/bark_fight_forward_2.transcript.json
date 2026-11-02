@@ -1,0 +1,93 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999455213546753,
+  "text": "今は一歩進めば十分です。",
+  "words": [
+    {
+      "text": "今",
+      "start": 0.36,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.0005800233921036124
+    },
+    {
+      "text": "は",
+      "start": 0.48,
+      "end": 0.98,
+      "type": "word",
+      "logprob": -0.0005800233921036124
+    },
+    {
+      "text": "一",
+      "start": 0.98,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.00023421882360707968
+    },
+    {
+      "text": "歩",
+      "start": 1.18,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "進",
+      "start": 1.36,
+      "end": 1.54,
+      "type": "word",
+      "logprob": -3.683499380713329e-05
+    },
+    {
+      "text": "め",
+      "start": 1.54,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -3.0278701160568744e-05
+    },
+    {
+      "text": "ば",
+      "start": 1.62,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -4.291525328881107e-06
+    },
+    {
+      "text": "十",
+      "start": 1.8,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -7.366862701019272e-05
+    },
+    {
+      "text": "分",
+      "start": 2.08,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -7.366862701019272e-05
+    },
+    {
+      "text": "で",
+      "start": 2.2,
+      "end": 2.36,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "す",
+      "start": 2.36,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "。",
+      "start": 2.48,
+      "end": 2.48,
+      "type": "word",
+      "logprob": -0.0010384886991232634
+    }
+  ],
+  "transcription_id": "3dQ4NSDLFmWovLoVBxsY",
+  "audio_duration_secs": 3.544
+}

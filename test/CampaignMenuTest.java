@@ -53,14 +53,10 @@ public final class CampaignMenuTest {
         var frameGraphics = frame.createGraphics();
         menu.paintComponent(frameGraphics);
         frameGraphics.dispose();
-        var colors = new java.util.HashSet<Integer>();
-        for (int y = 0; y < frame.getHeight(); y += 2) for (int x = 0; x < frame.getWidth(); x += 2) {
-            int pixel = frame.getRGB(x, y);
-            colors.add(pixel);
-            assert pixel == frame.getRGB(x + 1, y) && pixel == frame.getRGB(x, y + 1)
-                    && pixel == frame.getRGB(x + 1, y + 1) : "panel art must stay on the native 2x pixel grid";
-        }
-        assert (frame.getRGB(0,0)>>>24)==0 : "carved frame silhouette must leave the world visible";
+        for(int x=0;x<frame.getWidth();x++)
+            assert (frame.getRGB(x,0)>>>24)==0&&(frame.getRGB(x,frame.getHeight()-1)>>>24)==0
+                    : "thin trim and shadow must fit inside the menu bounds";
+        assert (frame.getRGB(0,0)>>>24)==0 : "frame exterior must leave the world visible";
         assert (frame.getRGB(frame.getWidth()/2,frame.getHeight()/2)>>>24)==255 : "content well must stay readable";
         assert button(menu, "Close").getWidth() == 76 : "Close must keep its compact explicit width";
         for (String name : List.of("Resume", "Settings", "Admin / Testing", "Return to Title")) {
@@ -69,7 +65,7 @@ public final class CampaignMenuTest {
                     + " / help " + descendants(menu).stream().filter(javax.swing.JTextArea.class::isInstance)
                             .map(component -> component.getBounds() + " preferred=" + component.getPreferredSize()).toList();
             var button = button(menu, name);
-            assert Ui.width(button.getText(), 3) + 64 <= button.getWidth() - 36
+            assert button.getFontMetrics(Ui.menuFont(24).deriveFont(java.awt.Font.BOLD)).stringWidth(button.getText()) + 80 <= button.getWidth() - 36
                     : "larger labels must leave room for their icon and selection crystal";
             var bounds = SwingUtilities.convertRectangle(button.getParent(), button.getBounds(), menu);
             assert new java.awt.Rectangle(0, 0, menu.getWidth(), menu.getHeight()).contains(bounds)
@@ -81,12 +77,22 @@ public final class CampaignMenuTest {
         assert button(menu, "Resume").isEnabled() && button(menu, "Return to Title").isEnabled();
         button(menu, "Controls").doClick();
         assert descendants(menu).stream().filter(CampaignMenu.ControlsSheet.class::isInstance)
-                .anyMatch(c -> c.getAccessibleContext().getAccessibleDescription().contains("Riposte"))
+                .anyMatch(c -> c.getAccessibleContext().getAccessibleDescription().contains("Parry"))
                 : "Controls must open and expose its bindings to screen readers";
         button(menu, "Back").doClick();
         button(menu, "Settings").doClick();
         assert descendants(menu).stream().filter(JSlider.class::isInstance).count() == 4
                 : "Settings must embed the existing audio options";
+        layout(menu);
+        for(var component:descendants(menu)) if(component instanceof JLabel label && label.getLabelFor() instanceof JSlider)
+            assert label.getIcon()!=null&&label.getIcon().getIconWidth()==32 : "each audio channel needs its heraldic icon";
+        for (var component : descendants(menu)) if (component instanceof JCheckBox box) {
+            var insets=box.getInsets();
+            double textWidth=box.getFont().getStringBounds(box.getText(),
+                    new java.awt.font.FontRenderContext(null,true,true)).getWidth();
+            assert box.getWidth() >= textWidth+box.getIcon().getIconWidth()+box.getIconTextGap()+insets.left+insets.right+4
+                    : "Settings labels need room for antialiased text: "+box.getText();
+        }
         JCheckBox effects = descendants(menu).stream().filter(JCheckBox.class::isInstance).map(JCheckBox.class::cast)
                 .filter(box -> box.getText().startsWith("Reduce flashes")).findFirst().orElseThrow();
         effects.doClick();

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "砦から来た、担架を運んでた人たちを追ってる。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.9
+    },
+    "seed": 271026
+  },
+  "voice_id": "kkelxpWuWPklDYfIS9Vf",
+  "request_id": "VH272SXbOFQiOw5LujIi",
+  "generated_at": 1793156189.9512563
+}

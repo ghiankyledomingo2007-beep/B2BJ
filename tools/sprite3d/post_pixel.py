@@ -75,6 +75,30 @@ def snap(im, palette, cache):
     return out
 
 
+NEARER = 16       # depth steps (of 255 over mixamo.DEPTH_SPAN) that count as one part crossing another
+INNER = 0.5       # the far side of such an edge keeps this share of its brightness
+
+
+def ink_overlaps(flat, depth):
+    """Where a nearer part crosses a farther one (mixamo.py's depth pass), darken the farther pixel of the
+    edge, so an arm across the chest or a leg in front of a leg reads as a shape of its own. The palette snap
+    that follows turns the darkened pixels into the sprite's own dark tones."""
+    out = flat.copy()
+    f, d, o = flat.load(), depth.load(), out.load()
+    w, h = flat.size
+    for y in range(h):
+        for x in range(w):
+            if f[x, y][3] < ALPHA_CUT:
+                continue
+            mine = d[x, y][0]
+            for i, j in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if 0 <= i < w and 0 <= j < h and f[i, j][3] >= ALPHA_CUT and d[i, j][0] - mine > NEARER:
+                    r, g, b, a = f[x, y]
+                    o[x, y] = (round(r * INNER), round(g * INNER), round(b * INNER), a)
+                    break
+    return out
+
+
 def outline(im):
     """One-pixel dark rim on the transparent side, like the hand-made sprites."""
     out = im.copy()

@@ -1,0 +1,170 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "広場の木は倒した。砦から来た人たちを探してる。",
+  "words": [
+    {
+      "text": "広",
+      "start": 0.18,
+      "end": 0.3,
+      "type": "word",
+      "logprob": -0.00011777184408856556
+    },
+    {
+      "text": "場",
+      "start": 0.3,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.0004614718782249838
+    },
+    {
+      "text": "の",
+      "start": 0.48,
+      "end": 0.58,
+      "type": "word",
+      "logprob": -0.0004614718782249838
+    },
+    {
+      "text": "木",
+      "start": 0.58,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.07903174310922623
+    },
+    {
+      "text": "は",
+      "start": 0.76,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "倒",
+      "start": 0.94,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "し",
+      "start": 1.1,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -7.271740287251305e-06
+    },
+    {
+      "text": "た",
+      "start": 1.24,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -7.271740287251305e-06
+    },
+    {
+      "text": "。",
+      "start": 1.34,
+      "end": 1.34,
+      "type": "word",
+      "logprob": -0.00021479207498487085
+    },
+    {
+      "text": "砦",
+      "start": 2.04,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -2.47952248173533e-05
+    },
+    {
+      "text": "か",
+      "start": 2.32,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "ら",
+      "start": 2.4,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "来",
+      "start": 2.5,
+      "end": 2.62,
+      "type": "word",
+      "logprob": -1.9907753085135482e-05
+    },
+    {
+      "text": "た",
+      "start": 2.62,
+      "end": 2.76,
+      "type": "word",
+      "logprob": -1.9907753085135482e-05
+    },
+    {
+      "text": "人",
+      "start": 2.76,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -1.9073468138230965e-06
+    },
+    {
+      "text": "た",
+      "start": 2.92,
+      "end": 3.02,
+      "type": "word",
+      "logprob": -0.006769935134798288
+    },
+    {
+      "text": "ち",
+      "start": 3.02,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -0.006769935134798288
+    },
+    {
+      "text": "を",
+      "start": 3.12,
+      "end": 3.36,
+      "type": "word",
+      "logprob": -0.016046196222305298
+    },
+    {
+      "text": "探",
+      "start": 3.36,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -0.016046196222305298
+    },
+    {
+      "text": "し",
+      "start": 3.5,
+      "end": 3.62,
+      "type": "word",
+      "logprob": -1.7881233361549675e-05
+    },
+    {
+      "text": "て",
+      "start": 3.62,
+      "end": 3.72,
+      "type": "word",
+      "logprob": -1.7881233361549675e-05
+    },
+    {
+      "text": "る",
+      "start": 3.72,
+      "end": 3.8,
+      "type": "word",
+      "logprob": -1.7881233361549675e-05
+    },
+    {
+      "text": "。",
+      "start": 3.8,
+      "end": 3.8,
+      "type": "word",
+      "logprob": -0.16022491455078125
+    }
+  ],
+  "transcription_id": "Jobq84yR51gkRoKv42wM",
+  "audio_duration_secs": 4.08
+}

@@ -1,0 +1,30 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.5168367624282837,
+  "text": "退け。",
+  "words": [
+    {
+      "text": "退",
+      "start": 0.46,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.000602421467192471
+    },
+    {
+      "text": "け",
+      "start": 0.62,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.0012249593855813146
+    },
+    {
+      "text": "。",
+      "start": 0.78,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.4740830063819885
+    }
+  ],
+  "transcription_id": "CudujZWDC2ZytIVTwwxD",
+  "audio_duration_secs": 1.22
+}

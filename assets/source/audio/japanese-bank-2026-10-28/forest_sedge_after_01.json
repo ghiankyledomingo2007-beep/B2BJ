@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "白い布が揺れている。ここに風が通るのは、何日ぶりだろうな。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "ryhbQQcVkNTeQtW8EuqB",
+  "request_id": "9BL7wQcQCwNjhaLnzLF7",
+  "generated_at": 1793156218.2071803
+}

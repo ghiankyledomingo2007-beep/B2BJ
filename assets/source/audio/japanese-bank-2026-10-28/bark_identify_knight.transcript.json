@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9830960035324097,
+  "text": "落ちた棋士振り終わりを狙って。",
+  "words": [
+    {
+      "text": "落",
+      "start": 0.28,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.0058573270216584206
+    },
+    {
+      "text": "ち",
+      "start": 0.42,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.0058573270216584206
+    },
+    {
+      "text": "た",
+      "start": 0.56,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -3.671578815556131e-05
+    },
+    {
+      "text": "棋",
+      "start": 0.7,
+      "end": 0.92,
+      "type": "word",
+      "logprob": -0.17584408819675446
+    },
+    {
+      "text": "士",
+      "start": 0.92,
+      "end": 1.04,
+      "type": "word",
+      "logprob": -1.680836794548668e-05
+    },
+    {
+      "text": "振",
+      "start": 1.78,
+      "end": 1.84,
+      "type": "word",
+      "logprob": -0.2761739194393158
+    },
+    {
+      "text": "り",
+      "start": 1.88,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -0.2761739194393158
+    },
+    {
+      "text": "終",
+      "start": 2.0,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -0.008302814327180386
+    },
+    {
+      "text": "わ",
+      "start": 2.12,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -0.008302814327180386
+    },
+    {
+      "text": "り",
+      "start": 2.18,
+      "end": 2.3,
+      "type": "word",
+      "logprob": -0.008302814327180386
+    },
+    {
+      "text": "を",
+      "start": 2.3,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -2.264974000354414e-06
+    },
+    {
+      "text": "狙",
+      "start": 2.48,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -9.894321920000948e-06
+    },
+    {
+      "text": "っ",
+      "start": 2.7,
+      "end": 2.8,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "て",
+      "start": 2.8,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -1.311301275563892e-06
+    },
+    {
+      "text": "。",
+      "start": 2.92,
+      "end": 2.92,
+      "type": "word",
+      "logprob": -0.00464052427560091
+    }
+  ],
+  "transcription_id": "yYhBXCwWGVRuA7wkIFBx",
+  "audio_duration_secs": 4.024
+}

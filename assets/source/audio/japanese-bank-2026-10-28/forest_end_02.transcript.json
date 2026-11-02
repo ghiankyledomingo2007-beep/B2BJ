@@ -1,0 +1,163 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999587535858154,
+  "text": "一人ではありません。こちらへ向かっています。",
+  "words": [
+    {
+      "text": "一",
+      "start": 0.34,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -0.00024256148026324809
+    },
+    {
+      "text": "人",
+      "start": 0.46,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.00024256148026324809
+    },
+    {
+      "text": "で",
+      "start": 0.56,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.0025076393503695726
+    },
+    {
+      "text": "は",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.0025076393503695726
+    },
+    {
+      "text": "あ",
+      "start": 0.78,
+      "end": 0.84,
+      "type": "word",
+      "logprob": -0.0025076393503695726
+    },
+    {
+      "text": "り",
+      "start": 0.84,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -0.0025076393503695726
+    },
+    {
+      "text": "ま",
+      "start": 0.94,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.0025076393503695726
+    },
+    {
+      "text": "せ",
+      "start": 1.08,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -0.0025076393503695726
+    },
+    {
+      "text": "ん",
+      "start": 1.18,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.0025076393503695726
+    },
+    {
+      "text": "。",
+      "start": 1.26,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -2.7418097943154862e-06
+    },
+    {
+      "text": "こ",
+      "start": 1.88,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "ち",
+      "start": 1.98,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "ら",
+      "start": 2.08,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "へ",
+      "start": 2.18,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -2.50339189733495e-06
+    },
+    {
+      "text": "向",
+      "start": 2.32,
+      "end": 2.44,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "か",
+      "start": 2.44,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -0.0002097863471135497
+    },
+    {
+      "text": "っ",
+      "start": 2.54,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -2.002696055569686e-05
+    },
+    {
+      "text": "て",
+      "start": 2.58,
+      "end": 2.66,
+      "type": "word",
+      "logprob": -2.002696055569686e-05
+    },
+    {
+      "text": "い",
+      "start": 2.66,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -2.002696055569686e-05
+    },
+    {
+      "text": "ま",
+      "start": 2.8,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -2.002696055569686e-05
+    },
+    {
+      "text": "す",
+      "start": 2.9,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -2.002696055569686e-05
+    },
+    {
+      "text": "。",
+      "start": 3.0,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.0003367095487192273
+    }
+  ],
+  "transcription_id": "f3x4a8aVPPQWyYrkNzox",
+  "audio_duration_secs": 4.104
+}

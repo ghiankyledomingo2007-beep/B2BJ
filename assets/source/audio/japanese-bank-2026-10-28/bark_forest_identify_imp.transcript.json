@@ -1,0 +1,114 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9772762656211853,
+  "text": "裂け目の小鬼二撃目まで待って。",
+  "words": [
+    {
+      "text": "裂",
+      "start": 0.36,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.041475314646959305
+    },
+    {
+      "text": "け",
+      "start": 0.5,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.007969013415277004
+    },
+    {
+      "text": "目",
+      "start": 0.56,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.002896758494898677
+    },
+    {
+      "text": "の",
+      "start": 0.68,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -0.002896758494898677
+    },
+    {
+      "text": "小",
+      "start": 0.86,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -0.13502275943756104
+    },
+    {
+      "text": "鬼",
+      "start": 1.1,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.0011587579501792789
+    },
+    {
+      "text": "二",
+      "start": 1.72,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -0.42365023493766785
+    },
+    {
+      "text": "撃",
+      "start": 2.0,
+      "end": 2.1,
+      "type": "word",
+      "logprob": -0.0013222293928265572
+    },
+    {
+      "text": "目",
+      "start": 2.1,
+      "end": 2.24,
+      "type": "word",
+      "logprob": -4.887569048150908e-06
+    },
+    {
+      "text": "ま",
+      "start": 2.24,
+      "end": 2.34,
+      "type": "word",
+      "logprob": -0.00011824862303910777
+    },
+    {
+      "text": "で",
+      "start": 2.34,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -0.00011824862303910777
+    },
+    {
+      "text": "待",
+      "start": 2.52,
+      "end": 2.6,
+      "type": "word",
+      "logprob": -4.649054244509898e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.68,
+      "end": 2.78,
+      "type": "word",
+      "logprob": -9.059865078597795e-06
+    },
+    {
+      "text": "て",
+      "start": 2.78,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -9.059865078597795e-06
+    },
+    {
+      "text": "。",
+      "start": 2.88,
+      "end": 2.88,
+      "type": "word",
+      "logprob": -0.0007306052139028907
+    }
+  ],
+  "transcription_id": "DB8Ymv2HjcsopZ8UNWyl",
+  "audio_duration_secs": 3.944
+}

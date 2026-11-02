@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9997363090515137,
+  "text": "あれは浴びたくないな。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.2,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -1.7046782886609435e-05
+    },
+    {
+      "text": "れ",
+      "start": 0.28,
+      "end": 0.46,
+      "type": "word",
+      "logprob": -1.7046782886609435e-05
+    },
+    {
+      "text": "は",
+      "start": 0.52,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "浴",
+      "start": 0.66,
+      "end": 0.76,
+      "type": "word",
+      "logprob": -0.00039569655200466514
+    },
+    {
+      "text": "び",
+      "start": 0.76,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -4.029192859889008e-05
+    },
+    {
+      "text": "た",
+      "start": 0.9,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "く",
+      "start": 1.0,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -3.015949550899677e-05
+    },
+    {
+      "text": "な",
+      "start": 1.12,
+      "end": 1.22,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "い",
+      "start": 1.22,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -2.3841830625315197e-06
+    },
+    {
+      "text": "な",
+      "start": 1.4,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.1696445345878601
+    },
+    {
+      "text": "。",
+      "start": 1.62,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.0003000047872774303
+    }
+  ],
+  "transcription_id": "GDV4Of2miFkrZDjn95Zg",
+  "audio_duration_secs": 2.08
+}

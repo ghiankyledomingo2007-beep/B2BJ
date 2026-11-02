@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "他の人が見落とすことにも、気づいていたのですね。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "bJYtluoZOz3TNIi1SjL1",
+  "generated_at": 1793156273.5348144
+}

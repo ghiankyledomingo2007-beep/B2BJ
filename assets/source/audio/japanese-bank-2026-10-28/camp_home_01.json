@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "カイジン、エレン、リグルド。空いていた三つの寝台が、埋まりました。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "g49ysk9Em3p8bBZvaG3E",
+  "generated_at": 1793156183.1892736
+}

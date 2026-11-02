@@ -77,7 +77,9 @@ public final class BriarheartCombatTest {
         for(int i=0;i<200;i++)game.update(.01,0,0);
         assert game.player().health()<before : "standing in a released seed hurts";
         for(int i=0;i<1600;i++){game.player().heal();game.update(.01,0,0);}
-        assert game.scouts().size()==population : "Briarheart does not recycle Warden minion waves";
+        // Owner 2026-10-29: it raises Briarlings now, still never the Warden's minion waves.
+        assert game.scouts().stream().skip(population).allMatch(w->game.campaignEnemy(w)!=null
+                &&game.campaignEnemy(w).kind()==CampaignEnemy.Kind.BRIARLING) : "Briarheart raises only Briarlings";
         boss.hurt(boss.maxHealth());var defeat=RuinedOutpostGame.class.getDeclaredMethod("afterGuardianHit",boolean.class);
         defeat.setAccessible(true);defeat.invoke(game,false);
         assert game.forestHazards().isEmpty() : "victory clears lingering danger";

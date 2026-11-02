@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "根の動きが読めました。",
+  "words": [
+    {
+      "text": "根",
+      "start": 0.34,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.02466665394604206
+    },
+    {
+      "text": "の",
+      "start": 0.5,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "動",
+      "start": 0.66,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "き",
+      "start": 0.82,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "が",
+      "start": 1.0,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "読",
+      "start": 1.14,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -2.3841574147809297e-05
+    },
+    {
+      "text": "め",
+      "start": 1.24,
+      "end": 1.32,
+      "type": "word",
+      "logprob": -0.0006038511055521667
+    },
+    {
+      "text": "ま",
+      "start": 1.36,
+      "end": 1.46,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "し",
+      "start": 1.46,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "た",
+      "start": 1.62,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "。",
+      "start": 1.7,
+      "end": 1.7,
+      "type": "word",
+      "logprob": -0.04859130457043648
+    }
+  ],
+  "transcription_id": "HESUjvihinkHGQ1yKgFf",
+  "audio_duration_secs": 2.824
+}

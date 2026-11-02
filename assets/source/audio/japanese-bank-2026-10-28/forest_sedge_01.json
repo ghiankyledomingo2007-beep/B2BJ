@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "岸に気をつけろ。固く見えても、踏めば崩れる。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "ryhbQQcVkNTeQtW8EuqB",
+  "request_id": "A1MGKgKZt00zi5eJFh7g",
+  "generated_at": 1793156190.1659343
+}

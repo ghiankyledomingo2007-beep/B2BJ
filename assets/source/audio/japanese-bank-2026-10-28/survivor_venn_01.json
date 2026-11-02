@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "ようやく迎えが来たか。もう少し背の高い者を想像しておったが。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "C6EwdDpfpjUWhKn1xeaG",
+  "request_id": "rJDMq1Bfdd0LO6017alR",
+  "generated_at": 1793156170.0576909
+}

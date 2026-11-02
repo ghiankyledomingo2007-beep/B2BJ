@@ -4,31 +4,29 @@ import java.util.Arrays;
 
 public final class HudOverhaulTest {
     public static void main(String[] args) throws Exception {
+        for(var art:new BufferedImage[]{JourneyHud.SLASH,JourneyHud.WAVE,JourneyHud.DASH,JourneyHud.FORM})
+            assert art!=null&&art.getWidth()==78&&art.getHeight()==78 : "approved skill illustrations must be available";
         var panel=new B2BJ(false);panel.setSize(1280,720);panel.game().begin();
         var hud=layer(panel,"drawHud");
         assert (hud.getRGB(30,645)>>>24)==0 : "persistent tutorial/lore panel must leave the playfield";
-        assert hud.getRGB(28,28)==B2BJ.loadImage("assets/ui/hud_frame.png").getRGB(6,6)
-                : "original frame ornament must remain intact";
-        assert (hud.getRGB(30,152)>>>24)==0 : "vitals stay inside the original frame";
-        assert hud.getRGB(52,66)==hud.getRGB(300,66) : "full HP fills the meter";
-        assert hud.getRGB(40,56)!=hud.getRGB(46,56) : "meter has a stepped cap";
-        assert hud.getRGB(80,58)!=hud.getRGB(80,66) && hud.getRGB(80,66)!=hud.getRGB(80,70)
-                : "meter has a highlight and lower bevel";
+        assert (hud.getRGB(300,40)>>>24)==0 : "the old upper-left resource block is gone";
+        assert (hud.getRGB(412,585)>>>24)>0 : "bottom ribbon has a legible backplate";
+        assert hud.getRGB(432,594)==hud.getRGB(608,594) : "full HP fills the meter";
+        assert hud.getRGB(419,589)!=hud.getRGB(426,589) : "meter has a tapered cap";
+        assert hud.getRGB(448,591)!=hud.getRGB(448,597) : "HP fill has visible depth";
         panel.game().player().hurt(50);
         var half=layer(panel,"drawHud");
-        assert half.getRGB(52,66)!=half.getRGB(300,66) : "lost HP empties the right side";
-        assert !Arrays.equals(pixels(hud,200,34,112,14),pixels(half,200,34,112,14)) : "numeric HP changes too";
+        assert half.getRGB(432,594)!=half.getRGB(608,594) : "lost HP empties the right side";
+        assert !Arrays.equals(pixels(hud,488,562,136,24),pixels(half,488,562,136,24)) : "numeric HP changes too";
         panel.game().player().collectIchor(50);
         var halfIchor=layer(panel,"drawHud");
-        assert halfIchor.getRGB(52,114)!=halfIchor.getRGB(300,114) : "Ichor meter shows partial charge";
-        assert hud.getRGB(52,114)!=halfIchor.getRGB(52,114) : "empty Ichor must have no gold fill";
-        assert !Arrays.equals(pixels(hud,200,84,112,14),pixels(halfIchor,200,84,112,14))
-                : "readable Ichor count follows charge";
+        assert halfIchor.getRGB(672,594)!=halfIchor.getRGB(848,594) : "Ichor meter shows partial charge";
+        assert hud.getRGB(672,594)!=halfIchor.getRGB(672,594) : "empty Ichor must have no gold fill";
+        assert !Arrays.equals(pixels(hud,760,562,104,24),pixels(halfIchor,760,562,104,24)) : "Ichor count follows charge";
         panel.game().player().collectIchor(50);
         var ready=layer(panel,"drawHud");
-        assert ready.getRGB(52,114)==ready.getRGB(300,114) : "full Ichor fills one continuous meter";
-        assert !Arrays.equals(pixels(halfIchor,740,600,90,12),pixels(ready,740,600,90,12))
-                : "full Ichor retains the transform cue";
+        assert ready.getRGB(672,594)==ready.getRGB(848,594) : "full Ichor fills one continuous meter";
+        assert !Arrays.equals(pixels(halfIchor,500,530,280,24),pixels(ready,500,530,280,24)) : "full Ichor retains the transform cue";
         var events=B2BJ.class.getDeclaredMethod("handleEvents",java.util.List.class);events.setAccessible(true);
         events.invoke(panel,java.util.List.of(new RuinedOutpostGame.Event(RuinedOutpostGame.EventType.ABSORB_START,
                 panel.game().player().x()+80,panel.game().player().y()-1)));
@@ -36,9 +34,9 @@ public final class HudOverhaulTest {
         assert ((SlimeAnimation)animation.get(panel)).row()==3 : "near-horizontal absorption must retain side facing";
         panel.game().player().collectIchor(100);panel.game().player().transform();
         panel.game().player().hurt(1);
-        assert !Arrays.equals(pixels(hud,32,30,288,98),pixels(layer(panel,"drawHud"),32,30,288,98))
+        assert !Arrays.equals(pixels(hud,400,556,480,58),pixels(layer(panel,"drawHud"),400,556,480,58))
                 : "HP and form changes remain readable";
-        assert !Arrays.equals(pixels(ready,482,20,316,54),pixels(layer(panel,"drawHud"),482,20,316,54))
+        assert !Arrays.equals(pixels(ready,16,84,191,50),pixels(layer(panel,"drawHud"),16,84,191,50))
                 : "Blade duration remains visible after transforming";
         var map=B2BJ.class.getDeclaredMethod("drawMap",java.awt.Graphics2D.class,boolean.class);
         map.setAccessible(true);
@@ -55,6 +53,13 @@ public final class HudOverhaulTest {
                 : "map must remain accessible while paused";
         assert paint(panel).getRGB(112,40)==image.getRGB(112,40) : "pause must not obscure the map";
         assert panel.game().paused() : "viewing paused map must not resume danger";
+        var measure=new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB).createGraphics();
+        for(String goal:new String[]{"Find Shuna at Captain Camp","Return to Captain Camp and speak with Shuna about the evacuation order"}) {
+            var lines=JourneyHud.wrap(measure,goal,JourneyHud.BODY,218);
+            assert String.join(" ",lines).equals(goal) : "objective wrapping must preserve every word";
+            for(String line:lines)assert measure.getFontMetrics(JourneyHud.BODY).stringWidth(line)<=218 : "objective text must fit the plaque";
+        }
+        measure.dispose();
         System.out.println("HudOverhaulTest passed");
     }
     private static BufferedImage layer(B2BJ panel,String name)throws Exception {

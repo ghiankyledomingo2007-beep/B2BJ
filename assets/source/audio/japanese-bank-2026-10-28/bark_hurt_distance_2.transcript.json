@@ -1,0 +1,128 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9972925186157227,
+  "text": "もう少し距離を取るといいでしょう。",
+  "words": [
+    {
+      "text": "も",
+      "start": 0.3,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -0.000445385929197073
+    },
+    {
+      "text": "う",
+      "start": 0.38,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.000445385929197073
+    },
+    {
+      "text": "少",
+      "start": 0.54,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -0.000445385929197073
+    },
+    {
+      "text": "し",
+      "start": 0.8,
+      "end": 1.2,
+      "type": "word",
+      "logprob": -0.000445385929197073
+    },
+    {
+      "text": "距",
+      "start": 1.2,
+      "end": 1.36,
+      "type": "word",
+      "logprob": -0.0004316828562878072
+    },
+    {
+      "text": "離",
+      "start": 1.42,
+      "end": 1.48,
+      "type": "word",
+      "logprob": -0.0004316828562878072
+    },
+    {
+      "text": "を",
+      "start": 1.48,
+      "end": 1.6,
+      "type": "word",
+      "logprob": -0.01818917691707611
+    },
+    {
+      "text": "取",
+      "start": 1.6,
+      "end": 1.74,
+      "type": "word",
+      "logprob": -0.01818917691707611
+    },
+    {
+      "text": "る",
+      "start": 1.74,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "と",
+      "start": 1.82,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -4.410734163684538e-06
+    },
+    {
+      "text": "い",
+      "start": 1.92,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -8.49926145747304e-05
+    },
+    {
+      "text": "い",
+      "start": 1.96,
+      "end": 2.06,
+      "type": "word",
+      "logprob": -8.49926145747304e-05
+    },
+    {
+      "text": "で",
+      "start": 2.1,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -1.6212332411669195e-05
+    },
+    {
+      "text": "し",
+      "start": 2.18,
+      "end": 2.28,
+      "type": "word",
+      "logprob": -1.6212332411669195e-05
+    },
+    {
+      "text": "ょ",
+      "start": 2.28,
+      "end": 2.3,
+      "type": "word",
+      "logprob": -1.6212332411669195e-05
+    },
+    {
+      "text": "う",
+      "start": 2.3,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -1.6212332411669195e-05
+    },
+    {
+      "text": "。",
+      "start": 2.4,
+      "end": 2.4,
+      "type": "word",
+      "logprob": -0.001703955582343042
+    }
+  ],
+  "transcription_id": "kkFji8vYJ90uNwCDpUUB",
+  "audio_duration_secs": 3.544
+}

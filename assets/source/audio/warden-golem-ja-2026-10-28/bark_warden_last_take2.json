@@ -1,0 +1,16 @@
+{
+  "request": {
+    "text": "……通行を……許可、する……",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.85
+    },
+    "seed": 281029
+  },
+  "voice_id": "FlgZOCPLervz9WebHOWs",
+  "request_id": "KkDt3FLyYdIyIdquYcGt",
+  "generated_at": 1793206163.1377242,
+  "approval": "owner via coordinator 2026-10-29: 3 takes, ~50-60 credits"
+}

@@ -1,0 +1,170 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "下に行方不明者の名簿がある。シュナに見せよう。",
+  "words": [
+    {
+      "text": "下",
+      "start": 0.2,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.0007014198345132172
+    },
+    {
+      "text": "に",
+      "start": 0.42,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.005152992904186249
+    },
+    {
+      "text": "行",
+      "start": 0.54,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -0.005152992904186249
+    },
+    {
+      "text": "方",
+      "start": 0.8,
+      "end": 0.94,
+      "type": "word",
+      "logprob": -4.768360213347478e-06
+    },
+    {
+      "text": "不",
+      "start": 0.94,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "明",
+      "start": 1.14,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -1.7881377516459906e-06
+    },
+    {
+      "text": "者",
+      "start": 1.26,
+      "end": 1.4,
+      "type": "word",
+      "logprob": -0.00034374051028862596
+    },
+    {
+      "text": "の",
+      "start": 1.4,
+      "end": 1.52,
+      "type": "word",
+      "logprob": -0.00034374051028862596
+    },
+    {
+      "text": "名",
+      "start": 1.54,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -7.855583680793643e-05
+    },
+    {
+      "text": "簿",
+      "start": 1.72,
+      "end": 1.9,
+      "type": "word",
+      "logprob": -1.3112935448589269e-05
+    },
+    {
+      "text": "が",
+      "start": 1.9,
+      "end": 1.96,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "あ",
+      "start": 1.96,
+      "end": 2.02,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "る",
+      "start": 2.02,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -8.344646857949556e-07
+    },
+    {
+      "text": "。",
+      "start": 2.22,
+      "end": 2.22,
+      "type": "word",
+      "logprob": -2.4676019165781327e-05
+    },
+    {
+      "text": "シ",
+      "start": 2.86,
+      "end": 2.9,
+      "type": "word",
+      "logprob": -0.13093140721321106
+    },
+    {
+      "text": "ュ",
+      "start": 2.9,
+      "end": 3.0,
+      "type": "word",
+      "logprob": -0.13093140721321106
+    },
+    {
+      "text": "ナ",
+      "start": 3.0,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -0.00010048838157672435
+    },
+    {
+      "text": "に",
+      "start": 3.12,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -4.660974445869215e-05
+    },
+    {
+      "text": "見",
+      "start": 3.18,
+      "end": 3.36,
+      "type": "word",
+      "logprob": -4.660974445869215e-05
+    },
+    {
+      "text": "せ",
+      "start": 3.36,
+      "end": 3.46,
+      "type": "word",
+      "logprob": -2.145764938177308e-06
+    },
+    {
+      "text": "よ",
+      "start": 3.46,
+      "end": 3.54,
+      "type": "word",
+      "logprob": -2.169585604860913e-05
+    },
+    {
+      "text": "う",
+      "start": 3.54,
+      "end": 3.64,
+      "type": "word",
+      "logprob": -2.169585604860913e-05
+    },
+    {
+      "text": "。",
+      "start": 3.64,
+      "end": 3.64,
+      "type": "word",
+      "logprob": -0.00760682625696063
+    }
+  ],
+  "transcription_id": "wM8N9v1nc9BAztM3YMdO",
+  "audio_duration_secs": 3.84
+}

@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "エレンが最後のいいお茶を見つけてくれました。一緒にしまっていたお金も、受け取ってください。お礼です。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "K4K6BTclwhxowAzvqVs9",
+  "request_id": "i1y6IZSFOFCCGzIaGSU8",
+  "generated_at": 1793156186.5652156
+}

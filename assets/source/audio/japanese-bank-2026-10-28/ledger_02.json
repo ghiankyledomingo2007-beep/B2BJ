@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "野営地の行方不明者と、三人の名前が一致します。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.7,
+      "similarity_boost": 0.85
+    },
+    "seed": 271027
+  },
+  "voice_id": "Xk94e1zRK34B68WV891i",
+  "request_id": "87w3NMAXVucqM05HVMYm",
+  "generated_at": 1793156177.4865372
+}

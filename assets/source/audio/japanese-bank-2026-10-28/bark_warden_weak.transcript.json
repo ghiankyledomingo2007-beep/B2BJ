@@ -1,0 +1,86 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9978098273277283,
+  "text": "あと少し。油断せずに。",
+  "words": [
+    {
+      "text": "あ",
+      "start": 0.26,
+      "end": 0.4,
+      "type": "word",
+      "logprob": -0.000270091783022508
+    },
+    {
+      "text": "と",
+      "start": 0.4,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.000270091783022508
+    },
+    {
+      "text": "少",
+      "start": 0.6,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "し",
+      "start": 0.92,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -5.960462772236497e-07
+    },
+    {
+      "text": "。",
+      "start": 1.08,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.6382383108139038
+    },
+    {
+      "text": "油",
+      "start": 1.6,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -1.7762025890988298e-05
+    },
+    {
+      "text": "断",
+      "start": 1.72,
+      "end": 1.86,
+      "type": "word",
+      "logprob": -5.113947918289341e-05
+    },
+    {
+      "text": "せ",
+      "start": 1.92,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "ず",
+      "start": 2.0,
+      "end": 2.12,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "に",
+      "start": 2.12,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -2.4437606043647975e-05
+    },
+    {
+      "text": "。",
+      "start": 2.32,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -0.0036005449946969748
+    }
+  ],
+  "transcription_id": "YoHuE0BvxJo3S8Clf8Ev",
+  "audio_duration_secs": 3.384
+}

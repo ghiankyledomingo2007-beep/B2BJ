@@ -1,0 +1,79 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9450511336326599,
+  "text": "動きが荒い。注意を。",
+  "words": [
+    {
+      "text": "動",
+      "start": 0.36,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -9.63164638960734e-05
+    },
+    {
+      "text": "き",
+      "start": 0.54,
+      "end": 0.74,
+      "type": "word",
+      "logprob": -9.63164638960734e-05
+    },
+    {
+      "text": "が",
+      "start": 0.74,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -0.0008887869771569967
+    },
+    {
+      "text": "荒",
+      "start": 0.88,
+      "end": 1.06,
+      "type": "word",
+      "logprob": -0.16024695336818695
+    },
+    {
+      "text": "い",
+      "start": 1.1,
+      "end": 1.18,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "。",
+      "start": 1.18,
+      "end": 1.18,
+      "type": "word",
+      "logprob": -0.09120956808328629
+    },
+    {
+      "text": "注",
+      "start": 1.8,
+      "end": 1.92,
+      "type": "word",
+      "logprob": -7.033323527139146e-06
+    },
+    {
+      "text": "意",
+      "start": 1.92,
+      "end": 2.04,
+      "type": "word",
+      "logprob": -7.033323527139146e-06
+    },
+    {
+      "text": "を",
+      "start": 2.04,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -7.879423355916515e-05
+    },
+    {
+      "text": "。",
+      "start": 2.2,
+      "end": 2.2,
+      "type": "word",
+      "logprob": -0.001039560534991324
+    }
+  ],
+  "transcription_id": "PKW4bE1ZHXU4zrLWVDws",
+  "audio_duration_secs": 3.304
+}

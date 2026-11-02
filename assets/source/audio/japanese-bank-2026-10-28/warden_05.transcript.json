@@ -1,0 +1,72 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999979138374329,
+  "text": "止められないのか。",
+  "words": [
+    {
+      "text": "止",
+      "start": 0.08,
+      "end": 0.28,
+      "type": "word",
+      "logprob": -0.00013064485392533243
+    },
+    {
+      "text": "め",
+      "start": 0.28,
+      "end": 0.38,
+      "type": "word",
+      "logprob": -0.00013064485392533243
+    },
+    {
+      "text": "ら",
+      "start": 0.38,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -5.566918844124302e-05
+    },
+    {
+      "text": "れ",
+      "start": 0.48,
+      "end": 0.64,
+      "type": "word",
+      "logprob": -5.566918844124302e-05
+    },
+    {
+      "text": "な",
+      "start": 0.64,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -5.566918844124302e-05
+    },
+    {
+      "text": "い",
+      "start": 0.72,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -5.566918844124302e-05
+    },
+    {
+      "text": "の",
+      "start": 0.84,
+      "end": 0.96,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "か",
+      "start": 1.02,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -2.0265558760002023e-06
+    },
+    {
+      "text": "。",
+      "start": 1.14,
+      "end": 1.14,
+      "type": "word",
+      "logprob": -0.004308465868234634
+    }
+  ],
+  "transcription_id": "pckVOUrT7SpFPZ4vziVT",
+  "audio_duration_secs": 1.6
+}

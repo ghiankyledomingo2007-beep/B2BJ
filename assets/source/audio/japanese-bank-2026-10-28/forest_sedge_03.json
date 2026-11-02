@@ -1,0 +1,15 @@
+{
+  "request": {
+    "text": "根が川を塞ぐ前に渡した。怪我人は、古い階段の下に避難している。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8
+    },
+    "seed": 281026
+  },
+  "voice_id": "ryhbQQcVkNTeQtW8EuqB",
+  "request_id": "v14j7hhM6kcMCAke8azP",
+  "generated_at": 1793156192.0639617
+}

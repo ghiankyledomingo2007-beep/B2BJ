@@ -1,0 +1,20 @@
+{
+  "title": "最盛期 / Saiseiki",
+  "composer": "Hitoshi Fujima (Elements Garden)",
+  "album": "Tensei Shitara Ongaku Datta Ken",
+  "disc": 2,
+  "track": 29,
+  "official_catalog": "https://catalog.bandainamcomusiclive.co.jp/release/68280/",
+  "official_topic_url": "https://www.youtube.com/watch?v=Zw1O9arSL8U",
+  "download_url": "https://soundcloud.com/nickolas-mariano/57a",
+  "download_uploader": "Nickolas Mariano (community upload, not the publisher)",
+  "download_date": "2026-10-28",
+  "source": "assets/source/audio/tensura-music-2026-10-28/saiseiki-source.wav",
+  "source_sha256": "78918b26c3256fea9d84dbf34be78c76353b30e94018953d22c4de300250a657",
+  "runtime": "assets/audio/boss_music.wav",
+  "runtime_sha256": "0e97867a583f5458cc807f4342959707dc70afc91656840d7cfd438e48c6aeae",
+  "seconds": 142.7330612244898,
+  "peak": 14231,
+  "processing": "loudnorm=I=-18:TP=-4:LRA=11:measured_I=-11.62:measured_TP=0.10:measured_LRA=5.60:measured_thresh=-21.78:offset=-1.14:linear=true,afade=t=in:d=0.03,afade=t=out:st=142.38306:d=0.35",
+  "scope": "Owner requested local school-project use. No public redistribution license verified. Keep out of public release until permission covers this recording."
+}

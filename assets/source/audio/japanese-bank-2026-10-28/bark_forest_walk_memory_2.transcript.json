@@ -1,0 +1,149 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "まだ伸びています。中央を通ってください。",
+  "words": [
+    {
+      "text": "ま",
+      "start": 0.32,
+      "end": 0.42,
+      "type": "word",
+      "logprob": -0.0001586549769854173
+    },
+    {
+      "text": "だ",
+      "start": 0.42,
+      "end": 0.56,
+      "type": "word",
+      "logprob": -0.0001586549769854173
+    },
+    {
+      "text": "伸",
+      "start": 0.56,
+      "end": 0.68,
+      "type": "word",
+      "logprob": -0.0001289761275984347
+    },
+    {
+      "text": "び",
+      "start": 0.72,
+      "end": 0.8,
+      "type": "word",
+      "logprob": -0.0001289761275984347
+    },
+    {
+      "text": "て",
+      "start": 0.8,
+      "end": 0.9,
+      "type": "word",
+      "logprob": -8.296622399939224e-05
+    },
+    {
+      "text": "い",
+      "start": 0.9,
+      "end": 1.0,
+      "type": "word",
+      "logprob": -8.296622399939224e-05
+    },
+    {
+      "text": "ま",
+      "start": 1.0,
+      "end": 1.16,
+      "type": "word",
+      "logprob": -8.296622399939224e-05
+    },
+    {
+      "text": "す",
+      "start": 1.16,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -8.296622399939224e-05
+    },
+    {
+      "text": "。",
+      "start": 1.24,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -9.536738616588991e-07
+    },
+    {
+      "text": "中",
+      "start": 1.8,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -3.671578815556131e-05
+    },
+    {
+      "text": "央",
+      "start": 2.1,
+      "end": 2.18,
+      "type": "word",
+      "logprob": -3.671578815556131e-05
+    },
+    {
+      "text": "を",
+      "start": 2.18,
+      "end": 2.32,
+      "type": "word",
+      "logprob": -8.77341881277971e-05
+    },
+    {
+      "text": "通",
+      "start": 2.32,
+      "end": 2.52,
+      "type": "word",
+      "logprob": -8.77341881277971e-05
+    },
+    {
+      "text": "っ",
+      "start": 2.52,
+      "end": 2.56,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "て",
+      "start": 2.56,
+      "end": 2.64,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "く",
+      "start": 2.64,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "だ",
+      "start": 2.72,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "さ",
+      "start": 2.86,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "い",
+      "start": 2.98,
+      "end": 3.1,
+      "type": "word",
+      "logprob": -1.537788011773955e-05
+    },
+    {
+      "text": "。",
+      "start": 3.1,
+      "end": 3.1,
+      "type": "word",
+      "logprob": -0.00026306029758416116
+    }
+  ],
+  "transcription_id": "lHKNnjOqYcL5zTusZSEt",
+  "audio_duration_secs": 4.184
+}

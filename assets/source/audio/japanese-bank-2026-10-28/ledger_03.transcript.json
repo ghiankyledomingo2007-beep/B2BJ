@@ -1,0 +1,289 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999902248382568,
+  "text": "カイジン、エレン、リグルド。数字じゃなくて人の名前だ。何があったのか確かめよう。",
+  "words": [
+    {
+      "text": "カ",
+      "start": 0.08,
+      "end": 0.2,
+      "type": "word",
+      "logprob": -0.8238217234611511
+    },
+    {
+      "text": "イ",
+      "start": 0.2,
+      "end": 0.32,
+      "type": "word",
+      "logprob": -0.8238217234611511
+    },
+    {
+      "text": "ジ",
+      "start": 0.32,
+      "end": 0.44,
+      "type": "word",
+      "logprob": -0.004210773389786482
+    },
+    {
+      "text": "ン",
+      "start": 0.44,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.004210773389786482
+    },
+    {
+      "text": "、",
+      "start": 0.52,
+      "end": 0.52,
+      "type": "word",
+      "logprob": -0.0007138088112697005
+    },
+    {
+      "text": "エ",
+      "start": 0.94,
+      "end": 1.02,
+      "type": "word",
+      "logprob": -0.00012981049076188356
+    },
+    {
+      "text": "レ",
+      "start": 1.02,
+      "end": 1.12,
+      "type": "word",
+      "logprob": -0.00013612773909699172
+    },
+    {
+      "text": "ン",
+      "start": 1.12,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -0.00013612773909699172
+    },
+    {
+      "text": "、",
+      "start": 1.24,
+      "end": 1.24,
+      "type": "word",
+      "logprob": -2.1219027985353023e-05
+    },
+    {
+      "text": "リ",
+      "start": 1.52,
+      "end": 1.62,
+      "type": "word",
+      "logprob": -0.00039986721822060645
+    },
+    {
+      "text": "グ",
+      "start": 1.62,
+      "end": 1.72,
+      "type": "word",
+      "logprob": -0.025256842374801636
+    },
+    {
+      "text": "ル",
+      "start": 1.72,
+      "end": 1.8,
+      "type": "word",
+      "logprob": -0.025256842374801636
+    },
+    {
+      "text": "ド",
+      "start": 1.8,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -2.0861407392658293e-05
+    },
+    {
+      "text": "。",
+      "start": 2.0,
+      "end": 2.0,
+      "type": "word",
+      "logprob": -5.9960475482512265e-05
+    },
+    {
+      "text": "数",
+      "start": 2.6,
+      "end": 2.84,
+      "type": "word",
+      "logprob": -2.8967437174287625e-05
+    },
+    {
+      "text": "字",
+      "start": 2.84,
+      "end": 2.94,
+      "type": "word",
+      "logprob": -2.8967437174287625e-05
+    },
+    {
+      "text": "じ",
+      "start": 2.94,
+      "end": 3.0,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "ゃ",
+      "start": 3.0,
+      "end": 3.06,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "な",
+      "start": 3.06,
+      "end": 3.18,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "く",
+      "start": 3.18,
+      "end": 3.32,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "て",
+      "start": 3.32,
+      "end": 3.78,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "人",
+      "start": 3.78,
+      "end": 3.9,
+      "type": "word",
+      "logprob": -0.0019434866262599826
+    },
+    {
+      "text": "の",
+      "start": 3.98,
+      "end": 4.1,
+      "type": "word",
+      "logprob": -0.0019434866262599826
+    },
+    {
+      "text": "名",
+      "start": 4.1,
+      "end": 4.18,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "前",
+      "start": 4.24,
+      "end": 4.34,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "だ",
+      "start": 4.34,
+      "end": 4.42,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "。",
+      "start": 4.42,
+      "end": 4.42,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "何",
+      "start": 5.2,
+      "end": 5.36,
+      "type": "word",
+      "logprob": -0.0001736728590913117
+    },
+    {
+      "text": "が",
+      "start": 5.36,
+      "end": 5.42,
+      "type": "word",
+      "logprob": -7.986990567587782e-06
+    },
+    {
+      "text": "あ",
+      "start": 5.42,
+      "end": 5.46,
+      "type": "word",
+      "logprob": -7.986990567587782e-06
+    },
+    {
+      "text": "っ",
+      "start": 5.46,
+      "end": 5.56,
+      "type": "word",
+      "logprob": -7.986990567587782e-06
+    },
+    {
+      "text": "た",
+      "start": 5.56,
+      "end": 5.68,
+      "type": "word",
+      "logprob": -7.986990567587782e-06
+    },
+    {
+      "text": "の",
+      "start": 5.68,
+      "end": 5.82,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "か",
+      "start": 5.82,
+      "end": 6.22,
+      "type": "word",
+      "logprob": -2.3841855067985307e-07
+    },
+    {
+      "text": "確",
+      "start": 6.22,
+      "end": 6.34,
+      "type": "word",
+      "logprob": -7.497983460780233e-05
+    },
+    {
+      "text": "か",
+      "start": 6.34,
+      "end": 6.44,
+      "type": "word",
+      "logprob": -7.497983460780233e-05
+    },
+    {
+      "text": "め",
+      "start": 6.44,
+      "end": 6.54,
+      "type": "word",
+      "logprob": -4.768370445162873e-07
+    },
+    {
+      "text": "よ",
+      "start": 6.54,
+      "end": 6.62,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "う",
+      "start": 6.62,
+      "end": 6.68,
+      "type": "word",
+      "logprob": -3.6954811548639555e-06
+    },
+    {
+      "text": "。",
+      "start": 6.68,
+      "end": 6.68,
+      "type": "word",
+      "logprob": -0.00975708942860365
+    }
+  ],
+  "transcription_id": "US9pb7043x4X3q04trvn",
+  "audio_duration_secs": 6.96
+}

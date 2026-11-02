@@ -1,14 +1,16 @@
 # Area One — The Lamp Still Burns
 
-Current story revision: 2026-10-26. This replaces the former outpost-quartermaster origin. The accepted [opening draft](reincarnation-opening-draft.md) records the direction; this document describes the implemented game.
+Current story revision: 2026-10-27. This replaces the former outpost-quartermaster origin. The earlier [opening draft](reincarnation-opening-draft.md) is preserved as a superseded origin; this document describes the implemented game.
 
 ## Rainoray's second life
 
-Rainoray dies in the modern world while trying to open an overturned relief van. His last question is whether the other person escaped. Raphael cannot give him that answer. She can help him survive in another world, in a body that initially has no hands.
+Rainoray is an ordinary Japanese office worker still typing long after everyone else has gone home. He tells himself there is just one more report. Chest pain interrupts him; he braces against the desk, loses strength and collapses. The heartbeat falls silent. Raphael reaches the consciousness that remains and begins reconstructing a body that can survive in another world.
 
-The new journey opens with a rainy road memory, darkness and Raphael's voice. Her gold seal forms around a suspended slime. Analysis, the slime body, absorption and regeneration appear one by one. A faint masked human form hints at what Ichor will allow later. The scene returns to the actual outpost, where a camp lamp and someone calling for help give Rainoray a reason to move.
+The opening shows four matched office poses: typing, clutching his chest, bending forward, and slumped over the desk. Rain outside, monitor light, camera movement, short pose transitions and the changing sound bed carry the sequence into black. Raphael's seal then assembles in layers; a warm pulse travels outward and illuminates its engravings. Native sprite pixels gather into the slime body as the four ability notices activate. A faint masked human form hints at what Ichor will allow later. The scene opens on a close view of Rainoray in the actual outpost, then pulls back to the gameplay camera before control returns. Landmark labels stay hidden during this reveal.
 
-The fifteen voiced beats last 56 seconds at their nominal timings, plus at most one frame per transition. Enter/E/click advances a beat; X or the visible Skip target ends the opening; Escape pauses it. Skipping and watching to completion write identical progress. New Journey plays it; Continue does not replay it or reset old progress. Reduced Effects freezes rain drift, decorative motes, seal rotation and sprite cycling; necessary scene fades and reconstruction transitions remain.
+The fifteen voiced beats last about 67 seconds at their nominal timings, plus at most one frame per transition. Enter/E/click advances a beat; X or the visible Skip target ends the opening; Escape pauses it. Skipping and watching to completion write identical progress. New Journey plays it; Continue does not replay it or reset old progress. Reduced Effects freezes rain drift, decorative motes, seal rotation, sprite cycling and camera zoom/pan; necessary scene fades and reconstruction transitions remain.
+
+The opening now uses the selected Japanese Rainoray and Raphael voices with English subtitles. The fifteen lines use one fixed voice and generation preset per speaker; Raphael retains the approved echo treatment. As of 2026-10-28, both chapters and all combat reactions use Japanese voices with English subtitles/menus. The full bank is paired in [japanese-voice-lines.tsv](japanese-voice-lines.tsv), with fixed profiles in [japanese-voice-cast.json](japanese-voice-cast.json). Opening-only pairs remain in [opening-japanese.tsv](opening-japanese.tsv).
 
 This is an alternate-continuity Tensura fan story. Rainoray remains the protagonist. Raphael appearing from the start is a deliberate adaptation, not a claim about the anime's chronology. The dialogue is newly authored for this game.
 
@@ -24,7 +26,7 @@ The discoveries offer different pieces of the evacuation:
 | --- | --- |
 | Signal Tower | A damaged order forbids Ichor-bearing life, including his new body. Missing names remain on the dispatch. |
 | Field Infirmary | One bed and dry dressing were kept ready for whoever returns. |
-| Supply Reserve | Heavy weapons were left behind to make room for wounded people. Rainoray remembers packing his modern van, not owning these crates. |
+| Supply Reserve | Heavy weapons were left behind to make room for wounded people. Rainoray recognizes that helping people mattered more than what was left behind. |
 | Evacuation cache | The ledger contains Kaijin, Eren and Rigurd, never Rainoray's name or handwriting. |
 
 Kaijin is an injured craftsman who recognizes the sound of the damaged gate relay. Eren was scouting the road when moving roots trapped her. Rigurd stayed with the final evacuees before becoming separated. Each has a new world sprite and close-up portrait, and rescued people visibly return to camp. Shuna's reunion branches follow the actual rescue count.
@@ -37,7 +39,7 @@ The introduction retains its camera reveal, frozen combat and return pan. The fi
 
 Beyond the gate, stretcher tracks continue into the trees. If Rainoray returns to camp first, Shuna offers a dry scarf; she keeps it for him when he doubts it would stay on his slime body.
 
-Souei has crossed the evacuees and marked their route with white cloth, but Briarheart's roots keep closing it. He guards their crossing while Rainoray reaches the tree. Defeating Briarheart opens the route. Raphael reports that the final stretcher has crossed; Souei confirms everyone they found is at camp. Rainoray finally receives the answer he could not get at the van. The scene does not claim that skipped optional rescues occurred.
+Souei has crossed the evacuees and marked their route with white cloth, but Briarheart's roots keep closing it. He guards their crossing while Rainoray reaches the tree. Defeating Briarheart opens the route. Raphael reports that the final stretcher has crossed; Souei confirms everyone they found is at camp. Rainoray sees that his second life has already made a difference to someone. The scene does not claim that skipped optional rescues occurred.
 
 ## Raphael during play
 
@@ -57,4 +59,4 @@ Passive recovery starts after five seconds without damage and restores 2 HP/seco
 - [Art source guide](../../assets/source/characters/npcs/README.md) records the new cast atlas and imports. Existing native sprite/portrait dimensions and restrained palettes are retained. Portraits remain static.
 - Public labels changed through `Speaker.label()`. Legacy enum names, clip keys, sprite filenames and save unlock keys deliberately remain stable. Existing checkpoints, upgrades, boss knowledge, shards and rescue flags are preserved.
 
-Verification and remaining limitations: [opening test report](../testing/reincarnation-opening-2026-10-26.md).
+Verification and remaining limitations: [opening animation and Japanese voice report](../testing/opening-polish-2026-10-27.md), with the [original story migration report](../testing/reincarnation-opening-2026-10-26.md) retained as history.

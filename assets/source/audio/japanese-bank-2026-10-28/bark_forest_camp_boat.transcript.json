@@ -1,0 +1,177 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9997707009315491,
+  "text": "川がなくなった時、自分だけ逃げられたはずなのに。",
+  "words": [
+    {
+      "text": "川",
+      "start": 0.18,
+      "end": 0.34,
+      "type": "word",
+      "logprob": -0.0003413571394048631
+    },
+    {
+      "text": "が",
+      "start": 0.34,
+      "end": 0.48,
+      "type": "word",
+      "logprob": -0.020885540172457695
+    },
+    {
+      "text": "な",
+      "start": 0.48,
+      "end": 0.6,
+      "type": "word",
+      "logprob": -0.34867534041404724
+    },
+    {
+      "text": "く",
+      "start": 0.62,
+      "end": 0.72,
+      "type": "word",
+      "logprob": -0.34867534041404724
+    },
+    {
+      "text": "な",
+      "start": 0.72,
+      "end": 0.82,
+      "type": "word",
+      "logprob": -0.34867534041404724
+    },
+    {
+      "text": "っ",
+      "start": 0.82,
+      "end": 0.86,
+      "type": "word",
+      "logprob": -0.34867534041404724
+    },
+    {
+      "text": "た",
+      "start": 0.86,
+      "end": 1.08,
+      "type": "word",
+      "logprob": -0.34867534041404724
+    },
+    {
+      "text": "時",
+      "start": 1.08,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -0.0076548573561012745
+    },
+    {
+      "text": "、",
+      "start": 1.26,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -6.6756979322235566e-06
+    },
+    {
+      "text": "自",
+      "start": 1.92,
+      "end": 2.08,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "分",
+      "start": 2.08,
+      "end": 2.26,
+      "type": "word",
+      "logprob": -1.1920928244535389e-07
+    },
+    {
+      "text": "だ",
+      "start": 2.26,
+      "end": 2.38,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "け",
+      "start": 2.38,
+      "end": 2.5,
+      "type": "word",
+      "logprob": -1.6689286894688848e-06
+    },
+    {
+      "text": "逃",
+      "start": 2.56,
+      "end": 2.62,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "げ",
+      "start": 2.62,
+      "end": 2.72,
+      "type": "word",
+      "logprob": -1.0728830375228426e-06
+    },
+    {
+      "text": "ら",
+      "start": 2.72,
+      "end": 2.82,
+      "type": "word",
+      "logprob": -1.1444026313256472e-05
+    },
+    {
+      "text": "れ",
+      "start": 2.86,
+      "end": 2.98,
+      "type": "word",
+      "logprob": -1.1444026313256472e-05
+    },
+    {
+      "text": "た",
+      "start": 2.98,
+      "end": 3.06,
+      "type": "word",
+      "logprob": -1.1444026313256472e-05
+    },
+    {
+      "text": "は",
+      "start": 3.06,
+      "end": 3.2,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "ず",
+      "start": 3.2,
+      "end": 3.32,
+      "type": "word",
+      "logprob": 0.0
+    },
+    {
+      "text": "な",
+      "start": 3.32,
+      "end": 3.4,
+      "type": "word",
+      "logprob": -1.07287787614041e-05
+    },
+    {
+      "text": "の",
+      "start": 3.4,
+      "end": 3.56,
+      "type": "word",
+      "logprob": -1.07287787614041e-05
+    },
+    {
+      "text": "に",
+      "start": 3.56,
+      "end": 3.7,
+      "type": "word",
+      "logprob": -1.07287787614041e-05
+    },
+    {
+      "text": "。",
+      "start": 3.7,
+      "end": 3.7,
+      "type": "word",
+      "logprob": -0.0380423329770565
+    }
+  ],
+  "transcription_id": "f2PgiOB3TpPQA72xuCTi",
+  "audio_duration_secs": 4.0
+}

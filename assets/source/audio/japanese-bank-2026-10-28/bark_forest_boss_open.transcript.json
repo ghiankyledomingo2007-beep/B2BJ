@@ -1,0 +1,65 @@
+{
+  "language_code": "jpn",
+  "language_probability": 1.0,
+  "text": "今です。心臓を。",
+  "words": [
+    {
+      "text": "今",
+      "start": 0.38,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -0.0015072186943143606
+    },
+    {
+      "text": "で",
+      "start": 0.52,
+      "end": 0.66,
+      "type": "word",
+      "logprob": -1.5258672647178173e-05
+    },
+    {
+      "text": "す",
+      "start": 0.68,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -1.5258672647178173e-05
+    },
+    {
+      "text": "。",
+      "start": 0.78,
+      "end": 0.78,
+      "type": "word",
+      "logprob": -0.06999225169420242
+    },
+    {
+      "text": "心",
+      "start": 1.42,
+      "end": 1.58,
+      "type": "word",
+      "logprob": -0.00019941726350225508
+    },
+    {
+      "text": "臓",
+      "start": 1.58,
+      "end": 1.82,
+      "type": "word",
+      "logprob": -2.95634672511369e-05
+    },
+    {
+      "text": "を",
+      "start": 1.82,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -1.0371154530730564e-05
+    },
+    {
+      "text": "。",
+      "start": 1.98,
+      "end": 1.98,
+      "type": "word",
+      "logprob": -0.04859039559960365
+    }
+  ],
+  "transcription_id": "vM7etkhGngsS9d2w0jyi",
+  "audio_duration_secs": 3.064
+}

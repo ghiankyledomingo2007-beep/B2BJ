@@ -1,0 +1,135 @@
+{
+  "language_code": "jpn",
+  "language_probability": 0.9999358057975769,
+  "text": "汚染生命体を確認。通行は許可しない。",
+  "words": [
+    {
+      "text": "汚",
+      "start": 0.14,
+      "end": 0.24,
+      "type": "word",
+      "logprob": -0.0005746620590798557
+    },
+    {
+      "text": "染",
+      "start": 0.48,
+      "end": 0.5,
+      "type": "word",
+      "logprob": -1.6689160474925302e-05
+    },
+    {
+      "text": "生",
+      "start": 0.5,
+      "end": 0.7,
+      "type": "word",
+      "logprob": -0.0006802152493037283
+    },
+    {
+      "text": "命",
+      "start": 0.7,
+      "end": 0.88,
+      "type": "word",
+      "logprob": -0.0006802152493037283
+    },
+    {
+      "text": "体",
+      "start": 0.88,
+      "end": 1.1,
+      "type": "word",
+      "logprob": -0.00010072677832795307
+    },
+    {
+      "text": "を",
+      "start": 1.1,
+      "end": 1.26,
+      "type": "word",
+      "logprob": -2.2411095415009186e-05
+    },
+    {
+      "text": "確",
+      "start": 1.26,
+      "end": 1.5,
+      "type": "word",
+      "logprob": -2.2411095415009186e-05
+    },
+    {
+      "text": "認",
+      "start": 1.5,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -2.2411095415009186e-05
+    },
+    {
+      "text": "。",
+      "start": 1.66,
+      "end": 1.66,
+      "type": "word",
+      "logprob": -0.0004483648226596415
+    },
+    {
+      "text": "通",
+      "start": 2.34,
+      "end": 2.58,
+      "type": "word",
+      "logprob": -1.2874520507466514e-05
+    },
+    {
+      "text": "行",
+      "start": 2.58,
+      "end": 2.86,
+      "type": "word",
+      "logprob": -1.2874520507466514e-05
+    },
+    {
+      "text": "は",
+      "start": 2.86,
+      "end": 2.96,
+      "type": "word",
+      "logprob": -3.576278118089249e-07
+    },
+    {
+      "text": "許",
+      "start": 2.96,
+      "end": 3.12,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "可",
+      "start": 3.12,
+      "end": 3.28,
+      "type": "word",
+      "logprob": -1.4305104514278355e-06
+    },
+    {
+      "text": "し",
+      "start": 3.28,
+      "end": 3.42,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "な",
+      "start": 3.42,
+      "end": 3.5,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "い",
+      "start": 3.5,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -5.483612312673358e-06
+    },
+    {
+      "text": "。",
+      "start": 3.58,
+      "end": 3.58,
+      "type": "word",
+      "logprob": -0.008616531267762184
+    }
+  ],
+  "transcription_id": "Z3TzR3ft1aMojheOGflD",
+  "audio_duration_secs": 4.1
+}
