@@ -607,19 +607,20 @@ public final class CampaignRenderer {
     /** Shared ivory/gold mission plaque with wrapped live objectives and currency. */
     private static void tracker(Graphics2D graphics, RuinedOutpostGame game, int width) {
         var g=(Graphics2D)graphics.create();int x=width-292,y=66,w=276;
-        var lines=JourneyHud.wrap(g,game.campaignObjective(),JourneyHud.BODY,244);
+        var lines=JourneyHud.wrap(g,game.campaignObjective(),JourneyHud.BODY,240);
         int h=80+lines.size()*21;
-        g.setColor(new Color(5,15,23,195));g.fillRect(x+22,y,w-22,h);
+        // The plaque starts at x so the badge and the objective bullet sit on it, not on the world.
+        g.setColor(new Color(5,15,23,195));g.fillRect(x,y,w,h);
         g.setColor(JourneyHud.GOLD);g.setStroke(new java.awt.BasicStroke(1.1f));
-        g.drawLine(x+20,y,x+w,y);g.drawLine(x+20,y+h,x+w,y+h);
-        MenuTheme.star(g,x+w,y,4);MenuTheme.star(g,x+w,y+h,4);
+        g.drawLine(x,y,x+w,y);g.drawLine(x,y+h,x+w,y+h);
+        MenuTheme.star(g,x+w,y,4);MenuTheme.star(g,x,y+h,4);MenuTheme.star(g,x+w,y+h,4);
         var badge=new java.awt.Polygon(new int[]{x+12,x+31,x+12,x-7},new int[]{y-1,y+18,y+37,y+18},4);
         g.setColor(JourneyHud.INK);g.fill(badge);g.setColor(JourneyHud.GOLD);g.draw(badge);
         JourneyHud.center(g,"!",x+12,y+25,Ui.heading(23),JourneyHud.GOLD);
         String area=Ui.roman(game.biome()+1)+" · "+game.campaignArea().name();
         JourneyHud.text(g,area,x+42,y+24,JourneyHud.SMALL,JourneyHud.GOLD);
-        g.setColor(Ui.CYAN);g.fillPolygon(new int[]{x+13,x+20,x+13,x+6},new int[]{y+46,y+53,y+60,y+53},4);
-        for(int i=0;i<lines.size();i++)JourneyHud.text(g,lines.get(i),x+28,y+59+i*21,JourneyHud.BODY,MenuTheme.IVORY);
+        g.setColor(Ui.CYAN);g.fillPolygon(new int[]{x+16,x+23,x+16,x+9},new int[]{y+46,y+53,y+60,y+53},4);
+        for(int i=0;i<lines.size();i++)JourneyHud.text(g,lines.get(i),x+32,y+59+i*21,JourneyHud.BODY,MenuTheme.IVORY);
         String shards=Integer.toString(game.shards());int bottom=y+65+lines.size()*21;
         JourneyHud.right(g,shards,x+w-20,bottom,JourneyHud.BODY,Ui.GOLD_LIGHT);
         int coin=x+w-32-g.getFontMetrics(JourneyHud.BODY).stringWidth(shards);
