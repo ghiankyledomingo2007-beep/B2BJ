@@ -132,8 +132,9 @@ final class ReincarnationOpening {
             double reveal=index>8?1:smooth(elapsed/1.1);
             var memory=(Graphics2D)g.create();memory.setComposite(AlphaComposite.SrcOver.derive((float)(.7*reveal)));
             if(human!=null) {
-                int cell=80,pose=reduced?0:(int)(time*4)%(human.getWidth()/cell);
-                memory.drawImage(human,480,142+bob,800,462+bob,pose*cell,0,(pose+1)*cell,cell,null);
+                int cell=B2BJ.bladeCell(human,BladeAnimation.Action.IDLE),pose=reduced?0:(int)(time*4)%(human.getWidth()/cell);
+                int margin=(cell-80)*2;
+                memory.drawImage(human,480-margin,142+bob-margin,800+margin,462+bob+margin,pose*cell,0,(pose+1)*cell,cell,null);
                 memory.setColor(new Color(5,9,16,65));
                 for(int y=146;y<464;y+=6)memory.fillRect(480,y,320,2);
             }

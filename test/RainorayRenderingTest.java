@@ -21,6 +21,7 @@ public final class RainorayRenderingTest {
         combatInterruptsMorphReplacement();
         engulfBodyCoversCurrentCorpseAndReturns();
         missingActionArtNeverMakesHumanInvisible();
+        widePortraitAndMorphKeepTheirAnchors();
         brazierAnimationKeepsItsFootprint();
         wardenMapMarkerNeverUsesPlayerPortrait();
         System.out.println("RainorayRenderingTest passed");
@@ -126,25 +127,57 @@ public final class RainorayRenderingTest {
         var panel=new B2BJ(false);panel.game().player().relocate(300,300);
         var field=B2BJ.class.getDeclaredField("rainoraySheets");field.setAccessible(true);
         var sheets=(java.util.Map<BladeAnimation.Action,java.awt.image.BufferedImage>)field.get(panel);
-        var idle=new java.awt.image.BufferedImage(640,240,java.awt.image.BufferedImage.TYPE_INT_ARGB);
-        var ink=idle.createGraphics();
-        for(int row=0;row<3;row++)for(int frame=0;frame<8;frame++) {
-            ink.setColor(new java.awt.Color(frame*20,60+row*40,0));ink.fillRect(frame*80,row*80,80,80);
-        }
-        ink.dispose();sheets.clear();sheets.put(BladeAnimation.Action.IDLE,idle);
         field=B2BJ.class.getDeclaredField("bladeAnimation");field.setAccessible(true);var animation=(BladeAnimation)field.get(panel);
         field=RuinedOutpostGame.class.getDeclaredField("combo");field.setAccessible(true);field.set(panel.game(),2);
         var draw=B2BJ.class.getDeclaredMethod("drawBlade",java.awt.Graphics2D.class,int.class,int.class);draw.setAccessible(true);
-        for(var action:new BladeAnimation.Action[]{BladeAnimation.Action.CAST,BladeAnimation.Action.SLASH,BladeAnimation.Action.HURT}) {
-            animation.face(1,0);animation.play(action,.3);animation.update(0,0,false,.16);
-            var image=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
-            ink=image.createGraphics();draw.invoke(panel,ink,0,0);ink.dispose();
-            assert image.getRGB(300,280)==0xff006400 : "missing action must use idle frame0 with same facing, not become invisible";
+        for(int cell:new int[]{80,160}) {
+            int rows=cell==80?3:8;
+            var idle=new java.awt.image.BufferedImage(cell*8,cell*rows,java.awt.image.BufferedImage.TYPE_INT_ARGB);
+            var ink=idle.createGraphics();
+            for(int row=0;row<rows;row++)for(int frame=0;frame<8;frame++) {
+                ink.setColor(new java.awt.Color(frame*20,60+row*20,0));ink.fillRect(frame*cell,row*cell,cell,cell);
+            }
+            ink.dispose();sheets.clear();sheets.put(BladeAnimation.Action.IDLE,idle);
+            for(var action:new BladeAnimation.Action[]{BladeAnimation.Action.CAST,BladeAnimation.Action.SLASH,BladeAnimation.Action.HURT}) {
+                animation.face(1,0);animation.play(action,.3);animation.update(0,0,false,.16);
+                var image=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
+                ink=image.createGraphics();draw.invoke(panel,ink,0,0);ink.dispose();
+                assert image.getRGB(300,280)==0xff005000 : "missing action must use idle frame0 with same facing at either cell size";
+            }
         }
         sheets.clear();var image=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
-        ink=image.createGraphics();draw.invoke(panel,ink,0,0);ink.dispose();
+        var ink=image.createGraphics();draw.invoke(panel,ink,0,0);ink.dispose();
         int visible=0;for(int y=0;y<640;y++)for(int x=0;x<640;x++)if((image.getRGB(x,y)>>>24)>0)visible++;
         assert visible>200 : "missing idle must still leave visible player feedback";
+    }
+    private static void widePortraitAndMorphKeepTheirAnchors() throws Exception {
+        var idle=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png");
+        int cell=B2BJ.bladeCell(idle,BladeAnimation.Action.IDLE),margin=(cell-80)/2;
+        var field=DialogueRenderer.class.getDeclaredField("BLADE");field.setAccessible(true);
+        var portrait=(java.awt.image.BufferedImage)field.get(null);
+        int visible=0;
+        for(int y=0;y<64;y++)for(int x=0;x<64;x++) {
+            assert portrait.getRGB(x,y)==idle.getRGB(margin+8+x,margin+y) : "portrait crops the body, not the transparent padding";
+            if(portrait.getRGB(x,y)>>>24!=0)visible++;
+        }
+        assert visible>500 : "human portrait remains visible";
+        var panel=new B2BJ(false);panel.game().player().relocate(300,300);
+        field=B2BJ.class.getDeclaredField("bladeAnimation");field.setAccessible(true);
+        var blade=(BladeAnimation)field.get(panel);
+        field=B2BJ.class.getDeclaredField("transformationAnimation");field.setAccessible(true);
+        var morph=(TransformationAnimation)field.get(panel);
+        var draw=B2BJ.class.getDeclaredMethod("drawTransformation",java.awt.Graphics2D.class,int.class,int.class);draw.setAccessible(true);
+        var sheet=B2BJ.loadImage("assets/effects/transform_out.png");
+        for(int[] direction:new int[][]{{0,1},{1,0},{0,-1},{-1,0},{1,1},{1,-1},{-1,-1},{-1,1}}) {
+            blade.face(direction[0],direction[1]);morph.start(true);
+            var actual=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
+            var ink=actual.createGraphics();draw.invoke(panel,ink,0,0);ink.dispose();
+            var expected=new java.awt.image.BufferedImage(640,640,java.awt.image.BufferedImage.TYPE_INT_ARGB);
+            ink=expected.createGraphics();int y=300+48-72*2-(cell-80),row=blade.directionRow();
+            ink.drawImage(sheet,300-cell,y,300+cell,y+cell*2,0,row*cell,cell,(row+1)*cell,null);ink.dispose();
+            assert java.util.Arrays.equals(actual.getRGB(0,0,640,640,null,0,640),expected.getRGB(0,0,640,640,null,0,640))
+                    : "reverting morph retains full blade and correct facing/foot anchor";
+        }
     }
     @SuppressWarnings("unchecked")
     private static void brazierAnimationKeepsItsFootprint() throws Exception {

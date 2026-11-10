@@ -9,11 +9,24 @@ Select a tag and press Enter to play or pause. Tab shows the timeline; F6 toggle
 cel thumbnails. Edit **Character** for the body/sword, or **Effects** for the
 contact arcs. **Before polish** is a hidden, locked comparison layer.
 
-Keep tag names, frame counts and the 160×160 canvas. Small actions occupy the
-middle 80×80 pixels; wide actions use the full canvas. The export checks these
-bounds. Merge extra paint layers into Character or Effects before exporting.
+Keep tag names, frame counts and the 160×160 canvas. Every action now uses the full
+canvas for sword clearance; the body retains its original scale and ground anchor.
+Merge extra paint layers into Character or Effects before exporting.
 The sword is baked into the Character pixels; its separate 3D object remains in
 the [editable Blender source](../../../../docs/art-review/sprite3d-run/source/rainoray-editable/).
+
+## Approved sword and stance — 2026-11-05
+
+The game sheets and this timeline contain the approved sword, eight-direction idle,
+charge, hold and recovery poses, and blade-aligned contact trails. The original body,
+hair and hand-painted mask remain. Active strike poses, skill mechanics, contact
+timings and sounds are unchanged. **Before polish** holds the preceding installed
+character, padded to the same canvas without scaling.
+
+The Blender file still contains the original sword and pose tracks. Re-rendering it
+directly will replace this pixel finish; use the timeline to edit the installed art.
+The installation evidence and original files are retained under
+`~/tmp/rainoray-sword-preview/install-2026-11-05/`.
 
 ## Mask readability finish — 2026-10-27
 

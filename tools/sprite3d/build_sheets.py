@@ -6,7 +6,8 @@ Sheets (default: all): run idle start stop turn slash cleave charge hold dash ca
 transform
 --preserve-cardinals renders only the diagonals and keeps all existing cardinal pixels.
 --install copies the results into assets/ (blade sheets to characters/blade, the morph to effects).
-Each is written as rainoray_<sheet>.png in the layout src/B2BJ.java reads: 80x80 cells, one row per
+Each is written as rainoray_<sheet>.png in the layout src/B2BJ.java reads: 160x160 cells around an
+unscaled 80x80 body canvas, one row per
 facing in BladeAnimation.directionRow() order (S, E, N, W, SE, NE, NW, SW); the slash sheet stacks the
 four combo moves plus dash slash, 40 rows. All eight facings are real photographs: a mirrored west would make him
 left-handed and send his cuts against the game's slash arc.
@@ -45,7 +46,7 @@ TRAILED = {"slash", "cleave", "cast", "counter"}
 # same foot row; the margin is room to lunge, leap and swing. In an 80 px cell arm + blade alone are 42 px,
 # so every reach forced the whole body to slide back, which is exactly what made him look planted.
 # B2BJ.bladeCell() reads the size off the sheet, so a sheet can be widened or narrowed here alone.
-WIDE = {"slash", "cleave", "cast", "counter", "dash", "guard", "hurt"}
+WIDE = {"run", "idle", "start", "stop", "turn", "slash", "cleave", "charge", "hold", "cast", "counter", "dash", "guard", "hurt"}
 MARGIN = 2             # sprite pixels stay this far inside the cell, leaving room for the 1 px outline
 DEPTH_SLIDE = 8        # front/back facings may shift this many px up or down: that is him moving in depth
 ROWS = ["south", "east", "north", "west", "southeast", "northeast", "northwest", "southwest"]      # BladeAnimation.directionRow() order, all photographed
@@ -253,7 +254,8 @@ def transform(out):
     sheets = transform_fx.build(out / "rainoray_idle.png", SLIME_MORPH / "slime_morph_in.png",
                                 SLIME_MORPH / "slime_morph_out.png", out)
     for name, sheet in zip(("transform_in", "transform_out"), sheets):
-        rows = [[transform_fx.cell(sheet, r, i) for i in range(transform_fx.FRAMES)] for r in range(len(ROWS))]
+        size = sheet.width // transform_fx.FRAMES
+        rows = [[transform_fx.cell(sheet, r, i, size) for i in range(transform_fx.FRAMES)] for r in range(len(ROWS))]
         save_gif([f for row in rows for f in row], out / f"{name}.gif", 40)
         report(name, rows, [])
 

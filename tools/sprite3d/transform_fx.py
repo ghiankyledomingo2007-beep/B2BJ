@@ -29,8 +29,8 @@ SINK = [(1.10, 0.88, 0.35), (1.20, 0.74, 0.0), (1.30, 0.62, 0.0), (1.38, 0.52, 0
 GOO_BANDS = 4                    # few flat tones, like the slime's own shading, not a striped gradient
 
 
-def cell(sheet, row, frame):
-    return sheet.crop((frame * CELL, row * CELL, (frame + 1) * CELL, (row + 1) * CELL))
+def cell(sheet, row, frame, size=CELL):
+    return sheet.crop((frame * size, row * size, (frame + 1) * size, (row + 1) * size))
 
 
 def teal_ramp(slime_cells):
@@ -67,7 +67,7 @@ def squash(sprite, wide, tall):
     body = body.resize(size, Image.NEAREST)
     out = Image.new("RGBA", sprite.size, (0, 0, 0, 0))
     centre = (box[0] + box[2]) // 2
-    out.alpha_composite(body, (max(0, min(CELL - size[0], centre - size[0] // 2)), max(0, box[3] - size[1])))
+    out.alpha_composite(body, (max(0, min(sprite.width - size[0], centre - size[0] // 2)), max(0, box[3] - size[1])))
     return out
 
 
@@ -90,7 +90,7 @@ def goo(sprite, ramp, wide, tall, detail):
         for x in range(box[0], box[2]):
             if not inside[x, y]:
                 continue
-            rim = any(not (0 <= x + dx < CELL and 0 <= y + dy < CELL and inside[x + dx, y + dy])
+            rim = any(not (0 <= x + dx < sprite.width and 0 <= y + dy < sprite.height and inside[x + dx, y + dy])
                       for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
             colour = ramp[0] if rim else tone
             if detail and src[x, y][3] and not rim:
@@ -105,9 +105,9 @@ def sparkle(sprite, ramp, seed, age):
     box = sprite.getbbox()
     rng = random.Random(seed)
     for _ in range(7):
-        x = min(max(rng.randint(box[0], box[2] - 1), 2), CELL - 3)
+        x = min(max(rng.randint(box[0], box[2] - 1), 2), sprite.width - 3)
         y = rng.randint(box[1], box[3] - 1) - 3 * age - rng.randint(0, 6)
-        if 2 <= y < CELL - 2 and age < 7 and not sprite.getpixel((x, y))[3]:
+        if 2 <= y < sprite.height - 2 and age < 7 and not sprite.getpixel((x, y))[3]:
             out.putpixel((x, y), (*ramp[-1 - (age // 2) % 3], 255))
     return out
 
@@ -115,27 +115,33 @@ def sparkle(sprite, ramp, seed, age):
 def build(idle_sheet, slime_in, slime_out, out_dir):
     idle = Image.open(idle_sheet).convert("RGBA")
     old_in, old_out = Image.open(slime_in).convert("RGBA"), Image.open(slime_out).convert("RGBA")
-    rows = idle.height // CELL
-    sheet_in = Image.new("RGBA", (CELL * FRAMES, CELL * rows), (0, 0, 0, 0))
-    sheet_out = Image.new("RGBA", (CELL * FRAMES, CELL * rows), (0, 0, 0, 0))
+    size = idle.width // 8
+    rows = idle.height // size
+    assert size in (80, 160) and rows == 8, "Expected eight-facing idle sheet"
+    sheet_in = Image.new("RGBA", (size * FRAMES, size * rows), (0, 0, 0, 0))
+    sheet_out = Image.new("RGBA", (size * FRAMES, size * rows), (0, 0, 0, 0))
+    def slime(sheet, row, frame):
+        padded = Image.new("RGBA", (size, size))
+        padded.paste(cell(sheet, row, frame), ((size-CELL)//2, (size-CELL)//2))
+        return padded
     for row in range(rows):
-        human = cell(idle, row, 0)
+        human = cell(idle, row, 0, size)
         slime_row = (0, 1, 2, 3, 0, 2, 2, 0)[row]
         ramp = teal_ramp([cell(old_in, slime_row, i) for i in range(KEPT_IN)])
         full = glass(human, ramp, 1.0)
 
-        frames = [cell(old_in, slime_row, i) for i in range(KEPT_IN)]
+        frames = [slime(old_in, slime_row, i) for i in range(KEPT_IN)]
         frames += [goo(full, ramp, w, t, d) for w, t, d in RISE]
         frames += [sparkle(glass(human, ramp, k), ramp, row * 31, i) for i, k in enumerate(CLEAR)]
         frames[-1] = human                                   # the morph ends ON idle frame 0
         for i, f in enumerate(frames):
-            sheet_in.alpha_composite(f, (i * CELL, row * CELL))
+            sheet_in.alpha_composite(f, (i * size, row * size))
 
         frames = [sparkle(glass(human, ramp, k), ramp, row * 17, 6 - i) for i, k in enumerate(FORM)]
         frames += [full] + [goo(full, ramp, w, t, d) for w, t, d in SINK]
-        frames += [cell(old_out, slime_row, i) for i in range(KEPT_OUT, FRAMES)]
+        frames += [slime(old_out, slime_row, i) for i in range(KEPT_OUT, FRAMES)]
         for i, f in enumerate(frames):
-            sheet_out.alpha_composite(f, (i * CELL, row * CELL))
+            sheet_out.alpha_composite(f, (i * size, row * size))
     out_dir = Path(out_dir)
     sheet_in.save(out_dir / "transform_in.png")
     sheet_out.save(out_dir / "transform_out.png")

@@ -225,7 +225,8 @@ final class LoadingScreen {
         else if (loop < 2.7) { sheet = morphIn; frame = 15; }
         else { sheet = morphOut; frame = (int) ((loop - 2.7) / .64 * 16); }
         frame = Math.max(0, Math.min(15, frame));
-        g.drawImage(sheet, cx - 80, feet - 136, cx + 80, feet + 24, frame * 80, 0, frame * 80 + 80, 80, null);
+        int cell=sheet.getWidth()/16,margin=cell-80;
+        g.drawImage(sheet,cx-cell,feet-136-margin,cx+cell,feet+24+margin,frame*cell,0,(frame+1)*cell,cell,null);
     }
 
 }

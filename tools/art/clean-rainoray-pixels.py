@@ -26,7 +26,7 @@ TONES = {(110, 126, 164), (170, 180, 200), (155, 157, 160), (123, 155, 188),
 KEEP = {RED, HILT_RED, GOLD, GOLD_LIGHT}
 HILT = {GOLD, GOLD_LIGHT, HILT_RED}
 MATERIALS = [(BLUE, DARK, CREASE), (HAIR, SHADE, WHITE, STRAND), (SKIN,)]
-SHEETS = {"idle": 80, "run": 80, "start": 80, "stop": 80, "turn": 80, "charge": 80, "hold": 80,
+SHEETS = {"idle": 160, "run": 160, "start": 160, "stop": 160, "turn": 160, "charge": 160, "hold": 160,
           "guard": 160, "hurt": 160, "slash": 160, "cleave": 160, "dash": 160, "cast": 160, "counter": 160}
 NORTH = 2                                    # facing rows: south, east, north, west
 N4 = [(-1, 0), (1, 0), (0, -1), (0, 1)]

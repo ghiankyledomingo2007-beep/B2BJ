@@ -6,9 +6,9 @@ local directions = {"south", "east", "north", "west", "southeast", "northeast", 
 -- sheet, tag, block, cell, frames, total milliseconds, contact milliseconds (if any).
 -- Timings follow BladeAnimation, Player and RuinedOutpostGame; round boundaries, not every frame.
 local actions = {
-  {"idle", "idle", 0, 80, 8, 1333}, {"run", "run", 0, 80, 8, 500},
-  {"start", "start", 0, 80, 4, 120}, {"stop", "stop", 0, 80, 4, 120},
-  {"turn", "turn", 0, 80, 4, 120},
+  {"idle", "idle", 0, 160, 8, 1333}, {"run", "run", 0, 160, 8, 500},
+  {"start", "start", 0, 160, 4, 120}, {"stop", "stop", 0, 160, 4, 120},
+  {"turn", "turn", 0, 160, 4, 120},
   {"slash", "draw_cut", 0, 160, 12, 400, 130},
   {"slash", "thrust", 1, 160, 12, 420, 140},
   {"slash", "diagonal_cut", 2, 160, 12, 480, 170},
@@ -16,7 +16,7 @@ local actions = {
   {"slash", "dash_slash", 4, 160, 12, 420, 100},
   {"cleave", "cleave", 0, 160, 12, 580, 180},
   {"cleave", "spin_cleave", 1, 160, 12, 700, 180},
-  {"charge", "charge", 0, 80, 8, 350}, {"hold", "hold", 0, 80, 8, 1000},
+  {"charge", "charge", 0, 160, 8, 350}, {"hold", "hold", 0, 160, 8, 1000},
   {"dash", "dash", 0, 160, 8, 120}, {"cast", "cast", 0, 160, 8, 350},
   {"guard", "guard", 0, 160, 8, 300}, {"hurt", "hurt", 0, 160, 8, 320},
   {"counter", "counter", 0, 160, 8, 320},

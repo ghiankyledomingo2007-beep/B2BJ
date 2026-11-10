@@ -6,9 +6,10 @@ public final class RainorayArtTest {
         } catch(Exception error) { throw new AssertionError("Render fixture failed",error); }
         if(args.length>0&&args[0].equals("--runtime-only"))return;
         var idle=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png");
+        int cell=B2BJ.bladeCell(idle,BladeAnimation.Action.IDLE),margin=(cell-80)/2;
         for(int frame=0;frame<8;frame++) {
             int dot=0,noseX=-1,noseY=-1;
-            for(int y=8;y<32;y++)for(int x=frame*80+24;x<frame*80+56;x++)
+            for(int y=margin+8;y<margin+32;y++)for(int x=frame*cell+margin+24;x<frame*cell+margin+56;x++)
                 if(idle.getRGB(x,y)==0xffe03040){dot++;noseX=x;noseY=y;}
             assert dot==1 : "front-facing mask keeps one red pixel throughout its idle";
             for(int side:new int[]{-1,1}) {
@@ -20,22 +21,20 @@ public final class RainorayArtTest {
                 assert ink>=2 : "both mask eye markings must remain readable while breathing: frame "+frame;
             }
         }
-        for(String action:new String[]{"idle","charge","hold"})
-            CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,8,8,8);
-        // Moves that travel get cells twice the body canvas (the body stays in the middle 80 px).
-        for(String action:new String[]{"dash","cast","counter","guard","hurt"})
+        // The body keeps its native scale; the wider cell leaves room for the sword in every facing.
+        for(String action:new String[]{"idle","charge","hold","dash","cast","counter","guard","hurt"})
             CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",160,160,8,8,8);
-        CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,BladeAnimation.RUN_FRAMES,8,BladeAnimation.RUN_FRAMES);
+        CombatArtTest.check("assets/characters/blade/rainoray_run.png",160,160,BladeAnimation.RUN_FRAMES,8,BladeAnimation.RUN_FRAMES);
         // A completed attack may return to its exact starting ready pose.
         // Blocks of eight facings: combo moves 0-3, then the dash slash.
         CombatArtTest.check("assets/characters/blade/rainoray_slash.png",160,160,12,40,11);
         for(String action:new String[]{"start","stop","turn"})
-            CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",80,80,4,8,4);
+            CombatArtTest.check("assets/characters/blade/rainoray_"+action+".png",160,160,4,8,4);
         // The cleave, then the full-charge spin.
         CombatArtTest.check("assets/characters/blade/rainoray_cleave.png",160,160,12,16,11);
         CombatArtTest.check("assets/characters/slime/slime_engulf.png",80,80,16,3,16);
         for(String name:new String[]{"transform_in","transform_out"})
-            CombatArtTest.check("assets/effects/"+name+".png",80,80,16,8,16);
+            CombatArtTest.check("assets/effects/"+name+".png",160,160,16,8,16);
         CombatArtTest.check("assets/effects/ichor_crescent.png",64,64,8,1,8);
         CombatArtTest.check("assets/effects/riposte_guard.png",80,80,8,1,8,true);
         CombatArtTest.check("assets/effects/riposte_counter.png",80,80,8,1,8);

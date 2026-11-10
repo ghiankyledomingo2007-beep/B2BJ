@@ -10,10 +10,16 @@ public final class DialogueRenderer {
     private static final BufferedImage[] MARA_IDLE=maraFrames();
     private static final BufferedImage BLOB=B2BJ.loadImage("assets/characters/slime/rainoray_portrait.png");
     // Every portrait is native art drawn at the game's 2x: 64 native pixels fill the 128 frame.
-    private static final BufferedImage BLADE=cell(B2BJ.loadImage("assets/characters/blade/rainoray_idle.png"),8,0,64,64);
+    private static final BufferedImage BLADE=bladePortrait();
     private static final BufferedImage WARDEN=cell(B2BJ.loadImage("assets/characters/guardian/warden_motion.png"),0,0,128,64);
     private static final BufferedImage SURVIVORS=B2BJ.loadImage("assets/characters/npcs/survivor_portraits.png");
     private static final BufferedImage[] SURVIVOR_FACES={face(0),face(1),face(2)};
+    private static BufferedImage bladePortrait() {
+        var sheet=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png");
+        if(sheet==null)return null;
+        int margin=(B2BJ.bladeCell(sheet,BladeAnimation.Action.IDLE)-80)/2;
+        return cell(sheet,margin+8,margin,64,64);
+    }
     private static BufferedImage face(int column) {
         if(SURVIVORS==null)return null;
         int size=Math.min(SURVIVORS.getWidth()/3,SURVIVORS.getHeight());

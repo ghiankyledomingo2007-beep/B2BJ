@@ -69,7 +69,8 @@ public final class GroundedRemainsTest {
         int above=0;var rising=transform(.3,slime,hero,row);
         for(int y=0;y<100;y++)for(int x=0;x<rising.getWidth();x++)if(rising.getRGB(x,y)>>>24!=0)above++;
         assert above>40 : "the goo column rises far above the slime";
-        var real=cellAt2x(hero,0,row*80,80,TransformFx.HERO_X,TransformFx.HERO_Y);
+        int cell=B2BJ.bladeCell(hero,BladeAnimation.Action.IDLE),margin=(cell-80)/2;
+        var real=cellAt2x(hero,0,row*cell,cell,TransformFx.HERO_X-margin,TransformFx.HERO_Y-margin);
         assert differ(transform(0,slime,hero,row),cellAt2x(slime,0,0,48,TransformFx.SLIME_X,TransformFx.SLIME_Y))==0
                 : "it starts on the slime's own pixels";
         // judged 2026-10-29: the slime's own pixels stretch up, its star going up with it (no bleached dome, no new
@@ -117,7 +118,8 @@ public final class GroundedRemainsTest {
     private static BufferedImage transform(double t,BufferedImage slime,BufferedImage hero,int row) {
         var image=new BufferedImage(TransformFx.W*2,TransformFx.H*2,BufferedImage.TYPE_INT_ARGB);
         var g=image.createGraphics();
-        TransformFx.draw(g,0,0,t,slime,0,0,false,hero,0,row*80,80,false,false);
+        int cell=B2BJ.bladeCell(hero,BladeAnimation.Action.IDLE);
+        TransformFx.draw(g,0,0,t,slime,0,0,false,hero,0,row*cell,cell,false,false);
         g.dispose();
         return image;
     }

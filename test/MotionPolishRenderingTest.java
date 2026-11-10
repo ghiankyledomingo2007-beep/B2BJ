@@ -25,10 +25,11 @@ public final class MotionPolishRenderingTest {
         }
         if(check.equals("all")||check.equals("carry")) {
             var run=B2BJ.loadImage("assets/characters/blade/rainoray_run.png");
-            CombatArtTest.check("assets/characters/blade/rainoray_run.png",80,80,BladeAnimation.RUN_FRAMES,8,BladeAnimation.RUN_FRAMES);
-            for(int row=0;row<4;row++)for(int frame=0;frame<BladeAnimation.RUN_FRAMES;frame++) {
-                var box=bounds(run.getSubimage(frame*80,row*80,80,80));
-                assert box[0]>0&&box[1]>0&&box[2]<79&&box[3]<79
+            int cell=B2BJ.bladeCell(run,BladeAnimation.Action.RUN);
+            CombatArtTest.check("assets/characters/blade/rainoray_run.png",cell,cell,BladeAnimation.RUN_FRAMES,8,BladeAnimation.RUN_FRAMES);
+            for(int row=0;row<8;row++)for(int frame=0;frame<BladeAnimation.RUN_FRAMES;frame++) {
+                var box=bounds(run.getSubimage(frame*cell,row*cell,cell,cell));
+                assert box[0]>0&&box[1]>0&&box[2]<cell-1&&box[3]<cell-1
                         : "running body, hair and katana must not clip: row "+row+" frame "+frame;
             }
         }

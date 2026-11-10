@@ -23,7 +23,9 @@ public final class CampArtTest {
         }
         var field=DialogueRenderer.class.getDeclaredField("MARA_BODY");field.setAccessible(true);
         var mara=(BufferedImage)field.get(null);
-        var hero=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png").getSubimage(0,0,80,80);
+        var sheet=B2BJ.loadImage("assets/characters/blade/rainoray_idle.png");
+        int cell=B2BJ.bladeCell(sheet,BladeAnimation.Action.IDLE);
+        var hero=sheet.getSubimage(0,0,cell,cell);
         assert mara.getWidth()==80&&mara.getHeight()==80 : "humans share the 80-pixel frame at 2x";
         int humanHeight=visibleHeight(hero),maraHeight=visibleHeight(mara);
         assert Math.abs(humanHeight-maraHeight)<=humanHeight*.15 : "Mara must fit the player's human scale";

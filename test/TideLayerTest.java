@@ -27,9 +27,12 @@ public final class TideLayerTest {
                 covered++;
             }
             assert covered>100;
+            var anchored=draw(panel,"drawImpacts");
             panel.game().player().relocate(840,360);
             var effects=draw(panel,"drawImpacts");
-            assert effects.getRGB(640,360)==0xff1122dd&&(effects.getRGB(840,360)>>>24)==0
+            // Splash particles cover the centre pixel; compare the whole effect at unchanged game time.
+            assert java.util.Arrays.equals(anchored.getRGB(0,0,1280,720,null,0,1280),effects.getRGB(0,0,1280,720,null,0,1280))
+                    &&(effects.getRGB(640,360)>>>24)>0&&(effects.getRGB(840,360)>>>24)==0
                     : "moving player cannot drag either impact away from event anchor";
             for(int i=0;i<70;i++)emit(panel,RuinedOutpostGame.EventType.TIDE_RELEASE,640,360);
             Field field=B2BJ.class.getDeclaredField("impacts");field.setAccessible(true);

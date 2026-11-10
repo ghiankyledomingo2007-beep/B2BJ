@@ -1590,6 +1590,7 @@ public final class B2BJ extends JPanel {
         }
         if(sheet==null) {
             sheet=rainoraySheets.get(BladeAnimation.Action.IDLE);frame=0;
+            if(sheet!=null)cellWidth=cellHeight=bladeCell(sheet,BladeAnimation.Action.IDLE);
             facings=sheet==null?0:bladeFacings(sheet,BladeAnimation.Action.IDLE);modern=facings>=4;
             sourceRow=facings==8?bladeAnimation.directionRow():modern?bladeAnimation.cardinalRow():bladeAnimation.row();
             if(sheet==null) {
@@ -1727,19 +1728,15 @@ public final class B2BJ extends JPanel {
                     hero,0,row*cell,cell,!modern&&bladeAnimation.flipHorizontal(),reducedEffects);
             return;
         }
-        int x = (int) Math.round(player.x()) - cameraX
-                - TransformationAnimation.RENDER_SIZE / 2;
-        int y = (int)Math.round(player.y())-cameraY+48-BladeAnimation.FOOT_ROW*2;
-        int sourceX = transformationAnimation.frame()
-                * TransformationAnimation.CELL_SIZE;
-        int sourceY=Math.min(sheet.getHeight()>=640?bladeAnimation.directionRow():sheet.getHeight()==320?bladeAnimation.cardinalRow():bladeAnimation.row(),sheet.getHeight()/80-1)*80;
-        boolean flip=sheet.getHeight()<320&&bladeAnimation.flipHorizontal();
-        canvas.drawImage(sheet, flip?x+160:x, y,
-                flip?x:x+160,
-                y + TransformationAnimation.RENDER_SIZE,
-                sourceX, sourceY,
-                sourceX + TransformationAnimation.CELL_SIZE,
-                sourceY + TransformationAnimation.CELL_SIZE, null);
+        int cell=sheet.getWidth()/16,facings=sheet.getHeight()/cell;
+        int margin=cell-TransformationAnimation.CELL_SIZE;
+        int x=(int)Math.round(player.x())-cameraX-cell;
+        int y=(int)Math.round(player.y())-cameraY+48-BladeAnimation.FOOT_ROW*2-margin;
+        int sourceX=transformationAnimation.frame()*cell;
+        int sourceY=Math.min(facings>=8?bladeAnimation.directionRow():facings==4?bladeAnimation.cardinalRow():bladeAnimation.row(),facings-1)*cell;
+        boolean flip=facings<4&&bladeAnimation.flipHorizontal();
+        canvas.drawImage(sheet,flip?x+cell*2:x,y,flip?x:x+cell*2,y+cell*2,
+                sourceX,sourceY,sourceX+cell,sourceY+cell,null);
     }
 
     /** Enemies act out what they do with the whole body (EnemyPose): the art is unchanged, only posed at the feet. */

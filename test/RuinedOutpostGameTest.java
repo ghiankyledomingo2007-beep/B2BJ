@@ -67,8 +67,18 @@ public final class RuinedOutpostGameTest {
         boolean godMode=game.player().godMode();game.player().setGodMode(true);
         for(Wisp enemy:game.scouts()) {
             for(int attempt=0;enemy.alive()&&attempt<20;attempt++) {
-                game.player().relocate(enemy.x()-(game.player().bladeForm()?75:200),enemy.y());
-                game.attack(1,0);
+                boolean positioned=false;
+                for(int angle=0;angle<16;angle++) {
+                    double distance=game.player().bladeForm()?75:200;
+                    double x=enemy.x()-Math.cos(angle*Math.PI/8)*distance;
+                    double y=enemy.y()-Math.sin(angle*Math.PI/8)*distance;
+                    if(!game.map().isBlocked(x,y+Player.COLLISION_Y_OFFSET,Player.COLLISION_RADIUS)
+                            &&game.map().clearLine(x,y,enemy.x(),enemy.y())) {
+                        game.player().relocate(x,y);positioned=true;break;
+                    }
+                }
+                assert positioned : "route fixture needs a legal attack position";
+                game.attack((int)Math.round(enemy.x()-game.player().x()),(int)Math.round(enemy.y()-game.player().y()));
                 game.update(0.5,0,0);
                 game.update(0.22,0,0); // Allow water recovery plus impact hit-stop between scripted casts.
                 assert game.player().alive() : "scripted combat died in room "+game.map().room();
